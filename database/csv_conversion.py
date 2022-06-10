@@ -52,12 +52,3 @@ def convert_to_csv(file_name: typing) -> None:
 if __name__ == "__main__":
     format_text_file_content(bus_stop_file)
     convert_to_csv(bus_stop_file)
-
-
-
-
-
-
-
-
-
