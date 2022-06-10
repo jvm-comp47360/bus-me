@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "stops"(
-  "id" TEXT,
+  "api_id" TEXT,
   "name" TEXT,
   "number" INTEGER,
   "latitude" NUMERIC,
