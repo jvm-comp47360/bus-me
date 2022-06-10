@@ -77,16 +77,16 @@ WSGI_APPLICATION = 'busme.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'busme',
-#         'USER': os.getenv('BUSME_USER'),
-#         'PASSWORD': os.getenv('BUSME_PASSWORD'),
-#         'HOST': os.getenv('BUSME_HOST'),
-#         'PORT': os.getenv('BUSME_PORT'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'busme',
+        'USER': os.getenv('BUSME_USER'),
+        'PASSWORD': os.getenv('BUSME_PASSWORD'),
+        'HOST': os.getenv('BUSME_HOST'),
+        'PORT': os.getenv('BUSME_PORT'),
+    }
+}
 
 
 # Password validation
