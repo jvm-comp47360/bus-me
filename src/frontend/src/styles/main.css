@@ -11,5 +11,12 @@
 }
 
 .splash-header {
+    padding: 0.5%
+}
+
+.splash-subheader {
+    margin: auto;
+    width: 40%;
+    text-align: center;
 
 }
