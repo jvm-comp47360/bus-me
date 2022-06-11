@@ -4,20 +4,32 @@ import ControlPanel from "./components/ControlPanel/ControlPanel.jsx";
 import {useEffect, useState} from "react";
 
 function App() {
+    const busStopsUrl = "http://localhost:8000/api/bus_stops"
 
     const [busStops, setBusStops] = useState([])
+    useEffect(() => { getBusStops().then(data => setBusStops(data)); }, [])
 
-    useEffect(() => { getBusStops().then(data => setBusStops(data)) }, [])
-
+    
+    // Retrieves data relating to bus stops and sets component state.
     const getBusStops = async() => {
         const dataInLocalStorage = localStorage.getItem("bus_stops");
         if (dataInLocalStorage) {
-            return JSON.parse(dataInLocalStorage)
+            return getBusStopsFromLocalStorage(dataInLocalStorage);
+        } else {
+            return await getBusStopsFromApi();
         }
-        else {
-            const busStopsApiData = await fetch("http://127.0.0.1:8000/api/bus_stops");
-            return busStopsApiData.json();
-        }
+    }
+
+
+    // Retrieves bus stop data from local storage in JSON format.
+    const getBusStopsFromLocalStorage = dataInLocalStorage => JSON.parse(dataInLocalStorage)
+
+
+    // Retrieves bus stop data from API.
+    const getBusStopsFromApi = async () => {
+        const busStopsData = await fetch(busStopsUrl).then(response => response.json());
+        localStorage.setItem("bus_stops", JSON.stringify(busStopsData));
+        return busStopsData;
     }
 
   return (
