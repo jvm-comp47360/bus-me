@@ -8,7 +8,7 @@ from rest_framework.response import Response
 class BusStopsAPIView(APIView):
     serializer_class = BusStopsSerializer
 
-    def get(self):
+    def get(self, request):
         bus_stops = BusStops.objects.all()
         serializer = BusStopsSerializer(bus_stops, many=True)
 
