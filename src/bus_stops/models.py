@@ -2,6 +2,7 @@ from django.db import models
 
 
 class BusStops(models.Model):
+    """Model that represents information relating to individual bus stops"""
     class Meta:
         db_table = "bus_stops"
 
@@ -13,4 +14,3 @@ class BusStops(models.Model):
 
     def __str__(self):
         return f"{self.name}, Stop No.{self.number}"
-

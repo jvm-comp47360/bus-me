@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import BusStops
 from .serializers import BusStopsSerializer
 from rest_framework.views import APIView

@@ -1,3 +1,6 @@
+# Small script to read through CSV file and add bus stops to database.
+# Note that this is only expected to be run once and as such tests have not been provided.
+
 import csv
 from typing import List
 
@@ -11,7 +14,7 @@ def run() -> None:
         next(bus_stops_file_reader, None)  # Skips the header row
 
         # Deletes all existing objects if you need to reset the database
-        BusStops.objects.all().delete()
+        # BusStops.objects.all().delete()
 
         for bus_stop_entry in bus_stops_file_reader:
             add_bus_stop_to_database(bus_stop_entry)
