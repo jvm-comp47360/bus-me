@@ -1,10 +1,11 @@
 import './App.css';
 import './styles/main.css'
+import ControlPanel from "./components/ControlPanel/ControlPanel.jsx";
 
 function App() {
   return (
     <div className="App">
-        <h1>BusMe - The Beginning...</h1>
+        <ControlPanel/>
     </div>
   );
 }
