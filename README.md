@@ -33,4 +33,15 @@ All commands, such as those relating to starting the development server, testing
 
 As this is quite a repetitive task I will check to see if this can be implemented as a GitHub hook once a team member pulls from a branch that has changes in the frontend.
 
+
+## How do I create a replica of the Bus Stops table in my database?
+
+After migrating all the changes as described in the Django guide on Discord, enter the Django src directory and run `python manage.py runscript load`. The script itself is located in `src/scripts/load.py`.
+
+Note that if you are planning on running the script for a second time for whatever reason, you should uncomment the marked line in the script so that your existing table is destroyed. This way there won't be any issues with duplicate entries.
+
+The data was taken from the National Transport Authority API zip, and I created a short Python script in ./database that transformed the data a little to fit better in Postgres, and also converted it to .csv.
+
+Of course, if we get different bus station data later on we can easily swap that in instead.
+
 **END**
