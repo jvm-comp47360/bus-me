@@ -5,4 +5,4 @@ from .models import BusStops
 class BusStopsSerializer(serializers.ModelSerializer):
     class Meta:
         model = BusStops
-        fields = ('api_id', 'name', 'number', 'latitude', 'longitude')
+        fields = ('id', 'name', 'number', 'latitude', 'longitude')
