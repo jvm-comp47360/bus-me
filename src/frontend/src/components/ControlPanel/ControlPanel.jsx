@@ -18,22 +18,22 @@ const ControlPanel = ({busStops}) => {
     </>;
   }
 
-  const renderDropdowns = () => {
+  const renderDropdown = (label, setId) => {
+    return <>
+      <Autocomplete
+        getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
+        options={busStops}
+        sx={{width: 300}}
+        renderInput={(params) => <TextField {...params} label={label}/>}
+        onChange={(option, value) => setId(value.id)}
+      />
+    </>
+  }
+
+  const renderDropdownContainer = () => {
     return <Stack direction={"row"} spacing={2} justifyContent={"center"}>
-      <Autocomplete
-        getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
-        options={busStops}
-        sx={{width: 300}}
-        renderInput={(params) => <TextField {...params} label={"Start"}/>}
-        onChange={(option, value) => setStartId(value.id)}
-      />
-      <Autocomplete
-        getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
-        options={busStops}
-        sx={{width: 300}}
-        renderInput={(params) => <TextField {...params} label={"Finish"}/>}
-        onChange={(option, value) => setFinishId(value.id)}
-      />
+      {renderDropdown("Start", setStartId)}
+      {renderDropdown("Finish", setFinishId)}
     </Stack>;
   }
 
@@ -49,7 +49,7 @@ const ControlPanel = ({busStops}) => {
 
   return <div className={"control-panel"}>
     {renderSplashText()}
-    {renderDropdowns()}
+    {renderDropdownContainer()}
     {renderSubmitButton()}
   </div>
 }
