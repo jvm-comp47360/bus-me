@@ -18,7 +18,7 @@ const ControlPanel = ({busStops}) => {
     </>;
   }
 
-  const renderDropdown = (label, setId) => {
+  const renderDropdown = (label, setId, testid) => {
     return <>
       <Autocomplete
         getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
@@ -26,14 +26,15 @@ const ControlPanel = ({busStops}) => {
         sx={{width: 300}}
         renderInput={(params) => <TextField {...params} label={label}/>}
         onChange={(option, value) => setId(value.id)}
+        data-testid = {testid}
       />
     </>
   }
 
   const renderDropdownContainer = () => {
     return <Stack direction={"row"} spacing={2} justifyContent={"center"}>
-      {renderDropdown("Start", setStartId)}
-      {renderDropdown("Finish", setFinishId)}
+      {renderDropdown("Start", setStartId, "start-dropdown")}
+      {renderDropdown("Finish", setFinishId, "finish-dropdown")}
     </Stack>;
   }
 
