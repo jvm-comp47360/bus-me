@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="App">
-      <ControlPanel bus_stops={busStops}/>
+      <ControlPanel busStops={busStops}/>
     </div>
   );
 }

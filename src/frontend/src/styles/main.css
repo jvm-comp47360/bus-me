@@ -18,5 +18,12 @@
     margin: auto;
     width: 40%;
     text-align: center;
-
 }
+
+.dropdown-container {
+    margin: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
