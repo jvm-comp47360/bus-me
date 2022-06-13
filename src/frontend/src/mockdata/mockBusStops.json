@@ -5,15 +5,16 @@
     "latitude":"53.3522443611",
     "longitude":"-6.2637232189"
   },
-  {"id":"8220DB000003",
-    "name":"Parnell Square West",
-    "number":3,
-    "latitude":"53.3523085514",
-    "longitude":"-6.2638107422"
+  {"id":"8220DB000017",
+    "name":"Drumcondra Rail Stn",
+    "number":17,
+    "latitude":"53.3630783244",
+    "longitude":"-6.2583992885"
   },
-  {"id":"8220DB000004",
-    "name":"Parnell Square West",
-    "number":4,
-    "latitude":"53.3525745132",
-    "longitude":"-6.2641754860"}
-  ]
+  {"id":"8220DB000018",
+    "name":"Dargle Road",
+    "number":18,
+    "latitude":"53.3658559259",
+    "longitude":"-6.2559568207"
+  }
+]

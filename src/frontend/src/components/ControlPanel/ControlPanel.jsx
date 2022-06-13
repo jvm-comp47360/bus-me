@@ -6,11 +6,11 @@ import {Autocomplete, Stack, TextField} from "@mui/material";
 
 const ControlPanel = ({busStops}) => {
 
-  const [startId, setStartId] = useState("")
-  const [finishId, setFinishId] = useState("")
+  const [startId, setStartId] = useState("");
+  const [finishId, setFinishId] = useState("");
 
   const submitDisableHandler = () => startId === "" || finishId === "";
-  const submitOnClickHandler = () => console.log(`Sending ${startId} and ${finishId} somewhere.`)
+  const submitOnClickHandler = () => console.log(`Sending ${startId} and ${finishId} somewhere.`);
 
   const renderSplashText = () => {
     return <>
@@ -19,7 +19,7 @@ const ControlPanel = ({busStops}) => {
         realistic estimate of how
         long your journey is going to take.</p>
     </>;
-  }
+  };
 
   const renderDropdown = (label, setId, testid) => {
     return <>
@@ -31,15 +31,15 @@ const ControlPanel = ({busStops}) => {
         onChange={(option, value) => setId(value.id)}
         data-testid = {testid}
       />
-    </>
-  }
+    </>;
+  };
 
   const renderDropdownContainer = () => {
     return <Stack direction={"row"} spacing={2} justifyContent={"center"}>
       {renderDropdown("Start", setStartId, "start-dropdown")}
       {renderDropdown("Finish", setFinishId, "finish-dropdown")}
     </Stack>;
-  }
+  };
 
   const renderSubmitButton = () => {
     return <Button
@@ -50,13 +50,13 @@ const ControlPanel = ({busStops}) => {
     >
       BusMe!
     </Button>;
-  }
+  };
 
   return <div className={"control-panel"}>
     {renderSplashText()}
     {renderDropdownContainer()}
     {renderSubmitButton()}
-  </div>
-}
+  </div>;
+};
 
 export default ControlPanel

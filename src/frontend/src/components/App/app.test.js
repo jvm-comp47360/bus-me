@@ -3,8 +3,8 @@ import App from "./App";
 
 
 
-const setup = () => render(<App/>)
+const setup = () => render(<App/>);
 
 test("Control Panel should render on the screen", () => {
   setup();
-})
+});
