@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import Button from '@mui/material/Button';
 import {Autocomplete, Stack, TextField} from "@mui/material";
 
-// Reseting
 
 const ControlPanel = ({busStops}) => {
 
@@ -29,7 +28,7 @@ const ControlPanel = ({busStops}) => {
         sx={{width: 300}}
         renderInput={(params) => <TextField {...params} label={label}/>}
         onChange={(option, value) => setId(value.id)}
-        data-testid = {testid}
+        data-testid={testid}
       />
     </>;
   };

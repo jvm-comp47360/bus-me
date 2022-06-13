@@ -6,9 +6,10 @@ import ControlPanel from "./ControlPanel.jsx";
 import {act, fireEvent, render, screen, within} from "@testing-library/react";
 
 // A mock sample output of the Bus Stops API.
-const mockBusStops = require('../../mockdata/mockBusStops.json');
+const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
 
-const setup = () => render(<ControlPanel busStops={mockBusStops}/>);
+// The setup automatically passes in the mock Bus Stops API, as we are testing the call at the App component level.
+const setup = () => render(<ControlPanel busStops={MOCK_BUS_STOPS}/>);
 
 
 describe('<ControlPanel/> Rendering UI elements', () => {
@@ -61,9 +62,9 @@ describe('<ControlPanel/> Functionality of Autocomplete MUI components', () => {
       startDropdown.focus();
     });
 
-    fireEvent.change(startInput, { target: { value: "Parnell"}});
-    fireEvent.keyDown(startDropdown, { key: "ArrowDown" });
-    fireEvent.keyDown(startDropdown, { key: "Enter" });
+    fireEvent.change(startInput, {target: {value: "Parnell"}});
+    fireEvent.keyDown(startDropdown, {key: "ArrowDown"});
+    fireEvent.keyDown(startDropdown, {key: "Enter"});
 
     expect(startInput.value).toEqual("Parnell Square West, Stop No.2");
   });
@@ -81,9 +82,9 @@ describe('<ControlPanel/> Functionality of Submit Button', () => {
       dropdown.focus();
     });
 
-    fireEvent.change(startInput, { target: { value: entry}});
-    fireEvent.keyDown(dropdown, { key: "ArrowDown" });
-    fireEvent.keyDown(dropdown, { key: "Enter" });
+    fireEvent.change(startInput, {target: {value: entry}});
+    fireEvent.keyDown(dropdown, {key: "ArrowDown"});
+    fireEvent.keyDown(dropdown, {key: "Enter"});
   };
 
   test("Button should be be disabled by default", () => {
