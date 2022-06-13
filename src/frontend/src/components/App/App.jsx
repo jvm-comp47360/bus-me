@@ -1,6 +1,5 @@
-import './App.css';
-import './styles/main.css'
-import ControlPanel from "./components/ControlPanel/ControlPanel.jsx";
+import '../../styles/main.css'
+import ControlPanel from "../ControlPanel/ControlPanel.jsx";
 import {useEffect, useState} from "react";
 
 function App() {

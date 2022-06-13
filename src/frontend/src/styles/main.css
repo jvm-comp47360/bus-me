@@ -6,6 +6,10 @@
     font-family: "Lato Light", sans-serif;
 }
 
+.App {
+    text-align: center;
+}
+
 .control-panel {
     padding: 1%
 }
