@@ -6,19 +6,18 @@ function App() {
   const busStopsUrl = "http://localhost:8000/api/bus_stops"
 
   const [busStops, setBusStops] = useState([])
-  useEffect(() => { getBusStops().then(data => setBusStops(data)); }, [])
-
-
-  // Retrieves data relating to bus stops and sets component state.
-  const getBusStops = async() => {
-    const dataInLocalStorage = localStorage.getItem("bus_stops");
-    if (dataInLocalStorage) {
-      return getBusStopsFromLocalStorage(dataInLocalStorage);
-    } else {
-      return await getBusStopsFromApi();
-    }
-  }
-
+  useEffect(() => {
+        // Retrieves data relating to bus stops and sets component state.
+        const getBusStops = async() => {
+          const dataInLocalStorage = localStorage.getItem("bus_stops");
+          if (dataInLocalStorage) {
+            return getBusStopsFromLocalStorage(dataInLocalStorage);
+          } else {
+            return await getBusStopsFromApi();
+          }
+        }
+        getBusStops().then(data => setBusStops(data));
+      }, [])
 
   // Retrieves bus stop data from local storage in JSON format.
   const getBusStopsFromLocalStorage = dataInLocalStorage => JSON.parse(dataInLocalStorage)
