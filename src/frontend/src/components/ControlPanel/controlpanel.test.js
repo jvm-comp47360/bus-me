@@ -1,8 +1,10 @@
 import React from 'react';
 import ControlPanel from "./ControlPanel.jsx";
-import {render, screen, within} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 
-const setup = () => render(<ControlPanel/>)
+const mockBusStops = require('../../mockdata/mockBusStops.json');
+
+const setup = () => render(<ControlPanel busStops={mockBusStops}/>)
 
 test("All UI elements should appear on the screen", () => {
   setup()
