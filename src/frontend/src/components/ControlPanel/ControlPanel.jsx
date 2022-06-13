@@ -7,7 +7,8 @@ const ControlPanel = ({busStops}) => {
   const [startId, setStartId] = useState("")
   const [finishId, setFinishId] = useState("")
 
-  const buttonDisableHandler = () => startId === "" || finishId === "";
+  const submitDisableHandler = () => startId === "" || finishId === "";
+  const submitOnClickHandler = () => console.log(`Sending ${startId} and ${finishId} somewhere.`)
 
   const renderSplashText = () => {
     return <>
@@ -41,7 +42,8 @@ const ControlPanel = ({busStops}) => {
   const renderSubmitButton = () => {
     return <Button
       variant={"contained"}
-      disabled={buttonDisableHandler()}
+      onClick={submitOnClickHandler}
+      disabled={submitDisableHandler()}
       data-testid={"submit-button"}
     >
       BusMe!

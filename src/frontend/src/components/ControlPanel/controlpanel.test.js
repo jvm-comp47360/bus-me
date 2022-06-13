@@ -1,5 +1,6 @@
-import ControlPanel from "./ControlPanel.jsx"
-import {render, screen} from "@testing-library/react";
+import React from 'react';
+import ControlPanel from "./ControlPanel.jsx";
+import {render, screen, within} from "@testing-library/react";
 
 test("All UI elements should appear on the screen", () => {
   render(<ControlPanel/>)
@@ -14,4 +15,16 @@ test("All UI elements should appear on the screen", () => {
 test("Button should be be disabled by default", () => {
   render(<ControlPanel/>)
   expect(screen.getByTestId("submit-button")).toHaveClass("Mui-disabled");
+})
+
+test("Dropdowns should update state", () => {
+  render(<ControlPanel/>)
+
+  const startDropdown = screen.getByTestId("start-dropdown");
+  const input = within(startDropdown).Qu
+  console.log(input)
+  // const finishDropdown = screen.getByTestId("finish-dropdown");
+  console.log(startDropdown)
+  // const handleChange = jest.spyOn(startDropdown.prototype, "onChange")
+
 })
