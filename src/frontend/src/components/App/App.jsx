@@ -3,20 +3,22 @@ import ControlPanel from "../ControlPanel/ControlPanel.jsx";
 import {useEffect, useState} from "react";
 
 const App = () => {
-  const busStopsUrl = "http://localhost:8000/api/bus_stops";
 
+  const busStopsUrl = "http://localhost:8000/api/bus_stops";
   const [busStops, setBusStops] = useState([]);
 
   useEffect(() => {
     // Retrieves data relating to bus stops and sets component state.
     const getBusStops = async () => {
       const dataInLocalStorage = localStorage.getItem("bus_stops");
+
       if (dataInLocalStorage) {
         return getBusStopsFromLocalStorage(dataInLocalStorage);
       } else {
         return await getBusStopsFromApi();
       }
     };
+
     getBusStops().then(data => setBusStops(data));
   }, []);
 
