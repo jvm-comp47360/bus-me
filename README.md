@@ -4,7 +4,11 @@
 
 Please ensure that you have all the latest dependencies to run this project. To do so, run the following command while in this directory to create a conda environment with the relevant libraries:
 
-`conda create --name busme --file requirements.txt`
+`conda env create -f busme.yml`
+
+To update the dependencies file before pushing, please use the following command:
+
+`conda env export --from-history > busme.yml`
 
 ## Database Environment Details
 
