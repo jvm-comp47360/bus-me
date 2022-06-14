@@ -5,8 +5,8 @@ import userEvent from '@testing-library/user-event';
 // A mock sample output of the Bus Stops API.
 const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
 const BUS_STOP_SEARCH = MOCK_BUS_STOPS[0]['name'];
-const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, 
-                          Stop No.${MOCK_BUS_STOPS[0]['number']}`;
+const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, ` +
+                        `Stop No.${MOCK_BUS_STOPS[0]['number']}`;
 
 // Setup function that renders the main component.
 const setup = () => render(<App/>);

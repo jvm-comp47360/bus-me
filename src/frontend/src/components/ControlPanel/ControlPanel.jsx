@@ -1,28 +1,33 @@
 import Button from '@mui/material/Button';
-import {Box, Stack} from '@mui/material';
+import {Box} from '@mui/material';
+import PropTypes from 'prop-types';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 
 const ControlPanel = ({busStops}) => {
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
-    <Stack
+    <Box
       display={'flex'}
+      flexDirection={'row'}
       flexWrap={'wrap'}
-      direction={'row'}
-      spacing={1}
-      margin={1}
       justifyContent={'center'}
+      margin={1}
     >
       <BusStopDropdown busStops={busStops} label={'Start'}/>
       <BusStopDropdown busStops={busStops} label={'Finish'}/>
-    </Stack>
+    </Box>
     <Button
       variant={'contained'}
       disabled={true}
       style={{maxWidth: '30%'}}
+      margin={1}
     >
       BusMe!
-    </Button>;
+    </Button>
   </Box>;
 };
 
 export default ControlPanel;
+
+ControlPanel.propTypes = {
+  busStops: PropTypes.arrayOf(PropTypes.object),
+};

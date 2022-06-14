@@ -1,4 +1,5 @@
 import {Autocomplete, TextField} from '@mui/material';
+import PropTypes from 'prop-types';
 
 const BusStopDropdown = ({busStops, label}) => {
   return <>
@@ -12,3 +13,8 @@ const BusStopDropdown = ({busStops, label}) => {
 };
 
 export default BusStopDropdown;
+
+BusStopDropdown.propTypes = {
+  busStops: PropTypes.arrayOf(PropTypes.object),
+  label: PropTypes.string,
+};

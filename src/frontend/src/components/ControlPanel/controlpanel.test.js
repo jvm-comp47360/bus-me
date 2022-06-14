@@ -1,5 +1,3 @@
-// noinspection JSCheckFunctionSignatures
-
 import ControlPanel from './ControlPanel.jsx';
 import {render, screen} from '@testing-library/react';
 

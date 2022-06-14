@@ -6,8 +6,8 @@ import BusStopDropdown from './BusStopDropdown';
 const MOCK_BUS_STOPS = require('../../../mockdata/MOCK_BUS_STOPS.json');
 const LABEL = 'Start';
 const BUS_STOP_SEARCH = MOCK_BUS_STOPS[0]['name'];
-const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, 
-                        Stop No.${MOCK_BUS_STOPS[0]['number']}`;
+const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, ` +
+                        `Stop No.${MOCK_BUS_STOPS[0]['number']}`;
 
 const setup = () => render(
     <BusStopDropdown busStops={MOCK_BUS_STOPS} label={LABEL}/>,
@@ -29,7 +29,7 @@ describe('<ControlPanel/> Functionality of Autocomplete MUI components', () => {
 
     const view = userEvent.setup();
 
-    await view.click(screen.getByRole('combobox', {name: /start/i}));
+    await view.click(startDropdown);
     await view.keyboard(BUS_STOP_SEARCH);
     await view.keyboard('[ArrowDown]');
     await view.keyboard('[Enter]');
