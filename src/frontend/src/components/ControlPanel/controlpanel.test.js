@@ -1,7 +1,6 @@
 // The below stops a bug in my IDE from calling false positive on test functions.
 // noinspection JSCheckFunctionSignatures
 
-import React from 'react';
 import ControlPanel from "./ControlPanel.jsx";
 import {act, fireEvent, render, screen, within} from "@testing-library/react";
 
@@ -14,27 +13,31 @@ const setup = () => render(<ControlPanel busStops={MOCK_BUS_STOPS}/>);
 
 describe('<ControlPanel/> Rendering UI elements', () => {
 
-  test("Header should appear on the screen", () => {
+  it("header should appear on the screen", () => {
+    expect.assertions(1);
     setup();
 
     expect(screen.getByText("Where Do You Want To Go?")).toBeInTheDocument();
   });
 
-  test("Sub-header should appear on the screen", () => {
+  it("sub-header should appear on the screen", () => {
+    expect.assertions(1);
     setup();
 
     expect(screen.getByText("Select a start station and a destination station, and we will give you a realistic " +
       "estimate of how long your journey is going to take.")).toBeInTheDocument();
   });
 
-  test("Dropdowns should appear on the screen", () => {
+  it("dropdowns should appear on the screen", () => {
+    expect.assertions(2);
     setup();
 
     expect(screen.getByTestId("start-dropdown")).toBeInTheDocument();
     expect(screen.getByTestId("finish-dropdown")).toBeInTheDocument();
   });
 
-  test("Submit button should appear on the screen", () => {
+  it("submit button should appear on the screen", () => {
+    expect.assertions(1);
     setup();
 
     expect(screen.getByTestId("submit-button")).toBeInTheDocument();
@@ -44,14 +47,16 @@ describe('<ControlPanel/> Rendering UI elements', () => {
 
 describe('<ControlPanel/> Functionality of Autocomplete MUI components', () => {
 
-  test("Dropdowns should display default text", () => {
+  it("dropdowns should display default text", () => {
+    expect.assertions(2);
     setup();
 
     expect(screen.getByLabelText("Start")).toBeInTheDocument();
     expect(screen.getByLabelText("Finish")).toBeInTheDocument();
   });
 
-  test("Dropdown should display valid option after user text input", () => {
+  it("dropdown should display valid option after user text input", () => {
+    expect.assertions(1);
     setup();
 
     const startDropdown = screen.getByTestId("start-dropdown");
@@ -66,7 +71,7 @@ describe('<ControlPanel/> Functionality of Autocomplete MUI components', () => {
     fireEvent.keyDown(startDropdown, {key: "ArrowDown"});
     fireEvent.keyDown(startDropdown, {key: "Enter"});
 
-    expect(startInput.value).toEqual("Parnell Square West, Stop No.2");
+    expect(startInput.value).toBe("Parnell Square West, Stop No.2");
   });
 });
 
@@ -87,13 +92,15 @@ describe('<ControlPanel/> Functionality of Submit Button', () => {
     fireEvent.keyDown(dropdown, {key: "Enter"});
   };
 
-  test("Button should be be disabled by default", () => {
+  it("button should be be disabled by default", () => {
+    expect.assertions(1);
     setup();
 
     expect(screen.getByTestId("submit-button")).toHaveClass("Mui-disabled");
   });
 
-  test("Button should be disabled if only start dropdown value is selected", () => {
+  it("button should be disabled if only start dropdown value is selected", () => {
+    expect.assertions(1);
     setup();
 
     const startDropdown = screen.getByTestId("start-dropdown");
@@ -102,7 +109,8 @@ describe('<ControlPanel/> Functionality of Submit Button', () => {
     expect(screen.getByTestId("submit-button")).toHaveClass("Mui-disabled");
   });
 
-  test("Button should be disabled if only finish dropdown value is selected", () => {
+  it("button should be disabled if only finish dropdown value is selected", () => {
+    expect.assertions(1);
     setup();
 
     const startDropdown = screen.getByTestId("finish-dropdown");
@@ -111,7 +119,8 @@ describe('<ControlPanel/> Functionality of Submit Button', () => {
     expect(screen.getByTestId("submit-button")).toHaveClass("Mui-disabled");
   });
 
-  test("Button should be enabled if both dropdown values are selected", () => {
+  it("button should be enabled if both dropdown values are selected", () => {
+    expect.assertions(1);
     setup();
     const startDropdown = screen.getByTestId("start-dropdown");
     const finishDropdown = screen.getByTestId("finish-dropdown");

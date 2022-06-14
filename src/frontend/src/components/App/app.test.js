@@ -26,7 +26,8 @@ const setup = () => render(<App/>);
 // Note: Consider including some sort of loading message in this component in case the API hangs.
 describe('<App/> BusStops API call', () => {
 
-  test("Bus Stops API call should cache the data in browser", async () => {
+  it("bus Stops API call should cache the data in browser", async () => {
+    expect.assertions(1);
     jest.spyOn(Storage.prototype, 'setItem');
 
     // This renders the component together with the mock API call.
@@ -34,10 +35,11 @@ describe('<App/> BusStops API call', () => {
       setup();
     });
 
-    expect(Storage.prototype.setItem).toBeCalledTimes(1);
+    expect(Storage.prototype.setItem).toHaveBeenCalledTimes(1);
   });
 
-  test("Bus Stops API call should retrieve data from browser cache on reload", async () => {
+  it("bus Stops API call should retrieve data from browser cache on reload", async () => {
+    expect.assertions(1);
     jest.spyOn(Storage.prototype, 'getItem');
 
     // We are rendering the component twice on the same Jest DOM to simulate a page refresh.
@@ -47,12 +49,13 @@ describe('<App/> BusStops API call', () => {
 
     await act(async () => {
       setup();
-      expect(Storage.prototype.getItem).toBeCalledTimes(1);
+      expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
     });
   });
 
   // Remember to find a more elegant way to find if props have been passed as the application develops.
-  test("Bus Stops API call should activate dropdown functionality", async () => {
+  it("bus Stops API call should activate dropdown functionality", async () => {
+    expect.assertions(1);
     await act(async () => {
       setup();
     });
@@ -69,6 +72,6 @@ describe('<App/> BusStops API call', () => {
     fireEvent.keyDown(startDropdown, {key: "ArrowDown"});
     fireEvent.keyDown(startDropdown, {key: "Enter"});
 
-    expect(startInput.value).toEqual("Parnell Square West, Stop No.2");
+    expect(startInput.value).toBe("Parnell Square West, Stop No.2");
   });
 });
