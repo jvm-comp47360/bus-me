@@ -10,12 +10,8 @@
     text-align: center;
 }
 
-.control-panel {
-    padding: 1%
-}
-
 .splash-header {
-    padding: 0.5%
+    margin: 0.5%
 }
 
 .splash-subheader {
@@ -23,4 +19,3 @@
     width: 40%;
     text-align: center;
 }
-

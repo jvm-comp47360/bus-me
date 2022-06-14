@@ -8,7 +8,10 @@ const ControlPanel = ({busStops}) => {
   const [startId, setStartId] = useState("");
   const [finishId, setFinishId] = useState("");
 
+  // Button should be disabled if either the startId or finishId fields are empty.
   const submitDisableHandler = () => startId === "" || finishId === "";
+
+  // This is a work in progress pending creation of predictive model API in the backend.
   const submitOnClickHandler = () => console.log(`Sending ${startId} and ${finishId} somewhere.`);
 
   const renderSplashText = () => {
@@ -34,7 +37,7 @@ const ControlPanel = ({busStops}) => {
   };
 
   const renderDropdownContainer = () => {
-    return <Stack direction={"row"} spacing={2} justifyContent={"center"}>
+    return <Stack direction={"row"} spacing={2} margin={1} justifyContent={"center"}>
       {renderDropdown("Start", setStartId, "start-dropdown")}
       {renderDropdown("Finish", setFinishId, "finish-dropdown")}
     </Stack>;
@@ -51,6 +54,8 @@ const ControlPanel = ({busStops}) => {
     </Button>;
   };
 
+  // Core return function that combines all three elements of this component.
+  // To be discussed if this should be broken down further.
   return <div className={"control-panel"}>
     {renderSplashText()}
     {renderDropdownContainer()}

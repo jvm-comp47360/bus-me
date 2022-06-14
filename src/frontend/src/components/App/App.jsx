@@ -2,7 +2,7 @@ import '../../styles/main.css'
 import ControlPanel from "../ControlPanel/ControlPanel.jsx";
 import {useEffect, useState} from "react";
 
-function App() {
+const App = () => {
   const busStopsUrl = "http://localhost:8000/api/bus_stops";
 
   const [busStops, setBusStops] = useState([]);
@@ -31,8 +31,8 @@ function App() {
   };
 
   return (<div className="App">
-      <ControlPanel busStops={busStops}/>
-    </div>);
-}
+    <ControlPanel busStops={busStops}/>
+  </div>);
+};
 
 export default App;

@@ -26,7 +26,7 @@ const setup = () => render(<App/>);
 // Note: Consider including some sort of loading message in this component in case the API hangs.
 describe('<App/> BusStops API call', () => {
 
-  test("Bus Stops API call should cache the data in browser", async() => {
+  test("Bus Stops API call should cache the data in browser", async () => {
     jest.spyOn(Storage.prototype, 'setItem');
 
     // This renders the component together with the mock API call.
@@ -37,7 +37,7 @@ describe('<App/> BusStops API call', () => {
     expect(Storage.prototype.setItem).toBeCalledTimes(1);
   });
 
-  test("Bus Stops API call should retrieve data from browser cache on reload", async() => {
+  test("Bus Stops API call should retrieve data from browser cache on reload", async () => {
     jest.spyOn(Storage.prototype, 'getItem');
 
     // We are rendering the component twice on the same Jest DOM to simulate a page refresh.
