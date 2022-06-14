@@ -1,77 +1,46 @@
-import {act, fireEvent, render, screen, within} from '@testing-library/react'
-import App from "./App";
+import {render, screen} from '@testing-library/react';
+import App from './App';
+import userEvent from '@testing-library/user-event';
 
 // A mock sample output of the Bus Stops API.
 const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
-
-// Stores reference to global fetch function that we can restore later on.
-const defaultFetch = global.fetch;
-
-// Create mock fetch function.
-beforeAll(() => {
-  global.fetch = () =>
-    Promise.resolve({
-      json: () => Promise.resolve(MOCK_BUS_STOPS)
-    });
-});
-
-// Restore global fetch function.
-afterAll(() => {
-  global.fetch = defaultFetch;
-});
+const BUS_STOP_SEARCH = MOCK_BUS_STOPS[0]['name'];
+const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, 
+                          Stop No.${MOCK_BUS_STOPS[0]['number']}`;
 
 // Setup function that renders the main component.
 const setup = () => render(<App/>);
 
-// Note: Consider including some sort of loading message in this component in case the API hangs.
-describe('<App/> BusStops API call', () => {
-
-  it("bus Stops API call should cache the data in browser", async () => {
-    expect.assertions(1);
-    jest.spyOn(Storage.prototype, 'setItem');
-
-    // This renders the component together with the mock API call.
-    await act(async () => {
-      setup();
-    });
-
-    expect(Storage.prototype.setItem).toHaveBeenCalledTimes(1);
+describe('<App/> Renders UI components on the screen', () => {
+  it('renders control panel on the screen', () => {
+    expect.assertions(3);
+    setup();
+    expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
+    expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
   });
+});
 
-  it("bus Stops API call should retrieve data from browser cache on reload", async () => {
-    expect.assertions(1);
-    jest.spyOn(Storage.prototype, 'getItem');
+describe('<App/> BusStops API', () => {
+  const simulateDropdown = async (dropdown) => {
+    const view = userEvent.setup();
 
-    // We are rendering the component twice on the same Jest DOM to simulate a page refresh.
-    await act(async () => {
-      setup();
-    });
+    await view.click(dropdown);
+    await view.keyboard(BUS_STOP_SEARCH);
+    await view.keyboard('[ArrowDown]');
+    await view.keyboard('[Enter]');
+  };
 
-    await act(async () => {
-      setup();
-      expect(Storage.prototype.getItem).toHaveBeenCalledTimes(1);
-    });
-  });
+  it('successfully passes bus stop data to the dropdowns', async () => {
+    expect.assertions(2);
+    setup();
 
-  // Remember to find a more elegant way to find if props have been passed as the application develops.
-  it("bus Stops API call should activate dropdown functionality", async () => {
-    expect.assertions(1);
-    await act(async () => {
-      setup();
-    });
+    const startDropdown = screen.getByRole('combobox', {name: /start/i});
+    await simulateDropdown(startDropdown);
+    expect(startDropdown.value).toBe(BUS_STOP_RESULT);
 
-    const startDropdown = screen.getByTestId("start-dropdown");
-    const startInput = within(startDropdown).getByRole("combobox");
-
-    await act(() => {
-      startDropdown.click();
-      startDropdown.focus();
-    });
-
-    fireEvent.change(startInput, {target: {value: "Parnell"}});
-    fireEvent.keyDown(startDropdown, {key: "ArrowDown"});
-    fireEvent.keyDown(startDropdown, {key: "Enter"});
-
-    expect(startInput.value).toBe("Parnell Square West, Stop No.2");
+    const finishDropdown = screen.getByRole('combobox', {name: /finish/i});
+    await simulateDropdown(finishDropdown);
+    expect(finishDropdown.value).toBe(BUS_STOP_RESULT);
   });
 });

@@ -1,66 +1,28 @@
-import {useState} from 'react'
 import Button from '@mui/material/Button';
-import {Autocomplete, Stack, TextField} from "@mui/material";
-
+import {Box, Stack} from '@mui/material';
+import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 
 const ControlPanel = ({busStops}) => {
-
-  const [startId, setStartId] = useState("");
-  const [finishId, setFinishId] = useState("");
-
-  // Button should be disabled if either the startId or finishId fields are empty.
-  const submitDisableHandler = () => startId === "" || finishId === "";
-
-  // This is a work in progress pending creation of predictive model API in the backend.
-  const submitOnClickHandler = () => console.log(`Sending ${startId} and ${finishId} somewhere.`);
-
-  const renderSplashText = () => {
-    return <>
-      <h1 className={"splash-header"}>Where Do You Want To Go?</h1>
-      <p className={"splash-subheader"}>Select a start station and a destination station, and we will give you a
-        realistic estimate of how
-        long your journey is going to take.</p>
-    </>;
-  };
-
-  const renderDropdown = (label, setId, testid) => {
-    return <>
-      <Autocomplete
-        getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
-        options={busStops}
-        sx={{width: 300}}
-        renderInput={(params) => <TextField {...params} label={label}/>}
-        onChange={(option, value) => setId(value.id)}
-        data-testid={testid}
-      />
-    </>;
-  };
-
-  const renderDropdownContainer = () => {
-    return <Stack direction={"row"} spacing={2} margin={1} justifyContent={"center"}>
-      {renderDropdown("Start", setStartId, "start-dropdown")}
-      {renderDropdown("Finish", setFinishId, "finish-dropdown")}
-    </Stack>;
-  };
-
-  const renderSubmitButton = () => {
-    return <Button
-      variant={"contained"}
-      onClick={submitOnClickHandler}
-      disabled={submitDisableHandler()}
-      data-testid={"submit-button"}
+  return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
+    <Stack
+      display={'flex'}
+      flexWrap={'wrap'}
+      direction={'row'}
+      spacing={1}
+      margin={1}
+      justifyContent={'center'}
+    >
+      <BusStopDropdown busStops={busStops} label={'Start'}/>
+      <BusStopDropdown busStops={busStops} label={'Finish'}/>
+    </Stack>
+    <Button
+      variant={'contained'}
+      disabled={true}
+      style={{maxWidth: '30%'}}
     >
       BusMe!
     </Button>;
-  };
-
-  // Core return function that combines all three elements of this component.
-  // To be discussed if this should be broken down further.
-  return <div className={"control-panel"}>
-    {renderSplashText()}
-    {renderDropdownContainer()}
-    {renderSubmitButton()}
-  </div>;
+  </Box>;
 };
 
-export default ControlPanel
+export default ControlPanel;
