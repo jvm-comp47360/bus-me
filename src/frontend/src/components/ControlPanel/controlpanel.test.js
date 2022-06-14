@@ -1,4 +1,3 @@
-// The below stops a bug in my IDE from calling false positive on test functions.
 // noinspection JSCheckFunctionSignatures
 
 import ControlPanel from "./ControlPanel.jsx";
