@@ -4,12 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added initial dummy files for WeatherCard component.">
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" afterDir="false" />
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Fixing issue with spacing throughout the documents.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +187,7 @@
       <workItem from="1655199728468" duration="9010000" />
       <workItem from="1655219561015" duration="19510000" />
       <workItem from="1655294664044" duration="615000" />
-      <workItem from="1655295777087" duration="382000" />
+      <workItem from="1655295777087" duration="733000" />
     </task>
     <task id="LOCAL-00001" summary="Inserted basic default CSS.">
       <created>1654964027682</created>
@@ -494,7 +492,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added mock submit button handler." />
     <MESSAGE value="Downgraded to React version 17." />
     <MESSAGE value="Configured application to run with Enzyme." />
     <MESSAGE value="Refactored the directory structure." />
@@ -519,7 +516,8 @@
     <MESSAGE value="Incorporated Jack's code review comments and fixed eslintrc." />
     <MESSAGE value="Fixed issue with type checking for props." />
     <MESSAGE value="Added initial dummy files for WeatherCard component." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added initial dummy files for WeatherCard component." />
+    <MESSAGE value="Fixing issue with spacing throughout the documents." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing issue with spacing throughout the documents." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
