@@ -4,12 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added setup to WeatherCard test.">
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added minor styling and background color.">
+      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/01d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/01n.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/10n.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/Vlad/github/BusMe/src/frontend",
+    "last_opened_file_path": "C:/Users/Vlad/github/BusMe/src/frontend/src/assets/weather-icons",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -79,13 +81,16 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\assets\weather-icons" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend" />
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components\App" />
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.test">
     <configuration name="&lt;App/&gt; API call.successfully passes bus stop data to the dropdowns" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -189,7 +194,7 @@
       <workItem from="1655199728468" duration="9010000" />
       <workItem from="1655219561015" duration="19510000" />
       <workItem from="1655294664044" duration="615000" />
-      <workItem from="1655295777087" duration="1726000" />
+      <workItem from="1655295777087" duration="3259000" />
     </task>
     <task id="LOCAL-00001" summary="Inserted basic default CSS.">
       <created>1654964027682</created>
@@ -471,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655296622954</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Added minor styling and background color.">
+      <created>1655297584445</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1655297584446</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Configured application to run with Enzyme." />
     <MESSAGE value="Refactored the directory structure." />
     <MESSAGE value="Added single div test for App component." />
     <MESSAGE value="Added div render test for ControlPanel component." />
@@ -526,7 +537,8 @@
     <MESSAGE value="Added initial dummy files for WeatherCard component." />
     <MESSAGE value="Fixing issue with spacing throughout the documents." />
     <MESSAGE value="Added setup to WeatherCard test." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added setup to WeatherCard test." />
+    <MESSAGE value="Added minor styling and background color." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added minor styling and background color." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
