@@ -1,15 +1,14 @@
 import React from 'react';
 import {Divider, Stack} from '@mui/material';
 import PropTypes from 'prop-types';
-import WeatherContent from './WeatherContent/WeatherContent';
+import WeatherCard from './WeatherCard/WeatherCard';
 
-
-const WeatherCard = ({weather}) => {
+const WeatherContainer = ({weather}) => {
   return <Stack direction={'row'}>
     <Divider orientation={'vertical'}/>
     {weather.map((day) => {
       return (<React.Fragment key={day.date}>
-        <WeatherContent
+        <WeatherCard
           icon={day.icon}
           date={day.date}
         />
@@ -22,8 +21,8 @@ const WeatherCard = ({weather}) => {
   </Stack>;
 };
 
-export default WeatherCard;
+export default WeatherContainer;
 
-WeatherCard.propTypes = {
+WeatherContainer.propTypes = {
   weather: PropTypes.arrayOf(PropTypes.object),
 };

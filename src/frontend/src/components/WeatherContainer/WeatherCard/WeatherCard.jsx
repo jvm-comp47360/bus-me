@@ -1,7 +1,7 @@
 import {Card, CardMedia, Stack, Typography} from '@mui/material';
 import PropTypes from 'prop-types';
 
-const WeatherContent = ({icon, date}) => {
+const WeatherCard = ({icon, date}) => {
   return <Card
     sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
   >
@@ -29,9 +29,9 @@ const WeatherContent = ({icon, date}) => {
   </Card>;
 };
 
-export default WeatherContent;
+export default WeatherCard;
 
-WeatherContent.propTypes = {
+WeatherCard.propTypes = {
   icon: PropTypes.string,
   date: PropTypes.string,
 };

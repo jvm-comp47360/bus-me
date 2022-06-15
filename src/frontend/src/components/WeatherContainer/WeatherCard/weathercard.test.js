@@ -1,4 +1,4 @@
-import WeatherContent from './WeatherContent';
+import WeatherCard from './WeatherCard';
 import {render, screen} from '@testing-library/react';
 
 const MOCK_WEATHER_API = require('../../../mockdata/MOCK_WEATHER.json');
@@ -6,10 +6,10 @@ const ICON = MOCK_WEATHER_API[0]['icon'];
 const DATE = MOCK_WEATHER_API[0]['date'];
 
 const setup = () => render(
-    <WeatherContent icon={ICON} date={DATE}/>,
+    <WeatherCard icon={ICON} date={DATE}/>,
 );
 
-describe('<WeatherContent/> Icon functionality', () => {
+describe('<WeatherCard/> Icon functionality', () => {
   it('must show an icon', () => {
     expect.assertions(1);
     setup();
@@ -24,7 +24,10 @@ describe('<WeatherContent/> Icon functionality', () => {
   });
 });
 
-describe('<WeatherContent/> Date functionality', () => {
+// Note: We are getting by text here because we are specifically
+// trying to check if the exact text has been rendered on the
+// screen.
+describe('<WeatherCard/> Date functionality', () => {
   it('must show the correct date', () => {
     expect.assertions(1);
     setup();
