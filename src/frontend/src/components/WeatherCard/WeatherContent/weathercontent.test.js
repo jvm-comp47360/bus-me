@@ -1,8 +1,9 @@
 import WeatherContent from './WeatherContent';
 import {render, screen} from '@testing-library/react';
 
-const ICON = '10n';
-const DATE = '15 June 2022';
+const MOCK_WEATHER_API = require('../../../mockdata/MOCK_WEATHER.json');
+const ICON = MOCK_WEATHER_API[0]['icon'];
+const DATE = MOCK_WEATHER_API[0]['date'];
 
 const setup = () => render(
     <WeatherContent icon={ICON} date={DATE}/>,

@@ -1,21 +1,25 @@
-import {Card, Stack} from '@mui/material';
+import React from 'react';
+import {Divider, Stack} from '@mui/material';
 import PropTypes from 'prop-types';
 import WeatherContent from './WeatherContent/WeatherContent';
 
 
 const WeatherCard = ({weather}) => {
-  return <Card
-    sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
-  >
-    <Stack direction={'row'}>
-      {weather.map((day) => {
-        return (<>
-          <WeatherContent icon={day.icon} date={day.date}/>
-          <hr/>
-        </>);
-      })}
-    </Stack>
-  </Card>;
+  return <Stack direction={'row'}>
+    <Divider orientation={'vertical'}/>
+    {weather.map((day) => {
+      return (<React.Fragment key={day.date}>
+        <WeatherContent
+          icon={day.icon}
+          date={day.date}
+        />
+        <Divider
+          orientation={'vertical'}
+          sx={{padding: 0.1}}
+        />
+      </React.Fragment>);
+    })}
+  </Stack>;
 };
 
 export default WeatherCard;
