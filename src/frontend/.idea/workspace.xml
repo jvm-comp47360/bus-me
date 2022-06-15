@@ -4,10 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added minor styling and background color.">
-      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/01d.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/01n.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/weather-icons/10n.png" afterDir="false" />
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Included test for rendering correct icon and added functionality.">
+      <change afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherContent/WeatherContent.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherContent/weathercontent.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
@@ -59,27 +58,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "C:/Users/Vlad/github/BusMe/src/frontend/src/assets/weather-icons",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs.jest.jest_package": "C:/Users/Vlad/github/BusMe/src/frontend/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vlad/github/BusMe/src/frontend/src/assets/weather-icons&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/Vlad/github/BusMe/src/frontend/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2022.1.1\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\assets\weather-icons" />
@@ -90,7 +89,7 @@
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.start">
     <configuration name="&lt;App/&gt; API call.successfully passes bus stop data to the dropdowns" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -194,7 +193,8 @@
       <workItem from="1655199728468" duration="9010000" />
       <workItem from="1655219561015" duration="19510000" />
       <workItem from="1655294664044" duration="615000" />
-      <workItem from="1655295777087" duration="3259000" />
+      <workItem from="1655295777087" duration="9675000" />
+      <workItem from="1655308969158" duration="158000" />
     </task>
     <task id="LOCAL-00001" summary="Inserted basic default CSS.">
       <created>1654964027682</created>
@@ -483,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655297584446</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Included test for rendering correct icon and added functionality.">
+      <created>1655299182294</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1655299182295</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +520,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored the directory structure." />
     <MESSAGE value="Added single div test for App component." />
     <MESSAGE value="Added div render test for ControlPanel component." />
     <MESSAGE value="Created dummy API for Control Panel test." />
@@ -538,7 +544,8 @@
     <MESSAGE value="Fixing issue with spacing throughout the documents." />
     <MESSAGE value="Added setup to WeatherCard test." />
     <MESSAGE value="Added minor styling and background color." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added minor styling and background color." />
+    <MESSAGE value="Included test for rendering correct icon and added functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Included test for rendering correct icon and added functionality." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

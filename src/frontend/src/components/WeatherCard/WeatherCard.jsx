@@ -1,22 +1,19 @@
-import {Card, CardMedia} from '@mui/material';
+import {Card} from '@mui/material';
 import PropTypes from 'prop-types';
+import WeatherContent from './WeatherContent/WeatherContent';
 
-const WeatherCard = ({icon}) => {
-  return <>
-    <Card sx={{maxWidth: 345}}
-      style={{backgroundColor: '#757DE8'}}
-    >
-      <CardMedia
-        component={'img'}
-        image={require(`../../assets/weather-icons/${icon}.png`)}
-        alt={'The Weather'}
-      />
-    </Card>
-  </>;
+
+const WeatherCard = ({icon, date}) => {
+  return <Card
+    sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
+  >
+    <WeatherContent icon={icon} date={date}/>
+  </Card>;
 };
 
 export default WeatherCard;
 
 WeatherCard.propTypes = {
   icon: PropTypes.string,
+  date: PropTypes.string,
 };
