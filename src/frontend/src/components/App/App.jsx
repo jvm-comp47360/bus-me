@@ -1,4 +1,5 @@
 import '../../styles/main.css';
+import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel.jsx';
 
 const App = () => {
@@ -6,6 +7,7 @@ const App = () => {
   const busStops = require('../../mockdata/MOCK_BUS_STOPS.json');
 
   return <>
+    <Navbar></Navbar>
     <ControlPanel busStops={busStops}/>
   </>;
 };
