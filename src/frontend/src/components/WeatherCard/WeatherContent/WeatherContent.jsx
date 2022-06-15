@@ -11,7 +11,7 @@ const WeatherContent = ({icon, date}) => {
   >
     <CardMedia
       component={'img'}
-      image={require(`../../assets/weather-icons/${icon}.png`)}
+      image={require(`../../../assets/weather-icons/${icon}.png`)}
       alt={'The Weather'}
       sx={{width: 80}}
     />

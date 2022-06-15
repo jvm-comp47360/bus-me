@@ -1,19 +1,25 @@
-import {Card} from '@mui/material';
+import {Card, Stack} from '@mui/material';
 import PropTypes from 'prop-types';
 import WeatherContent from './WeatherContent/WeatherContent';
 
 
-const WeatherCard = ({icon, date}) => {
+const WeatherCard = ({weather}) => {
   return <Card
     sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
   >
-    <WeatherContent icon={icon} date={date}/>
+    <Stack direction={'row'}>
+      {weather.map((day) => {
+        return (<>
+          <WeatherContent icon={day.icon} date={day.date}/>
+          <hr/>
+        </>);
+      })}
+    </Stack>
   </Card>;
 };
 
 export default WeatherCard;
 
 WeatherCard.propTypes = {
-  icon: PropTypes.string,
-  date: PropTypes.string,
+  weather: PropTypes.arrayOf(PropTypes.object),
 };
