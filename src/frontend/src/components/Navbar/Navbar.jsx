@@ -7,22 +7,27 @@ import Toolbar from '@mui/material/Toolbar';
 import Logo from '../../assets/busme_logo.png';
 
 const Navbar = () => {
+  const sitePages = ['Contact', 'App', 'About', 'Login'];
   return (
     <AppBar position="static"
-      sx={{backgroundColor: '#3f50b5', borderTop: 20, borderColor: '#002984'}}>
+      sx={{backgroundColor: '#3f50b5',
+        borderTop: 20,
+        borderColor: '#002984'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters
-          sx={{justifyContent: 'space-between', height: '85px'}}>
+          sx={{justifyContent: 'space-between',
+            height: '85px'}}>
           <Box component="img"
-            sx={{height: 64, ml: 1}}
+            sx={{height: 64,
+              ml: 1}}
             alt="bus-me-logo"
             src={Logo}
           />
-          <Stack direction='row'>
-            <Button color='inherit'>Contact</Button>
-            <Button color='inherit'>App</Button>
-            <Button color='inherit'>About</Button>
-            <Button color='inherit'>Login</Button>
+          <Stack direction='row'
+            marginTop={1}>
+            {sitePages.map((page) =>
+              <Button key={page} color='inherit'>{page}</Button>
+            )}
           </Stack>
         </Toolbar>
       </Container>
