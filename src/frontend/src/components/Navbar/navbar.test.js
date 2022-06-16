@@ -5,9 +5,8 @@ beforeEach(() => {
     render(<Navbar />)
 })
 
-test('BusMe appears in Navbar', () => {
-    expect(screen.getByRole('link', { 
-        name: /BusMe/i })).toBeInTheDocument()
+test('BusMe logo appears in Navbar', () => {
+    expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument()
 })
 
 describe('Nav menu items appear on page', () => {
