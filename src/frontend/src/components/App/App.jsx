@@ -7,7 +7,7 @@ const App = () => {
   const busStops = require('../../mockdata/MOCK_BUS_STOPS.json');
 
   return <>
-    <Navbar></Navbar>
+    <Navbar />
     <ControlPanel busStops={busStops}/>
   </>;
 };
