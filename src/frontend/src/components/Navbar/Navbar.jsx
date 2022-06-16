@@ -8,11 +8,13 @@ import Logo from '../../assets/busme_logo.png';
 
 const Navbar = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="static"
+      sx={{backgroundColor: '#3f50b5', borderTop: 20, borderColor: '#002984'}}>
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters
+          sx={{justifyContent: 'space-between', height: '85px'}}>
           <Box component="img"
-            sx={{height: 64}}
+            sx={{height: 64, ml: 1}}
             alt="bus-me-logo"
             src={Logo}
           />
