@@ -4,13 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Fixed minor linting issues.">
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Initial refactoring to include single Weather Card component.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherContainer.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/weathercontainer.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mockdata/MOCK_WEATHER.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/mockdata/MOCK_WEATHER.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -513,7 +509,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655316600406</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Initial refactoring to include single Weather Card component.">
+      <created>1655481585429</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1655481585430</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +546,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reverted back to React 18." />
     <MESSAGE value="Refactored directory structure." />
     <MESSAGE value="Fixed issue with useEffect in App component" />
     <MESSAGE value="Added mock API data for bus stops." />
@@ -568,7 +570,8 @@
     <MESSAGE value="Added mock weather API." />
     <MESSAGE value="Included test to see if the weather card is printing the right number of cards, and implemented this functionality." />
     <MESSAGE value="Fixed minor linting issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor linting issues." />
+    <MESSAGE value="Initial refactoring to include single Weather Card component." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial refactoring to include single Weather Card component." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
