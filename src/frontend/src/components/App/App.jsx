@@ -1,6 +1,7 @@
 import '../../styles/main.css';
 import ControlPanel from '../ControlPanel/ControlPanel.jsx';
-import WeatherContainer from '../WeatherContainer/WeatherContainer';
+import WeatherCard from '../WeatherCard/WeatherCard';
+
 
 const App = () => {
   // Mock API data, to be updated pending discussion of state flow.
@@ -9,12 +10,10 @@ const App = () => {
 
   return <>
     <ControlPanel busStops={busStopsApi}/>
-
     {/* Can be deleted, just for demo purposes*/}
     <div>
-      <WeatherContainer weather={weatherApi}/>
+      <WeatherCard weather={weatherApi[0]}/>
     </div>
-
   </>;
 };
 

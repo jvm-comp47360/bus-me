@@ -4,13 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Included test to see if the weather card is printing the right number of cards, and implemented this functionality.">
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Fixed minor linting issues.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherContainer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherContent/WeatherContent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/WeatherCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherContent/weathercontent.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/weathercard.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherContainer/weathercontainer.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/WeatherContainer.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherContainer/weathercontainer.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mockdata/MOCK_WEATHER.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/mockdata/MOCK_WEATHER.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +85,7 @@
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\assets\weather-icons" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components\WeatherContainer" />
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend" />
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components\App" />
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components" />
@@ -541,7 +543,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reverted back to React version 18." />
     <MESSAGE value="Reverted back to React 18." />
     <MESSAGE value="Refactored directory structure." />
     <MESSAGE value="Fixed issue with useEffect in App component" />
@@ -566,7 +567,8 @@
     <MESSAGE value="Refactored into separate WeatherContent.jsx component." />
     <MESSAGE value="Added mock weather API." />
     <MESSAGE value="Included test to see if the weather card is printing the right number of cards, and implemented this functionality." />
-    <option name="LAST_COMMIT_MESSAGE" value="Included test to see if the weather card is printing the right number of cards, and implemented this functionality." />
+    <MESSAGE value="Fixed minor linting issues." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed minor linting issues." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

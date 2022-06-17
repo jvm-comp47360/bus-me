@@ -1,7 +1,7 @@
 import WeatherCard from './WeatherCard';
 import {render, screen} from '@testing-library/react';
 
-const MOCK_WEATHER_API = require('../../../mockdata/MOCK_WEATHER.json');
+const MOCK_WEATHER_API = require('../../mockdata/MOCK_WEATHER.json');
 const ICON = MOCK_WEATHER_API[0]['icon'];
 const DATE = MOCK_WEATHER_API[0]['date'];
 

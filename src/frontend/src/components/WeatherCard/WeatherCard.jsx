@@ -1,7 +1,12 @@
 import {Card, CardMedia, Stack, Typography} from '@mui/material';
 import PropTypes from 'prop-types';
 
-const WeatherCard = ({icon, date}) => {
+const WeatherCard = ({weather}) => {
+  // Unpacking API call here because we want to make
+  // sure all weather related activity occurs in this
+  // component.
+  const {icon, date} = weather;
+
   return <Card
     sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
   >
@@ -14,14 +19,12 @@ const WeatherCard = ({icon, date}) => {
     >
       <CardMedia
         component={'img'}
-        image={require(`../../../assets/weather-icons/${icon}.png`)}
+        image={require(`../../assets/weather-icons/${icon}.png`)}
         alt={'current weather'}
         sx={{width: 80}}
       />
       <Typography
-        sx={{padding: 0.5}}
-        fontSize={12}
-        color={'#FFFFFF'}
+        sx={{padding: 0.5, fontSize: 12, color: '#FFFFFF'}}
       >
         {date}
       </Typography>
@@ -32,6 +35,5 @@ const WeatherCard = ({icon, date}) => {
 export default WeatherCard;
 
 WeatherCard.propTypes = {
-  icon: PropTypes.string,
-  date: PropTypes.string,
+  weather: PropTypes.object,
 };
