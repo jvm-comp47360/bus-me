@@ -1,15 +1,17 @@
 import WeatherCard from './WeatherCard';
 import {render, screen} from '@testing-library/react';
 
-const MOCK_WEATHER_API = require('../../mockdata/MOCK_WEATHER.json');
-const ICON = MOCK_WEATHER_API[0]['icon'];
-const DATE = MOCK_WEATHER_API[0]['date'];
+const MOCK_WEATHER_API = require('../../mockdata/MOCK_WEATHER.json')[0];
+const ICON = MOCK_WEATHER_API['icon'];
+const DATE = MOCK_WEATHER_API['date'];
+const WEATHERTEXT = MOCK_WEATHER_API['weatherText'];
+const TEMPERATURE = MOCK_WEATHER_API['temperature'];
 
 const setup = () => render(
-    <WeatherCard icon={ICON} date={DATE}/>,
+    <WeatherCard weather={MOCK_WEATHER_API}/>,
 );
 
-describe('<WeatherCard/> Icon functionality', () => {
+describe('<WeatherCard/> Weather icon functionality', () => {
   it('must show an icon', () => {
     expect.assertions(1);
     setup();
@@ -24,13 +26,23 @@ describe('<WeatherCard/> Icon functionality', () => {
   });
 });
 
-// Note: We are getting by text here because we are specifically
-// trying to check if the exact text has been rendered on the
-// screen.
-describe('<WeatherCard/> Date functionality', () => {
+
+describe('<WeatherCard/> Text display', () => {
   it('must show the correct date', () => {
     expect.assertions(1);
     setup();
     expect(screen.getByText(DATE)).toBeInTheDocument();
+  });
+
+  it('must show the correct weather text', () => {
+    expect.assertions(1);
+    setup();
+    expect(screen.getByText(WEATHERTEXT)).toBeInTheDocument();
+  });
+
+  it('must show the correct temperature', () => {
+    expect.assertions(1);
+    setup();
+    expect(screen.getByText(`${TEMPERATURE}°C`)).toBeInTheDocument();
   });
 });

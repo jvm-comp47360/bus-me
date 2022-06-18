@@ -32,7 +32,7 @@ const WeatherCard = ({weather}) => {
         />
         <WeatherCardInfoItem
           icon={<FaTemperatureLow color={'#FFFFFF'}/>}
-          text={temperature}
+          text={`${temperature}°C`}
         />
       </CardContent>
     </Box>

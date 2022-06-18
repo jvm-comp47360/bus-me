@@ -4,10 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added new text to WeatherCard, start work on refactoring the text.">
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Successfully passing down component as prop.">
+      <change afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
       <recent name="C:\Users\Vlad\github\BusMe\src\frontend\src\components" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.test">
     <configuration name="&lt;App/&gt; API call.successfully passes bus stop data to the dropdowns" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
@@ -530,7 +531,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655544130956</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Successfully passing down component as prop.">
+      <created>1655546078657</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1655546078658</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +568,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added mock API data for bus stops." />
     <MESSAGE value="Incorporated mock bus stop data into control panel." />
     <MESSAGE value="Completed initial writing of test for submit button." />
     <MESSAGE value="Finished testing interaction between dropdown and submit button." />
@@ -585,7 +592,8 @@
     <MESSAGE value="Initial refactoring to include single Weather Card component." />
     <MESSAGE value="Split the text for the card on to the right hand side of the card." />
     <MESSAGE value="Added new text to WeatherCard, start work on refactoring the text." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new text to WeatherCard, start work on refactoring the text." />
+    <MESSAGE value="Successfully passing down component as prop." />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully passing down component as prop." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
