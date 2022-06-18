@@ -19,6 +19,10 @@ describe('<App/> Renders UI components on the screen', () => {
     expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
     expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
   });
+  it('renders navbar on the screen', () => {
+    setup();
+    expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument();
+  })
 });
 
 describe('<App/> BusStops API', () => {
