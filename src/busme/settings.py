@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'bus_stops',
+    'Weather_API',
     'django_extensions',
 ]
 
@@ -83,10 +85,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'busme',
-        'USER': os.getenv('BUSME_USER'),
-        'PASSWORD': os.getenv('BUSME_PASSWORD'),
-        'HOST': os.getenv('BUSME_HOST'),
-        'PORT': os.getenv('BUSME_PORT'),
+        'USER': config('BUSME_USER'),
+        'PASSWORD': config('BUSME_PASSWORD'),
+        'HOST': config('BUSME_HOST'),
+        'PORT': config('BUSME_PORT')
     }
 }
 
