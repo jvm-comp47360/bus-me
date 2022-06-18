@@ -1,14 +1,14 @@
 // Mock sample props for the BusStopsDropdown.
 
-import render, {screen} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 import BusRouteDropdown from '../BusRouteDropdown/BusRouteDropdown';
 import userEvent from '@testing-library/user-event';
-const MOCK_BUS_STOPS = require('../../../mockdata/MOCK_BUS_STOPS.json');
-const BUS_ROUTE_SEARCH = MOCK_BUS_STOPS[0]['route'];
+const MOCK_BUS_ROUTES = ['1', '2', '3'];
+const BUS_ROUTE_SEARCH = MOCK_BUS_ROUTES[0];
 const LABEL = 'Select Route';
 
 const setup = () => render(
-    <BusRouteDropdown busStops={MOCK_BUS_STOPS}/>,
+    <BusRouteDropdown busRoutes={MOCK_BUS_ROUTES}/>,
 );
 
 describe('<BusRouteDropdown> Functionality of MUI Autocomplete', () => {
@@ -23,7 +23,8 @@ describe('<BusRouteDropdown> Functionality of MUI Autocomplete', () => {
     expect.assertions(1);
     setup();
 
-    const busRouteDropdown = screen.getByRole('combobox');
+    const busRouteDropdown =
+      screen.getByRole('combobox', {name: /select route/i});
 
     const view = userEvent.setup();
 
