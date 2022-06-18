@@ -1,7 +1,8 @@
 import {Box, Card, CardContent, CardMedia} from '@mui/material';
 import PropTypes from 'prop-types';
-import {FaTemperatureLow} from 'react-icons/fa';
-import {AiFillCalendar, AiFillBook} from 'react-icons/ai';
+import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
 
 
@@ -11,27 +12,33 @@ const WeatherCard = ({weather}) => {
   // component.
   const {icon, date, weatherText, temperature} = weather;
 
-  return <Card sx={{backgroundColor: '#757DE8', display: 'inline-block'}}
+  return <Card sx={{backgroundColor: '#757DE8',
+    display: 'inline-block'}}
   >
-    <Box sx={{display: 'flex', flexDirection: 'row'}}>
+    <Box sx={{display: 'flex',
+      flexDirection: 'row'}}
+    >
       <CardMedia
         component={'img'}
         image={require(`../../assets/weather-icons/${icon}.png`)}
         alt={'current weather'}
-        width={'52'}
-        sx={{width: 102, padding: 2}}
+        width={'50'}
+        sx={{width: 115,
+          padding: 2}}
       />
-      <CardContent sx={{pt: 2.7, alignItems: 'center'}}>
+      <CardContent sx={{pt: 2.7,
+        alignItems: 'center'}}
+      >
         <WeatherCardInfoItem
-          icon={<AiFillCalendar color={'#FFFFFF'}/>}
+          icon={<CalendarMonthIcon sx={{color: '#FFFFFF'}}/>}
           text={date}
         />
         <WeatherCardInfoItem
-          icon={<AiFillBook color={'#FFFFFF'}/>}
+          icon={<BookIcon sx={{color: '#FFFFFF'}}/>}
           text={weatherText}
         />
         <WeatherCardInfoItem
-          icon={<FaTemperatureLow color={'#FFFFFF'}/>}
+          icon={<DeviceThermostatIcon sx={{color: '#FFFFFF'}}/>}
           text={`${temperature}°C`}
         />
       </CardContent>
