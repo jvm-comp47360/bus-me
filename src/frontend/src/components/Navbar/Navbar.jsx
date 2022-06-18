@@ -1,9 +1,4 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import Stack from '@mui/material/Stack';
-import Toolbar from '@mui/material/Toolbar';
+import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
 import Logo from '../../assets/busme_logo.png';
 
 const Navbar = () => {
