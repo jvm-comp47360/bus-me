@@ -4,11 +4,10 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Split the text for the card on to the right hand side of the card.">
+    <list default="true" id="2f730722-ba21-40eb-b273-0956de70b40e" name="Changes" comment="Added new text to WeatherCard, start work on refactoring the text.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -524,7 +523,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655486884576</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added new text to WeatherCard, start work on refactoring the text.">
+      <created>1655544130955</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1655544130956</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,7 +560,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed issue with useEffect in App component" />
     <MESSAGE value="Added mock API data for bus stops." />
     <MESSAGE value="Incorporated mock bus stop data into control panel." />
     <MESSAGE value="Completed initial writing of test for submit button." />
@@ -579,7 +584,8 @@
     <MESSAGE value="Fixed minor linting issues." />
     <MESSAGE value="Initial refactoring to include single Weather Card component." />
     <MESSAGE value="Split the text for the card on to the right hand side of the card." />
-    <option name="LAST_COMMIT_MESSAGE" value="Split the text for the card on to the right hand side of the card." />
+    <MESSAGE value="Added new text to WeatherCard, start work on refactoring the text." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new text to WeatherCard, start work on refactoring the text." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,10 +1,8 @@
-import {
-  Box, Card, CardContent, CardMedia, Grid,
-  Typography,
-} from '@mui/material';
+import {Box, Card, CardContent, CardMedia} from '@mui/material';
 import PropTypes from 'prop-types';
 import {FaTemperatureLow} from 'react-icons/fa';
 import {AiFillCalendar, AiFillBook} from 'react-icons/ai';
+import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
 
 
 const WeatherCard = ({weather}) => {
@@ -24,50 +22,18 @@ const WeatherCard = ({weather}) => {
         sx={{width: 102, padding: 2}}
       />
       <CardContent sx={{pt: 2.7, alignItems: 'center'}}>
-        <Grid container direction={'row'} alignItems={'center'}>
-          <Grid item>
-            <AiFillCalendar color={'white'}/>
-          </Grid>
-          <Grid item>
-            <Typography
-              sx={{padding: 0.5,
-                fontSize: 12,
-                color: '#FFFFFF'}}
-            >
-              {date}
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container direction={'row'} alignItems={'center'}>
-          <Grid item>
-            <AiFillBook color={'white'}/>
-          </Grid>
-          <Grid item>
-            <Typography
-              sx={{padding: 0.5,
-                fontSize: 12,
-                color: '#FFFFFF'}}
-            >
-              {weatherText}
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <Grid container direction={'row'} alignItems={'center'}>
-          <Grid item>
-            <FaTemperatureLow color={'white'}/>
-          </Grid>
-          <Grid item>
-            <Typography
-              sx={{padding: 0.5,
-                fontSize: 12,
-                color: '#FFFFFF'}}
-            >
-              {temperature}°C
-            </Typography>
-          </Grid>
-        </Grid>
+        <WeatherCardInfoItem
+          icon={<AiFillCalendar color={'#FFFFFF'}/>}
+          text={date}
+        />
+        <WeatherCardInfoItem
+          icon={<AiFillBook color={'#FFFFFF'}/>}
+          text={weatherText}
+        />
+        <WeatherCardInfoItem
+          icon={<FaTemperatureLow color={'#FFFFFF'}/>}
+          text={temperature}
+        />
       </CardContent>
     </Box>
   </Card>;
