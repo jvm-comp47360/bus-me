@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Linting tidy-up">
+      <change afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +58,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655551136224</updated>
-      <workItem from="1655551139149" duration="631000" />
+      <workItem from="1655551139149" duration="1047000" />
     </task>
+    <task id="LOCAL-00001" summary="Linting tidy-up">
+      <created>1655551891013</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655551891013</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -87,5 +83,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Linting tidy-up" />
+    <option name="LAST_COMMIT_MESSAGE" value="Linting tidy-up" />
   </component>
 </project>
