@@ -1,19 +1,21 @@
 import WeatherCardInfoItem from './WeatherCardInfoItem';
 import {render, screen} from '@testing-library/react';
-import {AiFillCalendar} from 'react-icons/ai';
+import BookIcon from '@mui/icons-material/Book';
 
-const ICON = <AiFillCalendar color={'#FFFFFF'}/>;
-const TEXT = 'Temperature';
+const ICON = <BookIcon sx={{color: '#FFFFFF'}}/>;
+const TEXT = 'Sunny';
 
 const setup = () => render(
     <WeatherCardInfoItem icon={ICON} text={TEXT}/>,
 );
 
+// Note: MUI docs suggest using their in-built data test id
+// to test icons: https://mui.com/material-ui/icons/#testing
 describe('<WeatherCardInfoItem/> UI elements', () => {
-  it('must show an icon', () => {
+  it('must show the correct icon', () => {
     expect.assertions(1);
     setup();
-    expect(screen.getByRole('svg')).toBeInTheDocument();
+    expect(screen.getByTestId('BookIcon')).toBeInTheDocument();
   });
   it('must show the correct text', () => {
     expect.assertions(1);
