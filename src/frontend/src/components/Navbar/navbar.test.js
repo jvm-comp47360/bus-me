@@ -10,21 +10,12 @@ test('BusMe logo appears in Navbar', () => {
 })
 
 describe('Nav menu items appear on page', () => {
-    test('Contact button appears', () => {
-        expect(screen.getByRole('button', { 
-            name: /contact/i })).toBeInTheDocument()
+    const sitePages = ['Contact', 'App', 'About', 'Login'];
+    sitePages.forEach(page => {
+        const pageRe = new RegExp(page, "i");
+        test(`${page} button appears`, () => {
+            expect(screen.getByRole('button', { 
+                name: pageRe })).toBeInTheDocument()
+        })
     })
-    test('App button appears', () => {
-        expect(screen.getByRole('button', { 
-            name: /app/i })).toBeInTheDocument()
-    })
-    test('About button appears', () => {
-        expect(screen.getByRole('button', { 
-            name: /about/i })).toBeInTheDocument()
-    })
-    test('Login button appears', () => {
-        expect(screen.getByRole('button', { 
-            name: /login/i })).toBeInTheDocument()
-    })
-    
 })

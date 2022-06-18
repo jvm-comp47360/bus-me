@@ -15,16 +15,14 @@ const Navbar = () => {
         borderColor: '#002984'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters
-          sx={{justifyContent: 'space-between',
-            height: '85px'}}>
+          sx={{justifyContent: 'space-between', height: '85px'}}>
           <Box component="img"
-            sx={{height: 64,
-              ml: 1}}
+            sx={{height: 64, ml: 1}}
             alt="bus-me-logo"
             src={Logo}
           />
           <Stack direction='row'
-            marginTop={1}>
+            sx={{marginTop: 1}}>
             {sitePages.map((page) =>
               <Button key={page} color='inherit'>{page}</Button>
             )}
