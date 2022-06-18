@@ -2,9 +2,13 @@ import Button from '@mui/material/Button';
 import {Box} from '@mui/material';
 import PropTypes from 'prop-types';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
+import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 
 const ControlPanel = ({busStops}) => {
+  const busRoutes = [...new Set(busStops.map((item) => item.route))];
+
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
+    <BusRouteDropdown busRoutes={busRoutes}/>
     <Box
       display={'flex'}
       flexDirection={'row'}

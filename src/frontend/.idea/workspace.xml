@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Wrote tests for Bus Route dropdown functionality.">
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Finished functionality of bus route dropdown, tests are passing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +39,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="npm.test">
+  <component name="RunManager" selected="npm.start">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -71,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655551136224</updated>
-      <workItem from="1655551139149" duration="3535000" />
+      <workItem from="1655551139149" duration="3943000" />
     </task>
     <task id="LOCAL-00001" summary="Linting tidy-up">
       <created>1655551891013</created>
@@ -101,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655553187618</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finished functionality of bus route dropdown, tests are passing.">
+      <created>1655554712861</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1655554712861</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +129,7 @@
     <MESSAGE value="Added initial skeletons for BusRouteDropdown component." />
     <MESSAGE value="Added routes to mock API data." />
     <MESSAGE value="Wrote tests for Bus Route dropdown functionality." />
-    <option name="LAST_COMMIT_MESSAGE" value="Wrote tests for Bus Route dropdown functionality." />
+    <MESSAGE value="Finished functionality of bus route dropdown, tests are passing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished functionality of bus route dropdown, tests are passing." />
   </component>
 </project>
