@@ -5,7 +5,6 @@ const Map = () => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   });
-
   const centerCoords = useMemo(() => (
     {lat: 53.30947559137038, lng: -6.218868208190408}
   ), []);
