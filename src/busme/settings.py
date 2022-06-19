@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'bus_stops',
-    'Weather_API',
+    'weather',
     'django_extensions',
 ]
 
