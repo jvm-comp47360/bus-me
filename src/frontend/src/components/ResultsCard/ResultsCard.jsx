@@ -8,19 +8,31 @@ import PropTypes from 'prop-types';
 const ResultsCard = (props) => {
   const {duration} = props;
   const durationPhrase = duration > 1 ?
-  `${duration} minutes.` :
-  `${duration} minute.`;
-  return <Card>
-    <CardContent>
-      <Typography>
+  `${duration} Minutes` :
+  `${duration} Minute`;
+  return <Card sx={{
+    color: 'white',
+    backgroundColor: '#757DE8',
+    minWidth: '300px',
+    width: '50vw',
+  }}>
+    <CardContent sx={{
+      textAlign: 'center',
+      pb: 0,
+    }}>
+      <Typography variant="h6">
         Your journey will take approx.
       </Typography>
-      <Typography>
+      <Typography variant="h3">
         {durationPhrase}
       </Typography>
     </CardContent>
-    <CardActions>
-      <Button>Close</Button>
+    <CardActions sx={{
+      justifyContent: 'center',
+      py: 1,
+    }}>
+      <Button variant='contained'
+        sx={{backgroundColor: '#ffeb3b', color: 'black'}}>Close</Button>
     </CardActions>
   </Card>;
 };

@@ -18,11 +18,11 @@ test('Close button shows on screen', () => {
 
 test('Card w/ duration >1 minute renders', () => {
     setUp()
-    const timePhraseRe = new RegExp(`${happyPathDuration} minutes.`, "i");
+    const timePhraseRe = new RegExp(`${happyPathDuration} minutes`, "i");
     expect(screen.getByText(timePhraseRe)).toBeInTheDocument();
 })
 
 test('Card w/ duration of 1 minute renders', () => {
     render(<ResultsCard duration={1} />)
-    expect(screen.getByText("1 minute.")).toBeInTheDocument();
+    expect(screen.getByText("1 Minute")).toBeInTheDocument();
 })
