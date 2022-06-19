@@ -5,7 +5,7 @@ const Map = () => {
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
   });
   return !(isLoaded) ?
-    <div>Map loading...</div>:
+    <div className="loading">Map loading...</div>:
     <div className="map">
       <GoogleMap
         zoom={15}
