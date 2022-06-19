@@ -2,6 +2,7 @@ import '../../styles/main.css';
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel.jsx';
 import WeatherCard from '../WeatherCard/WeatherCard';
+import ResultsCard from '../ResultsCard/ResultsCard';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
     {/* Can be deleted, just for demo purposes*/}
     <div>
       <WeatherCard weather={weatherApi[0]}/>
+      <ResultsCard duration={35}/>
     </div>
   </>;
 };
