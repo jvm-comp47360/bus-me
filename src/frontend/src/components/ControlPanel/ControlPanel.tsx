@@ -3,9 +3,23 @@ import {Box} from '@mui/material';
 import PropTypes from 'prop-types';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
+import {FC, ReactElement} from 'react';
 
-const ControlPanel = ({busStops}) => {
-  const busRoutes = [...new Set(busStops.map((item) => item.route))];
+export type BusStops = {
+  id: string
+  name: string
+  number: number
+  latitude: string
+  longitude: string
+  route: string
+}
+
+export type Props = {
+  busStops: BusStops[]
+}
+
+const ControlPanel: FC<Props> = ({busStops}): ReactElement => {
+  const busRoutes: string[] = [...new Set(busStops.map((item) => item.route))];
 
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <BusRouteDropdown busRoutes={busRoutes}/>

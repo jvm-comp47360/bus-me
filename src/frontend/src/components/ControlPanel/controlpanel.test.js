@@ -1,4 +1,4 @@
-import ControlPanel from './ControlPanel.jsx';
+import ControlPanel from './ControlPanel.tsx';
 import {render, screen} from '@testing-library/react';
 
 // A mock sample output of the Bus Stops API.

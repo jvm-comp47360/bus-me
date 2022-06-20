@@ -2,28 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Bus dropdown added">
-      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map/map.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/map.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655554712861</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Bus dropdown added">
+      <created>1655751204316</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655751204316</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,9 +148,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx</url>
+          <url>file://$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx</url>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
