@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Finished initial set of components converted to typescript.">
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Added preference for interfaces on the basis of the React docs.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
@@ -75,7 +75,7 @@
       <option name="presentableId" value="Default" />
       <updated>1655551136224</updated>
       <workItem from="1655551139149" duration="3943000" />
-      <workItem from="1655756657274" duration="1543000" />
+      <workItem from="1655756657274" duration="2021000" />
     </task>
     <task id="LOCAL-00001" summary="Linting tidy-up">
       <created>1655551891013</created>
@@ -126,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655757794718</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added preference for interfaces on the basis of the React docs.">
+      <created>1655758680767</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1655758680767</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +158,7 @@
     <MESSAGE value="Finished functionality of bus route dropdown, tests are passing." />
     <MESSAGE value="Bus dropdown added" />
     <MESSAGE value="Finished initial set of components converted to typescript." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished initial set of components converted to typescript." />
+    <MESSAGE value="Added preference for interfaces on the basis of the React docs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added preference for interfaces on the basis of the React docs." />
   </component>
 </project>
