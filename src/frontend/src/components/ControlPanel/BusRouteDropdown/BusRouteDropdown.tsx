@@ -1,9 +1,9 @@
 import {Autocomplete, TextField} from '@mui/material';
 import {FC, ReactElement} from 'react';
 
-export type Props = {
+export interface Props {
   busRoutes: string[];
-};
+}
 
 const BusRouteDropdown: FC<Props> = ({busRoutes}): ReactElement => {
   return <>

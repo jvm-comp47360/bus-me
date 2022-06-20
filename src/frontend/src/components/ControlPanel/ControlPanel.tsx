@@ -13,7 +13,7 @@ export type BusStops = {
   route: string;
 }
 
-export type Props = {
+export interface Props {
   busStops: BusStops[];
 }
 

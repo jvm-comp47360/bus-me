@@ -1,13 +1,13 @@
 import {Autocomplete, TextField} from '@mui/material';
 import {FC, ReactElement} from 'react';
 
-export type BusStops = {
-  id: string
-  name: string
-  number: number
-  latitude: string
-  longitude: string
-  route: string
+export interface BusStops {
+  id: string;
+  name: string;
+  number: number;
+  latitude: string;
+  longitude: string;
+  route: string;
 }
 
 export type Props = {

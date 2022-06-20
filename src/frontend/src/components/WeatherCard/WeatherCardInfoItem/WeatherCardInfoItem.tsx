@@ -1,7 +1,7 @@
 import {Grid, Typography} from '@mui/material';
 import {FC, ReactElement} from 'react';
 
-export type Props = {
+export interface Props {
   icon: ReactElement;
   text: string;
 }

@@ -5,14 +5,14 @@ import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
 import {FC, ReactElement} from 'react';
 
-export type Weather = {
+export interface Weather {
   icon: string;
   date: string;
   weatherText: string;
   temperature: string;
 }
 
-export type Props = {
+export interface Props {
   weather: Weather;
 }
 
