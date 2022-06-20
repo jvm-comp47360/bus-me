@@ -1,7 +1,12 @@
 import {Grid, Typography} from '@mui/material';
-import PropTypes from 'prop-types';
+import {FC, ReactElement} from 'react';
 
-const WeatherCardInfoItem = ({icon, text}) => {
+export type Props = {
+  icon: ReactElement;
+  text: string;
+}
+
+const WeatherCardInfoItem: FC<Props> = ({icon, text}): ReactElement => {
   return <Grid container direction={'row'} alignItems={'center'}>
     <Grid item>
       {icon}
@@ -19,8 +24,3 @@ const WeatherCardInfoItem = ({icon, text}) => {
 };
 
 export default WeatherCardInfoItem;
-
-WeatherCardInfoItem.propTypes = {
-  icon: PropTypes.object,
-  text: PropTypes.string,
-};

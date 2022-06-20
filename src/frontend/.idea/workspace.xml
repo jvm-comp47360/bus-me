@@ -4,9 +4,23 @@
     <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Bus dropdown added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/map.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/map.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,18 +45,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Vlad\\github\\BusMe\\src\\frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Vlad\\github\\BusMe\\src\\frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.start">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -75,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1655551136224</updated>
       <workItem from="1655551139149" duration="3943000" />
+      <workItem from="1655756657274" duration="1009000" />
     </task>
     <task id="LOCAL-00001" summary="Linting tidy-up">
       <created>1655551891013</created>
@@ -143,16 +158,5 @@
     <MESSAGE value="Finished functionality of bus route dropdown, tests are passing." />
     <MESSAGE value="Bus dropdown added" />
     <option name="LAST_COMMIT_MESSAGE" value="Bus dropdown added" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx</url>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

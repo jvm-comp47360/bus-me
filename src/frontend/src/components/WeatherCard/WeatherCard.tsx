@@ -1,16 +1,26 @@
 import {Box, Card, CardContent, CardMedia} from '@mui/material';
-import PropTypes from 'prop-types';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
+import {FC, ReactElement} from 'react';
 
+export type Weather = {
+  icon: string;
+  date: string;
+  weatherText: string;
+  temperature: string;
+}
 
-const WeatherCard = ({weather}) => {
+export type Props = {
+  weather: Weather;
+}
+
+const WeatherCard: FC<Props> = ({weather}): ReactElement => {
   // Unpacking API call here because we want to make
   // sure all weather related activity occurs in this
   // component.
-  const {icon, date, weatherText, temperature} = weather;
+  const {icon, date, weatherText, temperature}: Weather = weather;
 
   return <Card sx={{backgroundColor: '#757DE8',
     display: 'inline-block'}}
@@ -47,7 +57,3 @@ const WeatherCard = ({weather}) => {
 };
 
 export default WeatherCard;
-
-WeatherCard.propTypes = {
-  weather: PropTypes.object,
-};
