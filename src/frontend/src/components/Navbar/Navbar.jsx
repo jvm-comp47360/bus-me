@@ -19,7 +19,7 @@ const Navbar = () => {
           <Stack direction='row'
             sx={{marginTop: 1}}>
             {sitePages.map((page) =>
-              <Button key={page} color='inherit'>{page}</Button>
+              <Button key={page} color='inherit'>{page}</Button>,
             )}
           </Stack>
         </Toolbar>

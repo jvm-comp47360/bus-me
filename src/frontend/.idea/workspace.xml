@@ -1,10 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Finished functionality of bus route dropdown, tests are passing.">
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Bus dropdown added">
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/app.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/busroutedropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/busstopdropdown.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/Map.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map/map.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map/map.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Navbar/navbar.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/ResultsCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultsCard/resultscard.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +55,7 @@
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Vlad\\github\\BusMe\\src\\frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -130,6 +150,18 @@
     <MESSAGE value="Added routes to mock API data." />
     <MESSAGE value="Wrote tests for Bus Route dropdown functionality." />
     <MESSAGE value="Finished functionality of bus route dropdown, tests are passing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished functionality of bus route dropdown, tests are passing." />
+    <MESSAGE value="Bus dropdown added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bus dropdown added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.jsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

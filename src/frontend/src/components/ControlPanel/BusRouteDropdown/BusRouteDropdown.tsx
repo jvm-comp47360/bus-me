@@ -1,7 +1,11 @@
-import PropTypes from 'prop-types';
 import {Autocomplete, TextField} from '@mui/material';
+import {FC, ReactElement} from 'react';
 
-const BusRouteDropdown = ({busRoutes}) => {
+export type Props = {
+  busRoutes: string[];
+};
+
+const BusRouteDropdown: FC<Props> = ({busRoutes}): ReactElement => {
   return <>
     <Autocomplete
       options={busRoutes}
@@ -12,7 +16,3 @@ const BusRouteDropdown = ({busRoutes}) => {
 };
 
 export default BusRouteDropdown;
-
-BusRouteDropdown.propTypes = {
-  busRoutes: PropTypes.arrayOf(PropTypes.string),
-};
