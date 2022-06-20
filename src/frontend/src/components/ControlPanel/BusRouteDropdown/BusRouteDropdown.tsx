@@ -1,7 +1,7 @@
 import {Autocomplete, TextField} from '@mui/material';
 import {FC, ReactElement} from 'react';
 
-export interface Props {
+interface Props {
   busRoutes: string[];
 }
 

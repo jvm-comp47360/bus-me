@@ -4,7 +4,7 @@ import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import {FC, ReactElement} from 'react';
 
-export type BusStops = {
+type BusStops = {
   id: string;
   name: string;
   number: number;
@@ -13,7 +13,7 @@ export type BusStops = {
   route: string;
 }
 
-export interface Props {
+interface Props {
   busStops: BusStops[];
 }
 

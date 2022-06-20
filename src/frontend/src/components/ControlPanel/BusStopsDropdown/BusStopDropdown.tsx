@@ -1,7 +1,7 @@
 import {Autocomplete, TextField} from '@mui/material';
 import {FC, ReactElement} from 'react';
 
-export interface BusStops {
+type BusStops = {
   id: string;
   name: string;
   number: number;
@@ -10,7 +10,7 @@ export interface BusStops {
   route: string;
 }
 
-export type Props = {
+interface Props {
   busStops: BusStops[];
   label: string;
 }
