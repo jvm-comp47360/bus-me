@@ -12,6 +12,14 @@ const Map = () => {
     clickableIcons: false,
     fullscreenControl: false,
     minZoom: 10,
+    restriction: {
+      latLngBounds: {
+        north: 53.63322,
+        south: 53.11473,
+        west: -6.85965,
+        east: -5.77620,
+      },
+    },
   };
 
   return !(isLoaded) ?
