@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Removed export from interfaces and types.">
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Updated bus route dropdown and bus stop dropdown tests to typescript.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/WeatherCardInfoItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/controlpanel.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/WeatherCardInfoItem/weathercardinfoitem.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WeatherCard/weathercard.test.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +41,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.test">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -76,7 +74,7 @@
       <updated>1655551136224</updated>
       <workItem from="1655551139149" duration="3943000" />
       <workItem from="1655756657274" duration="2815000" />
-      <workItem from="1655922685219" duration="1373000" />
+      <workItem from="1655922685219" duration="4173000" />
     </task>
     <task id="LOCAL-00001" summary="Linting tidy-up">
       <created>1655551891013</created>
@@ -148,7 +146,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655759092425</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Removed reference to FC and changed return type to more accurately describe the JSX Element.">
+      <created>1655924107898</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655924107898</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated bus route dropdown and bus stop dropdown tests to typescript.">
+      <created>1655926388083</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655926388083</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +187,8 @@
     <MESSAGE value="Finished initial set of components converted to typescript." />
     <MESSAGE value="Added preference for interfaces on the basis of the React docs." />
     <MESSAGE value="Removed export from interfaces and types." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed export from interfaces and types." />
+    <MESSAGE value="Removed reference to FC and changed return type to more accurately describe the JSX Element." />
+    <MESSAGE value="Updated bus route dropdown and bus stop dropdown tests to typescript." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bus route dropdown and bus stop dropdown tests to typescript." />
   </component>
 </project>
