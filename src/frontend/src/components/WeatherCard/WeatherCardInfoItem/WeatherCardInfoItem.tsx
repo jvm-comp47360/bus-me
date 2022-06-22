@@ -1,12 +1,12 @@
 import {Grid, Typography} from '@mui/material';
-import {FC, ReactElement} from 'react';
+import {ReactElement} from 'react';
 
 interface Props {
   icon: ReactElement;
   text: string;
 }
 
-const WeatherCardInfoItem: FC<Props> = ({icon, text}): ReactElement => {
+const WeatherCardInfoItem = ({icon, text}: Props): JSX.Element => {
   return <Grid container direction={'row'} alignItems={'center'}>
     <Grid item>
       {icon}

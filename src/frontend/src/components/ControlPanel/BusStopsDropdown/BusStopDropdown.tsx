@@ -1,5 +1,4 @@
 import {Autocomplete, TextField} from '@mui/material';
-import {FC, ReactElement} from 'react';
 
 type BusStops = {
   id: string;
@@ -15,7 +14,7 @@ interface Props {
   label: string;
 }
 
-const BusStopDropdown: FC<Props> = ({busStops, label}): ReactElement => {
+const BusStopDropdown = ({busStops, label}: Props): JSX.Element => {
   return <>
     <Autocomplete
       getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}

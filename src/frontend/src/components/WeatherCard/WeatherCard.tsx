@@ -3,7 +3,6 @@ import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
-import {FC, ReactElement} from 'react';
 
 type Weather = {
   icon: string;
@@ -16,7 +15,7 @@ interface Props {
   weather: Weather;
 }
 
-const WeatherCard: FC<Props> = ({weather}): ReactElement => {
+const WeatherCard = ({weather}: Props): JSX.Element => {
   // Unpacking API call here because we want to make
   // sure all weather related activity occurs in this
   // component.

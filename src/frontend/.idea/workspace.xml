@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Added preference for interfaces on the basis of the React docs.">
+    <list default="true" id="22920473-53c9-497b-965a-cbc9029039e8" name="Changes" comment="Removed export from interfaces and types.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusRouteDropdown/BusRouteDropdown.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ControlPanel/BusStopsDropdown/BusStopDropdown.tsx" afterDir="false" />
@@ -75,7 +75,8 @@
       <option name="presentableId" value="Default" />
       <updated>1655551136224</updated>
       <workItem from="1655551139149" duration="3943000" />
-      <workItem from="1655756657274" duration="2409000" />
+      <workItem from="1655756657274" duration="2815000" />
+      <workItem from="1655922685219" duration="1373000" />
     </task>
     <task id="LOCAL-00001" summary="Linting tidy-up">
       <created>1655551891013</created>
@@ -140,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655758767919</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Removed export from interfaces and types.">
+      <created>1655759092425</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655759092425</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +174,7 @@
     <MESSAGE value="Bus dropdown added" />
     <MESSAGE value="Finished initial set of components converted to typescript." />
     <MESSAGE value="Added preference for interfaces on the basis of the React docs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added preference for interfaces on the basis of the React docs." />
+    <MESSAGE value="Removed export from interfaces and types." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed export from interfaces and types." />
   </component>
 </project>

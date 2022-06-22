@@ -1,11 +1,10 @@
 import {Autocomplete, TextField} from '@mui/material';
-import {FC, ReactElement} from 'react';
 
 interface Props {
   busRoutes: string[];
 }
 
-const BusRouteDropdown: FC<Props> = ({busRoutes}): ReactElement => {
+const BusRouteDropdown = ({busRoutes}: Props): JSX.Element => {
   return <>
     <Autocomplete
       options={busRoutes}
