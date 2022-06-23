@@ -1,12 +1,12 @@
-import ControlPanel from './ControlPanel.jsx';
-import {render, screen} from '@testing-library/react';
-
-// A mock sample output of the Bus Stops API.
-const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
+import ControlPanel from './ControlPanel';
+import {render, RenderResult, screen} from '@testing-library/react';
+import MOCK_BUS_STOPS from '../../mockdata/MOCK_BUS_STOPS.json';
 
 // The setup automatically passes in the mock Bus Stops API,
 // as we are testing the call at the App component level.
-const setup = () => render(<ControlPanel busStops={MOCK_BUS_STOPS}/>);
+const setup = (): RenderResult => render(
+    <ControlPanel busStops={MOCK_BUS_STOPS}/>,
+);
 
 describe('<ControlPanel/> Rendering UI elements', () => {
   it('dropdowns should appear on the screen', () => {

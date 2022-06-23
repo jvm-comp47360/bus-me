@@ -1,11 +1,23 @@
 import Button from '@mui/material/Button';
 import {Box} from '@mui/material';
-import PropTypes from 'prop-types';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 
-const ControlPanel = ({busStops}) => {
-  const busRoutes = [...new Set(busStops.map((item) => item.route))];
+type BusStops = {
+  id: string;
+  name: string;
+  number: number;
+  latitude: string;
+  longitude: string;
+  route: string;
+}
+
+interface Props {
+  busStops: BusStops[];
+}
+
+const ControlPanel = ({busStops}: Props): JSX.Element => {
+  const busRoutes: string[] = [...new Set(busStops.map((item) => item.route))];
 
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <BusRouteDropdown busRoutes={busRoutes}/>
@@ -23,7 +35,7 @@ const ControlPanel = ({busStops}) => {
       variant={'contained'}
       disabled={true}
       style={{maxWidth: '30%'}}
-      margin={1}
+      sx={{margin: 1}}
     >
       BusMe!
     </Button>
@@ -31,7 +43,3 @@ const ControlPanel = ({busStops}) => {
 };
 
 export default ControlPanel;
-
-ControlPanel.propTypes = {
-  busStops: PropTypes.arrayOf(PropTypes.object),
-};

@@ -1,11 +1,11 @@
 import WeatherCardInfoItem from './WeatherCardInfoItem';
-import {render, screen} from '@testing-library/react';
+import {render, RenderResult, screen} from '@testing-library/react';
 import BookIcon from '@mui/icons-material/Book';
 
-const ICON = <BookIcon sx={{color: '#FFFFFF'}}/>;
+const ICON: JSX.Element = <BookIcon sx={{color: '#FFFFFF'}}/>;
 const TEXT = 'Sunny';
 
-const setup = () => render(
+const setup = (): RenderResult => render(
     <WeatherCardInfoItem icon={ICON} text={TEXT}/>,
 );
 
@@ -17,6 +17,7 @@ describe('<WeatherCardInfoItem/> UI elements', () => {
     setup();
     expect(screen.getByTestId('BookIcon')).toBeInTheDocument();
   });
+
   it('must show the correct text', () => {
     expect.assertions(1);
     setup();

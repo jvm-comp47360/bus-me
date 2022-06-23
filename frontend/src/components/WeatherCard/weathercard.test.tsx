@@ -1,13 +1,21 @@
 import WeatherCard from './WeatherCard';
-import {render, screen} from '@testing-library/react';
+import {render, RenderResult, screen} from '@testing-library/react';
+import MOCK_WEATHER_DATA from '../../mockdata/MOCK_WEATHER.json';
 
-const MOCK_WEATHER_API = require('../../mockdata/MOCK_WEATHER.json')[0];
-const ICON = MOCK_WEATHER_API['icon'];
-const DATE = MOCK_WEATHER_API['date'];
-const WEATHERTEXT = MOCK_WEATHER_API['weatherText'];
-const TEMPERATURE = MOCK_WEATHER_API['temperature'];
+type Weather = {
+  icon: string;
+  date: string;
+  weatherText: string;
+  temperature: string;
+}
 
-const setup = () => render(
+const MOCK_WEATHER_API: Weather = MOCK_WEATHER_DATA[0];
+const ICON: string = MOCK_WEATHER_API['icon'];
+const DATE: string = MOCK_WEATHER_API['date'];
+const WEATHERTEXT: string = MOCK_WEATHER_API['weatherText'];
+const TEMPERATURE: string = MOCK_WEATHER_API['temperature'];
+
+const setup = (): RenderResult => render(
     <WeatherCard weather={MOCK_WEATHER_API}/>,
 );
 

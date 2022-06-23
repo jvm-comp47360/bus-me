@@ -22,7 +22,7 @@ describe('<App/> Renders UI components on the screen', () => {
   it('renders navbar on the screen', () => {
     setup();
     expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument();
-  })
+  });
 });
 
 describe('<App/> BusStops API', () => {
