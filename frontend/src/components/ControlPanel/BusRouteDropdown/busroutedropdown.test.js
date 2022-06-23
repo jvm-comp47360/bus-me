@@ -1,7 +1,7 @@
 // Mock sample props for the BusStopsDropdown.
 
 import {render, screen} from '@testing-library/react';
-import BusRouteDropdown from '../BusRouteDropdown/BusRouteDropdown';
+import BusRouteDropdown from './BusRouteDropdown';
 import userEvent from '@testing-library/user-event';
 const MOCK_BUS_ROUTES = ['1', '2', '3'];
 const BUS_ROUTE_SEARCH = MOCK_BUS_ROUTES[0];
