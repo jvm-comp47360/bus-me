@@ -3,10 +3,13 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import PropTypes from 'prop-types';
 
-const ResultsCard = ({duration}) => {
-  const durationPhrase = duration > 1 ?
+interface Props {
+  duration: number;
+}
+
+const ResultsCard = ({duration}: Props): JSX.Element => {
+  const durationPhrase: string = duration > 1 ?
   `${duration} Minutes` :
   `${duration} Minute`;
 
@@ -32,7 +35,3 @@ const ResultsCard = ({duration}) => {
 };
 
 export default ResultsCard;
-
-ResultsCard.propTypes = {
-  duration: PropTypes.number,
-};
