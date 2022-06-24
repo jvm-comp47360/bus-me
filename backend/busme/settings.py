@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lp*%28!qhd_*-qp1_c8h-2lrbe55r4=jkfmpc@l#10*$vn2au9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 
 # Application definition
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'busme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'busme',
+        'NAME': 'postgres',
         'USER': os.environ.get('BUSME_USER'),
         'PASSWORD': os.environ.get('BUSME_PASSWORD'),
         'HOST': os.environ.get('BUSME_HOST'),
