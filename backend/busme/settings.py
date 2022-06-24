@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
-from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -85,10 +84,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'busme',
-        'USER': config('BUSME_USER'),
-        'PASSWORD': config('BUSME_PASSWORD'),
-        'HOST': config('BUSME_HOST'),
-        'PORT': config('BUSME_PORT')
+        'USER': os.environ.get('BUSME_USER'),
+        'PASSWORD': os.environ.get('BUSME_PASSWORD'),
+        'HOST': os.environ.get('BUSME_HOST'),
+        'PORT': os.environ.get('BUSME_PORT')
     }
 }
 
@@ -130,10 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static'),
-]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

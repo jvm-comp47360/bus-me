@@ -6,11 +6,13 @@ services:
     volumes:
       - ./backend/:/backend
     working_dir: /backend/
+    env_file: .env
     command: sh entrypoint.sh
   frontend:
     image: node:13-alpine
     command: sh entrypoint.sh
     working_dir: /frontend
+    env_file: .env
     volumes:
       - ./frontend/:/frontend
   nginx:
@@ -25,8 +27,8 @@ services:
   database:
     image: postgres:14.4-alpine
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${BUSME_USER}
+      - POSTGRES_PASSWORD=${BUSME_PASSWORD}
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
     ports:

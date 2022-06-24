@@ -1,11 +1,10 @@
 from typing import Dict
 import requests
 import schedule
-import time
-from decouple import config
+import os
 
 # Obtaining OpenWeather API key
-OpenWeatherAPI_KEY = config("WEATHER_API_KEY")
+OpenWeatherAPI_KEY = os.environ.get("WEATHER_API_KEY")
 OpenWeatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
