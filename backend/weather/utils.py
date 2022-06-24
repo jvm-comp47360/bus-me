@@ -2,6 +2,7 @@ from typing import Dict
 import requests
 import schedule
 import os
+import time
 
 # Obtaining OpenWeather API key
 OpenWeatherAPI_KEY = os.environ.get("WEATHER_API_KEY")
@@ -13,6 +14,7 @@ def pull_current_weather_from_api() -> Dict[str, str]:
     lat = 53.33947559137039
     lon = -6.248868208190408
     weather_response = requests.get(OpenWeatherAPI_URL.format(lat, lon, OpenWeatherAPI_KEY))
+    time.sleep(1)
     icon = weather_response.json()['weather'][0]['icon']
     weather = weather_response.json()['weather'][0]['main']
     temperature = weather_response.json()['main']['temp']
@@ -35,5 +37,5 @@ class Weather:
 
 
 # Initialise weather object and set to update every fixed time period
-current_weather = Weather()
-current_weather.update_current_weather()
+# current_weather = Weather()
+# current_weather.update_current_weather()
