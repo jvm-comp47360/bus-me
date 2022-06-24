@@ -4,7 +4,7 @@
 import csv
 from typing import List
 
-from src.bus_stops.models import BusStops
+from backend.bus_stops.models import BusStops
 
 
 def run() -> None:
