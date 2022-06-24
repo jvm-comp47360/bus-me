@@ -1,8 +1,7 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
-import Logo from '../../assets/busme_logo.png';
 
-const Navbar = () => {
-  const sitePages = ['Contact', 'App', 'About', 'Login'];
+const Navbar = (): JSX.Element => {
+  const sitePages: string[] = ['Contact', 'App', 'About', 'Login'];
   return (
     <AppBar position="static"
       sx={{backgroundColor: '#3f50b5',
@@ -14,7 +13,7 @@ const Navbar = () => {
           <Box component="img"
             sx={{height: 64, ml: 1}}
             alt="bus-me-logo"
-            src={Logo}
+            src={require('../../assets/busme_logo.png')}
           />
           <Stack direction='row'
             sx={{marginTop: 1}}>

@@ -1,15 +1,15 @@
-import {render, screen} from '@testing-library/react';
+import {render, RenderResult, screen} from '@testing-library/react';
 import App from './App';
 import userEvent from '@testing-library/user-event';
 
 // A mock sample output of the Bus Stops API.
 const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
-const BUS_STOP_SEARCH = MOCK_BUS_STOPS[0]['name'];
-const BUS_STOP_RESULT = `${MOCK_BUS_STOPS[0]['name']}, ` +
+const BUS_STOP_SEARCH: string = MOCK_BUS_STOPS[0]['name'];
+const BUS_STOP_RESULT: string = `${MOCK_BUS_STOPS[0]['name']}, ` +
                         `Stop No.${MOCK_BUS_STOPS[0]['number']}`;
 
 // Setup function that renders the main component.
-const setup = () => render(<App/>);
+const setup = (): RenderResult => render(<App/>);
 
 describe('<App/> Renders UI components on the screen', () => {
   it('renders control panel on the screen', () => {
@@ -26,7 +26,7 @@ describe('<App/> Renders UI components on the screen', () => {
 });
 
 describe('<App/> BusStops API', () => {
-  const simulateDropdown = async (dropdown) => {
+  const simulateDropdown = async (dropdown: HTMLInputElement): Promise<void> => {
     const view = userEvent.setup();
 
     await view.click(dropdown);
@@ -39,11 +39,11 @@ describe('<App/> BusStops API', () => {
     expect.assertions(2);
     setup();
 
-    const startDropdown = screen.getByRole('combobox', {name: /start/i});
+    const startDropdown: HTMLInputElement = screen.getByRole('combobox', {name: /start/i});
     await simulateDropdown(startDropdown);
     expect(startDropdown.value).toBe(BUS_STOP_RESULT);
 
-    const finishDropdown = screen.getByRole('combobox', {name: /finish/i});
+    const finishDropdown: HTMLInputElement = screen.getByRole('combobox', {name: /finish/i});
     await simulateDropdown(finishDropdown);
     expect(finishDropdown.value).toBe(BUS_STOP_RESULT);
   });
