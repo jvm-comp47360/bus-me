@@ -3,6 +3,7 @@ version: "3"
 services:
   backend:
     build: ./backend
+    network_mode: "host"
     volumes:
       - ./backend/:/backend
     working_dir: /backend/
@@ -17,6 +18,7 @@ services:
       - ./frontend/:/frontend
   nginx:
     image: nginx:latest
+    network_mode: "host"
     ports:
       - "1337:80"
     volumes:
@@ -26,6 +28,7 @@ services:
       - backend
   database:
     image: postgres:14.4-alpine
+    network_mode: "host"
     environment:
       - POSTGRES_USER=${BUSME_USER}
       - POSTGRES_PASSWORD=${BUSME_PASSWORD}

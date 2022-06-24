@@ -1,0 +1,7 @@
+FROM node:14.16.0-alpine3.10
+WORKDIR /frontend
+ADD . .
+RUN npm install
+ARG REACT_APP_GOOGLE_MAPS
+ENV REACT_APP_GOOGLE_MAPS=${REACT_APP_GOOGLE_MAPS}
+RUN npm run build
