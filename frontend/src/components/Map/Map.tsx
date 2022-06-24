@@ -1,12 +1,15 @@
 import {useLoadScript, GoogleMap} from '@react-google-maps/api';
 import {Container} from '@mui/material';
 
-const Map = () => {
+const Map = (): JSX.Element => {
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
-  const centerCoords = {lat: 53.33947559137039, lng: -6.248868208190408};
-  const mapOptions = {
+  const centerCoords: google.maps.LatLngLiteral = {
+    lat: 53.33947559137039,
+    lng: -6.248868208190408,
+  };
+  const mapOptions: google.maps.MapOptions = {
     streetViewControl: false,
     mapTypeControl: false,
     clickableIcons: false,
@@ -24,7 +27,7 @@ const Map = () => {
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
-    <Container disableGutters="true" className="map">
+    <Container disableGutters={true} className="map">
       <GoogleMap
         zoom={11.7}
         center={centerCoords}
