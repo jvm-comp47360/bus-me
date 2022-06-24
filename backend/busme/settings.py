@@ -77,6 +77,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'busme.wsgi.application'
 
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://0.0.0.0"
+]
+
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
