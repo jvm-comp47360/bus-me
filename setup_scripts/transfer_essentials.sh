@@ -15,4 +15,4 @@ if [[ ! -f ./BusMe.pem ]]; then
   exit
 fi
 
-scp -i BusMe.pem .env setup.sh ubuntu@"${0}":/home/ubuntu/
+scp -i BusMe.pem .env setup.sh ubuntu@"${1}":/home/ubuntu/
