@@ -6,7 +6,7 @@ services:
     volumes:
       - ./backend/:/backend
     working_dir: /backend/
-    env_file: .env
+    env_file: setup_scripts/.env
     expose:
       - "8000"
   frontend:
@@ -14,7 +14,7 @@ services:
     volumes:
       - ./frontend/:/frontend
     working_dir: /frontend
-    env_file: .env
+    env_file: setup_scripts/.env
   nginx:
     image: nginx:latest
     ports:

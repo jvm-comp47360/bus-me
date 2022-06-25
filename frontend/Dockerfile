@@ -4,4 +4,4 @@ ENV REACT_APP_GOOGLE_MAPS=${REACT_APP_GOOGLE_MAPS}
 WORKDIR /frontend
 ADD . .
 RUN npm install
-CMD ["npm", "run", "build"]
+RUN npm run build --verbose

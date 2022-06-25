@@ -1,2 +1,3 @@
 # Just to make sure I don't accidentally add this to git!
-.env
+*.env
+*.pem
