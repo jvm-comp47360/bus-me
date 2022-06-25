@@ -1,6 +1,12 @@
 version: "3"
 
 services:
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend/:/frontend
+    working_dir: /frontend
+    env_file: setup_scripts/.env
   backend:
     build: ./backend
     volumes:
@@ -9,12 +15,8 @@ services:
     env_file: setup_scripts/.env
     expose:
       - "8000"
-  frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend/:/frontend
-    working_dir: /frontend
-    env_file: setup_scripts/.env
+    depends_on:
+      - frontend
   nginx:
     image: nginx:latest
     ports:
@@ -24,6 +26,7 @@ services:
       - ./frontend/build:/var/www/frontend
     depends_on:
       - backend
+      - frontend
   database:
     image: postgres:14.4-alpine
     environment:
