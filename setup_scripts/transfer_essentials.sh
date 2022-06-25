@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ["$#" -ne 1]; then
+if [[ "$#" -ne 1 ]]; then
   echo "You must provide the public IP of your EC2 instance as an argument."
   exit
 fi
@@ -15,4 +15,4 @@ if [[ ! -f ./BusMe.pem ]]; then
   exit
 fi
 
-scp -i BusMe.pem .env setup.sh ubuntu@${0}:/home/ubuntu/
+scp -i BusMe.pem .env setup.sh ubuntu@"${0}":/home/ubuntu/

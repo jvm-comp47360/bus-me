@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Check if user is running as root
-if [ "$EUID" -ne 0 ]; then
-  then echo "Please run as root"
+if [[ "$EUID" -ne 0 ]]; then
+  echo "Please run as root"
   exit
 fi
 
@@ -20,7 +20,7 @@ gh auth login
 
 # Pull from repo and change to correct branch
 gh repo clone jvm-comp47360/bus-me
-cd bus-me
+cd bus-me || exit
 git checkout docker_main
 
 # Move environment file in correct directory
