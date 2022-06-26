@@ -1,32 +1,26 @@
 version: "3"
 
 services:
-  frontend:
-    build: ./frontend
-    volumes:
-      - ./frontend/:/frontend
-    working_dir: /frontend
-    env_file: setup_scripts/.env
   backend:
     build: ./backend
     volumes:
-      - ./backend/:/backend
+      - staticfiles:/backend/staticfiles
+    ports:
+      - "8000:8000"
     working_dir: /backend/
-    env_file: setup_scripts/.env
-    expose:
-      - "8000"
-    depends_on:
-      - frontend
+    env_file:
+      - setup_scripts/.env
   nginx:
-    image: nginx:latest
+    build: .
     ports:
       - "80:80"
     volumes:
-      - ./nginx/nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./frontend/build:/var/www/frontend
+      - staticfiles:/staticfiles
+
+    env_file:
+      - setup_scripts/.env
     depends_on:
       - backend
-      - frontend
   database:
     image: postgres:14.4-alpine
     environment:
@@ -36,3 +30,5 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+volumes:
+  staticfiles:

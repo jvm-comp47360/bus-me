@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [[ "$#" -ne 1 ]]; then
-  echo "You must provide the public IP of your EC2 instance as an argument."
-  exit
-fi
+#if [[ "$#" -ne 1 ]]; then
+#  echo "You must provide the public IP of your EC2 instance as an argument."
+#  exit
+#fi
 
 if [[ ! -f ./.env ]]; then
   echo "You must include the .env file in this directory."
@@ -15,4 +15,4 @@ if [[ ! -f ./BusMe.pem ]]; then
   exit
 fi
 
-scp -i BusMe.pem .env setup.sh ubuntu@"${1}":/home/ubuntu/
+scp -i BusMe.pem .env setup.sh student@ipa-002@ucd.ie:/home/student/
