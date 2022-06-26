@@ -9,7 +9,7 @@ from backend.bus_stops.models import BusStops
 
 def run() -> None:
     """Reads through the CSV file and adds to Django database"""
-    with open("../../database/stops.csv", "r", encoding="utf8") as bus_stops_file:
+    with open("stops.csv", "r", encoding="utf8") as bus_stops_file:
         bus_stops_file_reader = csv.reader(bus_stops_file)
         next(bus_stops_file_reader, None)  # Skips the header row
 
