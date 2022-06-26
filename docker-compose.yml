@@ -1,6 +1,17 @@
 version: "3"
 
 services:
+  database:
+    image: postgres:14.4-alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_USER}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
   backend:
     build: ./backend
     volumes:
@@ -21,14 +32,5 @@ services:
       - .env
     depends_on:
       - backend
-  database:
-    image: postgres:14.4-alpine
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_USER}
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 volumes:
   staticfiles:
