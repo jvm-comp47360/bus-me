@@ -21,14 +21,5 @@ services:
       - setup_scripts/.env
     depends_on:
       - backend
-  database:
-    image: postgres:14.4-alpine
-    environment:
-      - POSTGRES_USER=${BUSME_USER}
-      - POSTGRES_PASSWORD=${BUSME_PASSWORD}
-    volumes:
-      - ./postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 volumes:
   staticfiles:
