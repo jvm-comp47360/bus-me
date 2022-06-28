@@ -12,13 +12,19 @@ const Navbar = (): JSX.Element => {
           sx={{justifyContent: 'space-between', height: '85px'}}>
           <Box component="img"
             sx={{height: 64, ml: 1}}
-            alt="bus-me-logo"
+            alt="bus-me-logo-nav"
             src={require('../../assets/busme_logo.png')}
           />
           <Stack direction='row'
             sx={{marginTop: 1}}>
             {sitePages.map((page) =>
-              <Button key={page} color='inherit'>{page}</Button>,
+              <Button
+                key={page}
+                color='inherit'
+                component='a'
+                href={`#${page.toLowerCase()}`}>
+                {page}
+              </Button>,
             )}
           </Stack>
         </Toolbar>
