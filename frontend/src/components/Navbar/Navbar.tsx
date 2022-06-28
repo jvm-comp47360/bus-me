@@ -18,7 +18,13 @@ const Navbar = (): JSX.Element => {
           <Stack direction='row'
             sx={{marginTop: 1}}>
             {sitePages.map((page) =>
-              <Button key={page} color='inherit'>{page}</Button>,
+              <Button
+                key={page}
+                color='inherit'
+                component='a'
+                href={`#${page.toLowerCase()}`}>
+                {page}
+              </Button>,
             )}
           </Stack>
         </Toolbar>

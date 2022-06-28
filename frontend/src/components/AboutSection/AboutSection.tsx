@@ -3,7 +3,7 @@ import SiteHeader from '../SiteHeader/SiteHeader';
 
 const AboutSection = (): JSX.Element => {
   return (
-    <Container sx={{borderTop: 1}}>
+    <Container id="about" sx={{borderTop: 1}}>
       <SiteHeader title="About BusMe" />
       <Grid
         container
