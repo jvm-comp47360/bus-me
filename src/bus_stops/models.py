@@ -11,6 +11,7 @@ class BusStops(models.Model):
     number = models.IntegerField()
     latitude = models.DecimalField(max_digits=19, decimal_places=10)
     longitude = models.DecimalField(max_digits=19, decimal_places=10)
+    lines = models.TextField(max_length=200)
 
     def __str__(self):
         return f"{self.name}, Stop No.{self.number}"

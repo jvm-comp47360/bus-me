@@ -9,7 +9,7 @@ from src.bus_stops.models import BusStops
 
 def run() -> None:
     """Reads through the CSV file and adds to Django database"""
-    with open("../../database/stops.csv", "r", encoding="utf8") as bus_stops_file:
+    with open("../../database/stops&lines.csv", "r", encoding="utf8") as bus_stops_file:
         bus_stops_file_reader = csv.reader(bus_stops_file)
         next(bus_stops_file_reader, None)  # Skips the header row
 
@@ -29,5 +29,6 @@ def add_bus_stop_to_database(bus_stop_entry: List[str]) -> None:
     number = bus_stop_entry[2]
     latitude = bus_stop_entry[3]
     longitude = bus_stop_entry[4]
+    lines = bus_stop_entry[5]
 
-    BusStops.objects.create(id=bus_stop_id, name=name, number=number, latitude=latitude, longitude=longitude)
+    BusStops.objects.create(id=bus_stop_id, name=name, number=number, latitude=latitude, longitude=longitude, lines=lines)
