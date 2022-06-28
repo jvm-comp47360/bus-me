@@ -11,12 +11,18 @@ const theme = createTheme({
     background: {
       paper: '#3f51b5',
     },
-    text: {
-      primary: '#ffffff',
-    },
   },
   typography: {
     'fontFamily': 'Lato',
+    'h3': {
+      color: '#ffffff',
+    },
+    'h6': {
+      color: '#ffffff',
+    },
+    'body2': {
+      color: '#ffffff',
+    },
   },
 });
 
