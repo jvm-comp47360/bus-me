@@ -1,5 +1,5 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
-import theme from '../App/BusMeTheme';
+import theme from '../App/Theme';
 
 const Navbar = (): JSX.Element => {
   const sitePages: string[] = ['Contact', 'App', 'About', 'Login'];

@@ -10,7 +10,7 @@ import {ThemeProvider} from '@mui/material/styles';
 
 import busStopsApi from '../../mockdata/MOCK_BUS_STOPS.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
-import theme from './BusMeTheme';
+import theme from './Theme';
 
 const App = (): JSX.Element => {
   return <ThemeProvider theme={theme}>
