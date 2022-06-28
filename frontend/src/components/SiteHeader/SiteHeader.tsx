@@ -5,7 +5,14 @@ interface Props {
 }
 
 const SiteHeader = ({title}: Props): JSX.Element => {
-  return <Typography variant='h2'>{title}</Typography>;
-}
+  return <Typography
+    variant='h3'
+    sx={{
+      'textAlign': 'center',
+      'my': 2,
+    }}>
+    {title}
+  </Typography>;
+};
 
 export default SiteHeader;

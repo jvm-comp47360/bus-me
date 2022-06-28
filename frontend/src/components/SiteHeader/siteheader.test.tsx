@@ -8,5 +8,5 @@ test('Header shows with props passed on screen', () => {
 
 test('Header is correct MUI typography class', () => {
     const {container} = render(<SiteHeader title="About BusMe" />)
-    expect(container.firstChild).toHaveClass('MuiTypography-h2')
+    expect(container.firstChild).toHaveClass('MuiTypography-h3')
 })
