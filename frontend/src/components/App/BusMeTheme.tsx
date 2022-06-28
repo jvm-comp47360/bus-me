@@ -9,12 +9,12 @@ const theme = createTheme({
       main: '#002984',
     },
     background: {
-      paper: '#3f51b5',
+      paper: '#757de8',
     },
   },
   typography: {
     'fontFamily': 'Lato',
-    'h3': {
+    'h4': {
       color: '#ffffff',
     },
     'h6': {

@@ -22,7 +22,7 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
       <Typography variant="h6">
         Your journey will take approx.
       </Typography>
-      <Typography variant="h3">
+      <Typography variant="h4">
         {durationPhrase}
       </Typography>
     </CardContent>
