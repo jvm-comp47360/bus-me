@@ -21,9 +21,7 @@ const WeatherCard = ({weather}: Props): JSX.Element => {
   // component.
   const {icon, date, weatherText, temperature}: Weather = weather;
 
-  return <Card sx={{backgroundColor: '#757DE8',
-    display: 'inline-block'}}
-  >
+  return <Card sx={{display: 'inline-block'}}>
     <Box sx={{display: 'flex',
       flexDirection: 'row'}}
     >

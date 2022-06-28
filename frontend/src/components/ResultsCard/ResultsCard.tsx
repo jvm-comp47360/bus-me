@@ -15,7 +15,6 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
 
   return <Card sx={{
     color: 'white',
-    backgroundColor: '#757DE8',
     minWidth: '300px',
     width: '33vw',
   }}>
