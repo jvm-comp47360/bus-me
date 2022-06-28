@@ -27,8 +27,7 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
       </Typography>
     </CardContent>
     <CardActions sx={{justifyContent: 'center', py: 1}}>
-      <Button variant='contained'
-        sx={{backgroundColor: '#ffeb3b', color: 'black'}}>Close</Button>
+      <Button variant='contained'>Close</Button>
     </CardActions>
   </Card>;
 };
