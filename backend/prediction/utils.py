@@ -6,6 +6,6 @@ class Prediction:
         self.prediction = prediction
 
 
-def get_prediction() -> Dict[str, any]:
+def get_prediction(start_stop: str, finish_stop: str, time: str) -> Dict[str, any]:
     prediction = '5'
     return {"prediction": prediction}
