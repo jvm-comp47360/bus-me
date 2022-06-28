@@ -1,11 +1,12 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
+import theme from '../App/BusMeTheme';
 
 const Navbar = (): JSX.Element => {
   const sitePages: string[] = ['Contact', 'App', 'About', 'Login'];
   return (
     <AppBar position="static"
       sx={{borderTop: 20,
-        borderColor: '#002984'}}>
+        borderColor: theme.palette.secondary.main}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters
           sx={{justifyContent: 'space-between', height: '85px'}}>
