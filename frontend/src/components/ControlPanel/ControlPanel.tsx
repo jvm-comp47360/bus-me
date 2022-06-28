@@ -1,8 +1,8 @@
 import Button from '@mui/material/Button';
 import {Box, TextField} from '@mui/material';
-import {TimePicker} from '@mui/lab';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
+import {DateTimePicker} from '@mui/x-date-pickers';
 
 type BusStops = {
   id: string;
@@ -20,6 +20,13 @@ interface Props {
 const ControlPanel = ({busStops}: Props): JSX.Element => {
   const busRoutes: string[] = [...new Set(busStops.map((item) => item.route))];
 
+  // To be updated with introduction of state.
+  // Types to be added once we decide what to do
+  // with this function.
+  const dateTimeChangeHandler = () => {
+    return;
+  };
+
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <BusRouteDropdown busRoutes={busRoutes}/>
     <Box
@@ -31,6 +38,11 @@ const ControlPanel = ({busStops}: Props): JSX.Element => {
     >
       <BusStopDropdown busStops={busStops} label={'Start'}/>
       <BusStopDropdown busStops={busStops} label={'Finish'}/>
+      <DateTimePicker
+        onChange={dateTimeChangeHandler}
+        value={null}
+        renderInput={(params) => <TextField {...params} />}
+      />
     </Box>
     <Button
       variant={'contained'}

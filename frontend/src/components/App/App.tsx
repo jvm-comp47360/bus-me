@@ -5,7 +5,7 @@ import WeatherCard from '../WeatherCard/WeatherCard';
 import ResultsCard from '../ResultsCard/ResultsCard';
 import Map from '../Map/Map';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
-import {LocalizationProvider} from '@mui/lab';
+import {LocalizationProvider} from '@mui/x-date-pickers';
 
 import busStopsApi from '../../mockdata/MOCK_BUS_STOPS.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
