@@ -22,13 +22,13 @@ jobs:
       with:
         node-version: 12.x
         cache: 'npm'
-        cache-dependency-path: ./src/frontend
+        cache-dependency-path: ./backend/frontend
     - run: npm ci
-      working-directory: ./src/frontend
+      working-directory: ./backend/frontend
     - run: npm run build --if-present
-      working-directory: ./src/frontend
+      working-directory: ./backend/frontend
     - run: npm test --passWithNoTests
-      working-directory: ./src/frontend
+      working-directory: ./backend/frontend
 
 #  Removed Python testing while I try figure out how to connect to database in GitHub
 #    - name: Set up Python 3.8
@@ -41,4 +41,4 @@ jobs:
 #      run: conda env update --file busme.yml --name base
 #    - name: Run Django tests
 #      run: python manage.py test
-#      working-directory: ./src
+#      working-directory: ./backend

@@ -22,5 +22,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')),
     path('api/', include('bus_stops.urls')),
     path('api/', include('weather.urls')),
-    path('api/', include('Prediction_API.urls'))
+    path('api/', include('prediction.urls'))
 ]
