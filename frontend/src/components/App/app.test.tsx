@@ -21,8 +21,12 @@ describe('<App/> Renders UI components on the screen', () => {
   });
   it('renders navbar on the screen', () => {
     setup();
-    expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument();
+    expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
   });
+  it('renders about section on the screen', () => {
+    setup();
+    expect(screen.getByText(/about busme/i)).toBeInTheDocument();
+  })
 });
 
 describe('<App/> BusStops API', () => {

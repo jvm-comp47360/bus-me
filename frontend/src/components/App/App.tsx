@@ -4,6 +4,7 @@ import ControlPanel from '../ControlPanel/ControlPanel';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ResultsCard from '../ResultsCard/ResultsCard';
 import Map from '../Map/Map';
+import AboutSection from '../AboutSection/AboutSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
@@ -19,6 +20,7 @@ const App = (): JSX.Element => {
       <ResultsCard duration={35}/>
       <Map />
     </div>
+    <AboutSection />
   </LocalizationProvider>;
 };
 
