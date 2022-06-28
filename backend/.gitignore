@@ -1,2 +1,3 @@
 # Ignore environment variable store file 
 *.env
+/.idea
