@@ -4,7 +4,7 @@ interface Props {
   title: string;
 }
 
-const SiteHeader = ({title}: Props): JSX.Element => {
+const SectionHeader = ({title}: Props): JSX.Element => {
   return <Typography
     variant='h3'
     sx={{
@@ -15,4 +15,4 @@ const SiteHeader = ({title}: Props): JSX.Element => {
   </Typography>;
 };
 
-export default SiteHeader;
+export default SectionHeader;

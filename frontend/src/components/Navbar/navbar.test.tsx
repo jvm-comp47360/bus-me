@@ -12,7 +12,7 @@ describe('Nav menu items appear on page', () => {
   sitePages.forEach((page): void => {
     const pageRe: RegExp = new RegExp(page, 'i');
     test(`${page} button appears`, () => {
-      expect(screen.getByRole('button', {
+      expect(screen.getByRole('link', {
         name: pageRe})).toBeInTheDocument();
     });
   });

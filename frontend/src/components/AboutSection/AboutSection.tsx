@@ -1,10 +1,10 @@
 import {Box, Container, Grid, Typography} from '@mui/material';
-import SiteHeader from '../SiteHeader/SiteHeader';
+import SectionHeader from '../SectionHeader/SectionHeader';
 
 const AboutSection = (): JSX.Element => {
   return (
     <Container id="about" sx={{borderTop: 1}}>
-      <SiteHeader title="About BusMe" />
+      <SectionHeader title="About BusMe" />
       <Grid
         container
         rowSpacing={{xs: 3, sm: 0}}

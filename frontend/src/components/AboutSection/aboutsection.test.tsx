@@ -3,7 +3,7 @@ import {render, RenderResult, screen} from '@testing-library/react';
 
 const setUp = (): RenderResult => render(<AboutSection />);
 
-test('SiteHeader with correct props renders', () => {
+test('SectionHeader with correct props renders', () => {
     setUp();
     expect(screen.getByText(/about busme/i)).toBeInTheDocument();
 });
