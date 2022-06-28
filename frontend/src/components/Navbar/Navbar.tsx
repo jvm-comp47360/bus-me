@@ -12,7 +12,7 @@ const Navbar = (): JSX.Element => {
           sx={{justifyContent: 'space-between', height: '85px'}}>
           <Box component="img"
             sx={{height: 64, ml: 1}}
-            alt="bus-me-logo"
+            alt="bus-me-logo-nav"
             src={require('../../assets/busme_logo.png')}
           />
           <Stack direction='row'

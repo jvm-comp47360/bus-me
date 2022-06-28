@@ -4,7 +4,7 @@ import {render, RenderResult, screen} from '@testing-library/react';
 beforeEach((): RenderResult => render(<Navbar />));
 
 test('BusMe logo appears in Navbar', () => {
-  expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument();
+  expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
 });
 
 describe('Nav menu items appear on page', () => {
