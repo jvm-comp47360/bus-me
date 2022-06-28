@@ -12,6 +12,9 @@ const theme = createTheme({
       paper: '#3f51b5',
     },
   },
+  typography: {
+    'fontFamily': 'Lato',
+  },
 });
 
 export default theme;
