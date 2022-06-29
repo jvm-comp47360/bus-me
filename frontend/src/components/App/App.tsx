@@ -13,6 +13,7 @@ import weatherApi from '../../mockdata/MOCK_WEATHER.json';
 import {useState} from 'react';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
+import Weather from '../../types/Weather';
 
 const App = (): JSX.Element => {
   // eslint-disable-next-line no-unused-vars
@@ -21,6 +22,7 @@ const App = (): JSX.Element => {
   const [startSelection, setStartSelection] = useState<BusStop | null>(null);
   const [finishSelection, setFinishSelection] = useState<BusStop | null>(null);
   const [dateTimeSelection, setDateTimeSelection] = useState<Date>(new Date());
+  const [weather, setWeather] = useState<Weather>(weatherApi[0]);
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
@@ -37,7 +39,10 @@ const App = (): JSX.Element => {
       setDateTimeSelection={setDateTimeSelection}
     />
     <div>
-      <WeatherCard weather={weatherApi[0]}/>
+      <WeatherCard
+        weather={weather}
+        setWeather={setWeather}
+      />
       <ResultsCard duration={35}/>
       <Map />
     </div>

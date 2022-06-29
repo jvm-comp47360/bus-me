@@ -4,9 +4,11 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
 import Weather from '../../types/Weather';
+import {Dispatch, SetStateAction} from 'react';
 
 interface Props {
   weather: Weather;
+  setWeather: Dispatch<SetStateAction<Weather>>;
 }
 
 const WeatherCard = ({weather}: Props): JSX.Element => {
