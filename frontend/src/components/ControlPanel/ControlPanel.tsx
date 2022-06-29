@@ -52,6 +52,9 @@ const ControlPanel = ({
     return;
   };
 
+  const submitDisableHandler = (): boolean =>
+    startSelection === null || finishSelection === null;
+
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <BusRouteDropdown
       busRoutes={busRoutes}
@@ -88,7 +91,7 @@ const ControlPanel = ({
     </Box>
     <Button
       variant={'contained'}
-      disabled={true}
+      disabled={submitDisableHandler()}
       style={{maxWidth: '30%'}}
       sx={{margin: 1}}
     >
