@@ -16,6 +16,8 @@ interface Props {
   setStartSelection: Dispatch<SetStateAction<BusStop | null>>;
   finishSelection: BusStop | null;
   setFinishSelection: Dispatch<SetStateAction<BusStop | null>>;
+  routeSelection: BusRoute | null;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | null>>
   dateTimeSelection: Date
   setDateTimeSelection: Dispatch<SetStateAction<Date>>;
 }
@@ -29,6 +31,8 @@ const ControlPanel = ({
   setStartSelection,
   finishSelection,
   setFinishSelection,
+  routeSelection,
+  setRouteSelection,
   dateTimeSelection,
   setDateTimeSelection,
 }: Props): JSX.Element => {
@@ -40,11 +44,17 @@ const ControlPanel = ({
   };
 
   const submitDisableHandler = (): boolean =>
-    startSelection === null || finishSelection === null;
+    routeSelection === null ||
+    startSelection === null ||
+      finishSelection === null;
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
-    console.log(startSelection, finishSelection, dateTimeSelection);
+    console.log(routeSelection,
+        startSelection,
+        finishSelection,
+        dateTimeSelection,
+    );
   };
 
   return <Box
@@ -58,6 +68,8 @@ const ControlPanel = ({
       setBusRoutes={setBusRoutes}
       busStops={busStops}
       setBusStops={setBusStops}
+      routeSelection={routeSelection}
+      setRouteSelection={setRouteSelection}
     />
     <Box
       display={'flex'}

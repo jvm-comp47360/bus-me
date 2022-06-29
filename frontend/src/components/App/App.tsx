@@ -21,6 +21,7 @@ const App = (): JSX.Element => {
   const [busStops, setBusStops] = useState<BusStop[]>([]);
   const [startSelection, setStartSelection] = useState<BusStop | null>(null);
   const [finishSelection, setFinishSelection] = useState<BusStop | null>(null);
+  const [routeSelection, setRouteSelection] = useState<BusRoute | null>(null);
   const [dateTimeSelection, setDateTimeSelection] = useState<Date>(new Date());
   const [weather, setWeather] = useState<Weather>(weatherApi[0]);
 
@@ -35,6 +36,8 @@ const App = (): JSX.Element => {
       setStartSelection={setStartSelection}
       finishSelection={finishSelection}
       setFinishSelection={setFinishSelection}
+      routeSelection={routeSelection}
+      setRouteSelection={setRouteSelection}
       dateTimeSelection={dateTimeSelection}
       setDateTimeSelection={setDateTimeSelection}
     />

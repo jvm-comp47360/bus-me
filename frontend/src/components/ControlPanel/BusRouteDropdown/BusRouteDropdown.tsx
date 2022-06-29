@@ -9,15 +9,21 @@ interface Props {
   setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
   busStops: BusStop[];
   setBusStops: Dispatch<SetStateAction<BusStop[]>>;
+  routeSelection: BusRoute | null;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | null>>;
 }
 
-const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
+const BusRouteDropdown = ({busRoutes,
+  setBusStops,
+  setRouteSelection,
+}: Props): JSX.Element => {
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
       value: BusRoute | null,
   ) => {
     if (value) {
       setBusStops(value.bus_stops);
+      setRouteSelection(value);
     } else {
       throw new Error('Something has gone wrong with the route naming.');
     }
