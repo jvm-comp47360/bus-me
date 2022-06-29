@@ -1,10 +1,17 @@
+// React
+import {Dispatch, SetStateAction} from 'react';
+
+// Components
+import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
+
+// Material UI
 import {Box, Card, CardContent, CardMedia} from '@mui/material';
 import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
-import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
+
+// Types
 import Weather from '../../types/Weather';
-import {Dispatch, SetStateAction} from 'react';
 
 interface Props {
   weather: Weather;

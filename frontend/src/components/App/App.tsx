@@ -1,7 +1,10 @@
+// CSS
 import '../../styles/main.css';
 
+// React
 import {useState} from 'react';
 
+// Components
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import WeatherCard from '../WeatherCard/WeatherCard';
@@ -9,12 +12,15 @@ import ResultsCard from '../ResultsCard/ResultsCard';
 import Map from '../Map/Map';
 import AboutSection from '../AboutSection/AboutSection';
 
+// Material UI
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
+// Mock APIs
 import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
 
+// Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import Weather from '../../types/Weather';
@@ -33,7 +39,6 @@ const App = (): JSX.Element => {
   const [routeSelection, setRouteSelection] = useState<BusRoute | null>(null);
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | null>(new Date());
-
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />

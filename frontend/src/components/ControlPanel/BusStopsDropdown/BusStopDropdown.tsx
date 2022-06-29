@@ -1,7 +1,12 @@
-import {Autocomplete, AutocompleteRenderInputParams, TextField}
-  from '@mui/material';
+// React
 import React, {Dispatch, SetStateAction,
   SyntheticEvent, useEffect, useState} from 'react';
+
+// Material UI
+import {Autocomplete, AutocompleteRenderInputParams, TextField}
+  from '@mui/material';
+
+// Props
 import BusStop from '../../../types/BusStop';
 
 interface Props {

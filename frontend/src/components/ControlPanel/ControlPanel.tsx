@@ -1,9 +1,16 @@
-import Button from '@mui/material/Button';
-import {Box, TextField, TextFieldProps} from '@mui/material';
+// React
+import {Dispatch, SetStateAction} from 'react';
+
+// Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
+
+// Material UI
+import Button from '@mui/material/Button';
+import {Box, TextField, TextFieldProps} from '@mui/material';
 import {DateTimePicker} from '@mui/x-date-pickers';
-import {Dispatch, SetStateAction} from 'react';
+
+// Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 
@@ -36,13 +43,12 @@ const ControlPanel = ({
   dateTimeSelection,
   setDateTimeSelection,
 }: Props): JSX.Element => {
-  // To be updated with introduction of state.
-  // Types to be added once we decide what to do
-  // with this function.
-  const dateTimeChangeHandler = (newDateTime: Date | null) => {
-    setDateTimeSelection(newDateTime);
+  // DateTime helper functions
+  const dateTimeChangeHandler = (selectedDateTime: Date | null) => {
+    setDateTimeSelection(selectedDateTime);
   };
 
+  // Submit Button helper functions
   const submitDisableHandler = (): boolean =>
     routeSelection === null ||
     startSelection === null ||

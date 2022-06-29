@@ -1,6 +1,11 @@
+// React
+import React, {Dispatch, SetStateAction} from 'react';
+
+// Material UI
 import {Autocomplete, AutocompleteRenderInputParams, TextField}
   from '@mui/material';
-import React, {Dispatch, SetStateAction} from 'react';
+
+// Types
 import BusRoute from '../../../types/BusRoute';
 import BusStop from '../../../types/BusStop';
 
