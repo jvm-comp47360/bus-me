@@ -30,6 +30,9 @@ const App = (): JSX.Element => {
   // eslint-disable-next-line no-unused-vars
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>(busRoutesApi);
   const [busStops, setBusStops] = useState<BusStop[]>([]);
+  const [startSelection, setStartSelection] = useState<BusStop | null>(null);
+  const [finishSelection, setFinishSelection] = useState<BusStop | null>(null);
+  const [dateTimeSelection, setDateTimeSelection] = useState<Date>(new Date());
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
@@ -38,6 +41,12 @@ const App = (): JSX.Element => {
       setBusRoutes={setBusRoutes}
       busStops={busStops}
       setBusStops={setBusStops}
+      startSelection={startSelection}
+      setStartSelection={setStartSelection}
+      finishSelection={finishSelection}
+      setFinishSelection={setFinishSelection}
+      dateTimeSelection={dateTimeSelection}
+      setDateTimeSelection={setDateTimeSelection}
     />
     <div>
       <WeatherCard weather={weatherApi[0]}/>

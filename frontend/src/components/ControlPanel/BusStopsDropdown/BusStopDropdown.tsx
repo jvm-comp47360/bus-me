@@ -13,6 +13,8 @@ interface Props {
   busStops: BusStop[];
   setBusStops: Dispatch<SetStateAction<BusStop[]>>
   label: string;
+  selection: BusStop | null;
+  setSelection: Dispatch<SetStateAction<BusStop | null>>;
 }
 
 const BusStopDropdown = ({busStops, label}: Props): JSX.Element => {

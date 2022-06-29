@@ -21,9 +21,16 @@ type BusStop = {
 
 interface Props {
   busRoutes: BusRoute[];
-  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>
+  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
   busStops: BusStop[];
-  setBusStops: Dispatch<SetStateAction<BusStop[]>>
+  setBusStops: Dispatch<SetStateAction<BusStop[]>>;
+  startSelection: BusStop | null;
+  setStartSelection: Dispatch<SetStateAction<BusStop | null>>;
+  finishSelection: BusStop | null;
+  setFinishSelection: Dispatch<SetStateAction<BusStop | null>>;
+  dateTimeSelection: Date
+  setDateTimeSelection: Dispatch<SetStateAction<Date>>;
+
 }
 
 const ControlPanel = ({
@@ -31,6 +38,12 @@ const ControlPanel = ({
   setBusRoutes,
   busStops,
   setBusStops,
+  startSelection,
+  setStartSelection,
+  finishSelection,
+  setFinishSelection,
+  dateTimeSelection,
+  setDateTimeSelection,
 }: Props): JSX.Element => {
   // To be updated with introduction of state.
   // Types to be added once we decide what to do
@@ -57,11 +70,15 @@ const ControlPanel = ({
         busStops={busStops}
         setBusStops={setBusStops}
         label={'Start'}
+        selection={startSelection}
+        setSelection={setStartSelection}
       />
       <BusStopDropdown
         busStops={busStops}
         setBusStops={setBusStops}
         label={'Finish'}
+        selection={finishSelection}
+        setSelection={setFinishSelection}
       />
       <DateTimePicker
         onChange={dateTimeChangeHandler}
