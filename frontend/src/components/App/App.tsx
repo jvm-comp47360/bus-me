@@ -11,20 +11,8 @@ import {LocalizationProvider} from '@mui/x-date-pickers';
 import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
 import {useState} from 'react';
-
-type BusRoute = {
-  id: string;
-  name: string;
-  bus_stops: BusStop[];
-};
-
-type BusStop = {
-  id: string;
-  name: string;
-  number: number;
-  latitude: string;
-  longitude: string;
-}
+import BusRoute from '../../types/BusRoute';
+import BusStop from '../../types/BusStop';
 
 const App = (): JSX.Element => {
   // eslint-disable-next-line no-unused-vars

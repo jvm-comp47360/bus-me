@@ -1,19 +1,8 @@
-import {Autocomplete, TextField} from '@mui/material';
+import {Autocomplete, AutocompleteRenderInputParams, TextField}
+  from '@mui/material';
 import React, {Dispatch, SetStateAction} from 'react';
-
-type BusRoute = {
-  id: string;
-  name: string;
-  bus_stops: BusStop[];
-};
-
-type BusStop = {
-  id: string;
-  name: string;
-  number: number;
-  latitude: string;
-  longitude: string;
-}
+import BusRoute from '../../../types/BusRoute';
+import BusStop from '../../../types/BusStop';
 
 interface Props {
   busRoutes: BusRoute[];
@@ -40,7 +29,8 @@ const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
       options={busRoutes}
       onChange={changeHandler}
       sx={{width: 300}}
-      renderInput={(params) => <TextField {...params} label={'Select Route'}/>}
+      renderInput={(params: AutocompleteRenderInputParams) =>
+        <TextField {...params} label={'Select Route'}/>}
     />
   </>;
 };

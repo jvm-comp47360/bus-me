@@ -1,13 +1,8 @@
-import {Autocomplete, TextField} from '@mui/material';
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
-
-type BusStop = {
-  id: string;
-  name: string;
-  number: number;
-  latitude: string;
-  longitude: string;
-}
+import {Autocomplete, AutocompleteRenderInputParams, TextField}
+  from '@mui/material';
+import React, {Dispatch, SetStateAction,
+  SyntheticEvent, useEffect, useState} from 'react';
+import BusStop from '../../../types/BusStop';
 
 interface Props {
   busStops: BusStop[];
@@ -44,12 +39,14 @@ const BusStopDropdown = ({
   return <>
     <Autocomplete
       inputValue={inputValue}
-      onInputChange={(e, v) => setInputValue(v)}
+      onInputChange={(e: SyntheticEvent, v: string) => setInputValue(v)}
       onChange={changeHandler}
-      getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
+      getOptionLabel={(option: BusStop) =>
+        `${option.name}, Stop No.${option.number}`}
       options={busStops}
       sx={{width: 300}}
-      renderInput={(params) => <TextField {...params} label={label}/>}
+      renderInput={(params: AutocompleteRenderInputParams) =>
+        <TextField {...params} label={label}/>}
     />
   </>;
 };

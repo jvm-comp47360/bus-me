@@ -1,23 +1,11 @@
 import Button from '@mui/material/Button';
-import {Box, TextField} from '@mui/material';
+import {Box, TextField, TextFieldProps} from '@mui/material';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import {DateTimePicker} from '@mui/x-date-pickers';
 import {Dispatch, SetStateAction} from 'react';
-
-type BusRoute = {
-  id: string;
-  name: string;
-  bus_stops: BusStop[];
-};
-
-type BusStop = {
-  id: string;
-  name: string;
-  number: number;
-  latitude: string;
-  longitude: string;
-}
+import BusRoute from '../../types/BusRoute';
+import BusStop from '../../types/BusStop';
 
 interface Props {
   busRoutes: BusRoute[];
@@ -30,7 +18,6 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | null>>;
   dateTimeSelection: Date
   setDateTimeSelection: Dispatch<SetStateAction<Date>>;
-
 }
 
 const ControlPanel = ({
@@ -96,7 +83,7 @@ const ControlPanel = ({
       <DateTimePicker
         onChange={dateTimeChangeHandler}
         value={dateTimeSelection}
-        renderInput={(params) => <TextField {...params} />}
+        renderInput={(params: TextFieldProps) => <TextField {...params} />}
       />
     </Box>
     <Button
