@@ -55,6 +55,11 @@ const ControlPanel = ({
   const submitDisableHandler = (): boolean =>
     startSelection === null || finishSelection === null;
 
+  // This is where the POST API call will go.
+  const submitClickHandler = () => {
+    console.log(startSelection, finishSelection, dateTimeSelection);
+  };
+
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
     <BusRouteDropdown
       busRoutes={busRoutes}
@@ -91,6 +96,7 @@ const ControlPanel = ({
     </Box>
     <Button
       variant={'contained'}
+      onClick={submitClickHandler}
       disabled={submitDisableHandler()}
       style={{maxWidth: '30%'}}
       sx={{margin: 1}}
