@@ -4,7 +4,7 @@ import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import {DateTimePicker} from '@mui/x-date-pickers';
 
-type BusRoutes = {
+type BusRoute = {
   id: string;
   name: string;
   bus_stops: BusStops[];
@@ -19,7 +19,7 @@ type BusStops = {
 }
 
 interface Props {
-  busRoutes: BusRoutes[];
+  busRoutes: BusRoute[];
 }
 
 const ControlPanel = ({busRoutes}: Props): JSX.Element => {
