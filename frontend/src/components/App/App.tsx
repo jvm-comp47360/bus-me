@@ -5,6 +5,7 @@ import WeatherCard from '../WeatherCard/WeatherCard';
 import ResultsCard from '../ResultsCard/ResultsCard';
 import Map from '../Map/Map';
 import AboutSection from '../AboutSection/AboutSection';
+import ContactSection from '../ContactSection/ContactSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {ThemeProvider} from '@mui/material/styles';
@@ -23,6 +24,8 @@ const App = (): JSX.Element => {
         <ResultsCard duration={35}/>
         <Map />
       </div>
+      <AboutSection />
+      <ContactSection />
     </LocalizationProvider>
   </ThemeProvider>;
 };
