@@ -4,22 +4,25 @@ import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import {DateTimePicker} from '@mui/x-date-pickers';
 
+type BusRoutes = {
+  id: string;
+  name: string;
+  bus_stops: BusStops[];
+};
+
 type BusStops = {
   id: string;
   name: string;
   number: number;
   latitude: string;
   longitude: string;
-  route: string;
 }
 
 interface Props {
-  busStops: BusStops[];
+  busRoutes: BusRoutes[];
 }
 
-const ControlPanel = ({busStops}: Props): JSX.Element => {
-  const busRoutes: string[] = [...new Set(busStops.map((item) => item.route))];
-
+const ControlPanel = ({busRoutes}: Props): JSX.Element => {
   // To be updated with introduction of state.
   // Types to be added once we decide what to do
   // with this function.
@@ -28,7 +31,7 @@ const ControlPanel = ({busStops}: Props): JSX.Element => {
   };
 
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
-    <BusRouteDropdown busRoutes={busRoutes}/>
+    <BusRouteDropdown busRoutes={['1', '2', '3']}/>
     <Box
       display={'flex'}
       flexDirection={'row'}
@@ -36,8 +39,8 @@ const ControlPanel = ({busStops}: Props): JSX.Element => {
       justifyContent={'center'}
       margin={1}
     >
-      <BusStopDropdown busStops={busStops} label={'Start'}/>
-      <BusStopDropdown busStops={busStops} label={'Finish'}/>
+      <BusStopDropdown busStops={busRoutes[0]['bus_stops']} label={'Start'}/>
+      <BusStopDropdown busStops={busRoutes[0]['bus_stops']} label={'Finish'}/>
       <DateTimePicker
         onChange={dateTimeChangeHandler}
         value={null}

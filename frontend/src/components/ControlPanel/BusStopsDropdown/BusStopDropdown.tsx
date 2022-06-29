@@ -6,7 +6,6 @@ type BusStops = {
   number: number;
   latitude: string;
   longitude: string;
-  route: string;
 }
 
 interface Props {

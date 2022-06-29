@@ -8,13 +8,13 @@ import AboutSection from '../AboutSection/AboutSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
-import busStopsApi from '../../mockdata/MOCK_BUS_STOPS.json';
+import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
 
 const App = (): JSX.Element => {
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
-    <ControlPanel busStops={busStopsApi}/>
+    <ControlPanel busRoutes={busRoutesApi}/>
     <div>
       <WeatherCard weather={weatherApi[0]}/>
       <ResultsCard duration={35}/>

@@ -2,7 +2,8 @@ import ResultsCard from './ResultsCard';
 import {render, RenderResult, screen} from '@testing-library/react';
 
 const happyPathDuration = 35;
-const setUp = (): RenderResult => render(<ResultsCard duration={happyPathDuration} />);
+const setUp = (): RenderResult =>
+  render(<ResultsCard duration={happyPathDuration} />);
 
 test('Seed phrase shows on screen', () => {
   setUp();
