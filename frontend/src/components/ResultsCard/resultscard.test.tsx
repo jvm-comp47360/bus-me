@@ -1,7 +1,7 @@
 import ResultsCard from './ResultsCard';
 import {render, RenderResult, screen} from '@testing-library/react';
 
-const happyPathDuration: number = 35;
+const happyPathDuration = 35;
 const setUp = (): RenderResult => render(<ResultsCard duration={happyPathDuration} />);
 
 test('Seed phrase shows on screen', () => {
@@ -19,7 +19,7 @@ test('Close button shows on screen', () => {
 
 test('Card w/ duration >1 minute renders', () => {
   setUp();
-  const timePhraseRe: RegExp = new RegExp(`${happyPathDuration} minutes`, 'i');
+  const timePhraseRe = new RegExp(`${happyPathDuration} minutes`, 'i');
   expect(screen.getByText(timePhraseRe)).toBeInTheDocument();
 });
 

@@ -26,7 +26,7 @@ describe('<App/> Renders UI components on the screen', () => {
   it('renders about section on the screen', () => {
     setup();
     expect(screen.getByText(/about busme/i)).toBeInTheDocument();
-  })
+  });
 });
 
 describe('<App/> BusStops API', () => {
