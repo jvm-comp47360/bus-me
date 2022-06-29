@@ -1,4 +1,4 @@
-import {Container, Grid, Typography} from '@mui/material';
+import {Button, Container, Grid, TextField, Typography} from '@mui/material';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 const ContactSection = (): JSX.Element => {
@@ -14,6 +14,25 @@ const ContactSection = (): JSX.Element => {
             ideas on improving our application or those interested in
             collaborating directly with us.
           </Typography>
+        </Grid>
+        <Grid
+          item
+          container
+          component="form"
+        >
+          <Grid item>
+            <TextField
+              label="Message"
+              id="message"
+              multiline
+              rows={4}
+            />
+          </Grid>
+          <Grid item>
+            <TextField label="Email" id="email"/>
+            <TextField label="Name" id="name"/>
+            <Button variant="contained">Send</Button>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
