@@ -28,37 +28,40 @@ type BusStop = {
   longitude: string;
 }
 
-const [busRoutes, setBusRoutes] = useState<BusRoute[]>([]);
-
-useEffect(() => {
-  // Retrieves data relating to bus stops and sets component state.
-  const getBusStops = async (): Promise<BusRoute[]> => {
-    const dataInLocalStorage: string | null = localStorage.getItem('bus_stops');
-    if (dataInLocalStorage) {
-      return getLocalBusRoutes(dataInLocalStorage);
-    } else {
-      return busRoutesApi;
-      // To be uncommented once the API is set up.
-      // return await getBusStopsFromApi();
-    }
-  };
-  getBusStops().then((data) => setBusRoutes(data));
-}, []);
-
-// Retrieves bus stop data from local storage in JSON format.
-const getLocalBusRoutes =
-    (dataInLocalStorage: string): BusRoute[] => JSON.parse(dataInLocalStorage);
-
-
-// Retrieves bus stop data from API.
-// const getBusStopsFromApi = async (): Promise<BusRoutes[]> => {
-//   const busStopsData =
-//       await fetch(busRoutesUrl).then((response) => response.json());
-//   localStorage.setItem('bus_stops', JSON.stringify(busStopsData));
-//   return busStopsData;
-// };
-
 const App = (): JSX.Element => {
+  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([]);
+
+  useEffect(() => {
+    // Retrieves data relating to bus stops and sets component state.
+    const getBusStops = async (): Promise<BusRoute[]> => {
+      const dataInLocalStorage: string | null =
+          localStorage.getItem('bus_stops');
+      if (dataInLocalStorage) {
+        return getLocalBusRoutes(dataInLocalStorage);
+      } else {
+        return busRoutesApi;
+        // To be uncommented once the API is set up.
+        // return await getBusStopsFromApi();
+      }
+    };
+    getBusStops().then((data) => setBusRoutes(data));
+  }, []);
+
+  // Retrieves bus stop data from local storage in JSON format.
+  const getLocalBusRoutes =
+      (dataInLocalStorage: string): BusRoute[] =>
+        JSON.parse(dataInLocalStorage);
+
+
+  // Retrieves bus stop data from API.
+  // const getBusStopsFromApi = async (): Promise<BusRoutes[]> => {
+  //   const busStopsData =
+  //       await fetch(busRoutesUrl).then((response) => response.json());
+  //   localStorage.setItem('bus_stops', JSON.stringify(busStopsData));
+  //   return busStopsData;
+  // };
+
+
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
     <ControlPanel busRoutes={busRoutes}/>
