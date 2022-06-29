@@ -4,10 +4,25 @@
 import csv
 from typing import List
 
-from backend.bus_stops.models import BusStops
+from backend.bus_stops.models import BusStops, Routes, RouteConnections
 
 
 def run() -> None:
+
+    routes_storage = {}
+
+    with open("routes.csv", "r", encoding="utf8") as routes_file:
+        routes_file_reader = csv.reader(routes_file)
+        next(routes_file_reader, None)
+
+        for route_entry in routes_file_reader:
+            route_id = route_entry[0]
+            route_name = route_entry[1]
+
+            current_route = Routes.objects.create(id=route_id, name=route_name)
+            routes_storage[route_name] = current_route
+
+
     """Reads through the CSV file and adds to Django database"""
     with open("stops.csv", "r", encoding="utf8") as bus_stops_file:
         bus_stops_file_reader = csv.reader(bus_stops_file)
@@ -17,12 +32,12 @@ def run() -> None:
         # BusStops.objects.all().delete()
 
         for bus_stop_entry in bus_stops_file_reader:
-            add_bus_stop_to_database(bus_stop_entry)
+            add_bus_stop_to_database(bus_stop_entry, routes_storage)
 
     bus_stops_file.close()
 
 
-def add_bus_stop_to_database(bus_stop_entry: List[str]) -> None:
+def add_bus_stop_to_database(bus_stop_entry: List[str], routes_storage) -> None:
     """Reviews a line from the CSV file and adds it to the Django model and database"""
     bus_stop_id = bus_stop_entry[0]
     name = bus_stop_entry[1]
@@ -30,4 +45,12 @@ def add_bus_stop_to_database(bus_stop_entry: List[str]) -> None:
     latitude = bus_stop_entry[3]
     longitude = bus_stop_entry[4]
 
-    BusStops.objects.create(id=bus_stop_id, name=name, number=number, latitude=latitude, longitude=longitude)
+    # This will need to be parsed into a Python list
+    routes = bus_stop_entry[5]
+
+    current_stop = BusStops.objects.create(id=bus_stop_id, name=name, number=number, latitude=latitude, longitude=longitude)
+
+    for route in routes:
+        current_route = routes_storage[route]
+        RouteConnections.objects.create(bus_stop=current_stop, route=current_route)
+
