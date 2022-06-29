@@ -3,13 +3,7 @@ import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
-
-type Weather = {
-  icon: string;
-  date: string;
-  weatherText: string;
-  temperature: string;
-}
+import Weather from '../../types/Weather';
 
 interface Props {
   weather: Weather;
