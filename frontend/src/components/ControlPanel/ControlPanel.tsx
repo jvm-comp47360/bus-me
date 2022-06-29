@@ -82,7 +82,7 @@ const ControlPanel = ({
       />
       <DateTimePicker
         onChange={dateTimeChangeHandler}
-        value={null}
+        value={dateTimeSelection}
         renderInput={(params) => <TextField {...params} />}
       />
     </Box>

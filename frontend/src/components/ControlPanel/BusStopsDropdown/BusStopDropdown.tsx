@@ -1,5 +1,5 @@
 import {Autocomplete, TextField} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 
 type BusStop = {
   id: string;
@@ -17,9 +17,25 @@ interface Props {
   setSelection: Dispatch<SetStateAction<BusStop | null>>;
 }
 
-const BusStopDropdown = ({busStops, label}: Props): JSX.Element => {
+const BusStopDropdown = ({
+  busStops,
+  label,
+  setSelection,
+}: Props): JSX.Element => {
+  const changeHandler = (
+      event: React.SyntheticEvent<Element, Event>,
+      value: BusStop | null,
+  ) => {
+    if (value) {
+      setSelection(value);
+    } else {
+      throw new Error('Something has gone wrong with the route naming.');
+    }
+  };
+
   return <>
     <Autocomplete
+      onChange={changeHandler}
       getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
       options={busStops}
       sx={{width: 300}}
