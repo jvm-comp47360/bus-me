@@ -25,25 +25,19 @@ interface Props {
 const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
-      value: string | null,
+      value: BusRoute | null,
   ) => {
-    const currentBusRoute: BusRoute | undefined =
-        busRoutes.find((x: BusRoute) => x.name === value);
-
-    // Throw error if it can't find the bus route
-    // with that name (shouldn't happen).
-    if (!currentBusRoute) {
-      throw new Error('Something has gone wrong with bus route names.');
+    if (value) {
+      setBusStops(value.bus_stops);
+    } else {
+      throw new Error('Something has gone wrong with the route naming.');
     }
-
-    const currentBusStops: BusStop[] = currentBusRoute.bus_stops;
-
-    setBusStops(currentBusStops);
   };
 
   return <>
     <Autocomplete
-      options={busRoutes.map((busRoutes) => busRoutes.name)}
+      getOptionLabel={(option: BusRoute) => option.name}
+      options={busRoutes}
       onChange={changeHandler}
       sx={{width: 300}}
       renderInput={(params) => <TextField {...params} label={'Select Route'}/>}
