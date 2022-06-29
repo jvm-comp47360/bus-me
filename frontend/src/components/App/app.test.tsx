@@ -3,7 +3,8 @@ import App from './App';
 import userEvent from '@testing-library/user-event';
 
 // A mock sample output of the Bus Stops API.
-const MOCK_BUS_STOPS = require('../../mockdata/MOCK_BUS_STOPS.json');
+import MOCK_BUS_STOPS from '../../mockdata/MOCK_BUS_STOPS.json';
+
 const BUS_STOP_SEARCH: string = MOCK_BUS_STOPS[0]['name'];
 const BUS_STOP_RESULT: string = `${MOCK_BUS_STOPS[0]['name']}, ` +
                         `Stop No.${MOCK_BUS_STOPS[0]['number']}`;
@@ -21,12 +22,17 @@ describe('<App/> Renders UI components on the screen', () => {
   });
   it('renders navbar on the screen', () => {
     setup();
-    expect(screen.getByAltText('bus-me-logo')).toBeInTheDocument();
+    expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
   });
+  it('renders about section on the screen', () => {
+    setup();
+    expect(screen.getByText(/about busme/i)).toBeInTheDocument();
+  })
 });
 
 describe('<App/> BusStops API', () => {
-  const simulateDropdown = async (dropdown: HTMLInputElement): Promise<void> => {
+  const simulateDropdown = async (dropdown: HTMLInputElement):
+      Promise<void> => {
     const view = userEvent.setup();
 
     await view.click(dropdown);
