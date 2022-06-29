@@ -1,73 +1,69 @@
 [
   {
-    "id":"8220DB000002",
-    "name":"Parnell Square West",
-    "number":2,
-    "latitude":"53.3522443611",
-    "longitude":"-6.2637232189",
-    "route": "1"
+    "id": "1",
+    "name": "1",
+    "bus_stops": [
+      {
+        "id":"8220DB000017",
+        "name":"Drumcondra Rail Stn",
+        "number":17,
+        "latitude":"53.3630783244",
+        "longitude":"-6.2583992885"
+      },
+      {
+        "id":"8220DB000018",
+        "name":"Dargle Road",
+        "number":18,
+        "latitude":"53.3658559259",
+        "longitude":"-6.2559568207"
+       }
+    ]
   },
   {
-    "id":"8220DB000017",
-    "name":"Drumcondra Rail Stn",
-    "number":17,
-    "latitude":"53.3630783244",
-    "longitude":"-6.2583992885",
-    "route": "1"
+    "id": "2",
+    "name": "2",
+    "bus_stops": [
+      {
+        "id":"8220DB000068",
+        "name":"Ventry Drive",
+        "number":68,
+        "latitude":"53.3690775080",
+        "longitude":"-6.3042452347"
+      },
+      {
+        "id":"8220DB000069",
+        "name":"Carnlough Road",
+        "number":69,
+        "latitude":"53.3713925641",
+        "longitude":"-6.3033417169"
+      }
+    ]
   },
   {
-    "id":"8220DB000018",
-    "name":"Dargle Road",
-    "number":18,
-    "latitude":"53.3658559259",
-    "longitude":"-6.2559568207",
-    "route": "1"
-  },
-  {
-    "id":"8220DB000068",
-    "name":"Ventry Drive",
-    "number":68,
-    "latitude":"53.3690775080",
-    "longitude":"-6.3042452347",
-    "route": "2"
-  },
-  {
-    "id":"8220DB000069",
-    "name":"Carnlough Road",
-    "number":69,
-    "latitude":"53.3713925641",
-    "longitude":"-6.3033417169",
-    "route": "2"
-  },
-  {
-    "id":"8220DB000071",
-    "name":"Ventry Park","number":71,
-    "latitude":"53.3702576893",
-    "longitude":"-6.3044388053",
-    "route": "2"
-  },
-  {
-    "id":"8220DB000072",
-    "name":"Ventry Drive",
-    "number":72,
-    "latitude":"53.3689699260",
-    "longitude":"-6.3042645360",
-    "route": "3"
-  },
-  {
-    "id":"8220DB000073",
-    "name":"Faussagh Avenue",
-    "number":73,
-    "latitude":"53.3673915527",
-    "longitude":"-6.3007206787",
-    "route": "3"
-  },
-  {
-    "id":"8220DB000074",
-    "name":"Faussaugh Ave Church",
-    "number":74,
-    "latitude":"53.3672002386",
-    "longitude":"-6.2954988140",
-    "route": "3"
+    "id": "3",
+    "name": "3",
+    "bus_stops": [
+      {
+        "id":"8220DB000072",
+        "name":"Ventry Drive",
+        "number":72,
+        "latitude":"53.3689699260",
+        "longitude":"-6.3042645360",
+      },
+      {
+        "id":"8220DB000073",
+        "name":"Faussagh Avenue",
+        "number":73,
+        "latitude":"53.3673915527",
+        "longitude":"-6.3007206787"
+      },
+      {
+        "id":"8220DB000074",
+        "name":"Faussaugh Ave Church",
+        "number":74,
+        "latitude":"53.3672002386",
+        "longitude":"-6.2954988140"
+      }
+    ]
   }
 ]
