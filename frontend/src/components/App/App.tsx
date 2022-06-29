@@ -1,29 +1,39 @@
 import '../../styles/main.css';
+
+import {useState} from 'react';
+
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import ResultsCard from '../ResultsCard/ResultsCard';
 import Map from '../Map/Map';
 import AboutSection from '../AboutSection/AboutSection';
+
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
 import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
-import {useState} from 'react';
+
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import Weather from '../../types/Weather';
 
 const App = (): JSX.Element => {
-  // eslint-disable-next-line no-unused-vars
+  // Information from API calls
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>(busRoutesApi);
+  const [weather, setWeather] = useState<Weather>(weatherApi[0]);
+
+  // Changes depending on currently selected route.
   const [busStops, setBusStops] = useState<BusStop[]>([]);
+
+  // Selections may be null if the user has not picked them yet.
   const [startSelection, setStartSelection] = useState<BusStop | null>(null);
   const [finishSelection, setFinishSelection] = useState<BusStop | null>(null);
   const [routeSelection, setRouteSelection] = useState<BusRoute | null>(null);
-  const [dateTimeSelection, setDateTimeSelection] = useState<Date>(new Date());
-  const [weather, setWeather] = useState<Weather>(weatherApi[0]);
+  const [dateTimeSelection, setDateTimeSelection] =
+      useState<Date | null>(new Date());
+
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />

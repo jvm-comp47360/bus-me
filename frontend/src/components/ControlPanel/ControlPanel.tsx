@@ -18,8 +18,8 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | null>>;
   routeSelection: BusRoute | null;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | null>>
-  dateTimeSelection: Date
-  setDateTimeSelection: Dispatch<SetStateAction<Date>>;
+  dateTimeSelection: Date | null
+  setDateTimeSelection: Dispatch<SetStateAction<Date | null>>;
 }
 
 const ControlPanel = ({
@@ -39,8 +39,8 @@ const ControlPanel = ({
   // To be updated with introduction of state.
   // Types to be added once we decide what to do
   // with this function.
-  const dateTimeChangeHandler = () => {
-    return;
+  const dateTimeChangeHandler = (newDateTime: Date | null) => {
+    setDateTimeSelection(newDateTime);
   };
 
   const submitDisableHandler = (): boolean =>
