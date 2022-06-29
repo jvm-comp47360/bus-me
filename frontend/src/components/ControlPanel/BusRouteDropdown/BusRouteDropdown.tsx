@@ -31,6 +31,7 @@ const BusRouteDropdown = ({busRoutes,
 
   return <>
     <Autocomplete
+      disableClearable={true}
       getOptionLabel={(option: BusRoute) => option.name}
       options={busRoutes}
       onChange={changeHandler}
