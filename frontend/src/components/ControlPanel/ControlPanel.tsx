@@ -60,7 +60,12 @@ const ControlPanel = ({
     console.log(startSelection, finishSelection, dateTimeSelection);
   };
 
-  return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
+  return <Box
+    display={'flex'}
+    flexDirection={'column'}
+    alignItems={'center'}
+    m={2}
+  >
     <BusRouteDropdown
       busRoutes={busRoutes}
       setBusRoutes={setBusRoutes}

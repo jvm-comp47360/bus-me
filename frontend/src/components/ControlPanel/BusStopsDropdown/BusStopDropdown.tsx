@@ -1,5 +1,5 @@
 import {Autocomplete, TextField} from '@mui/material';
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 type BusStop = {
   id: string;
@@ -22,6 +22,14 @@ const BusStopDropdown = ({
   label,
   setSelection,
 }: Props): JSX.Element => {
+  const [inputValue, setInputValue] = useState<string>('blah');
+  const clearInputValue = () => setInputValue('blah');
+
+  // Resetting input if the route has been changed.
+  useEffect(() => {
+    clearInputValue();
+  }, []);
+
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
       value: BusStop | null,
@@ -35,6 +43,8 @@ const BusStopDropdown = ({
 
   return <>
     <Autocomplete
+      inputValue={inputValue}
+      onInputChange={(e, v) => setInputValue(v)}
       onChange={changeHandler}
       getOptionLabel={(option) => `${option.name}, Stop No.${option.number}`}
       options={busStops}
