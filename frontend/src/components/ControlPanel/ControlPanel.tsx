@@ -3,6 +3,7 @@ import {Box, TextField} from '@mui/material';
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import {DateTimePicker} from '@mui/x-date-pickers';
+import {Dispatch, SetStateAction} from 'react';
 
 type BusRoute = {
   id: string;
@@ -20,6 +21,7 @@ type BusStops = {
 
 interface Props {
   busRoutes: BusRoute[];
+  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>
 }
 
 const ControlPanel = ({busRoutes}: Props): JSX.Element => {

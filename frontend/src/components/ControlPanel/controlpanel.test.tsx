@@ -3,12 +3,13 @@ import {render, RenderResult, screen} from '@testing-library/react';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import MOCK_BUS_STOPS from '../../mockdata/MOCK_BUS_ROUTES.json';
+import setBusRoutes from '../App/App';
 
 // The setup automatically passes in the mock Bus Stops API,
 // as we are testing the call at the App component level.
 const setup = (): RenderResult => render(
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <ControlPanel busRoutes={MOCK_BUS_STOPS}/>,
+      <ControlPanel busRoutes={MOCK_BUS_STOPS} setBusRoutes={setBusRoutes}/>,
     </LocalizationProvider>,
 );
 
@@ -25,7 +26,8 @@ describe('<ControlPanel/> Rendering UI elements', () => {
     expect.assertions(1);
     setup();
 
-    expect(screen.getByRole('textbox', {name: /choose date/i})).toBeInTheDocument();
+    expect(screen.getByRole('textbox', {name: /choose date/i}))
+        .toBeInTheDocument();
   });
 
   it('submit button should appear on the screen', () => {

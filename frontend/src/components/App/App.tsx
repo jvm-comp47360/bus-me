@@ -34,7 +34,7 @@ const App = (): JSX.Element => {
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
-    <ControlPanel busRoutes={busRoutes}/>
+    <ControlPanel busRoutes={busRoutes} setBusRoutes={setBusRoutes}/>
     <div>
       <WeatherCard weather={weatherApi[0]}/>
       <ResultsCard duration={35}/>
