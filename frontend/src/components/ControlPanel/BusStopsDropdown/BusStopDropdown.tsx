@@ -1,6 +1,6 @@
 import {Autocomplete, TextField} from '@mui/material';
 
-type BusStops = {
+type BusStop = {
   id: string;
   name: string;
   number: number;
@@ -9,7 +9,7 @@ type BusStops = {
 }
 
 interface Props {
-  busStops: BusStops[];
+  busStops: BusStop[];
   label: string;
 }
 

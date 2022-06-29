@@ -12,8 +12,6 @@ import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
 import weatherApi from '../../mockdata/MOCK_WEATHER.json';
 import {useState} from 'react';
 
-// const busRoutesUrl = 'http://localhost:8000/api/bus_stops';
-
 type BusRoute = {
   id: string;
   name: string;
@@ -31,10 +29,16 @@ type BusStop = {
 const App = (): JSX.Element => {
   // eslint-disable-next-line no-unused-vars
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>(busRoutesApi);
+  const [busStops, setBusStops] = useState<BusStop[]>([]);
 
   return <LocalizationProvider dateAdapter={AdapterDateFns}>
     <Navbar />
-    <ControlPanel busRoutes={busRoutes} setBusRoutes={setBusRoutes}/>
+    <ControlPanel
+      busRoutes={busRoutes}
+      setBusRoutes={setBusRoutes}
+      busStops={busStops}
+      setBusStops={setBusStops}
+    />
     <div>
       <WeatherCard weather={weatherApi[0]}/>
       <ResultsCard duration={35}/>

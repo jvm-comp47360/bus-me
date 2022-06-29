@@ -8,10 +8,10 @@ import {Dispatch, SetStateAction} from 'react';
 type BusRoute = {
   id: string;
   name: string;
-  bus_stops: BusStops[];
+  bus_stops: BusStop[];
 };
 
-type BusStops = {
+type BusStop = {
   id: string;
   name: string;
   number: number;
@@ -22,9 +22,16 @@ type BusStops = {
 interface Props {
   busRoutes: BusRoute[];
   setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>
+  busStops: BusStop[];
+  setBusStops: Dispatch<SetStateAction<BusStop[]>>
 }
 
-const ControlPanel = ({busRoutes}: Props): JSX.Element => {
+const ControlPanel = ({
+  busRoutes,
+  setBusRoutes,
+  busStops,
+  setBusStops,
+}: Props): JSX.Element => {
   // To be updated with introduction of state.
   // Types to be added once we decide what to do
   // with this function.
@@ -33,7 +40,12 @@ const ControlPanel = ({busRoutes}: Props): JSX.Element => {
   };
 
   return <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
-    <BusRouteDropdown busRoutes={['1', '2', '3']}/>
+    <BusRouteDropdown
+      busRoutes={busRoutes}
+      setBusRoutes={setBusRoutes}
+      busStops={busStops}
+      setBusStops={setBusStops}
+    />
     <Box
       display={'flex'}
       flexDirection={'row'}
