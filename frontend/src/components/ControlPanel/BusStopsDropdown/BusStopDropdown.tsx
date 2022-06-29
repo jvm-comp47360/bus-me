@@ -1,4 +1,5 @@
 import {Autocomplete, TextField} from '@mui/material';
+import {Dispatch, SetStateAction} from 'react';
 
 type BusStop = {
   id: string;
@@ -10,6 +11,7 @@ type BusStop = {
 
 interface Props {
   busStops: BusStop[];
+  setBusStops: Dispatch<SetStateAction<BusStop[]>>
   label: string;
 }
 

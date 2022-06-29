@@ -30,7 +30,7 @@ const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
     const currentBusRoute: BusRoute | undefined =
         busRoutes.find((x: BusRoute) => x.name === value);
 
-    // Throw error if can't find the bus route
+    // Throw error if it can't find the bus route
     // with that name (shouldn't happen).
     if (!currentBusRoute) {
       throw new Error('Something has gone wrong with bus route names.');
@@ -39,7 +39,6 @@ const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
     const currentBusStops: BusStop[] = currentBusRoute.bus_stops;
 
     setBusStops(currentBusStops);
-    console.log(currentBusStops);
   };
 
   return <>

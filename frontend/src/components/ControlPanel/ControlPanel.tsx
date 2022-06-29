@@ -53,8 +53,16 @@ const ControlPanel = ({
       justifyContent={'center'}
       margin={1}
     >
-      <BusStopDropdown busStops={busRoutes[0]['bus_stops']} label={'Start'}/>
-      <BusStopDropdown busStops={busRoutes[0]['bus_stops']} label={'Finish'}/>
+      <BusStopDropdown
+        busStops={busStops}
+        setBusStops={setBusStops}
+        label={'Start'}
+      />
+      <BusStopDropdown
+        busStops={busStops}
+        setBusStops={setBusStops}
+        label={'Finish'}
+      />
       <DateTimePicker
         onChange={dateTimeChangeHandler}
         value={null}
