@@ -1,5 +1,5 @@
 import {Autocomplete, TextField} from '@mui/material';
-import {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 
 type BusRoute = {
   id: string;
@@ -22,10 +22,30 @@ interface Props {
   setBusStops: Dispatch<SetStateAction<BusStop[]>>;
 }
 
-const BusRouteDropdown = ({busRoutes}: Props): JSX.Element => {
+const BusRouteDropdown = ({busRoutes, setBusStops}: Props): JSX.Element => {
+  const changeHandler = (
+      event: React.SyntheticEvent<Element, Event>,
+      value: string | null,
+  ) => {
+    const currentBusRoute: BusRoute | undefined =
+        busRoutes.find((x: BusRoute) => x.name === value);
+
+    // Throw error if can't find the bus route
+    // with that name (shouldn't happen).
+    if (!currentBusRoute) {
+      throw new Error('Something has gone wrong with bus route names.');
+    }
+
+    const currentBusStops: BusStop[] = currentBusRoute.bus_stops;
+
+    setBusStops(currentBusStops);
+    console.log(currentBusStops);
+  };
+
   return <>
     <Autocomplete
-      options={busRoutes.map((busRoutes) => busRoutes['name'])}
+      options={busRoutes.map((busRoutes) => busRoutes.name)}
+      onChange={changeHandler}
       sx={{width: 300}}
       renderInput={(params) => <TextField {...params} label={'Select Route'}/>}
     />
