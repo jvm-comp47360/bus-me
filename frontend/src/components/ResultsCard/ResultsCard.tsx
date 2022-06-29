@@ -15,7 +15,6 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
 
   return <Card sx={{
     color: 'white',
-    backgroundColor: '#757DE8',
     minWidth: '300px',
     width: '33vw',
   }}>
@@ -23,13 +22,12 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
       <Typography variant="h6">
         Your journey will take approx.
       </Typography>
-      <Typography variant="h3">
+      <Typography variant="h4">
         {durationPhrase}
       </Typography>
     </CardContent>
     <CardActions sx={{justifyContent: 'center', py: 1}}>
-      <Button variant='contained'
-        sx={{backgroundColor: '#ffeb3b', color: 'black'}}>Close</Button>
+      <Button variant='contained'>Close</Button>
     </CardActions>
   </Card>;
 };
