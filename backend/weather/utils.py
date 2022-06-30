@@ -4,6 +4,7 @@ import schedule
 import environ
 import os
 import time
+from pathlib import Path
 
 env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
