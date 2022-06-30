@@ -2,13 +2,23 @@
 // import BusRouteDropdown from './BusRouteDropdown';
 // import userEvent from '@testing-library/user-event';
 // import {UserEvent} from '@testing-library/user-event/dist/types/setup';
+// import setBusRoutes from '../../App/App';
+// import setBusStops from '../../App/App';
+// import setRouteSelection from '../../App/App';
+// import MOCK_BUS_ROUTES from '../../../mockdata/MOCK_BUS_ROUTES.json';
 //
-// const MOCK_BUS_ROUTES: string[] = ['1', '2', '3'];
-// const BUS_ROUTE_SEARCH: string = MOCK_BUS_ROUTES[0];
+// const BUS_ROUTE_SEARCH: string = MOCK_BUS_ROUTES[0]['name'];
 // const LABEL = 'Select Route';
 //
 // const setup = (): RenderResult => render(
-//     <BusRouteDropdown busRoutes={MOCK_BUS_ROUTES}/>,
+//     <BusRouteDropdown
+//       busRoutes={MOCK_BUS_ROUTES}
+//       setBusRoutes={setBusRoutes}
+//       busStops={[]}
+//       setBusStops={setBusStops}
+//       routeSelection={undefined}
+//       setRouteSelection={setRouteSelection}
+//     />,
 // );
 //
 // describe('<BusRouteDropdown> Functionality of MUI Autocomplete', () => {
@@ -37,4 +47,4 @@
 //         expect(busRouteDropdown.value).toBe(BUS_ROUTE_SEARCH);
 //       });
 // });
-//
+

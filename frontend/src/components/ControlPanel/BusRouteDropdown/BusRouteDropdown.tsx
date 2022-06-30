@@ -14,8 +14,8 @@ interface Props {
   setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
   busStops: BusStop[];
   setBusStops: Dispatch<SetStateAction<BusStop[]>>;
-  routeSelection: BusRoute | null;
-  setRouteSelection: Dispatch<SetStateAction<BusRoute | null>>;
+  routeSelection: BusRoute | undefined;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 const BusRouteDropdown = ({busRoutes,
@@ -24,7 +24,7 @@ const BusRouteDropdown = ({busRoutes,
 }: Props): JSX.Element => {
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
-      value: BusRoute | null,
+      value: BusRoute | undefined,
   ) => {
     if (value) {
       setBusStops(value.bus_stops);

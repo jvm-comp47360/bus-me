@@ -19,14 +19,16 @@ interface Props {
   setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
   busStops: BusStop[];
   setBusStops: Dispatch<SetStateAction<BusStop[]>>;
-  startSelection: BusStop | null;
-  setStartSelection: Dispatch<SetStateAction<BusStop | null>>;
-  finishSelection: BusStop | null;
-  setFinishSelection: Dispatch<SetStateAction<BusStop | null>>;
-  routeSelection: BusRoute | null;
-  setRouteSelection: Dispatch<SetStateAction<BusRoute | null>>
-  dateTimeSelection: Date | null
-  setDateTimeSelection: Dispatch<SetStateAction<Date | null>>;
+  startSelection: BusStop | undefined;
+  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  finishSelection: BusStop | undefined;
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  routeSelection: BusRoute | undefined;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>
+  dateTimeSelection: Date | undefined;
+  setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
+  prediction: number | undefined;
+  setPrediction: Dispatch<SetStateAction<number | undefined>>
 }
 
 const ControlPanel = ({
@@ -45,14 +47,16 @@ const ControlPanel = ({
 }: Props): JSX.Element => {
   // DateTime helper functions
   const dateTimeChangeHandler = (selectedDateTime: Date | null) => {
-    setDateTimeSelection(selectedDateTime);
+    if (selectedDateTime) {
+      setDateTimeSelection(selectedDateTime);
+    }
   };
 
   // Submit Button helper functions
   const submitDisableHandler = (): boolean =>
-    routeSelection === null ||
-    startSelection === null ||
-      finishSelection === null;
+    routeSelection === undefined ||
+    startSelection === undefined ||
+      finishSelection === undefined;
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
