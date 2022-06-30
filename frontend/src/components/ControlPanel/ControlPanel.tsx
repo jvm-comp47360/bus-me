@@ -44,6 +44,7 @@ const ControlPanel = ({
   setRouteSelection,
   dateTimeSelection,
   setDateTimeSelection,
+  setPrediction,
 }: Props): JSX.Element => {
   // DateTime helper functions
   const dateTimeChangeHandler = (selectedDateTime: Date | null) => {
@@ -65,6 +66,7 @@ const ControlPanel = ({
         finishSelection,
         dateTimeSelection,
     );
+    setPrediction(35.0);
   };
 
   return <Box
