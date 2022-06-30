@@ -1,41 +1,68 @@
-import {Button, Container, Grid, TextField, Typography} from '@mui/material';
+import {Button, Grid, TextField, Typography} from '@mui/material';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 const ContactSection = (): JSX.Element => {
   return (
-    <Container id="contact">
-      <SectionHeader title="Contact Us" />
-      <Grid container>
-        <Grid item>
+    <Grid
+      container
+      id="contact"
+      sx={{
+        borderTop: 1,
+        justifyContent: 'center',
+        width: '100%',
+      }}>
+      <Grid item>
+        <SectionHeader title="Contact Us" />
+      </Grid>
+      <Grid
+        item
+        container
+        sx={{
+          justifyContent: 'center',
+        }}
+      >
+        <Grid item sx={{width: '75%'}}>
           <Typography
             variant="h5"
-            paragraph>
-            Get in touch with BusMe using the form below. We welcome your
-            ideas on improving our application or those interested in
-            collaborating directly with us.
+            paragraph
+            sx={{'textAlign': 'center'}}>
+            Get in touch with BusMe using the form below. We welcome new
+            collaboraters as well as suggestions and feedback.
           </Typography>
         </Grid>
         <Grid
           item
           container
           component="form"
+          sx={{'justifyContent': 'center'}}
         >
-          <Grid item>
+          <Grid
+            item
+            sx={{width: '75%'}}
+          >
             <TextField
               label="Message"
               id="message"
               multiline
               rows={4}
+              sx={{'width': '100%'}}
             />
           </Grid>
-          <Grid item>
+          <Grid
+            item
+            container
+            sx={{
+              justifyContent: 'space-between',
+              width: '75%',
+            }}
+          >
             <TextField label="Email" id="email"/>
             <TextField label="Name" id="name"/>
             <Button variant="contained">Send</Button>
           </Grid>
         </Grid>
       </Grid>
-    </Container>
+    </Grid>
   );
 };
 
