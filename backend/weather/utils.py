@@ -5,9 +5,6 @@ import environ
 import os
 import time
 
-env = environ.Env()
-environ.Env.read_env()
-
 # Obtaining OpenWeather API key
 OpenWeatherAPI_KEY = env("WEATHER_API_KEY")
 OpenWeatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
