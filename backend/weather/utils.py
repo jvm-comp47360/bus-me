@@ -5,8 +5,13 @@ import environ
 import os
 import time
 
+env = environ.Env()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 # Obtaining OpenWeather API key
-OpenWeatherAPI_KEY = env("WEATHER_API_KEY")
+OpenWeatherAPI_KEY = os.getenv("WEATHER_API_KEY")
 OpenWeatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
