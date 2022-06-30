@@ -18,7 +18,7 @@ def pull_current_weather_from_api() -> Dict[str, str]:
     lat = 53.33947559137039
     lon = -6.248868208190408
     weather_response = requests.get(OpenWeatherAPI_URL.format(lat, lon, OpenWeatherAPI_KEY))
-    time.sleep(1)
+    print(weather_response.json())
     icon = weather_response.json()['weather'][0]['icon']
     weather = weather_response.json()['weather'][0]['main']
     temperature = weather_response.json()['main']['temp']
