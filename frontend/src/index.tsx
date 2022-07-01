@@ -1,13 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './components/App/App';
 
-const root = document.getElementById('root') as HTMLElement;
+const htmlRoot = document.getElementById('root') as HTMLElement;
 
-if (root) {
-  ReactDOM.render(
+if (htmlRoot) {
+  const reactRoot = ReactDOM.createRoot(htmlRoot);
+
+  reactRoot.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>,
-      root);
+  );
 } else throw Error('There is a problem with the HTML document');

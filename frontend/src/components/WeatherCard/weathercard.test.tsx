@@ -1,13 +1,9 @@
-import WeatherCard from './WeatherCard';
 import {render, RenderResult, screen} from '@testing-library/react';
-import MOCK_WEATHER_DATA from '../../mockdata/MOCK_WEATHER.json';
 
-type Weather = {
-  icon: string;
-  date: string;
-  weatherText: string;
-  temperature: string;
-}
+import WeatherCard from './WeatherCard';
+
+import MOCK_WEATHER_DATA from '../../mockdata/MOCK_WEATHER.json';
+import Weather from '../../types/Weather';
 
 const MOCK_WEATHER_API: Weather = MOCK_WEATHER_DATA[0];
 const ICON: string = MOCK_WEATHER_API['icon'];
@@ -16,7 +12,7 @@ const WEATHERTEXT: string = MOCK_WEATHER_API['weatherText'];
 const TEMPERATURE: string = MOCK_WEATHER_API['temperature'];
 
 const setup = (): RenderResult => render(
-    <WeatherCard weather={MOCK_WEATHER_API}/>,
+    <WeatherCard/>,
 );
 
 describe('<WeatherCard/> Weather icon functionality', () => {
@@ -33,7 +29,6 @@ describe('<WeatherCard/> Weather icon functionality', () => {
         .toHaveAttribute('src', `${ICON}.png`);
   });
 });
-
 
 describe('<WeatherCard/> Text display', () => {
   it('must show the correct date', () => {
