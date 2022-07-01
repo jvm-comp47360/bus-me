@@ -1,9 +1,6 @@
 // React
 import React, {Dispatch, SetStateAction} from 'react';
 
-import {Autocomplete, TextField} from '@mui/material';
-// import theme from '../../App/BusMeTheme';
-
 // Material UI
 import {Autocomplete, AutocompleteRenderInputParams, TextField}
   from '@mui/material';
