@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import {render, RenderResult, screen} from '@testing-library/react';
 
+// eslint-disable-next-line testing-library/no-render-in-setup
 beforeEach((): RenderResult => render(<Navbar />));
 
 test('BusMe logo appears in Navbar', () => {

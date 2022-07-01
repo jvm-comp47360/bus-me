@@ -26,4 +26,3 @@ describe('<App/> Renders UI components on the screen', () => {
   });
 });
 
-
