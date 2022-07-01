@@ -11,15 +11,10 @@ import BusStop from '../../../types/BusStop';
 
 interface Props {
   busRoutes: BusRoute[];
-  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
-  busStops: BusStop[];
-  setBusStops: Dispatch<SetStateAction<BusStop[]>>;
-  routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 const BusRouteDropdown = ({busRoutes,
-  setBusStops,
   setRouteSelection,
 }: Props): JSX.Element => {
   const changeHandler = (
@@ -27,7 +22,6 @@ const BusRouteDropdown = ({busRoutes,
       value: BusRoute | undefined,
   ) => {
     if (value) {
-      setBusStops(value.bus_stops);
       setRouteSelection(value);
     } else {
       throw new Error('Something has gone wrong with the route naming.');

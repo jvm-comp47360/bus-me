@@ -1,9 +1,10 @@
 // React
-import {Dispatch, SetStateAction} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
+import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
@@ -32,20 +33,21 @@ interface Props {
 }
 
 const ControlPanel = ({
-  busRoutes,
-  setBusRoutes,
-  busStops,
-  setBusStops,
   startSelection,
   setStartSelection,
   finishSelection,
   setFinishSelection,
   routeSelection,
   setRouteSelection,
-  dateTimeSelection,
-  setDateTimeSelection,
+                        prediction,
   setPrediction,
 }: Props): JSX.Element => {
+
+  const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
+
+  const [dateTimeSelection, setDateTimeSelection] =
+      useState<Date | undefined>(new Date());
+
   // DateTime helper functions
   const dateTimeChangeHandler = (selectedDateTime: Date | null) => {
     if (selectedDateTime) {
@@ -77,10 +79,6 @@ const ControlPanel = ({
   >
     <BusRouteDropdown
       busRoutes={busRoutes}
-      setBusRoutes={setBusRoutes}
-      busStops={busStops}
-      setBusStops={setBusStops}
-      routeSelection={routeSelection}
       setRouteSelection={setRouteSelection}
     />
     <Box
@@ -91,15 +89,11 @@ const ControlPanel = ({
       margin={1}
     >
       <BusStopDropdown
-        busStops={busStops}
-        setBusStops={setBusStops}
         label={'Start'}
         selection={startSelection}
         setSelection={setStartSelection}
       />
       <BusStopDropdown
-        busStops={busStops}
-        setBusStops={setBusStops}
         label={'Finish'}
         selection={finishSelection}
         setSelection={setFinishSelection}
