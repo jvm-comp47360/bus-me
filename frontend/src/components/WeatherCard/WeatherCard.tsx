@@ -1,6 +1,3 @@
-// React
-import {Dispatch, SetStateAction} from 'react';
-
 // Components
 import WeatherCardInfoItem from './WeatherCardInfoItem/WeatherCardInfoItem';
 

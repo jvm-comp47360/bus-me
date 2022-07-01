@@ -7,7 +7,6 @@ import {Autocomplete, AutocompleteRenderInputParams, TextField}
 
 // Types
 import BusRoute from '../../../types/BusRoute';
-import BusStop from '../../../types/BusStop';
 
 interface Props {
   busRoutes: BusRoute[];

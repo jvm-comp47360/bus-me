@@ -16,16 +16,13 @@ import AboutSection from '../AboutSection/AboutSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
-// Mock APIs
-import busRoutesApi from '../../mockdata/MOCK_BUS_ROUTES.json';
-
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 
 const App = (): JSX.Element => {
-
   // Information from API calls
+  // eslint-disable-next-line no-unused-vars
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
 
   // Selections may be undefined if the user has not picked them yet.
@@ -45,7 +42,6 @@ const App = (): JSX.Element => {
       setFinishSelection={setFinishSelection}
       routeSelection={routeSelection}
       setRouteSelection={setRouteSelection}
-      prediction={prediction}
       setPrediction={setPrediction}
     />
     <div>

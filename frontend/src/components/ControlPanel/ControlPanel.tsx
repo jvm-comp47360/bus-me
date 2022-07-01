@@ -16,19 +16,12 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 
 interface Props {
-  busRoutes: BusRoute[];
-  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>;
-  busStops: BusStop[];
-  setBusStops: Dispatch<SetStateAction<BusStop[]>>;
   startSelection: BusStop | undefined;
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   finishSelection: BusStop | undefined;
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>
-  dateTimeSelection: Date | undefined;
-  setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
-  prediction: number | undefined;
   setPrediction: Dispatch<SetStateAction<number | undefined>>
 }
 
@@ -39,10 +32,8 @@ const ControlPanel = ({
   setFinishSelection,
   routeSelection,
   setRouteSelection,
-                        prediction,
   setPrediction,
 }: Props): JSX.Element => {
-
   const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
 
   const [dateTimeSelection, setDateTimeSelection] =
@@ -89,13 +80,15 @@ const ControlPanel = ({
       margin={1}
     >
       <BusStopDropdown
+        busRoutes={busRoutes}
+        routeSelection={routeSelection}
         label={'Start'}
-        selection={startSelection}
         setSelection={setStartSelection}
       />
       <BusStopDropdown
+        busRoutes={busRoutes}
+        routeSelection={routeSelection}
         label={'Finish'}
-        selection={finishSelection}
         setSelection={setFinishSelection}
       />
       <DateTimePicker
