@@ -1,7 +1,14 @@
 import {useLoadScript, GoogleMap} from '@react-google-maps/api';
 import {Container} from '@mui/material';
 
-const Map = (): JSX.Element => {
+import BusStop from '../../types/BusStop';
+
+interface Props {
+  startSelection: BusStop | undefined,
+  finishSelection: BusStop | undefined,
+}
+
+const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
