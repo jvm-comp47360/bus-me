@@ -1,4 +1,5 @@
 import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
+import {useMemo} from 'react';
 import {Container} from '@mui/material';
 
 import BusStop from '../../types/BusStop';
@@ -12,11 +13,11 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
-  const centerCoords: google.maps.LatLngLiteral = {
+  const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
     lat: 53.33947559137039,
     lng: -6.248868208190408,
-  };
-  const mapOptions: google.maps.MapOptions = {
+  }), []);
+  const mapOptions: google.maps.MapOptions = useMemo(() => ({
     streetViewControl: false,
     mapTypeControl: false,
     clickableIcons: false,
@@ -30,7 +31,7 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
         east: -5.77620,
       },
     },
-  };
+  }), []);
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
