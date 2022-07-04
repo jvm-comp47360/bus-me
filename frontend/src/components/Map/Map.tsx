@@ -1,5 +1,7 @@
 import {useLoadScript, GoogleMap} from '@react-google-maps/api';
 import {Container} from '@mui/material';
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ResultsCard from "../ResultsCard/ResultsCard";
 
 const Map = (): JSX.Element => {
   const {isLoaded} = useLoadScript({
@@ -27,7 +29,24 @@ const Map = (): JSX.Element => {
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
-    <Container disableGutters={true} className="map">
+    <Container
+        disableGutters={true}
+        className="map"
+        sx={{position: 'relative',
+          zIndex: 0,
+    }}
+    >
+        <WeatherCard/>
+      <div style={{
+        position: 'absolute',
+        zIndex: 1,
+        top: '25%',
+        left: '29%',
+      }}>
+        <ResultsCard duration={35}/>
+      </div>
+
+
       <GoogleMap
         zoom={11.7}
         center={centerCoords}
