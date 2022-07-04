@@ -50,7 +50,10 @@ const App = (): JSX.Element => {
       />
       <div>
         <WeatherCard/>
-        <ResultsCard duration={35}/>
+        {(prediction) ?
+          <ResultsCard duration={prediction}/> :
+          null
+        }
         <Map
           startSelection={startSelection}
           finishSelection={finishSelection}
