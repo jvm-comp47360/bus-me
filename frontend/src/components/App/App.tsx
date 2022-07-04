@@ -24,8 +24,6 @@ import BusStop from '../../types/BusStop';
 import theme from './Theme';
 
 const App = (): JSX.Element => {
-  // Information from API calls
-  // eslint-disable-next-line no-unused-vars
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
 
   // Selections may be undefined if the user has not picked them yet.
