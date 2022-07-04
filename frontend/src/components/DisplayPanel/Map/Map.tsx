@@ -2,7 +2,7 @@ import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
 import {useMemo} from 'react';
 import {Container} from '@mui/material';
 
-import BusStop from '../../types/BusStop';
+import BusStop from '../../../types/BusStop';
 
 interface Props {
   startSelection: BusStop | undefined,

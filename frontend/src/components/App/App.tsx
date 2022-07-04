@@ -7,10 +7,8 @@ import {useState} from 'react';
 // Components
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import ResultsCard from '../ResultsCard/ResultsCard';
-import Map from '../Map/Map';
 import AboutSection from '../AboutSection/AboutSection';
+import DisplayPanel from '../DisplayPanel/DisplayPanel';
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -46,19 +44,12 @@ const App = (): JSX.Element => {
         setRouteSelection={setRouteSelection}
         setPrediction={setPrediction}
       />
-      <div>
-        <WeatherCard/>
-        {(prediction) ?
-          <ResultsCard
-            duration={prediction}
-            setPrediction={setPrediction}/> :
-          null
-        }
-        <Map
-          startSelection={startSelection}
-          finishSelection={finishSelection}
-        />
-      </div>
+      <DisplayPanel
+        prediction={prediction}
+        setPrediction={setPrediction}
+        startSelection={startSelection}
+        finishSelection={finishSelection}
+      />
       <AboutSection />
       <ContactSection />
     </LocalizationProvider>

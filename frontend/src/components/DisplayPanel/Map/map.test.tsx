@@ -2,7 +2,7 @@ import Map from './Map';
 import {render} from '@testing-library/react';
 import * as reactGoogleMaps from '@react-google-maps/api';
 
-import busRoutesAPI from '../../mockdata/MOCK_BUS_ROUTES.json';
+import busRoutesAPI from '../../../mockdata/MOCK_BUS_ROUTES.json';
 
 test('useLoadScript called during render', () => {
   const loadScriptMethod = jest.spyOn(reactGoogleMaps, 'useLoadScript');
