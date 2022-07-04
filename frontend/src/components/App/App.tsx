@@ -51,7 +51,7 @@ const App = (): JSX.Element => {
       <div>
         <WeatherCard/>
         <ResultsCard duration={35}/>
-        <Map 
+        <Map
           startSelection={startSelection}
           finishSelection={finishSelection}
         />

@@ -1,4 +1,4 @@
-import {useLoadScript, GoogleMap} from '@react-google-maps/api';
+import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
 import {Container} from '@mui/material';
 
 import BusStop from '../../types/BusStop';
@@ -40,6 +40,16 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
         center={centerCoords}
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
+        {(startSelection) && (finishSelection) ?
+            [startSelection, finishSelection].map((selection) =>
+              <Marker
+                key={selection?.number}
+                position={{
+                  lat: +selection.latitude,
+                  lng: +selection.longitude,
+                }}/>
+            ):
+        null}
       </GoogleMap>
     </Container>;
 };
