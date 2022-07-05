@@ -1,6 +1,5 @@
 import {render, RenderResult, screen} from '@testing-library/react';
 import BusRouteDropdown from './BusRouteDropdown';
-import setRouteSelection from '../../App/App';
 import MOCK_BUS_ROUTES from '../../../mockdata/MOCK_BUS_ROUTES.json';
 import BUS_ROUTES_API from '../../../mockdata/MOCK_BUS_ROUTES.json';
 import {UserEvent} from '@testing-library/user-event/dist/types/setup';
@@ -14,7 +13,7 @@ const BUS_ROUTE_GUESS: string = BUS_ROUTES_API[0]['name'].substring(0);
 const setup = (): RenderResult => render(
     <BusRouteDropdown
       busRoutes={MOCK_BUS_ROUTES}
-      setRouteSelection={setRouteSelection}
+      setRouteSelection={jest.fn()}
     />,
 );
 
