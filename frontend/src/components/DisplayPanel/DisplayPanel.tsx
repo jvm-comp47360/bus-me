@@ -26,7 +26,7 @@ const DisplayPanel = ({
       position: 'absolute',
       zIndex: 1,
       top: '5%',
-      left: '7%',
+      left: '15%',
     }}>
       <WeatherCard />
     </Box>
