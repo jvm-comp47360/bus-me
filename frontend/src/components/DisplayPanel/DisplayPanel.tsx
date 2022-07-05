@@ -21,12 +21,26 @@ const DisplayPanel = ({
   finishSelection,
   setPrediction,
 }: Props): JSX.Element => {
-  return <Box>
-    <WeatherCard />
+  return <Box sx={{position: 'relative', zIndex: 0}}>
+    <Box sx={{
+      position: 'absolute',
+      zIndex: 1,
+      top: '5%',
+      left: '7%',
+    }}>
+      <WeatherCard />
+    </Box>
     {(prediction) ?
-    <ResultsCard
-      duration={prediction}
-      setPrediction={setPrediction}/> :
+    <Box sx={{
+      position: 'absolute',
+      zIndex: 1,
+      top: '25%',
+      left: '33%',
+    }}>
+      <ResultsCard
+        duration={prediction}
+        setPrediction={setPrediction}/>
+    </Box> :
     null}
     <Map
       startSelection={startSelection}
