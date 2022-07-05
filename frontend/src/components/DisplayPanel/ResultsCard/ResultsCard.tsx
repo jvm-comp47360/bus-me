@@ -4,14 +4,19 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
+import {Dispatch, SetStateAction} from 'react';
+
 interface Props {
   duration: number;
+  setPrediction: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const ResultsCard = ({duration}: Props): JSX.Element => {
+const ResultsCard = ({duration, setPrediction}: Props): JSX.Element => {
   const durationPhrase: string = duration > 1 ?
   `${duration} Minutes` :
   `${duration} Minute`;
+
+  const closeClickHandler = () => setPrediction(undefined);
 
   return <Card sx={{
     color: 'white',
@@ -27,7 +32,11 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
       </Typography>
     </CardContent>
     <CardActions sx={{justifyContent: 'center', py: 1}}>
-      <Button variant='contained'>Close</Button>
+      <Button
+        variant='contained'
+        onClick={closeClickHandler}
+      >Close
+      </Button>
     </CardActions>
   </Card>;
 };

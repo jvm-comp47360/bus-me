@@ -2,8 +2,8 @@ import {render, RenderResult, screen} from '@testing-library/react';
 
 import WeatherCard from './WeatherCard';
 
-import MOCK_WEATHER_DATA from '../../mockdata/MOCK_WEATHER.json';
-import Weather from '../../types/Weather';
+import MOCK_WEATHER_DATA from '../../../mockdata/MOCK_WEATHER.json';
+import Weather from '../../../types/Weather';
 
 const MOCK_WEATHER_API: Weather = MOCK_WEATHER_DATA[0];
 const ICON: string = MOCK_WEATHER_API['icon'];

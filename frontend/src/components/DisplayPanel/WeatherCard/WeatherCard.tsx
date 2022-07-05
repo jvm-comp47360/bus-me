@@ -8,8 +8,8 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import BookIcon from '@mui/icons-material/Book';
 
 // Types
-import Weather from '../../types/Weather';
-import weatherAPI from '../../mockdata/MOCK_WEATHER.json';
+import Weather from '../../../types/Weather';
+import weatherAPI from '../../../mockdata/MOCK_WEATHER.json';
 
 const WeatherCard = (): JSX.Element => {
   // Unpacking API call here because we want to make
@@ -24,7 +24,7 @@ const WeatherCard = (): JSX.Element => {
     >
       <CardMedia
         component={'img'}
-        image={require(`../../assets/weather-icons/${icon}.png`)}
+        image={require(`../../../assets/weather-icons/${icon}.png`)}
         alt={'current weather'}
         width={'50'}
         sx={{width: 115,
