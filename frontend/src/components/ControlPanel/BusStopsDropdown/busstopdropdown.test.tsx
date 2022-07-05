@@ -1,6 +1,5 @@
 import {render, RenderResult, screen} from '@testing-library/react';
 import BusStopDropdown from './BusStopDropdown';
-import setSelection from '../../App/App';
 import BusRoute from '../../../types/BusRoute';
 import MOCK_BUS_ROUTES from '../../../mockdata/MOCK_BUS_ROUTES.json';
 import BusStop from '../../../types/BusStop';
@@ -21,7 +20,7 @@ const setup = (routeSelection: BusRoute | undefined):
       busRoutes={MOCK_BUS_ROUTES}
       routeSelection={routeSelection}
       label={LABEL}
-      setSelection={setSelection}
+      setSelection={jest.fn()}
     />,
 );
 

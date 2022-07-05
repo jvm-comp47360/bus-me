@@ -25,12 +25,12 @@ const setup = (startSelection: BusStop | undefined,
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <ControlPanel
         startSelection={startSelection}
-        setStartSelection={setStartSelection}
+        setStartSelection={jest.fn()}
         finishSelection={finishSelection}
-        setFinishSelection={setFinishSelection}
+        setFinishSelection={jest.fn()}
         routeSelection={routeSelection}
-        setRouteSelection={setRouteSelection}
-        setPrediction={setPrediction}
+        setRouteSelection={jest.fn()}
+        setPrediction={jest.fn()}
       />,
     </LocalizationProvider>,
 );
