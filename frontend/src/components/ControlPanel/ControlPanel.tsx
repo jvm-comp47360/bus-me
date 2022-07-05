@@ -8,7 +8,7 @@ import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
-import {Box, TextField, TextFieldProps} from '@mui/material';
+import {Box, Slide, TextField, TextFieldProps} from '@mui/material';
 import {DateTimePicker} from '@mui/x-date-pickers';
 
 // Types
@@ -39,6 +39,8 @@ const ControlPanel = ({
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
 
+  const [checked, setChecked] = useState(false);
+
   // DateTime helper functions
   const dateTimeChangeHandler = (selectedDateTime: Date | null) => {
     if (selectedDateTime) {
@@ -46,11 +48,23 @@ const ControlPanel = ({
     }
   };
 
+  const toggleText = () => {
+    if (checked) {
+      return 'PREVIOUS';
+    } else {
+      return 'NEXT';
+    }
+  };
+
   // Submit Button helper functions
   const submitDisableHandler = (): boolean =>
     routeSelection === undefined ||
-    startSelection === undefined ||
+      startSelection === undefined ||
       finishSelection === undefined;
+
+  const slideHandler = () => {
+    setChecked((prev) => !prev);
+  };
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
@@ -68,35 +82,44 @@ const ControlPanel = ({
     alignItems={'center'}
     m={2}
   >
-    <BusRouteDropdown
-      busRoutes={busRoutes}
-      setRouteSelection={setRouteSelection}
-    />
-    <Box
-      display={'flex'}
-      flexDirection={'row'}
-      flexWrap={'wrap'}
-      justifyContent={'center'}
-      margin={1}
-    >
-      <BusStopDropdown
-        busRoutes={busRoutes}
-        routeSelection={routeSelection}
-        label={'Start'}
-        setSelection={setStartSelection}
-      />
-      <BusStopDropdown
-        busRoutes={busRoutes}
-        routeSelection={routeSelection}
-        label={'Finish'}
-        setSelection={setFinishSelection}
-      />
-      <DateTimePicker
-        onChange={dateTimeChangeHandler}
-        value={dateTimeSelection}
-        renderInput={(params: TextFieldProps) => <TextField {...params} />}
-      />
-    </Box>
+    <Slide direction={'up'} in={!checked} mountOnEnter unmountOnExit>
+      <div>
+        <BusRouteDropdown
+          busRoutes={busRoutes}
+          setRouteSelection={setRouteSelection}
+        />
+      </div>
+    </Slide>
+    <Slide direction={'up'} in={checked} mountOnEnter unmountOnExit>
+      <div>
+        <Box
+          display={'flex'}
+          flexDirection={'row'}
+          flexWrap={'wrap'}
+          justifyContent={'center'}
+          margin={1}
+        >
+          <BusStopDropdown
+            busRoutes={busRoutes}
+            routeSelection={routeSelection}
+            label={'Start'}
+            setSelection={setStartSelection}
+          />
+          <BusStopDropdown
+            busRoutes={busRoutes}
+            routeSelection={routeSelection}
+            label={'Finish'}
+            setSelection={setFinishSelection}
+          />
+          <DateTimePicker
+            onChange={dateTimeChangeHandler}
+            value={dateTimeSelection}
+            renderInput={(params: TextFieldProps) => <TextField {...params} />}
+          />
+        </Box>
+      </div>
+    </Slide>
+    <Button onClick={slideHandler}>{toggleText()}</Button>
     <Button
       variant={'contained'}
       onClick={submitClickHandler}

@@ -4,10 +4,6 @@ import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 
 import ControlPanel from './ControlPanel';
-import setStartSelection from '../App/App';
-import setFinishSelection from '../App/App';
-import setRouteSelection from '../App/App';
-import setPrediction from '../App/App';
 
 import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
@@ -36,7 +32,7 @@ const setup = (startSelection: BusStop | undefined,
 );
 
 describe('<ControlPanel/> Default rendering', () => {
-  it('Station dropdowns should appear on the screen', () => {
+  it('Station dropdowns should not appear on the screen', () => {
     expect.assertions(2);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
@@ -44,12 +40,13 @@ describe('<ControlPanel/> Default rendering', () => {
     expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
   });
 
-  it('Datetime dropdown should appear on the screen', () => {
+  it('Datetime dropdown should not appear on the screen', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
+    // eslint-disable-next-line testing-library/prefer-presence-queries
     expect(screen.getByRole('textbox', {name: /choose date/i}))
-        .toBeInTheDocument();
+        .not.toBeInTheDocument();
   });
 
   it('submit button should appear on the screen', () => {
@@ -57,6 +54,13 @@ describe('<ControlPanel/> Default rendering', () => {
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
+  });
+
+  it('toggle dropdown button should appear on the screen', () => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
   });
 });
 
