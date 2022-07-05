@@ -44,7 +44,7 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
         {(startSelection) && (finishSelection) ?
             [startSelection, finishSelection].map((selection) =>
               <Marker
-                key={selection?.number}
+                key={selection.number}
                 position={{
                   lat: +selection.latitude,
                   lng: +selection.longitude,
