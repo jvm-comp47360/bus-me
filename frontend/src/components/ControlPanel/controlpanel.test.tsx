@@ -9,6 +9,8 @@ import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 import BusStop from '../../types/BusStop';
 import BusRoute from '../../types/BusRoute';
+import {UserEvent} from "@testing-library/user-event/dist/types/setup";
+import userEvent from "@testing-library/user-event";
 
 const MOCK_CURRENT_ROUTE: BusRoute = MOCK_BUS_ROUTES[0];
 const MOCK_START_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][0];
@@ -31,32 +33,44 @@ const setup = (startSelection: BusStop | undefined,
     </LocalizationProvider>,
 );
 
+const clickToggleButton = async () => {
+  const toggleButton: HTMLElement = screen.getByRole('button', {name: /next/i});
+  const view: UserEvent = userEvent.setup();
+  await view.click(toggleButton);
+}
+
 describe('<ControlPanel/> Default rendering', () => {
-  it('Station dropdowns should not appear on the screen', () => {
-    expect.assertions(2);
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
-    expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
-  });
-
-  it('Datetime dropdown should not appear on the screen', () => {
+  it('should show route dropdown', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    // eslint-disable-next-line testing-library/prefer-presence-queries
-    expect(screen.getByRole('textbox', {name: /choose date/i}))
-        .not.toBeInTheDocument();
+    expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
   });
 
-  it('submit button should appear on the screen', () => {
+  it('should not show station dropdowns', () => {
+    expect.assertions(2);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
+    expect(screen.queryByRole('combobox', {name: /finish/i})).toBeNull();
+  });
+
+  it('should not show datetime dropdown', () => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.queryByRole('textbox', {name: /choose date/i}))
+        .toBeNull();
+  });
+
+  it('should not show submit button', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
   });
 
-  it('toggle dropdown button should appear on the screen', () => {
+  it('should show toggle button', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
@@ -80,4 +94,38 @@ describe('<ControlPanel/> Submit button functionality', () => {
     expect(screen.getByRole('button', {name: /busme!/i}))
         .not.toHaveClass('Mui-disabled');
   });
+});
+
+describe('<ControlPanel/> Toggle button functionality',() => {
+  it('should have a new title after being clicked',
+    async (): Promise<void> => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    await clickToggleButton();
+
+    expect(screen.getByRole('button', {name: /previous/i})).toBeInTheDocument();
+  });
+
+  it('should display the station dropdowns after being clicked',
+    async (): Promise<void> => {
+      expect.assertions(2);
+      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+      await clickToggleButton();
+
+      expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
+      expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
+    })
+
+  it('should display the datetime dropdown after being clicked',
+    async (): Promise<void> => {
+      expect.assertions(1);
+      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+      await clickToggleButton();
+
+      expect(screen.getByRole('textbox', {name: /choose date/i}))
+        .toBeInTheDocument();
+    })
 });
