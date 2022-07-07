@@ -1,15 +1,20 @@
-import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
-import {useMemo} from 'react';
+import {useLoadScript, DirectionsRenderer, DirectionsService, GoogleMap} from '@react-google-maps/api';
+import {Dispatch, SetStateAction, useMemo} from 'react';
 import {Container} from '@mui/material';
 
 import BusStop from '../../../types/BusStop';
 
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
+
 interface Props {
   startSelection: BusStop | undefined,
   finishSelection: BusStop | undefined,
-}
+  directions: DirectionsResult | null,
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>,
+};
 
-const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
+const Map = ({startSelection, finishSelection, directions, setDirections}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
@@ -32,6 +37,14 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
       },
     },
   }), []);
+  const directionsCallback = (
+    response: DirectionsResult | null, 
+    status: DirectionsStatus,
+    ) => {
+    if (directions !== undefined && status === 'OK') {
+      setDirections(response)
+    } else console.log(status)
+  };
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
@@ -42,14 +55,26 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         {(startSelection) && (finishSelection) ?
-            [startSelection, finishSelection].map((selection) =>
-              <Marker
-                key={selection.number}
-                position={{
-                  lat: +selection.latitude,
-                  lng: +selection.longitude,
-                }}/>
-            ):
+          <DirectionsService
+          callback={directionsCallback}
+          options={{
+            origin: {
+              lat: +startSelection.latitude,
+              lng: +startSelection.longitude,
+            },
+            destination: {
+              lat: +finishSelection.latitude,
+              lng: +finishSelection.longitude,
+            },
+            travelMode: google.maps.TravelMode.TRANSIT,
+            transitOptions: {
+              modes: [google.maps.TransitMode.BUS]
+            },
+          }} />:
+        null
+        }
+        {(directions) ?
+        <DirectionsRenderer directions={directions}/>:
         null}
       </GoogleMap>
     </Container>;

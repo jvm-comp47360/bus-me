@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 import {Box} from '@mui/material';
 
@@ -21,6 +21,9 @@ const DisplayPanel = ({
   finishSelection,
   setPrediction,
 }: Props): JSX.Element => {
+  const [directions, setDirections] =
+   useState<google.maps.DirectionsResult | null>(null);
+
   return <Box sx={{position: 'relative', zIndex: 0}}>
     <Box sx={{
       position: 'absolute',
@@ -45,6 +48,8 @@ const DisplayPanel = ({
     <Map
       startSelection={startSelection}
       finishSelection={finishSelection}
+      directions={directions}
+      setDirections={setDirections}
     />
   </Box>;
 };
