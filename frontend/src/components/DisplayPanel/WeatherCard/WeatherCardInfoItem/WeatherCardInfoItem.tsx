@@ -1,5 +1,8 @@
-import {Grid, Typography} from '@mui/material';
+// React
 import {ReactElement} from 'react';
+
+// Material UI
+import {Grid, Typography} from '@mui/material';
 
 interface Props {
   icon: ReactElement;
@@ -12,11 +15,7 @@ const WeatherCardInfoItem = ({icon, text}: Props): JSX.Element => {
       {icon}
     </Grid>
     <Grid item>
-      <Typography
-        sx={{padding: 0.5,
-          fontSize: 12,
-          color: '#FFFFFF'}}
-      >
+      <Typography variant='body2' sx={{padding: 0.5}}>
         {text}
       </Typography>
     </Grid>

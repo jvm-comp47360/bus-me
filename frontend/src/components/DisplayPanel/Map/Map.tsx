@@ -1,15 +1,23 @@
-import {useLoadScript, GoogleMap} from '@react-google-maps/api';
+import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
+import {useMemo} from 'react';
 import {Container} from '@mui/material';
 
-const Map = (): JSX.Element => {
+import BusStop from '../../../types/BusStop';
+
+interface Props {
+  startSelection: BusStop | undefined,
+  finishSelection: BusStop | undefined,
+}
+
+const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
-  const centerCoords: google.maps.LatLngLiteral = {
+  const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
     lat: 53.33947559137039,
     lng: -6.248868208190408,
-  };
-  const mapOptions: google.maps.MapOptions = {
+  }), []);
+  const mapOptions: google.maps.MapOptions = useMemo(() => ({
     streetViewControl: false,
     mapTypeControl: false,
     clickableIcons: false,
@@ -23,7 +31,7 @@ const Map = (): JSX.Element => {
         east: -5.77620,
       },
     },
-  };
+  }), []);
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
@@ -33,6 +41,16 @@ const Map = (): JSX.Element => {
         center={centerCoords}
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
+        {(startSelection) && (finishSelection) ?
+            [startSelection, finishSelection].map((selection) =>
+              <Marker
+                key={selection.number}
+                position={{
+                  lat: +selection.latitude,
+                  lng: +selection.longitude,
+                }}/>
+            ):
+        null}
       </GoogleMap>
     </Container>;
 };

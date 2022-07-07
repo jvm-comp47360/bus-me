@@ -4,18 +4,22 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 
+import {Dispatch, SetStateAction} from 'react';
+
 interface Props {
   duration: number;
+  setPrediction: Dispatch<SetStateAction<number | undefined>>;
 }
 
-const ResultsCard = ({duration}: Props): JSX.Element => {
+const ResultsCard = ({duration, setPrediction}: Props): JSX.Element => {
   const durationPhrase: string = duration > 1 ?
   `${duration} Minutes` :
   `${duration} Minute`;
 
+  const closeClickHandler = () => setPrediction(undefined);
+
   return <Card sx={{
     color: 'white',
-    backgroundColor: '#757DE8',
     minWidth: '300px',
     width: '33vw',
   }}>
@@ -23,13 +27,16 @@ const ResultsCard = ({duration}: Props): JSX.Element => {
       <Typography variant="h6">
         Your journey will take approx.
       </Typography>
-      <Typography variant="h3">
+      <Typography variant="h4">
         {durationPhrase}
       </Typography>
     </CardContent>
     <CardActions sx={{justifyContent: 'center', py: 1}}>
-      <Button variant='contained'
-        sx={{backgroundColor: '#ffeb3b', color: 'black'}}>Close</Button>
+      <Button
+        variant='contained'
+        onClick={closeClickHandler}
+      >Close
+      </Button>
     </CardActions>
   </Card>;
 };
