@@ -2,7 +2,6 @@ import {render, RenderResult, screen} from '@testing-library/react';
 
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
-
 import ControlPanel from './ControlPanel';
 
 import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';

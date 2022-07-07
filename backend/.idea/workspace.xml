@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Fixed loading script and models file." />
+    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Clearing pycache for easy merging.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="ControlPanel_Component" />
+        <entry key="$PROJECT_DIR$/.." value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -41,6 +43,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -86,6 +90,7 @@
       <workItem from="1654938379016" duration="2786000" />
       <workItem from="1655195538946" duration="486000" />
       <workItem from="1655203980191" duration="79000" />
+      <workItem from="1657202338594" duration="102000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed loading script and models file.">
       <created>1654941245591</created>
@@ -94,7 +99,56 @@
       <option name="project" value="LOCAL" />
       <updated>1654941245591</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added console log for weather API to see what is going wrong.">
+      <created>1656587520778</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656587520778</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added commands to Django Dockerfile">
+      <created>1656587728604</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656587728604</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Minor changes to settings file to point to env.">
+      <created>1656588501924</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656588501924</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changed syntax of environment variable acquiring.">
+      <created>1656588770273</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656588770273</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Pointed weather app to the environment file.">
+      <created>1656589002650</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656589002650</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Removed collectstatic from Dockerfile.">
+      <created>1656589090890</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656589090890</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Clearing pycache for easy merging.">
+      <created>1657202349643</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657202349643</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +180,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fixed loading script and models file." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed loading script and models file." />
+    <MESSAGE value="Added console log for weather API to see what is going wrong." />
+    <MESSAGE value="Added commands to Django Dockerfile" />
+    <MESSAGE value="Minor changes to settings file to point to env." />
+    <MESSAGE value="Changed syntax of environment variable acquiring." />
+    <MESSAGE value="Pointed weather app to the environment file." />
+    <MESSAGE value="Removed collectstatic from Dockerfile." />
+    <MESSAGE value="Clearing pycache for easy merging." />
+    <option name="LAST_COMMIT_MESSAGE" value="Clearing pycache for easy merging." />
   </component>
 </project>

@@ -10,12 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import environ
 import os
 from pathlib import Path
 
+env = environ.Env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -26,7 +28,7 @@ SECRET_KEY = 'django-insecure-lp*%28!qhd_*-qp1_c8h-2lrbe55r4=jkfmpc@l#10*$vn2au9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ['app', 'localhost', '127.0.0.1', '[::1]']
 
 
 # Application definition
@@ -90,10 +92,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'busme',
-        'USER': os.environ.get('BUSME_USER'),
-        'PASSWORD': os.environ.get('BUSME_PASSWORD'),
-        'HOST': os.environ.get('BUSME_HOST'),
-        'PORT': os.environ.get('BUSME_PORT')
+        'USER': os.getenv('BUSME_USER'),
+        'PASSWORD': os.getenv('BUSME_PASSWORD'),
+        'HOST': os.getenv('BUSME_HOST'),
+        'PORT': os.getenv('BUSME_PORT')
     }
 }
 

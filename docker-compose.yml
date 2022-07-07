@@ -21,6 +21,8 @@ services:
     working_dir: /backend/
     env_file:
       - .env
+    depends_on:
+      - database
   nginx:
     build:
       context: .

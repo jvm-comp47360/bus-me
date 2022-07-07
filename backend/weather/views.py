@@ -7,6 +7,7 @@ from .utils import pull_current_weather_from_api
 
 class WeatherAPIView(APIView):
     def get(self, request):
+        print(pull_current_weather_from_api())
         serializer = WeatherSerializer(data=pull_current_weather_from_api())
 
         serializer.is_valid(True)
