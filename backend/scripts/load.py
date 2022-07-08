@@ -4,14 +4,17 @@
 import csv
 from typing import List
 
-from backend.bus_stops.models import BusStops, Routes, RouteConnections
+
+from bus_stops.models import BusStops, BusRoutes, RouteConnections
 
 
 def run() -> None:
+    delete_all_previous()
 
     routes_storage = {}
 
     with open("routes.csv", "r", encoding="utf8") as routes_file:
+
         routes_file_reader = csv.reader(routes_file)
         next(routes_file_reader, None)
 
@@ -19,7 +22,7 @@ def run() -> None:
             route_id = route_entry[0]
             route_name = route_entry[1]
 
-            current_route = Routes.objects.create(id=route_id, name=route_name)
+            current_route = BusRoutes.objects.create(id=route_id, name=route_name)
             routes_storage[route_name] = current_route
 
 
@@ -28,10 +31,8 @@ def run() -> None:
         bus_stops_file_reader = csv.reader(bus_stops_file)
         next(bus_stops_file_reader, None)  # Skips the header row
 
-        # Deletes all existing objects if you need to reset the database
-        # BusStops.objects.all().delete()
-
         for bus_stop_entry in bus_stops_file_reader:
+            print(bus_stop_entry)
             add_bus_stop_to_database(bus_stop_entry, routes_storage)
 
     bus_stops_file.close()
@@ -46,11 +47,23 @@ def add_bus_stop_to_database(bus_stop_entry: List[str], routes_storage) -> None:
     longitude = bus_stop_entry[4]
 
     # This will need to be parsed into a Python list
-    routes = bus_stop_entry[5]
+    routes = get_routes_from_bus_stops(bus_stop_entry[5])
 
     current_stop = BusStops.objects.create(id=bus_stop_id, name=name, number=number, latitude=latitude, longitude=longitude)
 
     for route in routes:
-        current_route = routes_storage[route]
-        RouteConnections.objects.create(bus_stop=current_stop, route=current_route)
+        try:
+            current_route = routes_storage[route]
+            RouteConnections.objects.create(bus_stop=current_stop, bus_route=current_route)
+        except:
+            print("there is an error")
 
+
+def get_routes_from_bus_stops(routes: str) -> List[str]:
+    no_brackets = routes.replace("\"", "").replace("'", "").replace("[", "").replace("]", "")
+    return no_brackets.split(", ")
+
+def delete_all_previous():
+    BusStops.objects.all().delete()
+    BusRoutes.objects.all().delete()
+    RouteConnections.objects.all().delete()

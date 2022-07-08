@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="">
+    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Clearing pycache for easy merging.">
+      <change afterPath="$PROJECT_DIR$/routes.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/migrations/0002_auto_20220611_1044.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/migrations/0003_auto_20220611_1048.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/busme/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/busme/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/load.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/stops.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stops.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stops.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -25,6 +42,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -56,5 +74,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
