@@ -6,16 +6,12 @@ class RouteConnectionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = RouteConnections
         fields = ('bus_route_id', 'bus_stop_id')
-        depth = 2
 
 
 class BusStopsSerializer(serializers.ModelSerializer):
-    bus_routes = BusRoutesSerializer(many=True)
-
     class Meta:
         model = BusStops
         fields = ('id', 'name', 'number', 'latitude', 'longitude')
-        depth = 2
 
 
 class BusRoutesSerializer(serializers.ModelSerializer):
@@ -24,5 +20,3 @@ class BusRoutesSerializer(serializers.ModelSerializer):
     class Meta:
         model = BusRoutes
         fields = ('id', 'name', 'bus_stops')
-        depth = 2
-

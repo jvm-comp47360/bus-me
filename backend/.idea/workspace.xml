@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Script for getting the routes in works">
+    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Many-to-many field works for routes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bus_stops/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bus_stops/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657294368810</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Many-to-many field works for routes.">
+      <created>1657297864111</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657297864111</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,6 +84,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Script for getting the routes in works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Script for getting the routes in works" />
+    <MESSAGE value="Many-to-many field works for routes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Many-to-many field works for routes." />
   </component>
 </project>
