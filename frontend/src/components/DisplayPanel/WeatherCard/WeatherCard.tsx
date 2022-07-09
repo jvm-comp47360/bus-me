@@ -24,6 +24,7 @@ const WeatherCard = (): JSX.Element => {
       const api = await fetch('http://localhost:8000/api/current_weather/');
       const data = await api.json() as Weather
       await setWeather(data)
+      console.log(weather)
     }
     getWeather();
   }, [])
