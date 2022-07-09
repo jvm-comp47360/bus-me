@@ -9,7 +9,6 @@ import BookIcon from '@mui/icons-material/Book';
 
 // Types
 import Weather from '../../../types/Weather';
-import weatherAPI from '../../../mockdata/MOCK_WEATHER.json';
 import {useEffect, useState} from "react";
 
 const WeatherCard = (): JSX.Element => {
@@ -17,17 +16,18 @@ const WeatherCard = (): JSX.Element => {
   // sure all weather related activity occurs in this
   // component.
 
-  const [weather, setWeather] = useState<Weather>()
+  const [weather, setWeather] = useState<Weather>({
+    icon: '04d',
+    date: 'Loading',
+    weatherText: 'Loading',
+    temperature: 'Loading'
+  })
 
   useEffect(() => {
     fetch('http://localhost:8000/api/current_weather/')
       .then((response) => response.json() as Promise<Weather>)
       .then(setWeather)
   }, [])
-
-  if (!weather) {
-    throw new Error("Weather API error");
-  }
 
   console.log(weather);
 
