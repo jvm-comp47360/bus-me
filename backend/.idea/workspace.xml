@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Final changes">
+    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Final changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weather/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+        <entry key="$PROJECT_DIR$/.." value="Vlad_State" />
         <entry key="$PROJECT_DIR$/.." value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="2AQOWmx6hvvye0qM4wtyUdIxkF4" />
+  <component name="ProjectId" id="2BG8sfPGFOI9ncPOK7c5GySO4IE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -83,8 +79,8 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="" />
-      <created>1654938377813</created>
+      <changelist id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="" />
+      <created>1656521273404</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654938377813</updated>
@@ -93,12 +89,19 @@
       <workItem from="1655203980191" duration="79000" />
       <workItem from="1657202338594" duration="102000" />
     </task>
-    <task id="LOCAL-00001" summary="Fixed loading script and models file.">
-      <created>1654941245591</created>
+    <task id="LOCAL-00001" summary="Script for getting the routes in works">
+      <created>1657294368810</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1654941245591</updated>
+      <updated>1657294368810</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Many-to-many field works for routes.">
+      <created>1657297864111</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657297864111</updated>
     </task>
     <task id="LOCAL-00002" summary="Added console log for weather API to see what is going wrong.">
       <created>1656587520778</created>
@@ -160,19 +163,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="Bus_Station_API" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
