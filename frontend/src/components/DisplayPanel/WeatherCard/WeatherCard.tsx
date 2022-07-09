@@ -24,7 +24,7 @@ const WeatherCard = (): JSX.Element => {
   })
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/current_weather/')
+    fetch('http://ipa-002.ucd.ie/api/current_weather/')
       .then((response) => response.json() as Promise<Weather>)
       .then(setWeather)
   }, [])
