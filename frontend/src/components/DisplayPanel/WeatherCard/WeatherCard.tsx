@@ -29,6 +29,8 @@ const WeatherCard = (): JSX.Element => {
   //   throw new Error("Weather API error");
   // }
 
+  console.log(weather);
+
   const {icon, date, weatherText, temperature}: Weather = weatherAPI[0];
 
   return <Card sx={{display: 'inline-block'}}>
