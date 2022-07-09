@@ -18,12 +18,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE busme;
---
--- TOC entry 3493 (class 1262 OID 16592)
--- Name: busme; Type: DATABASE; Schema: -; Owner: postgres
---
-
 CREATE DATABASE busme WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'English_Ireland.1252';
 
 
