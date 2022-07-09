@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=${BUSME_USER}
       - POSTGRES_PASSWORD=${BUSME_PASSWORD}
     volumes:
-      - ./dump-busme-202206261137.sql:/var/lib/postgresql/data
+      - ./dump-busme-202207091154.sql:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
   backend:
