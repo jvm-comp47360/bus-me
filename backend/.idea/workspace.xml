@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Many-to-many field works for routes.">
+    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Final changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bus_stops/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bus_stops/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/bus_stops/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
