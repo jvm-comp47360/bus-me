@@ -1,11 +1,18 @@
 from typing import Dict
 import requests
 import schedule
+import environ
 import os
 import time
+from pathlib import Path
+
+env = environ.Env()
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Obtaining OpenWeather API key
-OpenWeatherAPI_KEY = os.environ.get("WEATHER_API_KEY")
+OpenWeatherAPI_KEY = os.getenv("OpenWeatherAPI_KEY")
 OpenWeatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
 
@@ -14,7 +21,9 @@ def pull_current_weather_from_api() -> Dict[str, str]:
     lat = 53.33947559137039
     lon = -6.248868208190408
     weather_response = requests.get(OpenWeatherAPI_URL.format(lat, lon, OpenWeatherAPI_KEY))
-    time.sleep(1)
+    print(OpenWeatherAPI_KEY)
+    print(weather_response)
+    print(weather_response.json())
     icon = weather_response.json()['weather'][0]['icon']
     weather = weather_response.json()['weather'][0]['main']
     temperature = weather_response.json()['main']['temp']

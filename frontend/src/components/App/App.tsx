@@ -1,28 +1,57 @@
+// CSS
 import '../../styles/main.css';
+
+// React
+import {useState} from 'react';
+
+// Components
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
-import WeatherCard from '../WeatherCard/WeatherCard';
-import ResultsCard from '../ResultsCard/ResultsCard';
-import Map from '../Map/Map';
 import AboutSection from '../AboutSection/AboutSection';
+import DisplayPanel from '../DisplayPanel/DisplayPanel';
+
+// Material UI
+import ContactSection from '../ContactSection/ContactSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {ThemeProvider} from '@mui/material/styles';
 
-import busStopsApi from '../../mockdata/MOCK_BUS_STOPS.json';
-import weatherApi from '../../mockdata/MOCK_WEATHER.json';
+// Types
+import BusRoute from '../../types/BusRoute';
+import BusStop from '../../types/BusStop';
 import theme from './Theme';
 
 const App = (): JSX.Element => {
+  const [prediction, setPrediction] = useState<number | undefined>(undefined);
+
+  // Selections may be undefined if the user has not picked them yet.
+  const [startSelection, setStartSelection] =
+      useState<BusStop | undefined>(undefined);
+  const [finishSelection, setFinishSelection] =
+      useState<BusStop | undefined>(undefined);
+  const [routeSelection, setRouteSelection] =
+      useState<BusRoute | undefined>(undefined);
+
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Navbar />
-      <ControlPanel busStops={busStopsApi}/>
-      <div>
-        <WeatherCard weather={weatherApi[0]}/>
-        <ResultsCard duration={35}/>
-        <Map />
-      </div>
+      <ControlPanel
+        startSelection={startSelection}
+        setStartSelection={setStartSelection}
+        finishSelection={finishSelection}
+        setFinishSelection={setFinishSelection}
+        routeSelection={routeSelection}
+        setRouteSelection={setRouteSelection}
+        setPrediction={setPrediction}
+      />
+      <DisplayPanel
+        prediction={prediction}
+        setPrediction={setPrediction}
+        startSelection={startSelection}
+        finishSelection={finishSelection}
+      />
+      <AboutSection />
+      <ContactSection />
     </LocalizationProvider>
   </ThemeProvider>;
 };

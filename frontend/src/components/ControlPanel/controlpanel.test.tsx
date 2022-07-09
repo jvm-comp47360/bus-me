@@ -1,47 +1,130 @@
-import ControlPanel from './ControlPanel';
 import {render, RenderResult, screen} from '@testing-library/react';
+
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
-import MOCK_BUS_STOPS from '../../mockdata/MOCK_BUS_STOPS.json';
+import ControlPanel from './ControlPanel';
 
-// The setup automatically passes in the mock Bus Stops API,
-// as we are testing the call at the App component level.
-const setup = (): RenderResult => render(
-  <LocalizationProvider dateAdapter={AdapterDateFns}>
-    <ControlPanel busStops={MOCK_BUS_STOPS}/>,
-  </LocalizationProvider>
+import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
+
+import BusStop from '../../types/BusStop';
+import BusRoute from '../../types/BusRoute';
+import {UserEvent} from "@testing-library/user-event/dist/types/setup";
+import userEvent from "@testing-library/user-event";
+
+const MOCK_CURRENT_ROUTE: BusRoute = MOCK_BUS_ROUTES[0];
+const MOCK_START_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][0];
+const MOCK_FINISH_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][1];
+
+const setup = (startSelection: BusStop | undefined,
+    finishSelection: BusStop | undefined,
+    routeSelection: BusRoute | undefined,
+): RenderResult => render(
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <ControlPanel
+        startSelection={startSelection}
+        setStartSelection={jest.fn()}
+        finishSelection={finishSelection}
+        setFinishSelection={jest.fn()}
+        routeSelection={routeSelection}
+        setRouteSelection={jest.fn()}
+        setPrediction={jest.fn()}
+      />,
+    </LocalizationProvider>,
 );
 
-describe('<ControlPanel/> Rendering UI elements', () => {
-  it('Station dropdowns should appear on the screen', () => {
+const clickToggleButton = async () => {
+  const toggleButton: HTMLElement = screen.getByRole('button', {name: /next/i});
+  const view: UserEvent = userEvent.setup();
+  await view.click(toggleButton);
+}
+
+describe('<ControlPanel/> Default rendering', () => {
+  it('should show route dropdown', () => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
+  });
+
+  it('should not show station dropdowns', () => {
     expect.assertions(2);
-    setup();
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
-    expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
+    expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
+    expect(screen.queryByRole('combobox', {name: /finish/i})).toBeNull();
   });
 
-  it('Datetime dropdown should appear on the screen', () => {
+  it('should not show datetime dropdown', () => {
     expect.assertions(1);
-    setup();
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('textbox', { name: /choose date/i })).toBeInTheDocument();
+    expect(screen.queryByRole('textbox', {name: /choose date/i}))
+        .toBeNull();
   });
 
-  it('submit button should appear on the screen', () => {
+  it('should not show submit button', () => {
     expect.assertions(1);
-    setup();
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
   });
+
+  it('should show toggle button', () => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
+  });
 });
 
-describe('<ControlPanel/> Functionality of Submit Button', () => {
-  it('button should be be disabled by default', () => {
+describe('<ControlPanel/> Submit button functionality', () => {
+  it('should be be disabled by default', () => {
     expect.assertions(1);
-    setup();
+    setup(undefined, undefined, undefined);
 
     expect(screen.getByRole('button', {name: /busme!/i}))
         .toHaveClass('Mui-disabled');
   });
+
+  it('should be be enabled when dropdowns are filled in', () => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('button', {name: /busme!/i}))
+        .not.toHaveClass('Mui-disabled');
+  });
+});
+
+describe('<ControlPanel/> Toggle button functionality',() => {
+  it('should have a new title after being clicked',
+    async (): Promise<void> => {
+    expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    await clickToggleButton();
+
+    expect(screen.getByRole('button', {name: /previous/i})).toBeInTheDocument();
+  });
+
+  it('should display the station dropdowns after being clicked',
+    async (): Promise<void> => {
+      expect.assertions(2);
+      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+      await clickToggleButton();
+
+      expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
+      expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
+    })
+
+  it('should display the datetime dropdown after being clicked',
+    async (): Promise<void> => {
+      expect.assertions(1);
+      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+      await clickToggleButton();
+
+      expect(screen.getByRole('textbox', {name: /choose date/i}))
+        .toBeInTheDocument();
+    })
 });

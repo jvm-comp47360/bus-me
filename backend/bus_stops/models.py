@@ -16,7 +16,6 @@ class BusStops(models.Model):
     def __str__(self):
         return f"{self.name}, Stop No.{self.number}"
 
-
 class BusRoutes(models.Model):
     class Meta:
         db_table = "bus_routes"

@@ -23,6 +23,7 @@
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/.." value="Vlad_State" />
+        <entry key="$PROJECT_DIR$/.." value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -38,8 +39,42 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/scripts" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\github\BusMe\src\scripts" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="src" type="Python.DjangoServer" factoryName="Django server">
+      <module name="src" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="busme.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -48,8 +83,11 @@
       <created>1656521273404</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1656521273404</updated>
-      <workItem from="1656521275709" duration="1284000" />
+      <updated>1654938377813</updated>
+      <workItem from="1654938379016" duration="2786000" />
+      <workItem from="1655195538946" duration="486000" />
+      <workItem from="1655203980191" duration="79000" />
+      <workItem from="1657202338594" duration="102000" />
     </task>
     <task id="LOCAL-00001" summary="Script for getting the routes in works">
       <created>1657294368810</created>
@@ -65,7 +103,56 @@
       <option name="project" value="LOCAL" />
       <updated>1657297864111</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00002" summary="Added console log for weather API to see what is going wrong.">
+      <created>1656587520778</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656587520778</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added commands to Django Dockerfile">
+      <created>1656587728604</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656587728604</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Minor changes to settings file to point to env.">
+      <created>1656588501924</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656588501924</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changed syntax of environment variable acquiring.">
+      <created>1656588770273</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656588770273</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Pointed weather app to the environment file.">
+      <created>1656589002650</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656589002650</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Removed collectstatic from Dockerfile.">
+      <created>1656589090890</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656589090890</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Clearing pycache for easy merging.">
+      <created>1657202349643</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657202349643</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -84,9 +171,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Script for getting the routes in works" />
-    <MESSAGE value="Many-to-many field works for routes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Many-to-many field works for routes." />
+    <MESSAGE value="Fixed loading script and models file." />
+    <MESSAGE value="Added console log for weather API to see what is going wrong." />
+    <MESSAGE value="Added commands to Django Dockerfile" />
+    <MESSAGE value="Minor changes to settings file to point to env." />
+    <MESSAGE value="Changed syntax of environment variable acquiring." />
+    <MESSAGE value="Pointed weather app to the environment file." />
+    <MESSAGE value="Removed collectstatic from Dockerfile." />
+    <MESSAGE value="Clearing pycache for easy merging." />
+    <option name="LAST_COMMIT_MESSAGE" value="Clearing pycache for easy merging." />
   </component>
 </project>

@@ -4,7 +4,6 @@
 import csv
 from typing import List
 
-
 from bus_stops.models import BusStops, BusRoutes, RouteConnections
 
 
@@ -17,7 +16,6 @@ def run() -> None:
 
         routes_file_reader = csv.reader(routes_file)
         next(routes_file_reader, None)
-
         for route_entry in routes_file_reader:
             route_id = route_entry[0]
             route_name = route_entry[1]
@@ -25,9 +23,8 @@ def run() -> None:
             current_route = BusRoutes.objects.create(id=route_id, name=route_name)
             routes_storage[route_name] = current_route
 
-
     """Reads through the CSV file and adds to Django database"""
-    with open("stops.csv", "r", encoding="utf8") as bus_stops_file:
+    with open("stops&lines.csv", "r", encoding="utf8") as bus_stops_file:
         bus_stops_file_reader = csv.reader(bus_stops_file)
         next(bus_stops_file_reader, None)  # Skips the header row
 

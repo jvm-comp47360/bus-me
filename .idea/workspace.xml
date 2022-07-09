@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="690a2538-31bf-4e04-bc54-54a52c246637" name="Changes" comment="Added sql script again.">
-      <change afterPath="$PROJECT_DIR$/frontend/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/AboutSection/AboutSection.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/AboutSection/aboutsection.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/SectionHeader/SectionHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/SectionHeader/sectionheader.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/App/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/App/app.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/App/app.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ControlPanel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ControlPanel/controlpanel.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ControlPanel/controlpanel.test.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar/navbar.test.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar/navbar.test.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DisplayPanel/DisplayPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DisplayPanel/DisplayPanel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,23 +35,23 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/.env" root0="FORCE_HIGHLIGHTING" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AzUiaExptqr5DcRZpMquIkGaX1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="ts.external.directory.path" value="C:\Users\Vlad\github\BusMe\frontend\node_modules\typescript\lib" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Damaris\\WebstormProjects\\bus-me\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Vlad\github\BusMe" />
@@ -85,6 +74,7 @@
       <workItem from="1656180146412" duration="14837000" />
       <workItem from="1656351975081" duration="4229000" />
       <workItem from="1656435388399" duration="960000" />
+      <workItem from="1657020726251" duration="146000" />
     </task>
     <task id="LOCAL-00001" summary="Deleted historic weather API file, minor linting work.">
       <created>1656067505696</created>
@@ -324,7 +314,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Functionality complete except for React env file." />

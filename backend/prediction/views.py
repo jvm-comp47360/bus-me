@@ -8,8 +8,12 @@ from .utils import get_prediction
 class PredictionAPIView(APIView):
     serializer_class = PredictionSerializer
 
-    def get(self, request):
-        prediction = get_prediction()
+    def post(self, request):
+        start_coords = request.data.get('start_coords')
+        finish_coords = request.data.get('finish_coords')
+        time = request.data.get('time')
+
+        prediction = get_prediction(start_coords, finish_coords, time)
         serializer = PredictionSerializer(data=prediction)
 
         serializer.is_valid(True)
