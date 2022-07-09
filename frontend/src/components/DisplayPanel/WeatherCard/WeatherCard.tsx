@@ -21,7 +21,8 @@ const WeatherCard = (): JSX.Element => {
 
   useEffect(() => {
     const getWeather = async () => {
-      const api = await fetch('http://localhost:8000/api/current_weather/');
+      const api = await fetch('http://ipa-002.ucd.ie/api/current_weather/?format=json');
+      console.log(api)
       const data = await api.json() as Weather
       setWeather(data)
       console.log(weather)
