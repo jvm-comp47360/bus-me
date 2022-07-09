@@ -31,9 +31,9 @@ const WeatherCard = (): JSX.Element => {
     getWeather();
   }, [])
 
-  if (!weather) {
-    throw new Error("Weather API error");
-  }
+  // if (!weather) {
+  //   throw new Error("Weather API error");
+  // }
 
   const {icon, date, weatherText, temperature}: Weather = weatherAPI[0];
 
