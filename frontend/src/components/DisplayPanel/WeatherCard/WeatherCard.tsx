@@ -25,13 +25,13 @@ const WeatherCard = (): JSX.Element => {
       .then(setWeather)
   }, [])
 
-  // if (!weather) {
-  //   throw new Error("Weather API error");
-  // }
+  if (!weather) {
+    throw new Error("Weather API error");
+  }
 
   console.log(weather);
 
-  const {icon, date, weatherText, temperature}: Weather = weatherAPI[0];
+  const {icon, date, weatherText, temperature}: Weather = weather;
 
   return <Card sx={{display: 'inline-block'}}>
     <Box sx={{display: 'flex',
