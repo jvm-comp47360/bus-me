@@ -10,13 +10,30 @@ import BookIcon from '@mui/icons-material/Book';
 // Types
 import Weather from '../../../types/Weather';
 import weatherAPI from '../../../mockdata/MOCK_WEATHER.json';
+import {useEffect, useState} from "react";
 
 const WeatherCard = (): JSX.Element => {
   // Unpacking API call here because we want to make
   // sure all weather related activity occurs in this
   // component.
 
-  const {icon, date, weatherText, temperature}: Weather = weatherAPI[0];
+  const [weather, setWeather] = useState<Weather>()
+
+  useEffect(() => {
+    const getWeather = async () => {
+      const api = await fetch('http://localhost:8000/api/current_weather/');
+      const data = await api.json() as Weather
+      setWeather(data)
+      console.log(weather)
+    }
+    getWeather();
+  }, [])
+
+  if (!weather) {
+    throw new Error("Weather API error");
+  }
+
+  const {icon, date, weatherText, temperature}: Weather = weather;
 
   return <Card sx={{display: 'inline-block'}}>
     <Box sx={{display: 'flex',
@@ -27,8 +44,8 @@ const WeatherCard = (): JSX.Element => {
         image={require(`../../../assets/weather-icons/${icon}.png`)}
         alt={'current weather'}
         width={'50'}
-        sx={{width: 115,
-          padding: 2}}
+        sx={{width: 125,
+          padding: 4}}
       />
       <CardContent sx={{pt: 2.7,
         alignItems: 'center'}}
@@ -43,7 +60,7 @@ const WeatherCard = (): JSX.Element => {
         />
         <WeatherCardInfoItem
           icon={<DeviceThermostatIcon sx={{color: '#FFFFFF'}}/>}
-          text={`${temperature}°C`}
+          text={`${temperature.substring(0,2)}°C`}
         />
       </CardContent>
     </Box>

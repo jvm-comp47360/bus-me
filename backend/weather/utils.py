@@ -26,7 +26,7 @@ def pull_current_weather_from_api() -> Dict[str, str]:
     date = get_current_date()
     weather = weather_response.json()['weather'][0]['main']
     temperature = get_current_temperature(weather_response.json()['main']['temp'])
-    return {"icon": icon, "date": date, "weather": weather, "temperature": temperature}
+    return {"icon": icon, "date": date, "weatherText": weather, "temperature": temperature}
 
 
 def get_current_date() -> str:

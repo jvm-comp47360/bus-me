@@ -4,9 +4,9 @@
     <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Final changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/busme/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/busme/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weather/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weather/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/weather/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/DisplayPanel/WeatherCard/WeatherCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/DisplayPanel/WeatherCard/WeatherCard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
