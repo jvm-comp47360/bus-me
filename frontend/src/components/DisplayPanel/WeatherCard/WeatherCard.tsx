@@ -20,18 +20,9 @@ const WeatherCard = (): JSX.Element => {
   const [weather, setWeather] = useState<Weather>()
 
   useEffect(() => {
-    const getWeather = async () => {
-      const api = await fetch('http://localhost:8000/api/current_weather/');
-      console.log(api)
-      await console.log(api)
-      const data = await api.json() as Weather
-      console.log(data)
-      await console.log(data)
-      await setWeather(data)
-      console.log(weather)
-      await console.log(weather)
-    }
-    getWeather();
+    fetch('http://localhost:8000/api/current_weather/')
+      .then((response) => response.json() as Promise<Weather>)
+      .then(setWeather)
   }, [])
 
   // if (!weather) {
