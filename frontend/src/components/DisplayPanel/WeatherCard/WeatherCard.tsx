@@ -22,20 +22,17 @@ const WeatherCard = (): JSX.Element => {
   useEffect(() => {
     const getWeather = async () => {
       const api = await fetch('http://localhost:8000/api/current_weather/');
-      console.log(api)
       const data = await api.json() as Weather
-      console.log(data)
-      setWeather(data)
-      console.log(weather)
+      await setWeather(data)
     }
     getWeather();
   }, [])
 
-  // if (!weather) {
-  //   throw new Error("Weather API error");
-  // }
+  if (!weather) {
+    throw new Error("Weather API error");
+  }
 
-  const {icon, date, weatherText, temperature}: Weather = weatherAPI[0];
+  const {icon, date, weatherText, temperature}: Weather = weather;
 
   return <Card sx={{display: 'inline-block'}}>
     <Box sx={{display: 'flex',
