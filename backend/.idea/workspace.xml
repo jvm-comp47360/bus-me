@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c8d0afa6-38d3-4b25-a6e5-45ef7e615782" name="Changes" comment="Final changes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Final changes">
+      <change beforePath="$PROJECT_DIR$/busme/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/busme/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ControlPanel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

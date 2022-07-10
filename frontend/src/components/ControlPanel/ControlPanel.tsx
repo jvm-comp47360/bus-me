@@ -1,5 +1,5 @@
 // React
-import {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
@@ -14,6 +14,7 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
+import Weather from "../../types/Weather";
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -34,7 +35,15 @@ const ControlPanel = ({
   setRouteSelection,
   setPrediction,
 }: Props): JSX.Element => {
-  const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
+
+  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/bus_routes/')
+      .then((response) => response.json() as Promise<BusRoute[]>)
+      .then(setBusRoutes)
+  }, [])
+
 
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
