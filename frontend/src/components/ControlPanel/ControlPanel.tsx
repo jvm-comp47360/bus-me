@@ -15,6 +15,7 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -79,6 +80,35 @@ const ControlPanel = ({
     setPrediction(35.0);
   };
 
+  const showRouteClickHandler = () => {
+    if (startSelection && finishSelection) {
+    const userDirectionsRequest: google.maps.DirectionsRequest = {
+      origin: {
+        lat: +startSelection.latitude,
+        lng: +startSelection.longitude
+      },
+      destination: {
+        lat: +finishSelection.latitude,
+        lng: +finishSelection.longitude,
+      },
+      travelMode: google.maps.TravelMode.TRANSIT,
+      transitOptions: {
+        modes: [google.maps.TransitMode.BUS]
+      }
+    };
+    const directionsServiceCallback = (
+      response: DirectionsResult | null,
+      status: DirectionsStatus,
+    ) => {
+      if (response && status === 'OK') { // response was state of directions
+        setDirections(response);
+      }
+    };
+    const service = new google.maps.DirectionsService();
+    service.route(userDirectionsRequest, directionsServiceCallback);
+    }
+  };
+
   return <Box
     display={'flex'}
     flexDirection={'column'}
@@ -135,6 +165,7 @@ const ControlPanel = ({
 
     <Button
       variant={'contained'}
+      onClick={showRouteClickHandler}
       style={{maxWidth: '30%'}}
       sx={{margin: 1}}
     >

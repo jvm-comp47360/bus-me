@@ -5,7 +5,6 @@ import {Container} from '@mui/material';
 import BusStop from '../../../types/BusStop';
 
 type DirectionsResult = google.maps.DirectionsResult;
-// type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
   startSelection: BusStop | undefined,
@@ -36,14 +35,6 @@ const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element 
       },
     },
   }), []);
-  // const directionsCallback = (
-  //   response: DirectionsResult | null, 
-  //   status: DirectionsStatus,
-  //   ) => {
-  //   if (directions !== undefined && status === 'OK') {
-  //     setDirections(response)
-  //   } else console.log(status)
-  // };
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
@@ -53,25 +44,6 @@ const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element 
         center={centerCoords}
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
-        {/* {(startSelection) && (finishSelection) ?
-          <DirectionsService
-          callback={directionsCallback}
-          options={{
-            origin: {
-              lat: +startSelection.latitude,
-              lng: +startSelection.longitude,
-            },
-            destination: {
-              lat: +finishSelection.latitude,
-              lng: +finishSelection.longitude,
-            },
-            travelMode: google.maps.TravelMode.TRANSIT,
-            transitOptions: {
-              modes: [google.maps.TransitMode.BUS]
-            },
-          }} />:
-        null
-        } */}
         {(directions) ?
         <DirectionsRenderer directions={directions}/>:
         null}
