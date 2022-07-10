@@ -68,12 +68,20 @@ const ControlPanel = ({
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
-    console.log(routeSelection,
-        startSelection,
-        finishSelection,
-        getSeconds(dateTimeSelection),
-    );
-    setPrediction(35.0);
+    const submission = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        route: routeSelection,
+        start_coords: formatCoords(startSelection),
+        finish_coords: formatCoords(finishSelection),
+        time: getSeconds(dateTimeSelection),
+      })
+    };
+    fetch('http://localhost:8000/api/prediction/', submission)
+      .then(response => response.json())
+      .then(data => setPrediction(Math.round(data["prediction"] * 10) / 10)
+      )
   };
 
   const getSeconds = (date: Date | undefined) => {
@@ -83,7 +91,13 @@ const ControlPanel = ({
     const minutes = date.getMinutes();
     const hours = date.getHours();
     return ((60 * hours) + minutes) * 60;
+  }
 
+  const formatCoords = (busStop: BusStop | undefined) => {
+    if (!busStop) {
+      return;
+    }
+    return `${busStop.latitude},${busStop.longitude}`;
   }
 
   return <Box

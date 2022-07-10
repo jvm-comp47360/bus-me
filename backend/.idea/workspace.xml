@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Clearing pycache for easy merging.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/mockdata/MOCK_BUS_ROUTES.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/mockdata/MOCK_BUS_ROUTES.json" afterDir="false" />
+    <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Added relative paths and changed mock bus routes.">
+      <change beforePath="$PROJECT_DIR$/busme/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/busme/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/components/ControlPanel/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/components/ControlPanel/ControlPanel.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657202349643</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added relative paths and changed mock bus routes.">
+      <created>1657442604526</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657442604527</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +195,7 @@
     <MESSAGE value="Pointed weather app to the environment file." />
     <MESSAGE value="Removed collectstatic from Dockerfile." />
     <MESSAGE value="Clearing pycache for easy merging." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clearing pycache for easy merging." />
+    <MESSAGE value="Added relative paths and changed mock bus routes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added relative paths and changed mock bus routes." />
   </component>
 </project>
