@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7eeb2839-483f-480d-933b-2c4753573154" name="Changes" comment="Clearing pycache for easy merging.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/mockdata/MOCK_BUS_ROUTES.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/mockdata/MOCK_BUS_ROUTES.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
