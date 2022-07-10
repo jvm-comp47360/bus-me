@@ -71,10 +71,20 @@ const ControlPanel = ({
     console.log(routeSelection,
         startSelection,
         finishSelection,
-        dateTimeSelection,
+        getSeconds(dateTimeSelection),
     );
     setPrediction(35.0);
   };
+
+  const getSeconds = (date: Date | undefined) => {
+    if (!date) {
+      return;
+    }
+    const minutes = date.getMinutes();
+    const hours = date.getHours();
+    return ((60 * hours) + minutes) * 60;
+
+  }
 
   return <Box
     display={'flex'}
