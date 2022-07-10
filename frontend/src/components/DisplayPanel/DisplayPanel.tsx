@@ -8,10 +8,13 @@ import WeatherCard from './WeatherCard/WeatherCard';
 import ResultsCard from './ResultsCard/ResultsCard';
 import Map from './Map/Map';
 
+type DirectionsResult = google.maps.DirectionsResult;
+
 interface Props {
     prediction: number | undefined,
     startSelection: BusStop | undefined,
     finishSelection: BusStop | undefined,
+    directions: DirectionsResult | null,
     setPrediction: Dispatch<SetStateAction<number | undefined>>,
 }
 
@@ -19,10 +22,9 @@ const DisplayPanel = ({
   prediction,
   startSelection,
   finishSelection,
+  directions,
   setPrediction,
 }: Props): JSX.Element => {
-  const [directions, setDirections] =
-   useState<google.maps.DirectionsResult | null>(null);
 
   return <Box sx={{position: 'relative', zIndex: 0}}>
     <Box sx={{
@@ -49,7 +51,6 @@ const DisplayPanel = ({
       startSelection={startSelection}
       finishSelection={finishSelection}
       directions={directions}
-      setDirections={setDirections}
     />
   </Box>;
 };

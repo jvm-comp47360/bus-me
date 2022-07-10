@@ -14,6 +14,7 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
+type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -23,6 +24,7 @@ interface Props {
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>
   setPrediction: Dispatch<SetStateAction<number | undefined>>
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>
 }
 
 const ControlPanel = ({
@@ -33,6 +35,7 @@ const ControlPanel = ({
   routeSelection,
   setRouteSelection,
   setPrediction,
+  setDirections,
 }: Props): JSX.Element => {
   const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
 
@@ -128,6 +131,14 @@ const ControlPanel = ({
       sx={{margin: 1}}
     >
       BusMe!
+    </Button>
+
+    <Button
+      variant={'contained'}
+      style={{maxWidth: '30%'}}
+      sx={{margin: 1}}
+    >
+      Show Route!
     </Button>
   </Box>;
 };

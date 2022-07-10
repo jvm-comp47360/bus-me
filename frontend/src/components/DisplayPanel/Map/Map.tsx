@@ -5,16 +5,15 @@ import {Container} from '@mui/material';
 import BusStop from '../../../types/BusStop';
 
 type DirectionsResult = google.maps.DirectionsResult;
-type DirectionsStatus = google.maps.DirectionsStatus;
+// type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
   startSelection: BusStop | undefined,
   finishSelection: BusStop | undefined,
   directions: DirectionsResult | null,
-  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>,
 };
 
-const Map = ({startSelection, finishSelection, directions, setDirections}: Props): JSX.Element => {
+const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
@@ -37,14 +36,14 @@ const Map = ({startSelection, finishSelection, directions, setDirections}: Props
       },
     },
   }), []);
-  const directionsCallback = (
-    response: DirectionsResult | null, 
-    status: DirectionsStatus,
-    ) => {
-    if (directions !== undefined && status === 'OK') {
-      setDirections(response)
-    } else console.log(status)
-  };
+  // const directionsCallback = (
+  //   response: DirectionsResult | null, 
+  //   status: DirectionsStatus,
+  //   ) => {
+  //   if (directions !== undefined && status === 'OK') {
+  //     setDirections(response)
+  //   } else console.log(status)
+  // };
 
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
@@ -54,7 +53,7 @@ const Map = ({startSelection, finishSelection, directions, setDirections}: Props
         center={centerCoords}
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
-        {(startSelection) && (finishSelection) ?
+        {/* {(startSelection) && (finishSelection) ?
           <DirectionsService
           callback={directionsCallback}
           options={{
@@ -72,7 +71,7 @@ const Map = ({startSelection, finishSelection, directions, setDirections}: Props
             },
           }} />:
         null
-        }
+        } */}
         {(directions) ?
         <DirectionsRenderer directions={directions}/>:
         null}
