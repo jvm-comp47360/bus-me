@@ -27,8 +27,15 @@ const DisplayPanel = ({
 
   useEffect(() => {
     fetch('http://ipa-002.ucd.ie/api/current_weather/')
-      .then((response) => response.json() as Promise<Weather>)
+      .then((response) => {
+        if (response.ok) {
+          return response.json() as Promise<Weather>;
+        } else {
+          throw new Error();
+        }
+      })
       .then(setWeather)
+      .catch((error) => console.log(error));
   }, [])
 
 
@@ -40,7 +47,6 @@ const DisplayPanel = ({
         setPrediction={setPrediction}/>
       : null
     }
-
     <Map
       startSelection={startSelection}
       finishSelection={finishSelection}
