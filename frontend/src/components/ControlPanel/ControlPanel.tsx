@@ -14,6 +14,8 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -23,6 +25,7 @@ interface Props {
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>
   setPrediction: Dispatch<SetStateAction<number | undefined>>
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>
 }
 
 const ControlPanel = ({
@@ -33,6 +36,7 @@ const ControlPanel = ({
   routeSelection,
   setRouteSelection,
   setPrediction,
+  setDirections,
 }: Props): JSX.Element => {
   const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
 
@@ -74,6 +78,35 @@ const ControlPanel = ({
         dateTimeSelection,
     );
     setPrediction(35.0);
+  };
+
+  const showRouteClickHandler = () => {
+    if (startSelection && finishSelection) {
+    const userDirectionsRequest: google.maps.DirectionsRequest = {
+      origin: {
+        lat: +startSelection.latitude,
+        lng: +startSelection.longitude
+      },
+      destination: {
+        lat: +finishSelection.latitude,
+        lng: +finishSelection.longitude,
+      },
+      travelMode: google.maps.TravelMode.TRANSIT,
+      transitOptions: {
+        modes: [google.maps.TransitMode.BUS]
+      }
+    };
+    const directionsServiceCallback = (
+      response: DirectionsResult | null,
+      status: DirectionsStatus,
+    ) => {
+      if (response && status === 'OK') { // response was state of directions
+        setDirections(response);
+      }
+    };
+    const service = new google.maps.DirectionsService();
+    service.route(userDirectionsRequest, directionsServiceCallback);
+    }
   };
 
   return <Box
@@ -128,6 +161,15 @@ const ControlPanel = ({
       sx={{margin: 1}}
     >
       BusMe!
+    </Button>
+
+    <Button
+      variant={'contained'}
+      onClick={showRouteClickHandler}
+      style={{maxWidth: '30%'}}
+      sx={{margin: 1}}
+    >
+      Show Route!
     </Button>
   </Box>;
 };

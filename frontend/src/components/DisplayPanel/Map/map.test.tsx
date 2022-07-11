@@ -11,6 +11,7 @@ test('useLoadScript called during render', () => {
 
   render(<Map 
           startSelection={startSelection} 
-          finishSelection={finishSelection}/>);
+          finishSelection={finishSelection}
+          directions={null}/>);
   expect(loadScriptMethod).toHaveBeenCalledTimes(1);
 });
