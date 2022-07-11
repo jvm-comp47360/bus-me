@@ -35,17 +35,11 @@ const DisplayPanel = ({
   return <Box sx={{position: 'relative', zIndex: 0}}>
     {(weather) ? <WeatherCard weather={weather}/> : null}
     {(prediction) ?
-    <Box sx={{
-      position: 'absolute',
-      zIndex: 1,
-      top: '25%',
-      left: '33%',
-    }}>
       <ResultsCard
         duration={prediction}
         setPrediction={setPrediction}/>
-    </Box> :
-    null}
+      : null
+    }
 
     <Map
       startSelection={startSelection}
