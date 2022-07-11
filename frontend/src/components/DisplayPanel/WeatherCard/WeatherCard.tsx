@@ -12,12 +12,10 @@ import Weather from '../../../types/Weather';
 import {useEffect, useState} from "react";
 
 const WeatherCard = (): JSX.Element => {
-  // Unpacking API call here because we want to make
-  // sure all weather related activity occurs in this
-  // component.
 
+  // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>({
-    icon: '04d',
+    icon: '10d',
     date: 'Loading',
     weatherText: 'Loading',
     temperature: 'Loading'
@@ -42,8 +40,7 @@ const WeatherCard = (): JSX.Element => {
         image={require(`../../../assets/weather-icons/${icon}.png`)}
         alt={'current weather'}
         width={'50'}
-        sx={{width: 125,
-          padding: 4}}
+        sx={{width: 120}}
       />
       <CardContent sx={{pt: 2.7,
         alignItems: 'center'}}
