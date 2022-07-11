@@ -38,7 +38,6 @@ const DisplayPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
-
   return <Box sx={{position: 'relative', zIndex: 0}}>
     {(weather) ? <WeatherCard weather={weather}/> : null}
     {(prediction) ?
