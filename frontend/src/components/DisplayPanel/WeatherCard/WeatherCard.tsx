@@ -9,57 +9,51 @@ import BookIcon from '@mui/icons-material/Book';
 
 // Types
 import Weather from '../../../types/Weather';
-import {useEffect, useState} from "react";
 
-const WeatherCard = (): JSX.Element => {
+interface Props {
+  weather: Weather;
+}
 
-  // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
-  const [weather, setWeather] = useState<Weather>({
-    icon: '10d',
-    date: 'Loading',
-    weatherText: 'Loading',
-    temperature: 'Loading'
-  })
-
-  useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/current_weather/')
-      .then((response) => response.json() as Promise<Weather>)
-      .then(setWeather)
-  }, [])
-
-  console.log(weather);
+const WeatherCard = ({weather}: Props): JSX.Element => {
 
   const {icon, date, weatherText, temperature}: Weather = weather;
 
-  return <Card sx={{display: 'inline-block'}}>
-    <Box sx={{display: 'flex',
-      flexDirection: 'row'}}
-    >
-      <CardMedia
-        component={'img'}
-        image={require(`../../../assets/weather-icons/${icon}.png`)}
-        alt={'current weather'}
-        width={'50'}
-        sx={{width: 120}}
-      />
-      <CardContent sx={{pt: 2.7,
-        alignItems: 'center'}}
+  return <Box sx={{
+    position: 'absolute',
+    zIndex: 1,
+    top: '5%',
+    left: '15%',
+  }}>
+    <Card sx={{display: 'inline-block'}}>
+      <Box sx={{display: 'flex',
+        flexDirection: 'row'}}
       >
-        <WeatherCardInfoItem
-          icon={<CalendarMonthIcon sx={{color: '#FFFFFF'}}/>}
-          text={date}
+        <CardMedia
+          component={'img'}
+          image={require(`../../../assets/weather-icons/${icon}.png`)}
+          alt={'current weather'}
+          width={'50'}
+          sx={{width: 120}}
         />
-        <WeatherCardInfoItem
-          icon={<BookIcon sx={{color: '#FFFFFF'}}/>}
-          text={weatherText}
-        />
-        <WeatherCardInfoItem
-          icon={<DeviceThermostatIcon sx={{color: '#FFFFFF'}}/>}
-          text={`${temperature.substring(0,2)}°C`}
-        />
-      </CardContent>
-    </Box>
-  </Card>;
+        <CardContent sx={{pt: 2.7,
+          alignItems: 'center'}}
+        >
+          <WeatherCardInfoItem
+            icon={<CalendarMonthIcon sx={{color: '#FFFFFF'}}/>}
+            text={date}
+          />
+          <WeatherCardInfoItem
+            icon={<BookIcon sx={{color: '#FFFFFF'}}/>}
+            text={weatherText}
+          />
+          <WeatherCardInfoItem
+            icon={<DeviceThermostatIcon sx={{color: '#FFFFFF'}}/>}
+            text={`${temperature.substring(0,2)}°C`}
+          />
+        </CardContent>
+      </Box>
+    </Card>
+  </Box>
 };
 
 export default WeatherCard;
