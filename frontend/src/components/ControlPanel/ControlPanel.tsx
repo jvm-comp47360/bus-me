@@ -39,9 +39,16 @@ const ControlPanel = ({
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/bus_routes/')
-      .then((response) => response.json() as Promise<BusRoute[]>)
+    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+      .then((response) => {
+        if (response.ok) {
+          return response.json() as Promise<BusRoute[]>;
+        } else {
+          throw new Error();
+        }
+      })
       .then(setBusRoutes)
+      .catch((error) => console.log(error));
   }, [])
 
 
