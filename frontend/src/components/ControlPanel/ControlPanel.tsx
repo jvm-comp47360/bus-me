@@ -4,7 +4,6 @@ import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
-import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
@@ -14,7 +13,6 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
-import Weather from "../../types/Weather";
 
 interface Props {
   startSelection: BusStop | undefined;
