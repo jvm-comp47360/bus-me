@@ -12,7 +12,7 @@ const WEATHERTEXT: string = MOCK_WEATHER_API['weatherText'];
 const TEMPERATURE: string = MOCK_WEATHER_API['temperature'];
 
 const setup = (): RenderResult => render(
-    <WeatherCard/>,
+    <WeatherCard weather={MOCK_WEATHER_API}/>,
 );
 
 describe('<WeatherCard/> Weather icon functionality', () => {
