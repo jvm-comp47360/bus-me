@@ -28,6 +28,7 @@ const setup = (startSelection: BusStop | undefined,
         routeSelection={routeSelection}
         setRouteSelection={jest.fn()}
         setPrediction={jest.fn()}
+        setDirections={jest.fn()}
       />,
     </LocalizationProvider>,
 );
@@ -76,6 +77,12 @@ describe('<ControlPanel/> Default rendering', () => {
     expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
   });
 });
+
+  it('should display the show route button', () => {
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('button', {name: /show route!/i})).toBeInTheDocument();
+  });
 
 describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be disabled by default', () => {

@@ -5,7 +5,7 @@
 -- Dumped from database version 14.3
 -- Dumped by pg_dump version 14.3
 
--- Started on 2022-06-26 11:35:16
+-- Started on 2022-07-09 11:54:32
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -17,12 +17,6 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
-
-DROP DATABASE busme;
---
--- TOC entry 3445 (class 1262 OID 16592)
--- Name: busme; Type: DATABASE; Schema: -; Owner: postgres
---
 
 CREATE DATABASE busme WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'English_Ireland.1252';
 
@@ -42,18 +36,10 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- TOC entry 3 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
---
-
-CREATE SCHEMA public;
-
-
 ALTER SCHEMA public OWNER TO postgres;
 
 --
--- TOC entry 3446 (class 0 OID 0)
+-- TOC entry 3494 (class 0 OID 0)
 -- Dependencies: 3
 -- Name: SCHEMA public; Type: COMMENT; Schema: -; Owner: postgres
 --
@@ -66,7 +52,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 216 (class 1259 OID 16619)
+-- TOC entry 216 (class 1259 OID 19959)
 -- Name: auth_group; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -79,7 +65,7 @@ CREATE TABLE public.auth_group (
 ALTER TABLE public.auth_group OWNER TO postgres;
 
 --
--- TOC entry 215 (class 1259 OID 16618)
+-- TOC entry 215 (class 1259 OID 19958)
 -- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -95,7 +81,7 @@ CREATE SEQUENCE public.auth_group_id_seq
 ALTER TABLE public.auth_group_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3447 (class 0 OID 0)
+-- TOC entry 3495 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -104,7 +90,7 @@ ALTER SEQUENCE public.auth_group_id_seq OWNED BY public.auth_group.id;
 
 
 --
--- TOC entry 218 (class 1259 OID 16628)
+-- TOC entry 218 (class 1259 OID 19968)
 -- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -118,7 +104,7 @@ CREATE TABLE public.auth_group_permissions (
 ALTER TABLE public.auth_group_permissions OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 16627)
+-- TOC entry 217 (class 1259 OID 19967)
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -133,7 +119,7 @@ CREATE SEQUENCE public.auth_group_permissions_id_seq
 ALTER TABLE public.auth_group_permissions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3448 (class 0 OID 0)
+-- TOC entry 3496 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -142,7 +128,7 @@ ALTER SEQUENCE public.auth_group_permissions_id_seq OWNED BY public.auth_group_p
 
 
 --
--- TOC entry 214 (class 1259 OID 16612)
+-- TOC entry 214 (class 1259 OID 19952)
 -- Name: auth_permission; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -157,7 +143,7 @@ CREATE TABLE public.auth_permission (
 ALTER TABLE public.auth_permission OWNER TO postgres;
 
 --
--- TOC entry 213 (class 1259 OID 16611)
+-- TOC entry 213 (class 1259 OID 19951)
 -- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -173,7 +159,7 @@ CREATE SEQUENCE public.auth_permission_id_seq
 ALTER TABLE public.auth_permission_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3449 (class 0 OID 0)
+-- TOC entry 3497 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -182,7 +168,7 @@ ALTER SEQUENCE public.auth_permission_id_seq OWNED BY public.auth_permission.id;
 
 
 --
--- TOC entry 220 (class 1259 OID 16635)
+-- TOC entry 220 (class 1259 OID 19975)
 -- Name: auth_user; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -204,7 +190,7 @@ CREATE TABLE public.auth_user (
 ALTER TABLE public.auth_user OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 16644)
+-- TOC entry 222 (class 1259 OID 19984)
 -- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -218,7 +204,7 @@ CREATE TABLE public.auth_user_groups (
 ALTER TABLE public.auth_user_groups OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 16643)
+-- TOC entry 221 (class 1259 OID 19983)
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -233,7 +219,7 @@ CREATE SEQUENCE public.auth_user_groups_id_seq
 ALTER TABLE public.auth_user_groups_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3450 (class 0 OID 0)
+-- TOC entry 3498 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -242,7 +228,7 @@ ALTER SEQUENCE public.auth_user_groups_id_seq OWNED BY public.auth_user_groups.i
 
 
 --
--- TOC entry 219 (class 1259 OID 16634)
+-- TOC entry 219 (class 1259 OID 19974)
 -- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -258,7 +244,7 @@ CREATE SEQUENCE public.auth_user_id_seq
 ALTER TABLE public.auth_user_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3451 (class 0 OID 0)
+-- TOC entry 3499 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -267,7 +253,7 @@ ALTER SEQUENCE public.auth_user_id_seq OWNED BY public.auth_user.id;
 
 
 --
--- TOC entry 224 (class 1259 OID 16651)
+-- TOC entry 224 (class 1259 OID 19991)
 -- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -281,7 +267,7 @@ CREATE TABLE public.auth_user_user_permissions (
 ALTER TABLE public.auth_user_user_permissions OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 16650)
+-- TOC entry 223 (class 1259 OID 19990)
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -296,7 +282,7 @@ CREATE SEQUENCE public.auth_user_user_permissions_id_seq
 ALTER TABLE public.auth_user_user_permissions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3452 (class 0 OID 0)
+-- TOC entry 3500 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -305,7 +291,20 @@ ALTER SEQUENCE public.auth_user_user_permissions_id_seq OWNED BY public.auth_use
 
 
 --
--- TOC entry 227 (class 1259 OID 16739)
+-- TOC entry 227 (class 1259 OID 20079)
+-- Name: bus_routes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bus_routes (
+    id character varying(50) NOT NULL,
+    name character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.bus_routes OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 20084)
 -- Name: bus_stops; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -321,7 +320,7 @@ CREATE TABLE public.bus_stops (
 ALTER TABLE public.bus_stops OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 16710)
+-- TOC entry 226 (class 1259 OID 20050)
 -- Name: django_admin_log; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -341,7 +340,7 @@ CREATE TABLE public.django_admin_log (
 ALTER TABLE public.django_admin_log OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 16709)
+-- TOC entry 225 (class 1259 OID 20049)
 -- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -357,7 +356,7 @@ CREATE SEQUENCE public.django_admin_log_id_seq
 ALTER TABLE public.django_admin_log_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3453 (class 0 OID 0)
+-- TOC entry 3501 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -366,7 +365,7 @@ ALTER SEQUENCE public.django_admin_log_id_seq OWNED BY public.django_admin_log.i
 
 
 --
--- TOC entry 212 (class 1259 OID 16603)
+-- TOC entry 212 (class 1259 OID 19943)
 -- Name: django_content_type; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -380,7 +379,7 @@ CREATE TABLE public.django_content_type (
 ALTER TABLE public.django_content_type OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 16602)
+-- TOC entry 211 (class 1259 OID 19942)
 -- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -396,7 +395,7 @@ CREATE SEQUENCE public.django_content_type_id_seq
 ALTER TABLE public.django_content_type_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3454 (class 0 OID 0)
+-- TOC entry 3502 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -405,7 +404,7 @@ ALTER SEQUENCE public.django_content_type_id_seq OWNED BY public.django_content_
 
 
 --
--- TOC entry 210 (class 1259 OID 16594)
+-- TOC entry 210 (class 1259 OID 19934)
 -- Name: django_migrations; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -420,7 +419,7 @@ CREATE TABLE public.django_migrations (
 ALTER TABLE public.django_migrations OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 16593)
+-- TOC entry 209 (class 1259 OID 19933)
 -- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -435,7 +434,7 @@ CREATE SEQUENCE public.django_migrations_id_seq
 ALTER TABLE public.django_migrations_id_seq OWNER TO postgres;
 
 --
--- TOC entry 3455 (class 0 OID 0)
+-- TOC entry 3503 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -444,7 +443,7 @@ ALTER SEQUENCE public.django_migrations_id_seq OWNED BY public.django_migrations
 
 
 --
--- TOC entry 228 (class 1259 OID 16745)
+-- TOC entry 231 (class 1259 OID 20112)
 -- Name: django_session; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -458,7 +457,96 @@ CREATE TABLE public.django_session (
 ALTER TABLE public.django_session OWNER TO postgres;
 
 --
--- TOC entry 3215 (class 2604 OID 16622)
+-- TOC entry 234 (class 1259 OID 20137)
+-- Name: route_connection; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.route_connection (
+    id bigint NOT NULL,
+    routes_id character varying(50) NOT NULL,
+    stops_id character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.route_connection OWNER TO postgres;
+
+--
+-- TOC entry 233 (class 1259 OID 20136)
+-- Name: route_connection_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.route_connection_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.route_connection_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3504 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: route_connection_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.route_connection_id_seq OWNED BY public.route_connection.id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 20090)
+-- Name: route_connections; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.route_connections (
+    id bigint NOT NULL,
+    bus_route_id character varying(50) NOT NULL,
+    bus_stop_id character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.route_connections OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 20089)
+-- Name: route_connections_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.route_connections_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.route_connections_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3505 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: route_connections_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.route_connections_id_seq OWNED BY public.route_connections.id;
+
+
+--
+-- TOC entry 232 (class 1259 OID 20131)
+-- Name: routes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.routes (
+    id character varying(50) NOT NULL,
+    name character varying(20) NOT NULL
+);
+
+
+ALTER TABLE public.routes OWNER TO postgres;
+
+--
+-- TOC entry 3233 (class 2604 OID 19962)
 -- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -466,7 +554,7 @@ ALTER TABLE ONLY public.auth_group ALTER COLUMN id SET DEFAULT nextval('public.a
 
 
 --
--- TOC entry 3216 (class 2604 OID 16631)
+-- TOC entry 3234 (class 2604 OID 19971)
 -- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -474,7 +562,7 @@ ALTER TABLE ONLY public.auth_group_permissions ALTER COLUMN id SET DEFAULT nextv
 
 
 --
--- TOC entry 3214 (class 2604 OID 16615)
+-- TOC entry 3232 (class 2604 OID 19955)
 -- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -482,7 +570,7 @@ ALTER TABLE ONLY public.auth_permission ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
--- TOC entry 3217 (class 2604 OID 16638)
+-- TOC entry 3235 (class 2604 OID 19978)
 -- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -490,7 +578,7 @@ ALTER TABLE ONLY public.auth_user ALTER COLUMN id SET DEFAULT nextval('public.au
 
 
 --
--- TOC entry 3218 (class 2604 OID 16647)
+-- TOC entry 3236 (class 2604 OID 19987)
 -- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -498,7 +586,7 @@ ALTER TABLE ONLY public.auth_user_groups ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3219 (class 2604 OID 16654)
+-- TOC entry 3237 (class 2604 OID 19994)
 -- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -506,7 +594,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions ALTER COLUMN id SET DEFAULT n
 
 
 --
--- TOC entry 3220 (class 2604 OID 16713)
+-- TOC entry 3238 (class 2604 OID 20053)
 -- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -514,7 +602,7 @@ ALTER TABLE ONLY public.django_admin_log ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
--- TOC entry 3213 (class 2604 OID 16606)
+-- TOC entry 3231 (class 2604 OID 19946)
 -- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -522,7 +610,7 @@ ALTER TABLE ONLY public.django_content_type ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 3212 (class 2604 OID 16597)
+-- TOC entry 3230 (class 2604 OID 19937)
 -- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -530,7 +618,23 @@ ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- TOC entry 3427 (class 0 OID 16619)
+-- TOC entry 3241 (class 2604 OID 20140)
+-- Name: route_connection id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connection ALTER COLUMN id SET DEFAULT nextval('public.route_connection_id_seq'::regclass);
+
+
+--
+-- TOC entry 3240 (class 2604 OID 20093)
+-- Name: route_connections id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connections ALTER COLUMN id SET DEFAULT nextval('public.route_connections_id_seq'::regclass);
+
+
+--
+-- TOC entry 3469 (class 0 OID 19959)
 -- Dependencies: 216
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -540,7 +644,7 @@ COPY public.auth_group (id, name) FROM stdin;
 
 
 --
--- TOC entry 3429 (class 0 OID 16628)
+-- TOC entry 3471 (class 0 OID 19968)
 -- Dependencies: 218
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -550,7 +654,7 @@ COPY public.auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 3425 (class 0 OID 16612)
+-- TOC entry 3467 (class 0 OID 19952)
 -- Dependencies: 214
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -580,15 +684,27 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 22	Can change session	6	change_session
 23	Can delete session	6	delete_session
 24	Can view session	6	view_session
-25	Can add bus stops	7	add_busstops
-26	Can change bus stops	7	change_busstops
-27	Can delete bus stops	7	delete_busstops
-28	Can view bus stops	7	view_busstops
+25	Can add bus routes	7	add_busroutes
+26	Can change bus routes	7	change_busroutes
+27	Can delete bus routes	7	delete_busroutes
+28	Can view bus routes	7	view_busroutes
+29	Can add bus stops	8	add_busstops
+30	Can change bus stops	8	change_busstops
+31	Can delete bus stops	8	delete_busstops
+32	Can view bus stops	8	view_busstops
+33	Can add route connections	9	add_routeconnections
+34	Can change route connections	9	change_routeconnections
+35	Can delete route connections	9	delete_routeconnections
+36	Can view route connections	9	view_routeconnections
+37	Can add routes	10	add_routes
+38	Can change routes	10	change_routes
+39	Can delete routes	10	delete_routes
+40	Can view routes	10	view_routes
 \.
 
 
 --
--- TOC entry 3431 (class 0 OID 16635)
+-- TOC entry 3473 (class 0 OID 19975)
 -- Dependencies: 220
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -598,7 +714,7 @@ COPY public.auth_user (id, password, last_login, is_superuser, username, first_n
 
 
 --
--- TOC entry 3433 (class 0 OID 16644)
+-- TOC entry 3475 (class 0 OID 19984)
 -- Dependencies: 222
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -608,7 +724,7 @@ COPY public.auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- TOC entry 3435 (class 0 OID 16651)
+-- TOC entry 3477 (class 0 OID 19991)
 -- Dependencies: 224
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -618,8 +734,60 @@ COPY public.auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 3438 (class 0 OID 16739)
+-- TOC entry 3480 (class 0 OID 20079)
 -- Dependencies: 227
+-- Data for Name: bus_routes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.bus_routes (id, name) FROM stdin;
+1	1
+2	11
+3	116
+4	118
+5	120
+6	122
+7	123
+8	13
+9	130
+10	14
+11	140
+12	142
+13	145
+14	15
+15	150
+16	151
+17	16
+18	26
+19	27
+20	33
+21	37
+22	38
+23	39
+24	4
+25	40
+26	41
+27	42
+28	43
+29	44
+30	47
+31	49
+32	53
+33	61
+34	65
+35	68
+36	69
+37	7
+38	70
+39	79
+40	83
+41	84
+42	9
+\.
+
+
+--
+-- TOC entry 3481 (class 0 OID 20084)
+-- Dependencies: 228
 -- Data for Name: bus_stops; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -851,7 +1019,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000312	Wellington Quay	312	53.3454764728	-6.2662061555
 8220DB000313	Bachelors Walk	313	53.3469069007	-6.2619724977
 8220DB000315	Bachelors Walk	315	53.3470282859	-6.2616671551
-8220DB000316	Bachelors Walk	316	53.3468926523	-6.2622284203
 8220DB000317	Westmoreland Street	317	53.3465259445	-6.2592693662
 8220DB000319	Westmoreland Street	319	53.3462744267	-6.2592796139
 8220DB000320	Westmoreland Street	320	53.3456456324	-6.2593052325
@@ -865,7 +1032,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000335	D'Olier Street	335	53.3463614054	-6.2578491705
 8220DB000336	D'Olier Street	336	53.3462516394	-6.2577184667
 8220DB000340	Townsend Street	340	53.3459751203	-6.2560174785
-8220DB000341	South Townsend St	341	53.3459451129	-6.2564242394
 8220DB000342	College Street	342	53.3455641183	-6.2568002608
 8220DB000345	Pearse St Garda Stn	345	53.3454758155	-6.2562931941
 8220DB000346	Pearse St Garda Stn	346	53.3455443982	-6.2566809076
@@ -881,9 +1047,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000372	Star of the Sea	372	53.3354881470	-6.2196556714
 8220DB000373	Farney Park	373	53.3342753313	-6.2178892726
 8220DB000374	Sandymount	374	53.3332284399	-6.2164013421
-8220DB000375	Dromard Terrace	375	53.3340611347	-6.2143845131
 8220DB000381	St John's Church	381	53.3243237661	-6.2123741934
-8220DB000385	Newgrove Avenue	385	53.3323510231	-6.2112276879
 8220DB000387	Sandymount	387	53.3324995102	-6.2157410577
 8220DB000388	Farney Park	388	53.3345088620	-6.2184801726
 8220DB000389	Star of the Sea	389	53.3352900818	-6.2196338894
@@ -927,7 +1091,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000482	Shrewsbury Road	482	53.3247277781	-6.2219652950
 8220DB000483	British Embassy	483	53.3259441075	-6.2239714805
 8220DB000485	RDS Ballsbridge	485	53.3282515101	-6.2286349708
-8220DB000486	RDS Ballsbridge	486	53.3283287184	-6.2289921012
 8220DB000487	American Embassy	487	53.3308552894	-6.2339023084
 8220DB000488	Lansdowne Park	488	53.3330985546	-6.2360769470
 8220DB000489	St Mary's Rd South	489	53.3349420031	-6.2373523127
@@ -1033,7 +1196,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000658	Waterfall Road	658	53.3749800485	-6.1831386199
 8220DB000659	Sybil Hill Avenue	659	53.3752374407	-6.1858782135
 8220DB000662	Clanmoyle Road	662	53.3738704166	-6.2126292751
-8220DB000663	Saint Peters School	663	53.3747635384	-6.2170558102
 8220DB000664	Donnycarney Church	664	53.3747192481	-6.2195075621
 8220DB000665	Casino Park	665	53.3724663178	-6.2221264612
 8220DB000666	Mount Temple School	666	53.3702331241	-6.2242633478
@@ -1186,12 +1348,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000960	Tonlegee Road	960	53.3911576199	-6.1718793056
 8220DB000961	Millwood Villas	961	53.3910568300	-6.1764545498
 8220DB000962	Limewood	962	53.3907949286	-6.1828559742
-8220DB000963	Rathvale	963	53.3905102718	-6.1865969590
-8220DB000964	St John's Church	964	53.3900734008	-6.1921636505
-8220DB000965	Malahide Road	965	53.3888900839	-6.1965288813
-8220DB000966	Oscar Traynor Road	966	53.3912154012	-6.2029110488
-8220DB000967	Coolock Drive	967	53.3922920610	-6.2063691423
-8220DB000968	Armstrong Walk	968	53.3937589537	-6.2106831628
 8220DB000969	Northside SC	969	53.3956824564	-6.2154896382
 8220DB000972	Aulden Grange	972	53.3969960429	-6.2349237993
 8220DB000979	St Canice's GNS	979	53.3899538086	-6.2971006360
@@ -1203,20 +1359,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB000987	Finglas	987	53.3902199269	-6.2993753855
 8220DB000988	St Canice's GNS	988	53.3898902365	-6.2957951081
 8220DB000993	Astro Park	993	53.3977025970	-6.2292251749
-8220DB000997	Northside SC	997	53.3941665689	-6.2114930934
-8220DB000998	Armstrong Walk	998	53.3935747678	-6.2097886859
-8220DB000999	Coolock Drive	999	53.3922410515	-6.2059653080
-8220DB001000	Beechpark Avenue	1000	53.3909830767	-6.2018081849
-8220DB001001	Brookville Crescent	1001	53.3900811212	-6.1992149912
-8220DB001002	Tonlegee Road	1002	53.3891754998	-6.1951937149
-8220DB001003	St John's Church	1003	53.3902995343	-6.1910715012
-8220DB001004	Rathvale	1004	53.3906381578	-6.1861404492
 8220DB001005	Limewood	1005	53.3909514066	-6.1819170834
-8220DB001006	Millwood Villas	1006	53.3911703561	-6.1768255954
-8220DB001007	Millbrook Drive	1007	53.3912462840	-6.1723867297
-8220DB001008	Kilbarrack Road	1008	53.3911267143	-6.1669337957
-8220DB001009	St. Donagh's Road	1009	53.3910890757	-6.1644845507
-8220DB001012	Naomh Barróg GAA	1012	53.3902500117	-6.1526274286
 8220DB001013	Earlsfort Terrace	1013	53.3354815055	-6.2575568807
 8220DB001015	Adelaide Road	1015	53.3327303534	-6.2599663551
 8220DB001016	South Richmond St	1016	53.3311593142	-6.2644145804
@@ -1340,7 +1483,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001249	Coolock Drive	1249	53.3951809649	-6.2012402174
 8220DB001250	Bunratty Road	1250	53.3937390061	-6.2075563458
 8220DB001251	St Luke's Church	1251	53.3934573359	-6.2223793176
-8220DB001252	Kilmore Road	1252	53.3936380323	-6.2146128286
 8220DB001253	Tranquility Grove	1253	53.3938639431	-6.2146935925
 8220DB001254	Bunratty Road	1254	53.3951173598	-6.2113629964
 8220DB001255	Adare Park	1255	53.3943535025	-6.2089740732
@@ -1433,15 +1575,10 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001387	Aughavanagh Road	1387	53.3280405494	-6.2868062392
 8220DB001388	Rutland Avenue	1388	53.3267732721	-6.2911957887
 8220DB001389	Pearse College	1389	53.3259359421	-6.2954928715
-8220DB001391	Clonmacnoise Road	1391	53.3228221151	-6.2983641235
-8220DB001392	Bangor Circle	1392	53.3224910152	-6.3016197862
-8220DB001394	Ferns Road	1394	53.3237430595	-6.2967662309
-8220DB001395	Sundrive Road	1395	53.3247339571	-6.2962914029
 8220DB001396	Crumlin Pool	1396	53.3249002682	-6.3149601372
 8220DB001397	Kildare Road	1397	53.3250914014	-6.3138567001
 8220DB001398	Windmill Road	1398	53.3253013794	-6.3102754507
 8220DB001399	Monasterboice Road	1399	53.3251428006	-6.3054327031
-8220DB001400	Bangor Circle	1400	53.3236248160	-6.2998183599
 8220DB001401	Clogher Road	1401	53.3253968159	-6.2986519848
 8220DB001402	Pearse College	1402	53.3259879311	-6.2959862197
 8220DB001403	Rutland Avenue	1403	53.3271540649	-6.2895441334
@@ -1459,7 +1596,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001417	Lady Of Mercy School	1417	53.3310322128	-6.3195681190
 8220DB001418	Cooley Road	1418	53.3300297592	-6.3230607701
 8220DB001419	Brandon Road	1419	53.3277177272	-6.3229112431
-8220DB001421	Crumlin Hospital	1421	53.3249507660	-6.3204526633
 8220DB001423	Crumlin Hospital	1423	53.3249994890	-6.3194449219
 8220DB001424	Crumlin Hospital	1424	53.3256625126	-6.3167466215
 8220DB001425	Cooley Road	1425	53.3270131720	-6.3181947535
@@ -1535,7 +1671,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001510	Ballyboggan Road	1510	53.3769069295	-6.2873102372
 8220DB001511	Tolka Vale	1511	53.3782345232	-6.2877529846
 8220DB001512	Prospect Hill	1512	53.3821743223	-6.2917288355
-8220DB001513	Saint Martin's	1513	53.3867674339	-6.2967768033
 8220DB001514	Drogheda Mall	1514	53.3894651562	-6.3000219145
 8220DB001515	Marino Park	1515	53.3661143161	-6.2331954182
 8220DB001518	Kildonan Road	1518	53.3906003885	-6.3116141241
@@ -1548,7 +1683,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001526	Kildonan Park	1526	53.3923069370	-6.3115315366
 8220DB001528	St David's Terrace	1528	53.3561954282	-6.2940000257
 8220DB001529	Finglas Village	1529	53.3884588269	-6.2981526069
-8220DB001530	Finglas Road	1530	53.3869194999	-6.2967256296
 8220DB001531	Clearwater SC	1531	53.3837436640	-6.2933647409
 8220DB001532	Prospect Hill	1532	53.3817441172	-6.2905585009
 8220DB001533	Tolka Vale	1533	53.3789678848	-6.2874980880
@@ -1586,9 +1720,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001598	Valeview Drive	1598	53.3802421780	-6.3056204401
 8220DB001599	Cardiffsbridge Road	1599	53.3808997507	-6.3107954162
 8220DB001600	Deanstown Avenue	1600	53.3835970179	-6.3127631835
-8220DB001601	Deanstown Drive	1601	53.3838943135	-6.3147207613
-8220DB001602	Patrician College	1602	53.3844180032	-6.3187139573
-8220DB001603	Ratoath Road	1603	53.3835188569	-6.3186892564
 8220DB001604	Rathvilly Road	1604	53.3837454771	-6.3162750422
 8220DB001605	Albert College Pk	1605	53.3882529722	-6.2607995903
 8220DB001606	St Helena's Road	1606	53.3803706836	-6.3064420898
@@ -1611,9 +1742,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001647	Blackhall Place	1647	53.3483510636	-6.2822517262
 8220DB001648	Stoneybatter	1648	53.3510913675	-6.2828024851
 8220DB001649	Manor Street	1649	53.3525701350	-6.2843804485
-8220DB001650	Castle Avenue	1650	53.3611743871	-6.2093142753
-8220DB001651	Vernon Avenue	1651	53.3679404066	-6.1948593342
-8220DB001652	Clontarf Castle	1652	53.3633555860	-6.2061274226
 8220DB001654	St David's Terrace	1654	53.3561451797	-6.2942574300
 8220DB001655	Blackhorse Avenue	1655	53.3567321718	-6.2969682741
 8220DB001656	McKee Park	1656	53.3572972790	-6.2987786377
@@ -1692,7 +1820,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB001763	Vernon Avenue	1763	53.3644067789	-6.1953693753
 8220DB001764	Blackheath Park	1764	53.3658929687	-6.1955770404
 8220DB001765	Blackheath Grove	1765	53.3665514241	-6.2022814137
-8220DB001766	Seafield Road West	1766	53.3651160524	-6.2048513165
 8220DB001767	Clontarf Castle	1767	53.3638273181	-6.2052210532
 8220DB001769	Park Lawn	1769	53.3688857836	-6.1819402865
 8220DB001770	Dollymount Avenue	1770	53.3670834688	-6.1828134982
@@ -1811,7 +1938,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB002196	Chapelizod	2196	53.3478346251	-6.3416781515
 8220DB002197	Lucan Road	2197	53.3481655534	-6.3467422149
 8220DB002198	Belgrove Park	2198	53.3506251418	-6.3510632886
-8220DB002199	Glenaulin	2199	53.3519682959	-6.3559085340
 8220DB002200	Kylemore Road	2200	53.3502827504	-6.3529541507
 8220DB002243	Glenaulin	2243	53.3519743827	-6.3556979952
 8220DB002244	Belgrove Park	2244	53.3508843467	-6.3516090744
@@ -1900,14 +2026,11 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB002443	Brookfield	2443	53.3218921781	-6.2836449964
 8220DB002444	Mount Argus Road	2444	53.3242977355	-6.2796752932
 8220DB002448	Cashel Road	2448	53.3193092472	-6.3041478070
-8220DB002449	Armagh Road	2449	53.3209851812	-6.3050720718
 8220DB002450	Scoil Una Naofa	2450	53.3202311000	-6.3076687892
-8220DB002451	St Agnes Park	2451	53.3191657562	-6.3143154878
 8220DB002452	St Peter's Road	2452	53.3161898762	-6.3321586972
 8220DB002453	Limekiln Grove	2453	53.3148278808	-6.3305308234
 8220DB002462	Greenhills CU	2462	53.3138231907	-6.3300297323
 8220DB002463	St Peter's Road	2463	53.3153044515	-6.3311876243
-8220DB002464	St Agnes Park	2464	53.3194811626	-6.3131022217
 8220DB002465	Armagh Road	2465	53.3199884646	-6.3089392826
 8220DB002466	Scoil Colm	2466	53.3206542345	-6.3064511764
 8220DB002467	Cashel Road	2467	53.3192341834	-6.3039256281
@@ -2013,30 +2136,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB002775	Ep Mooney Park	2775	53.3227770258	-6.3411038613
 8220DB002777	Walkinstown Park Est	2777	53.3191699520	-6.3363804522
 8220DB002778	Drimnagh Castle	2778	53.3240244462	-6.3319432003
-8220DB002780	Walkinstown Avenue	2780	53.3256848414	-6.3420869628
-8220DB002781	Kylemore Road	2781	53.3279631772	-6.3436951227
-8220DB002782	Bluebell Avenue	2782	53.3306772641	-6.3456168991
-8220DB002783	Kylemore Way	2783	53.3353593086	-6.3468621963
-8220DB002784	Kylemore Way	2784	53.3352389913	-6.3466115796
-8220DB002785	Bluebell Avenue	2785	53.3300839894	-6.3449642242
-8220DB002786	Kylemore Luas	2786	53.3278418116	-6.3433695318
-8220DB002787	Walkinstown Avenue	2787	53.3251007397	-6.3414490678
-8220DB002788	Castlewood Avenue	2788	53.3228386546	-6.2633412173
-8220DB002789	Charleston Avenue	2789	53.3237164482	-6.2594324621
-8220DB002790	Oakley Road	2790	53.3246375121	-6.2566477059
-8220DB002791	Ranelagh Luas	2791	53.3250230920	-6.2553559219
-8220DB002793	Belgrave Square N	2793	53.3232622422	-6.2609521383
-8220DB002794	Castlewood Avenue	2794	53.3226105306	-6.2643412502
 8220DB002795	Leeson Village	2795	53.3285299793	-6.2462646210
-8220DB002796	Pembroke Road	2796	53.3326990430	-6.2406730815
-8220DB002797	Northumberland Road	2797	53.3322603943	-6.2365319568
-8220DB002798	Pembroke Road	2798	53.3319991167	-6.2358820757
-8220DB002799	Eastmoreland Place	2799	53.3326920053	-6.2420247419
-8220DB002800	Sandymount Avenue	2800	53.3271442905	-6.2224803450
-8220DB002801	Wilfield Park	2801	53.3292443854	-6.2186545233
-8220DB002806	Sandymount Avenue	2806	53.3303771444	-6.2162650633
-8220DB002807	Wilfield Park	2807	53.3287554951	-6.2190202141
-8220DB002808	Sandymount Station	2808	53.3268114454	-6.2230646851
 8220DB002809	Pearse Station	2809	53.3428845462	-6.2499709000
 8220DB002810	Merrion Square West	2810	53.3407949111	-6.2508974892
 8220DB002811	Merrion Street	2811	53.3393595022	-6.2523078193
@@ -2076,29 +2176,17 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB003000	Rostrevor Terrace	3000	53.3078619717	-6.2705970545
 8220DB003001	Orwell Mews	3001	53.3102889380	-6.2737105070
 8220DB003002	Washerwomans Lane	3002	53.3112213398	-6.2741681329
-8220DB003353	Downpatrick Road	3353	53.3277417973	-6.2979581353
-8220DB003354	Clogher Road	3354	53.3263994667	-6.2971107982
 8220DB003355	Slane Road	3355	53.3254823571	-6.2977178017
 8220DB003356	Bangor Road	3356	53.3248516316	-6.3007603935
-8220DB003357	Clonmacnoise Grove	3357	53.3219738453	-6.3019105302
-8220DB003358	Lismore Road	3358	53.3211321838	-6.3034000213
-8220DB003360	Clonmacnoise Road	3360	53.3217787260	-6.3039898318
-8220DB003361	Clogher Road	3361	53.3262397006	-6.2972522769
-8220DB003362	Downpatrick Road	3362	53.3274370180	-6.2980153083
 8220DB003562	Glenmalure Square	3562	53.3145538608	-6.2462973818
 8220DB003952	Rutland Avenue	3952	53.3316839465	-6.2945579920
 8220DB004320	Heuston Station	4320	53.3466406640	-6.2920835141
 8220DB004322	Ashington Park	4322	53.3734731712	-6.3112546685
 8220DB004363	Berryfield Road	4363	53.3817122371	-6.3034425060
 8220DB004364	Cappagh Hospital	4364	53.3929113883	-6.3225291854
-8220DB004365	Poppintree Park	4365	53.4021446935	-6.2835143141
-8220DB004366	Clune Road	4366	53.3912153802	-6.2948099504
-8220DB004367	Jamestown Road	4367	53.3987327890	-6.2893963167
-8220DB004368	Poppintree Park	4368	53.3988240612	-6.2888663111
 8220DB004369	Oakwood Road	4369	53.3972652002	-6.2923574914
 8220DB004371	Drumcliffe Drive	4371	53.3659285746	-6.2926794648
 8220DB004372	Fitzmaurice Road	4372	53.3820484820	-6.2761000709
-8220DB004375	Jamestown Road	4375	53.3916731626	-6.2966560973
 8220DB004376	Clancy Avenue	4376	53.3924080528	-6.2927323917
 8220DB004377	Sycamore Road	4377	53.3944892873	-6.2899424437
 8220DB004380	Mabbot Street	4380	53.3508458863	-6.2535053053
@@ -2116,7 +2204,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004407	Victoria Quay	4407	53.3464875038	-6.2851654293
 8220DB004408	Phoenix House	4408	53.3483333613	-6.3011033099
 8220DB004413	Heuston Station	4413	53.3461564854	-6.2927937821
-8220DB004414	Convent Lawns	4414	53.3443370217	-6.3500143221
 8220DB004415	Connolly Train Stn	4415	53.3505207924	-6.2503340441
 8220DB004432	Griffith Downs	4432	53.3772074699	-6.2485637188
 8220DB004434	Coombe Hospital	4434	53.3358683780	-6.2892554790
@@ -2127,8 +2214,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004468	West Road	4468	53.3567841966	-6.2380284484
 8220DB004469	East Road	4469	53.3542069665	-6.2302928601
 8220DB004472	St Anne's Avenue	4472	53.3763621447	-6.1782849742
-8220DB004473	Artane Castle SC	4473	53.3839142520	-6.2147040644
-8220DB004474	Artane Castle SC	4474	53.3841372471	-6.2151908353
 8220DB004479	McKee Road	4479	53.3913045300	-6.2941297781
 8220DB004481	Cabra PO	4481	53.3646144110	-6.2869017925
 8220DB004485	Naomh Fionnbarra GAA	4485	53.3655416312	-6.2895092839
@@ -2152,7 +2237,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004524	Ashington Avenue	4524	53.3716760973	-6.3157442282
 8220DB004525	Ashington Park	4525	53.3734481351	-6.3113909237
 8220DB004526	Ashington Avenue	4526	53.3721188871	-6.3152758886
-8220DB004527	Rathmines	4527	53.3216134981	-6.2668585798
 8220DB004528	Grove Park	4528	53.3288960789	-6.2645364902
 8220DB004538	Royal Canal Avenue	4538	53.3757281132	-6.3169069846
 8220DB004539	Glenties Park	4539	53.3816733488	-6.3108399528
@@ -2167,7 +2251,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004594	Donaghmede Rdbt	4594	53.3992446818	-6.1635319436
 8220DB004595	Templeview Avenue	4595	53.4021399241	-6.1729725879
 8220DB004596	Temple View Rise	4596	53.4023376157	-6.1770850524
-8220DB004597	Beaumont Hospital	4597	53.3902504630	-6.2243172288
 8220DB004680	DCU	4680	53.3849664764	-6.2653384063
 8220DB004683	Balbutcher Drive	4683	53.4047127122	-6.2795906363
 8220DB004692	Glin Road	4692	53.4002486445	-6.2053125867
@@ -2182,16 +2265,11 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004720	Aston Quay	4720	53.3465945107	-6.2602729177
 8220DB004725	O'Connell St Upper	4725	53.3521156161	-6.2610545340
 8220DB004726	Parnell Square Nth	4726	53.3542628405	-6.2640768270
-8220DB004781	IDA Poppintree	4781	53.4017480300	-6.2840566635
 8220DB004782	Gracefield Road	4782	53.3825097657	-6.2025711995
-8220DB004784	CRC	4784	53.3700841075	-6.2011107025
-8220DB004785	CRC	4785	53.3702460900	-6.2017200461
 8220DB004788	Oakwood Road	4788	53.3969347694	-6.2925060623
-8220DB004790	Pinebrook Drive	4790	53.3813898765	-6.2117881689
 8220DB004791	Collins Avenue East	4791	53.3716117546	-6.2076590853
 8220DB004792	Clanawley Road	4792	53.3727989042	-6.2095029406
 8220DB004793	Avila Park	4793	53.3922672634	-6.3208253753
-8220DB004794	Clontarf Station	4794	53.3630049006	-6.2265624231
 8220DB004804	Old Grange Abbey	4804	53.3985246852	-6.1599687273
 8220DB004806	Grange Abbey Grove	4806	53.3983744075	-6.1531477063
 8220DB004854	Ardee Street	4854	53.3381491415	-6.2791027588
@@ -2207,9 +2285,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB004938	Finglas Village	4938	53.3908615441	-6.2983574569
 8220DB004962	Mountjoy Square	4962	53.3570397242	-6.2584953138
 8220DB004985	Lanesborough Estate	4985	53.4023209892	-6.2914180693
-8220DB005006	Le Fanu Road	5006	53.3462028545	-6.3516995771
-8220DB005007	Convent Lawns	5007	53.3441883078	-6.3496596081
-8220DB005009	Le Fanu Road	5009	53.3462145336	-6.3518943831
 8220DB005025	The Coombe	5025	53.3397630157	-6.2775810597
 8220DB005026	Armagh Road	5026	53.3204303650	-6.3052441688
 8220DB005060	Dundaniel Road	5060	53.3971670149	-6.2240292406
@@ -2218,7 +2293,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB005099	Newmarket Street	5099	53.3389824386	-6.2758104368
 8220DB005134	Lally Road	5134	53.3416887629	-6.3302175007
 8220DB005140	Mayor Street Lower	5140	53.3511243927	-6.2455324214
-8220DB005141	Seafield Road West	5141	53.3647439835	-6.2052125722
 8220DB005144	Marian School	5144	53.3727095347	-6.3062050263
 8220DB005145	Rathbourne Avenue	5145	53.3771967976	-6.3267542997
 8220DB005147	Marian College	5147	53.3718234485	-6.3058344086
@@ -2293,7 +2367,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB007092	Dolmen Court	7092	53.3981870002	-6.2720942038
 8220DB007112	Astro Park	7112	53.3975490018	-6.2291714005
 8220DB007113	Northwood Avenue	7113	53.4025410679	-6.2649242639
-8220DB007129	Victoria Road	7129	53.3620982003	-6.2085843532
 8220DB007130	Cromcastle Green	7130	53.3930727352	-6.2206962190
 8220DB007149	IKEA	7149	53.4072962624	-6.2779972721
 8220DB007153	Walkinstown Drive	7153	53.3222436261	-6.3350749819
@@ -2361,17 +2434,14 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB007587	Science Gallery	7587	53.3444579282	-6.2512281598
 8220DB007588	Pearse Street	7588	53.3449849859	-6.2540753170
 8220DB007591	Abbey Street Lower	7591	53.3488901530	-6.2568297742
-8220DB007599	Gilford Road	7599	53.3303169486	-6.2170483266
 8220DB007601	Bond Drive	7601	53.3518748034	-6.2101247735
 8220DB007602	DCU St Patrick’s	7602	53.3715535145	-6.2534396446
 8220DB007603	St Patrick's College	7603	53.3715767255	-6.2531832039
-8220DB007607	Vernon Avenue	7607	53.3694140828	-6.1954282033
 8220DB007615	Granby Place	7615	53.3525081388	-6.2639378290
 8220DB007622	Bachelors Walk	7622	53.3470699189	-6.2614401576
 8220DB007623	Br an Phoirt Thoir	7623	53.3469141111	-6.2294534272
 8220DB007661	Barry Avenue	7661	53.3954073830	-6.3108674535
 8220DB007665	Poolbeg Street	7665	53.3468221439	-6.2567789715
-8220DB007668	Charleston Road	7668	53.3241342651	-6.2578842114
 8220DB007671	Gloucester Lane	7671	53.3537821130	-6.2526942059
 8220DB007672	Broombridge Station	7672	53.3724256192	-6.2988821064
 8220DB007686	Broombridge	7686	53.3724647622	-6.2991059828
@@ -2393,13 +2463,11 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8220DB007740	Park Avenue	7740	53.3268757414	-6.2147296651
 8220DB007741	Gilford Road	7741	53.3292794817	-6.2149896232
 8220DB007827	Eastpoint	7827	53.3599356407	-6.2317232139
-8220DB007828	Shangan Road	7828	53.3970949171	-6.2649654024
 8220DB007830	Whitehall Colmcille	7830	53.3807506526	-6.2377003743
 8220DB007831	Whitehall Colmcille	7831	53.3811699363	-6.2399228696
 8220DB007832	Grove Park Road	7832	53.3904147642	-6.2866025364
 8220DB007834	East Wall Road	7834	53.3564128940	-6.2317639075
 8220DB007836	Glasanaon Road	7836	53.3896974545	-6.2942541871
-8220DB007838	Finglas Village	7838	53.3898261843	-6.3001278083
 8220DB007839	Malahide Road	7839	53.3752276958	-6.2180434464
 8220DB007840	Malahide Road	7840	53.3751291122	-6.2180625928
 8220DB007842	New Wapping Street	7842	53.3483399276	-6.2352974908
@@ -2443,21 +2511,14 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB001125	Bushy Park House	1125	53.3010853561	-6.2981182495
 8230DB001127	Riverside Cottages	1127	53.2984562638	-6.3028437430
 8230DB001130	Templeogue Bridge	1130	53.2963417323	-6.3083734308
-8230DB001131	Old Bridge Road	1131	53.2942224115	-6.3078721221
-8230DB001132	Anne Devlin Road	1132	53.2943500746	-6.3048367470
-8230DB001133	Butterfield Grove	1133	53.2947048131	-6.3013422909
-8230DB001134	Rathfarnham SC	1134	53.2955073211	-6.2983700429
 8230DB001135	Marian Road	1135	53.2934427094	-6.2972970119
 8230DB001137	Marian Crescent	1137	53.2943662491	-6.2971402630
-8230DB001138	Butterfield Grove	1138	53.2948344416	-6.3003470275
-8230DB001139	Old Bridge Road	1139	53.2942244156	-6.3067469243
 8230DB001140	Woodbrook Park	1140	53.2932846125	-6.3095593294
 8230DB001141	Knocklyon Road	1141	53.2899168921	-6.3110273098
 8230DB001142	Knockcullen Rise	1142	53.2876048362	-6.3108785259
 8230DB001143	Knockaire	1143	53.2834158745	-6.3133834138
 8230DB001144	Dargle Wood	1144	53.2823252783	-6.3150760796
 8230DB001145	Scholarstown Road	1145	53.2818119177	-6.3181857024
-8230DB001149	St Colmcilles School	1149	53.2793580012	-6.3156277091
 8230DB001150	Scholarstown Road	1150	53.2818767025	-6.3183181333
 8230DB001151	Knocklyon Road	1151	53.2825295603	-6.3149030701
 8230DB001152	Knockaire	1152	53.2835692237	-6.3134223676
@@ -2506,13 +2567,8 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB001978	Robin Hood Ind Est	1978	53.3221221537	-6.3574315124
 8230DB001980	J F Kennedy Drive	1980	53.3249258630	-6.3495774889
 8230DB002109	Knockmeenagh Lane	2109	53.3133718125	-6.3873636124
-8230DB002110	Newlands Cross	2110	53.3146473578	-6.3919681804
-8230DB002111	Clondalkin Church	2111	53.3191587733	-6.3925941008
-8230DB002112	Clondalkin Main St	2112	53.3206703248	-6.3933778861
 8230DB002114	Ninth Lock Road	2114	53.3242145515	-6.3956015947
 8230DB002115	Oakfield	2115	53.3256298971	-6.3952482398
-8230DB002116	Michael Collins Pk	2116	53.3282504282	-6.3962908951
-8230DB002117	Station Road	2117	53.3298457162	-6.3979576503
 8230DB002118	Neilstown Road	2118	53.3356239897	-6.4005640754
 8230DB002119	St Peter School	2119	53.3370479289	-6.4001804284
 8230DB002120	Collinstown College	2120	53.3411632704	-6.3994256544
@@ -2524,7 +2580,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002127	Collinstown College	2127	53.3415714731	-6.3990349152
 8230DB002128	Neilstown Avenue	2128	53.3396666624	-6.3997520180
 8230DB002129	Moorefield Drive	2129	53.3357283701	-6.4003048984
-8230DB002130	Station Road	2130	53.3297236913	-6.3975718630
 8230DB002133	Dunawley	2133	53.3248045440	-6.4034007679
 8230DB002134	Lealand Drive	2134	53.3216269544	-6.4124659470
 8230DB002135	Mill Court Avenue	2135	53.3213067271	-6.4147444734
@@ -2576,7 +2631,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002208	Kennelsfort Green	2208	53.3499128506	-6.3777831187
 8230DB002210	Woodfarm	2210	53.3523918339	-6.3783198951
 8230DB002211	Palmerstown Avenue	2211	53.3539587776	-6.3745799150
-8230DB002212	Palmerstown Village	2212	53.3559674222	-6.3709429941
 8230DB002213	Liffey Valley SC	2213	53.3557776542	-6.3920726228
 8230DB002214	Clayton Hotel	2214	53.3560900353	-6.3999329759
 8230DB002215	St Loman's Hospital	2215	53.3582062276	-6.4089731657
@@ -2584,13 +2638,8 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002217	Esker Lane	2217	53.3595962005	-6.4270406930
 8230DB002218	Roselawn	2218	53.3596765184	-6.4324615100
 8230DB002219	St Andrews NS	2219	53.3600556757	-6.4366995068
-8230DB002223	Main Street Lucan	2223	53.3585272442	-6.4490600103
-8230DB002224	Lucan Village	2224	53.3572779284	-6.4497513849
 8230DB002225	St Patricks Church	2225	53.3495522066	-6.4500467633
-8230DB002226	Collins Bridge	2226	53.3702722410	-6.4565230344
 8230DB002227	St Patricks Church	2227	53.3495639204	-6.4502566282
-8230DB002228	Collins Bridge	2228	53.3713065694	-6.4558845024
-8230DB002229	Main St Lucan	2229	53.3586057545	-6.4488768725
 8230DB002232	Ballydowd Grove	2232	53.3597376346	-6.4309568341
 8230DB002233	Chalet Gardens	2233	53.3600895009	-6.4351657756
 8230DB002234	Lucan Retail Park	2234	53.3593365474	-6.4243909737
@@ -2611,7 +2660,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002337	Old Tymon Lane	2337	53.3059914350	-6.3485222433
 8230DB002339	Elmcastle Court	2339	53.3025723020	-6.3515050344
 8230DB002340	Tymonville	2340	53.3006348743	-6.3530950398
-8230DB002345	Belgard Retail Park	2345	53.2936088479	-6.3689816562
 8230DB002346	Belgard Square North	2346	53.2900797371	-6.3679011038
 8230DB002349	Alderwood	2349	53.2850288716	-6.3784723835
 8230DB002351	Blessington Road	2351	53.2832055706	-6.3845254486
@@ -2621,8 +2669,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002357	Jobstown House	2357	53.2779689604	-6.3967645098
 8230DB002359	Maplewood Avenue	2359	53.2835900309	-6.3843759663
 8230DB002360	Alderwood	2360	53.2846948207	-6.3796848798
-8230DB002363	Belgard Road	2363	53.2898059719	-6.3682565376
-8230DB002364	Belgard Retail Park	2364	53.2935508856	-6.3693438937
 8230DB002369	Birchview Avenue	2369	53.2985821753	-6.3541492221
 8230DB002370	Park View	2370	53.3008676112	-6.3530260684
 8230DB002371	Kilnamanagh SC	2371	53.3033968970	-6.3513382264
@@ -2664,22 +2710,16 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002516	Cremore	2516	53.2902232679	-6.3155302728
 8230DB002517	Green Acre Court	2517	53.2892149823	-6.3185999029
 8230DB002518	Knocklyon Avenue	2518	53.2885324497	-6.3243865355
-8230DB002520	Ballycullen Road	2520	53.2860777852	-6.3326568733
-8230DB002521	Woodlawn Park	2521	53.2847193345	-6.3357843969
 8230DB002522	Firhouse Centre	2522	53.2814222294	-6.3423462463
 8230DB002523	Firhouse College	2523	53.2771069429	-6.3487513797
 8230DB002524	Ballycullen Drive	2524	53.2783737436	-6.3467680663
 8230DB002532	Old Bawn Centre	2532	53.2756035853	-6.3544324419
-8230DB002533	Parkwood Lawn	2533	53.2775083921	-6.3576433040
-8230DB002534	Old Bawn Terrace	2534	53.2789286838	-6.3583086566
 8230DB002535	Seskin View Road	2535	53.2810133262	-6.3589186028
 8230DB002536	Old Bawn Court	2536	53.2829548506	-6.3595790812
 8230DB002538	The Crescent	2538	53.2815345660	-6.3589136266
 8230DB002539	Kiltipper Road	2539	53.2765355041	-6.3561810789
 8230DB002540	Old Bawn Centre	2540	53.2755315986	-6.3537754304
 8230DB002542	Firhouse College	2542	53.2767930272	-6.3500980700
-8230DB002544	Woodlawn	2544	53.2848726770	-6.3358234321
-8230DB002545	Monalea Wood	2545	53.2862572398	-6.3326348868
 8230DB002547	Knocklyon Avenue	2547	53.2891047659	-6.3235391509
 8230DB002548	Green Acre Court	2548	53.2895027571	-6.3179736054
 8230DB002550	Cheeverstown House	2550	53.2947905922	-6.3149905040
@@ -2739,9 +2779,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002615	New Bawn Park	2615	53.2806825879	-6.3551371041
 8230DB002616	St Maelruan's Park	2616	53.2846412135	-6.3606393390
 8230DB002617	Village Green	2617	53.2867102222	-6.3620750079
-8230DB002618	Belgard	2618	53.2987546059	-6.3712910758
-8230DB002619	Belgard Road	2619	53.3026751409	-6.3766934948
-8230DB002620	Belgard	2620	53.2987215111	-6.3708422446
 8230DB002621	Kilclare	2621	53.2821328026	-6.3896049650
 8230DB002622	Tallaght Leisure	2622	53.2838090575	-6.3926014709
 8230DB002623	Whitebrook	2623	53.2855300605	-6.3949216068
@@ -2787,8 +2824,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB002754	Alpine Rise	2754	53.2981031515	-6.3868437485
 8230DB002755	Belgard Heights	2755	53.3000407673	-6.3832449055
 8230DB002756	Old Belgard Road	2756	53.3023329348	-6.3786270223
-8230DB002762	Newlands Golf Club	2762	53.3111810795	-6.3895322157
-8230DB002763	Newlands Golf Club	2763	53.3088093657	-6.3862900435
 8230DB002764	Kingswood Avenue	2764	53.3043648332	-6.3766894164
 8230DB002765	St Killian's Church	2765	53.3070654972	-6.3684387306
 8230DB002766	Sylvan Close	2766	53.3045560641	-6.3656834493
@@ -2948,17 +2983,11 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB004071	Brittas Grange	4071	53.2413671672	-6.4558019126
 8230DB004072	Glenareen	4072	53.2486534276	-6.4555695006
 8230DB004073	The Pines	4073	53.2506077262	-6.4537907030
-8230DB004327	Liffey Valley Golf	4327	53.3510620658	-6.4383204732
 8230DB004340	The Square	4340	53.2860074546	-6.3737707768
-8230DB004341	The Square	4341	53.2856558425	-6.3723742773
 8230DB004342	The Square Tallaght	4342	53.2861056440	-6.3730621139
 8230DB004344	The Square	4344	53.2857103567	-6.3724172006
 8230DB004347	Tallaght Luas	4347	53.2862220524	-6.3750075131
 8230DB004348	Tallaght Luas	4348	53.2866720396	-6.3750504312
-8230DB004357	Hollyville Lawn	4357	53.3579414400	-6.3806031270
-8230DB004359	Hollyville Lawn	4359	53.3579749523	-6.3790994748
-8230DB004360	Robin Villas	4360	53.3571539461	-6.3735869504
-8230DB004361	Palmerstown Village	4361	53.3556115756	-6.3712119575
 8230DB004379	Red Cow Luas	4379	53.3162963466	-6.3737150862
 8230DB004392	Greenhills College	4392	53.3069669451	-6.3340038252
 8230DB004401	Kennelsfort Road	4401	53.3547555334	-6.3717103054
@@ -3099,7 +3128,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB004933	Belfry	4933	53.2776403004	-6.4192701430
 8230DB004960	Citywest Road	4960	53.2850505921	-6.4216212865
 8230DB005008	Belgard Square North	5008	53.2904501890	-6.3693569939
-8230DB005011	Belgard Road	5011	53.3024709725	-6.3768812913
 8230DB005022	Citywest Campus	5022	53.2933804602	-6.4228292859
 8230DB005023	Cushlawn Avenue	5023	53.2757020483	-6.3733972941
 8230DB005024	Marlfield Drive	5024	53.2707272089	-6.3710973009
@@ -3118,7 +3146,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB005131	Charleville Square	5131	53.2969745380	-6.2916055632
 8230DB005132	Owendore Avenue	5132	53.2979462205	-6.2866608216
 8230DB005133	Castle Park	5133	53.2905101107	-6.3430594097
-8230DB005138	Esker Lodge	5138	53.3516756949	-6.4343924558
 8230DB005150	Whitehall Rd West	5150	53.3155776825	-6.3173686532
 8230DB005161	Marlfield	5161	53.2708909805	-6.3719007108
 8230DB005162	Cushlawn Avenue	5162	53.2762463685	-6.3737664981
@@ -3135,10 +3162,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB006095	Glenshane	6095	53.2867623972	-6.3963302942
 8230DB006119	The Beeches	6119	53.3112989388	-6.4906318772
 8230DB006124	St Brigid's Home	6124	53.2553873155	-6.4487922850
-8230DB006128	Ballycullen Avenue	6128	53.2831019273	-6.3409764368
 8230DB006132	Rossmore Drive	6132	53.2956361539	-6.3233283618
-8230DB006133	Laraghcon	6133	53.3607693710	-6.4521487829
-8230DB006134	Laraghcon	6134	53.3608260222	-6.4516659402
 8230DB006141	Long Mile Road	6141	53.3236063663	-6.3497034762
 8230DB006143	Rosebank	6143	53.3282559720	-6.3933630870
 8230DB006144	Robinhood Ind Estate	6144	53.3233985618	-6.3489759216
@@ -3216,7 +3240,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB007141	Haydens Park	7141	53.3397346835	-6.4408668777
 8230DB007142	Foxborough Rise	7142	53.3398730210	-6.4288029125
 8230DB007143	Castlegate Way	7143	53.3393470861	-6.4532100760
-8230DB007165	Robin Villas	7165	53.3572174628	-6.3742906390
 8230DB007168	Newcastle Road	7168	53.3452148286	-6.4517210403
 8230DB007177	Tynan Hall Park	7177	53.3069450475	-6.3727800299
 8230DB007178	Tynan Hall Park	7178	53.3070277393	-6.3729119385
@@ -3247,8 +3270,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB007444	The Glen	7444	53.2823865091	-6.2991313999
 8230DB007445	Scholarstown Road	7445	53.2796117510	-6.3024658378
 8230DB007446	Templeroan Estate	7446	53.2811782039	-6.3070678198
-8230DB007447	Grange Golf Club	7447	53.2815889392	-6.2811214561
-8230DB007448	Grange Golf Club	7448	53.2817369881	-6.2814154592
 8230DB007449	Ballyboden Crescent	7449	53.2818173347	-6.2957796232
 8230DB007459	Bianconi Avenue	7459	53.2908418207	-6.4272878487
 8230DB007460	Citywest SC	7460	53.2826316203	-6.4215304732
@@ -3259,10 +3280,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB007563	Weston Hockey Club	7563	53.3455700831	-6.4513927622
 8230DB007714	Cuisine de France	7714	53.3221886579	-6.4538607857
 8230DB007748	Divine Mercy NS	7748	53.3399111526	-6.4153759795
-8230DB007749	Dodsborough Road	7749	53.3505986746	-6.4642487598
 8230DB007750	Dunawley	7750	53.3257788718	-6.4050157556
-8230DB007751	Esker Glebe	7751	53.3506982581	-6.4386792588
-8230DB007752	Esker Park	7752	53.3524015382	-6.4308057003
 8230DB007754	Clayton Hotel	7754	53.3537969976	-6.4011906127
 8230DB007756	Clondalkin Fonthill	7756	53.3332606202	-6.4066435206
 8230DB007757	Clondalkin Fonthill	7757	53.3335523001	-6.4069479669
@@ -3270,12 +3288,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB007761	Glen Vale	7761	53.3442584251	-6.4267042269
 8230DB007762	Haydens Lane	7762	53.3429982734	-6.4464548010
 8230DB007763	Haydens Lane	7763	53.3434521377	-6.4461078918
-8230DB007768	Larkfield	7768	53.3544513469	-6.4179162206
-8230DB007769	Larkfield	7769	53.3544393514	-6.4183673396
-8230DB007772	Liffey Avenue	7772	53.3537599008	-6.4132248423
-8230DB007773	Liffey Avenue	7773	53.3536866354	-6.4131224083
-8230DB007774	Lucan Garda Station	7774	53.3563059149	-6.4510335810
-8230DB007775	Lucan Main Street	7775	53.3559854577	-6.4498884341
 8230DB007776	Buirg an Rí	7776	53.3391606055	-6.4190980196
 8230DB007780	Méile an Rí	7780	53.3398289056	-6.4152739076
 8230DB007781	Monastery Gate	7781	53.3183570405	-6.3758732058
@@ -3283,21 +3295,12 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8230DB007783	Foxdene Avenue	7783	53.3412856296	-6.4112701872
 8230DB007784	Foxdene Avenue	7784	53.3411856120	-6.4111837985
 8230DB007791	Red Cow Luas	7791	53.3171369630	-6.3701108681
-8230DB007792	Saint Lomans Road	7792	53.3540035212	-6.4078978795
-8230DB007793	Saint Lomans Road	7793	53.3538559794	-6.4076179550
 8230DB007796	Somerton	7796	53.3429665550	-6.4523131265
 8230DB007797	Somerton	7797	53.3428919595	-6.4521055712
-8230DB007800	The Paddocks Drive	7800	53.3476213982	-6.4654672597
 8230DB007801	The Paddocks Drive	7801	53.3490241137	-6.4648160575
 8230DB007803	Tor an Rí	7803	53.3390508450	-6.4182761405
-8230DB007806	St Andrews Drive	7806	53.3545562472	-6.4231251516
-8230DB007807	St Andrews Drive	7807	53.3544684497	-6.4226026057
-8230DB007808	Willsbrook Park	7808	53.3529675482	-6.4273749254
-8230DB007809	Willsbrook Park	7809	53.3527419705	-6.4273081207
 8230DB007810	Woodview Heights	7810	53.3517430715	-6.4630810099
-8230DB010334	Russell Lane	10334	53.2838310570	-6.4029340908
 8230DB07755	Clayton Hotel	7755	53.3535458644	-6.4012300570
-8240DB000124	Virgin Mary Church	124	53.3948920736	-6.2605890079
 8240DB000219	Ellenfield Road	219	53.3878276229	-6.2385356276
 8240DB000221	Shanowen Road	221	53.3897213027	-6.2468922343
 8240DB000222	Shanliss Road	222	53.3899454454	-6.2493037167
@@ -3399,8 +3402,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB000719	St Fintan's NS	719	53.3802237767	-6.0940449682
 8240DB000720	Duncarraig	720	53.3822089346	-6.0979099695
 8240DB000733	Forest View	733	53.4494332874	-6.2404739233
-8240DB000788	The Oaks	788	53.4458543541	-6.2409681260
-8240DB000815	Forrest Little Golf	815	53.4399383841	-6.2500185653
 8240DB000905	Yellow Walls Road	905	53.4515617429	-6.1703697812
 8240DB000910	Baldoyle Road	910	53.3890081764	-6.1242945659
 8240DB000911	St Domhnach's Well	911	53.3910423678	-6.1244757589
@@ -3419,8 +3420,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB000929	Warrenhouse Road	929	53.3961828853	-6.1261444535
 8240DB000930	Moyclare	930	53.3930552776	-6.1250187849
 8240DB000931	Baldoyle Road	931	53.3909048038	-6.1243013759
-8240DB000935	Station Road	935	53.3932694395	-6.1203479489
-8240DB000936	Strand Road	936	53.3942182425	-6.1223812619
 8240DB000938	Red Arches Rd	938	53.4015430636	-6.1303606460
 8240DB000940	Moyne Cottages	940	53.4065549106	-6.1347284963
 8240DB000941	Moyne Bridge	941	53.4100761025	-6.1368909861
@@ -3430,24 +3429,9 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB000945	St Rita's House	945	53.4153095523	-6.1387684293
 8240DB000947	Moyne Bridge	947	53.4091864740	-6.1363281752
 8240DB000948	Moyne Cottages	948	53.4061434361	-6.1342802189
-8240DB000949	The Coast	949	53.4031715595	-6.1316127786
 8240DB000950	Baldoyle Church	950	53.3996460936	-6.1280375738
-8240DB000951	Strand Road	951	53.3958427892	-6.1245202838
-8240DB000952	Burrowfield Road	952	53.3940655466	-6.1218165739
-8240DB000953	Station Road	953	53.3932183764	-6.1199592418
 8240DB000957	Howth Junction	957	53.3903211487	-6.1578116715
-8240DB000973	Coolock Lane	973	53.3982256279	-6.2427229026
-8240DB000974	Santry Avenue	974	53.3978594241	-6.2471592144
-8240DB000975	Shanliss Way	975	53.3992795836	-6.2526801785
-8240DB000976	Geraldstown Wood	976	53.4009566753	-6.2628982861
-8240DB000989	Santry Avenue	989	53.4010421279	-6.2625940198
-8240DB000990	Shanliss Way	990	53.3988912223	-6.2507110083
 8240DB000992	Coolock Lane	992	53.3981583600	-6.2412068084
-8240DB001010	Saint Donagh's Park	1010	53.3905899802	-6.1583413499
-8240DB001039	Seamount View	1039	53.4535389280	-6.2053096320
-8240DB001040	Ashley Drive	1040	53.4540357100	-6.2120648279
-8240DB001041	Swords Road	1041	53.4540581516	-6.2117627229
-8240DB001050	Seamount View	1050	53.4536692617	-6.2062076144
 8240DB001073	Chamley Park	1073	53.4506925095	-6.1870451258
 8240DB001181	Charlestown	1181	53.4057064474	-6.3006528219
 8240DB001182	Charlestown	1182	53.4056204697	-6.3009269830
@@ -3532,14 +3516,10 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB001819	Corduff	1819	53.3996329875	-6.3744034661
 8240DB001820	Corduff Grove	1820	53.4010807397	-6.3751152630
 8240DB001822	St Patrick's Church	1822	53.3996526533	-6.3778314959
-8240DB001824	Saddlers Avenue	1824	53.4007957913	-6.3939096972
-8240DB001825	Church Road	1825	53.4017651100	-6.3958132448
 8240DB001826	Lady's Well Road	1826	53.4059077232	-6.3950858266
 8240DB001827	Parslickstown Ave	1827	53.4070419408	-6.3985627381
 8240DB001828	Lady's Well Road	1828	53.4070254952	-6.3980068366
 8240DB001829	Parslickstown Ave	1829	53.4061988263	-6.3953456019
-8240DB001830	Church Road	1830	53.4022055985	-6.3964884833
-8240DB001831	Coolmine Cottages	1831	53.4007015089	-6.3935823939
 8240DB001833	Blackcourt Road	1833	53.3991770313	-6.3838498818
 8240DB001834	Corduff Park	1834	53.3994252142	-6.3789529910
 8240DB001835	Corduff	1835	53.4000123493	-6.3752010905
@@ -3557,8 +3537,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB001852	Clonsilla Road	1852	53.3874063234	-6.3834388758
 8240DB001853	Coolmine Woods	1853	53.3846274925	-6.3886404141
 8240DB001854	Orchard Court	1854	53.3835844815	-6.3919419238
-8240DB001856	Mountview Road	1856	53.3903480644	-6.4023318756
-8240DB001857	Mountview Church	1857	53.3911220553	-6.4077908207
 8240DB001858	Hartstown Road	1858	53.3908816205	-6.4106565103
 8240DB001859	Willow Wood	1859	53.3910357838	-6.4154921616
 8240DB001860	St Ciaran's Church	1860	53.3932991277	-6.4187611504
@@ -3580,8 +3558,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB001877	St Ciaran's Church	1877	53.3934219094	-6.4185310554
 8240DB001878	Oakview	1878	53.3911805159	-6.4155619626
 8240DB001879	Blakestown Cross	1879	53.3911728451	-6.4095781430
-8240DB001880	Mount View Road	1880	53.3912254456	-6.4074561812
-8240DB001881	Fortlawn Drive	1881	53.3905239771	-6.4027162031
 8240DB001882	Millennium Park	1882	53.3927725777	-6.3988128484
 8240DB001883	Scoil Oilibheir	1883	53.3857448895	-6.3982046607
 8240DB001884	Porters Road	1884	53.3855349556	-6.3959575199
@@ -3611,8 +3587,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB002959	Blanchardstown Ctr	2959	53.3941479797	-6.3921451443
 8240DB002960	Retail Park	2960	53.3943233176	-6.3884846415
 8240DB002961	Auburn Avenue	2961	53.3788331819	-6.3585112717
-8240DB003078	Forrest Little Golf	3078	53.4402654488	-6.2496438474
-8240DB003087	Forest Road	3087	53.4461975809	-6.2404721748
 8240DB003088	River Valley Heights	3088	53.4527270791	-6.2371003695
 8240DB003089	Cherry Avenue	3089	53.4489647581	-6.2397856487
 8240DB003090	Forest View	3090	53.4495837591	-6.2415367110
@@ -3762,7 +3736,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB003735	Healy's Lane	3735	53.4960010037	-6.1138618254
 8240DB003736	Portrane	3736	53.4933698119	-6.1117328494
 8240DB003738	Portane Avenue	3738	53.4931668361	-6.1148165993
-8240DB003739	St Ita's Hospital	3739	53.4876718837	-6.1129052937
 8240DB003740	Rahillion	3740	53.4928417056	-6.1290138407
 8240DB003741	Donabate NS	3741	53.4924878620	-6.1362790121
 8240DB003743	Donabate	3743	53.4867546434	-6.1484958840
@@ -3789,7 +3762,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB003767	Rosewood	3767	53.5220353365	-6.1486616905
 8240DB003768	Rogerstown Lane	3768	53.5216491656	-6.1457827432
 8240DB003769	Beau Hill	3769	53.5205021552	-6.1384879871
-8240DB003770	Rush & Lusk Stn	3770	53.5213969242	-6.1445871891
 8240DB003771	Whitestown Road	3771	53.5186926355	-6.1313886729
 8240DB003772	Spout Road	3772	53.5181470140	-6.1263907027
 8240DB003773	Carthy's Lane	3773	53.5179068590	-6.1236867281
@@ -3889,7 +3861,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB004331	Seabury Road	4331	53.4553999212	-6.1792098395
 8240DB004339	Estuary Road	4339	53.4526871930	-6.1834517124
 8240DB004362	Millennium Park	4362	53.3931135416	-6.3987699765
-8240DB004381	Sutton Station	4381	53.3916938975	-6.1161921850
 8240DB004387	Malahide Village	4387	53.4508653407	-6.1525721183
 8240DB004433	Seatown Villas	4433	53.4616521691	-6.2135068674
 8240DB004464	Sheepmoor Grove	4464	53.3941714458	-6.3992415025
@@ -3902,8 +3873,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB004573	Burnell Park Avenue	4573	53.3706130177	-6.3878019005
 8240DB004574	Burnell Park Avenue	4574	53.3704531439	-6.3879431921
 8240DB004575	Carpenterstown Road	4575	53.3726644051	-6.3886261593
-8240DB004686	Shangan Road	4686	53.3944262875	-6.2588486849
-8240DB004687	Virgin Mary Church	4687	53.3947744225	-6.2605336581
 8240DB004742	Damastown Green	4742	53.4109786126	-6.4201511560
 8240DB004743	Damastown Drive	4743	53.4116474009	-6.4231499391
 8240DB004744	IBM Campus	4744	53.4196069304	-6.4181160960
@@ -3917,9 +3886,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB004769	The Grove	4769	53.4035714974	-6.4234636657
 8240DB004770	Deerhaven	4770	53.4039694407	-6.4182150540
 8240DB004800	Industrial Estate	4800	53.3975973220	-6.1476623061
-8240DB004820	Westmanstown Sports	4820	53.3795826710	-6.4391709043
 8240DB004825	Bramley Walk	4825	53.3754905162	-6.3902479088
-8240DB004826	Westmanstown Sports	4826	53.3795403072	-6.4393678604
 8240DB004843	Berwick Walk	4843	53.4596635704	-6.2503971074
 8240DB004893	Diswellstown Road	4893	53.3701586379	-6.3927632994
 8240DB004894	Luttrellstown Court	4894	53.3720773639	-6.3984320360
@@ -3977,8 +3944,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB005031	Boroimhe Cherry	5031	53.4451994438	-6.2349581700
 8240DB005044	Swords Park	5044	53.4607876479	-6.2097931082
 8240DB005053	Swords Road	5053	53.4196418846	-6.2346478627
-8240DB005055	Hazelwood	5055	53.4003862026	-6.2595227080
-8240DB005064	Balbriggan	5064	53.6059394887	-6.1839372822
 8240DB005069	Somerton	5069	53.4915007095	-6.1392612584
 8240DB005071	Alexion	5071	53.4109617027	-6.3760172328
 8240DB005072	Corporate Park	5072	53.4093093812	-6.3708455939
@@ -3999,7 +3964,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB005175	Batter Lane	5175	53.4897192928	-6.1965934046
 8240DB005176	Whitestown Cemetery	5176	53.5178547110	-6.1192250708
 8240DB006005	Plaza Apartments	6005	53.4199426183	-6.3834535807
-8240DB006009	Hazelwood	6009	53.4001099014	-6.2572179908
 8240DB006010	Waterside	6010	53.4528771328	-6.1983658213
 8240DB006015	Cherry Avenue	6015	53.4483357564	-6.2385770672
 8240DB006033	Rathingle Road	6033	53.4478249675	-6.2380712503
@@ -4011,7 +3975,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB006053	Malahide Golf Club	6053	53.4341191194	-6.1432143687
 8240DB006054	Malahide Road	6054	53.4542368080	-6.2158962102
 8240DB006055	Waterside	6055	53.4529145530	-6.1978673319
-8240DB006073	Lohunda Court	6073	53.3867027613	-6.4019422036
 8240DB006076	Skerries GAA Club	6076	53.5774603490	-6.1121850128
 8240DB006077	Skerries Station	6077	53.5759024089	-6.1188387490
 8240DB006088	Shelerin Road	6088	53.3836395510	-6.4094681024
@@ -4023,8 +3986,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB006112	Stonebridge Road	6112	53.3892608583	-6.4212712947
 8240DB006113	Lohunda Park	6113	53.3875224589	-6.4121798325
 8240DB006117	Swords Pavilions SC	6117	53.4543803017	-6.2158751361
-8240DB006126	Marymount Care Ctr	6126	53.3740650583	-6.4399287633
-8240DB006127	Marymount Care Ctr	6127	53.3741384975	-6.4400463142
 8240DB006135	Hillcourt	6135	53.4312455163	-6.1347309306
 8240DB006162	St Margaret's	6162	53.4322058793	-6.2995956940
 8240DB006171	Waterville Road	6171	53.3956268765	-6.3745862404
@@ -4045,7 +4006,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB006364	Century Business Pk	6364	53.4025827575	-6.3015744272
 8240DB006365	Lanesborough Avenue	6365	53.4043825773	-6.2916512988
 8240DB006366	Century Business Pk	6366	53.4026514127	-6.3013460964
-8240DB007002	Airside	7002	53.4459849264	-6.2242815713
 8240DB007011	Phibblestown Road	7011	53.4015964721	-6.4352521323
 8240DB007013	Kilreesk Lane	7013	53.4406552747	-6.2983851895
 8240DB007014	Kilreesk Lane	7014	53.4407517277	-6.2982157496
@@ -4056,7 +4016,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB007022	St Margaret's NS	7022	53.4300329055	-6.3010067900
 8240DB007023	St Margaret's Church	7023	53.4308683101	-6.3009734666
 8240DB007025	Blanchardstown SC	7025	53.3939910121	-6.3918352956
-8240DB007026	Blanchardstown SC	7026	53.3938952324	-6.3920644536
 8240DB007029	Ravenwood Road	7029	53.3956618751	-6.4295753754
 8240DB007030	Ravenwood Road	7030	53.3958992876	-6.4291756696
 8240DB007031	Diswellstown Road	7031	53.3742044019	-6.4015535053
@@ -4115,7 +4074,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB007196	Holywell Wood	7196	53.4449556373	-6.2125214906
 8240DB007197	Holywell Drive	7197	53.4450151362	-6.2122931687
 8240DB007204	Seaview	7204	53.4928668715	-6.1066457531
-8240DB007210	Airside Ind. Estate	7210	53.4461428678	-6.2228146211
 8240DB007217	The Courtyard	7217	53.3817584171	-6.4032096932
 8240DB007218	The Courtyard	7218	53.3816384170	-6.4029736701
 8240DB007219	Limelawn	7219	53.3842507702	-6.4027405943
@@ -4158,8 +4116,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB007552	Grange Park	7552	53.3969971477	-6.1414325260
 8240DB007559	The Oaks	7559	53.4266377787	-6.3708300518
 8240DB007560	The Oaks	7560	53.4267606219	-6.3699525647
-8240DB007570	Texaco Garage	7570	53.4138450793	-6.3660087283
-8240DB007575	Texaco Garage	7575	53.4137805510	-6.3658908541
 8240DB007616	The Warren	7616	53.4495775045	-6.1834639842
 8240DB007654	Knocksedan Drive	7654	53.4548600672	-6.2642976409
 8240DB007673	Cappogue Cottages 	7673	53.3992460120	-6.3333032016
@@ -4177,27 +4133,16 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8240DB007699	Blackwood Park	7699	53.3949741454	-6.4443216551
 8240DB007700	Willian’s Drive	7700	53.3949091061	-6.4441586237
 8240DB007721	Turvey Ave	7721	53.4864496284	-6.1560892429
-8240DB007722	Turvey Ave	7722	53.4866544374	-6.1565475213
 8240DB007723	Semple Woods	7723	53.4828405334	-6.1551910048
 8240DB007724	Semple Woods	7724	53.4828870712	-6.1552944643
 8240DB007725	Red Arches Rd	7725	53.4012492817	-6.1299674584
 8240DB007866	Hollywoodrath Avenue	7866	53.4237660838	-6.3784182346
 8240DB007982	Dewberry Park	7982	53.4342183269	-6.1271202339
-8240DB010377	Applewood	10377	53.4706545635	-6.2466309361
-8240DB010378	Rolestown	10378	53.4880864144	-6.3061165978
-8240DB010379	Rolestown	10379	53.4882329143	-6.3063066693
-8240DB010380	Applegreen	10380	53.4703801466	-6.2456932297
-8240DB010381	Bunbury Gate Avenue	10381	53.4680681219	-6.2400495901
 8250DB000425	Merrion Road	425	53.3125022141	-6.2014770172
 8250DB000426	Rock Road	426	53.3109673504	-6.1998306702
 8250DB000427	Booterstown Station	427	53.3082703260	-6.1950369455
 8250DB000428	Blackrock College	428	53.3069107149	-6.1907274733
 8250DB000429	Blackrock Clinic	429	53.3047081024	-6.1871442568
-8250DB000430	Sydney Avenue	430	53.3014190946	-6.1860082203
-8250DB000431	Cross Avenue	431	53.3005516484	-6.1892558617
-8250DB000432	Hyde Park Avenue	432	53.2995559648	-6.1929438930
-8250DB000433	Grove Avenue	433	53.2986279441	-6.1963588380
-8250DB000434	Woodlands Park	434	53.2977014086	-6.1998785915
 8250DB000435	Sycamore Crescent	435	53.2959890439	-6.2037462263
 8250DB000437	The Rise	437	53.2932115731	-6.2061279978
 8250DB000441	Redesdale Road	441	53.2889412478	-6.2150518996
@@ -4215,34 +4160,18 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB000459	Glenabby Road	459	53.2924565740	-6.2109150122
 8250DB000460	The Rise	460	53.2934381278	-6.2056534560
 8250DB000461	Stillorgan Pk Hotel	461	53.2947995033	-6.2035411112
-8250DB000462	Mount Merrion Avenue	462	53.2969602392	-6.2031803702
-8250DB000464	Southhill Avenue	464	53.2982022450	-6.1985222394
-8250DB000465	Clanfadda Wood	465	53.2989007326	-6.1959722549
-8250DB000466	Glenvar Park	466	53.3000977677	-6.1913306015
-8250DB000467	Cross Avenue	467	53.3010000619	-6.1880065413
-8250DB000468	Sydney Avenue	468	53.3020292372	-6.1841667998
 8250DB000469	Rock Road	469	53.3028457292	-6.1840721326
 8250DB000470	Blackrock Clinic	470	53.3056258500	-6.1889811038
 8250DB000471	Blackrock College	471	53.3068708073	-6.1910592991
 8250DB000472	Booterstown Station	472	53.3078820347	-6.1949182673
 8250DB000473	Grotto Avenue	473	53.3092405754	-6.1973821393
 8250DB000475	Bellevue Avenue	475	53.3127061625	-6.2018886746
-8250DB000765	UCD	765	53.3052550303	-6.2168623588
 8250DB000767	UCD	767	53.3052972526	-6.2166805312
 8250DB000768	UCD Belfield	768	53.3094181940	-6.2187748298
 8250DB000859	Whitethorn Road	859	53.3118411378	-6.2384844193
 8250DB000860	Wynnsward Drive	860	53.3081868512	-6.2369241240
 8250DB000861	Roebuck Road	861	53.3051704314	-6.2359530102
 8250DB000862	Islamic Centre	862	53.3036079757	-6.2342318243
-8250DB000863	Carmelite Monastery	863	53.3026660610	-6.2319299572
-8250DB000864	Eurocampus	864	53.3020144436	-6.2279956956
-8250DB000865	Roebuck Castle	865	53.3010358100	-6.2256505586
-8250DB000866	Roebuck Hall	866	53.3000569946	-6.2220902258
-8250DB000867	Owenstown Park	867	53.2996576899	-6.2182208604
-8250DB000869	Roebuck Road	869	53.3000428294	-6.2223458791
-8250DB000870	Roebuck Castle	870	53.3011318832	-6.2260666924
-8250DB000873	Eurocampus	873	53.3020918017	-6.2289677859
-8250DB000874	Carmelite Monastery	874	53.3026414663	-6.2326962132
 8250DB000875	White Oaks	875	53.3044729935	-6.2355916245
 8250DB000876	Gledswood Drive	876	53.3052232158	-6.2370912594
 8250DB000877	UCD Sports Centre	877	53.3082021061	-6.2300654566
@@ -4301,17 +4230,12 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB002024	Rory O'Connor Park	2024	53.2834492978	-6.1594729822
 8250DB002025	Abbey Park	2025	53.2849038275	-6.1605353599
 8250DB002026	Monkstown Avenue	2026	53.2866440581	-6.1597256328
-8250DB002027	Monkstown Farm	2027	53.2869591295	-6.1568472095
-8250DB002028	Oliver Plunkett Ave	2028	53.2853228023	-6.1533329323
-8250DB002029	Oliver Plunkett Road	2029	53.2838873843	-6.1494502797
-8250DB002030	Oliver Plunkett Ct	2030	53.2836776106	-6.1469396392
 8250DB002031	Mounttown Road Lower	2031	53.2861123044	-6.1457093364
 8250DB002032	York Road	2032	53.2895238359	-6.1448715610
 8250DB002033	Knapton Court	2033	53.2914782410	-6.1433917736
 8250DB002034	Vesey Place	2034	53.2927363387	-6.1427971554
 8250DB002035	Crofton Road	2035	53.2957723494	-6.1426654217
 8250DB002036	Crofton  Avenue	2036	53.2957927316	-6.1382087898
-8250DB002037	Dun Laoghaire Stn	2037	53.2937557134	-6.1343969206
 8250DB002039	Dun Laoghaire Stn	2039	53.2948871708	-6.1349026869
 8250DB002040	Dun Laoghaire SC	2040	53.2927911878	-6.1353690493
 8250DB002041	St Michael's Hosp	2041	53.2935976050	-6.1392343769
@@ -4320,12 +4244,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB002044	Knapton Court	2044	53.2908723468	-6.1437330675
 8250DB002045	Tivoli Terrace Sth	2045	53.2890770531	-6.1450409226
 8250DB002046	Mounttown Rd Lower	2046	53.2858693159	-6.1456898615
-8250DB002047	Oliver Plunkett Road	2047	53.2836394538	-6.1473762394
-8250DB002048	St Patrick's Cres	2048	53.2840379344	-6.1504636627
-8250DB002049	Oliver Plunkett Ave	2049	53.2855976805	-6.1542510096
-8250DB002050	Monkstown Avenue	2050	53.2868425905	-6.1568672257
 8250DB002051	Lanesville	2051	53.2864489905	-6.1598990081
-8250DB002052	Fosters Avenue	2052	53.2996711530	-6.2185203738
 8250DB002053	Abbey Park	2053	53.2848462330	-6.1602978560
 8250DB002054	Rory O'Connor Park	2054	53.2832385380	-6.1592120758
 8250DB002055	Casement Villas	2055	53.2814599366	-6.1581187288
@@ -4401,18 +4320,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB002866	Dundrum Luas	2866	53.2915803668	-6.2457085584
 8250DB002867	Notre Dame School	2867	53.2939975276	-6.2499449707
 8250DB002868	The Oaks	2868	53.2938762632	-6.2484197664
-8250DB002872	Overend Way	2872	53.2891920060	-6.2337014496
-8250DB002873	Knocknashee	2873	53.2883054034	-6.2308880882
-8250DB002874	Eden Park Avenue	2874	53.2871567472	-6.2273807204
-8250DB002877	Hazel Villas	2877	53.2855267202	-6.2211337405
-8250DB002878	Kilmacud Avenue	2878	53.2842889066	-6.2152908309
-8250DB002879	Marsham Court	2879	53.2847323814	-6.2100978756
-8250DB002880	Kilmacud Avenue	2880	53.2841925727	-6.2148598960
-8250DB002882	Lakelands Lawn	2882	53.2846137726	-6.2183819630
-8250DB002883	Sweet Briar Lane	2883	53.2856737575	-6.2219525647
-8250DB002885	Eden Park Avenue	2885	53.2870794682	-6.2276239079
-8250DB002886	Knocknashee	2886	53.2883466717	-6.2312463756
-8250DB002887	Birches Lane	2887	53.2891484247	-6.2337932474
 8250DB002892	Rosemount Estate	2892	53.2953536398	-6.2461990068
 8250DB002893	Frankfort	2893	53.2976070542	-6.2466317726
 8250DB002894	Dundrum Hospital	2894	53.3009317290	-6.2459554124
@@ -4460,7 +4367,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003040	Monkstown Crescent	3040	53.2938237203	-6.1543613745
 8250DB003041	Monkstown Crescent	3041	53.2940285175	-6.1495969512
 8250DB003042	De Vesci Terrace	3042	53.2950549316	-6.1462370835
-8250DB003046	Dun Laoghaire SC	3046	53.2920057469	-6.1351482420
 8250DB003047	George's St Upper	3047	53.2901702911	-6.1310130393
 8250DB003048	Sandycove Station	3048	53.2884360889	-6.1270387563
 8250DB003049	St Joseph's Church	3049	53.2874061042	-6.1244138836
@@ -4472,7 +4378,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003055	South Winds	3055	53.2818349024	-6.1068856483
 8250DB003056	Church Road	3056	53.2803100842	-6.1070880295
 8250DB003057	Dalkey Village	3057	53.2783843414	-6.1069481972
-8250DB003058	Hyde Road	3058	53.2783993292	-6.1078923143
 8250DB003059	Church Road	3059	53.2800139123	-6.1071161176
 8250DB003060	The Paddocks	3060	53.2821419601	-6.1069770584
 8250DB003061	Our Lady's Manor	3061	53.2841599608	-6.1078327505
@@ -4496,27 +4401,11 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003080	St John's Church	3080	53.3003614770	-6.1744249329
 8250DB003081	Patrick's Row	3081	53.3006104623	-6.1777752344
 8250DB003082	Frascati Road	3082	53.3004535895	-6.1780969994
-8250DB003083	Frascati SC	3083	53.3012352450	-6.1810195744
 8250DB003084	Frascati SC	3084	53.3013812515	-6.1811634120
 8250DB003085	Blackrock Station	3085	53.3024801381	-6.1783708320
 8250DB003091	Avondale Road	3091	53.2736454077	-6.1238768547
 8250DB003092	Arnold Grove	3092	53.2720738490	-6.1268245773
 8250DB003093	Arnold Park	3093	53.2703459406	-6.1301237596
-8250DB003094	Cluny Grove	3094	53.2691938472	-6.1271604050
-8250DB003095	Ballinaclea Road	3095	53.2708529484	-6.1217800637
-8250DB003096	Killiney Road	3096	53.2704560954	-6.1182739459
-8250DB003097	Wyvern Estate	3097	53.2699201638	-6.1150738813
-8250DB003098	Killiney Hill Park	3098	53.2678688884	-6.1143845021
-8250DB003099	Victoria Road	3099	53.2648499504	-6.1150270747
-8250DB003100	Killiney Hill Park	3100	53.2681764152	-6.1145059037
-8250DB003101	Killiney Road	3101	53.2699357789	-6.1154930128
-8250DB003102	Killiney Grove	3102	53.2704251331	-6.1185901732
-8250DB003103	Ballinaclea Road	3103	53.2708846276	-6.1215087858
-8250DB003105	Avondale Road	3105	53.2712024082	-6.1291417590
-8250DB003106	Arnold Grove	3106	53.2720024252	-6.1274274689
-8250DB003107	Avondale Park	3107	53.2733749758	-6.1243985189
-8250DB003108	Bellevue Avenue	3108	53.2745892673	-6.1233106848
-8250DB003111	Barnhill Avenue	3111	53.2773836570	-6.1152702947
 8250DB003114	Temple Hill	3114	53.2958050119	-6.1697734908
 8250DB003115	Stradbrook Road	3115	53.2939921871	-6.1676157333
 8250DB003116	Rowan Park	3116	53.2899226919	-6.1671749037
@@ -4565,37 +4454,9 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003162	Rowan Park	3162	53.2897488038	-6.1675573565
 8250DB003163	Stradbrook Road	3163	53.2925068599	-6.1668842457
 8250DB003164	Temple Hill	3164	53.2956000272	-6.1698872726
-8250DB003165	Carysfort Avenue	3165	53.2993460724	-6.1797345375
-8250DB003166	UCD Smurfit	3166	53.2970117180	-6.1804939435
-8250DB003167	Brookfield Terrace	3167	53.2949238963	-6.1803276591
-8250DB003168	Proby Square	3168	53.2922416290	-6.1800816515
-8250DB003169	St Augustine's Sch	3169	53.2885728297	-6.1805676074
-8250DB003171	Newtown Park	3171	53.2874250402	-6.1766265186
-8250DB003173	Meadow Close	3173	53.2847051420	-6.1774472738
-8250DB003174	Granville Park	3174	53.2821483563	-6.1801206891
-8250DB003175	Stillorgan Road	3175	53.2796195212	-6.1834524511
-8250DB003176	Leopardstown Rd	3176	53.2775748248	-6.1861184894
-8250DB003177	Foxrock Manor	3177	53.2760723085	-6.1883864561
-8250DB003178	Torquay Road	3178	53.2743714301	-6.1929868477
-8250DB003179	Racecourse	3179	53.2730037855	-6.1988323771
 8250DB003181	Carmanhall Road	3181	53.2767339178	-6.2077779044
-8250DB003182	Heather Road	3182	53.2752119417	-6.2141695332
-8250DB003183	Bracken Road	3183	53.2761898780	-6.2170528770
 8250DB003184	Moreen Avenue	3184	53.2761924014	-6.2238457146
-8250DB003187	Burton Hall Road	3187	53.2738266123	-6.2033261714
-8250DB003188	Racecourse	3188	53.2731773979	-6.1990200052
-8250DB003189	Silverpark GAA	3189	53.2738443411	-6.1955731757
-8250DB003190	Torquay Road	3190	53.2748845876	-6.1918555651
-8250DB003191	Foxrock Manor	3191	53.2763141538	-6.1883312404
-8250DB003192	Kelston Park	3192	53.2774821727	-6.1865273050
-8250DB003193	Newtownpark Avenue	3193	53.2798335028	-6.1833383971
-8250DB003194	Holly Park Avenue	3194	53.2832613826	-6.1788435482
-8250DB003195	Meadow Close	3195	53.2848953777	-6.1775441669
 8250DB003196	Newtown Park	3196	53.2873803132	-6.1772284026
-8250DB003198	Carysfort Avenue	3198	53.2898856440	-6.1806018167
-8250DB003199	Proby Square	3199	53.2925845646	-6.1801720808
-8250DB003200	UCD Smurfit	3200	53.2966726719	-6.1806583841
-8250DB003201	Frascati Road	3201	53.2995347040	-6.1797265143
 8250DB003202	Glenageary Rd Lower	3202	53.2888504757	-6.1299606494
 8250DB003203	Traverslea Close	3203	53.2852204972	-6.1323390180
 8250DB003204	Silchester Park	3204	53.2824353373	-6.1341402530
@@ -4635,67 +4496,25 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003238	Holmston Avenue	3238	53.2833097334	-6.1337271985
 8250DB003239	Crosthwaite Park	3239	53.2843864952	-6.1330353310
 8250DB003240	Corrig Road	3240	53.2871718711	-6.1312489286
-8250DB003241	Sallynoggin Park	3241	53.2772562015	-6.1415039939
-8250DB003242	O'Rourke Park	3242	53.2753571003	-6.1453802181
 8250DB003243	Somerton	3243	53.2741733398	-6.1484454513
 8250DB003244	Garden Centre	3244	53.2725500613	-6.1457866415
 8250DB003245	Johnstown Road	3245	53.2706836138	-6.1425238282
 8250DB003246	Johnstown Road	3246	53.2710762761	-6.1434963971
 8250DB003247	Garden Centre	3247	53.2726452445	-6.1461273925
-8250DB003248	Sallynoggin Road	3248	53.2747560281	-6.1483452885
-8250DB003249	Mackinstosh Park	3249	53.2730249564	-6.1532183602
-8250DB003254	Saint Gabriels	3254	53.2636615722	-6.1481651093
-8250DB003255	Cornelscourt SC	3255	53.2664828489	-6.1632003032
-8250DB003256	Cornelscourt Village	3256	53.2688188192	-6.1666385067
 8250DB003258	Westminister Grove	3258	53.2725411593	-6.1719821118
 8250DB003259	Westminister Grove	3259	53.2728336740	-6.1717147246
-8250DB003260	Cornelscourt Village	3260	53.2696908070	-6.1666461718
-8250DB003261	Willow Grove	3261	53.2681805992	-6.1660511127
-8250DB003262	Cornelscourt SC	3262	53.2657264011	-6.1613587388
-8250DB003265	Mart Lane	3265	53.2695007973	-6.1677338161
-8250DB003266	St Brigid's School	3266	53.2693227318	-6.1701853187
-8250DB003267	Gordon Avenue	3267	53.2688643930	-6.1754674383
-8250DB003268	Plunkett Avenue	3268	53.2677546827	-6.1787231119
-8250DB003269	Hainault Road	3269	53.2672336828	-6.1810990675
-8250DB003270	Foxrock Village	3270	53.2665831477	-6.1838252760
-8250DB003271	The Coppins	3271	53.2636991422	-6.1815489216
-8250DB003272	Tresillian	3272	53.2621411830	-6.1801759306
-8250DB003273	Kerrymount Avenue	3273	53.2603082924	-6.1778703511
-8250DB003274	Brighton Avenue	3274	53.2584906455	-6.1742152741
-8250DB003275	Mountsandel Park	3275	53.2580980971	-6.1708893962
-8250DB003276	Glenamuck Rd North	3276	53.2571100245	-6.1709315616
-8250DB003277	The View	3277	53.2482370009	-6.1819949608
-8250DB003278	Rockville Drive	3278	53.2449049274	-6.1868863469
-8250DB003279	Cromlech Close	3279	53.2396615095	-6.1955582821
 8250DB003280	Wayside Cottages	3280	53.2377713032	-6.1953831059
 8250DB003282	Kiltiernan Village	3282	53.2357465354	-6.1934458029
 8250DB003283	Kiltiernan Village	3283	53.2357973490	-6.1938331791
 8250DB003284	Golden Ball	3284	53.2392794200	-6.1964433478
-8250DB003285	Rockville Drive	3285	53.2448461498	-6.1871585543
-8250DB003289	Brennanstown Road	3289	53.2571123230	-6.1710813525
-8250DB003290	Brighton Road	3290	53.2580930221	-6.1711444298
-8250DB003291	Tresillian	3291	53.2615917093	-6.1795097034
-8250DB003292	The Coppins	3292	53.2634199984	-6.1815157939
-8250DB003293	Foxrock Village	3293	53.2662399854	-6.1837198849
-8250DB003294	Westminster Road	3294	53.2673647624	-6.1808536236
-8250DB003295	Plunkett Avenue	3295	53.2679631655	-6.1782494768
-8250DB003296	Gordon Avenue	3296	53.2692092055	-6.1750929193
-8250DB003297	Mart Lane	3297	53.2696798637	-6.1729588180
-8250DB003298	St Brigid's School	3298	53.2693929924	-6.1694926309
-8250DB003306	Sycamore Drive	3306	53.2633563373	-6.1685512191
-8250DB003307	Kerrymount Green	3307	53.2662010113	-6.1664956528
-8250DB003309	Kerrymount Green	3309	53.2669288131	-6.1658947998
 8250DB003310	Kilternan NS	3310	53.2425438154	-6.1989282203
-8250DB003312	Hainault Road	3312	53.2618792737	-6.1701134005
 8250DB003317	Brewery Road	3317	53.2738941745	-6.2006542817
 8250DB003318	Ellesmere	3318	53.2800782809	-6.1970951589
 8250DB003320	Farmleigh Avenue	3320	53.2818816986	-6.1950995541
 8250DB003321	Stillorgan SC	3321	53.2884693637	-6.2004017791
 8250DB003322	Stillorgan SC	3322	53.2880841456	-6.2016779432
-8250DB003343	O'Rourke Park	3343	53.2761981805	-6.1439791965
 8250DB003344	Coppinger Wood	3344	53.2898996573	-6.1862413518
 8250DB003345	Stillorgan Park	3345	53.2894020576	-6.1854374238
-8250DB003346	Westminster Road	3346	53.2697298277	-6.1732865400
 8250DB003466	St Mary's Church	3466	53.2706680789	-6.2258889674
 8250DB003467	Bearna Park	3467	53.2688450880	-6.2229808721
 8250DB003469	Mount Eagle Way	3469	53.2661284083	-6.2162122404
@@ -4753,7 +4572,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003529	Woodside Cottages	3529	53.2608063428	-6.2330427505
 8250DB003532	Blackglen Road	3532	53.2647946194	-6.2401641350
 8250DB003533	Blackglen Court	3533	53.2654719729	-6.2343045583
-8250DB003534	Churchview Road	3534	53.2548686122	-6.1301694807
 8250DB003535	Church Road	3535	53.2568175243	-6.1272065941
 8250DB003536	Ballybrack Village	3536	53.2538610847	-6.1249676771
 8250DB003537	Ballybrack Cross	3537	53.2519528921	-6.1236573289
@@ -4764,19 +4582,12 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB003542	Rathsallagh	3542	53.2364001689	-6.1229144655
 8250DB003543	St Anne's Church	3543	53.2337286400	-6.1233609436
 8250DB003544	Beechfield Manor	3544	53.2343671297	-6.1222393941
-8250DB003545	Shankill Church	3545	53.2337673981	-6.1235390182
-8250DB003546	Shankill Station	3546	53.2374861507	-6.1176831144
-8250DB003547	Shanganagh Park	3547	53.2394648303	-6.1166223896
-8250DB003548	Shanganagh Cliffs	3548	53.2418375469	-6.1160387116
-8250DB003551	Rathsallagh Drive	3551	53.2395934210	-6.1167965376
 8250DB003552	Rathsallagh	3552	53.2372028920	-6.1230890853
 8250DB003553	Hazelwood	3553	53.2390265276	-6.1230242644
 8250DB003554	Shanganagh Bridge	3554	53.2428981515	-6.1217310088
 8250DB003555	Aran Avenue	3555	53.2449122993	-6.1217776483
 8250DB003556	The Elms	3556	53.2481179653	-6.1232856680
 8250DB003557	Sheelin Estate	3557	53.2493962746	-6.1234095485
-8250DB003560	Ballybrack Village	3560	53.2528818111	-6.1244259968
-8250DB003561	Wyattville Road	3561	53.2567032588	-6.1285156172
 8250DB003563	Kilmacud Road Lower	3563	53.2886318994	-6.2046249072
 8250DB004086	Grange Growers	4086	53.2284710498	-6.1854987997
 8250DB004087	Ski Club of Ireland	4087	53.2233969284	-6.1816545562
@@ -4794,22 +4605,15 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB004204	Shanganagh Castle	4204	53.2233240936	-6.1236212600
 8250DB004205	Crinken Lane	4205	53.2245394733	-6.1248861480
 8250DB004206	Claremount	4206	53.2275029229	-6.1247117091
-8250DB004313	Ballyogan Luas	4313	53.2549233558	-6.1842893485
-8250DB004332	Nutgrove SC	4332	53.2900844164	-6.2688102286
 8250DB004333	Marley Court	4333	53.2862368957	-6.2662959935
 8250DB004334	Dargle View	4334	53.2838186204	-6.2650290818
 8250DB004336	Marley Court	4336	53.2861764128	-6.2664634298
-8250DB004337	Nutgrove SC	4337	53.2907250321	-6.2689793294
 8250DB004349	Blackthorn Drive	4349	53.2758454958	-6.2277138979
 8250DB004350	Moreen Avenue	4350	53.2761884315	-6.2229761431
 8250DB004353	National School	4353	53.2924078077	-6.1703837815
 8250DB004354	Marian Park	4354	53.2874759948	-6.1758443738
 8250DB004355	Newtownpark Church	4355	53.2911889275	-6.1717859503
-8250DB004393	Ballyogan Avenue	4393	53.2593873591	-6.1935437166
-8250DB004395	Ballyogan Court	4395	53.2572217972	-6.1894380985
-8250DB004396	Ballyogan Road	4396	53.2568126626	-6.1932775100
 8250DB004397	The Rise	4397	53.2755141994	-6.2515399460
-8250DB004457	Ravenscourt Park	4457	53.2750555666	-6.2091377056
 8250DB004460	Whately Place	4460	53.2872824765	-6.2081313493
 8250DB004462	Sallynoggin	4462	53.2751672746	-6.1378158180
 8250DB004475	Dale Drive	4475	53.2890643092	-6.2124667717
@@ -4822,9 +4626,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB004569	IADT Dun Laoghaire	4569	53.2816226985	-6.1529525837
 8250DB004570	Holy Family Church	4570	53.2808004681	-6.1573222452
 8250DB004571	Stillorgan Park	4571	53.2889790522	-6.1948753581
-8250DB004582	Broadford Road	4582	53.2812900029	-6.2617421684
 8250DB004636	Galloping Green	4636	53.2806915208	-6.1901106895
-8250DB004637	Stillorgan Village	4637	53.2891079405	-6.1962649276
 8250DB004705	St Helen's Road	4705	53.3108182691	-6.2000770661
 8250DB004707	Llewellyn Park	4707	53.2824167705	-6.2625812875
 8250DB004708	Llewellyn Close	4708	53.2839224483	-6.2653698305
@@ -4835,9 +4637,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB004728	Oatlands College	4728	53.2933378858	-6.2019822893
 8250DB004731	National Rehab Hosp	4731	53.2759760552	-6.1516665453
 8250DB004732	National Rehab Hosp	4732	53.2758242046	-6.1511482558
-8250DB004771	Sycamore Drive	4771	53.2639263803	-6.1682120389
-8250DB004772	Hainault Road	4772	53.2616818893	-6.1701368192
-8250DB004773	Leopardstown SC	4773	53.2581778815	-6.1967724055
 8250DB004779	St Raphaela's Road	4779	53.2831787950	-6.2089929754
 8250DB004830	Barnhill Road	4830	53.2772540929	-6.1144662077
 8250DB004847	Blackthorn Drive	4847	53.2798151061	-6.2130477969
@@ -4846,7 +4645,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB004953	UCD	4953	53.3049610697	-6.2170396703
 8250DB004981	Pearse Villas	4981	53.2726650494	-6.1375947168
 8250DB004982	Cois Coille	4982	53.2465325040	-6.1287797420
-8250DB004983	Dun Laoghaire Stn	4983	53.2940779011	-6.1343078684
 8250DB004984	Burton Hall Road	4984	53.2736568459	-6.2033932702
 8250DB004987	Heather Lawn	4987	53.2773584977	-6.2633413194
 8250DB004988	Heather Lawn	4988	53.2776523135	-6.2631494558
@@ -4861,27 +4659,16 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB005051	Pine Valley	5051	53.2735579992	-6.2597467857
 8250DB005052	Grange Hall	5052	53.2720313631	-6.2549207842
 8250DB005090	Shanganagh Cemetery	5090	53.2217038089	-6.1217601153
-8250DB005105	Cluny Grove	5105	53.2692087138	-6.1275345859
-8250DB005106	Ballyogan Luas	5106	53.2549333936	-6.1849483998
 8250DB005127	Cabinteely Bypass	5127	53.2620155970	-6.1504098828
 8250DB005128	Clonkeen Road	5128	53.2655267045	-6.1577392758
 8250DB005142	Sandyford Luas	5142	53.2776744716	-6.2051742301
 8250DB005143	Blackthorn Green	5143	53.2756669551	-6.2277962614
-8250DB005168	Kerrymount Avenue	5168	53.2596353418	-6.1773593303
 8250DB005171	Kingston	5171	53.2717359438	-6.2482605651
 8250DB006006	Kilcross Road	6006	53.2698660358	-6.2287708929
 8250DB006007	Kilcross Road	6007	53.2697615821	-6.2290001090
 8250DB006041	Dundrum Luas	6041	53.2926644772	-6.2460841640
-8250DB006082	Greythorn Park	6082	53.2807965882	-6.1374060726
 8250DB006085	Grange Grove	6085	53.2864920896	-6.1661968205
 8250DB006086	Grange Grove	6086	53.2862444805	-6.1652924798
-8250DB006103	St Kevin's Villas	6103	53.2809987931	-6.1382671235
-8250DB006196	Rockview Road	6196	53.2667311725	-6.2416587696
-8250DB006197	Rockview Road	6197	53.2666871424	-6.2417205447
-8250DB006198	Sandyford View	6198	53.2694758989	-6.2394470981
-8250DB006199	Rockview	6199	53.2691816301	-6.2408235494
-8250DB006200	Rockview	6200	53.2693042936	-6.2406086109
-8250DB006201	Sandyford View	6201	53.2695722754	-6.2392782137
 8250DB006334	Frascati SC	6334	53.3010989674	-6.1803351700
 8250DB007056	Somerton	7056	53.2735313073	-6.1476185049
 8250DB007057	Stillorgan Luas	7057	53.2801060993	-6.2102762349
@@ -4891,20 +4678,13 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB007290	Belarmine Drive	7290	53.2602856261	-6.2209973693
 8250DB007291	Enniskerry Road	7291	53.2556313414	-6.2193020167
 8250DB007317	The Nurseries	7317	53.2521797542	-6.1249363057
-8250DB007323	Wyattville Road	7323	53.2563464457	-6.1269723684
-8250DB007324	The View	7324	53.2483178439	-6.1819915329
 8250DB007325	Clayton Hotel	7325	53.2719332975	-6.2065243298
 8250DB007326	Clayton Hotel	7326	53.2714287558	-6.2076400010
 8250DB007330	Bluepool Pitches	7330	53.2885166422	-6.1535251724
 8250DB007353	Priory Grove	7353	53.2934957289	-6.2017206326
-8250DB007360	The Park	7360	53.2514465109	-6.1820387035
 8250DB007361	Old Bray Road	7361	53.2705832892	-6.1662331384
 8250DB007362	Clonkeen Road	7362	53.2659394317	-6.1576915466
-8250DB007372	Carrickmines Luas	7372	53.2544603789	-6.1722286707
-8250DB007373	Carrickmines Luas	7373	53.2548291203	-6.1722429241
 8250DB007375	M50 Bridge	7375	53.2725671693	-6.2284792832
-8250DB007393	Marsham Court	7393	53.2844772996	-6.2110684347
-8250DB007394	Lakelands Lawn	7394	53.2846665704	-6.2177048367
 8250DB007415	Glencairn Luas	7415	53.2656613211	-6.2108346414
 8250DB007416	Mount Eagle Park	7416	53.2689777332	-6.2114158140
 8250DB007417	Glencairn Luas	7417	53.2657381171	-6.2105615821
@@ -4919,10 +4699,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB007556	The Elms	7556	53.2480439849	-6.1231540337
 8250DB007567	Blackthorn Avenue	7567	53.2731496260	-6.2043292033
 8250DB007584	Stillorgan Grove	7584	53.2901329566	-6.1927266474
-8250DB007634	Cabinteely Court	7634	53.2681990968	-6.1497981185
-8250DB007635	Cabinteely Court	7635	53.2685966458	-6.1499308802
-8250DB007636	Mackintosh Park	7636	53.2759666264	-6.1557007516
-8250DB007637	Clonkeen Crescent	7637	53.2768569208	-6.1568920750
 8250DB007639	Brides Glen Luas	7639	53.2413989701	-6.1430732291
 8250DB007640	Cherrywood Bus Pk	7640	53.2433483505	-6.1406962433
 8250DB007641	Glenageary Park	7641	53.2786716253	-6.1354439647
@@ -4931,9 +4707,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8250DB007644	Sallyglen Road	7644	53.2676424810	-6.1348444985
 8250DB007645	Park Close	7645	53.2751003475	-6.1346847151
 8250DB007646	Glenageary Avenue	7646	53.2790894969	-6.1357257055
-8250DB007651	Amgen	7651	53.2716014150	-6.1518403039
 8250DB007660	Frascati Road	7660	53.2991460631	-6.1748818768
-8250DB007666	Barnhill Road	7666	53.2767852360	-6.1200653274
 8250DB007667	Saval Park Road	7667	53.2768275478	-6.1193286702
 8250DB007716	Dundrum Town Centre	7716	53.2870781788	-6.2433281628
 8250DB007717	Dundrum South	7717	53.2854051614	-6.2414169799
@@ -5016,8 +4790,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8260DB005112	Leixlip Park	5112	53.3623339815	-6.5000673720
 8260DB005113	Maynooth	5113	53.3817579998	-6.5901470450
 8260DB005114	Kingsbury	5114	53.3724015198	-6.5893590013
-8260DB005115	Kilcock	5115	53.4031789869	-6.6711621509
-8260DB005117	Kilcock	5117	53.4044442491	-6.6734087416
 8260DB005118	Hawthorn View	5118	53.3505136423	-6.5449592972
 8260DB006089	Old Greenfield	6089	53.3765331891	-6.5876142490
 8260DB006156	Leixlip GAA Club	6156	53.3659040368	-6.5030824682
@@ -5111,7 +4883,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8310DB003339	Summerseat Court	3339	53.4103970389	-6.4374260987
 8310DB003351	St Peter's College	3351	53.4170352984	-6.4683548747
 8310DB003352	St Peter's College	3352	53.4170777087	-6.4681577725
-8350DB002113	St Peter's Road	2113	53.2095858297	-6.1182477092
 8350DB002962	Killarney Lane	2962	53.1962101854	-6.1216176913
 8350DB002963	Herbert Road	2963	53.1945356120	-6.1271539239
 8350DB002964	Herbert Park	2964	53.1915540223	-6.1290349308
@@ -5119,7 +4890,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB002994	Killarney Lane	2994	53.1966403731	-6.1221077887
 8350DB002997	Florence Road	2997	53.2031235168	-6.1097583563
 8350DB003045	Church Road	3045	53.1974308269	-6.1090060052
-8350DB003442	Ballydonagh Road	3442	53.1455185817	-6.1252810955
 8350DB004011	Carrig View	4011	53.2235218100	-6.4673170083
 8350DB004012	Lisheen View	4012	53.2172340293	-6.4732167730
 8350DB004013	The Lamb Hill	4013	53.2147256994	-6.4773787481
@@ -5161,16 +4931,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004100	Lake View	4100	53.1887361702	-6.5154262449
 8350DB004101	Cherrymount	4101	53.1868835790	-6.5182285869
 8350DB004102	Lake View	4102	53.1888733556	-6.5156160421
-8350DB004103	Kilgarron Park	4103	53.1927504808	-6.1819191945
-8350DB004104	Parknasillogue Ct	4104	53.1932683434	-6.1858185219
-8350DB004105	Hill View	4105	53.1953536955	-6.1917323408
-8350DB004106	Kilmolin	4106	53.1962245287	-6.1928481883
-8350DB004108	Enniskerry Golf Club	4108	53.1918778643	-6.2008133697
-8350DB004109	Bridge Road	4109	53.1955337487	-6.1959006496
-8350DB004110	Kilmolin	4110	53.1959729177	-6.1922600731
-8350DB004111	Hill View	4111	53.1950960491	-6.1913390715
-8350DB004112	Parknasillogue Ct	4112	53.1932592299	-6.1852202441
-8350DB004113	Kilgarron Park	4113	53.1928212004	-6.1818413697
 8350DB004114	Enniskerry Road	4114	53.1928886469	-6.1727389101
 8350DB004115	St. Mary’s Church	4115	53.1938255134	-6.1740460743
 8350DB004116	Environmental Centre	4116	53.1989907296	-6.1738414763
@@ -5186,16 +4946,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004134	Church Road	4134	53.1975733556	-6.1089248894
 8350DB004135	Lauderdale	4135	53.1946463828	-6.1068685220
 8350DB004136	Putland Road	4136	53.1922528971	-6.1050133922
-8350DB004137	Boghall Road	4137	53.1886313684	-6.1028086185
-8350DB004138	Cherry Tree Drive	4138	53.1884473363	-6.1059294812
-8350DB004139	Woodbrook Lawn	4139	53.1882444744	-6.1118346337
-8350DB004140	Oldcourt Park	4140	53.1879373089	-6.1162777361
-8350DB004142	Oldcourt	4142	53.1887905676	-6.1213584169
-8350DB004143	Oldcourt Park	4143	53.1880640009	-6.1157633748
-8350DB004144	Woodbrook Lawn	4144	53.1883673813	-6.1116496525
-8350DB004145	Cherry Tree Drive	4145	53.1885548855	-6.1059097753
-8350DB004146	Vevay Road	4146	53.1887639580	-6.1026680774
-8350DB004147	Wolfe Tone Square	4147	53.1905845529	-6.1074964726
 8350DB004148	Wolfe Tone Square	4148	53.1917841549	-6.1049293033
 8350DB004149	Putland Road	4149	53.1935632830	-6.1065869799
 8350DB004150	Vevay Road	4150	53.2001166337	-6.1105942403
@@ -5203,32 +4953,18 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004153	Cornerstone Church	4153	53.2048906455	-6.1095308648
 8350DB004154	St Cronan's Road	4154	53.2066340781	-6.1123435917
 8350DB004156	Quinsborough Road	4156	53.2049673830	-6.1036140063
-8350DB004167	Bray Station	4167	53.2046049409	-6.1011748137
 8350DB004168	Bray Station	4168	53.2044316558	-6.1010177985
-8350DB004169	Bray Station	4169	53.2042872252	-6.1009792735
 8350DB004170	Methodist Church	4170	53.2034837701	-6.1069729915
 8350DB004171	Kilmantain Park	4171	53.2005085955	-6.1115050924
 8350DB004172	Rosslyn	4172	53.1986800788	-6.1135314090
 8350DB004173	The Nurseries	4173	53.1953342426	-6.1179440664
 8350DB004175	St Fergal's Church	4175	53.1890458353	-6.1261510996
-8350DB004176	O'Byrne Road	4176	53.1918652130	-6.1072006009
 8350DB004177	Springfield Cemetery	4177	53.1860998442	-6.1291526914
 8350DB004178	Ballywaltrim Heights	4178	53.1880862795	-6.1274350317
 8350DB004179	Cloverhill	4179	53.1912578932	-6.1284940841
 8350DB004180	Killarney Road	4180	53.1949357051	-6.1188894998
 8350DB004181	Glenlucan	4181	53.1977599280	-6.1161613368
 8350DB004182	Killarney Villas	4182	53.2002637317	-6.1119349960
-8350DB004183	Upper Dargle Road	4183	53.2070648366	-6.1145703880
-8350DB004184	Sutton Road	4184	53.2051712642	-6.1193094720
-8350DB004185	Dargle Villas	4185	53.2031998230	-6.1219706785
-8350DB004186	Bray Commons	4186	53.1982179953	-6.1309749727
-8350DB004187	Silverbridge	4187	53.1927505421	-6.1365558800
-8350DB004189	Kilbride Lane	4189	53.1901875201	-6.1416505857
-8350DB004190	Cookstown	4190	53.1920314114	-6.1590962761
-8350DB004192	Cookstown	4192	53.1914700681	-6.1582522995
-8350DB004194	Kilbride Lane	4194	53.1901254576	-6.1411294747
-8350DB004196	Upper Dargle Road	4196	53.1988061369	-6.1306500083
-8350DB004199	Sunnybank Court	4199	53.2070934408	-6.1146739330
 8350DB004201	Old Connaught Avenue	4201	53.2111253457	-6.1178358557
 8350DB004207	St Andrew's NS	4207	53.1893993142	-6.1024903675
 8350DB004208	Briar Wood	4208	53.1870707731	-6.0990765091
@@ -5254,18 +4990,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004229	Carrig Villas	4229	53.1325214558	-6.0757343217
 8350DB004230	Kilcoole Road	4230	53.1331584913	-6.0778879547
 8350DB004231	Kilcoole Road	4231	53.1306800578	-6.0763695803
-8350DB004232	Delgany Wood	4232	53.1324910772	-6.0838810741
-8350DB004234	Health Centre	4234	53.1326020357	-6.0935908379
-8350DB004235	Delgany Golf Club	4235	53.1303881398	-6.1012958132
-8350DB004236	Drummin Gate Lodge	4236	53.1243222876	-6.1042081090
-8350DB004237	Killickabawn	4237	53.1212708329	-6.1101547408
-8350DB004238	Kilpedder Footbridge	4238	53.1115468679	-6.1057412245
-8350DB004239	Glenview Park	4239	53.1139668148	-6.1075619882
-8350DB004240	Glen Of The Downs	4240	53.1294923064	-6.1037413912
-8350DB004241	Delgany Golf Club	4241	53.1307801923	-6.1005163289
-8350DB004242	Health Centre	4242	53.1326324629	-6.0932457397
-8350DB004243	Chapel Road	4243	53.1325613423	-6.0899309497
-8350DB004244	Wendon Brook	4244	53.1330304130	-6.0810920879
 8350DB004246	Glenbrook Park	4246	53.1242396249	-6.0733100542
 8350DB004248	Charlesland	4248	53.1218941055	-6.0727874088
 8350DB004249	Knockroe	4249	53.1194362639	-6.0708803152
@@ -5306,12 +5030,6 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004286	Victoria Road	4286	53.1500258723	-6.0665187921
 8350DB004287	Greystones Fire Stn	4287	53.1500260419	-6.0698530358
 8350DB004288	St Kevin's NS	4288	53.1492003676	-6.0749287287
-8350DB004289	Church Lane	4289	53.1462163500	-6.0777233969
-8350DB004290	Greystones SC	4290	53.1445582384	-6.0757941744
-8350DB004291	Bellevue Road	4291	53.1451383497	-6.0688762453
-8350DB004292	Bellevue Road	4292	53.1449560251	-6.0692731275
-8350DB004293	Greystones SC	4293	53.1446379170	-6.0751627158
-8350DB004294	Church Lane	4294	53.1463915941	-6.0779996287
 8350DB004295	Chapel Road	4295	53.1496545886	-6.0796779832
 8350DB004296	Redford Park	4296	53.1523834447	-6.0816794565
 8350DB004297	Redford	4297	53.1556168761	-6.0826418506
@@ -5327,33 +5045,13 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB004308	Beechdale	4308	53.1061653714	-6.0612577794
 8350DB004309	Sea Road	4309	53.1061578885	-6.0641110033
 8350DB004416	Roseville Court	4416	53.2083438702	-6.1147388051
-8350DB004417	St Peter's Road	4417	53.2092331573	-6.1181134427
-8350DB004419	Raverty Villas	4419	53.2068632421	-6.1194449682
-8350DB004420	Maple Grove	4420	53.2067081123	-6.1221466156
-8350DB004421	Beech Road	4421	53.2077834508	-6.1196591871
-8350DB004422	Diamond Valley	4422	53.2009631173	-6.1277718229
 8350DB004533	Kilmacanogue	4533	53.1695051593	-6.1364864123
-8350DB004584	Diamond Valley	4584	53.2010475326	-6.1274238465
 8350DB004588	Cois Sleibhe	4588	53.1833990224	-6.1220280398
 8350DB004589	Bray Business Park	4589	53.1842399038	-6.1160806801
 8350DB004590	Hollybrook Park	4590	53.1843623051	-6.1090573674
 8350DB004591	Southern Cross	4591	53.1853249084	-6.1045856702
-8350DB004650	Kilpeddar Grove	4650	53.1109028921	-6.1048134938
-8350DB004651	Garden Village	4651	53.1011911797	-6.1068235902
-8350DB004652	Coillte Offices	4652	53.0971249236	-6.1100037570
-8350DB004653	Newtownmountkennedy	4653	53.0921962383	-6.1120862470
-8350DB004654	Springfield Heights	4654	53.0884641636	-6.1091441198
-8350DB004655	Newtown Business Ctr	4655	53.0843459250	-6.1050997786
-8350DB004656	Newcastle Hospital	4656	53.0794899781	-6.1004617258
-8350DB004657	Newcastle Hospital	4657	53.0798354229	-6.1012675204
-8350DB004658	Springfield Heights	4658	53.0888497467	-6.1102171380
-8350DB004659	Newtownmountkennedy	4659	53.0918303260	-6.1122515825
-8350DB004660	Coillte Offices	4660	53.0977967081	-6.1098548375
-8350DB004661	Garden Village	4661	53.0996898040	-6.1085024235
 8350DB004844	Glencormack Road	4844	53.1743757146	-6.1392822793
 8350DB004956	Sea Road	4956	53.0711237336	-6.0638025809
-8350DB005088	Woodview Drive	5088	53.1886580059	-6.1095716909
-8350DB005089	Wolfe Tone Square	5089	53.1903896846	-6.1093757746
 8350DB005091	Ballywaltrim Heights	5091	53.1879238916	-6.1273972138
 8350DB005092	Springfield Cemetery	5092	53.1858287287	-6.1290597457
 8350DB005110	Arduan	5110	53.2202730815	-6.4697991216
@@ -5361,13 +5059,9 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB005135	Kilruddery Cottages	5135	53.1767923001	-6.0954167776
 8350DB005136	Gorse Hill	5136	53.0778880042	-6.0674098314
 8350DB005139	Windgate Cottages	5139	53.1617095882	-6.0847781424
-8350DB005167	Woodview Drive	5167	53.1886017386	-6.1094245152
 8350DB006000	Kilmacanogue	6000	53.1704672157	-6.1365045520
-8350DB006019	Glen Of The Downs	6019	53.1290328372	-6.1042398456
 8350DB006097	Ashridge Green	6097	53.2003151141	-6.1763897827
 8350DB006137	Kilcoole Golf Club	6137	53.0992432845	-6.0672888988
-8350DB006138	Drake's Way	6138	53.0807694771	-6.1023459846
-8350DB006139	Bridge Road	6139	53.1954526779	-6.1958890869
 8350DB007207	Russborough House	7207	53.1408899060	-6.5605742940
 8350DB007208	Russborough House	7208	53.1408291827	-6.5607556949
 8350DB007248	Valleymount Road	7248	53.1509293542	-6.5553644683
@@ -5393,11 +5087,8 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB007270	The School House	7270	53.1071879096	-6.4918745236
 8350DB007271	Newcastle Middle	7271	53.0765724635	-6.0677672868
 8350DB007272	Newcastle Middle	7272	53.0764799764	-6.0676072397
-8350DB007279	Newtown Business Ctr	7279	53.0850621871	-6.1054863276
 8350DB007294	Cornerstone Church	7294	53.2047244539	-6.1092537368
-8350DB007295	Sutton Road	7295	53.2052984334	-6.1193937281
 8350DB007296	Kilcoole Golf Club	7296	53.0988441758	-6.0676204070
-8350DB007351	Chapel Road	7351	53.1324814606	-6.0899942760
 8350DB007352	Three Trouts Bridge	7352	53.1275037803	-6.0733881776
 8350DB007363	Southern Cross Rd	7363	53.1817206467	-6.1319019348
 8350DB007364	Belmont	7364	53.1845917660	-6.1082242657
@@ -5405,10 +5096,8 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 8350DB007366	Bray Business Park	7366	53.1839148878	-6.1182646312
 8350DB007367	Shoreline Sports	7367	53.1828656852	-6.1235476541
 8350DB007368	Giltspur	7368	53.1814106830	-6.1281897274
-8350DB007369	Dargle Villas	7369	53.2035385564	-6.1217911922
 8350DB007461	Charlesland	7461	53.1289319703	-6.0628033721
 8350DB007462	Charlesland	7462	53.1288008733	-6.0624804920
-8350DB007522	Oldcourt	7522	53.1881311335	-6.1188731387
 8350DB007574	Southern Cross	7574	53.1823486728	-6.1301090159
 8350DB007823	Enniskerry Village	7823	53.1941976896	-6.1701837562
 8350DB007824	Enniskerry Village	7824	53.1925584485	-6.1711365875
@@ -5416,7 +5105,7 @@ COPY public.bus_stops (id, name, number, latitude, longitude) FROM stdin;
 
 
 --
--- TOC entry 3437 (class 0 OID 16710)
+-- TOC entry 3479 (class 0 OID 20050)
 -- Dependencies: 226
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -5426,7 +5115,7 @@ COPY public.django_admin_log (id, action_time, object_id, object_repr, action_fl
 
 
 --
--- TOC entry 3423 (class 0 OID 16603)
+-- TOC entry 3465 (class 0 OID 19943)
 -- Dependencies: 212
 -- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -5438,44 +5127,48 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 4	auth	user
 5	contenttypes	contenttype
 6	sessions	session
-7	bus_stops	busstops
+7	bus_stops	busroutes
+8	bus_stops	busstops
+9	bus_stops	routeconnections
+10	bus_stops	routes
 \.
 
 
 --
--- TOC entry 3421 (class 0 OID 16594)
+-- TOC entry 3463 (class 0 OID 19934)
 -- Dependencies: 210
 -- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2022-06-11 10:41:44.199926+01
-2	auth	0001_initial	2022-06-11 10:41:44.271926+01
-3	admin	0001_initial	2022-06-11 10:41:44.290927+01
-4	admin	0002_logentry_remove_auto_add	2022-06-11 10:41:44.297924+01
-5	admin	0003_logentry_add_action_flag_choices	2022-06-11 10:41:44.303924+01
-6	contenttypes	0002_remove_content_type_name	2022-06-11 10:41:44.324927+01
-7	auth	0002_alter_permission_name_max_length	2022-06-11 10:41:44.332924+01
-8	auth	0003_alter_user_email_max_length	2022-06-11 10:41:44.340926+01
-9	auth	0004_alter_user_username_opts	2022-06-11 10:41:44.346924+01
-10	auth	0005_alter_user_last_login_null	2022-06-11 10:41:44.353924+01
-11	auth	0006_require_contenttypes_0002	2022-06-11 10:41:44.354928+01
-12	auth	0007_alter_validators_add_error_messages	2022-06-11 10:41:44.360926+01
-13	auth	0008_alter_user_username_max_length	2022-06-11 10:41:44.372926+01
-14	auth	0009_alter_user_last_name_max_length	2022-06-11 10:41:44.381927+01
-15	auth	0010_alter_group_name_max_length	2022-06-11 10:41:44.389925+01
-16	auth	0011_update_proxy_permissions	2022-06-11 10:41:44.395925+01
-17	auth	0012_alter_user_first_name_max_length	2022-06-11 10:41:44.402928+01
-18	bus_stops	0001_initial	2022-06-11 10:41:44.410925+01
-19	sessions	0001_initial	2022-06-11 10:41:44.420924+01
-20	bus_stops	0002_auto_20220611_1044	2022-06-11 10:44:51.302685+01
-21	bus_stops	0003_auto_20220611_1048	2022-06-11 10:48:59.489037+01
+1	contenttypes	0001_initial	2022-07-08 16:05:49.895325+01
+2	auth	0001_initial	2022-07-08 16:05:49.955368+01
+3	admin	0001_initial	2022-07-08 16:05:49.975382+01
+4	admin	0002_logentry_remove_auto_add	2022-07-08 16:05:49.981381+01
+5	admin	0003_logentry_add_action_flag_choices	2022-07-08 16:05:49.98738+01
+6	contenttypes	0002_remove_content_type_name	2022-07-08 16:05:49.998886+01
+7	auth	0002_alter_permission_name_max_length	2022-07-08 16:05:50.005887+01
+8	auth	0003_alter_user_email_max_length	2022-07-08 16:05:50.011886+01
+9	auth	0004_alter_user_username_opts	2022-07-08 16:05:50.018403+01
+10	auth	0005_alter_user_last_login_null	2022-07-08 16:05:50.0244+01
+11	auth	0006_require_contenttypes_0002	2022-07-08 16:05:50.026405+01
+12	auth	0007_alter_validators_add_error_messages	2022-07-08 16:05:50.0324+01
+13	auth	0008_alter_user_username_max_length	2022-07-08 16:05:50.041401+01
+14	auth	0009_alter_user_last_name_max_length	2022-07-08 16:05:50.047402+01
+15	auth	0010_alter_group_name_max_length	2022-07-08 16:05:50.054402+01
+16	auth	0011_update_proxy_permissions	2022-07-08 16:05:50.05941+01
+17	auth	0012_alter_user_first_name_max_length	2022-07-08 16:05:50.066412+01
+18	bus_stops	0001_initial	2022-07-08 16:05:50.093414+01
+19	sessions	0001_initial	2022-07-08 16:05:50.104889+01
+20	bus_stops	0002_auto_20220611_1044	2022-07-08 18:09:25.590128+01
+21	bus_stops	0003_auto_20220611_1048	2022-07-08 18:09:25.607128+01
+22	bus_stops	0004_routes_routeconnections_busstops_route	2022-07-08 22:27:19.390006+01
 \.
 
 
 --
--- TOC entry 3439 (class 0 OID 16745)
--- Dependencies: 228
+-- TOC entry 3484 (class 0 OID 20112)
+-- Dependencies: 231
 -- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -5484,7 +5177,4929 @@ COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
 
 
 --
--- TOC entry 3456 (class 0 OID 0)
+-- TOC entry 3487 (class 0 OID 20137)
+-- Dependencies: 234
+-- Data for Name: route_connection; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.route_connection (id, routes_id, stops_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3483 (class 0 OID 20090)
+-- Dependencies: 230
+-- Data for Name: route_connections; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.route_connections (id, bus_route_id, bus_stop_id) FROM stdin;
+2	22	8220DB000002
+3	5	8220DB000003
+4	6	8220DB000003
+5	37	8220DB000004
+6	42	8220DB000004
+7	24	8220DB000006
+8	8	8220DB000007
+9	11	8220DB000007
+10	25	8220DB000007
+11	17	8220DB000008
+12	1	8220DB000010
+13	2	8220DB000010
+14	29	8220DB000010
+15	8	8220DB000011
+16	25	8220DB000011
+17	1	8220DB000012
+18	2	8220DB000012
+19	6	8220DB000012
+20	17	8220DB000012
+21	29	8220DB000012
+22	1	8220DB000014
+23	2	8220DB000014
+24	6	8220DB000014
+25	8	8220DB000014
+26	17	8220DB000014
+27	25	8220DB000014
+28	29	8220DB000014
+29	1	8220DB000015
+30	2	8220DB000015
+31	8	8220DB000015
+32	17	8220DB000015
+33	20	8220DB000015
+34	25	8220DB000015
+35	26	8220DB000015
+36	29	8220DB000015
+37	6	8220DB000016
+38	1	8220DB000017
+39	2	8220DB000017
+40	8	8220DB000017
+41	17	8220DB000017
+42	20	8220DB000017
+43	26	8220DB000017
+44	29	8220DB000017
+45	1	8220DB000018
+46	2	8220DB000018
+47	8	8220DB000018
+48	17	8220DB000018
+49	20	8220DB000018
+50	26	8220DB000018
+51	29	8220DB000018
+52	1	8220DB000019
+53	2	8220DB000019
+54	8	8220DB000019
+55	17	8220DB000019
+56	20	8220DB000019
+57	26	8220DB000019
+58	29	8220DB000019
+59	1	8220DB000021
+60	2	8220DB000021
+61	8	8220DB000021
+62	17	8220DB000021
+63	20	8220DB000021
+64	26	8220DB000021
+65	29	8220DB000021
+66	2	8220DB000022
+67	2	8220DB000023
+68	2	8220DB000024
+69	2	8220DB000025
+70	2	8220DB000027
+71	8	8220DB000027
+72	24	8220DB000027
+73	42	8220DB000027
+74	2	8220DB000028
+75	8	8220DB000028
+76	24	8220DB000028
+77	42	8220DB000028
+78	2	8220DB000029
+79	8	8220DB000029
+80	24	8220DB000029
+81	42	8220DB000029
+82	5	8220DB000030
+83	2	8220DB000031
+84	2	8220DB000032
+85	2	8220DB000033
+86	2	8220DB000035
+87	2	8220DB000036
+88	2	8220DB000037
+89	8	8220DB000037
+90	24	8220DB000037
+91	42	8220DB000037
+92	2	8220DB000038
+93	8	8220DB000038
+94	24	8220DB000038
+95	42	8220DB000038
+96	2	8220DB000039
+97	8	8220DB000039
+98	24	8220DB000039
+99	42	8220DB000039
+100	2	8220DB000040
+101	24	8220DB000040
+102	42	8220DB000040
+103	2	8220DB000041
+104	2	8220DB000042
+105	2	8220DB000043
+106	1	8220DB000044
+107	2	8220DB000044
+108	8	8220DB000044
+109	17	8220DB000044
+110	20	8220DB000044
+111	26	8220DB000044
+112	29	8220DB000044
+113	1	8220DB000045
+114	2	8220DB000045
+115	8	8220DB000045
+116	17	8220DB000045
+117	20	8220DB000045
+118	26	8220DB000045
+119	29	8220DB000045
+120	1	8220DB000046
+121	2	8220DB000046
+122	8	8220DB000046
+123	17	8220DB000046
+124	20	8220DB000046
+125	26	8220DB000046
+126	29	8220DB000046
+127	1	8220DB000047
+128	2	8220DB000047
+129	8	8220DB000047
+130	17	8220DB000047
+131	20	8220DB000047
+132	26	8220DB000047
+133	29	8220DB000047
+134	1	8220DB000048
+135	2	8220DB000048
+136	8	8220DB000048
+137	17	8220DB000048
+138	20	8220DB000048
+139	26	8220DB000048
+140	29	8220DB000048
+141	1	8220DB000049
+142	2	8220DB000049
+143	8	8220DB000049
+144	17	8220DB000049
+145	20	8220DB000049
+146	25	8220DB000049
+147	26	8220DB000049
+148	29	8220DB000049
+149	1	8220DB000051
+150	2	8220DB000051
+151	6	8220DB000051
+152	8	8220DB000051
+153	17	8220DB000051
+154	20	8220DB000051
+155	25	8220DB000051
+156	26	8220DB000051
+157	29	8220DB000051
+158	1	8220DB000052
+159	2	8220DB000052
+160	6	8220DB000052
+161	8	8220DB000052
+162	17	8220DB000052
+163	20	8220DB000052
+164	25	8220DB000052
+165	26	8220DB000052
+166	29	8220DB000052
+167	6	8220DB000053
+168	6	8220DB000054
+169	6	8220DB000055
+170	5	8220DB000056
+171	6	8220DB000056
+172	22	8220DB000057
+173	5	8220DB000058
+174	6	8220DB000058
+175	22	8220DB000058
+176	6	8220DB000059
+177	22	8220DB000059
+178	6	8220DB000060
+179	22	8220DB000060
+180	6	8220DB000063
+181	6	8220DB000064
+182	6	8220DB000065
+183	6	8220DB000066
+184	5	8220DB000068
+185	5	8220DB000069
+186	5	8220DB000071
+187	5	8220DB000072
+188	6	8220DB000073
+189	6	8220DB000074
+190	5	8220DB000075
+191	6	8220DB000077
+192	22	8220DB000077
+193	6	8220DB000078
+194	22	8220DB000078
+195	5	8220DB000079
+196	6	8220DB000079
+197	22	8220DB000079
+198	5	8220DB000080
+199	6	8220DB000080
+200	22	8220DB000080
+201	5	8220DB000082
+202	6	8220DB000082
+203	22	8220DB000082
+204	6	8220DB000083
+205	6	8220DB000084
+206	1	8220DB000085
+207	8	8220DB000085
+208	17	8220DB000085
+209	20	8220DB000085
+210	26	8220DB000085
+211	29	8220DB000085
+212	8	8220DB000086
+213	8	8220DB000087
+214	8	8220DB000088
+215	8	8220DB000090
+216	24	8220DB000090
+217	42	8220DB000090
+218	8	8220DB000091
+219	24	8220DB000091
+220	42	8220DB000091
+221	8	8220DB000092
+222	24	8220DB000092
+223	8	8220DB000093
+224	24	8220DB000093
+225	8	8220DB000094
+226	24	8220DB000094
+227	8	8220DB000102
+228	8	8220DB000104
+229	8	8220DB000105
+230	8	8220DB000107
+231	8	8220DB000110
+232	8	8220DB000112
+233	24	8220DB000112
+234	8	8220DB000113
+235	24	8220DB000113
+236	8	8220DB000114
+237	24	8220DB000114
+238	8	8220DB000115
+239	24	8220DB000115
+240	42	8220DB000115
+241	8	8220DB000117
+242	8	8220DB000118
+243	1	8220DB000119
+244	8	8220DB000119
+245	17	8220DB000119
+246	20	8220DB000119
+247	26	8220DB000119
+248	29	8220DB000119
+249	24	8220DB000126
+250	24	8220DB000127
+251	42	8220DB000129
+252	42	8220DB000130
+253	42	8220DB000131
+254	40	8220DB000133
+255	40	8220DB000134
+256	42	8220DB000136
+257	42	8220DB000137
+258	40	8220DB000138
+259	42	8220DB000138
+260	42	8220DB000141
+261	42	8220DB000142
+262	42	8220DB000143
+263	24	8220DB000146
+264	42	8220DB000146
+265	24	8220DB000147
+266	42	8220DB000147
+267	24	8220DB000148
+268	42	8220DB000148
+269	24	8220DB000149
+270	42	8220DB000149
+271	24	8220DB000150
+272	42	8220DB000150
+273	40	8220DB000151
+274	40	8220DB000153
+275	40	8220DB000154
+276	40	8220DB000155
+277	40	8220DB000156
+278	42	8220DB000164
+279	42	8220DB000165
+280	42	8220DB000166
+281	42	8220DB000167
+282	42	8220DB000168
+283	42	8220DB000169
+284	40	8220DB000175
+285	40	8220DB000176
+286	40	8220DB000177
+287	40	8220DB000178
+288	40	8220DB000179
+289	40	8220DB000181
+290	40	8220DB000182
+291	40	8220DB000183
+292	24	8220DB000184
+293	40	8220DB000184
+294	42	8220DB000184
+295	24	8220DB000185
+296	40	8220DB000185
+297	42	8220DB000185
+298	11	8220DB000186
+299	24	8220DB000186
+300	25	8220DB000186
+301	40	8220DB000186
+302	42	8220DB000186
+303	11	8220DB000187
+304	24	8220DB000187
+305	25	8220DB000187
+306	40	8220DB000187
+307	42	8220DB000187
+308	11	8220DB000188
+309	24	8220DB000188
+310	25	8220DB000188
+311	40	8220DB000188
+312	42	8220DB000188
+313	11	8220DB000189
+314	24	8220DB000189
+315	25	8220DB000189
+316	40	8220DB000189
+317	42	8220DB000189
+318	11	8220DB000190
+319	24	8220DB000190
+320	25	8220DB000190
+321	40	8220DB000190
+322	42	8220DB000190
+323	11	8220DB000191
+324	24	8220DB000191
+325	42	8220DB000191
+326	5	8220DB000192
+327	22	8220DB000192
+328	25	8220DB000192
+329	42	8220DB000193
+330	11	8220DB000194
+331	24	8220DB000194
+332	42	8220DB000194
+333	11	8220DB000195
+334	24	8220DB000195
+335	40	8220DB000195
+336	42	8220DB000195
+337	11	8220DB000196
+338	24	8220DB000196
+339	40	8220DB000196
+340	42	8220DB000196
+341	11	8220DB000197
+342	24	8220DB000197
+343	40	8220DB000197
+344	42	8220DB000197
+345	11	8220DB000198
+346	24	8220DB000198
+347	40	8220DB000198
+348	42	8220DB000198
+349	11	8220DB000199
+350	24	8220DB000199
+351	40	8220DB000199
+352	42	8220DB000199
+353	24	8220DB000200
+354	40	8220DB000200
+355	42	8220DB000200
+356	24	8220DB000201
+357	40	8220DB000201
+358	42	8220DB000201
+359	40	8220DB000202
+360	1	8220DB000203
+361	17	8220DB000203
+362	20	8220DB000203
+363	26	8220DB000203
+364	29	8220DB000203
+365	1	8220DB000204
+366	17	8220DB000204
+367	20	8220DB000204
+368	26	8220DB000204
+369	29	8220DB000204
+370	1	8220DB000205
+371	17	8220DB000205
+372	20	8220DB000205
+373	26	8220DB000205
+374	29	8220DB000205
+375	29	8220DB000206
+376	29	8220DB000207
+377	29	8220DB000208
+378	29	8220DB000209
+379	29	8220DB000210
+380	29	8220DB000211
+381	29	8220DB000212
+382	1	8220DB000213
+383	17	8220DB000213
+384	20	8220DB000213
+385	26	8220DB000213
+386	29	8220DB000213
+387	1	8220DB000214
+388	17	8220DB000214
+389	20	8220DB000214
+390	26	8220DB000214
+391	29	8220DB000214
+392	17	8220DB000215
+393	10	8220DB000216
+394	17	8220DB000216
+395	10	8220DB000217
+396	17	8220DB000217
+397	17	8220DB000218
+398	1	8220DB000220
+399	17	8220DB000220
+400	20	8220DB000220
+401	26	8220DB000220
+402	1	8220DB000228
+403	17	8220DB000233
+404	10	8220DB000234
+405	17	8220DB000234
+406	10	8220DB000235
+407	17	8220DB000235
+408	10	8220DB000236
+409	17	8220DB000236
+410	17	8220DB000237
+411	10	8220DB000242
+412	10	8220DB000243
+413	10	8220DB000244
+414	10	8220DB000245
+415	10	8220DB000246
+416	10	8220DB000248
+417	10	8220DB000249
+418	10	8220DB000250
+419	10	8220DB000251
+420	10	8220DB000252
+421	10	8220DB000254
+422	10	8220DB000255
+423	2	8220DB000261
+424	3	8220DB000261
+425	8	8220DB000261
+426	25	8220DB000261
+427	17	8220DB000262
+428	5	8220DB000263
+429	6	8220DB000263
+430	42	8220DB000263
+431	11	8220DB000264
+432	1	8220DB000265
+433	22	8220DB000265
+434	29	8220DB000265
+435	8	8220DB000270
+436	17	8220DB000270
+437	25	8220DB000270
+438	1	8220DB000271
+439	2	8220DB000271
+440	6	8220DB000271
+441	29	8220DB000271
+442	32	8220DB000271
+443	7	8220DB000272
+444	24	8220DB000273
+445	37	8220DB000273
+446	7	8220DB000274
+447	11	8220DB000274
+448	22	8220DB000274
+449	5	8220DB000276
+450	20	8220DB000277
+451	26	8220DB000277
+452	42	8220DB000277
+453	1	8220DB000278
+454	2	8220DB000278
+455	17	8220DB000278
+456	29	8220DB000278
+457	5	8220DB000279
+458	6	8220DB000279
+459	25	8220DB000279
+460	3	8220DB000281
+461	8	8220DB000281
+462	24	8220DB000281
+463	37	8220DB000281
+464	42	8220DB000281
+465	5	8220DB000284
+466	32	8220DB000286
+467	26	8220DB000288
+468	9	8220DB000289
+469	20	8220DB000292
+470	10	8220DB000297
+471	16	8220DB000297
+472	19	8220DB000298
+473	14	8220DB000299
+474	10	8220DB000301
+475	12	8220DB000301
+476	14	8220DB000301
+477	16	8220DB000302
+478	19	8220DB000302
+479	33	8220DB000302
+480	4	8220DB000303
+481	33	8220DB000303
+482	15	8220DB000307
+483	15	8220DB000308
+484	15	8220DB000309
+485	18	8220DB000312
+486	21	8220DB000313
+487	38	8220DB000313
+488	18	8220DB000315
+489	21	8220DB000315
+490	23	8220DB000315
+491	38	8220DB000315
+492	40	8220DB000315
+493	18	8220DB000317
+494	1	8220DB000319
+495	8	8220DB000319
+496	11	8220DB000319
+497	25	8220DB000319
+498	29	8220DB000319
+499	40	8220DB000319
+500	42	8220DB000319
+501	2	8220DB000320
+502	17	8220DB000320
+503	8	8220DB000322
+504	24	8220DB000322
+505	13	8220DB000325
+506	39	8220DB000326
+507	23	8220DB000328
+508	21	8220DB000329
+509	38	8220DB000329
+510	11	8220DB000334
+511	13	8220DB000334
+512	7	8220DB000335
+513	8	8220DB000335
+514	23	8220DB000335
+515	25	8220DB000335
+516	10	8220DB000336
+517	17	8220DB000336
+518	40	8220DB000336
+519	42	8220DB000336
+520	1	8220DB000340
+521	29	8220DB000340
+522	30	8220DB000340
+523	33	8220DB000340
+524	31	8220DB000342
+525	18	8220DB000346
+526	29	8220DB000350
+527	30	8220DB000350
+528	33	8220DB000350
+529	30	8220DB000351
+530	30	8220DB000352
+531	30	8220DB000353
+532	30	8220DB000354
+533	30	8220DB000355
+534	30	8220DB000356
+535	30	8220DB000357
+536	30	8220DB000371
+537	30	8220DB000372
+538	30	8220DB000373
+539	30	8220DB000374
+540	30	8220DB000381
+541	30	8220DB000387
+542	30	8220DB000388
+543	30	8220DB000389
+544	30	8220DB000390
+545	30	8220DB000391
+546	30	8220DB000392
+547	30	8220DB000393
+548	19	8220DB000395
+549	30	8220DB000395
+550	19	8220DB000396
+551	30	8220DB000396
+552	19	8220DB000397
+553	30	8220DB000397
+554	19	8220DB000398
+555	30	8220DB000398
+556	19	8220DB000399
+557	30	8220DB000399
+558	1	8220DB000400
+559	5	8220DB000400
+560	18	8220DB000400
+561	19	8220DB000400
+562	24	8220DB000400
+563	29	8220DB000400
+564	30	8220DB000400
+565	33	8220DB000400
+566	37	8220DB000400
+567	2	8220DB000404
+568	21	8220DB000404
+569	22	8220DB000404
+570	23	8220DB000404
+571	38	8220DB000404
+572	24	8220DB000405
+573	37	8220DB000405
+574	13	8220DB000406
+575	18	8220DB000406
+576	12	8220DB000407
+577	16	8220DB000407
+578	5	8220DB000408
+579	24	8220DB000408
+580	37	8220DB000408
+581	5	8220DB000409
+582	24	8220DB000409
+583	37	8220DB000409
+584	5	8220DB000410
+585	24	8220DB000410
+586	37	8220DB000410
+587	5	8220DB000411
+588	24	8220DB000411
+589	37	8220DB000411
+590	5	8220DB000412
+591	24	8220DB000412
+592	37	8220DB000412
+593	5	8220DB000413
+594	24	8220DB000413
+595	37	8220DB000413
+596	5	8220DB000414
+597	24	8220DB000414
+598	37	8220DB000414
+599	5	8220DB000415
+600	24	8220DB000415
+601	37	8220DB000415
+602	24	8220DB000416
+603	37	8220DB000416
+604	24	8220DB000417
+605	37	8220DB000417
+606	24	8220DB000418
+607	37	8220DB000418
+608	24	8220DB000419
+609	37	8220DB000419
+610	24	8220DB000420
+611	37	8220DB000420
+612	24	8220DB000421
+613	37	8220DB000421
+614	24	8220DB000422
+615	37	8220DB000422
+616	24	8220DB000423
+617	37	8220DB000423
+618	24	8220DB000424
+619	37	8220DB000424
+620	24	8220DB000476
+621	37	8220DB000476
+622	24	8220DB000477
+623	37	8220DB000477
+624	24	8220DB000478
+625	37	8220DB000478
+626	24	8220DB000479
+627	37	8220DB000479
+628	24	8220DB000480
+629	37	8220DB000480
+630	24	8220DB000481
+631	37	8220DB000481
+632	24	8220DB000482
+633	37	8220DB000482
+634	24	8220DB000483
+635	37	8220DB000483
+636	5	8220DB000485
+637	24	8220DB000485
+638	37	8220DB000485
+639	5	8220DB000487
+640	24	8220DB000487
+641	37	8220DB000487
+642	5	8220DB000488
+643	24	8220DB000488
+644	37	8220DB000488
+645	5	8220DB000489
+646	24	8220DB000489
+647	37	8220DB000489
+648	5	8220DB000490
+649	24	8220DB000490
+650	37	8220DB000490
+651	5	8220DB000491
+652	24	8220DB000491
+653	37	8220DB000491
+654	5	8220DB000492
+655	24	8220DB000492
+656	37	8220DB000492
+657	5	8220DB000493
+658	18	8220DB000493
+659	24	8220DB000493
+660	37	8220DB000493
+661	5	8220DB000494
+662	18	8220DB000494
+663	24	8220DB000494
+664	37	8220DB000494
+665	5	8220DB000495
+666	18	8220DB000495
+667	24	8220DB000495
+668	29	8220DB000495
+669	33	8220DB000495
+670	37	8220DB000495
+671	9	8220DB000496
+672	10	8220DB000496
+673	19	8220DB000496
+674	32	8220DB000496
+675	10	8220DB000497
+676	14	8220DB000497
+677	19	8220DB000497
+678	27	8220DB000497
+679	28	8220DB000497
+680	32	8220DB000497
+681	7	8220DB000499
+682	7	8220DB000500
+683	7	8220DB000501
+684	7	8220DB000509
+685	7	8220DB000510
+686	7	8220DB000511
+687	7	8220DB000513
+688	32	8220DB000513
+689	9	8220DB000515
+690	10	8220DB000515
+691	14	8220DB000515
+692	19	8220DB000515
+693	27	8220DB000515
+694	28	8220DB000515
+695	32	8220DB000515
+696	9	8220DB000516
+697	10	8220DB000516
+698	14	8220DB000516
+699	19	8220DB000516
+700	27	8220DB000516
+701	28	8220DB000516
+702	32	8220DB000516
+703	32	8220DB000518
+704	9	8220DB000519
+705	10	8220DB000519
+706	14	8220DB000519
+707	19	8220DB000519
+708	27	8220DB000519
+709	28	8220DB000519
+710	9	8220DB000521
+711	10	8220DB000521
+712	14	8220DB000521
+713	19	8220DB000521
+714	27	8220DB000521
+715	28	8220DB000521
+716	9	8220DB000522
+717	10	8220DB000522
+718	14	8220DB000522
+719	19	8220DB000522
+720	27	8220DB000522
+721	28	8220DB000522
+722	9	8220DB000523
+723	10	8220DB000523
+724	14	8220DB000523
+725	19	8220DB000523
+726	27	8220DB000523
+727	28	8220DB000523
+728	9	8220DB000614
+729	10	8220DB000614
+730	14	8220DB000614
+731	19	8220DB000614
+732	27	8220DB000614
+733	28	8220DB000614
+734	9	8220DB000615
+735	10	8220DB000615
+736	14	8220DB000615
+737	19	8220DB000615
+738	27	8220DB000615
+739	28	8220DB000615
+740	9	8220DB000616
+741	10	8220DB000616
+742	14	8220DB000616
+743	19	8220DB000616
+744	27	8220DB000616
+745	28	8220DB000616
+746	32	8220DB000616
+747	9	8220DB000617
+748	10	8220DB000617
+749	14	8220DB000617
+750	19	8220DB000617
+751	27	8220DB000617
+752	28	8220DB000617
+753	32	8220DB000617
+754	9	8220DB000618
+755	10	8220DB000618
+756	14	8220DB000618
+757	19	8220DB000618
+758	27	8220DB000618
+759	28	8220DB000618
+760	32	8220DB000618
+761	9	8220DB000619
+762	10	8220DB000619
+763	14	8220DB000619
+764	19	8220DB000619
+765	27	8220DB000619
+766	28	8220DB000619
+767	32	8220DB000619
+768	9	8220DB000620
+769	9	8220DB000621
+770	10	8220DB000664
+771	14	8220DB000664
+772	19	8220DB000664
+773	27	8220DB000664
+774	28	8220DB000664
+775	10	8220DB000665
+776	14	8220DB000665
+777	19	8220DB000665
+778	27	8220DB000665
+779	28	8220DB000665
+780	10	8220DB000666
+781	14	8220DB000666
+782	19	8220DB000666
+783	27	8220DB000666
+784	28	8220DB000666
+785	10	8220DB000667
+786	14	8220DB000667
+787	19	8220DB000667
+788	27	8220DB000667
+789	28	8220DB000667
+790	10	8220DB000668
+791	14	8220DB000668
+792	19	8220DB000668
+793	27	8220DB000668
+794	28	8220DB000668
+795	10	8220DB000669
+796	14	8220DB000669
+797	19	8220DB000669
+798	27	8220DB000669
+799	28	8220DB000669
+800	10	8220DB000670
+801	14	8220DB000670
+802	19	8220DB000670
+803	27	8220DB000670
+804	28	8220DB000670
+805	10	8220DB000671
+806	14	8220DB000671
+807	19	8220DB000671
+808	27	8220DB000671
+809	28	8220DB000671
+810	10	8220DB000672
+811	14	8220DB000672
+812	19	8220DB000672
+813	27	8220DB000672
+814	28	8220DB000672
+815	9	8220DB000675
+816	10	8220DB000675
+817	14	8220DB000675
+818	19	8220DB000675
+819	27	8220DB000675
+820	28	8220DB000675
+821	32	8220DB000675
+822	2	8220DB000747
+823	13	8220DB000747
+824	21	8220DB000747
+825	22	8220DB000747
+826	23	8220DB000747
+827	38	8220DB000747
+828	22	8220DB000748
+829	23	8220DB000748
+830	38	8220DB000748
+831	22	8220DB000749
+832	23	8220DB000749
+833	38	8220DB000749
+834	22	8220DB000750
+835	23	8220DB000750
+836	38	8220DB000750
+837	22	8220DB000751
+838	23	8220DB000751
+839	38	8220DB000751
+840	22	8220DB000752
+841	23	8220DB000752
+842	38	8220DB000752
+843	22	8220DB000753
+844	23	8220DB000753
+845	38	8220DB000753
+846	3	8220DB000756
+847	13	8220DB000756
+848	3	8220DB000757
+849	13	8220DB000757
+850	3	8220DB000758
+851	13	8220DB000758
+852	3	8220DB000759
+853	13	8220DB000759
+854	3	8220DB000760
+855	13	8220DB000760
+856	3	8220DB000761
+857	13	8220DB000761
+858	3	8220DB000762
+859	13	8220DB000762
+860	3	8220DB000763
+861	13	8220DB000763
+862	30	8220DB000763
+863	3	8220DB000769
+864	4	8220DB000769
+865	13	8220DB000769
+866	3	8220DB000770
+867	4	8220DB000770
+868	13	8220DB000770
+869	3	8220DB000771
+870	4	8220DB000771
+871	13	8220DB000771
+872	3	8220DB000772
+873	4	8220DB000772
+874	13	8220DB000772
+875	3	8220DB000773
+876	4	8220DB000773
+877	13	8220DB000773
+878	3	8220DB000774
+879	4	8220DB000774
+880	13	8220DB000774
+881	3	8220DB000775
+882	4	8220DB000775
+883	13	8220DB000775
+884	3	8220DB000776
+885	4	8220DB000776
+886	13	8220DB000776
+887	3	8220DB000777
+888	4	8220DB000777
+889	13	8220DB000777
+890	21	8220DB000783
+891	22	8220DB000783
+892	23	8220DB000783
+893	38	8220DB000783
+894	21	8220DB000784
+895	22	8220DB000784
+896	23	8220DB000784
+897	38	8220DB000784
+898	21	8220DB000785
+899	22	8220DB000785
+900	23	8220DB000785
+901	38	8220DB000785
+902	2	8220DB000786
+903	3	8220DB000786
+904	4	8220DB000786
+905	13	8220DB000786
+906	21	8220DB000786
+907	22	8220DB000786
+908	23	8220DB000786
+909	38	8220DB000786
+910	3	8220DB000792
+911	4	8220DB000792
+912	13	8220DB000792
+913	2	8220DB000793
+914	21	8220DB000793
+915	22	8220DB000793
+916	23	8220DB000793
+917	29	8220DB000793
+918	33	8220DB000793
+919	38	8220DB000793
+920	5	8220DB000795
+921	22	8220DB000795
+922	5	8220DB000796
+923	22	8220DB000796
+924	21	8220DB000802
+925	5	8220DB000817
+926	22	8220DB000817
+927	5	8220DB000818
+928	22	8220DB000818
+929	5	8220DB000819
+930	11	8220DB000819
+931	22	8220DB000819
+932	24	8220DB000819
+933	25	8220DB000819
+934	42	8220DB000819
+935	6	8220DB000820
+936	6	8220DB000821
+937	5	8220DB000822
+938	5	8220DB000823
+939	5	8220DB000824
+940	5	8220DB000825
+941	5	8220DB000826
+942	5	8220DB000827
+943	5	8220DB000828
+944	5	8220DB000829
+945	5	8220DB000830
+946	5	8220DB000831
+947	6	8220DB000832
+948	6	8220DB000833
+949	25	8220DB000834
+950	25	8220DB000835
+951	25	8220DB000836
+952	25	8220DB000837
+953	25	8220DB000838
+954	25	8220DB000839
+955	25	8220DB000840
+956	25	8220DB000841
+957	2	8220DB000842
+958	13	8220DB000842
+959	21	8220DB000843
+960	2	8220DB000845
+961	13	8220DB000845
+962	21	8220DB000845
+963	2	8220DB000846
+964	13	8220DB000846
+965	21	8220DB000846
+966	2	8220DB000847
+967	13	8220DB000847
+968	2	8220DB000848
+969	3	8220DB000848
+970	13	8220DB000848
+971	2	8220DB000849
+972	2	8220DB000850
+973	2	8220DB000851
+974	2	8220DB000852
+975	29	8220DB000852
+976	33	8220DB000852
+977	2	8220DB000853
+978	29	8220DB000853
+979	33	8220DB000853
+980	2	8220DB000854
+981	29	8220DB000854
+982	33	8220DB000854
+983	2	8220DB000855
+984	29	8220DB000855
+985	33	8220DB000855
+986	2	8220DB000856
+987	2	8220DB000857
+988	2	8220DB000858
+989	2	8220DB000881
+990	2	8220DB000882
+991	2	8220DB000883
+992	2	8220DB000884
+993	29	8220DB000884
+994	33	8220DB000884
+995	2	8220DB000885
+996	29	8220DB000885
+997	33	8220DB000885
+998	2	8220DB000886
+999	29	8220DB000886
+1000	33	8220DB000886
+1001	2	8220DB000887
+1002	29	8220DB000887
+1003	33	8220DB000887
+1004	8	8220DB00089
+1005	11	8220DB000893
+1006	11	8220DB000894
+1007	11	8220DB000895
+1008	12	8220DB000895
+1009	11	8220DB000896
+1010	11	8220DB000897
+1011	2	8220DB000903
+1012	2	8220DB000904
+1013	2	8220DB000906
+1014	3	8220DB000906
+1015	4	8220DB000906
+1016	13	8220DB000906
+1017	2	8220DB000907
+1018	3	8220DB000907
+1019	4	8220DB000907
+1020	13	8220DB000907
+1021	2	8220DB000908
+1022	3	8220DB000908
+1023	4	8220DB000908
+1024	13	8220DB000908
+1025	2	8220DB000909
+1026	3	8220DB000909
+1027	4	8220DB000909
+1028	13	8220DB000909
+1029	25	8220DB000987
+1030	12	8220DB001013
+1031	29	8220DB001013
+1032	33	8220DB001013
+1033	12	8220DB001015
+1034	29	8220DB001015
+1035	33	8220DB001015
+1036	10	8220DB001016
+1037	11	8220DB001016
+1038	12	8220DB001016
+1039	14	8220DB001016
+1040	34	8220DB001016
+1041	40	8220DB001016
+1042	10	8220DB001017
+1043	11	8220DB001017
+1044	12	8220DB001017
+1045	14	8220DB001017
+1046	34	8220DB001017
+1047	40	8220DB001017
+1048	10	8220DB001018
+1049	11	8220DB001018
+1050	12	8220DB001018
+1051	14	8220DB001018
+1052	34	8220DB001018
+1053	40	8220DB001018
+1054	10	8220DB001019
+1055	11	8220DB001019
+1056	12	8220DB001019
+1057	14	8220DB001019
+1058	34	8220DB001019
+1059	40	8220DB001019
+1060	10	8220DB001020
+1061	11	8220DB001020
+1062	12	8220DB001020
+1063	14	8220DB001020
+1064	34	8220DB001020
+1065	40	8220DB001020
+1066	11	8220DB001021
+1067	12	8220DB001021
+1068	11	8220DB001022
+1069	12	8220DB001022
+1070	11	8220DB001023
+1071	12	8220DB001023
+1072	11	8220DB001024
+1073	12	8220DB001024
+1074	12	8220DB001025
+1075	12	8220DB001026
+1076	12	8220DB001027
+1077	12	8220DB001028
+1078	12	8220DB001062
+1079	12	8220DB001063
+1080	12	8220DB001064
+1081	12	8220DB001065
+1082	12	8220DB001066
+1083	11	8220DB001067
+1084	12	8220DB001067
+1085	11	8220DB001068
+1086	12	8220DB001068
+1087	10	8220DB001069
+1088	11	8220DB001069
+1089	12	8220DB001069
+1090	14	8220DB001069
+1091	34	8220DB001069
+1092	40	8220DB001069
+1093	10	8220DB001070
+1094	11	8220DB001070
+1095	12	8220DB001070
+1096	14	8220DB001070
+1097	34	8220DB001070
+1098	40	8220DB001070
+1099	10	8220DB001071
+1100	11	8220DB001071
+1101	12	8220DB001071
+1102	14	8220DB001071
+1103	34	8220DB001071
+1104	40	8220DB001071
+1105	10	8220DB001072
+1106	11	8220DB001072
+1107	12	8220DB001072
+1108	14	8220DB001072
+1109	34	8220DB001072
+1110	40	8220DB001072
+1111	29	8220DB001074
+1112	33	8220DB001074
+1113	10	8220DB001076
+1114	11	8220DB001076
+1115	12	8220DB001076
+1116	14	8220DB001076
+1117	34	8220DB001076
+1118	40	8220DB001076
+1119	10	8220DB001077
+1120	14	8220DB001077
+1121	34	8220DB001077
+1122	40	8220DB001077
+1123	10	8220DB001078
+1124	14	8220DB001078
+1125	34	8220DB001078
+1126	10	8220DB001079
+1127	14	8220DB001079
+1128	34	8220DB001079
+1129	10	8220DB001080
+1130	14	8220DB001080
+1131	34	8220DB001080
+1132	10	8220DB001081
+1133	14	8220DB001081
+1134	34	8220DB001081
+1135	14	8220DB001082
+1136	34	8220DB001082
+1137	14	8220DB001083
+1138	34	8220DB001083
+1139	14	8220DB001085
+1140	34	8220DB001085
+1141	42	8220DB001090
+1142	14	8220DB001121
+1143	31	8220DB001121
+1144	34	8220DB001121
+1145	14	8220DB001122
+1146	31	8220DB001122
+1147	34	8220DB001122
+1148	14	8220DB001123
+1149	31	8220DB001123
+1150	34	8220DB001123
+1151	14	8220DB001124
+1152	31	8220DB001124
+1153	34	8220DB001124
+1154	14	8220DB001159
+1155	31	8220DB001159
+1156	34	8220DB001159
+1157	14	8220DB001160
+1158	31	8220DB001160
+1159	34	8220DB001160
+1160	14	8220DB001161
+1161	31	8220DB001161
+1162	34	8220DB001161
+1163	14	8220DB001162
+1164	31	8220DB001162
+1165	34	8220DB001162
+1166	14	8220DB001163
+1167	31	8220DB001163
+1168	34	8220DB001163
+1169	14	8220DB001164
+1170	34	8220DB001164
+1171	14	8220DB001165
+1172	34	8220DB001165
+1173	10	8220DB001166
+1174	14	8220DB001166
+1175	34	8220DB001166
+1176	10	8220DB001167
+1177	14	8220DB001167
+1178	34	8220DB001167
+1179	10	8220DB001168
+1180	14	8220DB001168
+1181	34	8220DB001168
+1182	10	8220DB001169
+1183	14	8220DB001169
+1184	34	8220DB001169
+1185	10	8220DB001170
+1186	14	8220DB001170
+1187	34	8220DB001170
+1188	40	8220DB001170
+1189	20	8220DB001171
+1190	26	8220DB001171
+1191	20	8220DB001172
+1192	26	8220DB001172
+1193	32	8220DB001172
+1194	20	8220DB001173
+1195	26	8220DB001173
+1196	20	8220DB001174
+1197	26	8220DB001174
+1198	37	8220DB001174
+1199	20	8220DB001175
+1200	26	8220DB001175
+1201	27	8220DB001184
+1202	28	8220DB001184
+1203	10	8220DB001185
+1204	10	8220DB001186
+1205	10	8220DB001187
+1206	10	8220DB001188
+1207	10	8220DB001190
+1208	10	8220DB001191
+1209	10	8220DB001192
+1210	10	8220DB001193
+1211	10	8220DB001194
+1212	10	8220DB001195
+1213	14	8220DB001196
+1214	19	8220DB001196
+1215	27	8220DB001196
+1216	28	8220DB001196
+1217	14	8220DB001197
+1218	19	8220DB001197
+1219	27	8220DB001197
+1220	28	8220DB001197
+1221	14	8220DB001198
+1222	19	8220DB001198
+1223	27	8220DB001198
+1224	28	8220DB001198
+1225	14	8220DB001199
+1226	19	8220DB001199
+1227	27	8220DB001199
+1228	28	8220DB001199
+1229	14	8220DB001200
+1230	19	8220DB001200
+1231	27	8220DB001200
+1232	28	8220DB001200
+1233	14	8220DB001201
+1234	19	8220DB001201
+1235	27	8220DB001201
+1236	28	8220DB001201
+1237	14	8220DB001202
+1238	27	8220DB001202
+1239	28	8220DB001202
+1240	14	8220DB001203
+1241	27	8220DB001203
+1242	28	8220DB001203
+1243	27	8220DB001205
+1244	28	8220DB001205
+1245	14	8220DB001218
+1246	19	8220DB001218
+1247	27	8220DB001218
+1248	28	8220DB001218
+1249	14	8220DB001219
+1250	19	8220DB001219
+1251	27	8220DB001219
+1252	28	8220DB001219
+1253	14	8220DB001220
+1254	19	8220DB001220
+1255	27	8220DB001220
+1256	28	8220DB001220
+1257	14	8220DB001221
+1258	19	8220DB001221
+1259	27	8220DB001221
+1260	28	8220DB001221
+1261	19	8220DB001243
+1262	19	8220DB001245
+1263	19	8220DB001247
+1264	19	8220DB001248
+1265	19	8220DB001249
+1266	19	8220DB001250
+1267	19	8220DB001254
+1268	19	8220DB001255
+1269	19	8220DB001256
+1270	19	8220DB001258
+1271	19	8220DB001259
+1272	19	8220DB001260
+1273	19	8220DB001262
+1274	19	8220DB001265
+1275	19	8220DB001266
+1276	19	8220DB001267
+1277	19	8220DB001268
+1278	19	8220DB001269
+1279	14	8220DB001270
+1280	27	8220DB001270
+1281	28	8220DB001270
+1282	14	8220DB001272
+1283	27	8220DB001272
+1284	28	8220DB001272
+1285	14	8220DB001273
+1286	19	8220DB001273
+1287	27	8220DB001273
+1288	28	8220DB001273
+1289	14	8220DB001274
+1290	19	8220DB001274
+1291	27	8220DB001274
+1292	28	8220DB001274
+1293	14	8220DB001275
+1294	19	8220DB001275
+1295	27	8220DB001275
+1296	28	8220DB001275
+1297	14	8220DB001276
+1298	19	8220DB001276
+1299	27	8220DB001276
+1300	28	8220DB001276
+1301	14	8220DB001277
+1302	19	8220DB001277
+1303	27	8220DB001277
+1304	28	8220DB001277
+1305	6	8220DB001278
+1306	7	8220DB001278
+1307	35	8220DB001278
+1308	42	8220DB001278
+1309	15	8220DB001279
+1310	17	8220DB001279
+1311	40	8220DB001279
+1312	11	8220DB001280
+1313	25	8220DB001280
+1314	6	8220DB001282
+1315	17	8220DB001282
+1316	35	8220DB001282
+1317	42	8220DB001282
+1318	10	8220DB001283
+1319	11	8220DB001283
+1320	14	8220DB001283
+1321	34	8220DB001283
+1322	40	8220DB001283
+1323	6	8220DB001284
+1324	17	8220DB001284
+1325	34	8220DB001284
+1326	35	8220DB001284
+1327	40	8220DB001284
+1328	42	8220DB001284
+1329	6	8220DB001285
+1330	10	8220DB001285
+1331	11	8220DB001285
+1332	14	8220DB001285
+1333	17	8220DB001285
+1334	34	8220DB001285
+1335	35	8220DB001285
+1336	40	8220DB001285
+1337	42	8220DB001285
+1338	6	8220DB001286
+1339	35	8220DB001286
+1340	42	8220DB001286
+1341	17	8220DB001287
+1342	6	8220DB001288
+1343	17	8220DB001288
+1344	35	8220DB001288
+1345	42	8220DB001288
+1346	6	8220DB001289
+1347	17	8220DB001289
+1348	35	8220DB001289
+1349	42	8220DB001289
+1350	17	8220DB001290
+1351	31	8220DB001290
+1352	42	8220DB001290
+1353	17	8220DB001291
+1354	31	8220DB001291
+1355	42	8220DB001291
+1356	17	8220DB001292
+1357	31	8220DB001292
+1358	17	8220DB001293
+1359	31	8220DB001293
+1360	17	8220DB001294
+1361	31	8220DB001294
+1362	17	8220DB001295
+1363	31	8220DB001295
+1364	17	8220DB001296
+1365	31	8220DB001296
+1366	17	8220DB001297
+1367	31	8220DB001297
+1368	17	8220DB001298
+1369	31	8220DB001298
+1370	17	8220DB001299
+1371	17	8220DB001300
+1372	17	8220DB001335
+1373	17	8220DB001336
+1374	17	8220DB001337
+1375	31	8220DB001337
+1376	17	8220DB001338
+1377	31	8220DB001338
+1378	17	8220DB001339
+1379	31	8220DB001339
+1380	17	8220DB001340
+1381	31	8220DB001340
+1382	17	8220DB001341
+1383	31	8220DB001341
+1384	17	8220DB001342
+1385	31	8220DB001342
+1386	17	8220DB001343
+1387	31	8220DB001343
+1388	17	8220DB001344
+1389	31	8220DB001344
+1390	42	8220DB001344
+1391	17	8220DB001345
+1392	31	8220DB001345
+1393	42	8220DB001345
+1394	17	8220DB001347
+1395	31	8220DB001347
+1396	42	8220DB001347
+1397	6	8220DB001348
+1398	17	8220DB001348
+1399	35	8220DB001348
+1400	42	8220DB001348
+1401	6	8220DB001349
+1402	17	8220DB001349
+1403	35	8220DB001349
+1404	42	8220DB001349
+1405	6	8220DB001350
+1406	17	8220DB001350
+1407	35	8220DB001350
+1408	42	8220DB001350
+1409	6	8220DB001352
+1410	17	8220DB001352
+1411	34	8220DB001352
+1412	35	8220DB001352
+1413	40	8220DB001352
+1414	42	8220DB001352
+1415	6	8220DB001353
+1416	10	8220DB001353
+1417	11	8220DB001353
+1418	12	8220DB001353
+1419	14	8220DB001353
+1420	17	8220DB001353
+1421	34	8220DB001353
+1422	35	8220DB001353
+1423	40	8220DB001353
+1424	42	8220DB001353
+1425	10	8220DB001354
+1426	11	8220DB001354
+1427	12	8220DB001354
+1428	14	8220DB001354
+1429	6	8220DB001355
+1430	17	8220DB001355
+1431	34	8220DB001355
+1432	35	8220DB001355
+1433	40	8220DB001355
+1434	42	8220DB001355
+1435	6	8220DB001357
+1436	17	8220DB001357
+1437	34	8220DB001357
+1438	35	8220DB001357
+1439	40	8220DB001357
+1440	42	8220DB001357
+1441	15	8220DB001358
+1442	19	8220DB001358
+1443	25	8220DB001358
+1444	31	8220DB001358
+1445	34	8220DB001358
+1446	35	8220DB001358
+1447	36	8220DB001358
+1448	39	8220DB001358
+1449	6	8220DB001359
+1450	7	8220DB001359
+1451	8	8220DB001359
+1452	17	8220DB001359
+1453	40	8220DB001359
+1454	42	8220DB001359
+1455	6	8220DB001360
+1456	35	8220DB001360
+1457	6	8220DB001362
+1458	35	8220DB001362
+1459	6	8220DB001363
+1460	35	8220DB001363
+1461	6	8220DB001364
+1462	35	8220DB001364
+1463	6	8220DB001365
+1464	35	8220DB001365
+1465	6	8220DB001366
+1466	35	8220DB001366
+1467	6	8220DB001367
+1468	35	8220DB001367
+1469	7	8220DB001369
+1470	35	8220DB001369
+1471	7	8220DB001370
+1472	35	8220DB001370
+1473	7	8220DB001371
+1474	35	8220DB001371
+1475	35	8220DB001372
+1476	35	8220DB001373
+1477	35	8220DB001374
+1478	35	8220DB001375
+1479	35	8220DB001376
+1480	7	8220DB001377
+1481	35	8220DB001377
+1482	7	8220DB001378
+1483	35	8220DB001378
+1484	35	8220DB001379
+1485	6	8220DB001380
+1486	35	8220DB001380
+1487	6	8220DB001381
+1488	35	8220DB001381
+1489	6	8220DB001382
+1490	35	8220DB001382
+1491	6	8220DB001383
+1492	35	8220DB001383
+1493	6	8220DB001384
+1494	35	8220DB001384
+1495	6	8220DB001385
+1496	35	8220DB001385
+1497	15	8220DB001386
+1498	15	8220DB001387
+1499	15	8220DB001388
+1500	15	8220DB001389
+1501	15	8220DB001396
+1502	15	8220DB001397
+1503	15	8220DB001398
+1504	15	8220DB001399
+1505	15	8220DB001401
+1506	15	8220DB001402
+1507	15	8220DB001403
+1508	15	8220DB001404
+1509	15	8220DB001405
+1510	16	8220DB001406
+1511	19	8220DB001406
+1512	16	8220DB001407
+1513	19	8220DB001407
+1514	16	8220DB001409
+1515	19	8220DB001409
+1516	6	8220DB001410
+1517	6	8220DB001411
+1518	6	8220DB001412
+1519	6	8220DB001413
+1520	6	8220DB001414
+1521	6	8220DB001415
+1522	6	8220DB001417
+1523	6	8220DB001418
+1524	6	8220DB001419
+1525	7	8220DB001419
+1526	6	8220DB001423
+1527	7	8220DB001423
+1528	6	8220DB001424
+1529	7	8220DB001424
+1530	16	8220DB001424
+1531	19	8220DB001424
+1532	6	8220DB001425
+1533	7	8220DB001425
+1534	6	8220DB001426
+1535	7	8220DB001426
+1536	6	8220DB001427
+1537	6	8220DB001428
+1538	6	8220DB001429
+1539	6	8220DB001430
+1540	6	8220DB001432
+1541	6	8220DB001433
+1542	6	8220DB001434
+1543	6	8220DB001435
+1544	16	8220DB001436
+1545	19	8220DB001436
+1546	15	8220DB001438
+1547	15	8220DB001439
+1548	15	8220DB001440
+1549	15	8220DB001441
+1550	15	8220DB001442
+1551	13	8220DB001443
+1552	21	8220DB001443
+1553	23	8220DB001443
+1554	36	8220DB001443
+1555	38	8220DB001443
+1556	39	8220DB001443
+1557	40	8220DB001443
+1558	13	8220DB001444
+1559	18	8220DB001444
+1560	21	8220DB001444
+1561	23	8220DB001444
+1562	36	8220DB001444
+1563	38	8220DB001444
+1564	39	8220DB001444
+1565	13	8220DB001445
+1566	18	8220DB001445
+1567	21	8220DB001445
+1568	23	8220DB001445
+1569	36	8220DB001445
+1570	38	8220DB001445
+1571	39	8220DB001445
+1572	18	8220DB001449
+1573	36	8220DB001449
+1574	18	8220DB001450
+1575	36	8220DB001450
+1576	18	8220DB001451
+1577	36	8220DB001451
+1578	36	8220DB001452
+1579	7	8220DB001453
+1580	7	8220DB001454
+1581	7	8220DB001455
+1582	7	8220DB001456
+1583	7	8220DB001457
+1584	7	8220DB001458
+1585	7	8220DB001459
+1586	7	8220DB001460
+1587	7	8220DB001462
+1588	7	8220DB001463
+1589	7	8220DB001464
+1590	7	8220DB001465
+1591	7	8220DB001466
+1592	7	8220DB001467
+1593	7	8220DB001468
+1594	7	8220DB001469
+1595	36	8220DB001471
+1596	18	8220DB001472
+1597	35	8220DB001472
+1598	36	8220DB001472
+1599	18	8220DB001473
+1600	35	8220DB001473
+1601	36	8220DB001473
+1602	18	8220DB001474
+1603	36	8220DB001474
+1604	13	8220DB001476
+1605	18	8220DB001476
+1606	36	8220DB001476
+1607	39	8220DB001476
+1608	13	8220DB001478
+1609	18	8220DB001478
+1610	21	8220DB001478
+1611	23	8220DB001478
+1612	38	8220DB001478
+1613	40	8220DB001478
+1614	13	8220DB001479
+1615	16	8220DB001479
+1616	18	8220DB001479
+1617	21	8220DB001479
+1618	23	8220DB001479
+1619	38	8220DB001479
+1620	40	8220DB001479
+1621	36	8220DB001480
+1622	39	8220DB001480
+1623	7	8220DB001481
+1624	7	8220DB001482
+1625	7	8220DB001484
+1626	7	8220DB001485
+1627	7	8220DB001486
+1628	7	8220DB001487
+1629	7	8220DB001488
+1630	7	8220DB001489
+1631	7	8220DB001490
+1632	7	8220DB001491
+1633	7	8220DB001492
+1634	7	8220DB001493
+1635	7	8220DB001494
+1636	7	8220DB001495
+1637	7	8220DB001496
+1638	7	8220DB001499
+1639	16	8220DB001500
+1640	19	8220DB001500
+1641	7	8220DB001505
+1642	11	8220DB001506
+1643	25	8220DB001506
+1644	11	8220DB001507
+1645	25	8220DB001507
+1646	11	8220DB001508
+1647	25	8220DB001508
+1648	11	8220DB001509
+1649	25	8220DB001509
+1650	11	8220DB001510
+1651	25	8220DB001510
+1652	11	8220DB001511
+1653	25	8220DB001511
+1654	11	8220DB001512
+1655	7	8220DB001515
+1656	25	8220DB001518
+1657	25	8220DB001519
+1658	25	8220DB001520
+1659	25	8220DB001521
+1660	25	8220DB001523
+1661	25	8220DB001524
+1662	25	8220DB001525
+1663	25	8220DB001526
+1664	21	8220DB001528
+1665	11	8220DB001531
+1666	25	8220DB001531
+1667	11	8220DB001532
+1668	25	8220DB001532
+1669	11	8220DB001533
+1670	25	8220DB001533
+1671	11	8220DB001534
+1672	25	8220DB001534
+1673	11	8220DB001535
+1674	25	8220DB001535
+1675	11	8220DB001536
+1676	25	8220DB001536
+1677	11	8220DB001537
+1678	25	8220DB001537
+1679	11	8220DB001538
+1680	40	8220DB001539
+1681	40	8220DB001540
+1682	25	8220DB001547
+1683	25	8220DB001548
+1684	25	8220DB001549
+1685	11	8220DB001558
+1686	25	8220DB001558
+1687	25	8220DB001559
+1688	11	8220DB001560
+1689	40	8220DB001566
+1690	40	8220DB001567
+1691	25	8220DB001573
+1692	25	8220DB001574
+1693	25	8220DB001575
+1694	25	8220DB001585
+1695	25	8220DB001586
+1696	25	8220DB001587
+1697	25	8220DB001591
+1698	25	8220DB001592
+1699	25	8220DB001593
+1700	25	8220DB001594
+1701	25	8220DB001596
+1702	25	8220DB001597
+1703	25	8220DB001598
+1704	25	8220DB001599
+1705	25	8220DB001606
+1706	25	8220DB001607
+1707	25	8220DB001608
+1708	25	8220DB001609
+1709	25	8220DB001610
+1710	40	8220DB001614
+1711	40	8220DB001615
+1712	40	8220DB001616
+1713	40	8220DB001617
+1714	40	8220DB001618
+1715	40	8220DB001619
+1716	1	8220DB001620
+1717	20	8220DB001620
+1718	26	8220DB001620
+1719	1	8220DB001641
+1720	20	8220DB001641
+1721	26	8220DB001641
+1722	1	8220DB001642
+1723	20	8220DB001642
+1724	26	8220DB001642
+1725	29	8220DB001643
+1726	21	8220DB001647
+1727	23	8220DB001647
+1728	38	8220DB001647
+1729	21	8220DB001648
+1730	23	8220DB001648
+1731	38	8220DB001648
+1732	21	8220DB001649
+1733	23	8220DB001649
+1734	38	8220DB001649
+1735	21	8220DB001654
+1736	21	8220DB001655
+1737	21	8220DB001656
+1738	21	8220DB001657
+1739	21	8220DB001658
+1740	21	8220DB001659
+1741	6	8220DB001660
+1742	21	8220DB001660
+1743	22	8220DB001660
+1744	23	8220DB001660
+1745	38	8220DB001660
+1746	6	8220DB001661
+1747	21	8220DB001661
+1748	22	8220DB001661
+1749	23	8220DB001661
+1750	38	8220DB001661
+1751	21	8220DB001662
+1752	22	8220DB001662
+1753	23	8220DB001662
+1754	38	8220DB001662
+1755	21	8220DB001664
+1756	22	8220DB001664
+1757	23	8220DB001664
+1758	38	8220DB001664
+1759	21	8220DB001665
+1760	22	8220DB001665
+1761	23	8220DB001665
+1762	38	8220DB001665
+1763	21	8220DB001666
+1764	22	8220DB001666
+1765	23	8220DB001666
+1766	38	8220DB001666
+1767	21	8220DB001667
+1768	21	8220DB001668
+1769	21	8220DB001694
+1770	21	8220DB001695
+1771	21	8220DB001696
+1772	22	8220DB001696
+1773	23	8220DB001696
+1774	38	8220DB001696
+1775	21	8220DB001697
+1776	22	8220DB001697
+1777	23	8220DB001697
+1778	38	8220DB001697
+1779	21	8220DB001698
+1780	22	8220DB001698
+1781	23	8220DB001698
+1782	38	8220DB001698
+1783	21	8220DB001699
+1784	22	8220DB001699
+1785	23	8220DB001699
+1786	38	8220DB001699
+1787	6	8220DB001700
+1788	21	8220DB001700
+1789	22	8220DB001700
+1790	23	8220DB001700
+1791	38	8220DB001700
+1792	6	8220DB001701
+1793	21	8220DB001701
+1794	22	8220DB001701
+1795	23	8220DB001701
+1796	38	8220DB001701
+1797	6	8220DB001702
+1798	21	8220DB001702
+1799	22	8220DB001702
+1800	23	8220DB001702
+1801	38	8220DB001702
+1802	21	8220DB001703
+1803	22	8220DB001703
+1804	23	8220DB001703
+1805	38	8220DB001703
+1806	21	8220DB001704
+1807	21	8220DB001705
+1808	21	8220DB001706
+1809	21	8220DB001707
+1810	21	8220DB001708
+1811	21	8220DB001709
+1812	21	8220DB001710
+1813	21	8220DB001711
+1814	21	8220DB001712
+1815	21	8220DB001713
+1816	23	8220DB001713
+1817	38	8220DB001713
+1818	21	8220DB001714
+1819	23	8220DB001714
+1820	38	8220DB001714
+1821	21	8220DB001715
+1822	23	8220DB001715
+1823	38	8220DB001715
+1824	9	8220DB001724
+1825	9	8220DB001725
+1826	9	8220DB001726
+1827	9	8220DB001727
+1828	9	8220DB001728
+1829	9	8220DB001729
+1830	9	8220DB001730
+1831	9	8220DB001731
+1832	9	8220DB001732
+1833	9	8220DB001733
+1834	9	8220DB001734
+1835	9	8220DB001735
+1836	9	8220DB001736
+1837	9	8220DB001737
+1838	9	8220DB001738
+1839	9	8220DB001739
+1840	9	8220DB001740
+1841	9	8220DB001741
+1842	9	8220DB001742
+1843	9	8220DB001743
+1844	9	8220DB001744
+1845	9	8220DB001745
+1846	9	8220DB001746
+1847	9	8220DB001747
+1848	9	8220DB001748
+1849	9	8220DB001749
+1850	9	8220DB001750
+1851	9	8220DB001751
+1852	9	8220DB001752
+1853	9	8220DB001753
+1854	9	8220DB001754
+1855	9	8220DB001755
+1856	9	8220DB001756
+1857	9	8220DB001757
+1858	9	8220DB001758
+1859	9	8220DB001759
+1860	9	8220DB001760
+1861	9	8220DB001761
+1862	9	8220DB001762
+1863	9	8220DB001763
+1864	9	8220DB001764
+1865	9	8220DB001765
+1866	9	8220DB001767
+1867	9	8220DB001769
+1868	9	8220DB001770
+1869	9	8220DB001771
+1870	9	8220DB001772
+1871	9	8220DB001773
+1872	9	8220DB001774
+1873	9	8220DB001775
+1874	9	8220DB001776
+1875	9	8220DB001777
+1876	9	8220DB001778
+1877	9	8220DB001794
+1878	22	8220DB001795
+1879	22	8220DB001802
+1880	22	8220DB001803
+1881	22	8220DB001804
+1882	23	8220DB001805
+1883	38	8220DB001805
+1884	22	8220DB001806
+1885	23	8220DB001806
+1886	38	8220DB001806
+1887	22	8220DB001807
+1888	23	8220DB001807
+1889	38	8220DB001807
+1890	22	8220DB001847
+1891	23	8220DB001847
+1892	38	8220DB001847
+1893	22	8220DB001905
+1894	23	8220DB001905
+1895	38	8220DB001905
+1896	23	8220DB001906
+1897	38	8220DB001906
+1898	23	8220DB001907
+1899	38	8220DB001907
+1900	23	8220DB001908
+1901	38	8220DB001908
+1902	23	8220DB001909
+1903	38	8220DB001909
+1904	21	8220DB001911
+1905	23	8220DB001911
+1906	38	8220DB001911
+1907	23	8220DB001913
+1908	38	8220DB001913
+1909	23	8220DB001914
+1910	38	8220DB001914
+1911	7	8220DB001934
+1912	15	8220DB001934
+1913	16	8220DB001934
+1914	19	8220DB001934
+1915	31	8220DB001934
+1916	7	8220DB001935
+1917	8	8220DB001935
+1918	25	8220DB001935
+1919	7	8220DB001937
+1920	8	8220DB001937
+1921	25	8220DB001937
+1922	7	8220DB001938
+1923	8	8220DB001938
+1924	25	8220DB001938
+1925	7	8220DB001939
+1926	8	8220DB001939
+1927	25	8220DB001939
+1928	7	8220DB001940
+1929	8	8220DB001940
+1930	25	8220DB001940
+1931	7	8220DB001941
+1932	8	8220DB001941
+1933	25	8220DB001941
+1934	8	8220DB001942
+1935	25	8220DB001942
+1936	8	8220DB001943
+1937	25	8220DB001943
+1938	8	8220DB001944
+1939	25	8220DB001944
+1940	8	8220DB001945
+1941	25	8220DB001945
+1942	8	8220DB001946
+1943	25	8220DB001946
+1944	35	8220DB001946
+1945	8	8220DB001947
+1946	25	8220DB001947
+1947	35	8220DB001947
+1948	8	8220DB001948
+1949	35	8220DB001948
+1950	36	8220DB001948
+1951	8	8220DB001949
+1952	35	8220DB001949
+1953	36	8220DB001949
+1954	8	8220DB001950
+1955	35	8220DB001950
+1956	36	8220DB001950
+1957	8	8220DB001951
+1958	35	8220DB001951
+1959	36	8220DB001951
+1960	8	8220DB001952
+1961	35	8220DB001952
+1962	36	8220DB001952
+1963	8	8220DB001953
+1964	35	8220DB001953
+1965	36	8220DB001953
+1966	8	8220DB001954
+1967	35	8220DB001954
+1968	36	8220DB001954
+1969	8	8220DB001955
+1970	35	8220DB001955
+1971	36	8220DB001955
+1972	8	8220DB001956
+1973	35	8220DB001956
+1974	36	8220DB001956
+1975	8	8220DB001981
+1976	35	8220DB001981
+1977	36	8220DB001981
+1978	8	8220DB001982
+1979	35	8220DB001982
+1980	8	8220DB001984
+1981	35	8220DB001984
+1982	36	8220DB001984
+1983	8	8220DB001985
+1984	35	8220DB001985
+1985	36	8220DB001985
+1986	8	8220DB001986
+1987	35	8220DB001986
+1988	36	8220DB001986
+1989	8	8220DB001987
+1990	35	8220DB001987
+1991	36	8220DB001987
+1992	8	8220DB001988
+1993	35	8220DB001988
+1994	36	8220DB001988
+1995	8	8220DB001989
+1996	25	8220DB001989
+1997	35	8220DB001989
+1998	8	8220DB001990
+1999	25	8220DB001990
+2000	8	8220DB001992
+2001	25	8220DB001992
+2002	8	8220DB001993
+2003	25	8220DB001993
+2004	8	8220DB001994
+2005	25	8220DB001994
+2006	7	8220DB001995
+2007	8	8220DB001995
+2008	25	8220DB001995
+2009	7	8220DB001996
+2010	8	8220DB001996
+2011	25	8220DB001996
+2012	7	8220DB001997
+2013	8	8220DB001997
+2014	25	8220DB001997
+2015	7	8220DB001998
+2016	8	8220DB001998
+2017	25	8220DB001998
+2018	7	8220DB001999
+2019	8	8220DB001999
+2020	25	8220DB001999
+2021	7	8220DB002001
+2022	8	8220DB002001
+2023	25	8220DB002001
+2024	7	8220DB002002
+2025	8	8220DB002002
+2026	19	8220DB002002
+2027	25	8220DB002002
+2028	31	8220DB002002
+2029	15	8220DB002003
+2030	30	8220DB002085
+2031	30	8220DB002086
+2032	30	8220DB002087
+2033	30	8220DB002088
+2034	30	8220DB002089
+2035	16	8220DB002094
+2036	19	8220DB002094
+2037	16	8220DB002095
+2038	19	8220DB002095
+2039	16	8220DB002096
+2040	19	8220DB002096
+2041	16	8220DB002097
+2042	19	8220DB002097
+2043	16	8220DB002099
+2044	19	8220DB002099
+2045	16	8220DB002101
+2046	19	8220DB002101
+2047	7	8220DB002102
+2048	16	8220DB002102
+2049	19	8220DB002102
+2050	7	8220DB002103
+2051	19	8220DB002103
+2052	16	8220DB002105
+2053	16	8220DB002181
+2054	16	8220DB002182
+2055	7	8220DB002183
+2056	19	8220DB002183
+2057	7	8220DB002184
+2058	19	8220DB002184
+2059	7	8220DB002185
+2060	16	8220DB002185
+2061	19	8220DB002185
+2062	16	8220DB002186
+2063	19	8220DB002186
+2064	16	8220DB002187
+2065	19	8220DB002187
+2066	16	8220DB002188
+2067	19	8220DB002188
+2068	16	8220DB002189
+2069	19	8220DB002189
+2070	16	8220DB002190
+2071	19	8220DB002190
+2072	18	8220DB002191
+2073	18	8220DB002192
+2074	18	8220DB002193
+2075	18	8220DB002194
+2076	18	8220DB002195
+2077	18	8220DB002196
+2078	18	8220DB002197
+2079	18	8220DB002198
+2080	18	8220DB002200
+2081	18	8220DB002243
+2082	18	8220DB002244
+2083	18	8220DB002245
+2084	18	8220DB002246
+2085	18	8220DB002247
+2086	18	8220DB002248
+2087	18	8220DB002249
+2088	18	8220DB002250
+2089	18	8220DB002251
+2090	32	8220DB002255
+2091	32	8220DB002256
+2092	32	8220DB002257
+2093	32	8220DB002258
+2094	32	8220DB002259
+2095	32	8220DB002260
+2096	32	8220DB002261
+2097	32	8220DB002262
+2098	32	8220DB002264
+2099	32	8220DB002270
+2100	32	8220DB002274
+2101	16	8220DB002278
+2102	32	8220DB002278
+2103	16	8220DB002279
+2104	32	8220DB002279
+2105	32	8220DB002280
+2106	32	8220DB002281
+2107	32	8220DB002282
+2108	32	8220DB002283
+2109	15	8220DB002310
+2110	16	8220DB002310
+2111	19	8220DB002310
+2112	15	8220DB002311
+2113	16	8220DB002311
+2114	19	8220DB002311
+2115	16	8220DB002312
+2116	19	8220DB002312
+2117	16	8220DB002313
+2118	19	8220DB002313
+2119	16	8220DB002314
+2120	19	8220DB002314
+2121	16	8220DB002315
+2122	19	8220DB002315
+2123	15	8220DB002317
+2124	15	8220DB002318
+2125	15	8220DB002319
+2126	15	8220DB002327
+2127	19	8220DB002327
+2128	15	8220DB002328
+2129	19	8220DB002328
+2130	15	8220DB002329
+2131	19	8220DB002329
+2132	15	8220DB002330
+2133	19	8220DB002330
+2134	15	8220DB002331
+2135	19	8220DB002331
+2136	19	8220DB002332
+2137	19	8220DB002333
+2138	19	8220DB002378
+2139	16	8220DB002379
+2140	19	8220DB002379
+2141	16	8220DB002380
+2142	19	8220DB002380
+2143	16	8220DB002382
+2144	19	8220DB002382
+2145	15	8220DB002383
+2146	16	8220DB002383
+2147	19	8220DB002383
+2148	31	8220DB002383
+2149	31	8220DB002385
+2150	31	8220DB002386
+2151	31	8220DB002387
+2152	31	8220DB002388
+2153	42	8220DB002389
+2154	42	8220DB002390
+2155	42	8220DB002391
+2156	42	8220DB002392
+2157	42	8220DB002393
+2158	42	8220DB002394
+2159	42	8220DB002413
+2160	42	8220DB002414
+2161	42	8220DB002415
+2162	42	8220DB002416
+2163	42	8220DB002417
+2164	42	8220DB002418
+2165	42	8220DB002419
+2166	19	8220DB002431
+2167	42	8220DB002431
+2168	19	8220DB002432
+2169	42	8220DB002432
+2170	19	8220DB002433
+2171	42	8220DB002433
+2172	42	8220DB002434
+2173	42	8220DB002435
+2174	42	8220DB002436
+2175	42	8220DB002437
+2176	42	8220DB002438
+2177	42	8220DB002439
+2178	42	8220DB002440
+2179	42	8220DB002441
+2180	42	8220DB002442
+2181	42	8220DB002443
+2182	42	8220DB002444
+2183	40	8220DB002448
+2184	40	8220DB002450
+2185	42	8220DB002452
+2186	42	8220DB002453
+2187	42	8220DB002462
+2188	42	8220DB002463
+2189	40	8220DB002465
+2190	40	8220DB002466
+2191	40	8220DB002467
+2192	40	8220DB002471
+2193	40	8220DB002472
+2194	40	8220DB002473
+2195	40	8220DB002474
+2196	40	8220DB002475
+2197	40	8220DB002476
+2198	40	8220DB002477
+2199	40	8220DB002478
+2200	40	8220DB002479
+2201	40	8220DB002480
+2202	40	8220DB002481
+2203	40	8220DB002482
+2204	40	8220DB002483
+2205	40	8220DB002484
+2206	40	8220DB002485
+2207	40	8220DB002486
+2208	40	8220DB002487
+2209	40	8220DB002488
+2210	40	8220DB002489
+2211	40	8220DB002490
+2212	40	8220DB002491
+2213	40	8220DB002492
+2214	40	8220DB002493
+2215	40	8220DB002494
+2216	40	8220DB002495
+2217	40	8220DB002496
+2218	40	8220DB002497
+2219	12	8220DB002498
+2220	16	8220DB002498
+2221	12	8220DB002499
+2222	16	8220DB002499
+2223	12	8220DB002500
+2224	16	8220DB002500
+2225	12	8220DB002501
+2226	16	8220DB002501
+2227	16	8220DB002508
+2228	32	8220DB002508
+2229	31	8220DB002634
+2230	31	8220DB002635
+2231	31	8220DB002636
+2232	39	8220DB002637
+2233	39	8220DB002638
+2234	36	8220DB002640
+2235	39	8220DB002640
+2236	36	8220DB002641
+2237	39	8220DB002641
+2238	25	8220DB002642
+2239	36	8220DB002642
+2240	25	8220DB002643
+2241	39	8220DB002643
+2242	25	8220DB002644
+2243	39	8220DB002644
+2244	39	8220DB002645
+2245	39	8220DB002646
+2246	39	8220DB002647
+2247	39	8220DB002648
+2248	39	8220DB002649
+2249	39	8220DB002650
+2250	39	8220DB002652
+2251	39	8220DB002653
+2252	39	8220DB002654
+2253	25	8220DB002655
+2254	39	8220DB002655
+2255	25	8220DB002656
+2256	39	8220DB002656
+2257	39	8220DB002657
+2258	39	8220DB002658
+2259	39	8220DB002659
+2260	39	8220DB002660
+2261	39	8220DB002661
+2262	39	8220DB002662
+2263	39	8220DB002663
+2264	39	8220DB002664
+2265	39	8220DB002665
+2266	39	8220DB002666
+2267	39	8220DB002667
+2268	25	8220DB002668
+2269	39	8220DB002670
+2270	25	8220DB002672
+2271	25	8220DB002688
+2272	25	8220DB002689
+2273	25	8220DB002696
+2274	39	8220DB002696
+2275	25	8220DB002697
+2276	39	8220DB002697
+2277	39	8220DB002700
+2278	39	8220DB002701
+2279	39	8220DB002702
+2280	39	8220DB002703
+2281	39	8220DB002704
+2282	39	8220DB002706
+2283	39	8220DB002708
+2284	25	8220DB002709
+2285	25	8220DB002710
+2286	25	8220DB002711
+2287	25	8220DB002712
+2288	25	8220DB002713
+2289	25	8220DB002714
+2290	25	8220DB002715
+2291	25	8220DB002716
+2292	32	8220DB002717
+2293	25	8220DB002718
+2294	39	8220DB002718
+2295	25	8220DB002719
+2296	39	8220DB002719
+2297	32	8220DB002720
+2298	36	8220DB002722
+2299	39	8220DB002722
+2300	16	8220DB002726
+2301	16	8220DB002727
+2302	16	8220DB002778
+2303	3	8220DB002795
+2304	13	8220DB002795
+2305	5	8220DB002809
+2306	12	8220DB002809
+2307	29	8220DB002809
+2308	33	8220DB002809
+2309	12	8220DB002810
+2310	18	8220DB002810
+2311	29	8220DB002810
+2312	33	8220DB002810
+2313	29	8220DB002811
+2314	33	8220DB002811
+2315	29	8220DB002812
+2316	33	8220DB002812
+2317	29	8220DB002813
+2318	33	8220DB002813
+2319	29	8220DB002814
+2320	33	8220DB002814
+2321	29	8220DB002815
+2322	33	8220DB002815
+2323	29	8220DB002816
+2324	33	8220DB002816
+2325	29	8220DB002817
+2326	33	8220DB002817
+2327	29	8220DB002898
+2328	33	8220DB002898
+2329	29	8220DB002899
+2330	33	8220DB002899
+2331	29	8220DB002900
+2332	33	8220DB002900
+2333	29	8220DB002901
+2334	33	8220DB002901
+2335	29	8220DB002902
+2336	33	8220DB002902
+2337	29	8220DB002903
+2338	33	8220DB002903
+2339	39	8220DB002906
+2340	39	8220DB002907
+2341	39	8220DB002908
+2342	39	8220DB002909
+2343	39	8220DB002910
+2344	39	8220DB002911
+2345	36	8220DB002912
+2346	39	8220DB002912
+2347	10	8220DB002914
+2348	25	8220DB002957
+2349	25	8220DB002958
+2350	10	8220DB002989
+2351	10	8220DB002990
+2352	10	8220DB002999
+2353	10	8220DB003000
+2354	10	8220DB003001
+2355	10	8220DB003002
+2356	15	8220DB003355
+2357	15	8220DB003356
+2358	29	8220DB003562
+2359	33	8220DB003562
+2360	16	8220DB003952
+2361	19	8220DB003952
+2362	13	8220DB004320
+2363	6	8220DB004322
+2364	25	8220DB004363
+2365	40	8220DB004369
+2366	42	8220DB004369
+2367	6	8220DB004371
+2368	40	8220DB004372
+2369	42	8220DB004376
+2370	42	8220DB004377
+2371	32	8220DB004380
+2372	10	8220DB004382
+2373	14	8220DB004382
+2374	19	8220DB004382
+2375	27	8220DB004382
+2376	28	8220DB004382
+2377	19	8220DB004383
+2378	9	8220DB004384
+2379	10	8220DB004384
+2380	14	8220DB004384
+2381	19	8220DB004384
+2382	27	8220DB004384
+2383	28	8220DB004384
+2384	32	8220DB004384
+2385	14	8220DB004385
+2386	19	8220DB004385
+2387	27	8220DB004385
+2388	28	8220DB004385
+2389	19	8220DB004388
+2390	7	8220DB004399
+2391	7	8220DB004400
+2392	8	8220DB004406
+2393	35	8220DB004406
+2394	36	8220DB004406
+2395	13	8220DB004407
+2396	39	8220DB004407
+2397	18	8220DB004408
+2398	35	8220DB004408
+2399	36	8220DB004408
+2400	39	8220DB004413
+2401	10	8220DB004415
+2402	14	8220DB004415
+2403	1	8220DB004432
+2404	17	8220DB004432
+2405	20	8220DB004432
+2406	26	8220DB004432
+2407	29	8220DB004432
+2408	16	8220DB004434
+2409	19	8220DB004434
+2410	30	8220DB004455
+2411	6	8220DB004456
+2412	17	8220DB004456
+2413	34	8220DB004456
+2414	35	8220DB004456
+2415	40	8220DB004456
+2416	42	8220DB004456
+2417	21	8220DB004458
+2418	32	8220DB004468
+2419	32	8220DB004469
+2420	42	8220DB004479
+2421	5	8220DB004481
+2422	5	8220DB004485
+2423	15	8220DB004494
+2424	5	8220DB004495
+2425	12	8220DB004495
+2426	14	8220DB004495
+2427	15	8220DB004495
+2428	16	8220DB004495
+2429	19	8220DB004495
+2430	35	8220DB004495
+2431	36	8220DB004495
+2432	6	8220DB004498
+2433	5	8220DB004499
+2434	5	8220DB004500
+2435	5	8220DB004501
+2436	5	8220DB004502
+2437	5	8220DB004504
+2438	7	8220DB004509
+2439	7	8220DB004513
+2440	32	8220DB004513
+2441	7	8220DB004514
+2442	7	8220DB004515
+2443	7	8220DB004516
+2444	7	8220DB004518
+2445	8	8220DB004521
+2446	25	8220DB004521
+2447	31	8220DB004521
+2448	34	8220DB004521
+2449	16	8220DB004522
+2450	19	8220DB004522
+2451	6	8220DB004523
+2452	6	8220DB004524
+2453	6	8220DB004525
+2454	6	8220DB004526
+2455	10	8220DB004528
+2456	11	8220DB004528
+2457	12	8220DB004528
+2458	14	8220DB004528
+2459	34	8220DB004528
+2460	40	8220DB004528
+2461	5	8220DB004538
+2462	25	8220DB004539
+2463	11	8220DB004542
+2464	25	8220DB004542
+2465	11	8220DB004543
+2466	25	8220DB004546
+2467	14	8220DB004563
+2468	19	8220DB004563
+2469	27	8220DB004563
+2470	28	8220DB004563
+2471	25	8220DB004583
+2472	14	8220DB004593
+2473	19	8220DB004593
+2474	14	8220DB004594
+2475	14	8220DB004595
+2476	19	8220DB004595
+2477	14	8220DB004596
+2478	19	8220DB004596
+2479	2	8220DB004680
+2480	8	8220DB004680
+2481	24	8220DB004680
+2482	42	8220DB004680
+2483	8	8220DB004683
+2484	19	8220DB004692
+2485	19	8220DB004693
+2486	19	8220DB004694
+2487	19	8220DB004695
+2488	19	8220DB004696
+2489	19	8220DB004697
+2490	19	8220DB004698
+2491	19	8220DB004699
+2492	19	8220DB004700
+2493	36	8220DB004720
+2494	5	8220DB004725
+2495	24	8220DB004725
+2496	37	8220DB004725
+2497	40	8220DB004788
+2498	42	8220DB004788
+2499	15	8220DB004854
+2500	15	8220DB004855
+2501	15	8220DB004856
+2502	15	8220DB004857
+2503	40	8220DB004890
+2504	42	8220DB004890
+2505	40	8220DB004891
+2506	5	8220DB004934
+2507	5	8220DB004935
+2508	5	8220DB004936
+2509	25	8220DB004937
+2510	25	8220DB004938
+2511	37	8220DB004962
+2512	11	8220DB004985
+2513	15	8220DB005025
+2514	40	8220DB005026
+2515	31	8220DB005097
+2516	16	8220DB005099
+2517	19	8220DB005099
+2518	39	8220DB005134
+2519	16	8220DB005140
+2520	5	8220DB005144
+2521	5	8220DB005145
+2522	5	8220DB005147
+2523	15	8220DB005148
+2524	6	8220DB005149
+2525	7	8220DB005149
+2526	31	8220DB005192
+2527	5	8220DB006004
+2528	8	8220DB006016
+2529	8	8220DB006017
+2530	11	8220DB006042
+2531	12	8220DB006042
+2532	7	8220DB006056
+2533	7	8220DB006057
+2534	11	8220DB006059
+2535	22	8220DB006059
+2536	39	8220DB006070
+2537	5	8220DB006071
+2538	29	8220DB006074
+2539	33	8220DB006074
+2540	14	8220DB006079
+2541	25	8220DB006080
+2542	6	8220DB006094
+2543	7	8220DB006094
+2544	14	8220DB006115
+2545	19	8220DB006115
+2546	27	8220DB006115
+2547	28	8220DB006115
+2548	2	8220DB006122
+2549	8	8220DB006125
+2550	19	8220DB006130
+2551	16	8220DB006140
+2552	16	8220DB006142
+2553	8	8220DB006182
+2554	24	8220DB006182
+2555	8	8220DB006238
+2556	8	8220DB006239
+2557	8	8220DB006241
+2558	16	8220DB006251
+2559	12	8220DB006252
+2560	8	8220DB006253
+2561	40	8220DB006273
+2562	42	8220DB006273
+2563	11	8220DB006276
+2564	14	8220DB006315
+2565	14	8220DB006316
+2566	14	8220DB006317
+2567	14	8220DB006318
+2568	14	8220DB006319
+2569	14	8220DB006320
+2570	11	8220DB006361
+2571	11	8220DB006362
+2572	11	8220DB006363
+2573	11	8220DB006367
+2574	5	8220DB007027
+2575	5	8220DB007028
+2576	16	8220DB007043
+2577	19	8220DB007043
+2578	30	8220DB007053
+2579	18	8220DB007078
+2580	36	8220DB007078
+2581	8	8220DB007092
+2582	24	8220DB007113
+2583	11	8220DB007149
+2584	7	8220DB007153
+2585	7	8220DB007154
+2586	8	8220DB007191
+2587	8	8220DB007192
+2588	2	8220DB007220
+2589	14	8220DB007236
+2590	14	8220DB007245
+2591	14	8220DB007246
+2592	11	8220DB007276
+2593	11	8220DB007277
+2594	17	8220DB007293
+2595	7	8220DB007320
+2596	22	8220DB007333
+2597	23	8220DB007333
+2598	38	8220DB007333
+2599	32	8220DB007336
+2600	22	8220DB007339
+2601	23	8220DB007339
+2602	38	8220DB007339
+2603	21	8220DB007340
+2604	22	8220DB007370
+2605	38	8220DB007370
+2606	18	8220DB007387
+2607	18	8220DB007391
+2608	5	8220DB007396
+2609	12	8220DB007397
+2610	12	8220DB007398
+2611	12	8220DB007399
+2612	15	8220DB007412
+2613	15	8220DB007413
+2614	15	8220DB007414
+2615	40	8220DB007423
+2616	40	8220DB007424
+2617	40	8220DB007425
+2618	40	8220DB007426
+2619	40	8220DB007427
+2620	40	8220DB007428
+2621	40	8220DB007430
+2622	40	8220DB007431
+2623	36	8220DB007435
+2624	39	8220DB007435
+2625	6	8220DB007438
+2626	6	8220DB007439
+2627	13	8220DB007453
+2628	18	8220DB007453
+2629	21	8220DB007453
+2630	23	8220DB007453
+2631	36	8220DB007453
+2632	38	8220DB007453
+2633	39	8220DB007453
+2634	6	8220DB007454
+2635	6	8220DB007455
+2636	40	8220DB007458
+2637	42	8220DB007458
+2638	9	8220DB007469
+2639	25	8220DB007471
+2640	39	8220DB007507
+2641	16	8220DB007514
+2642	14	8220DB007516
+2643	30	8220DB007564
+2644	34	8220DB007564
+2645	29	8220DB007571
+2646	10	8220DB007577
+2647	11	8220DB007577
+2648	12	8220DB007577
+2649	14	8220DB007577
+2650	10	8220DB007578
+2651	11	8220DB007578
+2652	12	8220DB007578
+2653	14	8220DB007578
+2654	10	8220DB007579
+2655	11	8220DB007579
+2656	14	8220DB007579
+2657	10	8220DB007581
+2658	11	8220DB007581
+2659	14	8220DB007581
+2660	10	8220DB007582
+2661	11	8220DB007582
+2662	12	8220DB007582
+2663	14	8220DB007582
+2664	3	8220DB007586
+2665	4	8220DB007586
+2666	13	8220DB007586
+2667	21	8220DB007586
+2668	23	8220DB007586
+2669	38	8220DB007586
+2670	3	8220DB007587
+2671	4	8220DB007587
+2672	13	8220DB007587
+2673	21	8220DB007587
+2674	23	8220DB007587
+2675	38	8220DB007587
+2676	3	8220DB007588
+2677	13	8220DB007588
+2678	21	8220DB007588
+2679	23	8220DB007588
+2680	38	8220DB007588
+2681	32	8220DB007601
+2682	1	8220DB007602
+2683	2	8220DB007602
+2684	8	8220DB007602
+2685	17	8220DB007602
+2686	20	8220DB007602
+2687	26	8220DB007602
+2688	29	8220DB007602
+2689	1	8220DB007603
+2690	2	8220DB007603
+2691	8	8220DB007603
+2692	17	8220DB007603
+2693	20	8220DB007603
+2694	26	8220DB007603
+2695	29	8220DB007603
+2696	2	8220DB007615
+2697	17	8220DB007615
+2698	13	8220DB007622
+2699	16	8220DB007622
+2700	12	8220DB007623
+2701	16	8220DB007623
+2702	25	8220DB007661
+2703	35	8220DB007665
+2704	36	8220DB007665
+2705	32	8220DB007671
+2706	30	8220DB007738
+2707	30	8220DB007739
+2708	30	8220DB007740
+2709	30	8220DB007741
+2710	1	8220DB007865
+2711	15	8230DB000100
+2712	14	8230DB000946
+2713	31	8230DB000946
+2714	15	8230DB001095
+2715	15	8230DB001096
+2716	15	8230DB001097
+2717	15	8230DB001099
+2718	15	8230DB001100
+2719	15	8230DB001111
+2720	14	8230DB001125
+2721	31	8230DB001125
+2722	34	8230DB001125
+2723	14	8230DB001127
+2724	31	8230DB001127
+2725	34	8230DB001127
+2726	14	8230DB001130
+2727	31	8230DB001130
+2728	34	8230DB001130
+2729	14	8230DB001140
+2730	31	8230DB001140
+2731	14	8230DB001141
+2732	14	8230DB001142
+2733	14	8230DB001143
+2734	14	8230DB001144
+2735	14	8230DB001145
+2736	14	8230DB001150
+2737	14	8230DB001151
+2738	14	8230DB001152
+2739	14	8230DB001153
+2740	14	8230DB001154
+2741	14	8230DB001155
+2742	31	8230DB001155
+2743	34	8230DB001155
+2744	14	8230DB001157
+2745	31	8230DB001157
+2746	34	8230DB001157
+2747	14	8230DB001158
+2748	31	8230DB001158
+2749	34	8230DB001158
+2750	17	8230DB001301
+2751	17	8230DB001302
+2752	17	8230DB001303
+2753	17	8230DB001304
+2754	17	8230DB001305
+2755	33	8230DB001305
+2756	17	8230DB001320
+2757	17	8230DB001321
+2758	17	8230DB001322
+2759	17	8230DB001323
+2760	17	8230DB001324
+2761	17	8230DB001325
+2762	17	8230DB001326
+2763	17	8230DB001327
+2764	17	8230DB001328
+2765	17	8230DB001329
+2766	33	8230DB001329
+2767	17	8230DB001330
+2768	33	8230DB001330
+2769	17	8230DB001331
+2770	17	8230DB001332
+2771	17	8230DB001333
+2772	17	8230DB001334
+2773	8	8230DB001957
+2774	35	8230DB001957
+2775	36	8230DB001957
+2776	8	8230DB001958
+2777	35	8230DB001958
+2778	36	8230DB001958
+2779	8	8230DB001959
+2780	35	8230DB001959
+2781	36	8230DB001959
+2782	8	8230DB001960
+2783	35	8230DB001960
+2784	36	8230DB001960
+2785	8	8230DB001963
+2786	8	8230DB001964
+2787	8	8230DB001965
+2788	8	8230DB001966
+2789	35	8230DB001968
+2790	36	8230DB001968
+2791	35	8230DB001969
+2792	36	8230DB001969
+2793	35	8230DB001970
+2794	36	8230DB001970
+2795	35	8230DB001971
+2796	36	8230DB001971
+2797	35	8230DB001972
+2798	36	8230DB001972
+2799	35	8230DB001973
+2800	36	8230DB001973
+2801	35	8230DB001974
+2802	36	8230DB001974
+2803	8	8230DB001975
+2804	35	8230DB001975
+2805	36	8230DB001975
+2806	8	8230DB001977
+2807	35	8230DB001977
+2808	36	8230DB001977
+2809	8	8230DB001978
+2810	35	8230DB001978
+2811	36	8230DB001978
+2812	8	8230DB001980
+2813	35	8230DB001980
+2814	36	8230DB001980
+2815	35	8230DB002114
+2816	35	8230DB002115
+2817	25	8230DB002118
+2818	25	8230DB002119
+2819	25	8230DB002120
+2820	25	8230DB002121
+2821	25	8230DB002123
+2822	25	8230DB002124
+2823	25	8230DB002125
+2824	25	8230DB002126
+2825	25	8230DB002127
+2826	25	8230DB002128
+2827	25	8230DB002129
+2828	16	8230DB002133
+2829	35	8230DB002133
+2830	16	8230DB002134
+2831	35	8230DB002134
+2832	16	8230DB002135
+2833	8	8230DB002136
+2834	8	8230DB002137
+2835	8	8230DB002138
+2836	8	8230DB002139
+2837	8	8230DB002140
+2838	8	8230DB002141
+2839	8	8230DB002142
+2840	8	8230DB002143
+2841	8	8230DB002145
+2842	8	8230DB002146
+2843	8	8230DB002147
+2844	8	8230DB002148
+2845	8	8230DB002149
+2846	8	8230DB002150
+2847	8	8230DB002151
+2848	8	8230DB002152
+2849	8	8230DB002153
+2850	8	8230DB002154
+2851	16	8230DB002156
+2852	35	8230DB002156
+2853	35	8230DB002158
+2854	8	8230DB002159
+2855	35	8230DB002159
+2856	36	8230DB002159
+2857	8	8230DB002160
+2858	36	8230DB002160
+2859	8	8230DB002161
+2860	36	8230DB002161
+2861	36	8230DB002162
+2862	36	8230DB002163
+2863	16	8230DB002164
+2864	8	8230DB002165
+2865	16	8230DB002165
+2866	35	8230DB002165
+2867	8	8230DB002166
+2868	16	8230DB002166
+2869	35	8230DB002166
+2870	8	8230DB002167
+2871	35	8230DB002167
+2872	36	8230DB002168
+2873	36	8230DB002169
+2874	36	8230DB002170
+2875	8	8230DB002172
+2876	36	8230DB002172
+2877	35	8230DB002173
+2878	35	8230DB002174
+2879	35	8230DB002176
+2880	35	8230DB002177
+2881	35	8230DB002178
+2882	18	8230DB002201
+2883	18	8230DB002202
+2884	18	8230DB002203
+2885	18	8230DB002204
+2886	25	8230DB002205
+2887	25	8230DB002206
+2888	18	8230DB002207
+2889	18	8230DB002208
+2890	18	8230DB002210
+2891	18	8230DB002211
+2892	18	8230DB002241
+2893	18	8230DB002242
+2894	15	8230DB002320
+2895	15	8230DB002321
+2896	15	8230DB002322
+2897	15	8230DB002323
+2898	15	8230DB002324
+2899	15	8230DB002325
+2900	15	8230DB002326
+2901	19	8230DB002334
+2902	19	8230DB002335
+2903	19	8230DB002336
+2904	19	8230DB002337
+2905	19	8230DB002339
+2906	19	8230DB002340
+2907	19	8230DB002346
+2908	34	8230DB002346
+2909	19	8230DB002349
+2910	34	8230DB002349
+2911	19	8230DB002351
+2912	34	8230DB002351
+2913	34	8230DB002352
+2914	19	8230DB002353
+2915	31	8230DB002353
+2916	19	8230DB002355
+2917	31	8230DB002357
+2918	34	8230DB002357
+2919	19	8230DB002359
+2920	31	8230DB002359
+2921	34	8230DB002359
+2922	19	8230DB002360
+2923	34	8230DB002360
+2924	19	8230DB002369
+2925	19	8230DB002370
+2926	19	8230DB002371
+2927	19	8230DB002372
+2928	19	8230DB002373
+2929	8	8230DB002374
+2930	19	8230DB002377
+2931	42	8230DB002445
+2932	42	8230DB002446
+2933	42	8230DB002454
+2934	42	8230DB002455
+2935	42	8230DB002456
+2936	42	8230DB002457
+2937	42	8230DB002458
+2938	42	8230DB002459
+2939	42	8230DB002460
+2940	42	8230DB002461
+2941	31	8230DB002515
+2942	31	8230DB002516
+2943	31	8230DB002517
+2944	31	8230DB002518
+2945	31	8230DB002522
+2946	31	8230DB002523
+2947	31	8230DB002524
+2948	31	8230DB002532
+2949	31	8230DB002539
+2950	31	8230DB002540
+2951	31	8230DB002542
+2952	31	8230DB002547
+2953	31	8230DB002548
+2954	34	8230DB002550
+2955	34	8230DB002551
+2956	34	8230DB002553
+2957	34	8230DB002554
+2958	34	8230DB002555
+2959	34	8230DB002556
+2960	19	8230DB002557
+2961	34	8230DB002557
+2962	34	8230DB002573
+2963	34	8230DB002574
+2964	34	8230DB002577
+2965	34	8230DB002578
+2966	34	8230DB002579
+2967	34	8230DB002583
+2968	34	8230DB002584
+2969	34	8230DB002585
+2970	34	8230DB002586
+2971	34	8230DB002587
+2972	34	8230DB002588
+2973	34	8230DB002589
+2974	34	8230DB002590
+2975	34	8230DB002591
+2976	34	8230DB002592
+2977	34	8230DB002594
+2978	34	8230DB002595
+2979	34	8230DB002596
+2980	34	8230DB002597
+2981	34	8230DB002599
+2982	34	8230DB002600
+2983	19	8230DB002601
+2984	19	8230DB002603
+2985	19	8230DB002621
+2986	19	8230DB002622
+2987	19	8230DB002623
+2988	19	8230DB002624
+2989	19	8230DB002626
+2990	19	8230DB002628
+2991	19	8230DB002629
+2992	19	8230DB002631
+2993	19	8230DB002632
+2994	19	8230DB002633
+2995	19	8230DB002669
+2996	25	8230DB002673
+2997	25	8230DB002674
+2998	25	8230DB002675
+2999	25	8230DB002676
+3000	25	8230DB002678
+3001	25	8230DB002679
+3002	25	8230DB002680
+3003	25	8230DB002681
+3004	25	8230DB002682
+3005	25	8230DB002685
+3006	18	8230DB002686
+3007	25	8230DB002686
+3008	25	8230DB002687
+3009	33	8230DB002919
+3010	33	8230DB002920
+3011	33	8230DB002921
+3012	33	8230DB002922
+3013	33	8230DB002923
+3014	33	8230DB002924
+3015	33	8230DB002925
+3016	33	8230DB002927
+3017	33	8230DB002929
+3018	33	8230DB002930
+3019	33	8230DB002933
+3020	33	8230DB002934
+3021	33	8230DB002935
+3022	33	8230DB002936
+3023	33	8230DB002937
+3024	33	8230DB002938
+3025	33	8230DB002940
+3026	33	8230DB002941
+3027	33	8230DB002942
+3028	33	8230DB002943
+3029	33	8230DB002944
+3030	33	8230DB002945
+3031	33	8230DB002946
+3032	33	8230DB002947
+3033	33	8230DB002948
+3034	33	8230DB002949
+3035	33	8230DB002950
+3036	3	8230DB002954
+3037	33	8230DB002954
+3038	3	8230DB002955
+3039	33	8230DB002955
+3040	3	8230DB002956
+3041	33	8230DB002956
+3042	3	8230DB002965
+3043	33	8230DB002965
+3044	17	8230DB002966
+3045	3	8230DB002967
+3046	17	8230DB002967
+3047	3	8230DB002968
+3048	17	8230DB002968
+3049	3	8230DB002980
+3050	17	8230DB002980
+3051	3	8230DB002981
+3052	17	8230DB002981
+3053	33	8230DB002983
+3054	33	8230DB002984
+3055	17	8230DB002991
+3056	17	8230DB002992
+3057	31	8230DB003003
+3058	31	8230DB003004
+3059	31	8230DB003005
+3060	14	8230DB003007
+3061	35	8230DB003378
+3062	35	8230DB003379
+3063	8	8230DB003383
+3064	35	8230DB003383
+3065	8	8230DB003384
+3066	35	8230DB003384
+3067	35	8230DB003385
+3068	35	8230DB003386
+3069	35	8230DB003387
+3070	35	8230DB003389
+3071	35	8230DB003390
+3072	35	8230DB003392
+3073	35	8230DB003393
+3074	35	8230DB003394
+3075	35	8230DB003396
+3076	35	8230DB003397
+3077	35	8230DB003398
+3078	35	8230DB003399
+3079	35	8230DB003400
+3080	35	8230DB003401
+3081	35	8230DB003402
+3082	35	8230DB003403
+3083	35	8230DB003404
+3084	35	8230DB003405
+3085	35	8230DB003406
+3086	35	8230DB003407
+3087	35	8230DB003408
+3088	35	8230DB003409
+3089	35	8230DB003410
+3090	35	8230DB003411
+3091	35	8230DB003412
+3092	35	8230DB003413
+3093	8	8230DB003414
+3094	35	8230DB003414
+3095	8	8230DB003415
+3096	35	8230DB003415
+3097	8	8230DB003416
+3098	35	8230DB003416
+3099	8	8230DB003417
+3100	35	8230DB003417
+3101	8	8230DB003418
+3102	16	8230DB003418
+3103	35	8230DB003418
+3104	8	8230DB003419
+3105	16	8230DB003419
+3106	35	8230DB003419
+3107	35	8230DB003420
+3108	35	8230DB003421
+3109	35	8230DB003422
+3110	35	8230DB003423
+3111	35	8230DB003425
+3112	36	8230DB003426
+3113	36	8230DB003432
+3114	36	8230DB003434
+3115	36	8230DB003435
+3116	36	8230DB003436
+3117	36	8230DB003437
+3118	36	8230DB003438
+3119	36	8230DB003439
+3120	36	8230DB003440
+3121	36	8230DB003441
+3122	36	8230DB003443
+3123	36	8230DB003444
+3124	36	8230DB003445
+3125	36	8230DB003446
+3126	36	8230DB003447
+3127	36	8230DB003448
+3128	36	8230DB003449
+3129	36	8230DB003453
+3130	36	8230DB003454
+3131	36	8230DB003455
+3132	36	8230DB003456
+3133	36	8230DB003457
+3134	36	8230DB003461
+3135	8	8230DB003465
+3136	36	8230DB003465
+3137	34	8230DB004004
+3138	34	8230DB004005
+3139	34	8230DB004006
+3140	34	8230DB004007
+3141	34	8230DB004008
+3142	34	8230DB004009
+3143	34	8230DB004010
+3144	34	8230DB004069
+3145	34	8230DB004070
+3146	34	8230DB004071
+3147	34	8230DB004072
+3148	34	8230DB004073
+3149	31	8230DB004342
+3150	19	8230DB004347
+3151	31	8230DB004347
+3152	34	8230DB004347
+3153	19	8230DB004348
+3154	31	8230DB004348
+3155	34	8230DB004348
+3156	8	8230DB004379
+3157	35	8230DB004379
+3158	36	8230DB004379
+3159	42	8230DB004392
+3160	18	8230DB004401
+3161	8	8230DB004409
+3162	35	8230DB004409
+3163	36	8230DB004409
+3164	25	8230DB004410
+3165	25	8230DB004411
+3166	19	8230DB004435
+3167	34	8230DB004435
+3168	19	8230DB004436
+3169	34	8230DB004436
+3170	36	8230DB004438
+3171	19	8230DB004440
+3172	19	8230DB004441
+3173	34	8230DB004445
+3174	19	8230DB004446
+3175	36	8230DB004532
+3176	36	8230DB004534
+3177	36	8230DB004535
+3178	36	8230DB004536
+3179	8	8230DB004545
+3180	16	8230DB004545
+3181	8	8230DB004549
+3182	8	8230DB004550
+3183	8	8230DB004551
+3184	8	8230DB004552
+3185	16	8230DB004552
+3186	8	8230DB004554
+3187	16	8230DB004554
+3188	8	8230DB004555
+3189	16	8230DB004555
+3190	36	8230DB004557
+3191	35	8230DB004558
+3192	35	8230DB004559
+3193	36	8230DB004560
+3194	36	8230DB004564
+3195	8	8230DB004576
+3196	16	8230DB004576
+3197	15	8230DB004577
+3198	15	8230DB004578
+3199	16	8230DB004606
+3200	8	8230DB004617
+3201	16	8230DB004617
+3202	16	8230DB004619
+3203	19	8230DB004640
+3204	34	8230DB004640
+3205	19	8230DB004641
+3206	19	8230DB004642
+3207	19	8230DB004643
+3208	19	8230DB004644
+3209	19	8230DB004645
+3210	19	8230DB004646
+3211	34	8230DB004646
+3212	19	8230DB004647
+3213	34	8230DB004647
+3214	19	8230DB004662
+3215	8	8230DB004663
+3216	8	8230DB004664
+3217	8	8230DB004665
+3218	36	8230DB004665
+3219	8	8230DB004666
+3220	36	8230DB004666
+3221	8	8230DB004667
+3222	36	8230DB004667
+3223	8	8230DB004668
+3224	35	8230DB004669
+3225	8	8230DB004670
+3226	8	8230DB004671
+3227	8	8230DB004672
+3228	36	8230DB004672
+3229	8	8230DB004673
+3230	36	8230DB004673
+3231	8	8230DB004674
+3232	8	8230DB004677
+3233	25	8230DB004688
+3234	25	8230DB004689
+3235	25	8230DB004690
+3236	25	8230DB004691
+3237	18	8230DB004715
+3238	25	8230DB004715
+3239	31	8230DB004749
+3240	31	8230DB004750
+3241	31	8230DB004751
+3242	31	8230DB004754
+3243	31	8230DB004755
+3244	31	8230DB004756
+3245	31	8230DB004757
+3246	31	8230DB004758
+3247	31	8230DB004759
+3248	31	8230DB004760
+3249	16	8230DB004762
+3250	16	8230DB004763
+3251	18	8230DB004795
+3252	25	8230DB004795
+3253	25	8230DB004796
+3254	25	8230DB004797
+3255	18	8230DB004798
+3256	25	8230DB004798
+3257	25	8230DB004799
+3258	15	8230DB004861
+3259	15	8230DB004862
+3260	15	8230DB004863
+3261	15	8230DB004864
+3262	15	8230DB004865
+3263	14	8230DB004869
+3264	14	8230DB004870
+3265	31	8230DB004877
+3266	31	8230DB004878
+3267	31	8230DB004880
+3268	14	8230DB004886
+3269	14	8230DB004887
+3270	18	8230DB004888
+3271	19	8230DB005008
+3272	34	8230DB005008
+3273	36	8230DB005022
+3274	36	8230DB005119
+3275	36	8230DB005120
+3276	36	8230DB005121
+3277	36	8230DB005122
+3278	36	8230DB005123
+3279	36	8230DB005124
+3280	36	8230DB005125
+3281	36	8230DB005126
+3282	15	8230DB005150
+3283	36	8230DB006001
+3284	36	8230DB006002
+3285	36	8230DB006003
+3286	16	8230DB006011
+3287	35	8230DB006011
+3288	16	8230DB006014
+3289	35	8230DB006014
+3290	19	8230DB006075
+3291	19	8230DB006095
+3292	35	8230DB006119
+3293	34	8230DB006124
+3294	15	8230DB006132
+3295	16	8230DB006141
+3296	16	8230DB006143
+3297	16	8230DB006144
+3298	16	8230DB006145
+3299	16	8230DB006146
+3300	16	8230DB006147
+3301	16	8230DB006149
+3302	16	8230DB006150
+3303	16	8230DB006152
+3304	16	8230DB006153
+3305	16	8230DB006154
+3306	16	8230DB006155
+3307	15	8230DB006163
+3308	35	8230DB006184
+3309	35	8230DB006185
+3310	35	8230DB006186
+3311	35	8230DB006187
+3312	35	8230DB006188
+3313	35	8230DB006215
+3314	35	8230DB006216
+3315	16	8230DB006242
+3316	16	8230DB006243
+3317	16	8230DB006244
+3318	35	8230DB006244
+3319	8	8230DB006245
+3320	16	8230DB006245
+3321	14	8230DB006282
+3322	14	8230DB006283
+3323	14	8230DB006326
+3324	14	8230DB006335
+3325	31	8230DB006343
+3326	16	8230DB007015
+3327	16	8230DB007016
+3328	19	8230DB007062
+3329	3	8230DB007067
+3330	33	8230DB007067
+3331	17	8230DB007068
+3332	31	8230DB007121
+3333	31	8230DB007122
+3334	31	8230DB007123
+3335	16	8230DB007142
+3336	31	8230DB007180
+3337	31	8230DB007181
+3338	31	8230DB007183
+3339	8	8230DB007201
+3340	8	8230DB007229
+3341	8	8230DB007230
+3342	18	8230DB007239
+3343	35	8230DB007354
+3344	34	8230DB007395
+3345	36	8230DB007432
+3346	33	8230DB007440
+3347	33	8230DB007441
+3348	33	8230DB007449
+3349	25	8230DB007473
+3350	18	8230DB007510
+3351	25	8230DB007510
+3352	8	8230DB007714
+3353	8	8230DB007781
+3354	35	8230DB007781
+3355	36	8230DB007781
+3356	8	8230DB007782
+3357	35	8230DB007782
+3358	36	8230DB007782
+3359	17	8240DB000219
+3360	1	8240DB000221
+3361	1	8240DB000222
+3362	1	8240DB000223
+3363	1	8240DB000224
+3364	1	8240DB000225
+3365	1	8240DB000226
+3366	1	8240DB000227
+3367	1	8240DB000229
+3368	1	8240DB000230
+3369	1	8240DB000231
+3370	17	8240DB000231
+3371	20	8240DB000231
+3372	26	8240DB000231
+3373	17	8240DB000232
+3374	8	8240DB000323
+3375	24	8240DB000323
+3376	8	8240DB000324
+3377	24	8240DB000324
+3378	40	8240DB000324
+3379	8	8240DB000327
+3380	24	8240DB000327
+3381	8	8240DB000332
+3382	24	8240DB000332
+3383	40	8240DB000332
+3384	12	8240DB000905
+3385	27	8240DB000905
+3386	12	8240DB001073
+3387	40	8240DB001181
+3388	40	8240DB001182
+3389	27	8240DB001206
+3390	28	8240DB001206
+3391	27	8240DB001207
+3392	28	8240DB001207
+3393	27	8240DB001208
+3394	28	8240DB001208
+3395	27	8240DB001209
+3396	28	8240DB001209
+3397	27	8240DB001210
+3398	28	8240DB001210
+3399	27	8240DB001211
+3400	28	8240DB001211
+3401	27	8240DB001212
+3402	28	8240DB001212
+3403	27	8240DB001213
+3404	28	8240DB001213
+3405	27	8240DB001214
+3406	28	8240DB001214
+3407	27	8240DB001215
+3408	28	8240DB001215
+3409	27	8240DB001216
+3410	28	8240DB001216
+3411	27	8240DB001217
+3412	28	8240DB001217
+3413	21	8240DB001517
+3414	40	8240DB001550
+3415	40	8240DB001551
+3416	40	8240DB001552
+3417	40	8240DB001555
+3418	40	8240DB001556
+3419	40	8240DB001557
+3420	17	8240DB001622
+3421	20	8240DB001622
+3422	26	8240DB001622
+3423	17	8240DB001623
+3424	20	8240DB001623
+3425	26	8240DB001623
+3426	17	8240DB001624
+3427	20	8240DB001624
+3428	26	8240DB001624
+3429	17	8240DB001625
+3430	20	8240DB001625
+3431	26	8240DB001625
+3432	17	8240DB001626
+3433	20	8240DB001626
+3434	26	8240DB001626
+3435	17	8240DB001627
+3436	20	8240DB001627
+3437	26	8240DB001627
+3438	17	8240DB001628
+3439	20	8240DB001628
+3440	26	8240DB001628
+3441	17	8240DB001629
+3442	20	8240DB001629
+3443	26	8240DB001629
+3444	17	8240DB001630
+3445	20	8240DB001630
+3446	26	8240DB001630
+3447	17	8240DB001631
+3448	20	8240DB001631
+3449	26	8240DB001631
+3450	17	8240DB001632
+3451	20	8240DB001632
+3452	26	8240DB001632
+3453	17	8240DB001633
+3454	20	8240DB001633
+3455	26	8240DB001633
+3456	17	8240DB001634
+3457	20	8240DB001634
+3458	26	8240DB001634
+3459	17	8240DB001635
+3460	20	8240DB001635
+3461	26	8240DB001635
+3462	17	8240DB001636
+3463	20	8240DB001636
+3464	26	8240DB001636
+3465	17	8240DB001637
+3466	20	8240DB001637
+3467	26	8240DB001637
+3468	17	8240DB001638
+3469	20	8240DB001638
+3470	26	8240DB001638
+3471	17	8240DB001639
+3472	20	8240DB001639
+3473	26	8240DB001639
+3474	17	8240DB001640
+3475	20	8240DB001640
+3476	26	8240DB001640
+3477	21	8240DB001669
+3478	21	8240DB001670
+3479	21	8240DB001671
+3480	21	8240DB001672
+3481	22	8240DB001672
+3482	21	8240DB001673
+3483	22	8240DB001673
+3484	21	8240DB001674
+3485	22	8240DB001674
+3486	21	8240DB001675
+3487	22	8240DB001675
+3488	21	8240DB001676
+3489	21	8240DB001678
+3490	21	8240DB001679
+3491	21	8240DB001680
+3492	21	8240DB001681
+3493	21	8240DB001682
+3494	21	8240DB001683
+3495	21	8240DB001684
+3496	21	8240DB001685
+3497	21	8240DB001686
+3498	21	8240DB001687
+3499	22	8240DB001687
+3500	21	8240DB001688
+3501	22	8240DB001688
+3502	21	8240DB001689
+3503	22	8240DB001689
+3504	21	8240DB001690
+3505	21	8240DB001691
+3506	21	8240DB001692
+3507	21	8240DB001693
+3508	22	8240DB001719
+3509	22	8240DB001808
+3510	23	8240DB001808
+3511	38	8240DB001808
+3512	22	8240DB001813
+3513	23	8240DB001813
+3514	22	8240DB001814
+3515	23	8240DB001814
+3516	22	8240DB001816
+3517	22	8240DB001817
+3518	22	8240DB001818
+3519	22	8240DB001819
+3520	22	8240DB001820
+3521	22	8240DB001822
+3522	22	8240DB001827
+3523	22	8240DB001828
+3524	22	8240DB001829
+3525	22	8240DB001833
+3526	22	8240DB001834
+3527	22	8240DB001835
+3528	22	8240DB001836
+3529	22	8240DB001837
+3530	22	8240DB001838
+3531	22	8240DB001840
+3532	23	8240DB001840
+3533	22	8240DB001841
+3534	23	8240DB001841
+3535	23	8240DB001842
+3536	23	8240DB001844
+3537	22	8240DB001845
+3538	23	8240DB001845
+3539	38	8240DB001845
+3540	22	8240DB001849
+3541	23	8240DB001850
+3542	22	8240DB001851
+3543	23	8240DB001852
+3544	23	8240DB001853
+3545	23	8240DB001854
+3546	23	8240DB001858
+3547	23	8240DB001859
+3548	23	8240DB001860
+3549	23	8240DB001861
+3550	23	8240DB001862
+3551	23	8240DB001863
+3552	23	8240DB001864
+3553	23	8240DB001865
+3554	23	8240DB001866
+3555	23	8240DB001867
+3556	23	8240DB001869
+3557	23	8240DB001870
+3558	23	8240DB001871
+3559	23	8240DB001872
+3560	23	8240DB001873
+3561	23	8240DB001874
+3562	23	8240DB001875
+3563	23	8240DB001876
+3564	23	8240DB001877
+3565	23	8240DB001878
+3566	23	8240DB001879
+3567	21	8240DB001882
+3568	23	8240DB001882
+3569	23	8240DB001883
+3570	23	8240DB001884
+3571	23	8240DB001887
+3572	23	8240DB001888
+3573	23	8240DB001889
+3574	23	8240DB001890
+3575	23	8240DB001891
+3576	23	8240DB001893
+3577	23	8240DB001894
+3578	23	8240DB001895
+3579	23	8240DB001896
+3580	23	8240DB001897
+3581	23	8240DB001898
+3582	23	8240DB001899
+3583	23	8240DB001902
+3584	23	8240DB001903
+3585	23	8240DB001904
+3586	23	8240DB001912
+3587	23	8240DB002171
+3588	22	8240DB002289
+3589	22	8240DB002338
+3590	22	8240DB002468
+3591	21	8240DB002959
+3592	22	8240DB002961
+3593	38	8240DB003340
+3594	20	8240DB003565
+3595	20	8240DB003566
+3596	20	8240DB003567
+3597	20	8240DB003569
+3598	20	8240DB003571
+3599	27	8240DB003573
+3600	28	8240DB003573
+3601	27	8240DB003574
+3602	27	8240DB003575
+3603	28	8240DB003575
+3604	27	8240DB003576
+3605	28	8240DB003576
+3606	27	8240DB003577
+3607	27	8240DB003578
+3608	27	8240DB003579
+3609	27	8240DB003580
+3610	12	8240DB003583
+3611	27	8240DB003583
+3612	12	8240DB003584
+3613	27	8240DB003584
+3614	12	8240DB003585
+3615	27	8240DB003585
+3616	12	8240DB003605
+3617	27	8240DB003605
+3618	12	8240DB003606
+3619	27	8240DB003606
+3620	12	8240DB003607
+3621	27	8240DB003607
+3622	12	8240DB003613
+3623	27	8240DB003613
+3624	12	8240DB003615
+3625	27	8240DB003615
+3626	12	8240DB003616
+3627	27	8240DB003616
+3628	12	8240DB003625
+3629	27	8240DB003625
+3630	12	8240DB003626
+3631	27	8240DB003626
+3632	12	8240DB003627
+3633	27	8240DB003627
+3634	12	8240DB003628
+3635	27	8240DB003628
+3636	12	8240DB003629
+3637	27	8240DB003629
+3638	12	8240DB003630
+3639	27	8240DB003630
+3640	12	8240DB003631
+3641	27	8240DB003631
+3642	12	8240DB003632
+3643	27	8240DB003632
+3644	12	8240DB003633
+3645	27	8240DB003633
+3646	12	8240DB003634
+3647	27	8240DB003634
+3648	12	8240DB003635
+3649	27	8240DB003635
+3650	12	8240DB003636
+3651	27	8240DB003636
+3652	27	8240DB003639
+3653	27	8240DB003640
+3654	12	8240DB003641
+3655	27	8240DB003641
+3656	12	8240DB003642
+3657	27	8240DB003642
+3658	12	8240DB003643
+3659	27	8240DB003643
+3660	27	8240DB003644
+3661	27	8240DB003645
+3662	27	8240DB003646
+3663	27	8240DB003647
+3664	28	8240DB003647
+3665	28	8240DB003648
+3666	28	8240DB003649
+3667	28	8240DB003650
+3668	28	8240DB003651
+3669	28	8240DB003652
+3670	12	8240DB003653
+3671	28	8240DB003653
+3672	28	8240DB003654
+3673	28	8240DB003655
+3674	12	8240DB003656
+3675	28	8240DB003656
+3676	28	8240DB003657
+3677	28	8240DB003658
+3678	28	8240DB003659
+3679	28	8240DB003660
+3680	27	8240DB003661
+3681	28	8240DB003661
+3682	27	8240DB003662
+3683	28	8240DB003662
+3684	26	8240DB003663
+3685	20	8240DB003664
+3686	17	8240DB003669
+3687	26	8240DB003669
+3688	20	8240DB003670
+3689	20	8240DB003671
+3690	26	8240DB003671
+3691	20	8240DB003672
+3692	26	8240DB003672
+3693	20	8240DB003674
+3694	26	8240DB003674
+3695	20	8240DB003675
+3696	26	8240DB003675
+3697	20	8240DB003676
+3698	26	8240DB003676
+3699	20	8240DB003677
+3700	20	8240DB003678
+3701	20	8240DB003679
+3702	26	8240DB003679
+3703	28	8240DB003679
+3704	26	8240DB003682
+3705	26	8240DB003686
+3706	20	8240DB003689
+3707	26	8240DB003689
+3708	28	8240DB003689
+3709	26	8240DB003690
+3710	28	8240DB003690
+3711	20	8240DB003691
+3712	20	8240DB003692
+3713	20	8240DB003694
+3714	26	8240DB003694
+3715	20	8240DB003695
+3716	26	8240DB003695
+3717	20	8240DB003696
+3718	26	8240DB003696
+3719	20	8240DB003697
+3720	26	8240DB003697
+3721	20	8240DB003698
+3722	26	8240DB003698
+3723	20	8240DB003699
+3724	26	8240DB003699
+3725	20	8240DB003711
+3726	28	8240DB003711
+3727	20	8240DB003712
+3728	28	8240DB003712
+3729	20	8240DB003713
+3730	20	8240DB003714
+3731	20	8240DB003715
+3732	20	8240DB003748
+3733	20	8240DB003749
+3734	20	8240DB003750
+3735	20	8240DB003751
+3736	28	8240DB003751
+3737	20	8240DB003752
+3738	28	8240DB003752
+3739	20	8240DB003755
+3740	20	8240DB003756
+3741	20	8240DB003757
+3742	20	8240DB003758
+3743	20	8240DB003759
+3744	20	8240DB003760
+3745	20	8240DB003761
+3746	20	8240DB003762
+3747	20	8240DB003763
+3748	20	8240DB003764
+3749	20	8240DB003765
+3750	20	8240DB003766
+3751	20	8240DB003767
+3752	20	8240DB003768
+3753	20	8240DB003769
+3754	20	8240DB003771
+3755	20	8240DB003772
+3756	20	8240DB003773
+3757	20	8240DB003774
+3758	20	8240DB003775
+3759	20	8240DB003777
+3760	20	8240DB003778
+3761	20	8240DB003781
+3762	20	8240DB003782
+3763	20	8240DB003783
+3764	20	8240DB003784
+3765	20	8240DB003785
+3766	20	8240DB003786
+3767	20	8240DB003787
+3768	20	8240DB003788
+3769	20	8240DB003789
+3770	20	8240DB003790
+3771	20	8240DB003791
+3772	20	8240DB003792
+3773	20	8240DB003793
+3774	20	8240DB003794
+3775	20	8240DB003795
+3776	20	8240DB003797
+3777	20	8240DB003798
+3778	20	8240DB003799
+3779	20	8240DB003801
+3780	20	8240DB003802
+3781	20	8240DB003805
+3782	20	8240DB003806
+3783	20	8240DB003807
+3784	20	8240DB003808
+3785	20	8240DB003809
+3786	20	8240DB003811
+3787	20	8240DB003812
+3788	20	8240DB003813
+3789	20	8240DB003814
+3790	20	8240DB003815
+3791	20	8240DB003816
+3792	20	8240DB003818
+3793	20	8240DB003819
+3794	20	8240DB003820
+3795	20	8240DB003822
+3796	20	8240DB003823
+3797	20	8240DB003824
+3798	20	8240DB003825
+3799	20	8240DB003826
+3800	20	8240DB003827
+3801	20	8240DB003828
+3802	20	8240DB003829
+3803	20	8240DB003831
+3804	20	8240DB003832
+3805	20	8240DB003833
+3806	20	8240DB003834
+3807	20	8240DB003835
+3808	20	8240DB003836
+3809	20	8240DB003837
+3810	20	8240DB003838
+3811	20	8240DB003840
+3812	20	8240DB003842
+3813	20	8240DB003843
+3814	20	8240DB003844
+3815	20	8240DB003845
+3816	20	8240DB003846
+3817	20	8240DB003848
+3818	20	8240DB003849
+3819	20	8240DB003850
+3820	20	8240DB003851
+3821	20	8240DB003852
+3822	20	8240DB003853
+3823	20	8240DB003854
+3824	20	8240DB003855
+3825	20	8240DB003856
+3826	20	8240DB003857
+3827	20	8240DB003858
+3828	20	8240DB003859
+3829	20	8240DB003860
+3830	20	8240DB003861
+3831	20	8240DB003862
+3832	20	8240DB003863
+3833	26	8240DB003864
+3834	26	8240DB003865
+3835	26	8240DB003884
+3836	20	8240DB003885
+3837	26	8240DB003885
+3838	22	8240DB004314
+3839	38	8240DB004324
+3840	38	8240DB004325
+3841	26	8240DB004330
+3842	28	8240DB004330
+3843	12	8240DB004331
+3844	27	8240DB004331
+3845	12	8240DB004339
+3846	27	8240DB004339
+3847	21	8240DB004362
+3848	23	8240DB004362
+3849	28	8240DB004433
+3850	23	8240DB004464
+3851	23	8240DB004489
+3852	23	8240DB004492
+3853	21	8240DB004493
+3854	23	8240DB004493
+3855	21	8240DB004520
+3856	21	8240DB004573
+3857	21	8240DB004574
+3858	21	8240DB004575
+3859	22	8240DB004742
+3860	22	8240DB004743
+3861	22	8240DB004744
+3862	22	8240DB004745
+3863	22	8240DB004746
+3864	21	8240DB004747
+3865	23	8240DB004747
+3866	38	8240DB004765
+3867	38	8240DB004766
+3868	38	8240DB004767
+3869	38	8240DB004768
+3870	38	8240DB004769
+3871	38	8240DB004770
+3872	21	8240DB004825
+3873	26	8240DB004843
+3874	21	8240DB004893
+3875	21	8240DB004894
+3876	21	8240DB004895
+3877	21	8240DB004897
+3878	21	8240DB004898
+3879	22	8240DB004899
+3880	22	8240DB004900
+3881	22	8240DB004901
+3882	22	8240DB004902
+3883	21	8240DB004903
+3884	23	8240DB004903
+3885	26	8240DB004905
+3886	26	8240DB004906
+3887	26	8240DB004907
+3888	26	8240DB004908
+3889	26	8240DB004909
+3890	26	8240DB004910
+3891	26	8240DB004911
+3892	26	8240DB004912
+3893	26	8240DB004913
+3894	26	8240DB004914
+3895	26	8240DB004915
+3896	28	8240DB004923
+3897	28	8240DB004924
+3898	26	8240DB004957
+3899	28	8240DB004958
+3900	22	8240DB004974
+3901	22	8240DB004976
+3902	22	8240DB004980
+3903	22	8240DB004989
+3904	22	8240DB004990
+3905	22	8240DB004991
+3906	22	8240DB004992
+3907	22	8240DB004994
+3908	22	8240DB004995
+3909	22	8240DB004996
+3910	22	8240DB004997
+3911	22	8240DB004998
+3912	22	8240DB004999
+3913	28	8240DB005044
+3914	17	8240DB005053
+3915	20	8240DB005053
+3916	26	8240DB005053
+3917	26	8240DB005073
+3918	26	8240DB005074
+3919	26	8240DB005075
+3920	26	8240DB005076
+3921	26	8240DB005077
+3922	26	8240DB005078
+3923	26	8240DB005079
+3924	27	8240DB005081
+3925	27	8240DB005082
+3926	28	8240DB005084
+3927	28	8240DB005086
+3928	20	8240DB005175
+3929	12	8240DB006010
+3930	20	8240DB006048
+3931	20	8240DB006050
+3932	12	8240DB006051
+3933	27	8240DB006051
+3934	12	8240DB006052
+3935	27	8240DB006052
+3936	12	8240DB006053
+3937	27	8240DB006053
+3938	26	8240DB006054
+3939	28	8240DB006054
+3940	12	8240DB006055
+3941	20	8240DB006076
+3942	20	8240DB006077
+3943	23	8240DB006088
+3944	26	8240DB006117
+3945	28	8240DB006117
+3946	22	8240DB006171
+3947	21	8240DB006172
+3948	23	8240DB006172
+3949	11	8240DB006219
+3950	40	8240DB006219
+3951	42	8240DB006219
+3952	11	8240DB006228
+3953	40	8240DB006228
+3954	42	8240DB006228
+3955	11	8240DB006229
+3956	40	8240DB006229
+3957	42	8240DB006229
+3958	11	8240DB006230
+3959	40	8240DB006230
+3960	42	8240DB006230
+3961	8	8240DB006234
+3962	8	8240DB006235
+3963	12	8240DB006310
+3964	12	8240DB006311
+3965	12	8240DB006312
+3966	25	8240DB006348
+3967	40	8240DB006348
+3968	28	8240DB006359
+3969	11	8240DB006364
+3970	11	8240DB006365
+3971	11	8240DB006366
+3972	23	8240DB007011
+3973	23	8240DB007017
+3974	23	8240DB007018
+3975	23	8240DB007020
+3976	23	8240DB007021
+3977	23	8240DB007025
+3978	23	8240DB007029
+3979	23	8240DB007030
+3980	21	8240DB007031
+3981	23	8240DB007038
+3982	23	8240DB007047
+3983	23	8240DB007048
+3984	11	8240DB007111
+3985	22	8240DB007124
+3986	22	8240DB007125
+3987	22	8240DB007126
+3988	40	8240DB007131
+3989	42	8240DB007131
+3990	25	8240DB007132
+3991	40	8240DB007132
+3992	42	8240DB007132
+3993	23	8240DB007156
+3994	23	8240DB007158
+3995	23	8240DB007159
+3996	23	8240DB007160
+3997	23	8240DB007161
+3998	23	8240DB007162
+3999	23	8240DB007163
+4000	22	8240DB007166
+4001	23	8240DB007166
+4002	38	8240DB007166
+4003	22	8240DB007167
+4004	23	8240DB007167
+4005	38	8240DB007167
+4006	20	8240DB007172
+4007	20	8240DB007173
+4008	20	8240DB007174
+4009	20	8240DB007175
+4010	28	8240DB007189
+4011	12	8240DB007194
+4012	12	8240DB007195
+4013	12	8240DB007196
+4014	12	8240DB007197
+4015	21	8240DB007217
+4016	21	8240DB007218
+4017	21	8240DB007219
+4018	21	8240DB007227
+4019	21	8240DB007233
+4020	23	8240DB007240
+4021	20	8240DB007292
+4022	22	8240DB007319
+4023	12	8240DB007327
+4024	27	8240DB007327
+4025	28	8240DB007328
+4026	28	8240DB007329
+4027	22	8240DB007334
+4028	22	8240DB007342
+4029	22	8240DB007343
+4030	22	8240DB007344
+4031	17	8240DB007347
+4032	26	8240DB007347
+4033	26	8240DB007348
+4034	17	8240DB007349
+4035	26	8240DB007349
+4036	40	8240DB007350
+4037	23	8240DB007374
+4038	21	8240DB007379
+4039	23	8240DB007379
+4040	21	8240DB007380
+4041	22	8240DB007381
+4042	22	8240DB007382
+4043	23	8240DB007388
+4044	38	8240DB007389
+4045	27	8240DB007616
+4046	20	8240DB007690
+4047	12	8240DB007692
+4048	23	8240DB007699
+4049	23	8240DB007700
+4050	24	8250DB000425
+4051	37	8250DB000425
+4052	24	8250DB000426
+4053	37	8250DB000426
+4054	24	8250DB000427
+4055	37	8250DB000427
+4056	24	8250DB000428
+4057	37	8250DB000428
+4058	24	8250DB000429
+4059	37	8250DB000429
+4060	3	8250DB000435
+4061	13	8250DB000435
+4062	30	8250DB000435
+4063	30	8250DB000437
+4064	2	8250DB000441
+4065	2	8250DB000442
+4066	2	8250DB000443
+4067	2	8250DB000444
+4068	3	8250DB000444
+4069	30	8250DB000444
+4070	2	8250DB000445
+4071	3	8250DB000445
+4072	30	8250DB000445
+4073	2	8250DB000447
+4074	3	8250DB000447
+4075	30	8250DB000447
+4076	30	8250DB000448
+4077	2	8250DB000449
+4078	3	8250DB000449
+4079	2	8250DB000450
+4080	3	8250DB000450
+4081	2	8250DB000451
+4082	3	8250DB000451
+4083	30	8250DB000451
+4084	2	8250DB000453
+4085	3	8250DB000453
+4086	30	8250DB000453
+4087	2	8250DB000454
+4088	30	8250DB000459
+4089	30	8250DB000460
+4090	3	8250DB000461
+4091	4	8250DB000461
+4092	13	8250DB000461
+4093	30	8250DB000461
+4094	24	8250DB000469
+4095	37	8250DB000469
+4096	24	8250DB000470
+4097	37	8250DB000470
+4098	24	8250DB000471
+4099	37	8250DB000471
+4100	24	8250DB000472
+4101	37	8250DB000472
+4102	24	8250DB000473
+4103	37	8250DB000473
+4104	24	8250DB000475
+4105	37	8250DB000475
+4106	13	8250DB000767
+4107	3	8250DB000768
+4108	4	8250DB000768
+4109	13	8250DB000768
+4110	30	8250DB000768
+4111	2	8250DB000859
+4112	2	8250DB000860
+4113	2	8250DB000861
+4114	2	8250DB000862
+4115	2	8250DB000875
+4116	2	8250DB000876
+4117	12	8250DB000876
+4118	12	8250DB000877
+4119	2	8250DB000878
+4120	2	8250DB000879
+4121	2	8250DB000880
+4122	33	8250DB001035
+4123	10	8250DB001036
+4124	10	8250DB001037
+4125	10	8250DB001038
+4126	10	8250DB001042
+4127	10	8250DB001043
+4128	10	8250DB001044
+4129	10	8250DB001045
+4130	10	8250DB001046
+4131	10	8250DB001047
+4132	10	8250DB001048
+4133	10	8250DB001049
+4134	10	8250DB001051
+4135	10	8250DB001052
+4136	10	8250DB001053
+4137	10	8250DB001054
+4138	33	8250DB001055
+4139	33	8250DB001281
+4140	33	8250DB001306
+4141	33	8250DB001307
+4142	33	8250DB001308
+4143	33	8250DB001309
+4144	33	8250DB001310
+4145	33	8250DB001311
+4146	33	8250DB001312
+4147	33	8250DB001313
+4148	33	8250DB001314
+4149	33	8250DB001315
+4150	33	8250DB001316
+4151	33	8250DB001317
+4152	33	8250DB001318
+4153	33	8250DB001319
+4154	3	8250DB002007
+4155	13	8250DB002007
+4156	30	8250DB002007
+4157	3	8250DB002008
+4158	13	8250DB002008
+4159	30	8250DB002008
+4160	3	8250DB002009
+4161	13	8250DB002009
+4162	30	8250DB002009
+4163	3	8250DB002010
+4164	13	8250DB002010
+4165	30	8250DB002010
+4166	3	8250DB002011
+4167	30	8250DB002011
+4168	3	8250DB002012
+4169	30	8250DB002012
+4170	13	8250DB002013
+4171	13	8250DB002014
+4172	13	8250DB002015
+4173	13	8250DB002016
+4174	13	8250DB002017
+4175	24	8250DB002026
+4176	37	8250DB002035
+4177	37	8250DB002036
+4178	37	8250DB002040
+4179	37	8250DB002041
+4180	24	8250DB002051
+4181	13	8250DB002060
+4182	13	8250DB002061
+4183	13	8250DB002062
+4184	13	8250DB002063
+4185	4	8250DB002064
+4186	13	8250DB002064
+4187	4	8250DB002065
+4188	13	8250DB002065
+4189	30	8250DB002066
+4190	30	8250DB002067
+4191	3	8250DB002068
+4192	4	8250DB002068
+4193	13	8250DB002068
+4194	30	8250DB002068
+4195	3	8250DB002069
+4196	4	8250DB002069
+4197	13	8250DB002069
+4198	30	8250DB002069
+4199	3	8250DB002070
+4200	4	8250DB002070
+4201	13	8250DB002070
+4202	30	8250DB002070
+4203	30	8250DB002071
+4204	30	8250DB002072
+4205	30	8250DB002073
+4206	30	8250DB002074
+4207	30	8250DB002075
+4208	30	8250DB002076
+4209	30	8250DB002080
+4210	30	8250DB002081
+4211	30	8250DB002082
+4212	30	8250DB002083
+4213	3	8250DB002084
+4214	4	8250DB002084
+4215	13	8250DB002084
+4216	30	8250DB002084
+4217	12	8250DB002818
+4218	29	8250DB002818
+4219	33	8250DB002818
+4220	12	8250DB002819
+4221	29	8250DB002819
+4222	33	8250DB002819
+4223	29	8250DB002820
+4224	33	8250DB002820
+4225	29	8250DB002822
+4226	33	8250DB002822
+4227	29	8250DB002823
+4228	33	8250DB002823
+4229	29	8250DB002824
+4230	10	8250DB002825
+4231	29	8250DB002825
+4232	3	8250DB002829
+4233	29	8250DB002829
+4234	3	8250DB002830
+4235	29	8250DB002830
+4236	3	8250DB002831
+4237	29	8250DB002831
+4238	3	8250DB002832
+4239	29	8250DB002832
+4240	29	8250DB002833
+4241	29	8250DB002835
+4242	29	8250DB002836
+4243	3	8250DB002837
+4244	29	8250DB002837
+4245	3	8250DB002838
+4246	29	8250DB002838
+4247	3	8250DB002839
+4248	29	8250DB002839
+4249	3	8250DB002840
+4250	29	8250DB002840
+4251	29	8250DB002841
+4252	10	8250DB002842
+4253	10	8250DB002843
+4254	10	8250DB002844
+4255	3	8250DB002845
+4256	10	8250DB002845
+4257	3	8250DB002846
+4258	10	8250DB002846
+4259	3	8250DB002847
+4260	10	8250DB002847
+4261	3	8250DB002848
+4262	10	8250DB002848
+4263	3	8250DB002849
+4264	10	8250DB002849
+4265	3	8250DB002850
+4266	10	8250DB002850
+4267	3	8250DB002851
+4268	10	8250DB002851
+4269	3	8250DB002852
+4270	10	8250DB002852
+4271	3	8250DB002853
+4272	10	8250DB002853
+4273	3	8250DB002854
+4274	10	8250DB002854
+4275	3	8250DB002855
+4276	10	8250DB002855
+4277	3	8250DB002856
+4278	10	8250DB002856
+4279	3	8250DB002857
+4280	10	8250DB002857
+4281	3	8250DB002858
+4282	10	8250DB002858
+4283	3	8250DB002859
+4284	10	8250DB002859
+4285	3	8250DB002860
+4286	10	8250DB002860
+4287	3	8250DB002861
+4288	10	8250DB002861
+4289	10	8250DB002862
+4290	10	8250DB002863
+4291	10	8250DB002864
+4292	10	8250DB002865
+4293	29	8250DB002865
+4294	10	8250DB002866
+4295	29	8250DB002866
+4296	33	8250DB002867
+4297	33	8250DB002868
+4298	29	8250DB002892
+4299	33	8250DB002892
+4300	29	8250DB002893
+4301	33	8250DB002893
+4302	29	8250DB002894
+4303	33	8250DB002894
+4304	29	8250DB002895
+4305	33	8250DB002895
+4306	12	8250DB002896
+4307	29	8250DB002896
+4308	33	8250DB002896
+4309	12	8250DB002897
+4310	29	8250DB002897
+4311	33	8250DB002897
+4312	3	8250DB002969
+4313	17	8250DB002969
+4314	3	8250DB002970
+4315	17	8250DB002970
+4316	17	8250DB002971
+4317	17	8250DB002975
+4318	17	8250DB002976
+4319	17	8250DB002977
+4320	3	8250DB002978
+4321	17	8250DB002978
+4322	3	8250DB002979
+4323	17	8250DB002979
+4324	41	8250DB002995
+4325	13	8250DB002996
+4326	10	8250DB002998
+4327	12	8250DB003011
+4328	12	8250DB003012
+4329	2	8250DB003014
+4330	2	8250DB003015
+4331	2	8250DB003016
+4332	2	8250DB003017
+4333	2	8250DB003018
+4334	2	8250DB003019
+4335	2	8250DB003020
+4336	2	8250DB003021
+4337	2	8250DB003022
+4338	2	8250DB003023
+4339	2	8250DB003024
+4340	2	8250DB003025
+4341	2	8250DB003026
+4342	2	8250DB003027
+4343	2	8250DB003028
+4344	2	8250DB003029
+4345	2	8250DB003030
+4346	2	8250DB003031
+4347	37	8250DB003032
+4348	37	8250DB003033
+4349	37	8250DB003034
+4350	37	8250DB003036
+4351	37	8250DB003037
+4352	37	8250DB003038
+4353	37	8250DB003039
+4354	37	8250DB003040
+4355	37	8250DB003041
+4356	37	8250DB003042
+4357	37	8250DB003047
+4358	37	8250DB003068
+4359	37	8250DB003069
+4360	37	8250DB003070
+4361	37	8250DB003071
+4362	37	8250DB003072
+4363	37	8250DB003073
+4364	37	8250DB003074
+4365	37	8250DB003075
+4366	37	8250DB003076
+4367	37	8250DB003077
+4368	41	8250DB003079
+4369	41	8250DB003080
+4370	41	8250DB003081
+4371	41	8250DB003082
+4372	24	8250DB003084
+4373	37	8250DB003084
+4374	24	8250DB003114
+4375	41	8250DB003114
+4376	24	8250DB003115
+4377	41	8250DB003115
+4378	24	8250DB003116
+4379	41	8250DB003116
+4380	41	8250DB003117
+4381	41	8250DB003118
+4382	41	8250DB003119
+4383	41	8250DB003120
+4384	41	8250DB003122
+4385	41	8250DB003123
+4386	41	8250DB003124
+4387	41	8250DB003125
+4388	41	8250DB003126
+4389	41	8250DB003127
+4390	41	8250DB003128
+4391	13	8250DB003129
+4392	13	8250DB003130
+4393	41	8250DB003130
+4394	13	8250DB003131
+4395	41	8250DB003131
+4396	13	8250DB003132
+4397	41	8250DB003132
+4398	13	8250DB003133
+4399	41	8250DB003133
+4400	13	8250DB003134
+4401	41	8250DB003134
+4402	13	8250DB003135
+4403	41	8250DB003135
+4404	13	8250DB003136
+4405	41	8250DB003136
+4406	13	8250DB003138
+4407	41	8250DB003138
+4408	13	8250DB003139
+4409	41	8250DB003139
+4410	13	8250DB003140
+4411	41	8250DB003140
+4412	13	8250DB003141
+4413	41	8250DB003141
+4414	13	8250DB003142
+4415	41	8250DB003142
+4416	13	8250DB003143
+4417	41	8250DB003143
+4418	13	8250DB003144
+4419	41	8250DB003144
+4420	13	8250DB003145
+4421	13	8250DB003146
+4422	41	8250DB003146
+4423	13	8250DB003147
+4424	41	8250DB003147
+4425	13	8250DB003148
+4426	41	8250DB003148
+4427	41	8250DB003149
+4428	41	8250DB003150
+4429	41	8250DB003151
+4430	41	8250DB003152
+4431	41	8250DB003153
+4432	41	8250DB003154
+4433	41	8250DB003155
+4434	41	8250DB003156
+4435	41	8250DB003158
+4436	41	8250DB003159
+4437	41	8250DB003160
+4438	24	8250DB003161
+4439	41	8250DB003161
+4440	24	8250DB003162
+4441	41	8250DB003162
+4442	24	8250DB003163
+4443	41	8250DB003163
+4444	24	8250DB003164
+4445	41	8250DB003164
+4446	2	8250DB003181
+4447	3	8250DB003181
+4448	30	8250DB003181
+4449	3	8250DB003184
+4450	37	8250DB003202
+4451	37	8250DB003203
+4452	37	8250DB003204
+4453	37	8250DB003214
+4454	37	8250DB003215
+4455	37	8250DB003216
+4456	37	8250DB003217
+4457	37	8250DB003218
+4458	37	8250DB003219
+4459	37	8250DB003220
+4460	37	8250DB003224
+4461	37	8250DB003225
+4462	37	8250DB003226
+4463	37	8250DB003227
+4464	37	8250DB003228
+4465	37	8250DB003229
+4466	37	8250DB003238
+4467	37	8250DB003239
+4468	37	8250DB003240
+4469	13	8250DB003258
+4470	13	8250DB003259
+4471	29	8250DB003280
+4472	29	8250DB003282
+4473	4	8250DB003283
+4474	29	8250DB003283
+4475	4	8250DB003284
+4476	29	8250DB003284
+4477	4	8250DB003310
+4478	29	8250DB003310
+4479	4	8250DB003317
+4480	4	8250DB003318
+4481	4	8250DB003320
+4482	3	8250DB003321
+4483	30	8250DB003321
+4484	3	8250DB003322
+4485	30	8250DB003322
+4486	29	8250DB003466
+4487	29	8250DB003467
+4488	29	8250DB003469
+4489	29	8250DB003470
+4490	29	8250DB003471
+4491	30	8250DB003471
+4492	29	8250DB003472
+4493	30	8250DB003472
+4494	29	8250DB003473
+4495	30	8250DB003473
+4496	29	8250DB003474
+4497	29	8250DB003475
+4498	29	8250DB003476
+4499	29	8250DB003477
+4500	29	8250DB003478
+4501	29	8250DB003479
+4502	4	8250DB003481
+4503	29	8250DB003481
+4504	4	8250DB003482
+4505	29	8250DB003482
+4506	4	8250DB003483
+4507	29	8250DB003483
+4508	4	8250DB003484
+4509	29	8250DB003484
+4510	4	8250DB003485
+4511	29	8250DB003485
+4512	30	8250DB003485
+4513	4	8250DB003486
+4514	29	8250DB003486
+4515	30	8250DB003486
+4516	4	8250DB003487
+4517	29	8250DB003487
+4518	30	8250DB003487
+4519	29	8250DB003488
+4520	29	8250DB003489
+4521	29	8250DB003492
+4522	3	8250DB003563
+4523	30	8250DB003563
+4524	29	8250DB004086
+4525	29	8250DB004087
+4526	29	8250DB004088
+4527	29	8250DB004121
+4528	29	8250DB004122
+4529	29	8250DB004123
+4530	13	8250DB004124
+4531	41	8250DB004124
+4532	13	8250DB004125
+4533	41	8250DB004125
+4534	13	8250DB004126
+4535	41	8250DB004126
+4536	13	8250DB004127
+4537	41	8250DB004127
+4538	13	8250DB004128
+4539	41	8250DB004128
+4540	13	8250DB004202
+4541	41	8250DB004202
+4542	13	8250DB004203
+4543	41	8250DB004203
+4544	13	8250DB004204
+4545	41	8250DB004204
+4546	13	8250DB004205
+4547	41	8250DB004205
+4548	13	8250DB004206
+4549	41	8250DB004206
+4550	10	8250DB004333
+4551	10	8250DB004334
+4552	10	8250DB004336
+4553	3	8250DB004349
+4554	3	8250DB004350
+4555	3	8250DB004397
+4556	10	8250DB004397
+4557	2	8250DB004460
+4558	3	8250DB004460
+4559	30	8250DB004460
+4560	2	8250DB004475
+4561	3	8250DB004477
+4562	30	8250DB004477
+4563	10	8250DB004486
+4564	13	8250DB004571
+4565	13	8250DB004636
+4566	24	8250DB004705
+4567	37	8250DB004705
+4568	10	8250DB004707
+4569	10	8250DB004708
+4570	10	8250DB004709
+4571	10	8250DB004710
+4572	10	8250DB004712
+4573	3	8250DB004727
+4574	4	8250DB004727
+4575	13	8250DB004727
+4576	3	8250DB004728
+4577	4	8250DB004728
+4578	13	8250DB004728
+4579	30	8250DB004728
+4580	2	8250DB004779
+4581	3	8250DB004779
+4582	30	8250DB004779
+4583	2	8250DB004847
+4584	3	8250DB004847
+4585	2	8250DB004848
+4586	3	8250DB004848
+4587	30	8250DB004984
+4588	3	8250DB004987
+4589	3	8250DB004988
+4590	30	8250DB005013
+4591	30	8250DB005014
+4592	30	8250DB005015
+4593	30	8250DB005016
+4594	29	8250DB005032
+4595	33	8250DB005032
+4596	2	8250DB005045
+4597	3	8250DB005045
+4598	30	8250DB005045
+4599	37	8250DB005046
+4600	41	8250DB005046
+4601	37	8250DB005047
+4602	41	8250DB005047
+4603	17	8250DB005051
+4604	17	8250DB005052
+4605	13	8250DB005090
+4606	13	8250DB005127
+4607	13	8250DB005128
+4608	30	8250DB005142
+4609	3	8250DB005143
+4610	17	8250DB005171
+4611	24	8250DB006085
+4612	24	8250DB006086
+4613	24	8250DB006334
+4614	2	8250DB007057
+4615	3	8250DB007057
+4616	30	8250DB007057
+4617	29	8250DB007176
+4618	41	8250DB007188
+4619	24	8250DB007226
+4620	30	8250DB007290
+4621	30	8250DB007291
+4622	4	8250DB007325
+4623	30	8250DB007325
+4624	30	8250DB007326
+4625	24	8250DB007330
+4626	13	8250DB007353
+4627	13	8250DB007361
+4628	13	8250DB007362
+4629	29	8250DB007375
+4630	4	8250DB007415
+4631	30	8250DB007415
+4632	4	8250DB007416
+4633	30	8250DB007416
+4634	30	8250DB007417
+4635	30	8250DB007418
+4636	30	8250DB007567
+4637	37	8250DB007639
+4638	41	8250DB007639
+4639	37	8250DB007640
+4640	41	8250DB007640
+4641	37	8250DB007641
+4642	37	8250DB007642
+4643	37	8250DB007643
+4644	37	8250DB007644
+4645	37	8250DB007645
+4646	37	8250DB007646
+4647	24	8250DB007660
+4648	41	8250DB007660
+4649	29	8250DB007716
+4650	29	8250DB007717
+4651	10	8250DB007718
+4652	10	8250DB007719
+4653	10	8250DB007720
+4654	34	8260DB007278
+4655	34	8260DB007280
+4656	34	8260DB007281
+4657	34	8260DB007282
+4658	34	8260DB007283
+4659	34	8260DB007284
+4660	34	8260DB007286
+4661	34	8260DB007287
+4662	34	8260DB007288
+4663	34	8260DB007289
+4664	38	8310DB003328
+4665	38	8310DB003329
+4666	38	8310DB003330
+4667	38	8310DB003331
+4668	38	8310DB003332
+4669	38	8310DB003333
+4670	38	8310DB003334
+4671	38	8310DB003335
+4672	38	8310DB003336
+4673	38	8310DB003337
+4674	38	8310DB003338
+4675	38	8310DB003339
+4676	38	8310DB003351
+4677	38	8310DB003352
+4678	13	8350DB002962
+4679	13	8350DB002963
+4680	13	8350DB002964
+4681	13	8350DB002993
+4682	13	8350DB002994
+4683	13	8350DB002997
+4684	41	8350DB003045
+4685	34	8350DB004011
+4686	34	8350DB004012
+4687	34	8350DB004013
+4688	34	8350DB004014
+4689	34	8350DB004015
+4690	34	8350DB004017
+4691	34	8350DB004018
+4692	34	8350DB004019
+4693	34	8350DB004020
+4694	34	8350DB004021
+4695	34	8350DB004022
+4696	34	8350DB004023
+4697	34	8350DB004024
+4698	34	8350DB004027
+4699	34	8350DB004051
+4700	34	8350DB004052
+4701	34	8350DB004054
+4702	34	8350DB004055
+4703	34	8350DB004056
+4704	34	8350DB004057
+4705	34	8350DB004058
+4706	34	8350DB004059
+4707	34	8350DB004060
+4708	34	8350DB004061
+4709	34	8350DB004062
+4710	34	8350DB004063
+4711	34	8350DB004064
+4712	34	8350DB004065
+4713	34	8350DB004066
+4714	34	8350DB004067
+4715	34	8350DB004068
+4716	29	8350DB004089
+4717	29	8350DB004090
+4718	29	8350DB004091
+4719	29	8350DB004093
+4720	29	8350DB004094
+4721	29	8350DB004095
+4722	34	8350DB004098
+4723	34	8350DB004100
+4724	34	8350DB004101
+4725	34	8350DB004102
+4726	29	8350DB004114
+4727	29	8350DB004115
+4728	29	8350DB004116
+4729	29	8350DB004117
+4730	29	8350DB004118
+4731	29	8350DB004119
+4732	29	8350DB004120
+4733	13	8350DB004129
+4734	41	8350DB004129
+4735	13	8350DB004130
+4736	41	8350DB004130
+4737	13	8350DB004131
+4738	41	8350DB004131
+4739	13	8350DB004132
+4740	41	8350DB004132
+4741	34	8350DB004133
+4742	41	8350DB004134
+4743	41	8350DB004135
+4744	41	8350DB004136
+4745	41	8350DB004148
+4746	41	8350DB004149
+4747	41	8350DB004150
+4748	13	8350DB004151
+4749	41	8350DB004151
+4750	13	8350DB004153
+4751	41	8350DB004153
+4752	13	8350DB004154
+4753	41	8350DB004154
+4754	41	8350DB004156
+4755	41	8350DB004168
+4756	41	8350DB004170
+4757	13	8350DB004171
+4758	13	8350DB004172
+4759	13	8350DB004173
+4760	13	8350DB004175
+4761	13	8350DB004177
+4762	13	8350DB004178
+4763	13	8350DB004179
+4764	13	8350DB004180
+4765	13	8350DB004181
+4766	13	8350DB004182
+4767	13	8350DB004201
+4768	41	8350DB004201
+4769	41	8350DB004207
+4770	41	8350DB004208
+4771	41	8350DB004209
+4772	41	8350DB004210
+4773	41	8350DB004211
+4774	41	8350DB004212
+4775	41	8350DB004213
+4776	41	8350DB004214
+4777	41	8350DB004215
+4778	41	8350DB004216
+4779	41	8350DB004217
+4780	41	8350DB004218
+4781	41	8350DB004219
+4782	41	8350DB004220
+4783	41	8350DB004221
+4784	41	8350DB004222
+4785	41	8350DB004224
+4786	41	8350DB004225
+4787	41	8350DB004226
+4788	41	8350DB004227
+4789	41	8350DB004228
+4790	41	8350DB004229
+4791	41	8350DB004230
+4792	41	8350DB004231
+4793	41	8350DB004246
+4794	41	8350DB004248
+4795	41	8350DB004249
+4796	41	8350DB004250
+4797	41	8350DB004251
+4798	41	8350DB004252
+4799	41	8350DB004253
+4800	41	8350DB004254
+4801	41	8350DB004256
+4802	41	8350DB004257
+4803	41	8350DB004258
+4804	41	8350DB004259
+4805	41	8350DB004260
+4806	41	8350DB004261
+4807	41	8350DB004262
+4808	41	8350DB004263
+4809	41	8350DB004264
+4810	41	8350DB004265
+4811	41	8350DB004266
+4812	41	8350DB004267
+4813	41	8350DB004268
+4814	41	8350DB004269
+4815	41	8350DB004270
+4816	41	8350DB004271
+4817	41	8350DB004273
+4818	41	8350DB004274
+4819	41	8350DB004275
+4820	41	8350DB004276
+4821	41	8350DB004277
+4822	41	8350DB004278
+4823	41	8350DB004279
+4824	41	8350DB004280
+4825	41	8350DB004281
+4826	41	8350DB004282
+4827	41	8350DB004283
+4828	41	8350DB004284
+4829	41	8350DB004285
+4830	41	8350DB004286
+4831	41	8350DB004287
+4832	41	8350DB004288
+4833	41	8350DB004295
+4834	41	8350DB004296
+4835	41	8350DB004297
+4836	41	8350DB004299
+4837	41	8350DB004300
+4838	41	8350DB004301
+4839	41	8350DB004302
+4840	41	8350DB004303
+4841	41	8350DB004304
+4842	41	8350DB004305
+4843	41	8350DB004306
+4844	41	8350DB004307
+4845	41	8350DB004308
+4846	41	8350DB004309
+4847	13	8350DB004416
+4848	41	8350DB004416
+4849	13	8350DB004533
+4850	13	8350DB004844
+4851	41	8350DB004956
+4852	13	8350DB005091
+4853	13	8350DB005092
+4854	34	8350DB005110
+4855	34	8350DB005111
+4856	41	8350DB005135
+4857	41	8350DB005136
+4858	41	8350DB005139
+4859	13	8350DB006000
+4860	29	8350DB006097
+4861	41	8350DB006137
+4862	34	8350DB007207
+4863	34	8350DB007208
+4864	34	8350DB007248
+4865	34	8350DB007249
+4866	34	8350DB007250
+4867	34	8350DB007251
+4868	34	8350DB007252
+4869	34	8350DB007253
+4870	34	8350DB007254
+4871	34	8350DB007255
+4872	34	8350DB007256
+4873	34	8350DB007257
+4874	34	8350DB007258
+4875	34	8350DB007259
+4876	34	8350DB007260
+4877	34	8350DB007261
+4878	34	8350DB007262
+4879	34	8350DB007263
+4880	34	8350DB007264
+4881	34	8350DB007265
+4882	34	8350DB007266
+4883	34	8350DB007268
+4884	34	8350DB007270
+4885	41	8350DB007271
+4886	41	8350DB007272
+4887	13	8350DB007294
+4888	41	8350DB007294
+4889	41	8350DB007296
+4890	41	8350DB007352
+4891	13	8350DB007574
+4892	29	8350DB007823
+4893	29	8350DB007824
+\.
+
+
+--
+-- TOC entry 3485 (class 0 OID 20131)
+-- Dependencies: 232
+-- Data for Name: routes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.routes (id, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 3506 (class 0 OID 0)
 -- Dependencies: 215
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5493,7 +10108,7 @@ SELECT pg_catalog.setval('public.auth_group_id_seq', 1, false);
 
 
 --
--- TOC entry 3457 (class 0 OID 0)
+-- TOC entry 3507 (class 0 OID 0)
 -- Dependencies: 217
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5502,16 +10117,16 @@ SELECT pg_catalog.setval('public.auth_group_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 3458 (class 0 OID 0)
+-- TOC entry 3508 (class 0 OID 0)
 -- Dependencies: 213
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.auth_permission_id_seq', 28, true);
+SELECT pg_catalog.setval('public.auth_permission_id_seq', 40, true);
 
 
 --
--- TOC entry 3459 (class 0 OID 0)
+-- TOC entry 3509 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5520,7 +10135,7 @@ SELECT pg_catalog.setval('public.auth_user_groups_id_seq', 1, false);
 
 
 --
--- TOC entry 3460 (class 0 OID 0)
+-- TOC entry 3510 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5529,7 +10144,7 @@ SELECT pg_catalog.setval('public.auth_user_id_seq', 1, false);
 
 
 --
--- TOC entry 3461 (class 0 OID 0)
+-- TOC entry 3511 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5538,7 +10153,7 @@ SELECT pg_catalog.setval('public.auth_user_user_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 3462 (class 0 OID 0)
+-- TOC entry 3512 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
@@ -5547,25 +10162,43 @@ SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
 
 
 --
--- TOC entry 3463 (class 0 OID 0)
+-- TOC entry 3513 (class 0 OID 0)
 -- Dependencies: 211
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_content_type_id_seq', 7, true);
+SELECT pg_catalog.setval('public.django_content_type_id_seq', 10, true);
 
 
 --
--- TOC entry 3464 (class 0 OID 0)
+-- TOC entry 3514 (class 0 OID 0)
 -- Dependencies: 209
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_migrations_id_seq', 21, true);
+SELECT pg_catalog.setval('public.django_migrations_id_seq', 22, true);
 
 
 --
--- TOC entry 3235 (class 2606 OID 16737)
+-- TOC entry 3515 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: route_connection_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.route_connection_id_seq', 1, false);
+
+
+--
+-- TOC entry 3516 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: route_connections_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.route_connections_id_seq', 4893, true);
+
+
+--
+-- TOC entry 3255 (class 2606 OID 20077)
 -- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5574,7 +10207,7 @@ ALTER TABLE ONLY public.auth_group
 
 
 --
--- TOC entry 3240 (class 2606 OID 16667)
+-- TOC entry 3260 (class 2606 OID 20007)
 -- Name: auth_group_permissions auth_group_permissions_group_id_permission_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5583,7 +10216,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3243 (class 2606 OID 16633)
+-- TOC entry 3263 (class 2606 OID 19973)
 -- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5592,7 +10225,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3237 (class 2606 OID 16624)
+-- TOC entry 3257 (class 2606 OID 19964)
 -- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5601,7 +10234,7 @@ ALTER TABLE ONLY public.auth_group
 
 
 --
--- TOC entry 3230 (class 2606 OID 16658)
+-- TOC entry 3250 (class 2606 OID 19998)
 -- Name: auth_permission auth_permission_content_type_id_codename_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5610,7 +10243,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- TOC entry 3232 (class 2606 OID 16617)
+-- TOC entry 3252 (class 2606 OID 19957)
 -- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5619,7 +10252,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- TOC entry 3251 (class 2606 OID 16649)
+-- TOC entry 3271 (class 2606 OID 19989)
 -- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5628,7 +10261,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3254 (class 2606 OID 16682)
+-- TOC entry 3274 (class 2606 OID 20022)
 -- Name: auth_user_groups auth_user_groups_user_id_group_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5637,7 +10270,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3245 (class 2606 OID 16640)
+-- TOC entry 3265 (class 2606 OID 19980)
 -- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5646,7 +10279,7 @@ ALTER TABLE ONLY public.auth_user
 
 
 --
--- TOC entry 3257 (class 2606 OID 16656)
+-- TOC entry 3277 (class 2606 OID 19996)
 -- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5655,7 +10288,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3260 (class 2606 OID 16696)
+-- TOC entry 3280 (class 2606 OID 20036)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_permission_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5664,7 +10297,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3248 (class 2606 OID 16732)
+-- TOC entry 3268 (class 2606 OID 20072)
 -- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5673,7 +10306,16 @@ ALTER TABLE ONLY public.auth_user
 
 
 --
--- TOC entry 3267 (class 2606 OID 16768)
+-- TOC entry 3287 (class 2606 OID 20083)
+-- Name: bus_routes bus_routes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bus_routes
+    ADD CONSTRAINT bus_routes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3290 (class 2606 OID 20124)
 -- Name: bus_stops bus_stops_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5682,7 +10324,7 @@ ALTER TABLE ONLY public.bus_stops
 
 
 --
--- TOC entry 3263 (class 2606 OID 16718)
+-- TOC entry 3283 (class 2606 OID 20058)
 -- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5691,7 +10333,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- TOC entry 3225 (class 2606 OID 16610)
+-- TOC entry 3245 (class 2606 OID 19950)
 -- Name: django_content_type django_content_type_app_label_model_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5700,7 +10342,7 @@ ALTER TABLE ONLY public.django_content_type
 
 
 --
--- TOC entry 3227 (class 2606 OID 16608)
+-- TOC entry 3247 (class 2606 OID 19948)
 -- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5709,7 +10351,7 @@ ALTER TABLE ONLY public.django_content_type
 
 
 --
--- TOC entry 3223 (class 2606 OID 16601)
+-- TOC entry 3243 (class 2606 OID 19941)
 -- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5718,7 +10360,7 @@ ALTER TABLE ONLY public.django_migrations
 
 
 --
--- TOC entry 3270 (class 2606 OID 16751)
+-- TOC entry 3299 (class 2606 OID 20118)
 -- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5727,7 +10369,34 @@ ALTER TABLE ONLY public.django_session
 
 
 --
--- TOC entry 3233 (class 1259 OID 16738)
+-- TOC entry 3305 (class 2606 OID 20142)
+-- Name: route_connection route_connection_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connection
+    ADD CONSTRAINT route_connection_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3296 (class 2606 OID 20095)
+-- Name: route_connections route_connections_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connections
+    ADD CONSTRAINT route_connections_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3303 (class 2606 OID 20135)
+-- Name: routes routes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.routes
+    ADD CONSTRAINT routes_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3253 (class 1259 OID 20078)
 -- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5735,7 +10404,7 @@ CREATE INDEX auth_group_name_a6ea08ec_like ON public.auth_group USING btree (nam
 
 
 --
--- TOC entry 3238 (class 1259 OID 16678)
+-- TOC entry 3258 (class 1259 OID 20018)
 -- Name: auth_group_permissions_group_id_b120cbf9; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5743,7 +10412,7 @@ CREATE INDEX auth_group_permissions_group_id_b120cbf9 ON public.auth_group_permi
 
 
 --
--- TOC entry 3241 (class 1259 OID 16679)
+-- TOC entry 3261 (class 1259 OID 20019)
 -- Name: auth_group_permissions_permission_id_84c5c92e; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5751,7 +10420,7 @@ CREATE INDEX auth_group_permissions_permission_id_84c5c92e ON public.auth_group_
 
 
 --
--- TOC entry 3228 (class 1259 OID 16664)
+-- TOC entry 3248 (class 1259 OID 20004)
 -- Name: auth_permission_content_type_id_2f476e4b; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5759,7 +10428,7 @@ CREATE INDEX auth_permission_content_type_id_2f476e4b ON public.auth_permission 
 
 
 --
--- TOC entry 3249 (class 1259 OID 16694)
+-- TOC entry 3269 (class 1259 OID 20034)
 -- Name: auth_user_groups_group_id_97559544; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5767,7 +10436,7 @@ CREATE INDEX auth_user_groups_group_id_97559544 ON public.auth_user_groups USING
 
 
 --
--- TOC entry 3252 (class 1259 OID 16693)
+-- TOC entry 3272 (class 1259 OID 20033)
 -- Name: auth_user_groups_user_id_6a12ed8b; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5775,7 +10444,7 @@ CREATE INDEX auth_user_groups_user_id_6a12ed8b ON public.auth_user_groups USING 
 
 
 --
--- TOC entry 3255 (class 1259 OID 16708)
+-- TOC entry 3275 (class 1259 OID 20048)
 -- Name: auth_user_user_permissions_permission_id_1fbb5f2c; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5783,7 +10452,7 @@ CREATE INDEX auth_user_user_permissions_permission_id_1fbb5f2c ON public.auth_us
 
 
 --
--- TOC entry 3258 (class 1259 OID 16707)
+-- TOC entry 3278 (class 1259 OID 20047)
 -- Name: auth_user_user_permissions_user_id_a95ead1b; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5791,7 +10460,7 @@ CREATE INDEX auth_user_user_permissions_user_id_a95ead1b ON public.auth_user_use
 
 
 --
--- TOC entry 3246 (class 1259 OID 16733)
+-- TOC entry 3266 (class 1259 OID 20073)
 -- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5799,7 +10468,15 @@ CREATE INDEX auth_user_username_6821ab7c_like ON public.auth_user USING btree (u
 
 
 --
--- TOC entry 3265 (class 1259 OID 16769)
+-- TOC entry 3285 (class 1259 OID 20096)
+-- Name: bus_routes_id_524164f3_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX bus_routes_id_524164f3_like ON public.bus_routes USING btree (id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3288 (class 1259 OID 20125)
 -- Name: bus_stops_id_83a69f39_like; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5807,7 +10484,7 @@ CREATE INDEX bus_stops_id_83a69f39_like ON public.bus_stops USING btree (id varc
 
 
 --
--- TOC entry 3261 (class 1259 OID 16729)
+-- TOC entry 3281 (class 1259 OID 20069)
 -- Name: django_admin_log_content_type_id_c4bce8eb; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5815,7 +10492,7 @@ CREATE INDEX django_admin_log_content_type_id_c4bce8eb ON public.django_admin_lo
 
 
 --
--- TOC entry 3264 (class 1259 OID 16730)
+-- TOC entry 3284 (class 1259 OID 20070)
 -- Name: django_admin_log_user_id_c564eba6; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5823,7 +10500,7 @@ CREATE INDEX django_admin_log_user_id_c564eba6 ON public.django_admin_log USING 
 
 
 --
--- TOC entry 3268 (class 1259 OID 16753)
+-- TOC entry 3297 (class 1259 OID 20120)
 -- Name: django_session_expire_date_a5c62663; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5831,7 +10508,7 @@ CREATE INDEX django_session_expire_date_a5c62663 ON public.django_session USING 
 
 
 --
--- TOC entry 3271 (class 1259 OID 16752)
+-- TOC entry 3300 (class 1259 OID 20119)
 -- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: postgres
 --
 
@@ -5839,7 +10516,79 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 
 
 --
--- TOC entry 3274 (class 2606 OID 16673)
+-- TOC entry 3306 (class 1259 OID 20154)
+-- Name: route_connection_routes_id_2d2256d4; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connection_routes_id_2d2256d4 ON public.route_connection USING btree (routes_id);
+
+
+--
+-- TOC entry 3307 (class 1259 OID 20155)
+-- Name: route_connection_routes_id_2d2256d4_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connection_routes_id_2d2256d4_like ON public.route_connection USING btree (routes_id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3308 (class 1259 OID 20156)
+-- Name: route_connection_stops_id_5971a9f5; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connection_stops_id_5971a9f5 ON public.route_connection USING btree (stops_id);
+
+
+--
+-- TOC entry 3309 (class 1259 OID 20157)
+-- Name: route_connection_stops_id_5971a9f5_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connection_stops_id_5971a9f5_like ON public.route_connection USING btree (stops_id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3291 (class 1259 OID 20108)
+-- Name: route_connections_bus_route_id_4b49aefa; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connections_bus_route_id_4b49aefa ON public.route_connections USING btree (bus_route_id);
+
+
+--
+-- TOC entry 3292 (class 1259 OID 20109)
+-- Name: route_connections_bus_route_id_4b49aefa_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connections_bus_route_id_4b49aefa_like ON public.route_connections USING btree (bus_route_id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3293 (class 1259 OID 20110)
+-- Name: route_connections_bus_stop_id_7b577cdf; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connections_bus_stop_id_7b577cdf ON public.route_connections USING btree (bus_stop_id);
+
+
+--
+-- TOC entry 3294 (class 1259 OID 20111)
+-- Name: route_connections_bus_stop_id_7b577cdf_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX route_connections_bus_stop_id_7b577cdf_like ON public.route_connections USING btree (bus_stop_id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3301 (class 1259 OID 20143)
+-- Name: routes_id_3e93b7c0_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX routes_id_3e93b7c0_like ON public.routes USING btree (id varchar_pattern_ops);
+
+
+--
+-- TOC entry 3312 (class 2606 OID 20013)
 -- Name: auth_group_permissions auth_group_permissio_permission_id_84c5c92e_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5848,7 +10597,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3273 (class 2606 OID 16668)
+-- TOC entry 3311 (class 2606 OID 20008)
 -- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5857,7 +10606,7 @@ ALTER TABLE ONLY public.auth_group_permissions
 
 
 --
--- TOC entry 3272 (class 2606 OID 16659)
+-- TOC entry 3310 (class 2606 OID 19999)
 -- Name: auth_permission auth_permission_content_type_id_2f476e4b_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5866,7 +10615,7 @@ ALTER TABLE ONLY public.auth_permission
 
 
 --
--- TOC entry 3276 (class 2606 OID 16688)
+-- TOC entry 3314 (class 2606 OID 20028)
 -- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5875,7 +10624,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3275 (class 2606 OID 16683)
+-- TOC entry 3313 (class 2606 OID 20023)
 -- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5884,7 +10633,7 @@ ALTER TABLE ONLY public.auth_user_groups
 
 
 --
--- TOC entry 3278 (class 2606 OID 16702)
+-- TOC entry 3316 (class 2606 OID 20042)
 -- Name: auth_user_user_permissions auth_user_user_permi_permission_id_1fbb5f2c_fk_auth_perm; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5893,7 +10642,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3277 (class 2606 OID 16697)
+-- TOC entry 3315 (class 2606 OID 20037)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5902,7 +10651,7 @@ ALTER TABLE ONLY public.auth_user_user_permissions
 
 
 --
--- TOC entry 3279 (class 2606 OID 16719)
+-- TOC entry 3317 (class 2606 OID 20059)
 -- Name: django_admin_log django_admin_log_content_type_id_c4bce8eb_fk_django_co; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5911,7 +10660,7 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- TOC entry 3280 (class 2606 OID 16724)
+-- TOC entry 3318 (class 2606 OID 20064)
 -- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -5919,7 +10668,43 @@ ALTER TABLE ONLY public.django_admin_log
     ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES public.auth_user(id) DEFERRABLE INITIALLY DEFERRED;
 
 
--- Completed on 2022-06-26 11:35:16
+--
+-- TOC entry 3321 (class 2606 OID 20144)
+-- Name: route_connection route_connection_routes_id_2d2256d4_fk_routes_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connection
+    ADD CONSTRAINT route_connection_routes_id_2d2256d4_fk_routes_id FOREIGN KEY (routes_id) REFERENCES public.routes(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 3322 (class 2606 OID 20149)
+-- Name: route_connection route_connection_stops_id_5971a9f5_fk_bus_stops_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connection
+    ADD CONSTRAINT route_connection_stops_id_5971a9f5_fk_bus_stops_id FOREIGN KEY (stops_id) REFERENCES public.bus_stops(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 3319 (class 2606 OID 20098)
+-- Name: route_connections route_connections_bus_route_id_4b49aefa_fk_bus_routes_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connections
+    ADD CONSTRAINT route_connections_bus_route_id_4b49aefa_fk_bus_routes_id FOREIGN KEY (bus_route_id) REFERENCES public.bus_routes(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 3320 (class 2606 OID 20126)
+-- Name: route_connections route_connections_bus_stop_id_7b577cdf_fk_bus_stops_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.route_connections
+    ADD CONSTRAINT route_connections_bus_stop_id_7b577cdf_fk_bus_stops_id FOREIGN KEY (bus_stop_id) REFERENCES public.bus_stops(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+-- Completed on 2022-07-09 11:54:32
 
 --
 -- PostgreSQL database dump complete
