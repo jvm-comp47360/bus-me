@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-=======
-import {Dispatch, SetStateAction, useState} from 'react';
->>>>>>> development
 
 import {Box} from '@mui/material';
 
@@ -30,7 +26,6 @@ const DisplayPanel = ({
   directions,
   setPrediction,
 }: Props): JSX.Element => {
-<<<<<<< HEAD
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>()
 
@@ -46,8 +41,6 @@ const DisplayPanel = ({
       .then(setWeather)
       .catch((error) => console.log(error));
   }, [])
-=======
->>>>>>> development
 
   return <Box sx={{position: 'relative', zIndex: 0}}>
     {(weather) ? <WeatherCard weather={weather}/> : null}
