@@ -47,7 +47,6 @@ describe('<ControlPanel/> Default rendering', () => {
     fetchMock.resetMocks();
   })
 
-
   it('should show route dropdown', () => {
     expect.assertions(1);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
