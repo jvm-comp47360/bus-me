@@ -11,9 +11,13 @@ import BusRoute from '../../types/BusRoute';
 import {UserEvent} from "@testing-library/user-event/dist/types/setup";
 import userEvent from "@testing-library/user-event";
 
+import {enableFetchMocks} from 'jest-fetch-mock';
+
 const MOCK_CURRENT_ROUTE: BusRoute = MOCK_BUS_ROUTES[0];
 const MOCK_START_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][0];
 const MOCK_FINISH_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][1];
+
+enableFetchMocks();
 
 const setup = (startSelection: BusStop | undefined,
     finishSelection: BusStop | undefined,
@@ -40,8 +44,14 @@ const clickToggleButton = async () => {
 }
 
 describe('<ControlPanel/> Default rendering', () => {
+  beforeEach(() => {
+    fetchMock.resetMocks();
+  })
+
   it('should show route dropdown', () => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
@@ -49,6 +59,8 @@ describe('<ControlPanel/> Default rendering', () => {
 
   it('should not show station dropdowns', () => {
     expect.assertions(2);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
@@ -57,6 +69,8 @@ describe('<ControlPanel/> Default rendering', () => {
 
   it('should not show datetime dropdown', () => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.queryByRole('textbox', {name: /choose date/i}))
@@ -65,6 +79,8 @@ describe('<ControlPanel/> Default rendering', () => {
 
   it('should not show submit button', () => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
@@ -72,6 +88,8 @@ describe('<ControlPanel/> Default rendering', () => {
 
   it('should show toggle button', () => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
@@ -87,6 +105,8 @@ describe('<ControlPanel/> Default rendering', () => {
 describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be disabled by default', () => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(undefined, undefined, undefined);
 
     expect(screen.getByRole('button', {name: /busme!/i}))
@@ -96,6 +116,8 @@ describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be enabled when dropdowns are filled in', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
 
     expect(screen.getByRole('button', {name: /busme!/i}))
         .not.toHaveClass('Mui-disabled');
@@ -106,6 +128,8 @@ describe('<ControlPanel/> Toggle button functionality',() => {
   it('should have a new title after being clicked',
     async (): Promise<void> => {
     expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
     await clickToggleButton();
@@ -116,6 +140,8 @@ describe('<ControlPanel/> Toggle button functionality',() => {
   it('should display the station dropdowns after being clicked',
     async (): Promise<void> => {
       expect.assertions(2);
+      fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
       setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
       await clickToggleButton();
@@ -127,6 +153,8 @@ describe('<ControlPanel/> Toggle button functionality',() => {
   it('should display the datetime dropdown after being clicked',
     async (): Promise<void> => {
       expect.assertions(1);
+      fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
       setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
       await clickToggleButton();

@@ -1,10 +1,9 @@
 // React
-import {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
-import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
@@ -38,7 +37,22 @@ const ControlPanel = ({
   setPrediction,
   setDirections,
 }: Props): JSX.Element => {
-  const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
+
+  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
+
+  useEffect(() => {
+    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+      .then((response) => {
+        if (response.ok) {
+          return response.json() as Promise<BusRoute[]>;
+        } else {
+          throw new Error();
+        }
+      })
+      .then(setBusRoutes)
+      .catch((error) => console.log(error));
+  }, [])
+
 
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
