@@ -26,18 +26,18 @@ interface Props {
 }
 
 const ControlPanel = ({
-  startSelection,
-  setStartSelection,
-  finishSelection,
-  setFinishSelection,
-  routeSelection,
-  setRouteSelection,
-  setPrediction,
-}: Props): JSX.Element => {
+                        startSelection,
+                        setStartSelection,
+                        finishSelection,
+                        setFinishSelection,
+                        routeSelection,
+                        setRouteSelection,
+                        setPrediction,
+                      }: Props): JSX.Element => {
   const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
 
   const [dateTimeSelection, setDateTimeSelection] =
-      useState<Date | undefined>(new Date());
+    useState<Date | undefined>(new Date());
 
   const [checked, setChecked] = useState(false);
 
@@ -59,8 +59,8 @@ const ControlPanel = ({
   // Submit Button helper functions
   const submitDisableHandler = (): boolean =>
     routeSelection === undefined ||
-      startSelection === undefined ||
-      finishSelection === undefined;
+    startSelection === undefined ||
+    finishSelection === undefined;
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
