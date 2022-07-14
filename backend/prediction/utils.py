@@ -8,9 +8,11 @@ from django.conf import settings
 
 def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, float]:
     """Return dictionary containing prediction given the input variables"""
+    current_file_directory = os.path.dirname(os.path.realpath(__file__))
+    print(current_file_directory)
 
-    time_stops_file_path = os.path.join(settings.BASE_DIR, 'LINE_TIME_STOPS.pickle')
-    pickle_directory_file_path = os.path.join(settings.BASE_DIR, 'LINE_Model')
+    time_stops_file_path = os.path.join(current_file_directory, '../LINE_TIME_STOPS.pickle')
+    pickle_directory_file_path = os.path.join(current_file_directory, '../LINE_Model')
 
     line_time_stops_pickle = pickle.load(open(time_stops_file_path, 'rb'))
 
