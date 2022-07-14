@@ -1,15 +1,18 @@
-import {useLoadScript, GoogleMap, Marker} from '@react-google-maps/api';
-import {useMemo} from 'react';
+import {useLoadScript, DirectionsRenderer, DirectionsService, GoogleMap} from '@react-google-maps/api';
+import {Dispatch, SetStateAction, useMemo} from 'react';
 import {Container} from '@mui/material';
 
 import BusStop from '../../../types/BusStop';
 
+type DirectionsResult = google.maps.DirectionsResult;
+
 interface Props {
   startSelection: BusStop | undefined,
   finishSelection: BusStop | undefined,
-}
+  directions: DirectionsResult | null,
+};
 
-const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
+const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
@@ -41,15 +44,8 @@ const Map = ({startSelection, finishSelection}: Props): JSX.Element => {
         center={centerCoords}
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
-        {(startSelection) && (finishSelection) ?
-            [startSelection, finishSelection].map((selection) =>
-              <Marker
-                key={selection.number}
-                position={{
-                  lat: +selection.latitude,
-                  lng: +selection.longitude,
-                }}/>
-            ):
+        {(directions) ?
+        <DirectionsRenderer directions={directions}/>:
         null}
       </GoogleMap>
     </Container>;

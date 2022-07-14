@@ -7,6 +7,7 @@ import {Autocomplete, AutocompleteRenderInputParams, TextField}
 
 // Types
 import BusRoute from '../../../types/BusRoute';
+import busRoute from "../../../types/BusRoute";
 
 interface Props {
   busRoutes: BusRoute[];
@@ -27,11 +28,22 @@ const BusRouteDropdown = ({busRoutes,
     }
   };
 
+  // Source: https://stackoverflow.com/questions/2802341/javascript-natural-sort-of-alphanumerical-strings
+  const sortBusRoutes = (busRoutes: BusRoute[]): BusRoute[] => {
+    return busRoutes.sort((a: BusRoute, b: BusRoute) => {
+      return a.name.localeCompare(b.name, undefined, {
+        numeric: true,
+        sensitivity: 'base'
+      });
+    });
+  };
+
   return <>
     <Autocomplete
       disableClearable={true}
-      getOptionLabel={(option: BusRoute) => option.name}
-      options={busRoutes}
+      getOptionLabel={(option: BusRoute) =>
+        `${option.name} (${option.bus_stops[0]['name']} to ${option.bus_stops[option.bus_stops.length - 1]['name']})`}
+      options={sortBusRoutes(busRoutes)}
       onChange={changeHandler}
       sx={{width: 300}}
       renderInput={(params: AutocompleteRenderInputParams) =>

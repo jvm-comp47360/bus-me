@@ -1,10 +1,9 @@
 // React
-import {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
-import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
@@ -14,6 +13,8 @@ import {DateTimePicker} from '@mui/x-date-pickers';
 // Types
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -23,18 +24,34 @@ interface Props {
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>
   setPrediction: Dispatch<SetStateAction<number | undefined>>
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>
 }
 
 const ControlPanel = ({
-                        startSelection,
-                        setStartSelection,
-                        finishSelection,
-                        setFinishSelection,
-                        routeSelection,
-                        setRouteSelection,
-                        setPrediction,
-                      }: Props): JSX.Element => {
-  const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
+  startSelection,
+  setStartSelection,
+  finishSelection,
+  setFinishSelection,
+  routeSelection,
+  setRouteSelection,
+  setPrediction,
+  setDirections,
+}: Props): JSX.Element => {
+
+  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
+
+  useEffect(() => {
+    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+      .then((response) => {
+        if (response.ok) {
+          return response.json() as Promise<BusRoute[]>;
+        } else {
+          throw new Error();
+        }
+      })
+      .then(setBusRoutes)
+      .catch((error) => console.log(error));
+  }, [])
 
   const [dateTimeSelection, setDateTimeSelection] =
     useState<Date | undefined>(new Date());
@@ -84,21 +101,34 @@ const ControlPanel = ({
       )
   };
 
-  const getSeconds = (date: Date | undefined) => {
-    if (!date) {
-      return;
+  const showRouteClickHandler = () => {
+    if (startSelection && finishSelection) {
+    const userDirectionsRequest: google.maps.DirectionsRequest = {
+      origin: {
+        lat: +startSelection.latitude,
+        lng: +startSelection.longitude
+      },
+      destination: {
+        lat: +finishSelection.latitude,
+        lng: +finishSelection.longitude,
+      },
+      travelMode: google.maps.TravelMode.TRANSIT,
+      transitOptions: {
+        modes: [google.maps.TransitMode.BUS]
+      }
+    };
+    const directionsServiceCallback = (
+      response: DirectionsResult | null,
+      status: DirectionsStatus,
+    ) => {
+      if (response && status === 'OK') { // response was state of directions
+        setDirections(response);
+      }
+    };
+    const service = new google.maps.DirectionsService();
+    service.route(userDirectionsRequest, directionsServiceCallback);
     }
-    const minutes = date.getMinutes();
-    const hours = date.getHours();
-    return ((60 * hours) + minutes) * 60;
-  }
-
-  const formatCoords = (busStop: BusStop | undefined) => {
-    if (!busStop) {
-      return;
-    }
-    return `${busStop.latitude},${busStop.longitude}`;
-  }
+  };
 
   return <Box
     display={'flex'}
@@ -152,6 +182,15 @@ const ControlPanel = ({
       sx={{margin: 1}}
     >
       BusMe!
+    </Button>
+
+    <Button
+      variant={'contained'}
+      onClick={showRouteClickHandler}
+      style={{maxWidth: '30%'}}
+      sx={{margin: 1}}
+    >
+      Show Route!
     </Button>
   </Box>;
 };
