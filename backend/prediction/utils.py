@@ -14,11 +14,18 @@ line_time_stops_pickle = pickle.load(open(time_stops_file_path, 'rb'))
 def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, float]:
     """Return dictionary containing prediction given the input variables"""
 
+    print(time_stops_file_path)
+    print(pickle_directory_file_path)
+
     # Search pickle file to get the line relate data
     df = line_time_stops_pickle[line_time_stops_pickle['LINEID'] == str(route)]
 
+    print(df)
+
     # Search the most close PLANNED_DURATION index
     planned_duration_index = np.searchsorted(df['PLANNEDTIME_ARR'], time, side='right')
+
+    print(planned_duration_index)
 
     # Get the PLANNED_DURATION according to index
     planned_duration = df.iloc[planned_duration_index]['PLANNED_DURATION']
