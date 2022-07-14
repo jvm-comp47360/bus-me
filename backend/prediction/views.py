@@ -9,11 +9,11 @@ class PredictionAPIView(APIView):
     serializer_class = PredictionSerializer
 
     def post(self, request):
-        start_coords = request.data.get('start_coords')
-        finish_coords = request.data.get('finish_coords')
+        route = request.data.get('route')
+        num_stops_segment = request.data.get('num_stops_segment')
         time = request.data.get('time')
 
-        prediction = get_prediction(start_coords, finish_coords, time)
+        prediction = get_prediction(route, num_stops_segment, time)
         serializer = PredictionSerializer(data=prediction)
 
         serializer.is_valid(True)

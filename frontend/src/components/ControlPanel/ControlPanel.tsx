@@ -53,9 +53,8 @@ const ControlPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
-
   const [dateTimeSelection, setDateTimeSelection] =
-      useState<Date | undefined>(new Date());
+    useState<Date | undefined>(new Date());
 
   const [checked, setChecked] = useState(false);
 
@@ -77,8 +76,8 @@ const ControlPanel = ({
   // Submit Button helper functions
   const submitDisableHandler = (): boolean =>
     routeSelection === undefined ||
-      startSelection === undefined ||
-      finishSelection === undefined;
+    startSelection === undefined ||
+    finishSelection === undefined;
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
@@ -86,12 +85,20 @@ const ControlPanel = ({
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
-    console.log(routeSelection,
-        startSelection,
-        finishSelection,
-        dateTimeSelection,
-    );
-    setPrediction(35.0);
+    const submission = {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        route: routeSelection,
+        start_coords: formatCoords(startSelection),
+        finish_coords: formatCoords(finishSelection),
+        time: getSeconds(dateTimeSelection),
+      })
+    };
+    fetch('http://localhost:8000/api/prediction/', submission)
+      .then(response => response.json())
+      .then(data => setPrediction(Math.round(data["prediction"] * 10) / 10)
+      )
   };
 
   const showRouteClickHandler = () => {
