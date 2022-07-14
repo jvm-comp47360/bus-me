@@ -1,9 +1,10 @@
 // React
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
+import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 // Material UI
 import Button from '@mui/material/Button';
@@ -28,30 +29,16 @@ interface Props {
 }
 
 const ControlPanel = ({
-  startSelection,
-  setStartSelection,
-  finishSelection,
-  setFinishSelection,
-  routeSelection,
-  setRouteSelection,
-  setPrediction,
-  setDirections,
-}: Props): JSX.Element => {
-
-  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
-
-  useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
-      .then((response) => {
-        if (response.ok) {
-          return response.json() as Promise<BusRoute[]>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setBusRoutes)
-      .catch((error) => console.log(error));
-  }, [])
+                        startSelection,
+                        setStartSelection,
+                        finishSelection,
+                        setFinishSelection,
+                        routeSelection,
+                        setRouteSelection,
+                        setPrediction,
+                        setDirections,
+                      }: Props): JSX.Element => {
+  const busRoutes: BusRoute[] = MOCK_BUS_ROUTES;
 
   const [dateTimeSelection, setDateTimeSelection] =
     useState<Date | undefined>(new Date());
@@ -85,48 +72,40 @@ const ControlPanel = ({
 
   // This is where the POST API call will go.
   const submitClickHandler = () => {
-    const submission = {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        route: routeSelection,
-        start_coords: formatCoords(startSelection),
-        finish_coords: formatCoords(finishSelection),
-        time: getSeconds(dateTimeSelection),
-      })
-    };
-    fetch('http://localhost:8000/api/prediction/', submission)
-      .then(response => response.json())
-      .then(data => setPrediction(Math.round(data["prediction"] * 10) / 10)
-      )
+    console.log(routeSelection,
+      startSelection,
+      finishSelection,
+      dateTimeSelection,
+    );
+    setPrediction(35.0);
   };
 
   const showRouteClickHandler = () => {
     if (startSelection && finishSelection) {
-    const userDirectionsRequest: google.maps.DirectionsRequest = {
-      origin: {
-        lat: +startSelection.latitude,
-        lng: +startSelection.longitude
-      },
-      destination: {
-        lat: +finishSelection.latitude,
-        lng: +finishSelection.longitude,
-      },
-      travelMode: google.maps.TravelMode.TRANSIT,
-      transitOptions: {
-        modes: [google.maps.TransitMode.BUS]
-      }
-    };
-    const directionsServiceCallback = (
-      response: DirectionsResult | null,
-      status: DirectionsStatus,
-    ) => {
-      if (response && status === 'OK') { // response was state of directions
-        setDirections(response);
-      }
-    };
-    const service = new google.maps.DirectionsService();
-    service.route(userDirectionsRequest, directionsServiceCallback);
+      const userDirectionsRequest: google.maps.DirectionsRequest = {
+        origin: {
+          lat: +startSelection.latitude,
+          lng: +startSelection.longitude
+        },
+        destination: {
+          lat: +finishSelection.latitude,
+          lng: +finishSelection.longitude,
+        },
+        travelMode: google.maps.TravelMode.TRANSIT,
+        transitOptions: {
+          modes: [google.maps.TransitMode.BUS]
+        }
+      };
+      const directionsServiceCallback = (
+        response: DirectionsResult | null,
+        status: DirectionsStatus,
+      ) => {
+        if (response && status === 'OK') { // response was state of directions
+          setDirections(response);
+        }
+      };
+      const service = new google.maps.DirectionsService();
+      service.route(userDirectionsRequest, directionsServiceCallback);
     }
   };
 
