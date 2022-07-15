@@ -21,6 +21,7 @@ const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element 
     lng: -6.248868208190408,
   }), []);
   const mapOptions: google.maps.MapOptions = useMemo(() => ({
+    mapId: "5a13c1894ab64113",
     streetViewControl: false,
     mapTypeControl: false,
     clickableIcons: false,
@@ -45,7 +46,15 @@ const Map = ({startSelection, finishSelection, directions}: Props): JSX.Element 
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         {(directions) ?
-        <DirectionsRenderer directions={directions}/>:
+        <DirectionsRenderer 
+          directions={directions}
+          options={{
+            polylineOptions: {
+              strokeColor: "#002984",
+              strokeWeight: 5,
+              strokeOpacity: 0.75,
+            }
+          }}/>:
         null}
       </GoogleMap>
     </Container>;
