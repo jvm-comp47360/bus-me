@@ -106,7 +106,8 @@ const ControlPanel = ({
         },
         travelMode: google.maps.TravelMode.TRANSIT,
         transitOptions: {
-          modes: [google.maps.TransitMode.BUS]
+          modes: [google.maps.TransitMode.BUS],
+          routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
         }
       };
       const directionsServiceCallback = (
