@@ -8,10 +8,11 @@ from .utils import get_prediction
 class PredictionAPIView(APIView):
     serializer_class = PredictionSerializer
 
-    def post(self, request):
-        route = request.data.get('route')
-        num_stops_segment = request.data.get('num_stops_segment')
-        time = request.data.get('time')
+    def get(self, request, route, num_stops_segment, time):
+        # print(request)
+        # route = request.GET['route']
+        # num_stops_segment = request.GET['num_stops_segment']
+        # time = request.get['time']
 
         prediction = get_prediction(route, num_stops_segment, time)
         serializer = PredictionSerializer(data=prediction)

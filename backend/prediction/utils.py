@@ -3,26 +3,23 @@ import pandas as pd
 import numpy as np
 import pickle
 import os
-from django.conf import settings
 
 
 def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, float]:
     """Return dictionary containing prediction given the input variables"""
     current_file_directory = os.path.dirname(os.path.realpath(__file__))
-    print(current_file_directory)
 
-    time_stops_file_path = os.path.join(current_file_directory, '../LINE_TIME_STOPS.pickle')
-    pickle_directory_file_path = os.path.join(current_file_directory, '../LINE_Model')
+    print(f"The route is {route}")
+    print(f"The segments are {num_stops_segment}")
+    print(f"The time is {time}")
+
+    time_stops_file_path = os.path.join(current_file_directory, 'Models/LINE_TIME_STOPS.pickle')
+    pickle_directory_file_path = os.path.join(current_file_directory, 'Models/LINE_Model')
 
     line_time_stops_pickle = pickle.load(open(time_stops_file_path, 'rb'))
 
-    print(time_stops_file_path)
-    print(pickle_directory_file_path)
-
     # Search pickle file to get the line relate data
     df = line_time_stops_pickle[line_time_stops_pickle['LINEID'] == str(route)]
-
-    print(df)
 
     # Search the most close PLANNED_DURATION index
     planned_duration_index = np.searchsorted(df['PLANNEDTIME_ARR'], time, side='right')
