@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('prediction/', views.PredictionAPIView.as_view()),
+    path('prediction/<str:route>/<str:num_stops_segment>/<str:time>', views.PredictionAPIView.as_view()),
 ]
