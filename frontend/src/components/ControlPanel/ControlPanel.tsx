@@ -83,14 +83,42 @@ const ControlPanel = ({
     setChecked((prev) => !prev);
   };
 
+  const getSeconds = (date: Date) => {
+    const minutes = date.getMinutes();
+    const hours = date.getHours();
+    return ((60 * hours) + minutes) * 60;
+  }
+
+  const getNumStopsSegment = (routeSelection: BusRoute, startSelection: BusStop, finishSelection: BusStop): number => {
+    const start_stop_number = routeSelection.bus_stops.indexOf(startSelection)
+    const finish_stop_number = routeSelection.bus_stops.indexOf(finishSelection)
+    return Math.abs(finish_stop_number - start_stop_number);
+
+  }
+
   // This is where the POST API call will go.
   const submitClickHandler = () => {
-    console.log(routeSelection,
-      startSelection,
-      finishSelection,
-      dateTimeSelection,
-    );
-    setPrediction(35.0);
+    if (routeSelection === undefined || dateTimeSelection === undefined ||
+      startSelection === undefined || finishSelection === undefined) {
+      return;
+    }
+    const route: string = routeSelection.name
+    const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
+    const time: string = getSeconds(dateTimeSelection).toString()
+
+    fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error();
+        }
+      })
+      .then((data) => {
+        const prediction: number = Math.round(data['prediction'] * 10) / 10
+        setPrediction(prediction)
+      })
+      .catch((error) => console.log(error));
   };
 
   const showRouteClickHandler = () => {
