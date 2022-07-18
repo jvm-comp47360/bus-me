@@ -16,16 +16,27 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 OpenWeatherAPI_KEY = os.getenv("OpenWeatherAPI_KEY")
 OpenWeatherAPI_URL = "https://api.openweathermap.org/data/2.5/weather?lat={}&lon={}&appid={}"
 
+partialCloudsIcons = ['03d', '03n', '02n', '02d']
+
+
+def get_weather(icon, weather_response):
+    if icon in partialCloudsIcons:
+        return 'Partial Clouds'
+    else:
+        return weather_response.json()['weather'][0]['main']
+
 
 # Static function for pulling information from OpenWeather API into JSON object
 def pull_current_weather_from_api() -> Dict[str, str]:
     lat = 53.33947559137039
     lon = -6.248868208190408
+
     weather_response = requests.get(OpenWeatherAPI_URL.format(lat, lon, OpenWeatherAPI_KEY))
     icon = weather_response.json()['weather'][0]['icon']
     date = get_current_date()
-    weather = weather_response.json()['weather'][0]['main']
+    weather = get_weather(icon, weather_response)
     temperature = get_current_temperature(weather_response.json()['main']['temp'])
+
     return {"icon": icon, "date": date, "weatherText": weather, "temperature": temperature}
 
 
