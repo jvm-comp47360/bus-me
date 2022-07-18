@@ -1,5 +1,5 @@
-import {useLoadScript, DirectionsRenderer, DirectionsService, GoogleMap} from '@react-google-maps/api';
-import {Dispatch, SetStateAction, useMemo} from 'react';
+import {useLoadScript, DirectionsRenderer, GoogleMap} from '@react-google-maps/api';
+import {useMemo} from 'react';
 import {Container} from '@mui/material';
 
 import BusStop from '../../../types/BusStop';

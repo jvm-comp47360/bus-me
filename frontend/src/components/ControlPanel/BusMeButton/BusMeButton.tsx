@@ -1,14 +1,12 @@
 // React
 import React, {Dispatch, SetStateAction} from 'react';
 
-// Material UI
-import {Autocomplete, AutocompleteRenderInputParams, TextField, TextFieldProps}
-    from '@mui/material';
-
 // Props
 import Button from '@mui/material/Button';
 import BusRoute from '../../../types/BusRoute';
 import BusStop from '../../../types/BusStop';
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
     routeSelection: BusRoute | undefined;
@@ -57,21 +55,39 @@ const BusMeButton = ({routeSelection,
     const getFallbackPrediction = (route: string,
                                             startSelection: BusStop,
                                             finishSelection: BusStop) => {
-        const startCoords = `${startSelection.latitude},${startSelection.longitude}`
-        const finishCoords = `${finishSelection.latitude},${finishSelection.longitude}`
-        const googleMapsUrl = `https://maps.googleapis.com/maps/api/directions/json?
-                                origin=${startCoords}&
-                                destination=${finishCoords}&
-                                mode=transit&
-                                transit_mode=bus&
-                                key=${process.env.REACT_APP_GOOGLE_KEY}`
 
-        // @ts-ignore
-        fetch(googleMapsUrl).then((response) => console.log(response[0]['transit_details']['departure_time']['text']))
+        const userDirectionsRequest: google.maps.DirectionsRequest = {
+            origin: {
+                lat: +startSelection.latitude,
+                lng: +startSelection.longitude
+            },
+            destination: {
+                lat: +finishSelection.latitude,
+                lng: +finishSelection.longitude,
+            },
+            travelMode: google.maps.TravelMode.TRANSIT,
+            transitOptions: {
+                modes: [google.maps.TransitMode.BUS],
+                routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
+            }
+        };
 
-
-        alert("We don't have the data for this yet");
-        return
+        const directionsServiceCallback = (
+            response: DirectionsResult | null,
+            status: DirectionsStatus,
+        ) => {
+            if (response && status === 'OK' ) { // response was state of directions
+                const prediction: google.maps.Duration | undefined = response.routes[0].legs[0].duration;
+                if (prediction) {
+                    const predictionInMinutes = Math.round(prediction.value / 60 * 10) / 10;
+                    setPrediction(predictionInMinutes);
+                } else {
+                    alert('Something has gone wrong with the Google Maps API');
+                }
+            }
+        };
+        const service = new google.maps.DirectionsService();
+        service.route(userDirectionsRequest, directionsServiceCallback);
     }
 
     const getBackendPrediction = (route: string,
