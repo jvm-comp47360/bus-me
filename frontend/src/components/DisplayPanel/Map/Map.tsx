@@ -71,7 +71,8 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
               strokeColor: "#002984",
               strokeWeight: 5,
               strokeOpacity: 0.75,
-            }
+            },
+            suppressMarkers: true,
           }}/>:
         null}
         </>
