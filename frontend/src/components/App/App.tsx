@@ -53,6 +53,7 @@ const App = (): JSX.Element => {
         startSelection={startSelection}
         finishSelection={finishSelection}
         directions={directions}
+        routeSelection={routeSelection}
       />
       <AboutSection />
       <ContactSection />
