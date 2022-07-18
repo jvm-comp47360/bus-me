@@ -8,10 +8,12 @@ test('useLoadScript called during render', () => {
   const loadScriptMethod = jest.spyOn(reactGoogleMaps, 'useLoadScript');
   const startSelection = busRoutesAPI[0].bus_stops[0];
   const finishSelection = busRoutesAPI[0].bus_stops[1];
+  const routeSelection = busRoutesAPI[0];
 
   render(<Map 
           startSelection={startSelection} 
           finishSelection={finishSelection}
-          directions={null}/>);
+          directions={null}
+          routeSelection={routeSelection}/>);
   expect(loadScriptMethod).toHaveBeenCalledTimes(1);
 });
