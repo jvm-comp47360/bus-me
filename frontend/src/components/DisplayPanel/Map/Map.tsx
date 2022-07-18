@@ -56,6 +56,10 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
               lat: +stop.latitude,
               lng: +stop.longitude,
             }}
+            icon = {{
+              url: require(`../../../assets/bus_me_stop.png`),
+              scaledSize: new google.maps.Size(17.5, 17.5)
+            }}
           />
         ):
         null}
