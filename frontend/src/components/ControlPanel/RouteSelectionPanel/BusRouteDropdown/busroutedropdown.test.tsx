@@ -1,7 +1,7 @@
 import {render, RenderResult, screen} from '@testing-library/react';
 import BusRouteDropdown from './BusRouteDropdown';
-import MOCK_BUS_ROUTES from '../../../mockdata/MOCK_BUS_ROUTES.json';
-import BUS_ROUTES_API from '../../../mockdata/MOCK_BUS_ROUTES.json';
+import MOCK_BUS_ROUTES from '../../../../mockdata/MOCK_BUS_ROUTES.json';
+import BUS_ROUTES_API from '../../../../mockdata/MOCK_BUS_ROUTES.json';
 import {UserEvent} from '@testing-library/user-event/dist/types/setup';
 import userEvent from '@testing-library/user-event';
 

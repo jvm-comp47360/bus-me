@@ -6,8 +6,8 @@ import {Autocomplete, AutocompleteRenderInputParams, TextField}
   from '@mui/material';
 
 // Types
-import BusRoute from '../../../types/BusRoute';
-import busRoute from "../../../types/BusRoute";
+import BusRoute from '../../../../types/BusRoute';
+import busRoute from "../../../../types/BusRoute";
 
 interface Props {
   busRoutes: BusRoute[];

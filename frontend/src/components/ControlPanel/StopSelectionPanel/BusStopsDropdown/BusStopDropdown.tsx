@@ -5,9 +5,9 @@ import React, {Dispatch, SetStateAction} from 'react';
 import {Autocomplete, AutocompleteRenderInputParams, TextField}
   from '@mui/material';
 
-// Props
-import BusStop from '../../../types/BusStop';
-import BusRoute from '../../../types/BusRoute';
+// Components
+import BusStop from '../../../../types/BusStop';
+import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
   busRoutes: BusRoute[]
