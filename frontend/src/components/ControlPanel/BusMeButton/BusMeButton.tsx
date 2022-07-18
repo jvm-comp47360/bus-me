@@ -54,19 +54,31 @@ const BusMeButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    // This is where the POST API call will go.
-    const submitClickHandler = () => {
-        if (routeSelection === undefined || dateTimeSelection === undefined ||
-            startSelection === undefined || finishSelection === undefined) {
-            return;
-        }
-        const route: string = routeSelection.name
+    const getFallbackPrediction = (route: string,
+                                            startSelection: BusStop,
+                                            finishSelection: BusStop) => {
+        const startCoords = `${startSelection.latitude},${startSelection.longitude}`
+        const finishCoords = `${finishSelection.latitude},${finishSelection.longitude}`
+        const googleMapsUrl = `https://maps.googleapis.com/maps/api/directions/json?
+                                origin=${startCoords}&
+                                destination=${finishCoords}&
+                                mode=transit&
+                                transit_mode=bus&
+                                key=${process.env.REACT_APP_GOOGLE_KEY}`
 
-        if (stationPickles.indexOf(route) === -1) {
-            alert("We don't have the data for this yet");
-            return
-        }
+        // @ts-ignore
+        fetch(googleMapsUrl).then((response) => console.log(response[0]['transit_details']['departure_time']['text']))
 
+
+        alert("We don't have the data for this yet");
+        return
+    }
+
+    const getBackendPrediction = (route: string,
+                                      routeSelection: BusRoute,
+                                      startSelection: BusStop,
+                                      finishSelection: BusStop,
+                                      dateTimeSelection: Date) => {
         const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
         const time: string = getSeconds(dateTimeSelection).toString()
 
@@ -83,6 +95,22 @@ const BusMeButton = ({routeSelection,
                 setPrediction(prediction)
             })
             .catch((error) => console.log(error));
+    }
+
+    const submitClickHandler = () => {
+        // Null check
+        if (routeSelection === undefined || dateTimeSelection === undefined ||
+            startSelection === undefined || finishSelection === undefined) {
+            return;
+        }
+        const route: string = routeSelection.name
+
+        // Get prediction from fallback if no model present in backend.
+        if (stationPickles.indexOf(route) === -1) {
+            getFallbackPrediction(route, startSelection, finishSelection);
+        } else {
+            getBackendPrediction(route, routeSelection, startSelection, finishSelection, dateTimeSelection);
+        }
     };
 
     // Submit Button helper functions
