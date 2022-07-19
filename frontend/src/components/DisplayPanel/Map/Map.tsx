@@ -61,6 +61,7 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             opacity = {directions ? 0.7 : 1}
+            onClick = {(e) => alert(`Clicked station ${e.latLng}!`)}
           />
         ):
         null}
