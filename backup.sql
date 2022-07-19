@@ -18,7 +18,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE busme;
 --
 -- TOC entry 3493 (class 1262 OID 16592)
 -- Name: busme; Type: DATABASE; Schema: -; Owner: postgres
@@ -46,9 +45,6 @@ SET row_security = off;
 -- TOC entry 3 (class 2615 OID 2200)
 -- Name: public; Type: SCHEMA; Schema: -; Owner: postgres
 --
-
-CREATE SCHEMA public;
-
 
 ALTER SCHEMA public OWNER TO postgres;
 
