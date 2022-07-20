@@ -78,8 +78,8 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
                       backgroundColor: 'white',
                       width: 100,
                       height: 100,}}
-                      onClick={() => alert("BusMe baby!")}>
-                    Just got Bus Me'd!
+                  >
+                    {stop.name} – ({stop.number})
                   </div>
                 </InfoWindow>:
               null}
