@@ -89,7 +89,8 @@ const BusMeButton = ({routeSelection,
     const submitDisableHandler = (): boolean =>
         routeSelection === undefined ||
         startSelection === undefined ||
-        finishSelection === undefined;
+        finishSelection === undefined ||
+        startSelection === finishSelection;
 
     return <>
         <Button
