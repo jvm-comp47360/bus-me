@@ -32,12 +32,14 @@ const InfoWindowContent =
             <Grid item>
                 <InfoWindowButton 
                     name={"Start"}
-                    setter={setStartSelection}/>
+                    setter={setStartSelection}
+                    stop={stop}/>
             </Grid>
             <Grid item>
                 <InfoWindowButton 
                     name={"Finish"}
-                    setter={setFinishSelection}/>
+                    setter={setFinishSelection}
+                    stop={stop}/>
             </Grid>
         </Grid>
     </Grid>
