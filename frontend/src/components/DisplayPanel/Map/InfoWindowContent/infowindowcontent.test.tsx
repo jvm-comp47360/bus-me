@@ -8,7 +8,8 @@ const setUp = (): RenderResult => render(
     <InfoWindowContent 
         stop={mockStop}
         setStartSelection={jest.fn()}
-        setFinishSelection={jest.fn()}/>
+        setFinishSelection={jest.fn()}
+        startSelection={undefined}/>
 )
 
 test('name of station appears', () => {

@@ -19,3 +19,15 @@ test('"Finish" passed as name prop to component', () => {
             stop={mockStop}/>)
     expect(screen.getByText(/finish station/i)).toBeInTheDocument()
 })
+
+test('finish station button should be disabled at outset', () => {
+    render(<InfoWindowButton 
+        name={"Finish"}
+        setter={jest.fn()}
+        stop={mockStop}
+        startSelection={undefined}/>)
+    expect(screen.getByRole(
+        'button',
+        {name: /finish station/i},
+    )).toHaveClass('Mui-disabled');
+})
