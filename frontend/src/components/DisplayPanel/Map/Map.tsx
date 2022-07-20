@@ -81,6 +81,7 @@ const Map = (
                   lat: +stop.latitude,
                   lng: +stop.longitude,
                 }}
+                onCloseClick = {() => setSelectedMarker(null)}
                 >
                   <InfoWindowContent 
                     stop={stop}
