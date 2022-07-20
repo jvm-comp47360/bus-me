@@ -8,10 +8,18 @@ class RouteConnectionsSerializer(serializers.ModelSerializer):
         fields = ('bus_route_id', 'bus_stop_id')
 
 
+class RouteNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BusRoutes
+        fields = ('id', 'name')
+
+
 class BusStopsSerializer(serializers.ModelSerializer):
+    bus_routes = RouteNameSerializer(many=True)
+
     class Meta:
         model = BusStops
-        fields = ('id', 'name', 'number', 'latitude', 'longitude')
+        fields = ('id', 'name', 'number', 'latitude', 'longitude', 'bus_routes')
 
 
 class BusRoutesSerializer(serializers.ModelSerializer):
