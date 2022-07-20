@@ -1,6 +1,7 @@
 import {useLoadScript, DirectionsRenderer, GoogleMap, Marker, OverlayView, InfoWindow} from '@react-google-maps/api';
 import {Dispatch, SetStateAction, useState, useMemo} from 'react';
 import {Container} from '@mui/material';
+import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
@@ -73,14 +74,7 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
                   lng: +stop.longitude,
                 }}
                 >
-                  <div 
-                    style={{
-                      backgroundColor: 'white',
-                      width: 100,
-                      height: 100,}}
-                  >
-                    {stop.name} – ({stop.number})
-                  </div>
+                  <InfoWindowContent />
                 </InfoWindow>:
               null}
           </Marker>
