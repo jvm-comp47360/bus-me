@@ -5,7 +5,10 @@ import mockData from '../../../../mockdata/MOCK_BUS_ROUTES.json';
 const mockStop = mockData[0].bus_stops[0];
 
 const setUp = (): RenderResult => render(
-    <InfoWindowContent stop={mockStop}/>
+    <InfoWindowContent 
+        stop={mockStop}
+        setStartSelection={jest.fn()}
+        setFinishSelection={jest.fn()}/>
 )
 
 test('name of station appears', () => {

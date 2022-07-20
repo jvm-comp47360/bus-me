@@ -13,9 +13,17 @@ interface Props {
   finishSelection: BusStop | undefined,
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
+  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
 };
 
-const Map = ({startSelection, finishSelection, directions, routeSelection}: Props): JSX.Element => {
+const Map = (
+  {startSelection, 
+  finishSelection, 
+  directions, 
+  routeSelection,
+  setStartSelection,
+  setFinishSelection}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
@@ -74,7 +82,10 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
                   lng: +stop.longitude,
                 }}
                 >
-                  <InfoWindowContent stop={stop} />
+                  <InfoWindowContent 
+                    stop={stop}
+                    setStartSelection={setStartSelection}
+                    setFinishSelection={setFinishSelection} />
                 </InfoWindow>:
               null}
           </Marker>
