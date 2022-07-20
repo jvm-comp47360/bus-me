@@ -6,11 +6,12 @@ import BusStop from '../../../../types/BusStop';
 interface Props {
     stop: BusStop,
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>
+    startSelection: BusStop | undefined,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
 }
 
 const InfoWindowContent = 
-({stop, setStartSelection, setFinishSelection}:Props): JSX.Element => {
+({stop, setStartSelection, startSelection, setFinishSelection}:Props): JSX.Element => {
     return (
     <Grid 
         container
@@ -37,13 +38,15 @@ const InfoWindowContent =
                 <InfoWindowButton 
                     name={"Start"}
                     setter={setStartSelection}
-                    stop={stop}/>
+                    stop={stop}
+                    />
             </Grid>
             <Grid item>
                 <InfoWindowButton 
                     name={"Finish"}
                     setter={setFinishSelection}
-                    stop={stop}/>
+                    stop={stop}
+                    startSelection={startSelection}/>
             </Grid>
         </Grid>
     </Grid>

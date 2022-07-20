@@ -86,6 +86,7 @@ const Map = (
                   <InfoWindowContent 
                     stop={stop}
                     setStartSelection={setStartSelection}
+                    startSelection={startSelection}
                     setFinishSelection={setFinishSelection} />
                 </InfoWindow>:
               null}
