@@ -1,7 +1,12 @@
 import {Button,Grid,Typography} from '@mui/material';
 import InfoWindowButton from './InfoWindowButton/InfoWindowButton';
+import BusStop from '../../../../types/BusStop';
 
-const InfoWindowContent = (): JSX.Element => {
+interface Props {
+    stop: BusStop,
+}
+
+const InfoWindowContent = ({stop}:Props): JSX.Element => {
     return <Grid 
             container
             direction={'column'}
@@ -11,7 +16,7 @@ const InfoWindowContent = (): JSX.Element => {
                 justifyContent: 'space-between',
             }}>
         <Grid item>
-            <Typography variant={"h6"}>UCD Belfield (Stop 768)</Typography>
+            <Typography variant={"h6"}>{stop.name} (Stop {stop.number})</Typography>
         </Grid>
         <Grid 
             item 

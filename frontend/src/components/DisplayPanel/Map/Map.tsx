@@ -74,7 +74,7 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
                   lng: +stop.longitude,
                 }}
                 >
-                  <InfoWindowContent />
+                  <InfoWindowContent stop={stop} />
                 </InfoWindow>:
               null}
           </Marker>
