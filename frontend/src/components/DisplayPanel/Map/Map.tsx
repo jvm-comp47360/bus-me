@@ -1,5 +1,5 @@
-import {useLoadScript, DirectionsRenderer, GoogleMap, Marker} from '@react-google-maps/api';
-import {Dispatch, SetStateAction, useMemo} from 'react';
+import {useLoadScript, DirectionsRenderer, GoogleMap, Marker, OverlayView, InfoWindow} from '@react-google-maps/api';
+import {Dispatch, SetStateAction, useState, useMemo} from 'react';
 import {Container} from '@mui/material';
 
 import BusStop from '../../../types/BusStop';
@@ -39,6 +39,8 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
     },
   }), []);
 
+  const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
+
   return !(isLoaded) ?
     <Container className="loading">Map loading...</Container>:
     <Container disableGutters={true} className="map">
@@ -61,8 +63,27 @@ const Map = ({startSelection, finishSelection, directions, routeSelection}: Prop
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             opacity = {directions ? 0.7 : 1}
-            onClick = {(e) => alert(`Clicked station ${e.latLng}!`)}
-          />
+            onClick = {(e) => setSelectedMarker(e.latLng)}
+          >
+            {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
+              selectedMarker.lng() === +stop.longitude) ?
+                <InfoWindow
+                position={{
+                  lat: +stop.latitude,
+                  lng: +stop.longitude,
+                }}
+                >
+                  <div 
+                    style={{
+                      backgroundColor: 'white',
+                      width: 100,
+                      height: 100,}}
+                      onClick={() => alert("BusMe baby!")}>
+                    Just got Bus Me'd!
+                  </div>
+                </InfoWindow>:
+              null}
+          </Marker>
         ):
         null}
         {(directions) ?

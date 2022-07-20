@@ -8,8 +8,6 @@ if (htmlRoot) {
   const reactRoot = ReactDOM.createRoot(htmlRoot);
 
   reactRoot.render(
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>,
+      <App />   
   );
 } else throw Error('There is a problem with the HTML document');
