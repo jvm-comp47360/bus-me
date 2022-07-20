@@ -71,7 +71,6 @@ const Map = (
               url: require(`../../../assets/bus_me_stop.png`),
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
-            opacity = {directions ? 0.7 : 1}
             onClick = {(e) => setSelectedMarker(e.latLng)}
           >
             {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
