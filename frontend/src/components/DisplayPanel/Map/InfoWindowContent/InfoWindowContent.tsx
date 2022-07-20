@@ -17,11 +17,15 @@ const InfoWindowContent =
         direction={'column'}
         sx={{
             height: '175px',
-            width: '300px',
+            width: '325px',
             justifyContent: 'space-between',
         }}>
         <Grid item>
-            <Typography variant={"h6"}>{stop.name} (Stop {stop.number})</Typography>
+            <Typography 
+                variant={"h6"}
+                sx={{borderBottom: 1}}>
+                    {stop.name} (Stop {stop.number})
+            </Typography>
         </Grid>
         <Grid 
             item 
