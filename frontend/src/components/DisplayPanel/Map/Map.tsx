@@ -86,7 +86,8 @@ const Map = (
                     stop={stop}
                     setStartSelection={setStartSelection}
                     startSelection={startSelection}
-                    setFinishSelection={setFinishSelection} />
+                    setFinishSelection={setFinishSelection}
+                    finishSelection={finishSelection} />
                 </InfoWindow>:
               null}
           </Marker>

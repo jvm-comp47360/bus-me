@@ -7,11 +7,15 @@ interface Props {
     stop: BusStop,
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>
     startSelection: BusStop | undefined,
+    finishSelection: BusStop | undefined,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
 }
 
-const InfoWindowContent = 
-({stop, setStartSelection, startSelection, setFinishSelection}:Props): JSX.Element => {
+const InfoWindowContent =({stop, 
+    setStartSelection, 
+    startSelection, 
+    finishSelection,
+    setFinishSelection}:Props): JSX.Element => {
     return (
     <Grid 
         container
@@ -37,16 +41,17 @@ const InfoWindowContent =
             <Grid item>
                 <InfoWindowButton 
                     name={"Start"}
-                    setter={setStartSelection}
+                    setStopSelection={setStartSelection}
                     stop={stop}
+                    existingSelection={finishSelection}
                     />
             </Grid>
             <Grid item>
                 <InfoWindowButton 
                     name={"Finish"}
-                    setter={setFinishSelection}
+                    setStopSelection={setFinishSelection}
                     stop={stop}
-                    startSelection={startSelection}/>
+                    existingSelection={startSelection}/>
             </Grid>
         </Grid>
     </Grid>

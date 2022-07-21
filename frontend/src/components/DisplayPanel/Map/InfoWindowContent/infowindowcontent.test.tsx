@@ -9,7 +9,8 @@ const setUp = (): RenderResult => render(
         stop={mockStop}
         setStartSelection={jest.fn()}
         setFinishSelection={jest.fn()}
-        startSelection={undefined}/>
+        startSelection={undefined}
+        finishSelection={undefined}/>
 )
 
 test('name of station appears', () => {

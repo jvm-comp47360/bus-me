@@ -7,27 +7,53 @@ const mockStop = mockData[0].bus_stops[0];
 test('"Start" passed as name prop to component', () => {
     render(<InfoWindowButton 
             name={"Start"}
-            setter={jest.fn()}
-            stop={mockStop}/>)
+            setStopSelection={jest.fn()}
+            stop={mockStop}
+            existingSelection={undefined}/>)
     expect(screen.getByText(/start station/i)).toBeInTheDocument()
 })
 
 test('"Finish" passed as name prop to component', () => {
     render(<InfoWindowButton 
             name={"Finish"}
-            setter={jest.fn()}
-            stop={mockStop}/>)
+            setStopSelection={jest.fn()}
+            stop={mockStop}
+            existingSelection={undefined}/>)
     expect(screen.getByText(/finish station/i)).toBeInTheDocument()
 })
 
 test('finish station button should be disabled at outset', () => {
     render(<InfoWindowButton 
         name={"Finish"}
-        setter={jest.fn()}
+        setStopSelection={jest.fn()}
         stop={mockStop}
-        startSelection={undefined}/>)
+        existingSelection={undefined}/>)
     expect(screen.getByRole(
         'button',
         {name: /finish station/i},
+    )).toHaveClass('Mui-disabled');
+})
+
+test('finish station button should be disabled if stop and selection the same', () => {
+    render(<InfoWindowButton 
+        name={"Finish"}
+        setStopSelection={jest.fn()}
+        stop={mockStop}
+        existingSelection={mockStop}/>)
+    expect(screen.getByRole(
+        'button',
+        {name: /finish station/i},
+    )).toHaveClass('Mui-disabled');
+})
+
+test('start station button should be disabled if stop and selection the same', () => {
+    render(<InfoWindowButton 
+        name={"Start"}
+        setStopSelection={jest.fn()}
+        stop={mockStop}
+        existingSelection={mockStop}/>)
+    expect(screen.getByRole(
+        'button',
+        {name: /start station/i},
     )).toHaveClass('Mui-disabled');
 })

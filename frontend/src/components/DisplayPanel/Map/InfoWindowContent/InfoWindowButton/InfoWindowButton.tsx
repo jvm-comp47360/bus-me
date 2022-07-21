@@ -4,29 +4,27 @@ import BusStop from '../../../../../types/BusStop';
 
 interface Props {
     name: "Start" | "Finish",
-    setter: Dispatch<SetStateAction<BusStop | undefined>>,
+    setStopSelection: Dispatch<SetStateAction<BusStop | undefined>>,
     stop: BusStop,
-    startSelection?: BusStop | undefined
+    existingSelection: BusStop | undefined
 }
 
-const InfoWindowButton = ({name, setter, stop, startSelection}: Props): JSX.Element => {
+const InfoWindowButton = ({name, setStopSelection, stop, existingSelection}: Props): JSX.Element => {
     const submitDisableHandler = (): boolean => {
-        return startSelection === undefined ||
-        startSelection.number === stop.number;
-    }
-    
+        if (name === "Finish") {
+            return existingSelection === undefined || existingSelection.number === stop.number;
+        } 
+        else {
+            if (existingSelection === undefined) return false;
+            else return existingSelection.number === stop.number; 
+        } 
+    };
+
     return (
-        (name === "Finish") ?
         <Button 
         variant={'contained'}
-        onClick={() => setter(stop)}
+        onClick={() => setStopSelection(stop)}
         disabled={submitDisableHandler()}>
-        {name} Station
-        </Button> :
-        <Button 
-        variant={'contained'}
-        onClick={() => setter(stop)}
-        >
         {name} Station
         </Button>
     )
