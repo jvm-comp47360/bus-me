@@ -17,9 +17,9 @@ const theme: Theme = createTheme({
     'h4': {
       color: '#ffffff',
     },
-    'h6': {
-      color: '#ffffff',
-    },
+    // 'h6': {
+    //   color: '#ffffff',
+    // },
     'body2': {
       color: '#ffffff',
     },

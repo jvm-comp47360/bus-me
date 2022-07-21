@@ -52,7 +52,10 @@ const App = (): JSX.Element => {
         setPrediction={setPrediction}
         startSelection={startSelection}
         finishSelection={finishSelection}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
         directions={directions}
+        routeSelection={routeSelection}
       />
       <AboutSection />
       <ContactSection />

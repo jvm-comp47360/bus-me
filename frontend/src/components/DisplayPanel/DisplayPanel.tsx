@@ -3,6 +3,7 @@ import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {Box} from '@mui/material';
 
 import BusStop from '../../types/BusStop';
+import BusRoute from '../../types/BusRoute';
 
 import WeatherCard from './WeatherCard/WeatherCard';
 import ResultsCard from './ResultsCard/ResultsCard';
@@ -16,7 +17,10 @@ interface Props {
     startSelection: BusStop | undefined,
     finishSelection: BusStop | undefined,
     directions: DirectionsResult | null,
+    routeSelection: BusRoute | undefined,
     setPrediction: Dispatch<SetStateAction<number | undefined>>,
+    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
+    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
 }
 
 const DisplayPanel = ({
@@ -24,7 +28,10 @@ const DisplayPanel = ({
   startSelection,
   finishSelection,
   directions,
+  routeSelection,
   setPrediction,
+  setStartSelection,
+  setFinishSelection,
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>()
@@ -54,6 +61,9 @@ const DisplayPanel = ({
       startSelection={startSelection}
       finishSelection={finishSelection}
       directions={directions}
+      routeSelection={routeSelection}
+      setStartSelection={setStartSelection}
+      setFinishSelection={setFinishSelection}
     />
   </Box>;
 };

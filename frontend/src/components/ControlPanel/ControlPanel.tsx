@@ -103,14 +103,16 @@ const ControlPanel = ({
         unmountOnExit
       >
         <div>
-          <StopSelectionPanel
-            busRoutes={busRoutes}
-            routeSelection={routeSelection}
-            setStartSelection={setStartSelection}
-            setFinishSelection={setFinishSelection}
-            dateTimeSelection={dateTimeSelection}
-            setDateTimeSelection={setDateTimeSelection}
-          />
+            <StopSelectionPanel
+              busRoutes={busRoutes}
+              routeSelection={routeSelection}
+              startSelection={startSelection}
+              setStartSelection={setStartSelection}
+              finishSelection={finishSelection}
+              setFinishSelection={setFinishSelection}
+              dateTimeSelection={dateTimeSelection}
+              setDateTimeSelection={setDateTimeSelection}
+            />
         </div>
       </Slide>
     ) : null}
