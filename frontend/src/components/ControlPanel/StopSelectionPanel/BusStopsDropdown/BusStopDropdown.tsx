@@ -13,6 +13,7 @@ interface Props {
   busRoutes: BusRoute[]
   routeSelection: BusRoute | undefined;
   label: string;
+  selection: BusStop | undefined;
   setSelection: Dispatch<SetStateAction<BusStop | undefined>>;
 }
 
@@ -20,6 +21,7 @@ const BusStopDropdown = ({
   busRoutes,
   routeSelection,
   label,
+  selection,
   setSelection,
 }: Props): JSX.Element => {
   const getBusStops = (): BusStop[] => {
@@ -45,6 +47,7 @@ const BusStopDropdown = ({
 
   return <>
     <Autocomplete
+      value={selection || null}
       onChange={changeHandler}
       getOptionLabel={(option: BusStop) =>
         `${option.name}, Stop No.${option.number}`}

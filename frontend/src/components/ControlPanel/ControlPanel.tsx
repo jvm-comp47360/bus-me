@@ -90,7 +90,9 @@ const ControlPanel = ({
             <StopSelectionPanel
               busRoutes={busRoutes}
               routeSelection={routeSelection}
+              startSelection={startSelection}
               setStartSelection={setStartSelection}
+              finishSelection={finishSelection}
               setFinishSelection={setFinishSelection}
               dateTimeSelection={dateTimeSelection}
               setDateTimeSelection={setDateTimeSelection}

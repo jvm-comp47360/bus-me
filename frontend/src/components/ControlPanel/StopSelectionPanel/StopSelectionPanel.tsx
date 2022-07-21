@@ -16,7 +16,9 @@ import DateTimeSelection from './DateTimeSelection/DateTimeSelection';
 interface Props {
     busRoutes: BusRoute[];
     routeSelection: BusRoute | undefined;
+    startSelection: BusStop | undefined;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    finishSelection: BusStop | undefined;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     dateTimeSelection: Date | undefined;
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
@@ -25,7 +27,9 @@ interface Props {
 const StopSelectionPanel = ({
                                busRoutes,
                                routeSelection,
+                              startSelection,
                                setStartSelection,
+                              finishSelection,
                                setFinishSelection,
                                dateTimeSelection,
                                setDateTimeSelection,
@@ -43,12 +47,14 @@ const StopSelectionPanel = ({
                     busRoutes={busRoutes}
                     routeSelection={routeSelection}
                     label={'Start'}
+                    selection={startSelection}
                     setSelection={setStartSelection}
                 />
                 <BusStopDropdown
                     busRoutes={busRoutes}
                     routeSelection={routeSelection}
                     label={'Finish'}
+                    selection={finishSelection}
                     setSelection={setFinishSelection}
                 />
                 <DateTimeSelection
