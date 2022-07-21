@@ -2,8 +2,8 @@
 import React, {Dispatch, SetStateAction} from 'react';
 
 // Material UI
-import {Autocomplete, AutocompleteRenderInputParams, TextField, TextFieldProps}
-    from '@mui/material';
+import {Autocomplete, AutocompleteRenderInputParams, Box, TextField, TextFieldProps}
+  from '@mui/material';
 
 // Props
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
@@ -20,10 +20,18 @@ const RouteSelectionDropdown = ({
                            }: Props): JSX.Element => {
 
     return <>
-            <BusRouteDropdown
-                busRoutes={busRoutes}
-                setRouteSelection={setRouteSelection}
-            />
+      <Box
+        display={'flex'}
+        flexDirection={'row'}
+        flexWrap={'wrap'}
+        justifyContent={'center'}
+        margin={1}
+      >
+        <BusRouteDropdown
+            busRoutes={busRoutes}
+            setRouteSelection={setRouteSelection}
+        />
+      </Box>
     </>;
 };
 

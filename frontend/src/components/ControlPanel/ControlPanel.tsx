@@ -28,6 +28,9 @@ interface Props {
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
+// Animation Bug Fix Credit:
+// https://stackoverflow.com/questions/55647969/how-to-get-one-elements-to-slide-in-while-the-other-slides-out-using-react-and
+
 const ControlPanel = ({
                         startSelection,
                         setStartSelection,
@@ -77,15 +80,28 @@ const ControlPanel = ({
       alignItems={'center'}
       m={2}
   >
-    <Slide direction={'up'} in={!checked} mountOnEnter unmountOnExit>
+    {!checked ? (
+      <Slide
+        direction={'up'}
+        in={!checked}
+        mountOnEnter
+        unmountOnExit
+      >
         <div>
-            <RouteSelectionPanel
-                  busRoutes={busRoutes}
-                  setRouteSelection={setRouteSelection}
-            />
+          <RouteSelectionPanel
+            busRoutes={busRoutes}
+            setRouteSelection={setRouteSelection}
+          />
         </div>
-    </Slide>
-    <Slide direction={'up'} in={checked} mountOnEnter unmountOnExit>
+      </Slide>
+    ) : null}
+    {checked ? (
+      <Slide
+        direction={'up'}
+        in={checked}
+        mountOnEnter
+        unmountOnExit
+      >
         <div>
             <StopSelectionPanel
               busRoutes={busRoutes}
@@ -98,7 +114,8 @@ const ControlPanel = ({
               setDateTimeSelection={setDateTimeSelection}
             />
         </div>
-    </Slide>
+      </Slide>
+    ) : null}
     <Button onClick={slideHandler}>{toggleText()}</Button>
     <BusMeButton
         routeSelection={routeSelection}

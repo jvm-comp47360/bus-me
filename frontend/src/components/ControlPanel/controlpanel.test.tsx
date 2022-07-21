@@ -107,10 +107,20 @@ describe('<ControlPanel/> Submit button functionality', () => {
     expect.assertions(1);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(undefined, undefined, undefined);
+    setup(MOCK_START_STATION, MOCK_START_STATION, MOCK_CURRENT_ROUTE);
 
     expect(screen.getByRole('button', {name: /busme!/i}))
         .toHaveClass('Mui-disabled');
+  });
+
+  it('should be be disabled if two same stations are selected', () => {
+    expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
+    setup(undefined, undefined, undefined);
+
+    expect(screen.getByRole('button', {name: /busme!/i}))
+      .toHaveClass('Mui-disabled');
   });
 
   it('should be be enabled when dropdowns are filled in', () => {
