@@ -62,17 +62,29 @@ const ControlPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
+  const resetStartAndFinishSelection = () => {
+    if (checked) {
+      setStartSelection(undefined)
+      setFinishSelection(undefined)
+    }
+  }
+
   const slideHandler = () => {
     setChecked((prev) => !prev);
+    resetStartAndFinishSelection();
   };
 
   const toggleText = () => {
     if (checked) {
-      return 'PREVIOUS';
+      return 'SELECT ROUTE';
     } else {
-      return 'NEXT';
+      return 'SELECT STATIONS';
     }
   };
+
+  const toggleDisableHandler = (): boolean => {
+    return routeSelection === undefined;
+  }
 
   return <Box
       display={'flex'}
@@ -90,6 +102,7 @@ const ControlPanel = ({
         <div>
           <RouteSelectionPanel
             busRoutes={busRoutes}
+            routeSelection={routeSelection}
             setRouteSelection={setRouteSelection}
           />
         </div>
@@ -116,7 +129,12 @@ const ControlPanel = ({
         </div>
       </Slide>
     ) : null}
-    <Button onClick={slideHandler}>{toggleText()}</Button>
+    <Button
+      onClick={slideHandler}
+      disabled={toggleDisableHandler()}
+    >
+      {toggleText()}
+    </Button>
     <BusMeButton
         routeSelection={routeSelection}
         startSelection={startSelection}

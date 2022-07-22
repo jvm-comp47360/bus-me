@@ -7,19 +7,20 @@ import {Autocomplete, AutocompleteRenderInputParams, TextField}
 
 // Types
 import BusRoute from '../../../../types/BusRoute';
-import busRoute from "../../../../types/BusRoute";
 
 interface Props {
   busRoutes: BusRoute[];
+  routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
-const BusRouteDropdown = ({busRoutes,
+const BusRouteDropdown = ({busRoutes, routeSelection,
   setRouteSelection,
 }: Props): JSX.Element => {
+
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
-      value: BusRoute | undefined,
+      value: BusRoute | null,
   ) => {
     if (value) {
       setRouteSelection(value);
@@ -40,11 +41,11 @@ const BusRouteDropdown = ({busRoutes,
 
   return <>
     <Autocomplete
-      disableClearable={true}
+      value={routeSelection || null}
+      onChange={changeHandler}
       getOptionLabel={(option: BusRoute) =>
         `${option.name} (${option.bus_stops[0]['name']} to ${option.bus_stops[option.bus_stops.length - 1]['name']})`}
       options={sortBusRoutes(busRoutes)}
-      onChange={changeHandler}
       sx={{width: 300}}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={'Select Route'}/>}

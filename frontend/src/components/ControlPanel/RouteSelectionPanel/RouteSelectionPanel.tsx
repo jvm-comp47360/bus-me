@@ -11,11 +11,13 @@ import BusRoute from '../../../types/BusRoute';
 
 interface Props {
     busRoutes: BusRoute[];
+    routeSelection: BusRoute | undefined;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 const RouteSelectionDropdown = ({
                                busRoutes,
+                                  routeSelection,
                                setRouteSelection,
                            }: Props): JSX.Element => {
 
@@ -29,6 +31,7 @@ const RouteSelectionDropdown = ({
       >
         <BusRouteDropdown
             busRoutes={busRoutes}
+            routeSelection={routeSelection}
             setRouteSelection={setRouteSelection}
         />
       </Box>

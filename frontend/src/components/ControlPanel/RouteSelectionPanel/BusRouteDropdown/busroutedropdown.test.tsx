@@ -13,6 +13,7 @@ const BUS_ROUTE_GUESS: string = BUS_ROUTES_API[0]['name'].substring(0);
 const setup = (): RenderResult => render(
     <BusRouteDropdown
       busRoutes={MOCK_BUS_ROUTES}
+      routeSelection={undefined}
       setRouteSelection={jest.fn()}
     />,
 );

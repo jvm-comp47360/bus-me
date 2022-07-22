@@ -38,7 +38,7 @@ const setup = (startSelection: BusStop | undefined,
 );
 
 const clickToggleButton = async () => {
-  const toggleButton: HTMLElement = screen.getByRole('button', {name: /next/i});
+  const toggleButton: HTMLElement = screen.getByRole('button', {name: /select stations/i});
   const view: UserEvent = userEvent.setup();
   await view.click(toggleButton);
 }
@@ -92,7 +92,7 @@ describe('<ControlPanel/> Default rendering', () => {
 
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /select stations/i})).toBeInTheDocument();
   });
 });
 
@@ -135,6 +135,26 @@ describe('<ControlPanel/> Submit button functionality', () => {
 });
 
 describe('<ControlPanel/> Toggle button functionality',() => {
+  it ('should be disabled by default', () => {
+    expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
+    setup(undefined, undefined, undefined);
+
+    expect(screen.getByRole('button', {name: /select stations/i}))
+      .toHaveClass('Mui-disabled');
+  })
+
+  it ('should be enabled when a route is selected', () => {
+    expect.assertions(1);
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
+
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+
+    expect(screen.getByRole('button', {name: /select stations/i}))
+      .not.toHaveClass('Mui-disabled');
+  })
+
   it('should have a new title after being clicked',
     async (): Promise<void> => {
     expect.assertions(1);
@@ -144,7 +164,7 @@ describe('<ControlPanel/> Toggle button functionality',() => {
 
     await clickToggleButton();
 
-    expect(screen.getByRole('button', {name: /previous/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /select route/i})).toBeInTheDocument();
   });
 
   it('should display the station dropdowns after being clicked',
