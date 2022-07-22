@@ -68,9 +68,9 @@ const ControlPanel = ({
 
   const toggleText = () => {
     if (checked) {
-      return 'PREVIOUS';
+      return 'SELECT ROUTE';
     } else {
-      return 'NEXT';
+      return 'SELECT STATIONS';
     }
   };
 

@@ -38,7 +38,7 @@ const setup = (startSelection: BusStop | undefined,
 );
 
 const clickToggleButton = async () => {
-  const toggleButton: HTMLElement = screen.getByRole('button', {name: /next/i});
+  const toggleButton: HTMLElement = screen.getByRole('button', {name: /select stations/i});
   const view: UserEvent = userEvent.setup();
   await view.click(toggleButton);
 }
@@ -92,7 +92,7 @@ describe('<ControlPanel/> Default rendering', () => {
 
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('button', {name: /next/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /select stations/i})).toBeInTheDocument();
   });
 });
 
@@ -144,7 +144,7 @@ describe('<ControlPanel/> Toggle button functionality',() => {
 
     await clickToggleButton();
 
-    expect(screen.getByRole('button', {name: /previous/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /select route/i})).toBeInTheDocument();
   });
 
   it('should display the station dropdowns after being clicked',
