@@ -1,0 +1,44 @@
+name: Testing Django and React
+
+on:
+  push:
+    branches: [ "main", "development" ]
+  pull_request:
+    branches: [ "main", "development" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 12.x
+        cache: 'npm'
+        cache-dependency-path: ./backend/frontend
+    - run: npm ci
+      working-directory: ./backend/frontend
+    - run: npm run build --if-present
+      working-directory: ./backend/frontend
+    - run: npm test --passWithNoTests
+      working-directory: ./backend/frontend
+
+#  Removed Python testing while I try figure out how to connect to database in GitHub
+#    - name: Set up Python 3.8
+#      uses: actions/setup-python@v3
+#      with:
+#        python-version: 3.8
+#    - name: Add conda to system path
+#      run: echo $CONDA/bin >> $GITHUB_PATH
+#    - name: Install dependencies
+#      run: conda env update --file busme.yml --name base
+#    - name: Run Django tests
+#      run: python manage.py test
+#      working-directory: ./backend

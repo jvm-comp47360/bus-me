@@ -1,0 +1,4 @@
+# Ignore environment variable store file 
+*.env
+/.idea
+*/__pycache__/*

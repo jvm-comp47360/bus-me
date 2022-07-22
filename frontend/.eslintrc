@@ -1,0 +1,26 @@
+//{
+//  "parser": "@typescript-eslint/parser",
+//  "settings": {
+//    "react": {
+//      "version": "detect"
+//    }
+//  },
+//  "env": {
+//    "browser": true,
+//    "node": true,
+//    "es2021": true
+//  },
+//  "extends": [
+//    "plugin:react/recommended",
+//    "eslint:recommended",
+//    "plugin:react/jsx-runtime",
+//    "plugin:testing-library/react",
+//    "plugin:jest/recommended",
+//    "plugin:@typescript-eslint/eslint-recommended",
+//    "plugin:@typescript-eslint/recommended",
+//    "google"
+//  ],
+//  "parserOptions": {
+//    "sourceType": "module"
+//  }
+//}

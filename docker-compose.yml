@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  database:
+    image: postgres:14.4-alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${BUSME_USER}
+      - POSTGRES_PASSWORD=${BUSME_PASSWORD}
+    volumes:
+      - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+    ports:
+      - "5432:5432"
+  backend:
+    build: ./backend
+    volumes:
+      - staticfiles:/backend/staticfiles
+    ports:
+      - "8000:8000"
+    working_dir: /backend/
+    env_file:
+      - .env
+    depends_on:
+      - database
+  nginx:
+    build:
+      context: .
+      args:
+        REACT_APP_GOOGLE_KEY: ${REACT_APP_GOOGLE_KEY}
+    ports:
+      - "80:8080"
+    volumes:
+      - staticfiles:/staticfiles
+    env_file:
+      - .env
+    depends_on:
+      - backend
+volumes:
+  staticfiles:

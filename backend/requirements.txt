@@ -1,0 +1,17 @@
+asgiref==3.5.2
+coverage==6.4.1
+Django==4.0.5
+django-cors-headers==3.13.0
+django-environ==0.9.0
+django-extensions==3.1.5
+djangorestframework==3.13.1
+numpy==1.22.1
+pandas==1.4.0
+psycopg2==2.9.3
+pytz==2022.1
+requests==2.27.1
+schedule==1.1.0
+scikit-learn==1.0.2
+sqlparse==0.4.2
+tzdata==2022.1
+waitress==2.1.2

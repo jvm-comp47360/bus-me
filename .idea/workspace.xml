@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="690a2538-31bf-4e04-bc54-54a52c246637" name="Changes" comment="Added sql script again.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/.eslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.eslintrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DisplayPanel/DisplayPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DisplayPanel/DisplayPanel.tsx" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Time_Dropdown" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AzUiaExptqr5DcRZpMquIkGaX1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Damaris\\WebstormProjects\\bus-me\\frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Vlad\github\BusMe" />
+      <recent name="C:\Users\Vlad\github\BusMe\setup_scripts" />
+      <recent name="C:\Users\Vlad\github\BusMe\docker\nginx\production" />
+      <recent name="C:\Users\Vlad\github\BusMe\docker\backend" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="690a2538-31bf-4e04-bc54-54a52c246637" name="Changes" comment="" />
+      <created>1656012035083</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1656012035083</updated>
+      <workItem from="1656012036934" duration="10683000" />
+      <workItem from="1656086167415" duration="10869000" />
+      <workItem from="1656141527931" duration="13804000" />
+      <workItem from="1656180146412" duration="14837000" />
+      <workItem from="1656351975081" duration="4229000" />
+      <workItem from="1656435388399" duration="960000" />
+      <workItem from="1657020726251" duration="146000" />
+    </task>
+    <task id="LOCAL-00001" summary="Deleted historic weather API file, minor linting work.">
+      <created>1656067505696</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1656067505696</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Renamed directory and added nginx config file.">
+      <created>1656067677496</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1656067677496</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ported docker configuration files.">
+      <created>1656067940024</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1656067940024</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed requirements file.">
+      <created>1656074606844</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1656074606844</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Connection to database working.">
+      <created>1656076400564</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1656076400564</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Functionality complete except for React env file.">
+      <created>1656079413291</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656079413291</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added network mode.">
+      <created>1656087951069</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1656087951069</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Removed network mode.">
+      <created>1656088087816</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1656088087816</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updating to working config.">
+      <created>1656103166531</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1656103166531</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Tweaking weather API due to bug in scheduler.">
+      <created>1656103749045</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1656103749045</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changed command to build after images is created.">
+      <created>1656139758008</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656139758008</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed Docker structure and merged node and nginx images.">
+      <created>1656150755749</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656150755750</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changed node image to 18.">
+      <created>1656155191868</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1656155191868</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Reverting back to node alpine to save space.">
+      <created>1656157076904</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1656157076904</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Switching on verbose trigger for react">
+      <created>1656178474941</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1656178474941</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added utility shell scripts for quick install.">
+      <created>1656193661519</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1656193661520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Fixed small errors in shell scripts.">
+      <created>1656194402846</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1656194402846</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Changed node image.">
+      <created>1656195819679</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1656195819680</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Tweaking dependencies in docker compose.">
+      <created>1656196059439</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1656196059440</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changed structure to copy directly from node build file.">
+      <created>1656234887668</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1656234887668</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Removing database for testing purposes">
+      <created>1656235107898</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1656235107898</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fixing typo in the word &quot;app&quot; in nginx proxy.">
+      <created>1656235662195</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1656235662195</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Moved env file back to root.">
+      <created>1656237318928</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656237318928</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added env file to database.">
+      <created>1656237359981</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1656237359981</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Changing env variable syntax.">
+      <created>1656237437859</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1656237437859</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Tweaking Python modules for easier importing of models.">
+      <created>1656238468424</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1656238468424</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Adding postgres data.">
+      <created>1656239297324</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1656239297324</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Deleting postgres data.">
+      <created>1656239423352</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1656239423352</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added sql script.">
+      <created>1656240169773</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1656240169773</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Added sql script again.">
+      <created>1656435419893</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1656435419893</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/docker_main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Functionality complete except for React env file." />
+    <MESSAGE value="Added network mode." />
+    <MESSAGE value="Removed network mode." />
+    <MESSAGE value="Updating to working config." />
+    <MESSAGE value="Tweaking weather API due to bug in scheduler." />
+    <MESSAGE value="Changed command to build after images is created." />
+    <MESSAGE value="Changed Docker structure and merged node and nginx images." />
+    <MESSAGE value="Changed node image to 18." />
+    <MESSAGE value="Reverting back to node alpine to save space." />
+    <MESSAGE value="Switching on verbose trigger for react" />
+    <MESSAGE value="Added utility shell scripts for quick install." />
+    <MESSAGE value="Fixed small errors in shell scripts." />
+    <MESSAGE value="Changed node image." />
+    <MESSAGE value="Tweaking dependencies in docker compose." />
+    <MESSAGE value="Changed structure to copy directly from node build file." />
+    <MESSAGE value="Removing database for testing purposes" />
+    <MESSAGE value="Fixing typo in the word &quot;app&quot; in nginx proxy." />
+    <MESSAGE value="Moved env file back to root." />
+    <MESSAGE value="Added env file to database." />
+    <MESSAGE value="Changing env variable syntax." />
+    <MESSAGE value="Tweaking Python modules for easier importing of models." />
+    <MESSAGE value="Adding postgres data." />
+    <MESSAGE value="Deleting postgres data." />
+    <MESSAGE value="Added sql script." />
+    <MESSAGE value="Added sql script again." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added sql script again." />
+  </component>
+</project>
