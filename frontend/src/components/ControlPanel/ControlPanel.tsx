@@ -74,6 +74,10 @@ const ControlPanel = ({
     }
   };
 
+  const toggleDisableHandler = (): boolean => {
+    return routeSelection === undefined;
+  }
+
   return <Box
       display={'flex'}
       flexDirection={'column'}
@@ -116,7 +120,12 @@ const ControlPanel = ({
         </div>
       </Slide>
     ) : null}
-    <Button onClick={slideHandler}>{toggleText()}</Button>
+    <Button
+      onClick={slideHandler}
+      disabled={toggleDisableHandler()}
+    >
+      {toggleText()}
+    </Button>
     <BusMeButton
         routeSelection={routeSelection}
         startSelection={startSelection}
