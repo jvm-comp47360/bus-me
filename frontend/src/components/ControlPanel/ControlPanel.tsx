@@ -62,8 +62,16 @@ const ControlPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
+  const resetStartAndFinishSelection = () => {
+    if (checked) {
+      setStartSelection(undefined)
+      setFinishSelection(undefined)
+    }
+  }
+
   const slideHandler = () => {
     setChecked((prev) => !prev);
+    resetStartAndFinishSelection();
   };
 
   const toggleText = () => {
@@ -94,6 +102,7 @@ const ControlPanel = ({
         <div>
           <RouteSelectionPanel
             busRoutes={busRoutes}
+            routeSelection={routeSelection}
             setRouteSelection={setRouteSelection}
           />
         </div>
