@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
+import GraphDialogButton from "../GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -20,7 +21,6 @@ import {ThemeProvider} from '@mui/material/styles';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
-import GraphDialog from "../GraphDialog/GraphDialog";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -34,17 +34,17 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
-  const [graphIsOpen, setGraphIsOpen] = useState<boolean>(true);
+  const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <GraphDialog
+      <Navbar />
+      <GraphDialogButton
         graphIsOpen={graphIsOpen}
         setGraphIsOpen={setGraphIsOpen}
         prediction={3}
         graphPredictions={[1, 2, 3, 4]}
       />
-      <Navbar />
       <ControlPanel
         startSelection={startSelection}
          setStartSelection={setStartSelection}

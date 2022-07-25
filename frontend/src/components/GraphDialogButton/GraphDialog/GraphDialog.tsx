@@ -1,7 +1,9 @@
-import {Button, Dialog, DialogTitle} from '@mui/material';
+import React from "react";
+import {Button, Dialog, DialogTitle, Slide} from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import {Dispatch, SetStateAction} from "react";
+import {TransitionProps} from "@mui/material/transitions";
 
 interface Props {
   graphIsOpen: boolean,
@@ -10,12 +12,15 @@ interface Props {
   graphPredictions: number[] | undefined,
 }
 
-const DisplayPanel = ({
+const GraphDialog = ({
                         graphIsOpen,
                         setGraphIsOpen,
                         prediction,
                         graphPredictions
                       }: Props): JSX.Element => {
+
+
+
 
   const getAllPredictions = (prediction: number | undefined, graphPredictions: number[] | undefined): number[] => {
     if (!prediction || !graphPredictions) {
@@ -73,4 +78,4 @@ const DisplayPanel = ({
   </>;
 };
 
-export default DisplayPanel;
+export default GraphDialog;
