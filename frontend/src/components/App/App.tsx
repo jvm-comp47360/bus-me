@@ -20,6 +20,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
+import GraphDialog from "../GraphDialog/GraphDialog";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -33,13 +34,20 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
+  const [graphIsOpen, setGraphIsOpen] = useState<boolean>(true);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <GraphDialog
+        graphIsOpen={graphIsOpen}
+        setGraphIsOpen={setGraphIsOpen}
+        prediction={3}
+        graphPredictions={[1, 2, 3, 4]}
+      />
       <Navbar />
       <ControlPanel
         startSelection={startSelection}
-        setStartSelection={setStartSelection}
+         setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
