@@ -18,9 +18,6 @@ const GraphDialog = ({
                         graphPredictions
                       }: Props): JSX.Element => {
 
-
-
-
   const getAllPredictions = (prediction: number | undefined, graphPredictions: number[] | undefined): number[] => {
     if (!prediction || !graphPredictions) {
       return []
