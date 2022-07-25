@@ -52,7 +52,7 @@ const BusStopDropdown = ({
       getOptionLabel={(option: BusStop) =>
         `${option.name}, Stop No.${option.number}`}
       options={getBusStops()}
-      sx={{width: 300}}
+      sx={{width: 400}}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={label}/>}
     />
