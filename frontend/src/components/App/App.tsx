@@ -37,7 +37,6 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <LoadScreen open={true}/>
       <Navbar/>
       <ControlPanel
         startSelection={startSelection}
