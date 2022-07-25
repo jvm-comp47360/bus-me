@@ -1,28 +1,31 @@
 import {Button} from '@mui/material';
-import {Dispatch, SetStateAction} from "react";
+import {useState} from "react";
 import GraphDialog from "./GraphDialog/GraphDialog";
 
 interface Props {
-  graphIsOpen: boolean,
-  setGraphIsOpen: Dispatch<SetStateAction<boolean>>;
   prediction: number | undefined,
   graphPredictions: number[] | undefined,
 }
 
 const GraphDialogButton = ({
-                        graphIsOpen,
-                        setGraphIsOpen,
                         prediction,
                         graphPredictions
                       }: Props): JSX.Element => {
+  const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
 
   const openGraph = () => {
     setGraphIsOpen(true);
   }
 
+  const disableHandler = (): boolean => {
+    return !(prediction && graphPredictions && graphPredictions.length !== 0);
+
+  }
+
   return <>
     <Button
       variant={"contained"}
+      disabled={disableHandler()}
       onClick={openGraph}
     >
       Journey Times

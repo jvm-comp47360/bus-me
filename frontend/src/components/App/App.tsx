@@ -34,14 +34,11 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
-  const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Navbar />
       <GraphDialogButton
-        graphIsOpen={graphIsOpen}
-        setGraphIsOpen={setGraphIsOpen}
         prediction={3}
         graphPredictions={[1, 2, 3, 4]}
       />

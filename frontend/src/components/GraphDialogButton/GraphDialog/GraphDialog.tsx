@@ -3,7 +3,6 @@ import {Button, Dialog, DialogTitle, Slide} from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import {Dispatch, SetStateAction} from "react";
-import {TransitionProps} from "@mui/material/transitions";
 
 interface Props {
   graphIsOpen: boolean,
