@@ -51,7 +51,7 @@ describe('<ControlPanel/> Default rendering', () => {
   it('should show route dropdown', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES), {status: 200});
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
     expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
   });
@@ -85,7 +85,7 @@ describe('<ControlPanel/> Default rendering', () => {
   it('should show toggle button', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-    fetchMock.mockResponseOnce(JSON.stringify({data: MOCK_BUS_ROUTES}));
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
     expect(screen.getByRole('button', {name: /select stations/i})).toBeInTheDocument();
   });
@@ -94,7 +94,7 @@ describe('<ControlPanel/> Default rendering', () => {
   it('should display the show route button', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-    fetchMock.mockResponseOnce(JSON.stringify({data: MOCK_BUS_ROUTES}));
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
     expect(screen.getByRole('button', {name: /show route!/i})).toBeInTheDocument();
   });
@@ -103,7 +103,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be disabled by default', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_START_STATION, MOCK_CURRENT_ROUTE);
-    fetchMock.mockResponseOnce(JSON.stringify({data: MOCK_BUS_ROUTES}));
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
     expect(screen.getByRole('button', {name: /busme!/i}))
         .toHaveClass('Mui-disabled');
@@ -121,7 +121,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be enabled when dropdowns are filled in', () => {
     expect.assertions(1);
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-    fetchMock.mockResponseOnce(JSON.stringify({data: MOCK_BUS_ROUTES}));
+    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
 
     expect(screen.getByRole('button', {name: /busme!/i}))

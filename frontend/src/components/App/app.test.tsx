@@ -9,16 +9,6 @@ import App from './App';
 const setup = (): RenderResult => render(<App/>);
 
 describe('<App/> Renders UI components on the screen', () => {
-  it('renders control panel on the screen', () => {
-    expect.assertions(5);
-    setup();
-    expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
-    expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
-    expect(screen.queryByRole('combobox', {name: /finish/i})).toBeNull();
-    expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
-    expect(screen.queryByRole('textbox', {name: /choose date/i}))
-      .toBeNull();
-  });
   it('renders navbar on the screen', () => {
     setup();
     expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();

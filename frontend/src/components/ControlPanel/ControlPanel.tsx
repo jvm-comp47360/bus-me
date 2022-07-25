@@ -15,7 +15,6 @@ import ShowRouteButton from './ShowRouteButton/ShowRouteButton';
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
 import BusMeButton from './BusMeButton/BusMeButton';
-import LoadScreen from "../App/LoadScreen/LoadScreen";
 
 
 interface Props {
@@ -94,7 +93,6 @@ const ControlPanel = ({
       alignItems={'center'}
       m={2}
     >
-      {busRoutes.length===0 ? <LoadScreen open={true}/> : <LoadScreen open={false}/>}
     {!checked ? (
       <Slide
         direction={'up'}
