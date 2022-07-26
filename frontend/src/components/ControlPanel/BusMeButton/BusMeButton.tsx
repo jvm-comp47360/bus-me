@@ -13,7 +13,9 @@ interface Props {
     startSelection: BusStop | undefined;
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
+    prediction: number | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
+    multiRoute: boolean;
 }
 
 const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
@@ -36,7 +38,9 @@ const BusMeButton = ({routeSelection,
                          startSelection,
                          finishSelection,
                          dateTimeSelection,
-                        setPrediction
+                        prediction,
+                        setPrediction,
+                        multiRoute,
                     }: Props): JSX.Element => {
 
 
@@ -52,9 +56,13 @@ const BusMeButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    const getFallbackPrediction = (route: string,
-                                   startSelection: BusStop,
-                                   finishSelection: BusStop) => {
+    const handleMultiRouteApiCall = () => {
+        if (dateTimeSelection === undefined ||
+          startSelection === undefined ||
+          finishSelection === undefined
+        ) {
+            return;
+        }
 
         const userDirectionsRequest: google.maps.DirectionsRequest = {
             origin: {
@@ -77,19 +85,72 @@ const BusMeButton = ({routeSelection,
           status: DirectionsStatus,
         ) => {
             if (response && status === 'OK' ) { // response was state of directions
-                const prediction: google.maps.Duration | undefined = response.routes[0].legs[0].duration;
-                if (prediction) {
-                    const predictionInMinutes = Math.round(prediction.value / 60 * 10) / 10;
-                    setPrediction(predictionInMinutes);
-                } else {
-                    alert('Something has gone wrong with the Google Maps API');
-                }
+                const journeyStages: google.maps.DirectionsStep[] = response.routes[0].legs[0].steps;
+                let prediction = 0;
+
+                journeyStages.map((journeyStage) => {
+                    if (journeyStage.travel_mode === 'TRANSIT') {
+                        const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
+
+                        if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
+                            const route: string = transitDetails.line.short_name;
+                            const num_stop_segments: number = transitDetails.num_stops;
+                            setPredictionFromBackend(route, num_stop_segments, dateTimeSelection);
+                        } else {
+                            const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
+                            console.log("Prediction in seconds")
+                            console.log(predictionInSeconds);
+                            if (predictionInSeconds) {
+                                if (prediction) {
+                                    console.log("Prediction exists")
+                                    setPrediction(prediction += Math.round((predictionInSeconds.value / 60 * 10) / 10));
+                                    console.log(prediction)
+                                } else {
+                                    console.log("Prediction exists")
+                                    setPrediction(prediction);
+                                    console.log("Prediction does not exist")
+                                }
+
+                            }
+                        }
+                    }
+                })
             }
         };
         const service = new google.maps.DirectionsService();
         service.route(userDirectionsRequest, directionsServiceCallback);
     }
 
+    const setPredictionFromBackend = (
+      route: string,
+      num_stops_segment: number,
+      dateTimeSelection: Date,
+    ): void => {
+
+        const time: string = getSeconds(dateTimeSelection).toString()
+
+        fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
+          .then((response) => {
+              if (response.ok) {
+                  return response.json() as Promise<Prediction>;
+              } else {
+                  throw new Error();
+              }
+          })
+          .then((data) => {
+              console.log(data);
+              if (prediction) {
+                  console.log("Prediction exists")
+                  setPrediction(prediction += data.prediction);
+                  console.log(prediction);
+              } else {
+                  console.log("Prediction does not exist")
+                  setPrediction(data.prediction);
+                  console.log(prediction);
+              }
+          })
+          .catch((error) => console.log(error));
+    }
 
     const handleSingleRouteApiCall = () => {
         if (routeSelection === undefined || dateTimeSelection === undefined ||
@@ -123,15 +184,26 @@ const BusMeButton = ({routeSelection,
 
 // This is where the POST API call will go.
     const submitClickHandler = () => {
-        handleSingleRouteApiCall();
+        if (multiRoute) {
+            handleMultiRouteApiCall()
+        } else {
+            handleSingleRouteApiCall();
+        }
     };
 
     // Submit Button helper functions
-    const submitDisableHandler = (): boolean =>
-        routeSelection === undefined ||
-        startSelection === undefined ||
-        finishSelection === undefined ||
-        startSelection === finishSelection;
+    const submitDisableHandler = (): boolean => {
+        if (multiRoute) {
+            return startSelection === undefined ||
+            finishSelection === undefined ||
+            startSelection === finishSelection;
+        } else {
+            return routeSelection === undefined ||
+              startSelection === undefined ||
+              finishSelection === undefined ||
+              startSelection === finishSelection;
+        }
+    }
 
     return <>
         <Button

@@ -31,6 +31,7 @@ const setup = (startSelection: BusStop | undefined,
         setFinishSelection={jest.fn()}
         routeSelection={routeSelection}
         setRouteSelection={jest.fn()}
+        prediction={undefined}
         setPrediction={jest.fn()}
         setDirections={jest.fn()}
         multiRoute={false}

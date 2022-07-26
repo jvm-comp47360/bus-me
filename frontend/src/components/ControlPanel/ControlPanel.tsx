@@ -25,6 +25,7 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  prediction: number | undefined;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
@@ -40,6 +41,7 @@ const ControlPanel = ({
                         setFinishSelection,
                         routeSelection,
                         setRouteSelection,
+                        prediction,
                         setPrediction,
                         setDirections,
                         multiRoute,
@@ -75,8 +77,6 @@ const ControlPanel = ({
       })
       .then(setBusStops)
       .catch((error) => console.log(error));
-
-    console.log(busStops);
   }, [])
 
   const resetStartAndFinishSelection = () => {
@@ -151,7 +151,9 @@ const ControlPanel = ({
         startSelection={startSelection}
         finishSelection={finishSelection}
         dateTimeSelection={dateTimeSelection}
+        prediction={prediction}
         setPrediction={setPrediction}
+        multiRoute={multiRoute}
     />
     <ShowRouteButton
         startSelection={startSelection}

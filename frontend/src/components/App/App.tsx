@@ -45,6 +45,7 @@ const App = (): JSX.Element => {
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
         setRouteSelection={setRouteSelection}
+        prediction={prediction}
         setPrediction={setPrediction}
         setDirections={setDirections}
         multiRoute={multiRoute}
