@@ -9,14 +9,18 @@ import {Autocomplete, AutocompleteRenderInputParams, TextField}
 import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
+  setChecked: Dispatch<SetStateAction<boolean>>;
   busRoutes: BusRoute[];
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
-const BusRouteDropdown = ({busRoutes, routeSelection,
+const BusRouteDropdown = ({setChecked, busRoutes, routeSelection,
   setRouteSelection,
 }: Props): JSX.Element => {
+  const slideHandler = () => {
+    setChecked((prev) => !prev);
+  };
 
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
@@ -24,6 +28,7 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
   ) => {
     if (value) {
       setRouteSelection(value);
+      slideHandler();
     } else {
       throw new Error('Something has gone wrong with the route naming.');
     }
@@ -46,7 +51,7 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
       getOptionLabel={(option: BusRoute) =>
         `${option.name} (to ${option.bus_stops[option.bus_stops.length - 1]['name']})`}
       options={sortBusRoutes(busRoutes)}
-      sx={{width: 400}}
+      sx={{height: 70, width: 400}}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={'Select Route'}/>}
     />
