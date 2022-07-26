@@ -1,14 +1,12 @@
 // React
 import React, {Dispatch, SetStateAction} from 'react';
 
-// Material UI
-import {Autocomplete, AutocompleteRenderInputParams, TextField, TextFieldProps}
-    from '@mui/material';
-
 // Props
 import Button from '@mui/material/Button';
 import BusRoute from '../../../types/BusRoute';
 import BusStop from '../../../types/BusStop';
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 interface Props {
     routeSelection: BusRoute | undefined;
@@ -54,10 +52,48 @@ const BusMeButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    // This is where the POST API call will go.
-    const submitClickHandler = () => {
+    const getFallbackPrediction = (route: string,
+                                   startSelection: BusStop,
+                                   finishSelection: BusStop) => {
+
+        const userDirectionsRequest: google.maps.DirectionsRequest = {
+            origin: {
+                lat: +startSelection.latitude,
+                lng: +startSelection.longitude
+            },
+            destination: {
+                lat: +finishSelection.latitude,
+                lng: +finishSelection.longitude,
+            },
+            travelMode: google.maps.TravelMode.TRANSIT,
+            transitOptions: {
+                modes: [google.maps.TransitMode.BUS],
+                routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
+            }
+        };
+
+        const directionsServiceCallback = (
+          response: DirectionsResult | null,
+          status: DirectionsStatus,
+        ) => {
+            if (response && status === 'OK' ) { // response was state of directions
+                const prediction: google.maps.Duration | undefined = response.routes[0].legs[0].duration;
+                if (prediction) {
+                    const predictionInMinutes = Math.round(prediction.value / 60 * 10) / 10;
+                    setPrediction(predictionInMinutes);
+                } else {
+                    alert('Something has gone wrong with the Google Maps API');
+                }
+            }
+        };
+        const service = new google.maps.DirectionsService();
+        service.route(userDirectionsRequest, directionsServiceCallback);
+    }
+
+
+    const handleSingleRouteApiCall = () => {
         if (routeSelection === undefined || dateTimeSelection === undefined ||
-            startSelection === undefined || finishSelection === undefined) {
+          startSelection === undefined || finishSelection === undefined) {
             return;
         }
         const route: string = routeSelection.name
@@ -71,18 +107,23 @@ const BusMeButton = ({routeSelection,
         const time: string = getSeconds(dateTimeSelection).toString()
 
         fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
-            .then((response) => {
-                if (response.ok) {
-                    return response.json() as Promise<Prediction>;
-                } else {
-                    throw new Error();
-                }
-            })
-            .then((data) => {
-                const prediction: number = Math.round(data['prediction'] * 10) / 10
-                setPrediction(prediction)
-            })
-            .catch((error) => console.log(error));
+          .then((response) => {
+              if (response.ok) {
+                  return response.json() as Promise<Prediction>;
+              } else {
+                  throw new Error();
+              }
+          })
+          .then((data) => {
+              const prediction: number = Math.round(data['prediction'] * 10) / 10
+              setPrediction(prediction)
+          })
+          .catch((error) => console.log(error));
+    }
+
+// This is where the POST API call will go.
+    const submitClickHandler = () => {
+        handleSingleRouteApiCall();
     };
 
     // Submit Button helper functions

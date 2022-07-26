@@ -33,6 +33,7 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
+  const [multiRoute, setMultiRoute] = useState<boolean>(true);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -46,6 +47,7 @@ const App = (): JSX.Element => {
         setRouteSelection={setRouteSelection}
         setPrediction={setPrediction}
         setDirections={setDirections}
+        multiRoute={multiRoute}
       />
       <DisplayPanel
         prediction={prediction}

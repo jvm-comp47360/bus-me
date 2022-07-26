@@ -15,6 +15,7 @@ import ShowRouteButton from './ShowRouteButton/ShowRouteButton';
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
 import BusMeButton from './BusMeButton/BusMeButton';
+import FullBusStop from "../../types/FullBusStop";
 
 
 interface Props {
@@ -26,6 +27,7 @@ interface Props {
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+  multiRoute: boolean;
 }
 
 // Animation Bug Fix Credit:
@@ -40,9 +42,11 @@ const ControlPanel = ({
                         setRouteSelection,
                         setPrediction,
                         setDirections,
+                        multiRoute,
                       }: Props): JSX.Element => {
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
+  const [busStops, setBusStops] = useState<BusStop[]>([])
 
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
@@ -60,6 +64,19 @@ const ControlPanel = ({
       })
       .then(setBusRoutes)
       .catch((error) => console.log(error));
+
+    fetch('http://ipa-002.ucd.ie/api/bus_stops/')
+      .then((response) => {
+        if (response.ok) {
+          return response.json() as Promise<BusStop[]>;
+        } else {
+          throw new Error();
+        }
+      })
+      .then(setBusStops)
+      .catch((error) => console.log(error));
+
+    console.log(busStops);
   }, [])
 
   const resetStartAndFinishSelection = () => {
@@ -92,7 +109,7 @@ const ControlPanel = ({
       alignItems={'center'}
       m={2}
   >
-    {!checked ? (
+    {!checked && !multiRoute ? (
       <Slide
         direction={'up'}
         in={!checked}
@@ -108,27 +125,21 @@ const ControlPanel = ({
         </div>
       </Slide>
     ) : null}
-    {checked ? (
-      <Slide
-        direction={'up'}
-        in={checked}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div>
-            <StopSelectionPanel
-              busRoutes={busRoutes}
-              routeSelection={routeSelection}
-              startSelection={startSelection}
-              setStartSelection={setStartSelection}
-              finishSelection={finishSelection}
-              setFinishSelection={setFinishSelection}
-              dateTimeSelection={dateTimeSelection}
-              setDateTimeSelection={setDateTimeSelection}
-            />
-        </div>
-      </Slide>
-    ) : null}
+
+      <div>
+          <StopSelectionPanel
+            busRoutes={busRoutes}
+            busStops={busStops}
+            routeSelection={routeSelection}
+            startSelection={startSelection}
+            setStartSelection={setStartSelection}
+            finishSelection={finishSelection}
+            setFinishSelection={setFinishSelection}
+            dateTimeSelection={dateTimeSelection}
+            setDateTimeSelection={setDateTimeSelection}
+            multiRoute={multiRoute}
+          />
+      </div>
     <Button
       onClick={slideHandler}
       disabled={toggleDisableHandler()}

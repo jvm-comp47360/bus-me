@@ -15,6 +15,7 @@ import DateTimeSelection from './DateTimeSelection/DateTimeSelection';
 
 interface Props {
     busRoutes: BusRoute[];
+    busStops: BusStop[];
     routeSelection: BusRoute | undefined;
     startSelection: BusStop | undefined;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
@@ -22,10 +23,12 @@ interface Props {
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     dateTimeSelection: Date | undefined;
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
+    multiRoute: boolean;
 }
 
 const StopSelectionPanel = ({
                                busRoutes,
+                              busStops,
                                routeSelection,
                               startSelection,
                                setStartSelection,
@@ -33,6 +36,7 @@ const StopSelectionPanel = ({
                                setFinishSelection,
                                dateTimeSelection,
                                setDateTimeSelection,
+                              multiRoute,
                            }: Props): JSX.Element => {
 
     return <>
@@ -45,17 +49,21 @@ const StopSelectionPanel = ({
             >
                 <BusStopDropdown
                     busRoutes={busRoutes}
+                    busStops={busStops}
                     routeSelection={routeSelection}
                     label={'Start'}
                     selection={startSelection}
                     setSelection={setStartSelection}
+                    multiRoute={multiRoute}
                 />
                 <BusStopDropdown
                     busRoutes={busRoutes}
+                    busStops={busStops}
                     routeSelection={routeSelection}
                     label={'Finish'}
                     selection={finishSelection}
                     setSelection={setFinishSelection}
+                    multiRoute={multiRoute}
                 />
                 <DateTimeSelection
                     dateTimeSelection={dateTimeSelection}
