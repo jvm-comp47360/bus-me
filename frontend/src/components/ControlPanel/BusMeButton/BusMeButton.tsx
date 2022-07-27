@@ -40,6 +40,8 @@ const BusMeButton = ({routeSelection,
                         setPrediction,
                         multiRoute,
                     }: Props): JSX.Element => {
+    const [predictionList, setPredictionList] = useState<number[]>([]);
+
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
@@ -84,7 +86,7 @@ const BusMeButton = ({routeSelection,
                 const journeyStages: google.maps.DirectionsStep[] = response.routes[0].legs[0].steps;
 
                 const urlsToFetch: string[] = [];
-                let googleMapsPredictions = 0;
+                let googleMapsPrediction = 0;
 
                 journeyStages.map((journeyStage) => {
                     if (journeyStage.travel_mode === 'TRANSIT') {
@@ -93,16 +95,29 @@ const BusMeButton = ({routeSelection,
                         if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
                             const route: string = transitDetails.line.short_name;
                             const num_stop_segments: number = transitDetails.num_stops
-                            const time: string = getSeconds(dateTimeSelection).toString()
+                            const time: number = getSeconds(dateTimeSelection)
+                            const times: string[] = [time.toString()]
 
-                            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${time}`)
+                            for (let i = 2; i < 6; i++) {
+                                const currentTime: number = time + (i * 3600);
+                                // If crossover to new day, offset by a day.
+                                if (currentTime > 86400) {
+                                    times.push((currentTime - 86400).toString());
+                                } else {
+                                    times.push(currentTime.toString());
+                                }
+                            }
+
+                            times.map((time) => {
+                                urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${time}`)
+                            })
+
                         } else {
                             const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
                             if (predictionInSeconds) {
                                 const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
                                 console.log("Prediction in minutes:");
-                                console.log(predictionInMinutes);
-                                googleMapsPredictions += predictionInMinutes;
+                                googleMapsPrediction += predictionInMinutes;
                             }
                         }
                     }
@@ -113,18 +128,38 @@ const BusMeButton = ({routeSelection,
                     responses.map((response) => response.json() as Promise<Prediction>))
                   .then((predictions) => {
                       Promise.all(predictions).then((predictions) => {
-                          let totalPredictions = 0
-                          predictions.map((prediction) => {
-                              console.log("Prediction from backend:")
-                              console.log(Math.round(prediction.prediction * 10) / 10);
-                              totalPredictions += Math.round(prediction.prediction * 10) / 10;
-                          })
-                          totalPredictions += googleMapsPredictions;
-                          setPrediction(totalPredictions);
+                          const numberOfLegs: number = predictions.length / 5;
+                          const totalPredictionList: number[] = [];
+                          let totalPrediction = 0;
+
+                          for (let i = 0; i < numberOfLegs; i++) {
+                              const currentPrediction = predictions[i * 5].prediction;
+                              totalPrediction += Math.round((currentPrediction * 10) / 10);
+                          }
+
+                          if (googleMapsPrediction > 0) {
+                              totalPrediction += googleMapsPrediction;
+                          }
+
+                          for (let i = 1; i < 5; i++) {
+                              let currentTotalPredictions = 0;
+                              for (let j = 0; j < numberOfLegs; j++) {
+                                  const currentTotalPrediction = predictions[i + (j * 5)].prediction;
+                                  currentTotalPredictions += Math.round((currentTotalPrediction * 10) / 10);
+                              }
+                              if (googleMapsPrediction > 0) {
+                                  currentTotalPredictions += googleMapsPrediction;
+                              }
+                              totalPredictionList.push(currentTotalPredictions);
+                          }
+
+                          setPrediction(totalPrediction);
+                          setPredictionList(totalPredictionList)
                       })
                   })
             }
         };
+        console.log(predictionList);
         const service = new google.maps.DirectionsService();
         service.route(userDirectionsRequest, directionsServiceCallback);
     }
