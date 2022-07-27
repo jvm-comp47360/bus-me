@@ -7,9 +7,6 @@ import Weather from '../../../types/Weather';
 
 const MOCK_WEATHER_API: Weather = MOCK_WEATHER_DATA[0];
 const ICON: string = MOCK_WEATHER_API['icon'];
-const DATE: string = MOCK_WEATHER_API['date'];
-const WEATHERTEXT: string = MOCK_WEATHER_API['weatherText'];
-const TEMPERATURE: string = MOCK_WEATHER_API['temperature'];
 
 const setup = (): RenderResult => render(
     <WeatherCard weather={MOCK_WEATHER_API}/>,
