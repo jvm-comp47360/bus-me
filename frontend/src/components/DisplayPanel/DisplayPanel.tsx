@@ -4,11 +4,14 @@ import {Box} from '@mui/material';
 
 import BusStop from '../../types/BusStop';
 import BusRoute from '../../types/BusRoute';
+import Weather from "../../types/Weather";
 
 import WeatherCard from './WeatherCard/WeatherCard';
 import ResultsCard from './ResultsCard/ResultsCard';
 import Map from './Map/Map';
-import Weather from "../../types/Weather";
+import JourneyPanel from './JourneyPanel/JourneyPanel';
+
+import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -57,6 +60,13 @@ const DisplayPanel = ({
         setPrediction={setPrediction}/>
       : null
     }
+    <JourneyPanel 
+      startSelection={mockData[0].bus_stops[0]}
+      departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
+      finishSelection={mockData[0].bus_stops[1]}
+      routeSelection={mockData[0]}
+      prediction={24.8}
+      />
     <Map
       startSelection={startSelection}
       finishSelection={finishSelection}
