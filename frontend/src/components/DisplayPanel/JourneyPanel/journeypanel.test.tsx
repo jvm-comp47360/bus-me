@@ -25,7 +25,7 @@ describe('JourneyLeg tests', () => {
             expect(screen.getByText(/Drumcondra Rail Stn/i)).toBeInTheDocument();
         })
     })
-    describe('JourneyLefInfo tests', () => {
+    describe('JourneyLegInfo tests', () => {
         test('Route is rendered', () => {
             setUp();
             expect(screen.getByText("1")).toBeInTheDocument();
