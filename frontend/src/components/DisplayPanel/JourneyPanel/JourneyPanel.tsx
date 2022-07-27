@@ -7,14 +7,20 @@ interface Props {
     time: Date,
     busStop: BusStop,
     routeSelection: BusRoute,
+    prediction: number,
 }
 
-const JourneyPanel = ({time, busStop, routeSelection}: Props): JSX.Element => {
+const JourneyPanel = ({
+    time, 
+    busStop, 
+    routeSelection,
+    prediction}: Props): JSX.Element => {
     return <>
         <JourneyLeg 
             time={time} 
             busStop={busStop}
             routeSelection={routeSelection}
+            prediction={Math.round(prediction)}
         />
     </>
 };

@@ -8,15 +8,22 @@ interface Props {
     time: Date,
     busStop: BusStop,
     routeSelection: BusRoute,
+    prediction: number,
 }
 
-const JourneyLeg = ({time, busStop, routeSelection}: Props): JSX.Element => {
+const JourneyLeg = ({
+    time, 
+    busStop, 
+    routeSelection,
+    prediction}: Props): JSX.Element => {
     return <>
         <JourneyLegStop 
             time={time} 
             busStop={busStop}
         />
-        <JourneyLegInfo routeSelection={routeSelection}/>
+        <JourneyLegInfo 
+            routeSelection={routeSelection}
+            prediction={prediction}/>
     </>
 };
 
