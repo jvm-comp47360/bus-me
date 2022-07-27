@@ -3,26 +3,36 @@ import {render, RenderResult, screen} from '@testing-library/react';
 import mockData from '../../../mockdata/MOCK_BUS_ROUTES.json';
 
 const mockRoute = mockData[0]
-const mockStop = mockRoute.bus_stops[0];
+const startStop = mockRoute.bus_stops[0];
+const finishStop = mockRoute.bus_stops[1];
 
 
 const setUp = (prediction: number = 24.8): RenderResult => render(
     <JourneyPanel 
-        time={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
-        busStop={mockStop}
+        startSelection={startStop}
+        departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
+        finishSelection={finishStop}
         routeSelection={mockRoute}
         prediction={prediction}/>
 );
 
 describe('JourneyLeg tests', () => {
     describe('JourneyLegStop tests', () => {
-        test('Time is rendered', () => {
+        test('startTime is rendered', () => {
             setUp();
             expect(screen.getByText(/15:29/i)).toBeInTheDocument();
         })
-        test('Stop is rendered', () => {
+        test('startSelection is rendered', () => {
             setUp();
             expect(screen.getByText(/Drumcondra Rail Stn/i)).toBeInTheDocument();
+        })
+        test('finishTime is rendered', () => {
+            setUp();
+            expect(screen.getByText(/15:54/i)).toBeInTheDocument();
+        })
+        test('finishSelection is rendered', () => {
+            setUp();
+            expect(screen.getByText(/Dargle Road/i)).toBeInTheDocument();
         })
     })
     describe('JourneyLegInfo tests', () => {

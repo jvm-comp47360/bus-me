@@ -5,25 +5,38 @@ import BusStop from '../../../../types/BusStop'
 import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
-    time: Date,
-    busStop: BusStop,
+    startSelection: BusStop,
+    departureTime: Date,
+    finishSelection: BusStop,
     routeSelection: BusRoute,
     prediction: number,
 }
 
 const JourneyLeg = ({
-    time, 
-    busStop, 
+    startSelection, 
+    departureTime, 
+    finishSelection,
     routeSelection,
     prediction}: Props): JSX.Element => {
+
+    const getArrivalTime = (depatureTime: Date, prediction: number): Date => {
+        const startUnixTime: number = depatureTime.getTime();
+        const predictionInMillisecs: number = prediction * 60 * 1000;
+        return new Date(startUnixTime + predictionInMillisecs);
+    }
+
     return <>
         <JourneyLegStop 
-            time={time} 
-            busStop={busStop}
+            stopSelection={startSelection}
+            time={departureTime} 
         />
         <JourneyLegInfo 
             routeSelection={routeSelection}
             prediction={prediction}/>
+        <JourneyLegStop 
+            stopSelection={finishSelection}
+            time={getArrivalTime(departureTime, prediction)} 
+        />
     </>
 };
 

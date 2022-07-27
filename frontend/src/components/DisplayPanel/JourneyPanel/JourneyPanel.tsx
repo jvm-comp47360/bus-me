@@ -4,21 +4,24 @@ import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
 
 interface Props {
-    time: Date,
-    busStop: BusStop,
+    startSelection: BusStop,
+    departureTime: Date,
+    finishSelection: BusStop,
     routeSelection: BusRoute,
     prediction: number,
 }
 
 const JourneyPanel = ({
-    time, 
-    busStop, 
+    startSelection,
+    departureTime,
+    finishSelection, 
     routeSelection,
     prediction}: Props): JSX.Element => {
     return <>
         <JourneyLeg 
-            time={time} 
-            busStop={busStop}
+            startSelection={startSelection}
+            departureTime={departureTime}
+            finishSelection={finishSelection}
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
         />

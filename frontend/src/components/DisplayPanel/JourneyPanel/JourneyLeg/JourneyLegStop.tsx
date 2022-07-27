@@ -2,13 +2,13 @@ import BusStop from '../../../../types/BusStop'
 
 interface Props {
     time: Date,
-    busStop: BusStop,
+    stopSelection: BusStop,
 }
 
-const JourneyLegStop = ({time, busStop}: Props): JSX.Element => {
+const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
     const journeyTime: string = `${time.getHours().toString()}:${time.getMinutes().toString()}`
     return <>
-        <div>{journeyTime} – {busStop.name}</div>
+        <div>{journeyTime} – {stopSelection.name}</div>
     </>
 };
 
