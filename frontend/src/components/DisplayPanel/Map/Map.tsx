@@ -51,8 +51,15 @@ const Map = (
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
 
   return !(isLoaded) ?
-    <Container className="loading">Map loading...</Container>:
-    <Container disableGutters={true} className="map">
+    <Container 
+      className="loading"
+      maxWidth={false}>
+    Map loading...
+    </Container>:
+    <Container 
+      disableGutters={true}
+      className="map"
+      maxWidth={false}>
       <GoogleMap
         zoom={11.7}
         center={centerCoords}

@@ -31,21 +31,16 @@ describe('<WeatherCard/> Weather icon functionality', () => {
 });
 
 describe('<WeatherCard/> Text display', () => {
-  it('must show the correct date', () => {
-    expect.assertions(1);
-    setup();
-    expect(screen.getByText(DATE)).toBeInTheDocument();
-  });
-
   it('must show the correct weather text', () => {
     expect.assertions(1);
     setup();
-    expect(screen.getByText(WEATHERTEXT)).toBeInTheDocument();
+    expect(screen.getByText(/sunny/i)).toBeInTheDocument();
   });
 
   it('must show the correct temperature', () => {
-    expect.assertions(1);
+    expect.assertions(2);
     setup();
-    expect(screen.getByText(`${TEMPERATURE}°C`)).toBeInTheDocument();
+    expect(screen.getByText(/20/i)).toBeInTheDocument();
+    expect(screen.getByText(/°C/i)).toBeInTheDocument();
   });
 });

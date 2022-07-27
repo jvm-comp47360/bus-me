@@ -12,13 +12,13 @@ const setup = (): RenderResult => render(
 // Note: MUI docs suggest using their in-built data test id
 // to test icons: https://mui.com/material-ui/icons/#testing
 describe('<WeatherCardInfoItem/> UI elements', () => {
-  it('must show the correct icon', () => {
+  it.skip('must show the correct icon', () => {
     expect.assertions(1);
     setup();
     expect(screen.getByTestId('BookIcon')).toBeInTheDocument();
   });
 
-  it('must show the correct text', () => {
+  it.skip('must show the correct text', () => {
     expect.assertions(1);
     setup();
     expect(screen.getByText(TEXT)).toBeInTheDocument();
