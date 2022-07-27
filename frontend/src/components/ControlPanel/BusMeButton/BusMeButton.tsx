@@ -1,5 +1,5 @@
 // React
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Props
 import Button from '@mui/material/Button';
@@ -13,7 +13,6 @@ interface Props {
     startSelection: BusStop | undefined;
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
-    prediction: number | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     multiRoute: boolean;
 }
@@ -38,12 +37,9 @@ const BusMeButton = ({routeSelection,
                          startSelection,
                          finishSelection,
                          dateTimeSelection,
-                        prediction,
                         setPrediction,
                         multiRoute,
                     }: Props): JSX.Element => {
-
-
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
@@ -86,7 +82,9 @@ const BusMeButton = ({routeSelection,
         ) => {
             if (response && status === 'OK' ) { // response was state of directions
                 const journeyStages: google.maps.DirectionsStep[] = response.routes[0].legs[0].steps;
-                let prediction = 0;
+
+                const urlsToFetch: string[] = [];
+                let googleMapsPredictions = 0;
 
                 journeyStages.map((journeyStage) => {
                     if (journeyStage.travel_mode === 'TRANSIT') {
@@ -94,62 +92,41 @@ const BusMeButton = ({routeSelection,
 
                         if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
                             const route: string = transitDetails.line.short_name;
-                            const num_stop_segments: number = transitDetails.num_stops;
-                            setPredictionFromBackend(route, num_stop_segments, dateTimeSelection);
+                            const num_stop_segments: number = transitDetails.num_stops
+                            const time: string = getSeconds(dateTimeSelection).toString()
+
+                            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${time}`)
                         } else {
                             const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
-                            console.log("Prediction in seconds")
-                            console.log(predictionInSeconds);
                             if (predictionInSeconds) {
-                                if (prediction) {
-                                    console.log("Prediction exists")
-                                    setPrediction(prediction += Math.round((predictionInSeconds.value / 60 * 10) / 10));
-                                    console.log(prediction)
-                                } else {
-                                    console.log("Prediction exists")
-                                    setPrediction(prediction);
-                                    console.log("Prediction does not exist")
-                                }
-
+                                const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
+                                console.log("Prediction in minutes:");
+                                console.log(predictionInMinutes);
+                                googleMapsPredictions += predictionInMinutes;
                             }
                         }
                     }
                 })
+
+                Promise.all(urlsToFetch.map((url) => fetch(url)))
+                  .then((responses) =>
+                    responses.map((response) => response.json() as Promise<Prediction>))
+                  .then((predictions) => {
+                      Promise.all(predictions).then((predictions) => {
+                          let totalPredictions = 0
+                          predictions.map((prediction) => {
+                              console.log("Prediction from backend:")
+                              console.log(Math.round(prediction.prediction * 10) / 10);
+                              totalPredictions += Math.round(prediction.prediction * 10) / 10;
+                          })
+                          totalPredictions += googleMapsPredictions;
+                          setPrediction(totalPredictions);
+                      })
+                  })
             }
         };
         const service = new google.maps.DirectionsService();
         service.route(userDirectionsRequest, directionsServiceCallback);
-    }
-
-    const setPredictionFromBackend = (
-      route: string,
-      num_stops_segment: number,
-      dateTimeSelection: Date,
-    ): void => {
-
-        const time: string = getSeconds(dateTimeSelection).toString()
-
-        fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
-          .then((response) => {
-              if (response.ok) {
-                  return response.json() as Promise<Prediction>;
-              } else {
-                  throw new Error();
-              }
-          })
-          .then((data) => {
-              console.log(data);
-              if (prediction) {
-                  console.log("Prediction exists")
-                  setPrediction(prediction += data.prediction);
-                  console.log(prediction);
-              } else {
-                  console.log("Prediction does not exist")
-                  setPrediction(data.prediction);
-                  console.log(prediction);
-              }
-          })
-          .catch((error) => console.log(error));
     }
 
     const handleSingleRouteApiCall = () => {

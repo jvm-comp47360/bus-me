@@ -151,7 +151,6 @@ const ControlPanel = ({
         startSelection={startSelection}
         finishSelection={finishSelection}
         dateTimeSelection={dateTimeSelection}
-        prediction={prediction}
         setPrediction={setPrediction}
         multiRoute={multiRoute}
     />
