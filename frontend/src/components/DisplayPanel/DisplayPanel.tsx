@@ -79,13 +79,15 @@ const DisplayPanel = ({
             setPrediction={setPrediction}/>
           : null
         }
+        {(directions && directions.routes[0].legs[0].departure_time) ? /* && prediction */
         <JourneyPanel 
           startSelection={mockData[0].bus_stops[0]}
-          departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
+          departureTime={directions.routes[0].legs[0].departure_time.value}
           finishSelection={mockData[0].bus_stops[1]}
           routeSelection={mockData[0]}
-          prediction={24.8}
-          />
+          prediction={24.8}/>
+          : null
+        }
        </Box>
         <Map
           startSelection={startSelection}

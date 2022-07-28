@@ -7,10 +7,13 @@ const startStop = mockRoute.bus_stops[0];
 const finishStop = mockRoute.bus_stops[1];
 
 
-const setUp = (prediction: number = 24.8): RenderResult => render(
+const setUp = (
+    prediction: number = 24.8,
+    departureTime: Date = new Date('Fri Jul 29 2022 15:29:05 GMT+0100')
+): RenderResult => render(
     <JourneyPanel 
         startSelection={startStop}
-        departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
+        departureTime={departureTime}
         finishSelection={finishStop}
         routeSelection={mockRoute}
         prediction={prediction}/>
@@ -25,9 +28,23 @@ describe('JourneyPanel test', () => {
 
 describe('JourneyLeg tests', () => {
     describe('JourneyLegStop tests', () => {
-        test('startTime is rendered', () => {
-            setUp();
-            expect(screen.getByText(/15:29/i)).toBeInTheDocument();
+        describe('startTime tests', () => {
+            test('startTime is rendered', () => {
+                setUp();
+                expect(screen.getByText(/15:29/i)).toBeInTheDocument();
+            })
+            test('startTime is rendered (15:00)', () => {
+                setUp(24.8, new Date('Fri Jul 29 2022 15:00:05 GMT+0100'));
+                expect(screen.getByText(/15:00/i)).toBeInTheDocument();
+            })
+            test('startTime is rendered (00:00)', () => {
+                setUp(24.8, new Date('Fri Jul 29 2022 00:00:05 GMT+0100'));
+                expect(screen.getByText(/00:00/i)).toBeInTheDocument();
+            })
+            test('startTime is rendered (08:00)', () => {
+                setUp(24.8, new Date('Fri Jul 29 2022 08:00:05 GMT+0100'));
+                expect(screen.getByText(/08:00/i)).toBeInTheDocument();
+            })
         })
         test('startSelection is rendered', () => {
             setUp();

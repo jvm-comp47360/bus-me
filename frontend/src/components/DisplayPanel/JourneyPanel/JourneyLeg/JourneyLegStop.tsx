@@ -8,7 +8,9 @@ interface Props {
 }
 
 const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
-    const journeyTime: string = `${time.getHours().toString()}:${time.getMinutes().toString()}`
+    const journeyHours: string = time.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2});
+    const journeyMinutes: string = time.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2});
+    const journeyTime: string = `${journeyHours}:${journeyMinutes}`;
     return <Grid 
         item
         container>
