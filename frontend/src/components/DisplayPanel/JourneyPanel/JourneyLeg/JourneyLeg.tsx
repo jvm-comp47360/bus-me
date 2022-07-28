@@ -31,7 +31,6 @@ const JourneyLeg = ({
             container
             sx={{
                 my: 1,
-                ml: 1,
             }}>
         <JourneyLegStop 
             stopSelection={startSelection}

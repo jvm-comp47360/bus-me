@@ -21,15 +21,11 @@ const JourneyPanel = ({
     routeSelection,
     prediction}: Props): JSX.Element => {
     return <Box 
-        sx={{backgroundColor: 'white'}}>
-        <Typography 
-            variant='h5' 
-            sx={{
-            mx: 1,
-            }}
-        >
-        Your Journey
-        </Typography>
+        sx={{
+        backgroundColor: 'white',
+        p: 1,
+    }}>
+        <Typography variant='h5'>Your Journey</Typography>
         <JourneyLeg 
             startSelection={startSelection}
             departureTime={departureTime}
