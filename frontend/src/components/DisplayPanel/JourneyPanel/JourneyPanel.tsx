@@ -25,7 +25,11 @@ const JourneyPanel = ({
         backgroundColor: 'white',
         p: 1,
     }}>
-        <Typography variant='h5'>Your Journey</Typography>
+        <Typography 
+            variant='h5' 
+            sx={{textAlign: 'center'}}>
+            Your Journey
+        </Typography>
         <JourneyLeg 
             startSelection={startSelection}
             departureTime={departureTime}

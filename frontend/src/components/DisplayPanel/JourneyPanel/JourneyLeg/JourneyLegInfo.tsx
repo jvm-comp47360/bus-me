@@ -33,7 +33,7 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
                 alignItems: 'center',
         }}>
             <Typography sx={{
-                fontSize: '0.75rem',
+                fontSize: '0.9rem',
                 color: 'gray',
             }}>{getPredictionString(prediction)}</Typography>
         </Grid>
