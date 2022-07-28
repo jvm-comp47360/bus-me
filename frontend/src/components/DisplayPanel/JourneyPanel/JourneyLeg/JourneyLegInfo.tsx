@@ -42,13 +42,14 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
             xs={10}
         >
             <Box sx={{
-                minWidth: '10px',
                 ml: 2,
+                p: 1,
+                borderRadius: '5px',
                 backgroundColor: 'red',
                 color: 'white',
-                width: '10%',
+                width: '15%',
+                minWidth: '10px',
                 textAlign: 'center',
-                borderRadius: '15%',
             }}>
                 {routeSelection.name}
             </Box>

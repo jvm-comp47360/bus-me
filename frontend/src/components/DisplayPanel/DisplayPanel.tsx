@@ -73,19 +73,18 @@ const DisplayPanel = ({
         borderColor: 'primary.main',
         }}>
         {(weather) ? <WeatherCard weather={weather}/> : null}
-        {(prediction) ?
-          <ResultsCard
-            duration={prediction}
-            setPrediction={setPrediction}/>
-          : null
-        }
-        {(directions && directions.routes[0].legs[0].departure_time) ? /* && prediction */
+        {(startSelection &&
+          finishSelection &&
+          directions && 
+          directions.routes[0].legs[0].departure_time && 
+          routeSelection &&
+          prediction) ?
         <JourneyPanel 
-          startSelection={mockData[0].bus_stops[0]}
+          startSelection={startSelection}
           departureTime={directions.routes[0].legs[0].departure_time.value}
-          finishSelection={mockData[0].bus_stops[1]}
-          routeSelection={mockData[0]}
-          prediction={24.8}/>
+          finishSelection={finishSelection}
+          routeSelection={routeSelection}
+          prediction={prediction}/>
           : null
         }
        </Box>
