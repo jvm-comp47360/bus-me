@@ -23,10 +23,8 @@ const JourneyPanel = ({
     routeSelection,
     prediction}: Props): JSX.Element => {
 
-    // TODO: Tie these to the changes in prediction state once there is a single button
-    // to call our API and the Directions Service (e.g. [prediction])
-    const startSelectionMemo: BusStop = useMemo(() => startSelection, []);
-    const finishSelectionMemo: BusStop = useMemo(() => finishSelection, []);
+    const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
+    const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
 
     return <Box 
         sx={{
