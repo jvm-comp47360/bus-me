@@ -26,13 +26,27 @@ describe('JourneyLeg tests', () => {
             setUp();
             expect(screen.getByText(/Drumcondra Rail Stn/i)).toBeInTheDocument();
         })
-        test('finishTime is rendered', () => {
-            setUp();
-            expect(screen.getByText(/15:54/i)).toBeInTheDocument();
-        })
         test('finishSelection is rendered', () => {
             setUp();
             expect(screen.getByText(/Dargle Road/i)).toBeInTheDocument();
+        })
+        describe('finishTime tests', () => {
+            test('finishTime is rendered', () => {
+                setUp();
+                expect(screen.getByText(/15:54/i)).toBeInTheDocument();
+            })
+            test('finishTime is rendered (60 minute journey)', () => {
+                setUp(60);
+                expect(screen.getByText(/16:29/i)).toBeInTheDocument();
+            })
+            test('finishTime is rendered (90 minute journey)', () => {
+                setUp(90);
+                expect(screen.getByText(/16:59/i)).toBeInTheDocument();
+            })
+            test('finishTime is rendered (150 minute journey)', () => {
+                setUp(150);
+                expect(screen.getByText(/17:59/i)).toBeInTheDocument();
+            })
         })
     })
     describe('JourneyLegInfo tests', () => {
