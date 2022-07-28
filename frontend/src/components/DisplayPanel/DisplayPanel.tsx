@@ -39,6 +39,7 @@ const DisplayPanel = ({
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
+  const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
 
   const distanceFromEdge: number = 2;
 
@@ -74,20 +75,22 @@ const DisplayPanel = ({
         borderColor: 'primary.main',
         }}>
         {(weather) ? <WeatherCard weather={weather}/> : null}
-        <JourneyPanelCollapsed />
-        {(startSelection &&
+        {!(startSelection &&
           finishSelection &&
           directions && 
           directions.routes[0].legs[0].departure_time && 
           routeSelection &&
           prediction) ?
-        <JourneyPanel 
-          startSelection={startSelection}
-          departureTime={directions.routes[0].legs[0].departure_time.value}
-          finishSelection={finishSelection}
-          routeSelection={routeSelection}
-          prediction={prediction}/>
-          : null
+          null :
+          (collapseJourneyPanel) ?
+          <JourneyPanelCollapsed setCollapseJourneyPanel={setCollapseJourneyPanel}/> :
+          <JourneyPanel 
+            startSelection={startSelection}
+            departureTime={directions.routes[0].legs[0].departure_time.value}
+            finishSelection={finishSelection}
+            routeSelection={routeSelection}
+            prediction={prediction}
+            setCollapseJourneyPanel={setCollapseJourneyPanel}/>
         }
        </Box>
         <Map

@@ -1,6 +1,7 @@
 import {Card, CardContent, Typography} from '@mui/material';
 import {styled} from "@mui/material/styles";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import {Dispatch, SetStateAction} from 'react';
 
 // TODO: Merge this declaration and one in WeatherCard to a common source
 const CardContentNoPadding = styled(CardContent)(`
@@ -10,7 +11,11 @@ const CardContentNoPadding = styled(CardContent)(`
   }
 `);
 
-const JourneyPanelCollapsed = (): JSX.Element => {
+interface Props {
+    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>
+}
+
+const JourneyPanelCollapsed = ({setCollapseJourneyPanel}: Props): JSX.Element => {
     return <Card sx={{
         backgroundColor: 'primary.main',
         display: 'flex',
@@ -25,7 +30,9 @@ const JourneyPanelCollapsed = (): JSX.Element => {
           Your Journey
         </Typography>
       </CardContentNoPadding>
-      <AddCircleOutlineIcon sx={{color: 'white'}}/>
+      <AddCircleOutlineIcon 
+        sx={{color: 'white'}}
+        onClick={() => setCollapseJourneyPanel(false)}/>
       </Card>
 };
 

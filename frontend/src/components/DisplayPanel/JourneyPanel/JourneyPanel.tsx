@@ -4,7 +4,7 @@ import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 import {Box, Grid, Typography} from '@mui/material';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
-import {useMemo} from 'react';
+import {useMemo, Dispatch, SetStateAction} from 'react';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
@@ -15,6 +15,7 @@ interface Props {
     finishSelection: BusStop,
     routeSelection: BusRoute,
     prediction: number,
+    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>
 }
 
 const JourneyPanel = ({
@@ -22,7 +23,8 @@ const JourneyPanel = ({
     departureTime,
     finishSelection, 
     routeSelection,
-    prediction}: Props): JSX.Element => {
+    prediction,
+    setCollapseJourneyPanel}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
@@ -41,7 +43,8 @@ const JourneyPanel = ({
                 </Typography>
             </Grid>
             <Grid item xs={2}>
-                <RemoveCircleOutlineIcon />
+                <RemoveCircleOutlineIcon
+                    onClick={() => setCollapseJourneyPanel(true)} />
             </Grid>
         </Grid>
         

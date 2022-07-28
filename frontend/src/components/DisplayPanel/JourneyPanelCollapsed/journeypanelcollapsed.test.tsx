@@ -1,7 +1,10 @@
 import {render, RenderResult, screen} from '@testing-library/react';
 import JourneyPanelCollapsed from './JourneyPanelCollapsed';
 
-const setUp = (): RenderResult => render(<JourneyPanelCollapsed />);
+const setUp = (): RenderResult => render(
+<JourneyPanelCollapsed 
+    setCollapseJourneyPanel={jest.fn()}/>
+);
 
 test('Collapsed title renders', () => {
     setUp();
