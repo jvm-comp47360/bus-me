@@ -37,7 +37,9 @@ const DisplayPanel = ({
   setFinishSelection,
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
-  const [weather, setWeather] = useState<Weather>()
+  const [weather, setWeather] = useState<Weather>();
+
+  const distanceFromEdge: number = 2;
 
   useEffect(() => {
     fetch('http://ipa-002.ucd.ie/api/current_weather/')
@@ -52,7 +54,12 @@ const DisplayPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
-  return <Box sx={{position: 'relative', zIndex: 0}}>
+  return <Box 
+      sx={{
+        position: 'relative', 
+        zIndex: 0,
+        px: distanceFromEdge,
+      }}>
       <Box 
       id="right-overlay" 
       sx={{
@@ -61,6 +68,9 @@ const DisplayPanel = ({
         right: '0%',
         width: '25%',
         minWidth: '250px',
+        mr: distanceFromEdge,
+        border: 1,
+        borderColor: 'primary.main',
         }}>
         {(weather) ? <WeatherCard weather={weather}/> : null}
         {(prediction) ?

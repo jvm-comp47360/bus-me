@@ -21,10 +21,11 @@ const WeatherCard = ({weather}: Props): JSX.Element => {
   const {icon, date, weatherText, temperature}: Weather = weather;
 
   return <Card sx={{
-      backgroundColor: '#3F51B5',
+      backgroundColor: 'primary.main',
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      borderRadius: 0,
     }}>
       <CardMedia
         component={'img'}

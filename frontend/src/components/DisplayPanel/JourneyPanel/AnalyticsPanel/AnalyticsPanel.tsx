@@ -5,7 +5,8 @@ const AnalyticsPanel = (): JSX.Element => {
         borderTop: 1,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderColor: 'primary.main',
     }}>
         <Typography 
             variant='body1'
