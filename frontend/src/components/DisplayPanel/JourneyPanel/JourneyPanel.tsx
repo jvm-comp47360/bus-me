@@ -1,5 +1,7 @@
 import JourneyLeg from './JourneyLeg/JourneyLeg';
 
+import {Box} from '@mui/material';
+
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
 
@@ -17,7 +19,8 @@ const JourneyPanel = ({
     finishSelection, 
     routeSelection,
     prediction}: Props): JSX.Element => {
-    return <>
+    return <Box 
+        sx={{backgroundColor: 'white'}}>
         <JourneyLeg 
             startSelection={startSelection}
             departureTime={departureTime}
@@ -25,7 +28,7 @@ const JourneyPanel = ({
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
         />
-    </>
+    </Box>
 };
 
 export default JourneyPanel;

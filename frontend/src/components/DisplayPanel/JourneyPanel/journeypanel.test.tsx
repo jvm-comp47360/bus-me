@@ -42,23 +42,23 @@ describe('JourneyLeg tests', () => {
         })
         test('Prediction is rendered (<60 mins)', () => {
             setUp();
-            expect(screen.getByText(/25 mins/)).toBeInTheDocument();
+            expect(screen.getByText(/25m/)).toBeInTheDocument();
         })
         test('Prediction is rendered (=60 mins)', () => {
             setUp(60.2);
-            expect(screen.getByText(/\(1 hr\)/)).toBeInTheDocument();
+            expect(screen.getByText(/1h/)).toBeInTheDocument();
         })
-        test('Prediction is rendered (>=60 mins, <120 mins)', () => {
+        test('Prediction is rendered (>=61 mins, <120 mins)', () => {
             setUp(89.8);
-            expect(screen.getByText(/\(1 hr 30 mins\)/)).toBeInTheDocument();
+            expect(screen.getByText(/1h30m/)).toBeInTheDocument();
         })
         test('Prediction is rendered (=120 mins)', () => {
             setUp(120.3);
-            expect(screen.getByText(/\(2 hrs\)/)).toBeInTheDocument();
+            expect(screen.getByText(/2h/)).toBeInTheDocument();
         })
         test('Prediction is rendered (<120 mins)', () => {
             setUp(159.7);
-            expect(screen.getByText(/\(2 hrs 40 mins\)/)).toBeInTheDocument();
+            expect(screen.getByText(/2h40m/)).toBeInTheDocument();
         })
     })
 })

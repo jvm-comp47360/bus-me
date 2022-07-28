@@ -1,5 +1,7 @@
 import BusRoute from '../../../../types/BusRoute';
 
+import {Box, Grid, Typography} from '@mui/material';
+
 interface Props {
     routeSelection: BusRoute,
     prediction: number,
@@ -7,26 +9,48 @@ interface Props {
 
 const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
     const getPredictionString = (prediction: number): string => {
-        if (prediction < 60) return `${prediction} mins`;
+        if (prediction < 60) return `${prediction}m`;
         else if (prediction < 120) {
-            if (prediction === 60) return '1 hr';
-            else {
-                const predictedMinutes = prediction - 60;
-                return `1 hr ${predictedMinutes} mins`;
-            }
-        } else {
-            if (prediction === 120) return '2 hrs';
-            else {
-                const predictedMinutes = prediction - 120;
-                return `2 hrs ${predictedMinutes} mins`;
-            }
+            if (prediction === 60) return '1h';
+            else return `1h${prediction - 60}m`;
+        } 
+        else {
+            if (prediction === 120) return '2h';
+            else return `2h${prediction - 120}m`;
         }
     };
     
-    return <>
-        <div>{routeSelection.name}</div>
-        <div>({getPredictionString(prediction)})</div>
-    </>
+    return <Grid container>
+        <Grid 
+            item 
+            xs={2}
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+        }}>
+            <Typography sx={{
+                fontSize: '0.75rem',
+                color: 'gray',
+            }}>{getPredictionString(prediction)}</Typography>
+        </Grid>
+        <Grid 
+            item 
+            xs={10}
+        >
+        <Box sx={{
+            minWidth: '10px',
+            ml: 2,
+            backgroundColor: 'red',
+            color: 'white',
+            width: '10%',
+            textAlign: 'center',
+            borderRadius: '15%',
+        }}>
+            {routeSelection.name}
+        </Box>
+        </Grid>
+    </Grid>
 };
 
 export default JourneyLegInfo;

@@ -53,28 +53,38 @@ const DisplayPanel = ({
   }, [])
 
   return <Box sx={{position: 'relative', zIndex: 0}}>
-    {(weather) ? <WeatherCard weather={weather}/> : null}
-    {(prediction) ?
-      <ResultsCard
-        duration={prediction}
-        setPrediction={setPrediction}/>
-      : null
-    }
-    <JourneyPanel 
-      startSelection={mockData[0].bus_stops[0]}
-      departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
-      finishSelection={mockData[0].bus_stops[1]}
-      routeSelection={mockData[0]}
-      prediction={24.8}
-      />
-    <Map
-      startSelection={startSelection}
-      finishSelection={finishSelection}
-      directions={directions}
-      routeSelection={routeSelection}
-      setStartSelection={setStartSelection}
-      setFinishSelection={setFinishSelection}
-    />
+      <Box 
+      id="right-overlay" 
+      sx={{
+        position: 'absolute',
+        zIndex: 1,
+        right: '0%',
+        width: '25%',
+        minWidth: '250px',
+        }}>
+        {(weather) ? <WeatherCard weather={weather}/> : null}
+        {(prediction) ?
+          <ResultsCard
+            duration={prediction}
+            setPrediction={setPrediction}/>
+          : null
+        }
+        <JourneyPanel 
+          startSelection={mockData[0].bus_stops[0]}
+          departureTime={new Date('Fri Jul 29 2022 15:29:05 GMT+0100')}
+          finishSelection={mockData[0].bus_stops[1]}
+          routeSelection={mockData[0]}
+          prediction={24.8}
+          />
+       </Box>
+        <Map
+          startSelection={startSelection}
+          finishSelection={finishSelection}
+          directions={directions}
+          routeSelection={routeSelection}
+          setStartSelection={setStartSelection}
+          setFinishSelection={setFinishSelection}
+        />
   </Box>;
 };
 
