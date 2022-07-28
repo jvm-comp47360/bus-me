@@ -1,4 +1,5 @@
 import JourneyLeg from './JourneyLeg/JourneyLeg';
+import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
 import {Box, Typography} from '@mui/material';
 
@@ -24,7 +25,6 @@ const JourneyPanel = ({
         <Typography 
             variant='h5' 
             sx={{
-            borderBottom: 1,
             mx: 1,
             }}
         >
@@ -37,6 +37,7 @@ const JourneyPanel = ({
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
         />
+        <AnalyticsPanel />
     </Box>
 };
 
