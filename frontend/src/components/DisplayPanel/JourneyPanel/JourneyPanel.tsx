@@ -1,7 +1,8 @@
 import JourneyLeg from './JourneyLeg/JourneyLeg';
 import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
-import {Box, Typography} from '@mui/material';
+import {Box, Grid, Typography} from '@mui/material';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 import {useMemo} from 'react';
 
@@ -30,12 +31,20 @@ const JourneyPanel = ({
         sx={{
         backgroundColor: 'white',
         p: 1,
-    }}>
-        <Typography 
-            variant='h5' 
-            sx={{textAlign: 'center'}}>
-            Your Journey
-        </Typography>
+    }}> 
+        <Grid container>
+            <Grid item xs={10}>
+                <Typography 
+                    variant='h5' 
+                    sx={{textAlign: 'center'}}>
+                    Your Journey
+                </Typography>
+            </Grid>
+            <Grid item xs={2}>
+                <RemoveCircleOutlineIcon />
+            </Grid>
+        </Grid>
+        
         <JourneyLeg 
             startSelection={startSelectionMemo}
             departureTime={departureTime}
