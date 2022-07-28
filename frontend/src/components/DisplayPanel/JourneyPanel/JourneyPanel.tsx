@@ -1,6 +1,6 @@
 import JourneyLeg from './JourneyLeg/JourneyLeg';
 
-import {Box} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
@@ -21,6 +21,15 @@ const JourneyPanel = ({
     prediction}: Props): JSX.Element => {
     return <Box 
         sx={{backgroundColor: 'white'}}>
+        <Typography 
+            variant='h5' 
+            sx={{
+            borderBottom: 1,
+            mx: 1,
+            }}
+        >
+        Your Journey
+        </Typography>
         <JourneyLeg 
             startSelection={startSelection}
             departureTime={departureTime}

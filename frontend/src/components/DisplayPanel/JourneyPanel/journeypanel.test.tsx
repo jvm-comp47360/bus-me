@@ -16,6 +16,13 @@ const setUp = (prediction: number = 24.8): RenderResult => render(
         prediction={prediction}/>
 );
 
+describe('JourneyPanel test', () => {
+    test('Panel heading renders', () => {
+        setUp()
+        expect(screen.getByText(/your journey/i)).toBeInTheDocument();
+    })
+})
+
 describe('JourneyLeg tests', () => {
     describe('JourneyLegStop tests', () => {
         test('startTime is rendered', () => {
