@@ -7,7 +7,6 @@ import BusRoute from '../../types/BusRoute';
 import Weather from "../../types/Weather";
 
 import WeatherCard from './WeatherCard/WeatherCard';
-import ResultsCard from './ResultsCard/ResultsCard';
 import Map from './Map/Map';
 import JourneyPanel from './JourneyPanel/JourneyPanel';
 
