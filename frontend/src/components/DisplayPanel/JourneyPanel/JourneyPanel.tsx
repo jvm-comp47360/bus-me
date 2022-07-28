@@ -3,6 +3,8 @@ import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
 import {Box, Typography} from '@mui/material';
 
+import {useMemo} from 'react';
+
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
 
@@ -20,6 +22,12 @@ const JourneyPanel = ({
     finishSelection, 
     routeSelection,
     prediction}: Props): JSX.Element => {
+
+    // TODO: Tie these to the changes in prediction state once there is a single button
+    // to call our API and the Directions Service (e.g. [prediction])
+    const startSelectionMemo: BusStop = useMemo(() => startSelection, []);
+    const finishSelectionMemo: BusStop = useMemo(() => finishSelection, []);
+
     return <Box 
         sx={{
         backgroundColor: 'white',
@@ -31,9 +39,9 @@ const JourneyPanel = ({
             Your Journey
         </Typography>
         <JourneyLeg 
-            startSelection={startSelection}
+            startSelection={startSelectionMemo}
             departureTime={departureTime}
-            finishSelection={finishSelection}
+            finishSelection={finishSelectionMemo}
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
         />
