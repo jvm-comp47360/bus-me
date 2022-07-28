@@ -88,7 +88,7 @@ describe('JourneyLeg tests', () => {
         })
         test('Prediction is rendered (>=61 mins, <120 mins)', () => {
             setUp(89.8);
-            expect(screen.getByText(/1h30m/)).toBeInTheDocument();
+            expect(screen.getByText(/1h 30m/)).toBeInTheDocument();
         })
         test('Prediction is rendered (=120 mins)', () => {
             setUp(120.3);
@@ -96,7 +96,7 @@ describe('JourneyLeg tests', () => {
         })
         test('Prediction is rendered (<120 mins)', () => {
             setUp(159.7);
-            expect(screen.getByText(/2h40m/)).toBeInTheDocument();
+            expect(screen.getByText(/2h 40m/)).toBeInTheDocument();
         })
     })
 })

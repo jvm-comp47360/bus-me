@@ -12,11 +12,11 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
         if (prediction < 60) return `${prediction}m`;
         else if (prediction < 120) {
             if (prediction === 60) return '1h';
-            else return `1h${prediction - 60}m`;
+            else return `1h ${prediction - 60}m`;
         } 
         else {
             if (prediction === 120) return '2h';
-            else return `2h${prediction - 120}m`;
+            else return `2h ${prediction - 120}m`;
         }
     };
     
