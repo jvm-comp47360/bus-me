@@ -20,7 +20,10 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
         }
     };
     
-    return <Grid container>
+    return <Grid 
+        item 
+        container
+        sx={{my: 1}}>
         <Grid 
             item 
             xs={2}
@@ -38,17 +41,17 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
             item 
             xs={10}
         >
-        <Box sx={{
-            minWidth: '10px',
-            ml: 2,
-            backgroundColor: 'red',
-            color: 'white',
-            width: '10%',
-            textAlign: 'center',
-            borderRadius: '15%',
-        }}>
-            {routeSelection.name}
-        </Box>
+            <Box sx={{
+                minWidth: '10px',
+                ml: 2,
+                backgroundColor: 'red',
+                color: 'white',
+                width: '10%',
+                textAlign: 'center',
+                borderRadius: '15%',
+            }}>
+                {routeSelection.name}
+            </Box>
         </Grid>
     </Grid>
 };

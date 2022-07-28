@@ -4,6 +4,8 @@ import JourneyLegInfo from "./JourneyLegInfo";
 import BusStop from '../../../../types/BusStop'
 import BusRoute from '../../../../types/BusRoute';
 
+import {Grid} from '@mui/material';
+
 interface Props {
     startSelection: BusStop,
     departureTime: Date,
@@ -25,7 +27,12 @@ const JourneyLeg = ({
         return new Date(startUnixTime + predictionInMillisecs);
     }
 
-    return <>
+    return <Grid 
+            container
+            sx={{
+                my: 1,
+                ml: 1,
+            }}>
         <JourneyLegStop 
             stopSelection={startSelection}
             time={departureTime} 
@@ -37,7 +44,7 @@ const JourneyLeg = ({
             stopSelection={finishSelection}
             time={getArrivalTime(departureTime, prediction)} 
         />
-    </>
+    </Grid>
 };
 
 export default JourneyLeg;

@@ -9,7 +9,9 @@ interface Props {
 
 const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
     const journeyTime: string = `${time.getHours().toString()}:${time.getMinutes().toString()}`
-    return <Grid container>
+    return <Grid 
+        item
+        container>
         <Grid 
             item 
             xs={2}
@@ -19,7 +21,10 @@ const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
                 flexDirection: 'column',
                 color: 'black',
             }}>
-            <Typography sx={{fontSize: '0.875rem'}}>{journeyTime}</Typography>
+            <Typography sx={{
+                fontSize: '0.875rem',
+                height: '83%',
+            }}>{journeyTime}</Typography>
         </Grid>
         <Grid item xs={10}>
             <Typography>{stopSelection.name}</Typography> 
