@@ -83,7 +83,7 @@ describe('<ControlPanel/> Default rendering', () => {
 
     setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /plan journey/i})).toBeInTheDocument();
   });
 
   it('should show toggle button', () => {
@@ -96,12 +96,6 @@ describe('<ControlPanel/> Default rendering', () => {
   });
 });
 
-  it('should display the show route button', () => {
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /show route!/i})).toBeInTheDocument();
-  });
-
 describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be disabled by default', () => {
     expect.assertions(1);
@@ -109,7 +103,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
 
     setup(MOCK_START_STATION, MOCK_START_STATION, MOCK_CURRENT_ROUTE);
 
-    expect(screen.getByRole('button', {name: /busme!/i}))
+    expect(screen.getByRole('button', {name: /plan journey/i}))
         .toHaveClass('Mui-disabled');
   });
 
@@ -119,7 +113,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
 
     setup(undefined, undefined, undefined);
 
-    expect(screen.getByRole('button', {name: /busme!/i}))
+    expect(screen.getByRole('button', {name: /plan journey/i}))
       .toHaveClass('Mui-disabled');
   });
 
@@ -129,7 +123,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
 
-    expect(screen.getByRole('button', {name: /busme!/i}))
+    expect(screen.getByRole('button', {name: /plan journey/i}))
         .not.toHaveClass('Mui-disabled');
   });
 });

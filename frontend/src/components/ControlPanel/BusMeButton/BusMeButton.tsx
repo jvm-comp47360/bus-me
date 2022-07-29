@@ -155,7 +155,7 @@ const BusMeButton = ({routeSelection,
             style={{maxWidth: '30%'}}
             sx={{margin: 1}}
         >
-            BusMe!
+            Plan Journey
         </Button>
     </>;
 };

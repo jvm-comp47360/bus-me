@@ -15,7 +15,7 @@ describe('<App/> Renders UI components on the screen', () => {
     expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
     expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
     expect(screen.queryByRole('combobox', {name: /finish/i})).toBeNull();
-    expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /plan journey/i})).toBeInTheDocument();
     expect(screen.queryByRole('textbox', {name: /choose date/i}))
       .toBeNull();
   });
