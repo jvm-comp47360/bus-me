@@ -9,9 +9,9 @@ import {Box, Slide} from '@mui/material';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
 
 // Components
-import ShowRouteButton from './ShowRouteButton/ShowRouteButton';
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
 import BusMeButton from './BusMeButton/BusMeButton';
@@ -151,10 +151,6 @@ const ControlPanel = ({
         finishSelection={finishSelection}
         dateTimeSelection={dateTimeSelection}
         setPrediction={setPrediction}
-    />
-    <ShowRouteButton
-        startSelection={startSelection}
-        finishSelection={finishSelection}
         setDirections={setDirections}
     />
   </Box>;

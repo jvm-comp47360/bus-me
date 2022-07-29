@@ -1,5 +1,5 @@
 // React
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Material UI
 import {Autocomplete, AutocompleteRenderInputParams, TextField, TextFieldProps}
@@ -10,12 +10,16 @@ import Button from '@mui/material/Button';
 import BusRoute from '../../../types/BusRoute';
 import BusStop from '../../../types/BusStop';
 
+type DirectionsResult = google.maps.DirectionsResult;
+type DirectionsStatus = google.maps.DirectionsStatus;
+
 interface Props {
     routeSelection: BusRoute | undefined;
     startSelection: BusStop | undefined;
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
 const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
@@ -38,10 +42,9 @@ const BusMeButton = ({routeSelection,
                          startSelection,
                          finishSelection,
                          dateTimeSelection,
-                        setPrediction
+                        setPrediction,
+                        setDirections,
                     }: Props): JSX.Element => {
-
-
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
@@ -54,35 +57,77 @@ const BusMeButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    // This is where the POST API call will go.
+    const getGoogleMapsDirections = (startSelection: BusStop, finishSelection: BusStop) => {
+        const userDirectionsRequest: google.maps.DirectionsRequest = {
+            origin: {
+                lat: +startSelection.latitude,
+                lng: +startSelection.longitude
+            },
+            destination: {
+                lat: +finishSelection.latitude,
+                lng: +finishSelection.longitude,
+            },
+            travelMode: google.maps.TravelMode.TRANSIT,
+            transitOptions: {
+                modes: [google.maps.TransitMode.BUS],
+                routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
+            }
+        };
+
+        const directionsServiceCallback = (
+          response: DirectionsResult | null,
+          status: DirectionsStatus,
+        ) => {
+            if (response && status === 'OK') { // response was state of directions
+                setDirections(response);
+            }
+        };
+        const service = new google.maps.DirectionsService();
+        service.route(userDirectionsRequest, directionsServiceCallback);
+    }
+
+    const setPredictionFromBackend = (route: string,
+                                      routeSelection: BusRoute,
+                                      startSelection: BusStop,
+                                      finishSelection: BusStop,
+                                      dateTimeSelection: Date) => {
+        const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
+        const time: string = getSeconds(dateTimeSelection).toString()
+
+        fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
+          .then((response) => {
+              if (response.ok) {
+                  return response.json() as Promise<Prediction>;
+              } else {
+                  throw new Error();
+              }
+          })
+          .then((data) => {
+              const prediction: number = Math.round(data['prediction'] * 10) / 10
+              setPrediction(prediction)
+          })
+          .catch((error) => console.log(error));
+    }
+
+// This is where the POST API call will go.
     const submitClickHandler = () => {
         if (routeSelection === undefined || dateTimeSelection === undefined ||
-            startSelection === undefined || finishSelection === undefined) {
+          startSelection === undefined || finishSelection === undefined) {
             return;
         }
+
+        getGoogleMapsDirections(startSelection, finishSelection);
+
+
         const route: string = routeSelection.name
 
         if (stationPickles.indexOf(route) === -1) {
             alert("We don't have the data for this yet");
             return
+        } else {
+            setPredictionFromBackend(route, routeSelection, startSelection, finishSelection, dateTimeSelection);
         }
 
-        const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
-        const time: string = getSeconds(dateTimeSelection).toString()
-
-        fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
-            .then((response) => {
-                if (response.ok) {
-                    return response.json() as Promise<Prediction>;
-                } else {
-                    throw new Error();
-                }
-            })
-            .then((data) => {
-                const prediction: number = Math.round(data['prediction'] * 10) / 10
-                setPrediction(prediction)
-            })
-            .catch((error) => console.log(error));
     };
 
     // Submit Button helper functions
