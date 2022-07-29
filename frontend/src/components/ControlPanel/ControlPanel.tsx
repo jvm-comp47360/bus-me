@@ -48,21 +48,37 @@ const ControlPanel = ({
       useState<Date | undefined>(new Date());
 
   useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
-      .then((response) => {
-        if (response.ok) {
-          return response.json() as Promise<BusRoute[]>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setBusRoutes)
-      .catch((error) => console.log(error));
+    const localStorageRoutes: string | null =
+      localStorage.getItem('bus_routes');
+
+    if (localStorageRoutes) {
+      setBusRoutes(JSON.parse(localStorageRoutes));
+    } else {
+      fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json() as Promise<BusRoute[]>;
+          } else {
+            throw new Error();
+          }
+        })
+        .then((data) => {
+          setBusRoutes(data);
+          localStorage.setItem('bus_routes', JSON.stringify(data))
+        })
+        .catch((error) => console.log(error));
+    }
   }, [])
 
-
-
-
+  const resetSelections = () => {
+    if (checked) {
+      setStartSelection(undefined)
+      setFinishSelection(undefined)
+      setPrediction(undefined)
+      setRouteSelection(undefined)
+      setDirections(null)
+    }
+  }
 
   return <Box
       display={'flex'}

@@ -7,9 +7,6 @@ import Weather from '../../../types/Weather';
 
 const MOCK_WEATHER_API: Weather = MOCK_WEATHER_DATA[0];
 const ICON: string = MOCK_WEATHER_API['icon'];
-const DATE: string = MOCK_WEATHER_API['date'];
-const WEATHERTEXT: string = MOCK_WEATHER_API['weatherText'];
-const TEMPERATURE: string = MOCK_WEATHER_API['temperature'];
 
 const setup = (): RenderResult => render(
     <WeatherCard weather={MOCK_WEATHER_API}/>,
@@ -31,21 +28,16 @@ describe('<WeatherCard/> Weather icon functionality', () => {
 });
 
 describe('<WeatherCard/> Text display', () => {
-  it('must show the correct date', () => {
-    expect.assertions(1);
-    setup();
-    expect(screen.getByText(DATE)).toBeInTheDocument();
-  });
-
   it('must show the correct weather text', () => {
     expect.assertions(1);
     setup();
-    expect(screen.getByText(WEATHERTEXT)).toBeInTheDocument();
+    expect(screen.getByText(/sunny/i)).toBeInTheDocument();
   });
 
   it('must show the correct temperature', () => {
-    expect.assertions(1);
+    expect.assertions(2);
     setup();
-    expect(screen.getByText(`${TEMPERATURE}°C`)).toBeInTheDocument();
+    expect(screen.getByText(/20/i)).toBeInTheDocument();
+    expect(screen.getByText(/°C/i)).toBeInTheDocument();
   });
 });
