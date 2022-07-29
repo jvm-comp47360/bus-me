@@ -34,7 +34,7 @@ type Prediction = {
     prediction: number;
 }
 
-const BusMeButton = ({routeSelection,
+const PlanJourneyButton = ({routeSelection,
                          startSelection,
                          finishSelection,
                          dateTimeSelection,
@@ -160,4 +160,4 @@ const BusMeButton = ({routeSelection,
     </>;
 };
 
-export default BusMeButton;
+export default PlanJourneyButton;

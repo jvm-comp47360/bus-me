@@ -9,12 +9,11 @@ import {Box, Slide} from '@mui/material';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 type DirectionsResult = google.maps.DirectionsResult;
-type DirectionsStatus = google.maps.DirectionsStatus;
 
 // Components
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import BusMeButton from './BusMeButton/BusMeButton';
+import PlanJourneyButton from './PlanJourneyButton/PlanJourneyButton';
 
 
 interface Props {
@@ -145,7 +144,7 @@ const ControlPanel = ({
     >
       {toggleText()}
     </Button>
-    <BusMeButton
+    <PlanJourneyButton
         routeSelection={routeSelection}
         startSelection={startSelection}
         finishSelection={finishSelection}
