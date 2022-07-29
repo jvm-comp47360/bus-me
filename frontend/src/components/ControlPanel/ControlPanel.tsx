@@ -104,7 +104,7 @@ const ControlPanel = ({
       flexDirection={'column'}
       alignItems={'center'}
       m={2}
-  >
+    >
     {!checked ? (
       <Slide
         direction={'up'}

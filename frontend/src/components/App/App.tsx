@@ -20,6 +20,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
+import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -36,7 +37,7 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar />
+      <Navbar/>
       <ControlPanel
         startSelection={startSelection}
         setStartSelection={setStartSelection}
