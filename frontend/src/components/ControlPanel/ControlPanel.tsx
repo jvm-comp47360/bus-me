@@ -3,7 +3,7 @@ import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Material UI
 import Button from '@mui/material/Button';
-import {Box, Slide} from '@mui/material';
+import {Box, Slide, Typography} from '@mui/material';
 
 // Types
 import BusRoute from '../../types/BusRoute';
@@ -47,43 +47,39 @@ const ControlPanel = ({
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
 
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
-      .then((response) => {
-        if (response.ok) {
-          return response.json() as Promise<BusRoute[]>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setBusRoutes)
-      .catch((error) => console.log(error));
+    const localStorageRoutes: string | null =
+      localStorage.getItem('bus_routes');
+
+    if (localStorageRoutes) {
+      setBusRoutes(JSON.parse(localStorageRoutes));
+    } else {
+      fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json() as Promise<BusRoute[]>;
+          } else {
+            throw new Error();
+          }
+        })
+        .then((data) => {
+          setBusRoutes(data);
+          localStorage.setItem('bus_routes', JSON.stringify(data))
+        })
+        .catch((error) => console.log(error));
+    }
   }, [])
 
-  const resetStartAndFinishSelection = () => {
+  const resetSelections = () => {
     if (checked) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
+      setPrediction(undefined)
+      setRouteSelection(undefined)
+      setDirections(null)
     }
-  }
-
-  const slideHandler = () => {
-    setChecked((prev) => !prev);
-    resetStartAndFinishSelection();
-  };
-
-  const toggleText = () => {
-    if (checked) {
-      return 'SELECT ROUTE';
-    } else {
-      return 'SELECT STATIONS';
-    }
-  };
-
-  const toggleDisableHandler = (): boolean => {
-    return routeSelection === undefined;
   }
 
   return <Box
@@ -92,49 +88,25 @@ const ControlPanel = ({
       alignItems={'center'}
       m={2}
   >
-    {!checked ? (
-      <Slide
-        direction={'up'}
-        in={!checked}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div>
-          <RouteSelectionPanel
-            busRoutes={busRoutes}
-            routeSelection={routeSelection}
-            setRouteSelection={setRouteSelection}
-          />
-        </div>
-      </Slide>
-    ) : null}
-    {checked ? (
-      <Slide
-        direction={'up'}
-        in={checked}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div>
-            <StopSelectionPanel
-              busRoutes={busRoutes}
-              routeSelection={routeSelection}
-              startSelection={startSelection}
-              setStartSelection={setStartSelection}
-              finishSelection={finishSelection}
-              setFinishSelection={setFinishSelection}
-              dateTimeSelection={dateTimeSelection}
-              setDateTimeSelection={setDateTimeSelection}
-            />
-        </div>
-      </Slide>
-    ) : null}
-    <Button
-      onClick={slideHandler}
-      disabled={toggleDisableHandler()}
-    >
-      {toggleText()}
-    </Button>
+    <RouteSelectionPanel
+      busRoutes={busRoutes}
+      routeSelection={routeSelection}
+      setRouteSelection={setRouteSelection}
+      setStartSelection={setStartSelection}
+      setFinishSelection={setFinishSelection}
+      checked={checked}
+      setChecked={setChecked}
+    />
+    <StopSelectionPanel
+      busRoutes={busRoutes}
+      routeSelection={routeSelection}
+      startSelection={startSelection}
+      setStartSelection={setStartSelection}
+      finishSelection={finishSelection}
+      setFinishSelection={setFinishSelection}
+      dateTimeSelection={dateTimeSelection}
+      setDateTimeSelection={setDateTimeSelection}
+    />
     <BusMeButton
         routeSelection={routeSelection}
         startSelection={startSelection}
