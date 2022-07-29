@@ -17,6 +17,8 @@ interface Props {
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  checked: boolean;
+  setChecked: Dispatch<SetStateAction<boolean>>;
 }
 
 const RouteSelectionDropdown = ({
@@ -24,10 +26,10 @@ const RouteSelectionDropdown = ({
                                   routeSelection,
                                setRouteSelection,
                               setStartSelection,
-                                  setFinishSelection
+                                  setFinishSelection,
+                              checked,
+                              setChecked,
                            }: Props): JSX.Element => {
-
-  const [checked, setChecked] = useState(false);
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
