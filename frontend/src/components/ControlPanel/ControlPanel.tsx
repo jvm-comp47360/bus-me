@@ -11,10 +11,9 @@ import BusStop from '../../types/BusStop';
 type DirectionsResult = google.maps.DirectionsResult;
 
 // Components
-import ShowRouteButton from './ShowRouteButton/ShowRouteButton';
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import BusMeButton from './BusMeButton/BusMeButton';
+import PlanJourneyButton from './PlanJourneyButton/PlanJourneyButton';
 
 
 interface Props {
@@ -107,16 +106,12 @@ const ControlPanel = ({
       dateTimeSelection={dateTimeSelection}
       setDateTimeSelection={setDateTimeSelection}
     />
-    <BusMeButton
+    <PlanJourneyButton
         routeSelection={routeSelection}
         startSelection={startSelection}
         finishSelection={finishSelection}
         dateTimeSelection={dateTimeSelection}
         setPrediction={setPrediction}
-    />
-    <ShowRouteButton
-        startSelection={startSelection}
-        finishSelection={finishSelection}
         setDirections={setDirections}
     />
   </Box>;
