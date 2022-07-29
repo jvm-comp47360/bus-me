@@ -37,6 +37,8 @@ const setup = (startSelection: BusStop | undefined,
         setRouteSelection={jest.fn()}
         setPrediction={jest.fn()}
         setDirections={jest.fn()}
+        multiRoute={false}
+        setMultiRoute={jest.fn()}
       />,
     </LocalizationProvider>,
 );

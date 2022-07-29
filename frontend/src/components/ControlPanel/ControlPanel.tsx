@@ -13,8 +13,6 @@ type DirectionsResult = google.maps.DirectionsResult;
 // Components
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import PlanJourneyButton from './StopSelectionPanel/PlanJourneyButton/PlanJourneyButton';
-
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -25,6 +23,8 @@ interface Props {
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+  multiRoute: boolean;
+  setMultiRoute: Dispatch<SetStateAction<boolean>>;
 }
 
 // Animation Bug Fix Credit:
@@ -39,6 +39,8 @@ const ControlPanel = ({
                         setRouteSelection,
                         setPrediction,
                         setDirections,
+                        multiRoute,
+                        setMultiRoute,
                       }: Props): JSX.Element => {
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
@@ -88,7 +90,8 @@ const ControlPanel = ({
     justifyContent={'center'}
     margin={1}
   >
-    <RouteSelectionPanel
+    <Button onClick={() => setMultiRoute(!multiRoute)}>Toggle</Button>
+    {(multiRoute) ? null : <RouteSelectionPanel
       busRoutes={busRoutes}
       routeSelection={routeSelection}
       setRouteSelection={setRouteSelection}
@@ -96,7 +99,7 @@ const ControlPanel = ({
       setFinishSelection={setFinishSelection}
       checked={checked}
       setChecked={setChecked}
-    />
+    />}
     <StopSelectionPanel
       busRoutes={busRoutes}
       routeSelection={routeSelection}

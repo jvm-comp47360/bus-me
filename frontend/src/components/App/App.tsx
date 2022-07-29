@@ -9,7 +9,6 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
-import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -35,19 +34,22 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
+  const [multiRoute, setMultiRoute] = useState<boolean>(false);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Navbar />
       <ControlPanel
         startSelection={startSelection}
-         setStartSelection={setStartSelection}
+        setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
         setRouteSelection={setRouteSelection}
         setPrediction={setPrediction}
         setDirections={setDirections}
+        multiRoute={multiRoute}
+        setMultiRoute={setMultiRoute}
       />
       <DisplayPanel
         prediction={prediction}
