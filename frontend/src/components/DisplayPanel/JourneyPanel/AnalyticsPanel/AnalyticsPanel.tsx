@@ -1,6 +1,17 @@
 import {Box, Button, Typography} from '@mui/material';
+import GraphDialogButton from "./GraphDialogButton/GraphDialogButton";
+import BusStop from "../../../../types/BusStop";
+import BusRoute from "../../../../types/BusRoute";
 
-const AnalyticsPanel = (): JSX.Element => {
+interface Props {
+    startSelection: BusStop,
+    finishSelection: BusStop,
+    prediction: number,
+}
+
+const AnalyticsPanel = ({startSelection,
+                            finishSelection,
+                            prediction}: Props): JSX.Element => {
     return (<Box sx={{
         borderTop: 1,
         display: 'flex',
@@ -16,9 +27,12 @@ const AnalyticsPanel = (): JSX.Element => {
             Plan your day better by viewing the difference 
             in travel times throughout the day!
         </Typography>
-        <Button>
-            Journey Times
-        </Button>
+        <GraphDialogButton
+          startSelection={startSelection}
+          finishSelection={finishSelection}
+          prediction={prediction}
+          graphPredictions={[2, 1, 4, 3]}
+        />
     </Box>)
 };
 

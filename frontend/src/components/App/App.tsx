@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
+import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -37,10 +38,10 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar/>
+      <Navbar />
       <ControlPanel
         startSelection={startSelection}
-        setStartSelection={setStartSelection}
+         setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
