@@ -72,16 +72,19 @@ const ControlPanel = ({
     }
   }, [])
 
-  const resetStartAndFinishSelection = () => {
+  const resetSelections = () => {
     if (checked) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
+      setPrediction(undefined)
+      setRouteSelection(undefined)
+      setDirections(null)
     }
   }
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
-    resetStartAndFinishSelection();
+    resetSelections();
   };
 
   const toggleText = () => {
