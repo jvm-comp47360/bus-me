@@ -105,14 +105,8 @@ const ControlPanel = ({
       setFinishSelection={setFinishSelection}
       dateTimeSelection={dateTimeSelection}
       setDateTimeSelection={setDateTimeSelection}
-    />
-    <PlanJourneyButton
-        routeSelection={routeSelection}
-        startSelection={startSelection}
-        finishSelection={finishSelection}
-        dateTimeSelection={dateTimeSelection}
-        setPrediction={setPrediction}
-        setDirections={setDirections}
+      setPrediction={setPrediction}
+      setDirections={setDirections}
     />
   </Box>;
 };

@@ -152,7 +152,6 @@ const PlanJourneyButton = ({routeSelection,
             variant={'contained'}
             onClick={submitClickHandler}
             disabled={submitDisableHandler()}
-            style={{maxWidth: '30%'}}
             sx={{margin: 1}}
         >
             Plan Journey

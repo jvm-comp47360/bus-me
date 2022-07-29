@@ -12,6 +12,9 @@ import BusRoute from '../../../types/BusRoute';
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import DateTimeSelection from './DateTimeSelection/DateTimeSelection';
+import PlanJourneyButton from "../PlanJourneyButton/PlanJourneyButton";
+
+type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
     busRoutes: BusRoute[];
@@ -22,6 +25,8 @@ interface Props {
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     dateTimeSelection: Date | undefined;
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
+    setPrediction: Dispatch<SetStateAction<number | undefined>>;
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
 const StopSelectionPanel = ({
@@ -33,12 +38,18 @@ const StopSelectionPanel = ({
                                setFinishSelection,
                                dateTimeSelection,
                                setDateTimeSelection,
+                              setPrediction,
+                              setDirections,
                            }: Props): JSX.Element => {
 
-    return <>
+    return <Box display={'flex'}
+                flexDirection={'row'}
+                flexWrap={'wrap'}
+                justifyContent={'center'}
+                margin={1}>
             <Box
                 display={'flex'}
-                flexDirection={'row'}
+                flexDirection={'column'}
                 flexWrap={'wrap'}
                 justifyContent={'center'}
                 margin={1}
@@ -57,12 +68,36 @@ const StopSelectionPanel = ({
                     selection={finishSelection}
                     setSelection={setFinishSelection}
                 />
-                <DateTimeSelection
-                    dateTimeSelection={dateTimeSelection}
-                    setDateTimeSelection={setDateTimeSelection}
-                />
             </Box>
-    </>;
+      <Box
+        display={'flex'}
+        flexDirection={'column'}
+        flexWrap={'wrap'}
+        justifyContent={'center'}
+        margin={1}
+      >
+        <DateTimeSelection
+          dateTimeSelection={dateTimeSelection}
+          setDateTimeSelection={setDateTimeSelection}
+        />
+      </Box>
+      <Box
+        display={'flex'}
+        flexDirection={'column'}
+        flexWrap={'wrap'}
+        justifyContent={'center'}
+        margin={1}
+      >
+        <PlanJourneyButton
+          routeSelection={routeSelection}
+          startSelection={startSelection}
+          finishSelection={finishSelection}
+          dateTimeSelection={dateTimeSelection}
+          setPrediction={setPrediction}
+          setDirections={setDirections}
+        />
+      </Box>
+    </Box>;
 };
 
 export default StopSelectionPanel;
