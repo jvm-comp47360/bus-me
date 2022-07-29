@@ -50,29 +50,41 @@ const ControlPanel = ({
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
-      .then((response) => {
-          console.log(response)
-        if (response.ok) {
-          return response.json() as Promise<BusRoute[]>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setBusRoutes)
-      .catch((error) => console.log(error));
+    const localStorageRoutes: string | null =
+      localStorage.getItem('bus_routes');
+
+    if (localStorageRoutes) {
+      setBusRoutes(JSON.parse(localStorageRoutes));
+    } else {
+      fetch('http://ipa-002.ucd.ie/api/bus_routes/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json() as Promise<BusRoute[]>;
+          } else {
+            throw new Error();
+          }
+        })
+        .then((data) => {
+          setBusRoutes(data);
+          localStorage.setItem('bus_routes', JSON.stringify(data))
+        })
+        .catch((error) => console.log(error));
+    }
   }, [])
 
-  const resetStartAndFinishSelection = () => {
+  const resetSelections = () => {
     if (checked) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
+      setPrediction(undefined)
+      setRouteSelection(undefined)
+      setDirections(null)
     }
   }
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
-    resetStartAndFinishSelection();
+    resetSelections();
   };
 
   const toggleText = () => {

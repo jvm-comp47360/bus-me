@@ -5,7 +5,7 @@
 -- Dumped from database version 14.3
 -- Dumped by pg_dump version 14.3
 
--- Started on 2022-07-20 12:15:14
+-- Started on 2022-07-28 09:44:15
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19960,7 +19960,7 @@ ALTER TABLE ONLY public.route_connections
     ADD CONSTRAINT route_connections_bus_stop_id_7b577cdf_fk_bus_stops_id FOREIGN KEY (bus_stop_id) REFERENCES public.bus_stops(id) DEFERRABLE INITIALLY DEFERRED;
 
 
--- Completed on 2022-07-20 12:15:14
+-- Completed on 2022-07-28 09:44:15
 
 --
 -- PostgreSQL database dump complete
