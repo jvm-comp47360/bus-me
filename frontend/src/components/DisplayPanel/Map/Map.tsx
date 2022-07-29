@@ -53,7 +53,10 @@ const Map = (
 
   return !(isLoaded) ?
     <LoadScreen/>:
-    <Container disableGutters={true} className="map">
+    <Container
+      disableGutters={true}
+      className="map"
+      maxWidth={false}>
       <GoogleMap
         zoom={11.7}
         center={centerCoords}
