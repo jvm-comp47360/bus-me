@@ -9,7 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
-import GraphDialogButton from "../GraphDialogButton/GraphDialogButton";
+import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -39,10 +39,6 @@ const App = (): JSX.Element => {
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Navbar />
-      <GraphDialogButton
-        prediction={3}
-        graphPredictions={[1, 2, 3, 4]}
-      />
       <ControlPanel
         startSelection={startSelection}
          setStartSelection={setStartSelection}

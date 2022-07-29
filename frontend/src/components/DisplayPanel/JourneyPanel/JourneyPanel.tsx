@@ -43,7 +43,11 @@ const JourneyPanel = ({
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
         />
-        <AnalyticsPanel />
+        <AnalyticsPanel
+          startSelection={startSelection}
+          finishSelection={finishSelection}
+          prediction={prediction}
+        />
     </Box>
 };
 

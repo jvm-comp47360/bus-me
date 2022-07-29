@@ -3,26 +3,31 @@ import {Button, Dialog, DialogTitle, Slide} from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import {Dispatch, SetStateAction} from "react";
+import BusStop from "../../../../../../types/BusStop";
 
 interface Props {
   graphIsOpen: boolean,
   setGraphIsOpen: Dispatch<SetStateAction<boolean>>;
   prediction: number | undefined,
   graphPredictions: number[] | undefined,
+  startSelection: BusStop | undefined,
+  finishSelection: BusStop | undefined,
 }
 
 const GraphDialog = ({
                         graphIsOpen,
                         setGraphIsOpen,
                         prediction,
-                        graphPredictions
+                        graphPredictions,
+                        startSelection,
+                        finishSelection,
                       }: Props): JSX.Element => {
 
   const getAllPredictions = (prediction: number | undefined, graphPredictions: number[] | undefined): number[] => {
     if (!prediction || !graphPredictions) {
       return []
     } else {
-      return [prediction, ...graphPredictions];
+      return [graphPredictions[0], graphPredictions[1], prediction, graphPredictions[2], graphPredictions[3]];
     }
   }
 
@@ -35,10 +40,13 @@ const GraphDialog = ({
       text: ''
     },
     xAxis: {
-      categories: ['Now', '+1 hour', '+2 hours', '+3 hours', '+4 hours'],
+      categories: ['-2', '-1', '0', '+1', '+2'],
       labels: {
-        rotation: -90,
+        rotation: 0,
         align: 'right'
+      },
+      title: {
+        text: 'Hours'
       }
     },
     yAxis: {
@@ -59,7 +67,9 @@ const GraphDialog = ({
       open={graphIsOpen}
     >
         <DialogTitle sx={{color: 'white'}}>
-          Journey Durations
+          {(startSelection && finishSelection) ?
+            `Journey Durations (${startSelection.name} to ${finishSelection.name})`
+            : ''}
         </DialogTitle>
         <HighchartsReact
           highcharts={Highcharts}
