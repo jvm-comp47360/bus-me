@@ -1,6 +1,7 @@
 import {Card, CardContent, Typography} from '@mui/material';
 import {styled} from "@mui/material/styles";
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import {Dispatch, SetStateAction} from 'react';
 
 // TODO: Merge this declaration and one in WeatherCard to a common source
@@ -26,15 +27,15 @@ const JourneyPanelCollapsed = ({setCollapseJourneyPanel, collapseJourneyPanel}: 
         justifyContent: 'center',
         borderRadius: 0,
         borderTop: 1,
-        borderColor: '#FFEB3B',
-        transition: '1s',
+        borderColor: '#757DE8',
       }}>
+      <DirectionsBusIcon />
       <CardContentNoPadding>
         <Typography variant='body2'>
           Your Journey
         </Typography>
       </CardContentNoPadding>
-      <AddCircleOutlineIcon 
+      <ArrowDropDownIcon 
         sx={{color: 'white'}}
         onClick={() => setCollapseJourneyPanel(false)}/>
       </Card>

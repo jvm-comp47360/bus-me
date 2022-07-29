@@ -2,7 +2,7 @@ import JourneyLeg from './JourneyLeg/JourneyLeg';
 import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
 import {Box, Grid, Typography} from '@mui/material';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
 import {useMemo, Dispatch, SetStateAction} from 'react';
 
@@ -37,7 +37,6 @@ const JourneyPanel = ({
         backgroundColor: 'white',
         p: 1,
         display: displayValue,
-        transition: '1s',
     }}> 
         <Grid container>
             <Grid item xs={10}>
@@ -48,7 +47,8 @@ const JourneyPanel = ({
                 </Typography>
             </Grid>
             <Grid item xs={2}>
-                <RemoveCircleOutlineIcon
+                <ArrowDropUpIcon
+                    sx={{fontSize: 'large'}}
                     onClick={() => setCollapseJourneyPanel(true)} />
             </Grid>
         </Grid>
