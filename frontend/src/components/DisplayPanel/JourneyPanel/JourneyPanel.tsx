@@ -48,7 +48,7 @@ const JourneyPanel = ({
             </Grid>
             <Grid item xs={2}>
                 <ArrowDropUpIcon
-                    sx={{fontSize: 'large'}}
+                    sx={{fontSize: '36px'}}
                     onClick={() => setCollapseJourneyPanel(true)} />
             </Grid>
         </Grid>
