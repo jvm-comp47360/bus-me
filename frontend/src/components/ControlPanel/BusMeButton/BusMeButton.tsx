@@ -1,10 +1,6 @@
 // React
 import React, {Dispatch, SetStateAction, useState} from 'react';
 
-// Material UI
-import {Autocomplete, AutocompleteRenderInputParams, TextField, TextFieldProps}
-    from '@mui/material';
-
 // Props
 import Button from '@mui/material/Button';
 import BusRoute from '../../../types/BusRoute';
@@ -19,6 +15,7 @@ interface Props {
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
+    directions: DirectionsResult | null;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
@@ -43,6 +40,7 @@ const BusMeButton = ({routeSelection,
                          finishSelection,
                          dateTimeSelection,
                         setPrediction,
+                        directions,
                         setDirections,
                     }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
@@ -86,15 +84,14 @@ const BusMeButton = ({routeSelection,
         service.route(userDirectionsRequest, directionsServiceCallback);
     }
 
-    const setPredictionFromBackend = (route: string,
-                                      routeSelection: BusRoute,
+    const setPredictionFromBackend = (routeSelection: BusRoute,
                                       startSelection: BusStop,
                                       finishSelection: BusStop,
                                       dateTimeSelection: Date) => {
         const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
         const time: string = getSeconds(dateTimeSelection).toString()
 
-        fetch(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stops_segment}/${time}`)
+        fetch(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${time}`)
           .then((response) => {
               if (response.ok) {
                   return response.json() as Promise<Prediction>;
@@ -109,6 +106,19 @@ const BusMeButton = ({routeSelection,
           .catch((error) => console.log(error));
     }
 
+    function setPredictionFromGoogleMaps() {
+        if (!directions) {
+            return;
+        }
+        const prediction: google.maps.Duration | undefined = directions.routes[0].legs[0].duration;
+        if (prediction) {
+            const predictionInMinutes = Math.round(prediction.value / 60 * 10) / 10;
+            setPrediction(predictionInMinutes);
+        } else {
+            alert('Something has gone wrong with the Google Maps API');
+        }
+    }
+
 // This is where the POST API call will go.
     const submitClickHandler = () => {
         if (routeSelection === undefined || dateTimeSelection === undefined ||
@@ -118,16 +128,11 @@ const BusMeButton = ({routeSelection,
 
         getGoogleMapsDirections(startSelection, finishSelection);
 
-
-        const route: string = routeSelection.name
-
-        if (stationPickles.indexOf(route) === -1) {
-            alert("We don't have the data for this yet");
-            return
+        if (stationPickles.indexOf(routeSelection.name) === -1) {
+            setPredictionFromGoogleMaps();
         } else {
-            setPredictionFromBackend(route, routeSelection, startSelection, finishSelection, dateTimeSelection);
+            setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
         }
-
     };
 
     // Submit Button helper functions

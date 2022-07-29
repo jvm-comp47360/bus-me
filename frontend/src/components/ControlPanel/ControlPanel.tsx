@@ -25,6 +25,7 @@ interface Props {
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
+  directions: DirectionsResult | null;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
@@ -39,6 +40,7 @@ const ControlPanel = ({
                         routeSelection,
                         setRouteSelection,
                         setPrediction,
+                        directions,
                         setDirections,
                       }: Props): JSX.Element => {
 
@@ -151,6 +153,7 @@ const ControlPanel = ({
         finishSelection={finishSelection}
         dateTimeSelection={dateTimeSelection}
         setPrediction={setPrediction}
+        directions={directions}
         setDirections={setDirections}
     />
   </Box>;
