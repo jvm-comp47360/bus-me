@@ -112,7 +112,18 @@ const ControlPanel = ({
     justifyContent={'center'}
     margin={1}
   >
-    <Button onClick={() => setMultiRoute(!multiRoute)}>Toggle</Button>
+    <Button onClick={() => {
+      setMultiRoute(!multiRoute)
+        setStartSelection(undefined)
+        setFinishSelection(undefined)
+        setPrediction(undefined)
+        setRouteSelection(undefined)
+        setDirections(null)
+        if (checked) {
+          setChecked(false)
+        }
+      }
+    }>Toggle</Button>
     {(multiRoute) ? null : <RouteSelectionPanel
       busRoutes={busRoutes}
       routeSelection={routeSelection}
