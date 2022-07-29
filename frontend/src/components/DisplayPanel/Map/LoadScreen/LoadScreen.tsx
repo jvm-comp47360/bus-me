@@ -2,15 +2,9 @@
 import React from 'react';
 import {Box, CircularProgress, Dialog, DialogTitle, Typography} from "@mui/material";
 
-interface Props {
-    open: boolean;
-}
-
-const LoadScreen = ({open}: Props): JSX.Element => {
-
-
+const LoadScreen = (): JSX.Element => {
     return <>
-        <Dialog open={open}>
+        <Dialog open={true}>
             <Box
                 display={'flex'}
                 flexDirection={'column'}
