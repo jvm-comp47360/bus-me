@@ -45,7 +45,6 @@ const App = (): JSX.Element => {
         routeSelection={routeSelection}
         setRouteSelection={setRouteSelection}
         setPrediction={setPrediction}
-        directions={directions}
         setDirections={setDirections}
       />
       <DisplayPanel

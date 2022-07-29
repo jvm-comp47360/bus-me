@@ -15,7 +15,6 @@ interface Props {
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
-    directions: DirectionsResult | null;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
@@ -40,7 +39,6 @@ const BusMeButton = ({routeSelection,
                          finishSelection,
                          dateTimeSelection,
                         setPrediction,
-                        directions,
                         setDirections,
                     }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
@@ -55,7 +53,20 @@ const BusMeButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    const getGoogleMapsDirections = (startSelection: BusStop, finishSelection: BusStop) => {
+    const checkRouteAndSetPrediction =(directions: google.maps.DirectionsResult) => {
+        if (routeSelection === undefined || dateTimeSelection === undefined ||
+          startSelection === undefined || finishSelection === undefined) {
+            return;
+        }
+
+        if (stationPickles.indexOf(routeSelection.name) === -1) {
+            setPredictionFromGoogleMaps(directions);
+        } else {
+            setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
+        }
+    }
+
+    const setDirectionsAndPrediction = (startSelection: BusStop, finishSelection: BusStop) => {
         const userDirectionsRequest: google.maps.DirectionsRequest = {
             origin: {
                 lat: +startSelection.latitude,
@@ -80,8 +91,12 @@ const BusMeButton = ({routeSelection,
                 setDirections(response);
             }
         };
+
         const service = new google.maps.DirectionsService();
-        service.route(userDirectionsRequest, directionsServiceCallback);
+        service.route(userDirectionsRequest, directionsServiceCallback).then((directions: DirectionsResult) => {
+              checkRouteAndSetPrediction(directions);
+          }
+        );
     }
 
     const setPredictionFromBackend = (routeSelection: BusRoute,
@@ -106,10 +121,7 @@ const BusMeButton = ({routeSelection,
           .catch((error) => console.log(error));
     }
 
-    function setPredictionFromGoogleMaps() {
-        if (!directions) {
-            return;
-        }
+    const setPredictionFromGoogleMaps = (directions: google.maps.DirectionsResult) => {
         const prediction: google.maps.Duration | undefined = directions.routes[0].legs[0].duration;
         if (prediction) {
             const predictionInMinutes = Math.round(prediction.value / 60 * 10) / 10;
@@ -125,14 +137,7 @@ const BusMeButton = ({routeSelection,
           startSelection === undefined || finishSelection === undefined) {
             return;
         }
-
-        getGoogleMapsDirections(startSelection, finishSelection);
-
-        if (stationPickles.indexOf(routeSelection.name) === -1) {
-            setPredictionFromGoogleMaps();
-        } else {
-            setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
-        }
+        setDirectionsAndPrediction(startSelection, finishSelection);
     };
 
     // Submit Button helper functions
