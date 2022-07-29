@@ -22,10 +22,12 @@ const setup = (
   RenderResult => render(
     <BusStopDropdown
       busRoutes={MOCK_BUS_ROUTES}
+      busStops={BUS_STOPS}
       routeSelection={routeSelection}
       label={LABEL}
       selection={stopSelection}
       setSelection={jest.fn()}
+      multiRoute={false}
     />,
 );
 

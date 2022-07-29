@@ -18,6 +18,7 @@ type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
     busRoutes: BusRoute[];
+    busStops: BusStop[];
     routeSelection: BusRoute | undefined;
     startSelection: BusStop | undefined;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
@@ -27,10 +28,12 @@ interface Props {
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+    multiRoute: boolean;
 }
 
 const StopSelectionPanel = ({
                                busRoutes,
+                              busStops,
                                routeSelection,
                               startSelection,
                                setStartSelection,
@@ -40,6 +43,7 @@ const StopSelectionPanel = ({
                                setDateTimeSelection,
                               setPrediction,
                               setDirections,
+                              multiRoute,
                            }: Props): JSX.Element => {
 
     return <Box display={'flex'}
@@ -57,19 +61,23 @@ const StopSelectionPanel = ({
               <Box m={0.5}>
                 <BusStopDropdown
                     busRoutes={busRoutes}
+                    busStops={busStops}
                     routeSelection={routeSelection}
                     label={'Start'}
                     selection={startSelection}
                     setSelection={setStartSelection}
+                    multiRoute={multiRoute}
                 />
               </Box>
               <Box m={0.5}>
                 <BusStopDropdown
                     busRoutes={busRoutes}
+                    busStops={busStops}
                     routeSelection={routeSelection}
                     label={'Finish'}
                     selection={finishSelection}
                     setSelection={setFinishSelection}
+                    multiRoute={multiRoute}
                 />
               </Box>
             </Box>

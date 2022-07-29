@@ -44,6 +44,7 @@ const ControlPanel = ({
                       }: Props): JSX.Element => {
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
+  const [busStops, setBusStops] = useState<BusStop[]>([])
 
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
@@ -53,6 +54,9 @@ const ControlPanel = ({
   useEffect(() => {
     const localStorageRoutes: string | null =
       localStorage.getItem('bus_routes');
+
+    const localStorageStops: string | null =
+      localStorage.getItem('bus_stops');
 
     if (localStorageRoutes) {
       setBusRoutes(JSON.parse(localStorageRoutes));
@@ -68,6 +72,24 @@ const ControlPanel = ({
         .then((data) => {
           setBusRoutes(data);
           localStorage.setItem('bus_routes', JSON.stringify(data))
+        })
+        .catch((error) => console.log(error));
+    }
+
+    if (localStorageStops) {
+      setBusStops(JSON.parse(localStorageStops));
+    } else {
+      fetch('http://ipa-002.ucd.ie/api/bus_stops/')
+        .then((response) => {
+          if (response.ok) {
+            return response.json() as Promise<BusStop[]>;
+          } else {
+            throw new Error();
+          }
+        })
+        .then((data) => {
+          setBusStops(data);
+          localStorage.setItem('bus_stops', JSON.stringify(data))
         })
         .catch((error) => console.log(error));
     }
@@ -102,6 +124,7 @@ const ControlPanel = ({
     />}
     <StopSelectionPanel
       busRoutes={busRoutes}
+      busStops={busStops}
       routeSelection={routeSelection}
       startSelection={startSelection}
       setStartSelection={setStartSelection}
@@ -111,6 +134,7 @@ const ControlPanel = ({
       setDateTimeSelection={setDateTimeSelection}
       setPrediction={setPrediction}
       setDirections={setDirections}
+      multiRoute={multiRoute}
     />
   </Box>;
 };
