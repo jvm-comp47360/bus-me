@@ -106,7 +106,7 @@ const ControlPanel = ({
       dateTimeSelection={dateTimeSelection}
       setDateTimeSelection={setDateTimeSelection}
     />
-    <BusMeButton
+    <PlanJourneyButton
         routeSelection={routeSelection}
         startSelection={startSelection}
         finishSelection={finishSelection}
