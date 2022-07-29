@@ -54,6 +54,7 @@ const StopSelectionPanel = ({
                 justifyContent={'center'}
                 margin={1}
             >
+              <Box m={0.5}>
                 <BusStopDropdown
                     busRoutes={busRoutes}
                     routeSelection={routeSelection}
@@ -61,6 +62,8 @@ const StopSelectionPanel = ({
                     selection={startSelection}
                     setSelection={setStartSelection}
                 />
+              </Box>
+              <Box m={0.5}>
                 <BusStopDropdown
                     busRoutes={busRoutes}
                     routeSelection={routeSelection}
@@ -68,6 +71,7 @@ const StopSelectionPanel = ({
                     selection={finishSelection}
                     setSelection={setFinishSelection}
                 />
+              </Box>
             </Box>
       <Box
         display={'flex'}

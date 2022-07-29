@@ -2,7 +2,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 
 // Material UI
-import {Autocomplete, AutocompleteRenderInputParams, TextField}
+import {Autocomplete, AutocompleteRenderInputParams, Box, TextField}
   from '@mui/material';
 
 // Types
