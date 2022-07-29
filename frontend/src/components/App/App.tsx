@@ -9,6 +9,7 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
+import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -20,6 +21,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
+import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -39,7 +41,7 @@ const App = (): JSX.Element => {
       <Navbar />
       <ControlPanel
         startSelection={startSelection}
-        setStartSelection={setStartSelection}
+         setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}

@@ -5,6 +5,7 @@ import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
+import LoadScreen from "./LoadScreen/LoadScreen";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -51,12 +52,8 @@ const Map = (
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
 
   return !(isLoaded) ?
-    <Container 
-      className="loading"
-      maxWidth={false}>
-    Map loading...
-    </Container>:
-    <Container 
+    <LoadScreen/>:
+    <Container
       disableGutters={true}
       className="map"
       maxWidth={false}>
@@ -98,8 +95,7 @@ const Map = (
                 </InfoWindow>:
               null}
           </Marker>
-        ):
-        null}
+        ): null}
         {(directions) ?
         <DirectionsRenderer 
           directions={directions}
@@ -111,7 +107,7 @@ const Map = (
             },
             suppressMarkers: true,
           }}/>:
-        null}
+          null}
         </>
       </GoogleMap>
     </Container>;
