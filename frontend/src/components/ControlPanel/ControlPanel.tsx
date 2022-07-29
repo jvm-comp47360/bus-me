@@ -13,7 +13,7 @@ type DirectionsResult = google.maps.DirectionsResult;
 // Components
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import PlanJourneyButton from './PlanJourneyButton/PlanJourneyButton';
+import PlanJourneyButton from './StopSelectionPanel/PlanJourneyButton/PlanJourneyButton';
 
 
 interface Props {
@@ -82,10 +82,11 @@ const ControlPanel = ({
   }
 
   return <Box
-      display={'flex'}
-      flexDirection={'column'}
-      alignItems={'center'}
-      m={2}
+    display={'flex'}
+    flexDirection={'row'}
+    flexWrap={'wrap'}
+    justifyContent={'center'}
+    margin={1}
   >
     <RouteSelectionPanel
       busRoutes={busRoutes}

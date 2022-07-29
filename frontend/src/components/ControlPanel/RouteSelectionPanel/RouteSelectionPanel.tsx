@@ -46,7 +46,14 @@ const RouteSelectionDropdown = ({
       setFinishSelection(undefined)
     }
   }
-    return <>
+    return <Box
+      display={'flex'}
+      flexDirection={'column'}
+      flexWrap={'wrap'}
+      justifyContent={'center'}
+      margin={1}
+      width={400}
+    >
       {!checked ? (
         <Slide
           direction={'up'}
@@ -95,7 +102,7 @@ const RouteSelectionDropdown = ({
           </div>
         </Slide>
       ) : null}
-      </>
+      </Box>
 };
 
 export default RouteSelectionDropdown;

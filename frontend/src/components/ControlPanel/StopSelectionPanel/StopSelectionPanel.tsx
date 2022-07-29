@@ -12,7 +12,7 @@ import BusRoute from '../../../types/BusRoute';
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import DateTimeSelection from './DateTimeSelection/DateTimeSelection';
-import PlanJourneyButton from "../PlanJourneyButton/PlanJourneyButton";
+import PlanJourneyButton from "./PlanJourneyButton/PlanJourneyButton";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
