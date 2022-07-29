@@ -12,18 +12,22 @@ const CardContentNoPadding = styled(CardContent)(`
 `);
 
 interface Props {
-    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>
+    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>,
+    collapseJourneyPanel: Boolean,
 }
 
-const JourneyPanelCollapsed = ({setCollapseJourneyPanel}: Props): JSX.Element => {
+const JourneyPanelCollapsed = ({setCollapseJourneyPanel, collapseJourneyPanel}: Props): JSX.Element => {
+    const displayValue = collapseJourneyPanel ? 'flex' : 'none';
+
     return <Card sx={{
         backgroundColor: 'primary.main',
-        display: 'flex',
+        display: displayValue,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 0,
         borderTop: 1,
         borderColor: '#FFEB3B',
+        transition: '1s',
       }}>
       <CardContentNoPadding>
         <Typography variant='body2'>

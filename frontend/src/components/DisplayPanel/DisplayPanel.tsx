@@ -75,22 +75,25 @@ const DisplayPanel = ({
         borderColor: 'primary.main',
         }}>
         {(weather) ? <WeatherCard weather={weather}/> : null}
-        {!(startSelection &&
+        {(startSelection &&
           finishSelection &&
           directions && 
           directions.routes[0].legs[0].departure_time && 
           routeSelection &&
-          prediction) ?
-          null :
-          (collapseJourneyPanel) ?
-          <JourneyPanelCollapsed setCollapseJourneyPanel={setCollapseJourneyPanel}/> :
+          prediction) ? <>
+          <JourneyPanelCollapsed 
+            setCollapseJourneyPanel={setCollapseJourneyPanel}
+            collapseJourneyPanel={collapseJourneyPanel}/> 
           <JourneyPanel 
             startSelection={startSelection}
             departureTime={directions.routes[0].legs[0].departure_time.value}
             finishSelection={finishSelection}
             routeSelection={routeSelection}
             prediction={prediction}
-            setCollapseJourneyPanel={setCollapseJourneyPanel}/>
+            setCollapseJourneyPanel={setCollapseJourneyPanel}
+            collapseJourneyPanel={collapseJourneyPanel}/> 
+          </> :
+          null
         }
        </Box>
         <Map

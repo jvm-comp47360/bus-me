@@ -15,7 +15,8 @@ interface Props {
     finishSelection: BusStop,
     routeSelection: BusRoute,
     prediction: number,
-    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>
+    collapseJourneyPanel: Boolean,
+    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>,
 }
 
 const JourneyPanel = ({
@@ -24,15 +25,19 @@ const JourneyPanel = ({
     finishSelection, 
     routeSelection,
     prediction,
+    collapseJourneyPanel,
     setCollapseJourneyPanel}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
+    const displayValue = collapseJourneyPanel ? 'none' : 'block';
 
     return <Box 
         sx={{
         backgroundColor: 'white',
         p: 1,
+        display: displayValue,
+        transition: '1s',
     }}> 
         <Grid container>
             <Grid item xs={10}>

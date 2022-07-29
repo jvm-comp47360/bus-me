@@ -17,6 +17,7 @@ const setUp = (
         finishSelection={finishStop}
         routeSelection={mockRoute}
         prediction={prediction}
+        collapseJourneyPanel={false}
         setCollapseJourneyPanel={jest.fn()}/>
 );
 

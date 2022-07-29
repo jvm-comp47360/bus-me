@@ -3,7 +3,8 @@ import JourneyPanelCollapsed from './JourneyPanelCollapsed';
 
 const setUp = (): RenderResult => render(
 <JourneyPanelCollapsed 
-    setCollapseJourneyPanel={jest.fn()}/>
+    setCollapseJourneyPanel={jest.fn()}
+    collapseJourneyPanel={true}/>
 );
 
 test('Collapsed title renders', () => {
