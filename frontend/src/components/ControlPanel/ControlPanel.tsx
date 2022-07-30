@@ -21,10 +21,13 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  dateTimeSelection: Date;
+  setDateTimeSelection: Dispatch<SetStateAction<Date>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
   setMultiRoute: Dispatch<SetStateAction<boolean>>;
+  setPredictionList: Dispatch<SetStateAction<number[]>>;
 }
 
 // Animation Bug Fix Credit:
@@ -37,18 +40,17 @@ const ControlPanel = ({
                         setFinishSelection,
                         routeSelection,
                         setRouteSelection,
+                        dateTimeSelection,
+                        setDateTimeSelection,
                         setPrediction,
                         setDirections,
                         multiRoute,
                         setMultiRoute,
+                        setPredictionList,
                       }: Props): JSX.Element => {
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
   const [busStops, setBusStops] = useState<BusStop[]>([])
-
-  const [dateTimeSelection, setDateTimeSelection] =
-      useState<Date | undefined>(new Date());
-
   const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
@@ -146,6 +148,7 @@ const ControlPanel = ({
       setPrediction={setPrediction}
       setDirections={setDirections}
       multiRoute={multiRoute}
+      setPredictionList={setPredictionList}
     />
   </Box>;
 };

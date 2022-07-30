@@ -17,6 +17,7 @@ interface Props {
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     multiRoute: boolean;
+    setPredictionList: Dispatch<SetStateAction<number[]>>;
 }
 
 const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
@@ -42,6 +43,7 @@ const PlanJourneyButton = ({routeSelection,
                         setPrediction,
                         setDirections,
                         multiRoute,
+                        setPredictionList,
                     }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
@@ -55,13 +57,16 @@ const PlanJourneyButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    const checkRouteAndSetPrediction =(directions: google.maps.DirectionsResult) => {
-        if (routeSelection === undefined || dateTimeSelection === undefined ||
+    const checkRouteAndSetPrediction = (directions: google.maps.DirectionsResult) => {
+        if (dateTimeSelection === undefined ||
           startSelection === undefined || finishSelection === undefined) {
             return;
         }
 
-        if (stationPickles.indexOf(routeSelection.name) === -1) {
+        if (!routeSelection) {
+            setPredictionFromGoogleMaps(directions);
+        }
+        else if (stationPickles.indexOf(routeSelection.name) === -1) {
             setPredictionFromGoogleMaps(directions);
         } else {
             setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
@@ -106,7 +111,7 @@ const PlanJourneyButton = ({routeSelection,
                                       finishSelection: BusStop,
                                       dateTimeSelection: Date) => {
         const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
-        const time: string = getSeconds(dateTimeSelection).toString()
+        const time = getSeconds(dateTimeSelection).toString();
 
         fetch(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${time}`)
           .then((response) => {
@@ -135,10 +140,11 @@ const PlanJourneyButton = ({routeSelection,
 
 // This is where the POST API call will go.
     const submitClickHandler = () => {
-        if (routeSelection === undefined || dateTimeSelection === undefined ||
+        if (dateTimeSelection === undefined ||
           startSelection === undefined || finishSelection === undefined) {
             return;
         }
+        setPredictionList([]);
         setDirectionsAndPrediction(startSelection, finishSelection);
     };
 

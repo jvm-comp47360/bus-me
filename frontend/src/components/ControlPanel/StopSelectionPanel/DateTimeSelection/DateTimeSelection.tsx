@@ -9,8 +9,8 @@ import {TextField, TextFieldProps}
 import {DateTimePicker} from "@mui/x-date-pickers";
 
 interface Props {
-    dateTimeSelection: Date | undefined;
-    setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
+    dateTimeSelection: Date;
+    setDateTimeSelection: Dispatch<SetStateAction<Date>>;
 }
 
 const DateTimeSelection = ({

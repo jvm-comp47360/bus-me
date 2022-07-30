@@ -2,16 +2,28 @@ import {Box, Button, Typography} from '@mui/material';
 import GraphDialogButton from "./GraphDialogButton/GraphDialogButton";
 import BusStop from "../../../../types/BusStop";
 import BusRoute from "../../../../types/BusRoute";
+import {Dispatch, SetStateAction} from "react";
+
+type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
+  routeSelection: BusRoute | undefined,
     startSelection: BusStop,
     finishSelection: BusStop,
     prediction: number,
+    predictionList: number[],
+  setPredictionList: Dispatch<SetStateAction<number[]>>,
+  directions: google.maps.DirectionsResult | null,
+  dateTimeSelection: Date,
 }
 
-const AnalyticsPanel = ({startSelection,
+const AnalyticsPanel = ({routeSelection,
+                          startSelection,
                             finishSelection,
-                            prediction}: Props): JSX.Element => {
+                            prediction,
+                        predictionList,
+                        setPredictionList,
+                          directions, dateTimeSelection}: Props): JSX.Element => {
     return (<Box sx={{
         borderTop: 1,
         display: 'flex',
@@ -28,10 +40,14 @@ const AnalyticsPanel = ({startSelection,
             in travel times throughout the day!
         </Typography>
         <GraphDialogButton
+          routeSelection={routeSelection}
           startSelection={startSelection}
           finishSelection={finishSelection}
           prediction={prediction}
-          graphPredictions={[2, 1, 4, 3]}
+          predictionList={predictionList}
+          setPredictionList={setPredictionList}
+          directions={directions}
+          dateTimeSelection={dateTimeSelection}
         />
     </Box>)
 };

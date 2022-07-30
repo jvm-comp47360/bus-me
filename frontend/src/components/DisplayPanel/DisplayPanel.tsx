@@ -21,8 +21,12 @@ interface Props {
     directions: DirectionsResult | null,
     routeSelection: BusRoute | undefined,
     setPrediction: Dispatch<SetStateAction<number | undefined>>,
+    predictionList: number[];
+    setPredictionList: Dispatch<SetStateAction<number[]>>
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
+    dateTimeSelection: Date;
+    multiRoute: boolean;
 }
 
 const DisplayPanel = ({
@@ -32,8 +36,12 @@ const DisplayPanel = ({
   directions,
   routeSelection,
   setPrediction,
+  predictionList,
+  setPredictionList,
   setStartSelection,
   setFinishSelection,
+  dateTimeSelection,
+  multiRoute,
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
@@ -72,18 +80,28 @@ const DisplayPanel = ({
         borderColor: 'primary.main',
         }}>
         {(weather) ? <WeatherCard weather={weather}/> : null}
-        {(startSelection &&
+        {((startSelection &&
           finishSelection &&
           directions && 
           directions.routes[0].legs[0].departure_time && 
           routeSelection &&
-          prediction) ?
+          prediction) || (startSelection &&
+          finishSelection &&
+          directions &&
+          directions.routes[0].legs[0].departure_time &&
+          multiRoute &&
+          prediction)) ?
         <JourneyPanel 
           startSelection={startSelection}
           departureTime={directions.routes[0].legs[0].departure_time.value}
           finishSelection={finishSelection}
           routeSelection={routeSelection}
-          prediction={prediction}/>
+          prediction={prediction}
+          predictionList={predictionList}
+          setPredictionList={setPredictionList}
+          directions={directions}
+          dateTimeSelection={dateTimeSelection}
+        />
           : null
         }
        </Box>

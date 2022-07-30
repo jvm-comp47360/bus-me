@@ -35,10 +35,13 @@ const setup = (startSelection: BusStop | undefined,
         setFinishSelection={jest.fn()}
         routeSelection={routeSelection}
         setRouteSelection={jest.fn()}
+        dateTimeSelection={new Date()}
+        setDateTimeSelection={jest.fn()}
         setPrediction={jest.fn()}
         setDirections={jest.fn()}
         multiRoute={false}
         setMultiRoute={jest.fn()}
+        setPredictionList={jest.fn()}
       />,
     </LocalizationProvider>,
 );

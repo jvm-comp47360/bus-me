@@ -10,7 +10,7 @@ interface Props {
     startSelection: BusStop,
     departureTime: Date,
     finishSelection: BusStop,
-    routeSelection: BusRoute,
+    routeSelection: BusRoute | undefined,
     prediction: number,
 }
 

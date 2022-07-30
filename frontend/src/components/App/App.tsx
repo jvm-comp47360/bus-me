@@ -24,6 +24,7 @@ import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
+  const [predictionList, setPredictionList] = useState<number[]>([]);
 
   // Selections may be undefined if the user has not picked them yet.
   const [startSelection, setStartSelection] =
@@ -32,6 +33,8 @@ const App = (): JSX.Element => {
       useState<BusStop | undefined>(undefined);
   const [routeSelection, setRouteSelection] =
       useState<BusRoute | undefined>(undefined);
+  const [dateTimeSelection, setDateTimeSelection] =
+    useState<Date>(new Date());
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
   const [multiRoute, setMultiRoute] = useState<boolean>(false);
@@ -46,20 +49,27 @@ const App = (): JSX.Element => {
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
         setRouteSelection={setRouteSelection}
+        dateTimeSelection={dateTimeSelection}
+        setDateTimeSelection={setDateTimeSelection}
         setPrediction={setPrediction}
         setDirections={setDirections}
         multiRoute={multiRoute}
         setMultiRoute={setMultiRoute}
+        setPredictionList={setPredictionList}
       />
       <DisplayPanel
         prediction={prediction}
         setPrediction={setPrediction}
+        predictionList={predictionList}
+        setPredictionList={setPredictionList}
         startSelection={startSelection}
         finishSelection={finishSelection}
         setStartSelection={setStartSelection}
         setFinishSelection={setFinishSelection}
+        dateTimeSelection={dateTimeSelection}
         directions={directions}
         routeSelection={routeSelection}
+        multiRoute={multiRoute}
       />
       <AboutSection />
       <ContactSection />

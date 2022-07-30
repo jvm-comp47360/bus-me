@@ -10,9 +10,14 @@ const MOCK_FINISH_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][1];
 
 const setUp = ():RenderResult => render(
   <AnalyticsPanel
+    routeSelection={MOCK_CURRENT_ROUTE}
     startSelection={MOCK_START_STATION}
     finishSelection={MOCK_FINISH_STATION}
     prediction={5}
+    predictionList={[]}
+    setPredictionList={jest.fn()}
+    directions={null}
+    dateTimeSelection={new Date()}
   />
 );
 

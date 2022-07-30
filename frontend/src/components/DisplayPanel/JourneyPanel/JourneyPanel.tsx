@@ -3,17 +3,23 @@ import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
 import {Box, Typography} from '@mui/material';
 
-import {useMemo} from 'react';
+import {Dispatch, SetStateAction, useMemo} from 'react';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
+
+type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
     startSelection: BusStop,
     departureTime: Date,
     finishSelection: BusStop,
-    routeSelection: BusRoute,
+    routeSelection: BusRoute | undefined,
     prediction: number,
+    predictionList: number[],
+    setPredictionList: Dispatch<SetStateAction<number[]>>,
+    directions: google.maps.DirectionsResult | null,
+    dateTimeSelection: Date;
 }
 
 const JourneyPanel = ({
@@ -21,7 +27,8 @@ const JourneyPanel = ({
     departureTime,
     finishSelection, 
     routeSelection,
-    prediction}: Props): JSX.Element => {
+    prediction, predictionList,
+                          setPredictionList, directions, dateTimeSelection}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
@@ -44,9 +51,14 @@ const JourneyPanel = ({
             prediction={Math.round(prediction)}
         />
         <AnalyticsPanel
+          routeSelection={routeSelection}
           startSelection={startSelection}
           finishSelection={finishSelection}
           prediction={prediction}
+          predictionList={predictionList}
+          setPredictionList={setPredictionList}
+          directions={directions}
+          dateTimeSelection={dateTimeSelection}
         />
     </Box>
 };

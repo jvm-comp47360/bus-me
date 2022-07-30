@@ -24,11 +24,12 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     finishSelection: BusStop | undefined;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
-    dateTimeSelection: Date | undefined;
-    setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
+    dateTimeSelection: Date;
+    setDateTimeSelection: Dispatch<SetStateAction<Date>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     multiRoute: boolean;
+    setPredictionList: Dispatch<SetStateAction<number[]>>;
 }
 
 const StopSelectionPanel = ({
@@ -44,6 +45,7 @@ const StopSelectionPanel = ({
                               setPrediction,
                               setDirections,
                               multiRoute,
+                              setPredictionList,
                            }: Props): JSX.Element => {
 
     return <Box display={'flex'}
@@ -108,6 +110,7 @@ const StopSelectionPanel = ({
           setPrediction={setPrediction}
           setDirections={setDirections}
           multiRoute={multiRoute}
+          setPredictionList={setPredictionList}
         />
       </Box>
     </Box>;
