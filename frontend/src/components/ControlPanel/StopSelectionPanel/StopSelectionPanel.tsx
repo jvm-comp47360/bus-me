@@ -107,6 +107,7 @@ const StopSelectionPanel = ({
           dateTimeSelection={dateTimeSelection}
           setPrediction={setPrediction}
           setDirections={setDirections}
+          multiRoute={multiRoute}
         />
       </Box>
     </Box>;

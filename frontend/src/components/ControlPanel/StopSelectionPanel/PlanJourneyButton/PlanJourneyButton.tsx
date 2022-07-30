@@ -16,6 +16,7 @@ interface Props {
     dateTimeSelection: Date | undefined;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+    multiRoute: boolean;
 }
 
 const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
@@ -40,6 +41,7 @@ const PlanJourneyButton = ({routeSelection,
                          dateTimeSelection,
                         setPrediction,
                         setDirections,
+                        multiRoute,
                     }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
@@ -141,11 +143,17 @@ const PlanJourneyButton = ({routeSelection,
     };
 
     // Submit Button helper functions
-    const submitDisableHandler = (): boolean =>
-        routeSelection === undefined ||
+    const submitDisableHandler = (): boolean => {
+        if (multiRoute) {
+            return startSelection === undefined ||
+              finishSelection === undefined ||
+              startSelection === finishSelection;
+        }
+        return routeSelection === undefined ||
         startSelection === undefined ||
         finishSelection === undefined ||
         startSelection === finishSelection;
+    }
 
     return <>
         <Button
