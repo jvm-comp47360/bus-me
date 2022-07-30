@@ -49,6 +49,7 @@ const JourneyPanel = ({
             finishSelection={finishSelectionMemo}
             routeSelection={routeSelection}
             prediction={Math.round(prediction)}
+            directions={directions}
         />
         <AnalyticsPanel
           routeSelection={routeSelection}

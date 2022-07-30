@@ -4,8 +4,6 @@ import BusStop from "../../../../types/BusStop";
 import BusRoute from "../../../../types/BusRoute";
 import {Dispatch, SetStateAction} from "react";
 
-type DirectionsResult = google.maps.DirectionsResult;
-
 interface Props {
   routeSelection: BusRoute | undefined,
     startSelection: BusStop,

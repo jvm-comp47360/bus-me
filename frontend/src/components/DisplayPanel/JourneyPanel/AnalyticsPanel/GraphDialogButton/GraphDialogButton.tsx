@@ -45,7 +45,6 @@ const GraphDialogButton = ({
                         dateTimeSelection,
                       }: Props): JSX.Element => {
   const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
-  const [loadScreenIsOn, setLoadScreenIsOn] = useState<boolean>(false);
 
   const getSeconds = (date: Date) => {
     const minutes = date.getMinutes();
@@ -60,10 +59,10 @@ const GraphDialogButton = ({
   }
 
   const getPredictionsAndOpenGraph = () => {
+    console.log(directions);
     if (predictionList.length !== 0) {
       setGraphIsOpen(true);
     } else {
-      setLoadScreenIsOn(true);
       if (!routeSelection) {
         if (!directions) {
           return;
@@ -92,7 +91,6 @@ const GraphDialogButton = ({
                   urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
                 }
               })
-
             } else {
               const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
               if (predictionInSeconds) {
@@ -124,7 +122,6 @@ const GraphDialogButton = ({
                 totalPredictionList.push(currentTotalPredictions);
               }
               setPredictionList(totalPredictionList);
-              setLoadScreenIsOn(false);
               setGraphIsOpen(true);
             })
           })
@@ -159,7 +156,6 @@ const GraphDialogButton = ({
                 Math.round(predictions[2].prediction),
                 Math.round(predictions[3].prediction),
               ])
-              setLoadScreenIsOn(false);
               setGraphIsOpen(true);
             })
           })
@@ -182,7 +178,6 @@ const GraphDialogButton = ({
       startSelection={startSelection}
       finishSelection={finishSelection}
     />
-    <LoadScreen isOpen={loadScreenIsOn}/>
   </>;
 };
 

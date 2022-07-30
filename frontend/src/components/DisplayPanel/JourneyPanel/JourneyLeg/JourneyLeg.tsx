@@ -12,6 +12,7 @@ interface Props {
     finishSelection: BusStop,
     routeSelection: BusRoute | undefined,
     prediction: number,
+    directions: google.maps.DirectionsResult | null,
 }
 
 const JourneyLeg = ({
@@ -19,13 +20,36 @@ const JourneyLeg = ({
     departureTime, 
     finishSelection,
     routeSelection,
-    prediction}: Props): JSX.Element => {
+    prediction, directions}: Props): JSX.Element => {
 
     const getArrivalTime = (depatureTime: Date, prediction: number): Date => {
         const startUnixTime: number = depatureTime.getTime();
         const predictionInMillisecs: number = prediction * 60 * 1000;
         return new Date(startUnixTime + predictionInMillisecs);
     }
+
+    const mapMultiRouteJourneyLegs = (): JSX.Element => {
+        if (!directions) {
+            return <>hello</>;
+        } else {
+            return <></>;
+
+        }
+    }
+
+
+
+            // directions.routes[0].legs[0].steps.map((step: google.maps.DirectionsStep) => {
+            //     return <>
+            //         <JourneyLegInfo
+            //           routeSelection={(step.transit) ? step.transit.line.short_name : ''}
+            //           prediction={prediction}/>
+            //         <JourneyLegStop
+            //           stopSelection={(step.transit) ? step.transit.departure_stop.name : ''}
+            //           time={getArrivalTime(departureTime, prediction)}
+            //         />
+            //     </>})
+
 
     return <Grid 
             container
@@ -36,13 +60,32 @@ const JourneyLeg = ({
             stopSelection={startSelection}
             time={departureTime} 
         />
-        <JourneyLegInfo 
+        {(routeSelection) ?
+          <>
+          <JourneyLegInfo
             routeSelection={routeSelection}
             prediction={prediction}/>
-        <JourneyLegStop 
+          <JourneyLegStop
             stopSelection={finishSelection}
-            time={getArrivalTime(departureTime, prediction)} 
-        />
+            time={getArrivalTime(departureTime, prediction)}
+          />
+          </> : null
+        }
+        {(!routeSelection && directions) ?
+          directions.routes[0].legs[0].steps.map((step: google.maps.DirectionsStep) => {
+          if (step.travel_mode !== 'TRANSIT') {
+              return <></>
+          }
+          return <>
+              <JourneyLegInfo
+                routeSelection={(step.transit) ? step.transit.line.short_name : ''}
+                prediction={prediction}/>
+              <JourneyLegStop
+                stopSelection={(step.transit) ? step.transit.arrival_stop.name : ''}
+                time={getArrivalTime(departureTime, prediction)}
+              />
+          </>})
+          : null}
     </Grid>
 };
 

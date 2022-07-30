@@ -4,7 +4,7 @@ import {Grid, Typography} from '@mui/material';
 
 interface Props {
     time: Date,
-    stopSelection: BusStop,
+    stopSelection: BusStop | string,
 }
 
 const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
@@ -29,7 +29,7 @@ const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
             }}>{journeyTime}</Typography>
         </Grid>
         <Grid item xs={10}>
-            <Typography>{stopSelection.name}</Typography> 
+            <Typography>{(typeof (stopSelection) === 'string') ? stopSelection : stopSelection.name}</Typography>
         </Grid>
     </Grid>
 };
