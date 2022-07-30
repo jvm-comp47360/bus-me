@@ -63,8 +63,71 @@ const GraphDialogButton = ({
     if (predictionList.length !== 0) {
       setGraphIsOpen(true);
     } else {
+      setLoadScreenIsOn(true);
       if (!routeSelection) {
-        console.log('get single route')
+        if (!directions) {
+          return;
+        }
+
+        const journeyStages: google.maps.DirectionsStep[] | null = directions.routes[0].legs[0].steps;
+        const urlsToFetch: string[] = [];
+        let googleMapsPrediction = 0;
+
+        journeyStages.map((journeyStage) => {
+          if (journeyStage.travel_mode === 'TRANSIT') {
+            const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
+
+            if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
+              const route: string = transitDetails.line.short_name;
+              const num_stop_segments: number = transitDetails.num_stops
+              const time: number = getSeconds(dateTimeSelection)
+
+              const timeModifiers = [-7200, -3600, 3600, 7200]
+              timeModifiers.map((timeModifier) => {
+                if (time + timeModifier > 86400) {
+                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier - 86400).toString()}`)
+                } else if (time + timeModifier < 0) {
+                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier + 86400).toString()}`)
+                } else {
+                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
+                }
+              })
+
+            } else {
+              const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
+              if (predictionInSeconds) {
+                const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
+                console.log("Prediction in minutes:");
+                googleMapsPrediction += predictionInMinutes;
+              }
+            }
+          }
+        })
+
+        Promise.all(urlsToFetch.map((url) => fetch(url)))
+          .then((responses) =>
+            responses.map((response) => response.json() as Promise<Prediction>))
+          .then((predictions) => {
+            Promise.all(predictions).then((predictions) => {
+              const numberOfLegs: number = predictions.length / 5;
+              const totalPredictionList: number[] = [];
+
+              for (let i = 1; i < 4; i++) {
+                let currentTotalPredictions = 0;
+                for (let j = 0; j < numberOfLegs; j++) {
+                  const currentTotalPrediction = predictions[i + (j * 4)].prediction;
+                  currentTotalPredictions += Math.round((currentTotalPrediction * 10) / 10);
+                }
+                if (googleMapsPrediction > 0) {
+                  currentTotalPredictions += googleMapsPrediction;
+                }
+                totalPredictionList.push(currentTotalPredictions);
+              }
+              setPredictionList(totalPredictionList);
+              setLoadScreenIsOn(false);
+              setGraphIsOpen(true);
+            })
+          })
       }
       else if (stationPickles.indexOf(routeSelection.name) === -1) {
         setPredictionList([prediction, prediction, prediction, prediction, prediction]);
@@ -76,15 +139,13 @@ const GraphDialogButton = ({
 
         const timeModifiers = [-7200, -3600, 3600, 7200]
         timeModifiers.map((timeModifier) => {
-          let currentTime: number = time;
-          if (currentTime + timeModifier > 86400) {
-            currentTime -= 86400;
+          if (time + timeModifier > 86400) {
+            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier - 86400).toString()}`)
           } else if (time + timeModifier < 0) {
-            currentTime += 86400;
+            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier + 86400).toString()}`)
+          } else {
+            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier).toString()}`)
           }
-          urlsToFetch.push(
-            `http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(currentTime).toString()}`
-          )
         })
 
         Promise.all(urlsToFetch.map((url) => fetch(url)))
