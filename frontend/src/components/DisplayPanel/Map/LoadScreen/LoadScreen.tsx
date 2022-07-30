@@ -1,10 +1,16 @@
 // React
-import React from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import {Box, CircularProgress, Dialog, DialogTitle, Typography} from "@mui/material";
+import BusStop from "../../../../types/BusStop";
+import BusRoute from "../../../../types/BusRoute";
 
-const LoadScreen = (): JSX.Element => {
+interface Props {
+    isOpen: boolean,
+}
+
+const LoadScreen = ({isOpen}: Props): JSX.Element => {
     return <>
-        <Dialog open={true}>
+        <Dialog open={isOpen}>
             <Box
                 display={'flex'}
                 flexDirection={'column'}

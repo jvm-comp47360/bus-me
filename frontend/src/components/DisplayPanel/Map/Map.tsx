@@ -52,7 +52,7 @@ const Map = (
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
 
   return !(isLoaded) ?
-    <LoadScreen/>:
+    <LoadScreen isOpen={true}/>:
     <Container
       disableGutters={true}
       className="map"

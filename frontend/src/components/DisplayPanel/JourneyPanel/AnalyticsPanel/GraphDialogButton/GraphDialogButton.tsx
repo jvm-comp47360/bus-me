@@ -3,6 +3,7 @@ import {Dispatch, SetStateAction, useState} from "react";
 import GraphDialog from "./GraphDialog/GraphDialog";
 import BusStop from "../../../../../types/BusStop";
 import BusRoute from "../../../../../types/BusRoute";
+import LoadScreen from "../../../Map/LoadScreen/LoadScreen";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -44,6 +45,7 @@ const GraphDialogButton = ({
                         dateTimeSelection,
                       }: Props): JSX.Element => {
   const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
+  const [loadScreenIsOn, setLoadScreenIsOn] = useState<boolean>(false);
 
   const getSeconds = (date: Date) => {
     const minutes = date.getMinutes();
@@ -62,10 +64,11 @@ const GraphDialogButton = ({
       setGraphIsOpen(true);
     } else {
       if (!routeSelection) {
-        console.log('get stuff from google maps API')
+        console.log('get single route')
       }
       else if (stationPickles.indexOf(routeSelection.name) === -1) {
-        console.log('get stuff from google maps API')
+        setPredictionList([prediction, prediction, prediction, prediction, prediction]);
+        setGraphIsOpen(true);
       } else {
         const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
         const time: number = getSeconds(dateTimeSelection);
@@ -95,6 +98,7 @@ const GraphDialogButton = ({
                 Math.round(predictions[2].prediction),
                 Math.round(predictions[3].prediction),
               ])
+              setLoadScreenIsOn(false);
               setGraphIsOpen(true);
             })
           })
@@ -117,6 +121,7 @@ const GraphDialogButton = ({
       startSelection={startSelection}
       finishSelection={finishSelection}
     />
+    <LoadScreen isOpen={loadScreenIsOn}/>
   </>;
 };
 
