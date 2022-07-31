@@ -27,5 +27,9 @@ describe('Nav menu items appear on page', () => {
       expect(screen.getByRole('link', {
         name: pageRe})).toBeInTheDocument();
     });
+
+    test('Multiroute toggle appears', () => {
+      expect(screen.getByRole('checkbox')).toBeInTheDocument();
+    });
   });
 });
