@@ -59,14 +59,19 @@ const GraphDialogButton = ({
   }
 
   const getPredictionsAndOpenGraph = () => {
-    console.log(directions);
+    // If user has not asked to recalculate journey, just open the cached results
+    // and don't make another API call.
     if (predictionList.length !== 0) {
       setGraphIsOpen(true);
     } else {
+      // If route selection is empty, then multiroute is on.
       if (!routeSelection) {
+
+        // Null check for directions.
         if (!directions) {
           return;
         }
+
 
         const journeyStages: google.maps.DirectionsStep[] | null = directions.routes[0].legs[0].steps;
         const urlsToFetch: string[] = [];
@@ -76,6 +81,7 @@ const GraphDialogButton = ({
           if (journeyStage.travel_mode === 'TRANSIT') {
             const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
 
+            // Scenario where we call the API from the backend.
             if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
               const route: string = transitDetails.line.short_name;
               const num_stop_segments: number = transitDetails.num_stops
@@ -91,6 +97,7 @@ const GraphDialogButton = ({
                   urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
                 }
               })
+            //  Scenario where we just get the Google Maps API
             } else {
               const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
               if (predictionInSeconds) {
@@ -107,10 +114,11 @@ const GraphDialogButton = ({
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
             Promise.all(predictions).then((predictions) => {
-              const numberOfLegs: number = predictions.length / 5;
+              console.log(predictions)
+              const numberOfLegs: number = predictions.length / 4;
               const totalPredictionList: number[] = [];
 
-              for (let i = 1; i < 4; i++) {
+              for (let i = 0; i < 4; i++) {
                 let currentTotalPredictions = 0;
                 for (let j = 0; j < numberOfLegs; j++) {
                   const currentTotalPrediction = predictions[i + (j * 4)].prediction;
