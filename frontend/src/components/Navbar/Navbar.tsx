@@ -19,14 +19,6 @@ const Navbar = (): JSX.Element => {
           />
           <Stack direction='row'
             sx={{marginTop: 1}}>
-
-            <Button
-              key={'Contact'}
-              color='inherit'
-              component='a'
-              href={`#${'Contact'.toLowerCase()}`}>
-              {'Contact'}
-            </Button>
             <Button
               key={'App'}
               color='inherit'
