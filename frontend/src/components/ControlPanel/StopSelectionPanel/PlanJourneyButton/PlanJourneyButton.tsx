@@ -25,7 +25,7 @@ const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
     '16D', '26', '27', '27A', '27B', '27X', '32X', '33',
     '33D', '33E', '33X', '37', '38', '38A', '38B', '38D',
     '39', '39A', '39X', '40', '40B', '40D', '40E', '41',
-    '41B', '41C', '41D', '41X', '42', '43', '44', '44B',
+    '41B', '41C', '41D', '41X', '42', '43', '44',
     '46A', '46E', '47', '49', '51D', '53', '54A', '56A',
     '61', '65', '65B', '68', '68A', '69', '69X', '70',
     '77A', '77X', '79', '79A', '83', '83A', '84', '84A',
@@ -58,13 +58,9 @@ const PlanJourneyButton = ({routeSelection,
     }
 
     const checkRouteAndSetPrediction = (directions: google.maps.DirectionsResult) => {
-        if (dateTimeSelection === undefined ||
+        if (routeSelection === undefined || dateTimeSelection === undefined ||
           startSelection === undefined || finishSelection === undefined) {
             return;
-        }
-
-        if (!routeSelection) {
-            setPredictionFromGoogleMaps(directions);
         }
         else if (stationPickles.indexOf(routeSelection.name) === -1) {
             setPredictionFromGoogleMaps(directions);
@@ -101,7 +97,11 @@ const PlanJourneyButton = ({routeSelection,
 
         const service = new google.maps.DirectionsService();
         service.route(userDirectionsRequest, directionsServiceCallback).then((directions: DirectionsResult) => {
-              checkRouteAndSetPrediction(directions);
+            if (!routeSelection) {
+                setMultiRoutePrediction(directions)
+            } else {
+                checkRouteAndSetPrediction(directions);
+            }
           }
         );
     }
@@ -136,6 +136,60 @@ const PlanJourneyButton = ({routeSelection,
         } else {
             alert('Something has gone wrong with the Google Maps API');
         }
+    }
+
+    const setMultiRoutePrediction = (directions: google.maps.DirectionsResult) => {
+        if (!dateTimeSelection) {return;}
+
+        const journeyStages: google.maps.DirectionsStep[] | undefined = directions.routes[0].legs[0].steps;
+        const urlsToFetch: string[] = []
+        let googleMapsPrediction = 0;
+
+        journeyStages.map((journeyStage) => {
+            if (journeyStage.travel_mode === 'TRANSIT') {
+                const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
+
+                // Scenario where we call the API from the backend.
+                if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
+                    const route: string = transitDetails.line.short_name;
+                    const num_stop_segments: number = transitDetails.num_stops
+                    const time: number = getSeconds(dateTimeSelection)
+
+                    urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time).toString()}`)
+                } else {
+                    const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
+                    if (predictionInSeconds) {
+                        const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
+                        console.log("Prediction in minutes:");
+                        googleMapsPrediction += predictionInMinutes;
+                    }
+                }
+            }
+        })
+
+        console.log(urlsToFetch)
+
+        Promise.all(urlsToFetch.map((url) => fetch(url)))
+          .then((responses) =>
+            responses.map((response) => response.json() as Promise<Prediction>))
+          .then((predictions) => {
+              Promise.all(predictions).then((predictions) => {
+                  console.log(predictions)
+
+                  const predictionValues: number[] = predictions.map((prediction) => prediction.prediction);
+                  const totalPrediction: number = predictionValues.reduce(
+                    (a: number, b: number) => +a + +b, 0
+                  )
+                  const finalPrediction: number = totalPrediction + googleMapsPrediction;
+
+                  console.log('Total Prediction is: ');
+                  console.log(totalPrediction);
+                  console.log('Google Maps Prediction is: ');
+                  console.log(googleMapsPrediction);
+
+                  setPrediction(finalPrediction);
+              })
+          })
     }
 
 // This is where the POST API call will go.
