@@ -28,6 +28,8 @@ interface Props {
   multiRoute: boolean;
   setMultiRoute: Dispatch<SetStateAction<boolean>>;
   setPredictionList: Dispatch<SetStateAction<number[]>>;
+  routeDisplayIsOn: boolean;
+  setRouteDisplayIsOn: Dispatch<SetStateAction<boolean>>;
 }
 
 // Animation Bug Fix Credit:
@@ -47,11 +49,12 @@ const ControlPanel = ({
                         multiRoute,
                         setMultiRoute,
                         setPredictionList,
+                        routeDisplayIsOn,
+                        setRouteDisplayIsOn,
                       }: Props): JSX.Element => {
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
   const [busStops, setBusStops] = useState<BusStop[]>([])
-  const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
     const localStorageRoutes: string | null =
@@ -98,7 +101,7 @@ const ControlPanel = ({
   }, [])
 
   const resetSelections = () => {
-    if (checked) {
+    if (routeDisplayIsOn) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
       setPrediction(undefined)
@@ -114,26 +117,14 @@ const ControlPanel = ({
     justifyContent={'center'}
     margin={1}
   >
-    <Button onClick={() => {
-      setMultiRoute(!multiRoute)
-        setStartSelection(undefined)
-        setFinishSelection(undefined)
-        setPrediction(undefined)
-        setRouteSelection(undefined)
-        setDirections(null)
-        if (checked) {
-          setChecked(false)
-        }
-      }
-    }>Toggle</Button>
     {(multiRoute) ? null : <RouteSelectionPanel
       busRoutes={busRoutes}
       routeSelection={routeSelection}
       setRouteSelection={setRouteSelection}
       setStartSelection={setStartSelection}
       setFinishSelection={setFinishSelection}
-      checked={checked}
-      setChecked={setChecked}
+      checked={routeDisplayIsOn}
+      setChecked={setRouteDisplayIsOn}
     />}
     <StopSelectionPanel
       busRoutes={busRoutes}

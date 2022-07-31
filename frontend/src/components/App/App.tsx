@@ -2,7 +2,7 @@
 import '../../styles/main.css';
 
 // React
-import {useState} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 // Components
 import Navbar from '../Navbar/Navbar';
@@ -38,10 +38,21 @@ const App = (): JSX.Element => {
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
   const [multiRoute, setMultiRoute] = useState<boolean>(false);
+  const [routeDisplayIsOn, setRouteDisplayIsOn] = useState<boolean>(false);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar />
+      <Navbar
+        multiRoute={multiRoute}
+        setMultiRoute={setMultiRoute}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
+        setRouteSelection={setRouteSelection}
+        setPrediction={setPrediction}
+        setDirections={setDirections}
+        setRouteDisplayIsOn={setRouteDisplayIsOn}
+
+      />
       <ControlPanel
         startSelection={startSelection}
         setStartSelection={setStartSelection}
@@ -56,6 +67,8 @@ const App = (): JSX.Element => {
         multiRoute={multiRoute}
         setMultiRoute={setMultiRoute}
         setPredictionList={setPredictionList}
+        routeDisplayIsOn={routeDisplayIsOn}
+        setRouteDisplayIsOn={setRouteDisplayIsOn}
       />
       <DisplayPanel
         prediction={prediction}

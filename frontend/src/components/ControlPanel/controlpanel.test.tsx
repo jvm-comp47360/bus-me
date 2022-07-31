@@ -42,6 +42,8 @@ const setup = (startSelection: BusStop | undefined,
         multiRoute={false}
         setMultiRoute={jest.fn()}
         setPredictionList={jest.fn()}
+        routeDisplayIsOn={false}
+        setRouteDisplayIsOn={jest.fn()}
       />,
     </LocalizationProvider>,
 );
