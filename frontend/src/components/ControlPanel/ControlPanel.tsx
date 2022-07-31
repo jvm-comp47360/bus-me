@@ -75,7 +75,7 @@ const ControlPanel = ({
       display={'flex'}
       flexDirection={'column'}
       alignItems={'center'}
-      mt={15}
+      m={3}
   >
     <RouteSelectionPanel
       busRoutes={busRoutes}

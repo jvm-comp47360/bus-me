@@ -15,7 +15,7 @@ const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Elem
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
 
   return (
-    <AppBar position="fixed"
+    <AppBar position="static"
       sx={{borderTop: 20,
         borderColor: theme.palette.secondary.main}}>
       <Container maxWidth="xl">

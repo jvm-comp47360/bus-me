@@ -24,12 +24,13 @@ const AppInfo = ({
       open={appInfoIsOpen}
     >
       <DialogTitle sx={{color: 'white'}}>
-        App Info
+        BusMe Mobile
       </DialogTitle>
       <DialogContent sx={{backgroundColor: 'white'}}>
           <Box
             display={'flex'}
             flexDirection={'row'}
+            flexWrap={'wrap'}
           >
             <Box component="img"
                  sx={{height: 400}}
@@ -39,10 +40,11 @@ const AppInfo = ({
             />
             <Box
               display={'flex'}
+              sx={{width: 245}}
               flexDirection={'column'}
               m={3}
             >
-              <DialogContentText textAlign={'center'}>
+              <DialogContentText textAlign={'justify'}>
                 The mobile version of BusMe is currently in beta, and is available for both iOS and Android platforms.
                 We are currently welcoming testers for both platforms - please click the buttons below to either get in
                 touch with the development team, or to access the code repository.
