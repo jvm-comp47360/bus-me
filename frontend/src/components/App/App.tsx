@@ -9,7 +9,6 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
-import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -22,6 +21,8 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
 import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
+import Appinfo from "../AppInfo/appinfo";
+import {Box, Container, Slide} from "@mui/material";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -35,13 +36,19 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
+  const [appInfoIsOn, setAppInfoIsOn] = useState<boolean>(false);
+  const [appInfoPosition, setAppInfoPosition] = useState<HTMLDivElement | undefined>(undefined)
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar />
+      <Navbar
+        appInfoIsOn={appInfoIsOn}
+        setAppInfoIsOn={setAppInfoIsOn}
+        appInfoPosition={appInfoPosition}
+      />
       <ControlPanel
         startSelection={startSelection}
-         setStartSelection={setStartSelection}
+        setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
@@ -59,8 +66,13 @@ const App = (): JSX.Element => {
         directions={directions}
         routeSelection={routeSelection}
       />
-      <AboutSection />
-      <ContactSection />
+      <Container ref={(appInfoPosition: HTMLDivElement | null) => {
+          if (appInfoPosition) {setAppInfoPosition(appInfoPosition)}
+        }
+      }
+      >
+        <Appinfo/>
+      </Container>
     </LocalizationProvider>
   </ThemeProvider>;
 };

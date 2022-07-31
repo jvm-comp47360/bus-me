@@ -1,10 +1,17 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
 import theme from '../App/Theme';
 import AboutDialog from "./AboutDialog/AboutDialog";
-import {useState} from "react";
+import {Dispatch, SetStateAction, useRef, useState} from "react";
 
-const Navbar = (): JSX.Element => {
+interface Props {
+  appInfoIsOn: boolean,
+  setAppInfoIsOn: Dispatch<SetStateAction<boolean>>;
+  appInfoPosition: HTMLDivElement | undefined
+}
+
+const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false)
+
   return (
     <AppBar position="static"
       sx={{borderTop: 20,
@@ -20,15 +27,18 @@ const Navbar = (): JSX.Element => {
           <Stack direction='row'
             sx={{marginTop: 1}}>
             <Button
-              key={'App'}
-              color='inherit'
-              component='a'
-              href={`#${'App'.toLowerCase()}`}>
-              {'App'}
+              color={'inherit'}
+              onClick={() => {
+                if (appInfoPosition) {
+                  appInfoPosition.scrollIntoView({behavior: 'smooth'});
+                }
+              }}
+            >
+              App
             </Button>
             <Button
               color='inherit'
-              onClick={() => setAboutIsOpen(true)}
+              onClick={() => {}}
             >
               About
             </Button>

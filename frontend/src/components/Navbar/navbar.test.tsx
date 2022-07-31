@@ -2,7 +2,13 @@ import Navbar from './Navbar';
 import {render, RenderResult, screen} from '@testing-library/react';
 
 // eslint-disable-next-line testing-library/no-render-in-setup
-beforeEach((): RenderResult => render(<Navbar />));
+beforeEach((): RenderResult => render(
+  <Navbar
+    appInfoIsOn={false}
+    setAppInfoIsOn={jest.fn()}
+    appInfoPosition={undefined}
+  />
+));
 
 test('BusMe logo appears in Navbar', () => {
   expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
