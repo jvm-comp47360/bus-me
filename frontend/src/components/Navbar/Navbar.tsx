@@ -2,6 +2,7 @@ import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
 import theme from '../App/Theme';
 import AboutDialog from "./AboutDialog/AboutDialog";
 import {Dispatch, SetStateAction, useRef, useState} from "react";
+import AppInfo from "../AppInfo/AppInfo";
 
 interface Props {
   appInfoIsOn: boolean,
@@ -10,10 +11,11 @@ interface Props {
 }
 
 const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Element => {
-  const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false)
+  const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
+  const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
 
   return (
-    <AppBar position="static"
+    <AppBar position="fixed"
       sx={{borderTop: 20,
         borderColor: theme.palette.secondary.main}}>
       <Container maxWidth="xl">
@@ -27,18 +29,14 @@ const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Elem
           <Stack direction='row'
             sx={{marginTop: 1}}>
             <Button
-              color={'inherit'}
-              onClick={() => {
-                if (appInfoPosition) {
-                  appInfoPosition.scrollIntoView({behavior: 'smooth'});
-                }
-              }}
+              color='inherit'
+              onClick={() => {setAppInfoIsOpen(true)}}
             >
               App
             </Button>
             <Button
               color='inherit'
-              onClick={() => {}}
+              onClick={() => {setAboutIsOpen(true)}}
             >
               About
             </Button>
@@ -47,6 +45,10 @@ const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Elem
         <AboutDialog
           aboutIsOpen={aboutIsOpen}
           setAboutIsOpen={setAboutIsOpen}
+        />
+        <AppInfo
+          appInfoIsOpen={appInfoIsOpen}
+          setAppInfoIsOpen={setAppInfoIsOpen}
         />
       </Container>
     </AppBar>);

@@ -7,7 +7,6 @@ import {useState} from 'react';
 // Components
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
-import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
 
 // Material UI
@@ -21,8 +20,9 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
 import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
-import Appinfo from "../AppInfo/appinfo";
+import Appinfo from "../AppInfo/AppInfo";
 import {Box, Container, Slide} from "@mui/material";
+import AppInfo from "../AppInfo/AppInfo";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -66,13 +66,6 @@ const App = (): JSX.Element => {
         directions={directions}
         routeSelection={routeSelection}
       />
-      <Container ref={(appInfoPosition: HTMLDivElement | null) => {
-          if (appInfoPosition) {setAppInfoPosition(appInfoPosition)}
-        }
-      }
-      >
-        <Appinfo/>
-      </Container>
     </LocalizationProvider>
   </ThemeProvider>;
 };
