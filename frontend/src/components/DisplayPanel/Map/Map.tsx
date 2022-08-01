@@ -16,7 +16,6 @@ interface Props {
   routeSelection: BusRoute | undefined,
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-  userLocation: GeolocationPosition | undefined,
 }
 
 const Map = (
@@ -25,8 +24,7 @@ const Map = (
   directions, 
   routeSelection,
   setStartSelection,
-  setFinishSelection,
-  userLocation}: Props): JSX.Element => {
+  setFinishSelection,}: Props): JSX.Element => {
 
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
@@ -66,17 +64,6 @@ const Map = (
         options={mapOptions}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
-        {(userLocation) ?
-          <Marker
-            position={{
-              lat: +userLocation.coords.latitude,
-              lng: +userLocation.coords.longitude,
-            }}
-            icon = {{
-              url: require('../../../assets/userLocation.png'),
-              scaledSize: new google.maps.Size(17.5, 17.5)
-            }}
-          /> : null}
         {(routeSelection) ?
         routeSelection.bus_stops.map((stop) => 
           <Marker
