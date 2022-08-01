@@ -37,15 +37,10 @@ const App = (): JSX.Element => {
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
   const [appInfoIsOn, setAppInfoIsOn] = useState<boolean>(false);
-  const [appInfoPosition, setAppInfoPosition] = useState<HTMLDivElement | undefined>(undefined)
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar
-        appInfoIsOn={appInfoIsOn}
-        setAppInfoIsOn={setAppInfoIsOn}
-        appInfoPosition={appInfoPosition}
-      />
+      <Navbar/>
       <ControlPanel
         startSelection={startSelection}
         setStartSelection={setStartSelection}

@@ -1,16 +1,10 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
 import theme from '../App/Theme';
 import AboutDialog from "./AboutDialog/AboutDialog";
-import {Dispatch, SetStateAction, useRef, useState} from "react";
+import {useState} from "react";
 import AppInfo from "../AppInfo/AppInfo";
 
-interface Props {
-  appInfoIsOn: boolean,
-  setAppInfoIsOn: Dispatch<SetStateAction<boolean>>;
-  appInfoPosition: HTMLDivElement | undefined
-}
-
-const Navbar = ({appInfoIsOn, setAppInfoIsOn, appInfoPosition}: Props): JSX.Element => {
+const Navbar = (): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
 
