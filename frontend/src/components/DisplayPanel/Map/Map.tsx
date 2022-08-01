@@ -1,4 +1,12 @@
-import {useLoadScript, DirectionsRenderer, GoogleMap, Marker, OverlayView, InfoWindow} from '@react-google-maps/api';
+import {
+  useLoadScript,
+  DirectionsRenderer,
+  GoogleMap,
+  Marker,
+  OverlayView,
+  InfoWindow,
+  Autocomplete, StandaloneSearchBox
+} from '@react-google-maps/api';
 import {Dispatch, SetStateAction, useState, useMemo} from 'react';
 import {Container} from '@mui/material';
 import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
@@ -26,7 +34,7 @@ const Map = (
   setStartSelection,
   setFinishSelection}: Props): JSX.Element => {
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string, libraries: ['places']
   });
   const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
     lat: 53.33947559137039,
@@ -50,13 +58,30 @@ const Map = (
   }), []);
 
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
-
   return !(isLoaded) ?
     <LoadScreen/>:
     <Container
       disableGutters={true}
       className="map"
       maxWidth={false}>
+      <StandaloneSearchBox>
+        <input
+          type="text"
+          placeholder="Show custom address on map"
+          style={{
+            boxSizing: `border-box`,
+            border: `1px solid transparent`,
+            width: `240px`,
+            height: `32px`,
+            marginTop: `27px`,
+            padding: `0 12px`,
+            borderRadius: `3px`,
+            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+            fontSize: `14px`,
+            outline: `none`,
+            textOverflow: `ellipses`,
+          }}/>
+      </StandaloneSearchBox>
       <GoogleMap
         zoom={11.7}
         center={centerCoords}
