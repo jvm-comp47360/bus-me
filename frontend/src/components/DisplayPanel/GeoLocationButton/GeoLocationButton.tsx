@@ -5,7 +5,7 @@ import React, {Dispatch, SetStateAction} from 'react';
 import Button from '@mui/material/Button';
 
 interface Props {
-  setUserLocation: Dispatch<SetStateAction<GeolocationPosition | undefined>>;
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>;
 }
 
 const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
@@ -13,7 +13,9 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
   // Icon credit: https://icon-icons.com/icon/user-location/72177
   const getUserLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => setUserLocation(position),
+      navigator.geolocation.getCurrentPosition((position) => {
+          setUserLocation(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+        },
         () => alert('Sorry, there has been an error - please try again later.'))
     }
     else {
