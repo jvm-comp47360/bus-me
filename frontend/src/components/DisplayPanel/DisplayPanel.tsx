@@ -40,7 +40,7 @@ const DisplayPanel = ({
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
   const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
-  const [userLocation, setUserLocation] = useState<google.maps.LatLng | undefined>(undefined)
+  const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
   const distanceFromEdge: number = 2;
 

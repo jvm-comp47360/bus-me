@@ -7,7 +7,7 @@ import {Box} from "@mui/material";
 import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 interface Props {
-  setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>;
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
 }
 
 const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
@@ -18,7 +18,7 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-          setUserLocation(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
+          setUserLocation({lat: position.coords.latitude, lng: position.coords.longitude})
         },
         () => setGeoLocationError(true))
     }
