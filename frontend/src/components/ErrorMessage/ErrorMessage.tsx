@@ -1,8 +1,6 @@
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {Dispatch, SetStateAction} from 'react';
 
 import {Snackbar, Alert} from '@mui/material';
-import BusStop from "../types/BusStop";
-import BusRoute from "../types/BusRoute";
 
 interface Props {
   errorHasOccured: boolean,
