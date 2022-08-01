@@ -15,8 +15,8 @@ interface Props {
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
-};
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
+}
 
 const Map = (
   {startSelection, 
@@ -24,13 +24,14 @@ const Map = (
   directions, 
   routeSelection,
   setStartSelection,
-  setFinishSelection}: Props): JSX.Element => {
+  setFinishSelection,}: Props): JSX.Element => {
+
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
   });
   const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
-    lat: 53.33947559137039,
-    lng: -6.248868208190408,
+    lat: 53.34740,
+    lng: -6.25914,
   }), []);
   const mapOptions: google.maps.MapOptions = useMemo(() => ({
     mapId: "5a13c1894ab64113",

@@ -12,6 +12,7 @@ import JourneyPanel from './JourneyPanel/JourneyPanel';
 import JourneyPanelCollapsed from './JourneyPanelCollapsed/JourneyPanelCollapsed';
 
 import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
+import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -39,6 +40,7 @@ const DisplayPanel = ({
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
   const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
+  const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
   const distanceFromEdge: number = 2;
 
@@ -61,40 +63,59 @@ const DisplayPanel = ({
         zIndex: 0,
         px: distanceFromEdge,
       }}>
-      <Box 
-      id="right-overlay" 
-      sx={{
-        position: 'absolute',
-        zIndex: 1,
-        right: '0%',
-        width: '25%',
-        minWidth: '250px',
-        mr: distanceFromEdge,
-        border: 1,
-        borderColor: 'primary.main',
-        }}>
-        {(weather) ? <WeatherCard weather={weather}/> : null}
-        {(startSelection &&
-          finishSelection &&
-          directions && 
-          directions.routes[0].legs[0].departure_time && 
-          routeSelection &&
-          prediction) ? <>
-          <JourneyPanelCollapsed 
-            setCollapseJourneyPanel={setCollapseJourneyPanel}
-            collapseJourneyPanel={collapseJourneyPanel}/> 
-          <JourneyPanel 
-            startSelection={startSelection}
-            departureTime={directions.routes[0].legs[0].departure_time.value}
-            finishSelection={finishSelection}
-            routeSelection={routeSelection}
-            prediction={prediction}
-            setCollapseJourneyPanel={setCollapseJourneyPanel}
-            collapseJourneyPanel={collapseJourneyPanel}/> 
-          </> :
-          null
-        }
-       </Box>
+        <Box
+        id="right-overlay"
+        sx={{
+          position: 'absolute',
+          zIndex: 1,
+          right: '0%',
+          width: '25%',
+          minWidth: '250px',
+          mr: distanceFromEdge,
+          border: 1,
+          borderColor: 'primary.main',
+          }}>
+          {(weather) ? <WeatherCard weather={weather}/> : null}
+          {(startSelection &&
+            finishSelection &&
+            directions &&
+            directions.routes[0].legs[0].departure_time &&
+            routeSelection &&
+            prediction) ? <>
+            <JourneyPanelCollapsed
+              setCollapseJourneyPanel={setCollapseJourneyPanel}
+              collapseJourneyPanel={collapseJourneyPanel}/>
+            <JourneyPanel
+              startSelection={startSelection}
+              departureTime={directions.routes[0].legs[0].departure_time.value}
+              finishSelection={finishSelection}
+              routeSelection={routeSelection}
+              prediction={prediction}
+              setCollapseJourneyPanel={setCollapseJourneyPanel}
+              collapseJourneyPanel={collapseJourneyPanel}/>
+            </> :
+            null
+          }
+         </Box>
+        <Box
+          display={'flex'}
+          flexDirection={'column'}
+          alignItems={'flex-end'}
+          sx={{
+            position: 'absolute',
+            zIndex: 1,
+            width: '98%',
+            bottom: 115,
+          }}
+        >
+          <Box
+            id="bottom-right-overlay"
+          >
+            <GeoLocationButton
+              setUserLocation={setUserLocation}
+            />
+          </Box>
+        </Box>
         <Map
           startSelection={startSelection}
           finishSelection={finishSelection}

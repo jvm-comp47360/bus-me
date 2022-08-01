@@ -16,6 +16,7 @@ test('useLoadScript called during render', () => {
           directions={null}
           routeSelection={routeSelection}
           setStartSelection={jest.fn()}
-          setFinishSelection={jest.fn()}/>);
+          setFinishSelection={jest.fn()}
+  />);
   expect(loadScriptMethod).toHaveBeenCalledTimes(1);
 });

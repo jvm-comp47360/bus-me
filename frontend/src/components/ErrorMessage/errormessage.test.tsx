@@ -21,4 +21,3 @@ describe('<ErrorMessage/> Renders UI components on the screen', () => {
     expect(screen.queryByText(errorMessage)).toBeNull();
   });
 });
-
