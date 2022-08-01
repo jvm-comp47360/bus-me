@@ -3,7 +3,7 @@ import {Dispatch, SetStateAction, useState} from "react";
 import {Box} from "@mui/material";
 
 interface Props {
-  setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>,
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
 }
 
 // Map style source: https://tomchentw.github.io/react-google-maps/#!/SearchBox
@@ -44,7 +44,7 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
       } else {
         console.log(latitude)
         console.log(longitude)
-        setUserLocation(new google.maps.LatLng(latitude, longitude))
+        setUserLocation({lat:latitude, lng: longitude})
       }
     }
   }
