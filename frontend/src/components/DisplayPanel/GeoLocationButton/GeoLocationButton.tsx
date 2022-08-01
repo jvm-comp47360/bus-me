@@ -3,6 +3,7 @@ import React, {Dispatch, SetStateAction} from 'react';
 
 // Props
 import Button from '@mui/material/Button';
+import {Box} from "@mui/material";
 
 interface Props {
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>;
@@ -28,9 +29,15 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
       variant={'contained'}
       onClick={() => getUserLocation()}
       style={{maxWidth: '30%'}}
-      sx={{margin: 1}}
     >
-      Get Location
+      <Box
+        component={'img'}
+        src={require(`../../../assets/geolocation.png`)}
+        alt={'geolocation'}
+        sx={{
+        width: 35,
+      }}>
+      </Box>
     </Button>
   </>;
 };

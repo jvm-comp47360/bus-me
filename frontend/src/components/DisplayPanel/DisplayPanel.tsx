@@ -98,19 +98,23 @@ const DisplayPanel = ({
           }
          </Box>
         <Box
-          id="left-overlay"
+          display={'flex'}
+          flexDirection={'column'}
+          alignItems={'flex-end'}
           sx={{
             position: 'absolute',
             zIndex: 1,
-            top: 0,
-            left: '2%',
-            minWidth: '250px',
-            width: '100%',
-            mr: distanceFromEdge,
-          }}>
-          <GeoLocationButton
-            setUserLocation={setUserLocation}
-          />
+            width: '98%',
+            bottom: 115,
+          }}
+        >
+          <Box
+            id="bottom-right-overlay"
+          >
+            <GeoLocationButton
+              setUserLocation={setUserLocation}
+            />
+          </Box>
         </Box>
         <Map
           startSelection={startSelection}
