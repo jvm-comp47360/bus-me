@@ -22,6 +22,8 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
 import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
+import Button from "@mui/material/Button";
+import ErrorMessage from "../ErrorMessage";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -35,10 +37,21 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
+  const [errorHasOccured, setErrorHasOccured] = useState<boolean>(false)
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <Navbar />
+      <Button
+        onClick={() => setErrorHasOccured(true)}
+      >
+        Error Demo
+      </Button>
+      <ErrorMessage
+        errorHasOccured={errorHasOccured}
+        setErrorHasOccured={setErrorHasOccured}
+        errorMessage={'Something has gone wrong'}
+      />
       <ControlPanel
         startSelection={startSelection}
          setStartSelection={setStartSelection}
