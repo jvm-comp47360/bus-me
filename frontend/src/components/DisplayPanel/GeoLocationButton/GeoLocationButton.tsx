@@ -1,15 +1,18 @@
 // React
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Props
 import Button from '@mui/material/Button';
 import {Box} from "@mui/material";
+import ErrorMessage from "../../ErrorMessage/ErrorMessage";
 
 interface Props {
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>;
 }
 
 const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
+  const [permissionError, setPermissionError] = useState<boolean>(false);
+  const [geoLocationError, setGeoLocationError] = useState<boolean>(false);
 
   // Icon credit: https://icon-icons.com/icon/user-location/72177
   const getUserLocation = () => {
@@ -17,10 +20,10 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
       navigator.geolocation.getCurrentPosition((position) => {
           setUserLocation(new google.maps.LatLng(position.coords.latitude, position.coords.longitude))
         },
-        () => alert('Sorry, there has been an error - please try again later.'))
+        () => setGeoLocationError(true))
     }
     else {
-      alert('Please enable browser permissions to use geolocation service.')
+      setPermissionError(true)
     }
   }
 
@@ -39,6 +42,16 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
       }}>
       </Box>
     </Button>
+    <ErrorMessage
+      errorHasOccured={permissionError}
+      setErrorHasOccured={setPermissionError}
+      errorMessage={'Sorry, there has been an error - please try again later.'}
+    />
+    <ErrorMessage
+      errorHasOccured={geoLocationError}
+      setErrorHasOccured={setGeoLocationError}
+      errorMessage={'Please enable browser permissions to use geolocation service.'}
+    />
   </>;
 };
 
