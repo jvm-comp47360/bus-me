@@ -10,6 +10,7 @@ interface Props {
 
 const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
 
+  // Icon credit: https://icon-icons.com/icon/user-location/72177
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => setUserLocation(position),

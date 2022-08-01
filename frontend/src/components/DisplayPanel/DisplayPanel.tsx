@@ -119,7 +119,6 @@ const DisplayPanel = ({
           routeSelection={routeSelection}
           setStartSelection={setStartSelection}
           setFinishSelection={setFinishSelection}
-          userLocation={userLocation}
         />
   </Box>;
 };
