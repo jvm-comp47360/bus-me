@@ -20,10 +20,11 @@ const MapSearchBar = ({customAddress, setCustomAddress}: Props): JSX.Element => 
   }
 
   const addressIsOutOfBounds = (latitude: number, longitude: number): boolean => {
-    return latitude < mapBoundaries.west ||
-      latitude > mapBoundaries.east ||
-      longitude > mapBoundaries.north ||
-      longitude < mapBoundaries.south;
+    console.log(mapBoundaries)
+    return latitude > mapBoundaries.north ||
+      latitude < mapBoundaries.south ||
+      longitude < mapBoundaries.west ||
+      longitude > mapBoundaries.east;
   }
 
   const onPlacesChanged = () => {
@@ -42,6 +43,8 @@ const MapSearchBar = ({customAddress, setCustomAddress}: Props): JSX.Element => 
         alert('Address is out of bounds')
         return;
       } else {
+        console.log(latitude)
+        console.log(longitude)
         setCustomAddress(new google.maps.LatLng(latitude, longitude))
       }
     }
