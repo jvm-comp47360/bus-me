@@ -34,7 +34,7 @@ const AppInfo = ({
           >
             <Box component="img"
                  sx={{height: 400}}
-                 alt="bus-me-logo"
+                 alt="bus-me-mobile"
                  src={require('../../assets/BusMeMobile.JPG')}
                  m={3}
             />

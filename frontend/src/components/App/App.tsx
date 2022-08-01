@@ -36,7 +36,6 @@ const App = (): JSX.Element => {
       useState<BusRoute | undefined>(undefined);
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
-  const [appInfoIsOn, setAppInfoIsOn] = useState<boolean>(false);
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
