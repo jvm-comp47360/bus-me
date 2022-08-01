@@ -12,8 +12,8 @@ describe('<GeoLocationButton> Button render', () => {
     expect.assertions(1);
     setup();
 
-    expect(screen.getByRole('button', {name: /get location/i}))
-      .toBeInTheDocument();
+    expect(screen.getByRole('img'))
+      .toHaveAttribute('src', 'geolocation.png');
   });
 });
 
