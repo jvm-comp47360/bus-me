@@ -1,11 +1,20 @@
-import {useLoadScript, DirectionsRenderer, GoogleMap, Marker, OverlayView, InfoWindow} from '@react-google-maps/api';
-import {Dispatch, SetStateAction, useState, useMemo} from 'react';
+import {
+  useLoadScript,
+  DirectionsRenderer,
+  GoogleMap,
+  Marker,
+  OverlayView,
+  InfoWindow,
+  Autocomplete, StandaloneSearchBox
+} from '@react-google-maps/api';
+import {Dispatch, SetStateAction, useState, useMemo, useRef, useCallback, useEffect} from 'react';
 import {Container} from '@mui/material';
 import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
-import LoadScreen from "./LoadScreen/LoadScreen";
+import LoadScreen from './LoadScreen/LoadScreen';
+import MapSearchBar from '../MapSearchBar/MapSearchBar';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -14,25 +23,33 @@ interface Props {
   finishSelection: BusStop | undefined,
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
+  userLocation: google.maps.LatLngLiteral,
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-}
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
+};
+
+const googleMapsLibraries: ("places" | "drawing" | "geometry" | "localContext" | "visualization")[] = ['places'];
 
 const Map = (
   {startSelection, 
   finishSelection, 
   directions, 
   routeSelection,
+  userLocation,
   setStartSelection,
-  setFinishSelection,}: Props): JSX.Element => {
+  setFinishSelection,
+  setUserLocation}: Props): JSX.Element => {
 
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string, libraries: googleMapsLibraries
   });
+
   const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
-    lat: 53.34740,
+    lat: 53.34760,
     lng: -6.25914,
   }), []);
+
   const mapOptions: google.maps.MapOptions = useMemo(() => ({
     mapId: "5a13c1894ab64113",
     streetViewControl: false,
@@ -50,18 +67,30 @@ const Map = (
     },
   }), []);
 
-  const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
+  const mapRef = useRef<google.maps.Map>();
+  const onLoad = useCallback((map: google.maps.Map): void => {
+    mapRef.current = map
+  }, [])
 
+  useEffect(() => {
+    mapRef.current?.panTo(userLocation)
+  }, [userLocation])
+
+  const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
   return !(isLoaded) ?
     <LoadScreen/>:
     <Container
       disableGutters={true}
       className="map"
       maxWidth={false}>
+      <MapSearchBar
+        setUserLocation={setUserLocation}
+      />
       <GoogleMap
-        zoom={11.7}
+        zoom={15}
         center={centerCoords}
         options={mapOptions}
+        onLoad={onLoad}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
         {(routeSelection) ?
