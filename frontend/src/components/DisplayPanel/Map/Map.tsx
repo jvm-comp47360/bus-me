@@ -23,8 +23,10 @@ interface Props {
   finishSelection: BusStop | undefined,
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
+  userLocation: google.maps.LatLng | undefined,
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>,
 };
 
 const googleMapsLibraries: ("places" | "drawing" | "geometry" | "localContext" | "visualization")[] = ['places'];
@@ -34,9 +36,10 @@ const Map = (
   finishSelection, 
   directions, 
   routeSelection,
+  userLocation,
   setStartSelection,
-  setFinishSelection}: Props): JSX.Element => {
-  const [customAddress, setCustomAddress] = useState<google.maps.LatLng | undefined>(undefined);
+  setFinishSelection,
+  setUserLocation}: Props): JSX.Element => {
 
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string, libraries: googleMapsLibraries
@@ -70,8 +73,7 @@ const Map = (
       className="map"
       maxWidth={false}>
       <MapSearchBar
-        customAddress={customAddress}
-        setCustomAddress={setCustomAddress}
+        setUserLocation={setUserLocation}
       />
       <GoogleMap
         zoom={11.7}

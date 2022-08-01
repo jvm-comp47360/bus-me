@@ -3,12 +3,11 @@ import {Dispatch, SetStateAction, useState} from "react";
 import {Box} from "@mui/material";
 
 interface Props {
-  customAddress: google.maps.LatLng | undefined;
-  setCustomAddress: Dispatch<SetStateAction<google.maps.LatLng | undefined>>,
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLng | undefined>>,
 }
 
 // Map style source: https://tomchentw.github.io/react-google-maps/#!/SearchBox
-const MapSearchBar = ({customAddress, setCustomAddress}: Props): JSX.Element => {
+const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
   const [placesApi, setPlacesApi] = useState<google.maps.places.SearchBox | null>(null);
   const onLoadPlacesApi = (ref: google.maps.places.SearchBox) => setPlacesApi(ref);
 
@@ -45,7 +44,7 @@ const MapSearchBar = ({customAddress, setCustomAddress}: Props): JSX.Element => 
       } else {
         console.log(latitude)
         console.log(longitude)
-        setCustomAddress(new google.maps.LatLng(latitude, longitude))
+        setUserLocation(new google.maps.LatLng(latitude, longitude))
       }
     }
   }

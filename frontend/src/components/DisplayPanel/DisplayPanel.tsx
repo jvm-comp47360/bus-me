@@ -39,6 +39,7 @@ const DisplayPanel = ({
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
   const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
+  const [userLocation, setUserLocation] = useState<google.maps.LatLng | undefined>(undefined);
 
   const distanceFromEdge: number = 2;
 
@@ -100,8 +101,10 @@ const DisplayPanel = ({
           finishSelection={finishSelection}
           directions={directions}
           routeSelection={routeSelection}
+          userLocation={userLocation}
           setStartSelection={setStartSelection}
           setFinishSelection={setFinishSelection}
+          setUserLocation={setUserLocation}
         />
   </Box>;
 };
