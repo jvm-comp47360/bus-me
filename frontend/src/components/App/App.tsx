@@ -9,7 +9,6 @@ import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
-import GraphDialogButton from "../DisplayPanel/JourneyPanel/AnalyticsPanel/GraphDialogButton/GraphDialogButton";
 
 // Material UI
 import ContactSection from '../ContactSection/ContactSection';
@@ -22,6 +21,8 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
 import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
+import Button from "@mui/material/Button";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
