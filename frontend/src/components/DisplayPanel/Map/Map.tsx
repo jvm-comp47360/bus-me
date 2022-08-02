@@ -107,7 +107,6 @@ const Map = (
         onLoad={onLoad}
         onZoomChanged={() => {
           if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
-          console.log(`Zoom level is: ${zoomLevel}`);
         }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>

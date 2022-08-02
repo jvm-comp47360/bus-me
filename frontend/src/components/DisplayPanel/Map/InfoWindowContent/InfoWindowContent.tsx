@@ -21,15 +21,25 @@ const InfoWindowContent =({stop,
         container
         direction={'column'}
         sx={{
-            height: '175px',
-            width: '325px',
+            height: '250px',
+            width: '175px',
             justifyContent: 'space-between',
         }}>
         <Grid item>
             <Typography 
-                variant={"h6"}
-                sx={{borderBottom: 1}}>
-                    {stop.name} (Stop {stop.number})
+                sx={{
+                fontSize: '0.75rem',
+                textAlign: 'right'
+            }}>
+                Stop {stop.number}
+            </Typography>
+            <Typography 
+                sx={{
+                borderBottom: 1,
+                fontSize: '1rem',
+                textAlign: 'center',
+            }}>
+                {stop.name}
             </Typography>
         </Grid>
         <Grid 
@@ -37,6 +47,10 @@ const InfoWindowContent =({stop,
             container
             sx={{
                 justifyContent: 'space-evenly',
+                alignItems: 'center',
+                flexDirection: 'column',
+                height: '90px',
+                borderTop: 1,
             }}>
             <Grid item>
                 <InfoWindowButton 
