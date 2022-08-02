@@ -71,21 +71,11 @@ const ControlPanel = ({
     }
   }, [])
 
-  const resetSelections = () => {
-    if (checked) {
-      setStartSelection(undefined)
-      setFinishSelection(undefined)
-      setPrediction(undefined)
-      setRouteSelection(undefined)
-      setDirections(null)
-    }
-  }
-
   return <Box
       display={'flex'}
       flexDirection={'column'}
       alignItems={'center'}
-      m={2}
+      m={3}
   >
     <RouteSelectionPanel
       busRoutes={busRoutes}
