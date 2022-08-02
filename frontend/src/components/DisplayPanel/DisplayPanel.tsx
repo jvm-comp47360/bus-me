@@ -66,7 +66,7 @@ const DisplayPanel = ({
         id="right-overlay"
         sx={{
           position: 'absolute',
-          zIndex: 1,
+          zIndex: 2,
           right: '0%',
           width: '25%',
           minWidth: '250px',
