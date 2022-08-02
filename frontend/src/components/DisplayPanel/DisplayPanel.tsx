@@ -9,6 +9,7 @@ import Weather from "../../types/Weather";
 import WeatherCard from './WeatherCard/WeatherCard';
 import Map from './Map/Map';
 import JourneyPanel from './JourneyPanel/JourneyPanel';
+import JourneyPanelCollapsed from './JourneyPanelCollapsed/JourneyPanelCollapsed';
 
 import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
 
@@ -37,6 +38,8 @@ const DisplayPanel = ({
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
+  const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
+  const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
   const distanceFromEdge: number = 2;
 
@@ -59,41 +62,49 @@ const DisplayPanel = ({
         zIndex: 0,
         px: distanceFromEdge,
       }}>
-      <Box 
-      id="right-overlay" 
-      sx={{
-        position: 'absolute',
-        zIndex: 1,
-        right: '0%',
-        width: '25%',
-        minWidth: '250px',
-        mr: distanceFromEdge,
-        border: 1,
-        borderColor: 'primary.main',
-        }}>
-        {(weather) ? <WeatherCard weather={weather}/> : null}
-        {(startSelection &&
-          finishSelection &&
-          directions && 
-          directions.routes[0].legs[0].departure_time && 
-          routeSelection &&
-          prediction) ?
-        <JourneyPanel 
-          startSelection={startSelection}
-          departureTime={directions.routes[0].legs[0].departure_time.value}
-          finishSelection={finishSelection}
-          routeSelection={routeSelection}
-          prediction={prediction}/>
-          : null
-        }
-       </Box>
+        <Box
+        id="right-overlay"
+        sx={{
+          position: 'absolute',
+          zIndex: 2,
+          right: '0%',
+          width: '25%',
+          minWidth: '250px',
+          mr: distanceFromEdge,
+          border: 1,
+          borderColor: 'primary.main',
+          }}>
+          {(weather) ? <WeatherCard weather={weather}/> : null}
+          {(startSelection &&
+            finishSelection &&
+            directions &&
+            directions.routes[0].legs[0].departure_time &&
+            routeSelection &&
+            prediction) ? <>
+            <JourneyPanelCollapsed
+              setCollapseJourneyPanel={setCollapseJourneyPanel}
+              collapseJourneyPanel={collapseJourneyPanel}/>
+            <JourneyPanel
+              startSelection={startSelection}
+              departureTime={directions.routes[0].legs[0].departure_time.value}
+              finishSelection={finishSelection}
+              routeSelection={routeSelection}
+              prediction={prediction}
+              setCollapseJourneyPanel={setCollapseJourneyPanel}
+              collapseJourneyPanel={collapseJourneyPanel}/>
+            </> :
+            null
+          }
+         </Box>
         <Map
           startSelection={startSelection}
           finishSelection={finishSelection}
           directions={directions}
           routeSelection={routeSelection}
+          userLocation={userLocation}
           setStartSelection={setStartSelection}
           setFinishSelection={setFinishSelection}
+          setUserLocation={setUserLocation}
         />
   </Box>;
 };

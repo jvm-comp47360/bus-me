@@ -1,8 +1,13 @@
 import {AppBar, Box, Button, Container, Stack, Toolbar} from '@mui/material';
 import theme from '../App/Theme';
+import AboutDialog from "./AboutDialog/AboutDialog";
+import {useState} from "react";
+import AppInfo from "../AppInfo/AppInfo";
 
 const Navbar = (): JSX.Element => {
-  const sitePages: string[] = ['Contact', 'App', 'About', 'Login'];
+  const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
+  const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
+
   return (
     <AppBar position="static"
       sx={{borderTop: 20,
@@ -17,17 +22,28 @@ const Navbar = (): JSX.Element => {
           />
           <Stack direction='row'
             sx={{marginTop: 1}}>
-            {sitePages.map((page) =>
-              <Button
-                key={page}
-                color='inherit'
-                component='a'
-                href={`#${page.toLowerCase()}`}>
-                {page}
-              </Button>,
-            )}
+            <Button
+              color='inherit'
+              onClick={() => {setAppInfoIsOpen(true)}}
+            >
+              App
+            </Button>
+            <Button
+              color='inherit'
+              onClick={() => {setAboutIsOpen(true)}}
+            >
+              About
+            </Button>
           </Stack>
         </Toolbar>
+        <AboutDialog
+          aboutIsOpen={aboutIsOpen}
+          setAboutIsOpen={setAboutIsOpen}
+        />
+        <AppInfo
+          appInfoIsOpen={appInfoIsOpen}
+          setAppInfoIsOpen={setAppInfoIsOpen}
+        />
       </Container>
     </AppBar>);
 };

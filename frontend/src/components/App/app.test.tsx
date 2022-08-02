@@ -13,9 +13,5 @@ describe('<App/> Renders UI components on the screen', () => {
     setup();
     expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
   });
-  it('renders about section on the screen', () => {
-    setup();
-    expect(screen.getByText(/about busme/i)).toBeInTheDocument();
-  });
 });
 
