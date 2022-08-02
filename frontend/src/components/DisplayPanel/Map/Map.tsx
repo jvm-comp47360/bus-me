@@ -14,6 +14,7 @@ import BusRoute from '../../../types/BusRoute';
 import LoadScreen from './LoadScreen/LoadScreen';
 import MapSearchBar from './MapSearchBar/MapSearchBar';
 import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
+import { MapRounded } from '@mui/icons-material';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -72,10 +73,13 @@ const Map = (
   const onLoad = useCallback((map: google.maps.Map): void => {
     mapRef.current = map
   }, [])
+  
 
   useEffect(() => {
     mapRef.current?.panTo(userLocation)
   }, [userLocation])
+
+  const [zoomLevel, setZoomLevel] = useState<number|undefined>(16);
 
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
   return !(isLoaded) ?
@@ -96,17 +100,19 @@ const Map = (
         <MapSearchBar setUserLocation={setUserLocation} />
         <GeoLocationButton setUserLocation={setUserLocation} />
       </Box>
-      
       <GoogleMap
-        zoom={15}
+        zoom={16}
         center={centerCoords}
         options={mapOptions}
         onLoad={onLoad}
+        onZoomChanged={() => {
+          if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
+        }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
           {(routeSelection) ?
           routeSelection.bus_stops.map((stop) => 
-            <Marker
+          <Marker
               key={stop.number}
               position={{
                 lat: +stop.latitude,
@@ -117,7 +123,7 @@ const Map = (
                 scaledSize: new google.maps.Size(17.5, 17.5)
               }}
               onClick = {(e) => setSelectedMarker(e.latLng)}
-            >
+          >
               {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
                 selectedMarker.lng() === +stop.longitude) ?
                   <InfoWindow
@@ -136,8 +142,7 @@ const Map = (
                   </InfoWindow>:
                 null}
             </Marker>
-          ):
-          busStops.map((stop) => 
+          ): busStops.map((stop) => 
           <Marker
             key={stop.number}
             position={{
@@ -149,6 +154,7 @@ const Map = (
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             onClick = {(e) => setSelectedMarker(e.latLng)}
+            opacity = {(zoomLevel && zoomLevel >= 16) ? 1 : 0}
           >
             {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
               selectedMarker.lng() === +stop.longitude) ?
