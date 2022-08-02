@@ -3,18 +3,17 @@ import {
   DirectionsRenderer,
   GoogleMap,
   Marker,
-  OverlayView,
   InfoWindow,
-  Autocomplete, StandaloneSearchBox
 } from '@react-google-maps/api';
 import {Dispatch, SetStateAction, useState, useMemo, useRef, useCallback, useEffect} from 'react';
-import {Container} from '@mui/material';
+import {Container, Box} from '@mui/material';
 import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
 import LoadScreen from './LoadScreen/LoadScreen';
-import MapSearchBar from '../MapSearchBar/MapSearchBar';
+import MapSearchBar from './MapSearchBar/MapSearchBar';
+import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -83,9 +82,19 @@ const Map = (
       disableGutters={true}
       className="map"
       maxWidth={false}>
-      <MapSearchBar
-        setUserLocation={setUserLocation}
-      />
+      <Box sx={{
+        zIndex: 1,
+        display: 'flex',
+        position: 'absolute',
+        top: '1%',
+        left: '3%',
+        width: '100%',
+        maxWidth: '1200px',
+      }}>
+        <MapSearchBar setUserLocation={setUserLocation} />
+        <GeoLocationButton setUserLocation={setUserLocation} />
+      </Box>
+      
       <GoogleMap
         zoom={15}
         center={centerCoords}

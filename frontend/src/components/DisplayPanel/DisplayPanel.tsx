@@ -12,7 +12,6 @@ import JourneyPanel from './JourneyPanel/JourneyPanel';
 import JourneyPanelCollapsed from './JourneyPanelCollapsed/JourneyPanelCollapsed';
 
 import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
-import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -97,25 +96,6 @@ const DisplayPanel = ({
             null
           }
          </Box>
-        <Box
-          display={'flex'}
-          flexDirection={'column'}
-          alignItems={'flex-end'}
-          sx={{
-            position: 'absolute',
-            zIndex: 1,
-            width: '98%',
-            bottom: 115,
-          }}
-        >
-          <Box
-            id="bottom-right-overlay"
-          >
-            <GeoLocationButton
-              setUserLocation={setUserLocation}
-            />
-          </Box>
-        </Box>
         <Map
           startSelection={startSelection}
           finishSelection={finishSelection}

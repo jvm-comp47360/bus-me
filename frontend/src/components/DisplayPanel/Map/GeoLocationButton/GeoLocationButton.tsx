@@ -4,7 +4,7 @@ import React, {Dispatch, SetStateAction, useState} from 'react';
 // Props
 import Button from '@mui/material/Button';
 import {Box} from "@mui/material";
-import ErrorMessage from "../../ErrorMessage/ErrorMessage";
+import ErrorMessage from "../../../ErrorMessage/ErrorMessage";
 
 interface Props {
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
@@ -35,7 +35,7 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
     >
       <Box
         component={'img'}
-        src={require(`../../../assets/geolocation.png`)}
+        src={require(`../../../../assets/geolocation.png`)}
         alt={'geolocation'}
         sx={{
         width: 35,

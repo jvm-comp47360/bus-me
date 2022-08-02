@@ -50,24 +50,21 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
   }
 
   return <Box
-    display={'flex'}
-    flexDirection={'column'}
-    alignItems={'center'}
+    sx={{width: '40%'}}
   >
     <StandaloneSearchBox
       onLoad={onLoadPlacesApi}
       bounds={mapBoundaries}
       onPlacesChanged={onPlacesChanged}
-    >
+      >
       <input
         type="text"
         placeholder="Show custom address on map"
         style={{
           boxSizing: `border-box`,
           border: `1px solid transparent`,
-          width: `240px`,
+          width: `98%`,
           height: `50px`,
-          marginTop: `27px`,
           padding: `0 12px`,
           borderRadius: `3px`,
           boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
