@@ -11,39 +11,48 @@ import BusRoute from '../../../types/BusRoute';
 import Button from "@mui/material/Button";
 import BusStop from "../../../types/BusStop";
 
+type DirectionsResult = google.maps.DirectionsResult;
+
 interface Props {
     busRoutes: BusRoute[];
     routeSelection: BusRoute | undefined;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
-  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
-  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
-  checked: boolean;
-  setChecked: Dispatch<SetStateAction<boolean>>;
+    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    checked: boolean;
+    setChecked: Dispatch<SetStateAction<boolean>>;
+    setPrediction: Dispatch<SetStateAction<number | undefined>>;
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
 
 const RouteSelectionDropdown = ({
                                busRoutes,
-                                  routeSelection,
+                               routeSelection,
                                setRouteSelection,
-                              setStartSelection,
-                                  setFinishSelection,
-                              checked,
-                              setChecked,
+                               setStartSelection,
+                               setFinishSelection,
+                               checked,
+                               setChecked,
+                               setPrediction,
+                               setDirections,
                            }: Props): JSX.Element => {
 
   const slideHandler = () => {
     setChecked((prev) => !prev);
-    resetStartAndFinishSelection();
+    resetSelections();
   };
 
   const toggleDisableHandler = (): boolean => {
     return routeSelection === undefined;
   }
 
-  const resetStartAndFinishSelection = () => {
+  const resetSelections = () => {
     if (checked) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
+      setPrediction(undefined)
+      setRouteSelection(undefined)
+      setDirections(null)
     }
   }
     return <Box

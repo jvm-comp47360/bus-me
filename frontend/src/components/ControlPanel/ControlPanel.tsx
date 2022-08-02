@@ -86,6 +86,8 @@ const ControlPanel = ({
       setFinishSelection={setFinishSelection}
       checked={checked}
       setChecked={setChecked}
+      setPrediction={setPrediction}
+      setDirections={setDirections}
     />
     <StopSelectionPanel
       busRoutes={busRoutes}

@@ -14,6 +14,7 @@ import BusRoute from '../../../types/BusRoute';
 import LoadScreen from './LoadScreen/LoadScreen';
 import MapSearchBar from './MapSearchBar/MapSearchBar';
 import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
+import { MapRounded } from '@mui/icons-material';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -23,6 +24,7 @@ interface Props {
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
   userLocation: google.maps.LatLngLiteral,
+  busStops: BusStop[],
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
@@ -36,6 +38,7 @@ const Map = (
   directions, 
   routeSelection,
   userLocation,
+  busStops,
   setStartSelection,
   setFinishSelection,
   setUserLocation}: Props): JSX.Element => {
@@ -70,10 +73,13 @@ const Map = (
   const onLoad = useCallback((map: google.maps.Map): void => {
     mapRef.current = map
   }, [])
+  
 
   useEffect(() => {
     mapRef.current?.panTo(userLocation)
   }, [userLocation])
+
+  const [zoomLevel, setZoomLevel] = useState<number|undefined>(16);
 
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
   return !(isLoaded) ?
@@ -94,16 +100,51 @@ const Map = (
         <MapSearchBar setUserLocation={setUserLocation} />
         <GeoLocationButton setUserLocation={setUserLocation} />
       </Box>
-      
       <GoogleMap
-        zoom={15}
+        zoom={16}
         center={centerCoords}
         options={mapOptions}
         onLoad={onLoad}
+        onZoomChanged={() => {
+          if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
+          console.log(`Zoom level is: ${zoomLevel}`);
+        }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
-        {(routeSelection) ?
-        routeSelection.bus_stops.map((stop) => 
+          {(routeSelection) ?
+          routeSelection.bus_stops.map((stop) => 
+          <Marker
+              key={stop.number}
+              position={{
+                lat: +stop.latitude,
+                lng: +stop.longitude,
+              }}
+              icon = {{
+                url: require(`../../../assets/bus_me_stop.png`),
+                scaledSize: new google.maps.Size(17.5, 17.5)
+              }}
+              onClick = {(e) => setSelectedMarker(e.latLng)}
+              opacity = {(zoomLevel && zoomLevel >= 11) ? 1 : 0}
+          >
+              {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
+                selectedMarker.lng() === +stop.longitude) ?
+                  <InfoWindow
+                  position={{
+                    lat: +stop.latitude,
+                    lng: +stop.longitude,
+                  }}
+                  onCloseClick = {() => setSelectedMarker(null)}
+                  >
+                    <InfoWindowContent 
+                      stop={stop}
+                      setStartSelection={setStartSelection}
+                      startSelection={startSelection}
+                      setFinishSelection={setFinishSelection}
+                      finishSelection={finishSelection} />
+                  </InfoWindow>:
+                null}
+            </Marker>
+          ): busStops.map((stop) => 
           <Marker
             key={stop.number}
             position={{
@@ -115,6 +156,7 @@ const Map = (
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             onClick = {(e) => setSelectedMarker(e.latLng)}
+            opacity = {(zoomLevel && zoomLevel >= 15) ? 1 : 0}
           >
             {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
               selectedMarker.lng() === +stop.longitude) ?
@@ -134,7 +176,7 @@ const Map = (
                 </InfoWindow>:
               null}
           </Marker>
-        ): null}
+        )}
         {(directions) ?
         <DirectionsRenderer 
           directions={directions}
