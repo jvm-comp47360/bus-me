@@ -24,7 +24,10 @@ const InfoWindowButton = ({name, setStopSelection, stop, existingSelection}: Pro
         <Button 
         variant={'contained'}
         onClick={() => setStopSelection(stop)}
-        disabled={submitDisableHandler()}>
+        disabled={submitDisableHandler()}
+        sx={{
+            width: '140px',
+        }}>
         {name} Station
         </Button>
     )
