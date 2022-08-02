@@ -35,6 +35,9 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
     planned_duration_index = np.searchsorted(df['PLANNEDTIME_ARR'], time, side='right')
     print(planned_duration_index)
 
+    if planned_duration_index == len(df):
+        planned_duration_index = planned_duration_index - 1
+
     # Get the PLANNED_DURATION according to index
     print('getting planned duration according to index')
     planned_duration = df.iloc[planned_duration_index]['PLANNED_DURATION']
