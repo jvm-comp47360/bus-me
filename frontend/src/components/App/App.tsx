@@ -7,7 +7,6 @@ import {useState} from 'react';
 // Components
 import Navbar from '../Navbar/Navbar';
 import ControlPanel from '../ControlPanel/ControlPanel';
-import AboutSection from '../AboutSection/AboutSection';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
 
 // Material UI
@@ -21,6 +20,9 @@ import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
 import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
+import Appinfo from "../AppInfo/AppInfo";
+import {Box, Container, Slide} from "@mui/material";
+import AppInfo from "../AppInfo/AppInfo";
 import Button from "@mui/material/Button";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
@@ -39,10 +41,10 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar />
+      <Navbar/>
       <ControlPanel
         startSelection={startSelection}
-         setStartSelection={setStartSelection}
+        setStartSelection={setStartSelection}
         finishSelection={finishSelection}
         setFinishSelection={setFinishSelection}
         routeSelection={routeSelection}
@@ -60,8 +62,6 @@ const App = (): JSX.Element => {
         directions={directions}
         routeSelection={routeSelection}
       />
-      <AboutSection />
-      <ContactSection />
     </LocalizationProvider>
   </ThemeProvider>;
 };
