@@ -23,7 +23,6 @@ interface Props {
   directions: DirectionsResult | null,
   routeSelection: BusRoute | undefined,
   userLocation: google.maps.LatLngLiteral,
-  busStops: BusStop[],
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
@@ -37,7 +36,6 @@ const Map = (
   directions, 
   routeSelection,
   userLocation,
-  busStops,
   setStartSelection,
   setFinishSelection,
   setUserLocation}: Props): JSX.Element => {
@@ -104,40 +102,8 @@ const Map = (
         onLoad={onLoad}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
-          {(routeSelection) ?
-          routeSelection.bus_stops.map((stop) => 
-            <Marker
-              key={stop.number}
-              position={{
-                lat: +stop.latitude,
-                lng: +stop.longitude,
-              }}
-              icon = {{
-                url: require(`../../../assets/bus_me_stop.png`),
-                scaledSize: new google.maps.Size(17.5, 17.5)
-              }}
-              onClick = {(e) => setSelectedMarker(e.latLng)}
-            >
-              {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
-                selectedMarker.lng() === +stop.longitude) ?
-                  <InfoWindow
-                  position={{
-                    lat: +stop.latitude,
-                    lng: +stop.longitude,
-                  }}
-                  onCloseClick = {() => setSelectedMarker(null)}
-                  >
-                    <InfoWindowContent 
-                      stop={stop}
-                      setStartSelection={setStartSelection}
-                      startSelection={startSelection}
-                      setFinishSelection={setFinishSelection}
-                      finishSelection={finishSelection} />
-                  </InfoWindow>:
-                null}
-            </Marker>
-          ):
-          busStops.map((stop) => 
+        {(routeSelection) ?
+        routeSelection.bus_stops.map((stop) => 
           <Marker
             key={stop.number}
             position={{
@@ -168,7 +134,7 @@ const Map = (
                 </InfoWindow>:
               null}
           </Marker>
-        )}
+        ): null}
         {(directions) ?
         <DirectionsRenderer 
           directions={directions}

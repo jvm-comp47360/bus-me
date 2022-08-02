@@ -2,7 +2,7 @@
 import '../../styles/main.css';
 
 // React
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 
 // Components
 import Navbar from '../Navbar/Navbar';
@@ -26,42 +26,16 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
+
+  // Selections may be undefined if the user has not picked them yet.
   const [startSelection, setStartSelection] =
       useState<BusStop | undefined>(undefined);
-
   const [finishSelection, setFinishSelection] =
       useState<BusStop | undefined>(undefined);
-
   const [routeSelection, setRouteSelection] =
       useState<BusRoute | undefined>(undefined);
-
   const [directions, setDirections] =
    useState<google.maps.DirectionsResult | null>(null);
-
-  const [busStops, setBusStops] = useState<BusStop[]>([]);
-
-  useEffect(() => {
-    const localStorageStops: string | null =
-      localStorage.getItem('bus_stops');
-
-      if (localStorageStops) {
-        setBusStops(JSON.parse(localStorageStops));
-      } else {
-        fetch('http://ipa-002.ucd.ie/api/bus_stops/')
-          .then((response) => {
-            if (response.ok) {
-              return response.json() as Promise<BusStop[]>;
-            } else {
-              throw new Error();
-            }
-          })
-          .then((data) => {
-            setBusStops(data);
-            localStorage.setItem('bus_stops', JSON.stringify(data))
-          })
-          .catch((error) => console.log(error));
-      }
-  }, [])
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -85,7 +59,6 @@ const App = (): JSX.Element => {
         setFinishSelection={setFinishSelection}
         directions={directions}
         routeSelection={routeSelection}
-        busStops={busStops}
       />
       <AboutSection />
       <ContactSection />
