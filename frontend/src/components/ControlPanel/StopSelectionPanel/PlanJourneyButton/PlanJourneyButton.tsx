@@ -3,8 +3,8 @@ import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Props
 import Button from '@mui/material/Button';
-import BusRoute from '../../../types/BusRoute';
-import BusStop from '../../../types/BusStop';
+import BusRoute from '../../../../types/BusRoute';
+import BusStop from '../../../../types/BusStop';
 
 type DirectionsResult = google.maps.DirectionsResult;
 type DirectionsStatus = google.maps.DirectionsStatus;
@@ -152,7 +152,6 @@ const PlanJourneyButton = ({routeSelection,
             variant={'contained'}
             onClick={submitClickHandler}
             disabled={submitDisableHandler()}
-            style={{maxWidth: '30%'}}
             sx={{margin: 1}}
         >
             Plan Journey

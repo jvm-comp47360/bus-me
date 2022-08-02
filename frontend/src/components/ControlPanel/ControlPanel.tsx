@@ -13,7 +13,7 @@ type DirectionsResult = google.maps.DirectionsResult;
 // Components
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import PlanJourneyButton from './PlanJourneyButton/PlanJourneyButton';
+import PlanJourneyButton from './StopSelectionPanel/PlanJourneyButton/PlanJourneyButton';
 
 
 interface Props {
@@ -72,10 +72,11 @@ const ControlPanel = ({
   }, [])
 
   return <Box
-      display={'flex'}
-      flexDirection={'column'}
-      alignItems={'center'}
-      m={3}
+    display={'flex'}
+    flexDirection={'row'}
+    flexWrap={'wrap'}
+    justifyContent={'center'}
+    margin={1}
   >
     <RouteSelectionPanel
       busRoutes={busRoutes}
@@ -95,14 +96,8 @@ const ControlPanel = ({
       setFinishSelection={setFinishSelection}
       dateTimeSelection={dateTimeSelection}
       setDateTimeSelection={setDateTimeSelection}
-    />
-    <PlanJourneyButton
-        routeSelection={routeSelection}
-        startSelection={startSelection}
-        finishSelection={finishSelection}
-        dateTimeSelection={dateTimeSelection}
-        setPrediction={setPrediction}
-        setDirections={setDirections}
+      setPrediction={setPrediction}
+      setDirections={setDirections}
     />
   </Box>;
 };
