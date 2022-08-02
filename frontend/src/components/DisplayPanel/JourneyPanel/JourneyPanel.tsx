@@ -1,9 +1,10 @@
 import JourneyLeg from './JourneyLeg/JourneyLeg';
 import AnalyticsPanel from './AnalyticsPanel/AnalyticsPanel';
 
-import {Box, Typography} from '@mui/material';
+import {Box, Grid, Typography} from '@mui/material';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 
-import {useMemo} from 'react';
+import {useMemo, Dispatch, SetStateAction} from 'react';
 
 import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
@@ -14,6 +15,8 @@ interface Props {
     finishSelection: BusStop,
     routeSelection: BusRoute,
     prediction: number,
+    collapseJourneyPanel: Boolean,
+    setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>,
 }
 
 const JourneyPanel = ({
@@ -21,21 +24,35 @@ const JourneyPanel = ({
     departureTime,
     finishSelection, 
     routeSelection,
-    prediction}: Props): JSX.Element => {
+    prediction,
+    collapseJourneyPanel,
+    setCollapseJourneyPanel}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
+    const displayValue = collapseJourneyPanel ? 'none' : 'block';
 
     return <Box 
         sx={{
         backgroundColor: 'white',
         p: 1,
-    }}>
-        <Typography 
-            variant='h5' 
-            sx={{textAlign: 'center'}}>
-            Your Journey
-        </Typography>
+        display: displayValue,
+    }}> 
+        <Grid container>
+            <Grid item xs={10}>
+                <Typography 
+                    variant='h5' 
+                    sx={{textAlign: 'center'}}>
+                    Your Journey
+                </Typography>
+            </Grid>
+            <Grid item xs={2}>
+                <ArrowDropUpIcon
+                    sx={{fontSize: '36px'}}
+                    onClick={() => setCollapseJourneyPanel(true)} />
+            </Grid>
+        </Grid>
+        
         <JourneyLeg 
             startSelection={startSelectionMemo}
             departureTime={departureTime}

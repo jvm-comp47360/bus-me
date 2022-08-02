@@ -16,7 +16,9 @@ const setUp = (
         departureTime={departureTime}
         finishSelection={finishStop}
         routeSelection={mockRoute}
-        prediction={prediction}/>
+        prediction={prediction}
+        collapseJourneyPanel={false}
+        setCollapseJourneyPanel={jest.fn()}/>
 );
 
 describe('JourneyPanel test', () => {

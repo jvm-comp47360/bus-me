@@ -23,6 +23,8 @@ import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
 import Appinfo from "../AppInfo/AppInfo";
 import {Box, Container, Slide} from "@mui/material";
 import AppInfo from "../AppInfo/AppInfo";
+import Button from "@mui/material/Button";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
