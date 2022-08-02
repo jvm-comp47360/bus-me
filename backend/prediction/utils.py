@@ -28,10 +28,12 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
     print('Searching for line id in pickl file')
     df = search_table_pickle[search_table_pickle['LINEID'] == str(route)]
     df = df.reset_index(drop=True)
+    print(df)
 
     # Search the most close PLANNED_DURATION index
     print('getting planned duration index')
     planned_duration_index = np.searchsorted(df['PLANNEDTIME_ARR'], time, side='right')
+    print(planned_duration_index)
 
     # Get the PLANNED_DURATION according to index
     print('getting planned duration according to index')
