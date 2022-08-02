@@ -107,6 +107,7 @@ const Map = (
         onLoad={onLoad}
         onZoomChanged={() => {
           if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
+          console.log(`Zoom level is: ${zoomLevel}`);
         }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
@@ -123,6 +124,7 @@ const Map = (
                 scaledSize: new google.maps.Size(17.5, 17.5)
               }}
               onClick = {(e) => setSelectedMarker(e.latLng)}
+              opacity = {(zoomLevel && zoomLevel >= 11) ? 1 : 0}
           >
               {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
                 selectedMarker.lng() === +stop.longitude) ?
@@ -154,7 +156,7 @@ const Map = (
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             onClick = {(e) => setSelectedMarker(e.latLng)}
-            opacity = {(zoomLevel && zoomLevel >= 16) ? 1 : 0}
+            opacity = {(zoomLevel && zoomLevel >= 15) ? 1 : 0}
           >
             {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
               selectedMarker.lng() === +stop.longitude) ?
