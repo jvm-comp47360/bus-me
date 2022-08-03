@@ -56,7 +56,6 @@ const Map = (
     mapId: "5a13c1894ab64113",
     streetViewControl: false,
     mapTypeControl: false,
-    clickableIcons: false,
     fullscreenControl: false,
     minZoom: 10,
     restriction: {
