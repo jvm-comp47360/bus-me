@@ -39,3 +39,10 @@ test('finish station button appears', () => {
         name: /finish station/i
     })).toBeInTheDocument()
 })
+
+test('route and its terminus are rendered in the infowindow', () => {
+    setUp()
+    expect(screen.getByText(/39A to UCD Belfield/)).toBeInTheDocument();
+    expect(screen.getByText(/145 to Dun Laoghire/)).toBeInTheDocument();
+    expect(screen.getByText(/155 to Bray/)).toBeInTheDocument();
+})
