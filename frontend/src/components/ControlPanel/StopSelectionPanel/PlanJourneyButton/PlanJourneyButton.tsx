@@ -14,6 +14,7 @@ interface Props {
     startSelection: BusStop | undefined;
     finishSelection: BusStop | undefined;
     dateTimeSelection: Date | undefined;
+    setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
@@ -38,6 +39,7 @@ const PlanJourneyButton = ({routeSelection,
                          startSelection,
                          finishSelection,
                          dateTimeSelection,
+                        setDateTimeSelection,
                         setPrediction,
                         setDirections,
                     }: Props): JSX.Element => {
@@ -64,6 +66,11 @@ const PlanJourneyButton = ({routeSelection,
         } else {
             setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
         }
+
+        if (directions.routes[0].legs[0].departure_time) {
+            const departureTime: Date = directions.routes[0].legs[0].departure_time.value
+            setDateTimeSelection(departureTime)
+        }
     }
 
     const setDirectionsAndPrediction = (startSelection: BusStop, finishSelection: BusStop) => {
@@ -84,15 +91,12 @@ const PlanJourneyButton = ({routeSelection,
             }
         };
 
-        console.log(userDirectionsRequest)
-
         const directionsServiceCallback = (
           response: DirectionsResult | null,
           status: DirectionsStatus,
         ) => {
             console.log(response)
             if (response && status === 'OK') { // response was state of directions
-                console.log(response)
                 setDirections(response);
             }
         };
