@@ -78,16 +78,21 @@ const PlanJourneyButton = ({routeSelection,
             },
             travelMode: google.maps.TravelMode.TRANSIT,
             transitOptions: {
+                departureTime: dateTimeSelection,
                 modes: [google.maps.TransitMode.BUS],
                 routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
             }
         };
 
+        console.log(userDirectionsRequest)
+
         const directionsServiceCallback = (
           response: DirectionsResult | null,
           status: DirectionsStatus,
         ) => {
+            console.log(response)
             if (response && status === 'OK') { // response was state of directions
+                console.log(response)
                 setDirections(response);
             }
         };
