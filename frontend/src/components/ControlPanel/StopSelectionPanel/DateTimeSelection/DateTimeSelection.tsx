@@ -29,7 +29,7 @@ const DateTimeSelection = ({
         <DateTimePicker
             onChange={dateTimeChangeHandler}
             value={dateTimeSelection}
-            inputFormat={'dd/MM/yyyy HH:MM aaa'}
+            inputFormat={'dd/MM/yyyy HH:mm aaa'}
             renderInput={(params: TextFieldProps) => <TextField {...params} sx={{backgroundColor: 'white'}}/>}
         />
     </>;
