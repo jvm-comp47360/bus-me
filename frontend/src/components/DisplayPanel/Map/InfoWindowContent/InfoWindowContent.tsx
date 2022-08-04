@@ -2,6 +2,8 @@ import {Box,Grid,Typography} from '@mui/material';
 import InfoWindowButton from './InfoWindowButton/InfoWindowButton';
 import {Dispatch, SetStateAction} from 'react';
 import BusStop from '../../../../types/BusStop';
+import BusRoute from '../../../../types/BusRoute';
+import RouteInfo from '../../../../types/RouteInfo';
 
 interface Props {
     stop: BusStop,
@@ -9,41 +11,20 @@ interface Props {
     startSelection: BusStop | undefined,
     finishSelection: BusStop | undefined,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
+    busRoutes: BusRoute[];
 }
 
-const InfoWindowContent =({stop, 
+const InfoWindowContent =({
+    stop, 
     setStartSelection, 
     startSelection, 
     finishSelection,
-    setFinishSelection}:Props): JSX.Element => {
+    setFinishSelection,
+    busRoutes
+}:Props): JSX.Element => {
+    const routeStops: RouteInfo[] = (stop.bus_routes) ? stop.bus_routes : [];
+    const overflowYValue = (routeStops.length > 3) ? 'scroll': 'inherit';
     
-    const testStops = [
-        {
-            'route' : '39A', 
-            'terminus': 'UCD Belfield'
-        },
-        {
-            'route' : '145', 
-            'terminus': 'Dun Laoghire'
-        },
-        {
-            'route' : '155', 
-            'terminus': 'Bray'
-        },
-        {
-            'route' : '39A', 
-            'terminus': 'UCD Belfield'
-        },
-        {
-            'route' : '145', 
-            'terminus': 'Dun Laoghire'
-        },
-        {
-            'route' : '155', 
-            'terminus': 'Bray'
-        },  
-    ];
-
     const getRouteDescription = (route: string, terminus: string): string => `${route} to ${terminus}`;
 
     const getBackgroundColour = (stopIndex: number): string => {
@@ -52,7 +33,26 @@ const InfoWindowContent =({stop,
         return colourArray[modValue]
     }
 
-    const overflowYValue = (testStops.length > 3) ? 'scroll': 'inherit';
+    const mapBusRoutes = (
+        busRoute: RouteInfo
+        ): {"name": string, "terminus": string}  => {
+        const getRouteTerminus = (id: string): string => {
+            let routeTerminus: string = "";
+            busRoutes.forEach(route => {
+                if (route.id === id) {
+                    const routeStops: BusStop[] = route.bus_stops;
+                    routeTerminus = routeStops[routeStops.length -1].name;
+                }
+            })
+            return routeTerminus;
+        }
+        const busRouteName: string = busRoute.name;
+        const busRouteId: string = busRoute.id;
+        const busRouteTerminus: string = getRouteTerminus(busRouteId);
+        return {name: busRouteName, terminus: busRouteTerminus}
+    }
+
+    const busRoutesInfo: {"name": string, "terminus": string}[] | undefined = routeStops.map(mapBusRoutes);
     
     return (
     <Grid 
@@ -84,7 +84,8 @@ const InfoWindowContent =({stop,
                 overflowY: overflowYValue, 
                 maxHeight: '100px'
             }}>
-                {testStops.map(stop => (
+                {(busRoutesInfo) ?
+                busRoutesInfo.map(route => (
                     <Typography sx={{
                         color: 'white',
                         fontSize: '0.9rem', 
@@ -92,10 +93,9 @@ const InfoWindowContent =({stop,
                         p: '2px',
                         borderRadius: '3px',
                         mb: '2px',
-                        backgroundColor: getBackgroundColour(testStops.indexOf(stop)),
-                    }}>{getRouteDescription(stop.route, stop.terminus)}</Typography>
-                )
-                )}
+                        backgroundColor: getBackgroundColour(busRoutesInfo.indexOf(route)),
+                    }}>{getRouteDescription(route.name, route.terminus)}</Typography>
+                )): null}
             </Box>
         </Grid>
         <Grid 

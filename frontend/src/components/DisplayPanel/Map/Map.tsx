@@ -25,6 +25,7 @@ interface Props {
   routeSelection: BusRoute | undefined,
   userLocation: google.maps.LatLngLiteral,
   busStops: BusStop[],
+  busRoutes: BusRoute[],
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
@@ -39,6 +40,7 @@ const Map = (
   routeSelection,
   userLocation,
   busStops,
+  busRoutes,
   setStartSelection,
   setFinishSelection,
   setUserLocation}: Props): JSX.Element => {
@@ -138,7 +140,8 @@ const Map = (
                       setStartSelection={setStartSelection}
                       startSelection={startSelection}
                       setFinishSelection={setFinishSelection}
-                      finishSelection={finishSelection} />
+                      finishSelection={finishSelection}
+                      busRoutes={busRoutes} />
                   </InfoWindow>:
                 null}
             </Marker>
@@ -170,7 +173,8 @@ const Map = (
                     setStartSelection={setStartSelection}
                     startSelection={startSelection}
                     setFinishSelection={setFinishSelection}
-                    finishSelection={finishSelection} />
+                    finishSelection={finishSelection}
+                    busRoutes={busRoutes} />
                 </InfoWindow>:
               null}
           </Marker>

@@ -22,6 +22,7 @@ interface Props {
     directions: DirectionsResult | null,
     routeSelection: BusRoute | undefined,
     busStops: BusStop[],
+    busRoutes: BusRoute[];
     setPrediction: Dispatch<SetStateAction<number | undefined>>,
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
@@ -33,6 +34,7 @@ const DisplayPanel = ({
   finishSelection,
   directions,
   busStops,
+  busRoutes,
   routeSelection,
   setPrediction,
   setStartSelection,
@@ -105,6 +107,7 @@ const DisplayPanel = ({
           routeSelection={routeSelection}
           userLocation={userLocation}
           busStops={busStops}
+          busRoutes={busRoutes}
           setStartSelection={setStartSelection}
           setFinishSelection={setFinishSelection}
           setUserLocation={setUserLocation}
