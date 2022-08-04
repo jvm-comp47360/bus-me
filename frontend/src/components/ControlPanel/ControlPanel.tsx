@@ -76,7 +76,7 @@ const ControlPanel = ({
     flexDirection={'row'}
     flexWrap={'wrap'}
     justifyContent={'center'}
-    margin={1}
+    sx={{backgroundColor: '#ffff72'}}
   >
     <RouteSelectionPanel
       busRoutes={busRoutes}

@@ -22,6 +22,7 @@ const JourneyLeg = ({
     prediction}: Props): JSX.Element => {
 
     const getArrivalTime = (depatureTime: Date, prediction: number): Date => {
+        console.log(depatureTime);
         const startUnixTime: number = depatureTime.getTime();
         const predictionInMillisecs: number = prediction * 60 * 1000;
         return new Date(startUnixTime + predictionInMillisecs);

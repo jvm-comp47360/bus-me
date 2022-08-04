@@ -30,7 +30,7 @@ const DateTimeSelection = ({
             onChange={dateTimeChangeHandler}
             value={dateTimeSelection}
             inputFormat={'dd/MM/yyyy HH:MM aaa'}
-            renderInput={(params: TextFieldProps) => <TextField {...params} />}
+            renderInput={(params: TextFieldProps) => <TextField {...params} sx={{backgroundColor: 'white'}}/>}
         />
     </>;
 };

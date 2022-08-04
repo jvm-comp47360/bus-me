@@ -53,7 +53,7 @@ const BusRouteDropdown = ({setChecked, busRoutes, routeSelection,
       options={sortBusRoutes(busRoutes)}
       sx={{height: 70, width: 400}}
       renderInput={(params: AutocompleteRenderInputParams) =>
-        <TextField {...params} label={'Select Route'}/>}
+        <TextField {...params} label={'Select Route'} sx={{backgroundColor: 'white'}}/>}
     />
   </>;
 };

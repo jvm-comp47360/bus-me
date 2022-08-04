@@ -61,15 +61,15 @@ const PlanJourneyButton = ({routeSelection,
             return;
         }
 
+        if (directions.routes[0].legs[0].departure_time) {
+            const departureTime: Date = directions.routes[0].legs[0].departure_time.value
+            setDateTimeSelection(departureTime)
+        }
+
         if (stationPickles.indexOf(routeSelection.name) === -1) {
             setPredictionFromGoogleMaps(directions);
         } else {
             setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
-        }
-
-        if (directions.routes[0].legs[0].departure_time) {
-            const departureTime: Date = directions.routes[0].legs[0].departure_time.value
-            setDateTimeSelection(departureTime)
         }
     }
 

@@ -54,7 +54,7 @@ const BusStopDropdown = ({
       options={getBusStops()}
       sx={{width: 400}}
       renderInput={(params: AutocompleteRenderInputParams) =>
-        <TextField {...params} label={label}/>}
+        <TextField {...params} label={label} sx={{backgroundColor: 'white'}}/>}
     />
   </>;
 };
