@@ -53,7 +53,7 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
         print('model name is equal to lr')
         model_feature = ['PLANNED_DURATION']
         predict_input = [planned_duration]
-    elif model_name == 'HOUR_LR' or 'HOUR_RF':
+    elif model_name == 'HOUR_LR' or model_name == 'HOUR_RF':
         print('model name is lr or rf')
         model_feature = ['PLANNED_DURATION', 'HOUR_sin', 'HOUR_cos']
         hour_sin, hour_cos = time_encoder(int(time))
