@@ -14,6 +14,11 @@ interface Props {
     busRoutes: BusRoute[];
 }
 
+type RouteTerminus = {
+    name: string; 
+    terminus: string;
+}
+
 const InfoWindowContent =({
     stop, 
     setStartSelection, 
@@ -33,9 +38,19 @@ const InfoWindowContent =({
         return colourArray[modValue]
     }
 
+    // Source: https://stackoverflow.com/questions/2802341/javascript-natural-sort-of-alphanumerical-strings
+    const sortRoutes = (routes: RouteTerminus[]): RouteTerminus[] => {
+        return routes.sort((a: RouteTerminus, b: RouteTerminus) => {
+            return a.name.localeCompare(b.name, undefined, {
+                numeric: true,
+                sensitivity: 'base'
+            });
+        });
+     };
+
     const mapBusRoutes = (
         busRoute: RouteInfo
-        ): {"name": string, "terminus": string}  => {
+        ): RouteTerminus => {
         const getRouteTerminus = (id: string): string => {
             let routeTerminus: string = "";
             busRoutes.forEach(route => {
@@ -52,14 +67,14 @@ const InfoWindowContent =({
         return {name: busRouteName, terminus: busRouteTerminus}
     }
 
-    const busRoutesInfo: {"name": string, "terminus": string}[] | undefined = routeStops.map(mapBusRoutes);
+    const routeTerminusInfo: RouteTerminus[] | undefined = sortRoutes(routeStops.map(mapBusRoutes));
     
     return (
     <Grid 
         container
         direction={'column'}
         sx={{
-            width: '175px',
+            width: '200px',
             justifyContent: 'space-between',
         }}>
         <Grid item sx={{mb: '4px'}}>
@@ -84,8 +99,8 @@ const InfoWindowContent =({
                 overflowY: overflowYValue, 
                 maxHeight: '100px'
             }}>
-                {(busRoutesInfo) ?
-                busRoutesInfo.map(route => (
+                {(routeTerminusInfo) ?
+                routeTerminusInfo.map(route => (
                     <Typography sx={{
                         color: 'white',
                         fontSize: '0.9rem', 
@@ -93,7 +108,7 @@ const InfoWindowContent =({
                         p: '2px',
                         borderRadius: '3px',
                         mb: '2px',
-                        backgroundColor: getBackgroundColour(busRoutesInfo.indexOf(route)),
+                        backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
                     }}>{getRouteDescription(route.name, route.terminus)}</Typography>
                 )): null}
             </Box>
