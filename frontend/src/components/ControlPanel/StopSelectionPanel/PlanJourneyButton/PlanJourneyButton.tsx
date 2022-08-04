@@ -17,6 +17,7 @@ interface Props {
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+    arrivalIsSelected: boolean;
 }
 
 type Prediction = {
@@ -42,6 +43,7 @@ const PlanJourneyButton = ({routeSelection,
                         setDateTimeSelection,
                         setPrediction,
                         setDirections,
+                        arrivalIsSelected,
                     }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
@@ -59,11 +61,6 @@ const PlanJourneyButton = ({routeSelection,
         if (routeSelection === undefined || dateTimeSelection === undefined ||
           startSelection === undefined || finishSelection === undefined) {
             return;
-        }
-
-        if (directions.routes[0].legs[0].departure_time) {
-            const departureTime: Date = directions.routes[0].legs[0].departure_time.value
-            setDateTimeSelection(departureTime)
         }
 
         if (stationPickles.indexOf(routeSelection.name) === -1) {
@@ -85,7 +82,8 @@ const PlanJourneyButton = ({routeSelection,
             },
             travelMode: google.maps.TravelMode.TRANSIT,
             transitOptions: {
-                departureTime: dateTimeSelection,
+                departureTime: (!arrivalIsSelected) ? dateTimeSelection : undefined,
+                arrivalTime: (arrivalIsSelected) ? dateTimeSelection : undefined,
                 modes: [google.maps.TransitMode.BUS],
                 routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
             }
