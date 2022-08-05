@@ -61,14 +61,13 @@ const InfoWindowContent =({
         busRoute: RouteInfo
         ): RouteTerminus => {
         const getRouteTerminus = (id: string): string => {
-            let routeTerminus: string = "";
-            busRoutes.forEach(route => {
-                if (route.id === id) {
-                    const routeStops: BusStop[] = route.bus_stops;
-                    routeTerminus = routeStops[routeStops.length -1].name;
+            for (let i = 0; i < busRoutes.length; i++) {
+                if (busRoutes[i].id === id) {
+                    const routeStops: BusStop[] = busRoutes[i].bus_stops;
+                    return routeStops[routeStops.length -1].name;
                 }
-            })
-            return routeTerminus;
+            }
+            return ""
         }
         const busRouteName: string = busRoute.name;
         const busRouteId: string = busRoute.id;
