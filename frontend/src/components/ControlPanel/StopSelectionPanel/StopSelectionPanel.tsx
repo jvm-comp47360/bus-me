@@ -1,9 +1,18 @@
 // React
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Material UI
-import {Autocomplete, AutocompleteRenderInputParams, Box, TextField, TextFieldProps}
-    from '@mui/material';
+import {
+  Autocomplete,
+  AutocompleteRenderInputParams,
+  Box,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  TextFieldProps
+}
+  from '@mui/material';
 
 // Props
 import BusStop from '../../../types/BusStop';
@@ -41,6 +50,10 @@ const StopSelectionPanel = ({
                               setPrediction,
                               setDirections,
                            }: Props): JSX.Element => {
+  const [arrivalSelected, setArrivalIsSelected] = useState<boolean>(false);
+  const toggleArrivalSelected = () => {
+    setArrivalIsSelected(!arrivalSelected)
+  };
 
     return <Box display={'flex'}
                 flexDirection={'row'}
@@ -84,6 +97,23 @@ const StopSelectionPanel = ({
           dateTimeSelection={dateTimeSelection}
           setDateTimeSelection={setDateTimeSelection}
         />
+        <RadioGroup
+          name={'toggle-time'}
+          value={arrivalSelected}
+          onChange={toggleArrivalSelected}
+          defaultValue={arrivalSelected}
+        >
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            flexWrap={'wrap'}
+            justifyContent={'center'}
+            margin={1}
+          >
+            <FormControlLabel control={<Radio size={'small'}/>} label={'Departure'} value={false}/>
+            <FormControlLabel control={<Radio size={'small'}/>} label={'Arrival'} value={true}/>
+          </Box>
+        </RadioGroup>
       </Box>
       <Box
         display={'flex'}
@@ -100,6 +130,7 @@ const StopSelectionPanel = ({
           setDateTimeSelection={setDateTimeSelection}
           setPrediction={setPrediction}
           setDirections={setDirections}
+          arrivalIsSelected={arrivalSelected}
         />
       </Box>
     </Box>;

@@ -6,8 +6,6 @@ backend/.idea/modules.xml
 frontend/.idea/vcs.xml
 frontend/.idea/modules.xml
 frontend/.idea/frontend.iml
-
-# dependencies
 frontend/node_modules
 /.pnp
 .pnp.js
