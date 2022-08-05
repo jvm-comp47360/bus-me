@@ -96,7 +96,9 @@ const DisplayPanel = ({
               routeSelection={routeSelection}
               prediction={prediction}
               setCollapseJourneyPanel={setCollapseJourneyPanel}
-              collapseJourneyPanel={collapseJourneyPanel}/>
+              collapseJourneyPanel={collapseJourneyPanel}
+              directions={directions}
+            />
             </> :
             null
           }

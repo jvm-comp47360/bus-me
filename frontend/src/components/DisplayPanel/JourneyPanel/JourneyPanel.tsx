@@ -17,6 +17,7 @@ interface Props {
     prediction: number,
     collapseJourneyPanel: Boolean,
     setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>,
+    directions: google.maps.DirectionsResult | null,
 }
 
 const JourneyPanel = ({
@@ -26,7 +27,7 @@ const JourneyPanel = ({
     routeSelection,
     prediction,
     collapseJourneyPanel,
-    setCollapseJourneyPanel}: Props): JSX.Element => {
+    setCollapseJourneyPanel, directions}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
@@ -63,7 +64,10 @@ const JourneyPanel = ({
         <AnalyticsPanel
           startSelection={startSelection}
           finishSelection={finishSelection}
+          routeSelection={routeSelection}
           prediction={prediction}
+          dateTimeSelection={departureTime}
+          directions={directions}
         />
     </Box>
 };
