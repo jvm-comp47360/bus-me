@@ -46,7 +46,21 @@ test('finish station button appears', () => {
     })).toBeInTheDocument()
 })
 
-test('route and its terminus are rendered in the infowindow', () => {
+test('route and its terminus are rendered in the infowindow (all stops)', () => {
     setUp(mockStopTerminus)
+    expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
+})
+
+test('route and its terminus are rendered in the infowindow (stop on a route)', () => {
+    render(
+        <InfoWindowContent 
+            stop={mockRouteData[1].bus_stops[0]}
+            setStartSelection={jest.fn()}
+            setFinishSelection={jest.fn()}
+            startSelection={undefined}
+            finishSelection={undefined}
+            busRoutes={mockRouteData}
+            busStops={stopData}/>
+    )
     expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
 })

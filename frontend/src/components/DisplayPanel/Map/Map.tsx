@@ -141,7 +141,8 @@ const Map = (
                       startSelection={startSelection}
                       setFinishSelection={setFinishSelection}
                       finishSelection={finishSelection}
-                      busRoutes={busRoutes} />
+                      busRoutes={busRoutes}
+                      busStops={busStops} />
                   </InfoWindow>:
                 null}
             </Marker>

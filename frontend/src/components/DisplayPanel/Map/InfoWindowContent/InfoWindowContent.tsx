@@ -12,6 +12,7 @@ interface Props {
     finishSelection: BusStop | undefined,
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
     busRoutes: BusRoute[];
+    busStops?: BusStop[];
 }
 
 type RouteTerminus = {
@@ -25,10 +26,18 @@ const InfoWindowContent =({
     startSelection, 
     finishSelection,
     setFinishSelection,
-    busRoutes
-}:Props): JSX.Element => {
-    const routeStops: RouteInfo[] = (stop.bus_routes) ? stop.bus_routes : [];
-    const overflowYValue = (routeStops.length > 3) ? 'scroll': 'inherit';
+    busRoutes,
+    busStops,
+}:Props): JSX.Element => {    
+    const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
+        for (let i = 0; i < busStops.length; i++) {
+            if (busStops[i]?.bus_routes && stop.number === busStops[i].number) {
+                // @ts-ignore
+                return busStops[i].bus_routes;
+            }
+        }
+        return [];
+    }
     
     const getRouteDescription = (route: string, terminus: string): string => `${route} to ${terminus}`;
 
@@ -67,6 +76,12 @@ const InfoWindowContent =({
         return {name: busRouteName, terminus: busRouteTerminus}
     }
 
+    const routeStops: RouteInfo[] = (busStops) ? 
+                                    getBusRoutesFromStop(stop, busStops) :
+                                    (stop.bus_routes) ?
+                                    stop.bus_routes : 
+                                    [];
+    const overflowYValue = (routeStops.length > 3) ? 'scroll': 'inherit';
     const routeTerminusInfo: RouteTerminus[] | undefined = sortRoutes(routeStops.map(mapBusRoutes));
     
     return (
