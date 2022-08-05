@@ -53,7 +53,6 @@ const StopSelectionPanel = ({
   const [arrivalSelected, setArrivalIsSelected] = useState<boolean>(false);
   const toggleArrivalSelected = () => {
     setArrivalIsSelected(!arrivalSelected)
-    setDateTimeSelection(new Date())
   };
 
     return <Box display={'flex'}
