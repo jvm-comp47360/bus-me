@@ -4,7 +4,13 @@ import {UserEvent} from "@testing-library/user-event/dist/types/setup";
 import userEvent from "@testing-library/user-event";
 
 // eslint-disable-next-line testing-library/no-render-in-setup
-beforeEach((): RenderResult => render(<Navbar multiRoute={false} setMultiRoute={jest.fn}/>));
+beforeEach((): RenderResult => render(
+  <Navbar
+    multiRoute={false}
+    setMultiRoute={jest.fn}
+    setRouteSelection={jest.fn}
+  />
+));
 
 test('BusMe logo appears in Navbar', () => {
   expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();

@@ -40,6 +40,9 @@ const setup = (startSelection: BusStop | undefined,
         setDirections={jest.fn()}
         busRoutes={[]}
         setBusRoutes={jest.fn()}
+        busStops={[]}
+        multiRoute={false}
+        setMultiRoute={jest.fn}
       />,
     </LocalizationProvider>,
 );

@@ -18,6 +18,7 @@ interface Props {
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     arrivalIsSelected: boolean;
+    multiRoute: boolean;
 }
 
 type Prediction = {
@@ -44,6 +45,7 @@ const PlanJourneyButton = ({routeSelection,
                                setPrediction,
                                setDirections,
                                arrivalIsSelected,
+                                multiRoute,
                            }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
@@ -57,13 +59,12 @@ const PlanJourneyButton = ({routeSelection,
         return Math.abs(finish_stop_number - start_stop_number);
     }
 
-    const checkRouteAndSetPrediction =(directions: google.maps.DirectionsResult) => {
+    const checkRouteAndSetPrediction = (directions: google.maps.DirectionsResult) => {
         if (routeSelection === undefined || dateTimeSelection === undefined ||
           startSelection === undefined || finishSelection === undefined) {
             return;
         }
-
-        if (stationPickles.indexOf(routeSelection.name) === -1) {
+        else if (stationPickles.indexOf(routeSelection.name) === -1) {
             setPredictionFromGoogleMaps(directions);
         } else {
             setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);
@@ -101,7 +102,12 @@ const PlanJourneyButton = ({routeSelection,
 
         const service = new google.maps.DirectionsService();
         service.route(userDirectionsRequest, directionsServiceCallback).then((directions: DirectionsResult) => {
-              checkRouteAndSetPrediction(directions);
+            console.log(multiRoute)
+              if (multiRoute) {
+                  setMultiRoutePrediction(directions)
+              } else {
+                  checkRouteAndSetPrediction(directions);
+              }
           }
         );
     }
@@ -138,21 +144,86 @@ const PlanJourneyButton = ({routeSelection,
         }
     }
 
+    const setMultiRoutePrediction = (directions: google.maps.DirectionsResult) => {
+        if (!dateTimeSelection) {return;}
+
+        const journeyStages: google.maps.DirectionsStep[] | undefined = directions.routes[0].legs[0].steps;
+        const urlsToFetch: string[] = []
+        let googleMapsPrediction = 0;
+
+        journeyStages.map((journeyStage) => {
+            if (journeyStage.travel_mode === 'TRANSIT') {
+                const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
+
+                // Scenario where we call the API from the backend.
+                if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
+                    const route: string = transitDetails.line.short_name;
+                    const num_stop_segments: number = transitDetails.num_stops
+                    const time: number = getSeconds(dateTimeSelection)
+
+                    urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time).toString()}`)
+                } else {
+                    const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
+                    if (predictionInSeconds) {
+                        const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
+                        console.log("Prediction in minutes:");
+                        googleMapsPrediction += predictionInMinutes;
+                    }
+                }
+            }
+        })
+
+        console.log(urlsToFetch)
+
+        Promise.all(urlsToFetch.map((url) => fetch(url)))
+          .then((responses) =>
+            responses.map((response) => response.json() as Promise<Prediction>))
+          .then((predictions) => {
+              Promise.all(predictions).then((predictions) => {
+                  console.log(predictions)
+
+                  const predictionValues: number[] = predictions.map((prediction) => prediction.prediction);
+                  const totalPrediction: number = predictionValues.reduce(
+                    (a: number, b: number) => +a + +b, 0
+                  )
+                  const finalPrediction: number = totalPrediction + googleMapsPrediction;
+
+                  console.log('Total Prediction is: ');
+                  console.log(totalPrediction);
+                  console.log('Google Maps Prediction is: ');
+                  console.log(googleMapsPrediction);
+
+                  console.log('Final Prediction is: ')
+                  console.log(finalPrediction)
+
+                  setPrediction(finalPrediction);
+              })
+          })
+    }
+
 // This is where the POST API call will go.
     const submitClickHandler = () => {
-        if (routeSelection === undefined || dateTimeSelection === undefined ||
-          startSelection === undefined || finishSelection === undefined) {
+        if (startSelection === undefined || finishSelection === undefined) {
             return;
         }
+
+        console.log('setting prediction')
+
         setDirectionsAndPrediction(startSelection, finishSelection);
     };
 
     // Submit Button helper functions
-    const submitDisableHandler = (): boolean =>
-      routeSelection === undefined ||
-      startSelection === undefined ||
-      finishSelection === undefined ||
-      startSelection === finishSelection;
+    const submitDisableHandler = (): boolean => {
+        if (multiRoute) {
+            return startSelection === undefined ||
+              finishSelection === undefined ||
+              startSelection === finishSelection;
+        }
+        return routeSelection === undefined ||
+          startSelection === undefined ||
+          finishSelection === undefined ||
+          startSelection === finishSelection;
+    }
 
     return <>
         <Button

@@ -3,7 +3,7 @@ import BusRoute from '../../../../types/BusRoute';
 import {Box, Grid, Typography} from '@mui/material';
 
 interface Props {
-    routeSelection: BusRoute,
+    routeSelection: BusRoute | undefined,
     prediction: number,
 }
 
@@ -51,7 +51,7 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
                 minWidth: '10px',
                 textAlign: 'center',
             }}>
-                {routeSelection.name}
+                {(routeSelection) ? routeSelection.name : ''}
             </Box>
         </Grid>
     </Grid>

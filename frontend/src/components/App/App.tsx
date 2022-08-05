@@ -64,7 +64,11 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar multiRoute={multiRoute} setMultiRoute={setMultiRoute}/>
+      <Navbar
+        multiRoute={multiRoute}
+        setMultiRoute={setMultiRoute}
+        setRouteSelection={setRouteSelection}
+      />
       <ControlPanel
         startSelection={startSelection}
         setStartSelection={setStartSelection}
@@ -76,6 +80,9 @@ const App = (): JSX.Element => {
         setDirections={setDirections}
         busRoutes={busRoutes}
         setBusRoutes={setBusRoutes}
+        busStops={busStops}
+        multiRoute={multiRoute}
+        setMultiRoute={setMultiRoute}
       />
       <DisplayPanel
         prediction={prediction}
@@ -88,6 +95,7 @@ const App = (): JSX.Element => {
         setStartSelection={setStartSelection}
         setFinishSelection={setFinishSelection}
         setRouteSelection={setRouteSelection}
+        multiRoute={multiRoute}
       />
     </LocalizationProvider>
   </ThemeProvider>;

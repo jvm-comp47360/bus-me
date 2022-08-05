@@ -20,11 +20,12 @@ import BusStop from "../../types/BusStop";
 interface Props {
   multiRoute: boolean;
   setMultiRoute: Dispatch<SetStateAction<boolean>>;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 // Dropdown Credit: https://mui.com/material-ui/react-menu/
 
-const Navbar = ({multiRoute, setMultiRoute}: Props): JSX.Element => {
+const Navbar = ({multiRoute, setMultiRoute, setRouteSelection}: Props): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
@@ -38,6 +39,7 @@ const Navbar = ({multiRoute, setMultiRoute}: Props): JSX.Element => {
 
   const toggleMultiRoute = () => {
     setMultiRoute(!multiRoute)
+    setRouteSelection(undefined)
   };
 
   return (
@@ -82,20 +84,20 @@ const Navbar = ({multiRoute, setMultiRoute}: Props): JSX.Element => {
             >
                <MenuItem onClick={dropdownIsClosed}>
                  <RadioGroup
-                   name={'toggle-time'}
+                   name={'toggle-multiroute'}
                    value={multiRoute}
                    onChange={toggleMultiRoute}
                    defaultValue={multiRoute}
                  >
                    <Box
                      display={'flex'}
-                     flexDirection={'row'}
+                     flexDirection={'column'}
                      flexWrap={'wrap'}
                      justifyContent={'center'}
                      margin={1}
                    >
-                     <FormControlLabel control={<Radio size={'small'}/>} label={'Single Route'} value={false}/>
-                     <FormControlLabel control={<Radio size={'small'}/>} label={'Multi Route'} value={true}/>
+                     <FormControlLabel control={<Radio size={'small'}/>} label={'SINGLE ROUTE'} value={false}/>
+                     <FormControlLabel control={<Radio size={'small'}/>} label={'MULTI ROUTE'} value={true}/>
                    </Box>
                  </RadioGroup>
                </MenuItem>
