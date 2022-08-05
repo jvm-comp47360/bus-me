@@ -17,8 +17,10 @@ test('useLoadScript called during render', () => {
           userLocation={{lat: 53.34740, lng: -6.25914}}
           routeSelection={routeSelection}
           busStops={[]}
+          busRoutes={busRoutesAPI}
           setStartSelection={jest.fn()}
           setFinishSelection={jest.fn()}
-          setUserLocation={jest.fn()}/>);
+          setUserLocation={jest.fn()}
+          setRouteSelection={jest.fn()}/>);
   expect(loadScriptMethod).toHaveBeenCalledTimes(1);
 });
