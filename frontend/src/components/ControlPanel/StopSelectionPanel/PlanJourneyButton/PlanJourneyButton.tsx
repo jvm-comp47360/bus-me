@@ -17,6 +17,7 @@ interface Props {
     setDateTimeSelection: Dispatch<SetStateAction<Date | undefined>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+    arrivalIsSelected: boolean;
 }
 
 type Prediction = {
@@ -36,13 +37,14 @@ const stationPickles = ['68', '14', '77A', '39', '16', '40D',
     '40E', '161', '69X', '116', '77X', '16D', '33E', '41D'];
 
 const PlanJourneyButton = ({routeSelection,
-                         startSelection,
-                         finishSelection,
-                         dateTimeSelection,
-                        setDateTimeSelection,
-                        setPrediction,
-                        setDirections,
-                    }: Props): JSX.Element => {
+                               startSelection,
+                               finishSelection,
+                               dateTimeSelection,
+                               setDateTimeSelection,
+                               setPrediction,
+                               setDirections,
+                               arrivalIsSelected,
+                           }: Props): JSX.Element => {
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
@@ -80,7 +82,8 @@ const PlanJourneyButton = ({routeSelection,
             },
             travelMode: google.maps.TravelMode.TRANSIT,
             transitOptions: {
-                departureTime: dateTimeSelection,
+                departureTime: (!arrivalIsSelected) ? dateTimeSelection : undefined,
+                arrivalTime: (arrivalIsSelected) ? dateTimeSelection : undefined,
                 modes: [google.maps.TransitMode.BUS],
                 routingPreference: google.maps.TransitRoutePreference.LESS_WALKING,
             }
@@ -146,17 +149,17 @@ const PlanJourneyButton = ({routeSelection,
 
     // Submit Button helper functions
     const submitDisableHandler = (): boolean =>
-        routeSelection === undefined ||
-        startSelection === undefined ||
-        finishSelection === undefined ||
-        startSelection === finishSelection;
+      routeSelection === undefined ||
+      startSelection === undefined ||
+      finishSelection === undefined ||
+      startSelection === finishSelection;
 
     return <>
         <Button
-            variant={'contained'}
-            onClick={submitClickHandler}
-            disabled={submitDisableHandler()}
-            sx={{margin: 1}}
+          variant={'contained'}
+          onClick={submitClickHandler}
+          disabled={submitDisableHandler()}
+          sx={{margin: 1}}
         >
             Plan Journey
         </Button>
