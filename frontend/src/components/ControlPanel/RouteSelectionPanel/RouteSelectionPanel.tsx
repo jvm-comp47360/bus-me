@@ -19,8 +19,6 @@ interface Props {
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
-    checked: boolean;
-    setChecked: Dispatch<SetStateAction<boolean>>;
     setPrediction: Dispatch<SetStateAction<number | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
 }
@@ -31,30 +29,21 @@ const RouteSelectionDropdown = ({
                                setRouteSelection,
                                setStartSelection,
                                setFinishSelection,
-                               checked,
-                               setChecked,
                                setPrediction,
                                setDirections,
                            }: Props): JSX.Element => {
-
-  const slideHandler = () => {
-    setChecked((prev) => !prev);
-    resetSelections();
-  };
 
   const toggleDisableHandler = (): boolean => {
     return routeSelection === undefined;
   }
 
   const resetSelections = () => {
-    if (checked) {
       setStartSelection(undefined)
       setFinishSelection(undefined)
       setPrediction(undefined)
       setRouteSelection(undefined)
       setDirections(null)
     }
-  }
     return <Box
       display={'flex'}
       flexDirection={'column'}
@@ -63,27 +52,26 @@ const RouteSelectionDropdown = ({
       margin={1}
       width={400}
     >
-      {!checked ? (
+      {!routeSelection ? (
         <Slide
           direction={'up'}
-          in={!checked}
+          in={!routeSelection}
           mountOnEnter
           unmountOnExit
         >
           <div>
             <BusRouteDropdown
-              setChecked={setChecked}
               busRoutes={busRoutes}
               routeSelection={routeSelection}
               setRouteSelection={setRouteSelection}
             />
           </div>
         </Slide>
-      ) : null}
-      {checked ? (
-        <Slide
+      ) : null} 
+      {(routeSelection) ? 
+      <Slide
           direction={'up'}
-          in={checked}
+          in={Boolean(routeSelection)}
           mountOnEnter
           unmountOnExit
         >
@@ -102,7 +90,7 @@ const RouteSelectionDropdown = ({
                   : null
               }
               <Button
-                onClick={slideHandler}
+                onClick={resetSelections}
                 disabled={toggleDisableHandler()}
               >
                 Select Route
@@ -110,7 +98,7 @@ const RouteSelectionDropdown = ({
             </Box>
           </div>
         </Slide>
-      ) : null}
+      : null}
       </Box>
 };
 

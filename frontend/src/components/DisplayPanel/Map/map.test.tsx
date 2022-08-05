@@ -20,6 +20,7 @@ test('useLoadScript called during render', () => {
           busRoutes={busRoutesAPI}
           setStartSelection={jest.fn()}
           setFinishSelection={jest.fn()}
-          setUserLocation={jest.fn()}/>);
+          setUserLocation={jest.fn()}
+          setRouteSelection={jest.fn()}/>);
   expect(loadScriptMethod).toHaveBeenCalledTimes(1);
 });

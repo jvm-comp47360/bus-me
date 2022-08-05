@@ -48,8 +48,6 @@ const ControlPanel = ({
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
 
-  const [checked, setChecked] = useState<boolean>(false);
-
   useEffect(() => {
     const localStorageRoutes: string | null =
       localStorage.getItem('bus_routes');
@@ -86,8 +84,6 @@ const ControlPanel = ({
       setRouteSelection={setRouteSelection}
       setStartSelection={setStartSelection}
       setFinishSelection={setFinishSelection}
-      checked={checked}
-      setChecked={setChecked}
       setPrediction={setPrediction}
       setDirections={setDirections}
     />

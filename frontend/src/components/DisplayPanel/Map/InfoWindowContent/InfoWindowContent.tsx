@@ -1,23 +1,25 @@
 import {Box,Grid,Typography} from '@mui/material';
 import InfoWindowButton from './InfoWindowButton/InfoWindowButton';
-import {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react';
 import BusStop from '../../../../types/BusStop';
 import BusRoute from '../../../../types/BusRoute';
 import RouteInfo from '../../../../types/RouteInfo';
 
 interface Props {
-    stop: BusStop,
-    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>
-    startSelection: BusStop | undefined,
-    finishSelection: BusStop | undefined,
-    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
+    stop: BusStop;
+    startSelection: BusStop | undefined;
+    finishSelection: BusStop | undefined;
     busRoutes: BusRoute[];
     busStops?: BusStop[];
+    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 type RouteTerminus = {
     name: string; 
     terminus: string;
+    id: string;
 }
 
 const InfoWindowContent =({
@@ -26,6 +28,7 @@ const InfoWindowContent =({
     startSelection, 
     finishSelection,
     setFinishSelection,
+    setRouteSelection,
     busRoutes,
     busStops,
 }:Props): JSX.Element => {    
@@ -72,7 +75,18 @@ const InfoWindowContent =({
         const busRouteName: string = busRoute.name;
         const busRouteId: string = busRoute.id;
         const busRouteTerminus: string = getRouteTerminus(busRouteId);
-        return {name: busRouteName, terminus: busRouteTerminus}
+        return {
+            name: busRouteName, 
+            terminus: busRouteTerminus,
+            id: busRouteId,
+        }
+    }
+
+    const routeClickHandler = (e: React.MouseEvent) => {
+        const routeId = (e.target as HTMLElement).id;
+        for (let i = 0; i < busRoutes.length; i++) {
+            if (routeId === busRoutes[i].id) setRouteSelection(busRoutes[i])
+        }
     }
 
     const routeStops: RouteInfo[] = (busStops) ? 
@@ -115,15 +129,18 @@ const InfoWindowContent =({
             }}>
                 {(routeTerminusInfo) ?
                 routeTerminusInfo.map(route => (
-                    <Typography sx={{
-                        color: 'white',
-                        fontSize: '0.9rem', 
-                        border: 1, 
-                        p: '2px',
-                        borderRadius: '3px',
-                        mb: '2px',
-                        backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
-                    }}>{getRouteDescription(route.name, route.terminus)}</Typography>
+                    <Typography 
+                        id={route.id}
+                        onClick={routeClickHandler}
+                        sx={{
+                            color: 'white',
+                            fontSize: '0.9rem', 
+                            border: 1, 
+                            p: '2px',
+                            borderRadius: '3px',
+                            mb: '2px',
+                            backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
+                        }}>{getRouteDescription(route.name, route.terminus)}</Typography>
                 )): null}
             </Box>
         </Grid>

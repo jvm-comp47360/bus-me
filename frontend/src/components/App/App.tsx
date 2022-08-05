@@ -84,15 +84,15 @@ const App = (): JSX.Element => {
       />
       <DisplayPanel
         prediction={prediction}
-        setPrediction={setPrediction}
         startSelection={startSelection}
         finishSelection={finishSelection}
-        setStartSelection={setStartSelection}
-        setFinishSelection={setFinishSelection}
         directions={directions}
         routeSelection={routeSelection}
         busStops={busStops}
         busRoutes={busRoutes}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
+        setRouteSelection={setRouteSelection}
       />
     </LocalizationProvider>
   </ThemeProvider>;
