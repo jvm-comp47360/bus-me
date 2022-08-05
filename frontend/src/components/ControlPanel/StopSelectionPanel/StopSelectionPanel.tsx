@@ -3,14 +3,10 @@ import React, {Dispatch, SetStateAction, useState} from 'react';
 
 // Material UI
 import {
-  Autocomplete,
-  AutocompleteRenderInputParams,
   Box,
   FormControlLabel,
   Radio,
   RadioGroup,
-  TextField,
-  TextFieldProps
 }
   from '@mui/material';
 

@@ -10,7 +10,6 @@ import ControlPanel from '../ControlPanel/ControlPanel';
 import DisplayPanel from '../DisplayPanel/DisplayPanel';
 
 // Material UI
-import ContactSection from '../ContactSection/ContactSection';
 import {AdapterDateFns} from '@mui/x-date-pickers/AdapterDateFns';
 import {LocalizationProvider} from '@mui/x-date-pickers';
 import {ThemeProvider} from '@mui/material/styles';
@@ -19,12 +18,6 @@ import {ThemeProvider} from '@mui/material/styles';
 import BusRoute from '../../types/BusRoute';
 import BusStop from '../../types/BusStop';
 import theme from './Theme';
-import LoadScreen from "../DisplayPanel/Map/LoadScreen/LoadScreen";
-import Appinfo from "../AppInfo/AppInfo";
-import {Box, Container, Slide} from "@mui/material";
-import AppInfo from "../AppInfo/AppInfo";
-import Button from "@mui/material/Button";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const App = (): JSX.Element => {
   const [prediction, setPrediction] = useState<number | undefined>(undefined);
@@ -43,6 +36,8 @@ const App = (): JSX.Element => {
   const [busStops, setBusStops] = useState<BusStop[]>([]);
 
   const [busRoutes, setBusRoutes] = useState<BusRoute[]>([]);
+
+  const [multiRoute, setMultiRoute] = useState<boolean>(false);
 
   useEffect(() => {
     const localStorageStops: string | null =
@@ -69,7 +64,7 @@ const App = (): JSX.Element => {
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <Navbar/>
+      <Navbar multiRoute={multiRoute} setMultiRoute={setMultiRoute}/>
       <ControlPanel
         startSelection={startSelection}
         setStartSelection={setStartSelection}
