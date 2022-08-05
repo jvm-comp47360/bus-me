@@ -97,6 +97,7 @@ const StopSelectionPanel = ({
           startSelection={startSelection}
           finishSelection={finishSelection}
           dateTimeSelection={dateTimeSelection}
+          setDateTimeSelection={setDateTimeSelection}
           setPrediction={setPrediction}
           setDirections={setDirections}
         />

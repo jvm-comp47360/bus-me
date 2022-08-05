@@ -29,8 +29,8 @@ const DateTimeSelection = ({
         <DateTimePicker
             onChange={dateTimeChangeHandler}
             value={dateTimeSelection}
-            inputFormat={'dd/MM/yyyy HH:MM aaa'}
-            renderInput={(params: TextFieldProps) => <TextField {...params} />}
+            inputFormat="dd/MM/yyyy HH:mm"
+            renderInput={(params: TextFieldProps) => <TextField {...params} sx={{backgroundColor: 'white'}}/>}
         />
     </>;
 };
