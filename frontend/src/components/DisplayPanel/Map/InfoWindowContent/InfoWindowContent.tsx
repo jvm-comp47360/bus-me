@@ -143,7 +143,8 @@ const InfoWindowContent =({
                             mb: '2px',
                             backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
                         }}>{getRouteDescription(route.name, route.terminus)}</Typography>
-                )): null}
+                )):
+                  <Typography variant="body1" textAlign={'center'} fontSize={'6'}>MultiRoute Mode</Typography>}
             </Box>
         </Grid>
         <Grid 
@@ -158,7 +159,7 @@ const InfoWindowContent =({
                 mt: '4px',
             }}>
             <Grid item sx={{p: '2px'}}>
-                <InfoWindowButton 
+                <InfoWindowButton
                     name={"Start"}
                     setStopSelection={setStartSelection}
                     stop={stop}

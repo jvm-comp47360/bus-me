@@ -9,6 +9,9 @@ beforeEach((): RenderResult => render(
     multiRoute={false}
     setMultiRoute={jest.fn}
     setRouteSelection={jest.fn}
+    setStartSelection={jest.fn}
+    setFinishSelection={jest.fn}
+    setPrediction={jest.fn}
   />
 ));
 

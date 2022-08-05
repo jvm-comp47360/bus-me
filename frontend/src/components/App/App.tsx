@@ -68,6 +68,9 @@ const App = (): JSX.Element => {
         multiRoute={multiRoute}
         setMultiRoute={setMultiRoute}
         setRouteSelection={setRouteSelection}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
+        setPrediction={setPrediction}
       />
       <ControlPanel
         startSelection={startSelection}

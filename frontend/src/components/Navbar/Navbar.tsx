@@ -21,11 +21,20 @@ interface Props {
   multiRoute: boolean;
   setMultiRoute: Dispatch<SetStateAction<boolean>>;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  setPrediction: Dispatch<SetStateAction<number | undefined>>;
 }
 
 // Dropdown Credit: https://mui.com/material-ui/react-menu/
 
-const Navbar = ({multiRoute, setMultiRoute, setRouteSelection}: Props): JSX.Element => {
+const Navbar = ({multiRoute,
+                  setMultiRoute,
+                  setRouteSelection,
+                  setStartSelection,
+                  setFinishSelection,
+                  setPrediction,
+}: Props): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
   const [anchorElement, setAnchorElement] = useState<null | HTMLElement>(null);
@@ -38,8 +47,11 @@ const Navbar = ({multiRoute, setMultiRoute, setRouteSelection}: Props): JSX.Elem
   }
 
   const toggleMultiRoute = () => {
-    setMultiRoute(!multiRoute)
-    setRouteSelection(undefined)
+    setMultiRoute(!multiRoute);
+    setRouteSelection(undefined);
+    setStartSelection(undefined);
+    setFinishSelection(undefined);
+    setPrediction(undefined);
   };
 
   return (
