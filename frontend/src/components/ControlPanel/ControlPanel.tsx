@@ -30,6 +30,7 @@ interface Props {
   busStops: BusStop[];
   multiRoute: boolean
   setMultiRoute: Dispatch<SetStateAction<boolean>>
+  setPredictionStages: Dispatch<SetStateAction<number[]>>
 }
 
 // Animation Bug Fix Credit:
@@ -47,7 +48,8 @@ const ControlPanel = ({
                         busRoutes,
                         setBusRoutes,
                         busStops,
-                        multiRoute
+                        multiRoute,
+                        setPredictionStages,
                       }: Props): JSX.Element => {
 
   const [dateTimeSelection, setDateTimeSelection] =
@@ -107,6 +109,7 @@ const ControlPanel = ({
       setPrediction={setPrediction}
       setDirections={setDirections}
       multiRoute={multiRoute}
+      setPredictionStages={setPredictionStages}
     />
   </Box>;
 };

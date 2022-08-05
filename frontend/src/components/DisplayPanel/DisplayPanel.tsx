@@ -27,6 +27,7 @@ interface Props {
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
     multiRoute: boolean;
+    predictionStages: number[];
 }
 
 const DisplayPanel = ({
@@ -41,6 +42,7 @@ const DisplayPanel = ({
   setFinishSelection,
   setRouteSelection,
   multiRoute,
+  predictionStages,
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
@@ -98,6 +100,7 @@ const DisplayPanel = ({
               setCollapseJourneyPanel={setCollapseJourneyPanel}
               collapseJourneyPanel={collapseJourneyPanel}
               directions={directions}
+              predictionStages={predictionStages}
             />
             </> :
             null

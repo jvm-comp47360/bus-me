@@ -1,9 +1,10 @@
 import BusRoute from '../../../../types/BusRoute';
 
 import {Box, Grid, Typography} from '@mui/material';
+import {array} from "prop-types";
 
 interface Props {
-    routeSelection: BusRoute | undefined,
+    routeSelection: BusRoute | string[] | undefined,
     prediction: number,
 }
 
@@ -19,6 +20,25 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
             else return `2h ${prediction - 120}m`;
         }
     };
+
+    const getRouteDisplay = (routesForDisplay: BusRoute | string[] | undefined) => {
+        if (!routesForDisplay) {
+            return ''
+        }
+        if (Array.isArray(routesForDisplay)) {
+            if (routesForDisplay.length === 1) {
+                return routesForDisplay[0];
+            } else {
+                let routeDisplay = '';
+                for (let i = 0; i < routesForDisplay.length - 1; i++) {
+                    routeDisplay += `${routesForDisplay[i]} | `;
+                }
+                routeDisplay += routesForDisplay[routesForDisplay.length - 1];
+                return routeDisplay
+            }
+        }
+        return routesForDisplay.name;
+    }
     
     return <Grid 
         item 
@@ -51,7 +71,7 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
                 minWidth: '10px',
                 textAlign: 'center',
             }}>
-                {(routeSelection) ? routeSelection.name : ''}
+                {getRouteDisplay(routeSelection)}
             </Box>
         </Grid>
     </Grid>

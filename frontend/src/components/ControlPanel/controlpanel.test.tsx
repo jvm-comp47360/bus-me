@@ -43,6 +43,7 @@ const setup = (startSelection: BusStop | undefined,
         busStops={[]}
         multiRoute={false}
         setMultiRoute={jest.fn}
+        setPredictionStages={jest.fn}
       />,
     </LocalizationProvider>,
 );

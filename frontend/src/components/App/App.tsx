@@ -39,6 +39,8 @@ const App = (): JSX.Element => {
 
   const [multiRoute, setMultiRoute] = useState<boolean>(false);
 
+  const [predictionStages, setPredictionStages] = useState<number[]>([])
+
   useEffect(() => {
     const localStorageStops: string | null =
       localStorage.getItem('bus_stops');
@@ -86,6 +88,7 @@ const App = (): JSX.Element => {
         busStops={busStops}
         multiRoute={multiRoute}
         setMultiRoute={setMultiRoute}
+        setPredictionStages={setPredictionStages}
       />
       <DisplayPanel
         prediction={prediction}
@@ -99,6 +102,7 @@ const App = (): JSX.Element => {
         setFinishSelection={setFinishSelection}
         setRouteSelection={setRouteSelection}
         multiRoute={multiRoute}
+        predictionStages={predictionStages}
       />
     </LocalizationProvider>
   </ThemeProvider>;

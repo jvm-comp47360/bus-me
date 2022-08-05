@@ -34,6 +34,7 @@ interface Props {
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
+  setPredictionStages: Dispatch<SetStateAction<number[]>>
 }
 
 const StopSelectionPanel = ({
@@ -49,6 +50,7 @@ const StopSelectionPanel = ({
                               setPrediction,
                               setDirections,
                               multiRoute,
+                              setPredictionStages,
                             }: Props): JSX.Element => {
   const [arrivalSelected, setArrivalIsSelected] = useState<boolean>(false);
   const toggleArrivalSelected = () => {
@@ -136,6 +138,7 @@ const StopSelectionPanel = ({
         setDirections={setDirections}
         arrivalIsSelected={arrivalSelected}
         multiRoute={multiRoute}
+        setPredictionStages={setPredictionStages}
       />
     </Box>
   </Box>;

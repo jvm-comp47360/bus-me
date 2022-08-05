@@ -20,6 +20,7 @@ const setUp = (
         collapseJourneyPanel={false}
         setCollapseJourneyPanel={jest.fn()}
         directions={null}
+        predictionStages={[]}
     />
 );
 

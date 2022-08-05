@@ -19,6 +19,7 @@ interface Props {
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     arrivalIsSelected: boolean;
     multiRoute: boolean;
+    setPredictionStages: Dispatch<SetStateAction<number[]>>
 }
 
 type Prediction = {
@@ -46,7 +47,9 @@ const PlanJourneyButton = ({routeSelection,
                                setDirections,
                                arrivalIsSelected,
                                 multiRoute,
+                                setPredictionStages,
                            }: Props): JSX.Element => {
+
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
@@ -195,7 +198,9 @@ const PlanJourneyButton = ({routeSelection,
 
                   console.log('Final Prediction is: ')
                   console.log(finalPrediction)
+                  console.log(predictionValues)
 
+                  setPredictionStages(predictionValues);
                   setPrediction(finalPrediction);
               })
           })
