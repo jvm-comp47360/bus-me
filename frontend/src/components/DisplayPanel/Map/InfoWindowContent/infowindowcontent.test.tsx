@@ -4,13 +4,13 @@ import routeData from '../../../../mockdata/MOCK_BUS_ROUTES.json';
 import stopData from '../../../../mockdata/MOCK_BUS_STOPS.json';
 import BusStop from '../../../../types/BusStop';
 import BusRoute from '../../../../types/BusRoute';
-import { setupDirect } from '@testing-library/user-event/dist/types/setup/setup';
 
 const mockRouteData: BusRoute[] = routeData;
 const mockStop: BusStop = mockRouteData[0].bus_stops[0];
 const mockStopTerminus: BusStop = stopData[0];
 
 const setUp = (
+    multiRoute: boolean,
     stop: BusStop = mockStop,
     busStops?: BusStop[]
     ): RenderResult => render(
@@ -22,16 +22,18 @@ const setUp = (
         startSelection={undefined}
         finishSelection={undefined}
         busRoutes={mockRouteData}
-        busStops={busStops}/>
+        busStops={busStops}
+        multiRoute={multiRoute}
+    />
 )
 
 test('name of station appears', () => {
-    setUp()
+    setUp(false)
     expect(screen.getByText(/drumcondra rail stn/i)).toBeInTheDocument();
 })
 
 test('number of station appears', () => {
-    setUp()
+    setUp(false)
     // Broken into two lines in jest so test fails as /stop 17/i
     // Verified that renders in browser as (Stop 17)
     expect(screen.getByText(/stop/i)).toBeInTheDocument();
@@ -39,25 +41,30 @@ test('number of station appears', () => {
 })
 
 test('start station button appears', () => {
-    setUp()
+    setUp(false)
     expect(screen.getByRole('button', {
         name: /start station/i
     })).toBeInTheDocument()
 })
 
 test('finish station button appears', () => {
-    setUp()
+    setUp(false)
     expect(screen.getByRole('button', {
         name: /finish station/i
     })).toBeInTheDocument()
 })
 
 test('route and its terminus are rendered in the infowindow (all stops)', () => {
-    setUp(mockStopTerminus)
+    setUp(false, mockStopTerminus)
     expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
 })
 
 test('route and its terminus are rendered in the infowindow (stop on a route)', () => {
-    setUp(mockRouteData[1].bus_stops[0], stopData);
+    setUp(false, mockRouteData[1].bus_stops[0], stopData);
     expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
+})
+
+test('route and its terminus are not rendered in the infowindow if multiroute is selected', () => {
+    setUp(true, mockRouteData[1].bus_stops[0], stopData);
+    expect(screen.queryByText(/3 to Faussaugh Ave Church/)).toBeNull();
 })

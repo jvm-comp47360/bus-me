@@ -115,6 +115,7 @@ const DisplayPanel = ({
           setFinishSelection={setFinishSelection}
           setUserLocation={setUserLocation}
           setRouteSelection={setRouteSelection}
+          multiRoute={multiRoute}
         />
   </Box>;
 };

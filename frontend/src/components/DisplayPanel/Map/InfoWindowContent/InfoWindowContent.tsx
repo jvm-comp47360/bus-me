@@ -14,6 +14,7 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+    multiRoute: boolean
 }
 
 type RouteTerminus = {
@@ -31,6 +32,7 @@ const InfoWindowContent =({
     setRouteSelection,
     busRoutes,
     busStops,
+    multiRoute,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
         for (let i = 0; i < busStops.length; i++) {
@@ -127,7 +129,7 @@ const InfoWindowContent =({
                 overflowY: overflowYValue, 
                 maxHeight: '100px'
             }}>
-                {(routeTerminusInfo) ?
+                {(routeTerminusInfo && !multiRoute) ?
                 routeTerminusInfo.map(route => (
                     <Typography 
                         id={route.id}
