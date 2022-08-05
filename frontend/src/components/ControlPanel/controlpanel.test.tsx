@@ -13,6 +13,7 @@ import userEvent from "@testing-library/user-event";
 
 import {enableFetchMocks} from 'jest-fetch-mock';
 import BUS_ROUTES_API from "../../mockdata/MOCK_BUS_ROUTES.json";
+import { isUndefined } from 'util';
 
 const MOCK_CURRENT_ROUTE: BusRoute = MOCK_BUS_ROUTES[0];
 const MOCK_START_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][0];
@@ -37,6 +38,8 @@ const setup = (startSelection: BusStop | undefined,
         setRouteSelection={jest.fn()}
         setPrediction={jest.fn()}
         setDirections={jest.fn()}
+        busRoutes={[]}
+        setBusRoutes={jest.fn()}
       />,
     </LocalizationProvider>,
 );
@@ -53,11 +56,13 @@ describe('<ControlPanel/> Default rendering', () => {
   })
 
   it('should show route dropdown', () => {
-    expect.assertions(1);
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
+    //expect.assertions(1);
+    setup(undefined, undefined, undefined);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
+    expect(screen.getByRole('combobox', 
+      {name: /select route/i},
+      )).toBeInTheDocument();
   });
 
   it('should show station dropdowns', () => {
@@ -126,7 +131,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
 });
 
 describe('<ControlPanel/> Toggle button functionality',() => {
-  it ('should be enabled when dropdown is selected', async () => {
+  it('should be enabled when dropdown is selected', async () => {
     expect.assertions(1);
     setup(undefined, undefined, undefined);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));

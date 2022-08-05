@@ -9,26 +9,20 @@ import {Autocomplete, AutocompleteRenderInputParams, Box, TextField}
 import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
-  setChecked: Dispatch<SetStateAction<boolean>>;
   busRoutes: BusRoute[];
   routeSelection: BusRoute | undefined;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
-const BusRouteDropdown = ({setChecked, busRoutes, routeSelection,
+const BusRouteDropdown = ({busRoutes, routeSelection,
   setRouteSelection,
 }: Props): JSX.Element => {
-  const slideHandler = () => {
-    setChecked((prev) => !prev);
-  };
-
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
       value: BusRoute | null,
   ) => {
     if (value) {
       setRouteSelection(value);
-      slideHandler();
     } else {
       throw new Error('Something has gone wrong with the route naming.');
     }

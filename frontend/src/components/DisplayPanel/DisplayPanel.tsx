@@ -16,15 +16,16 @@ import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
 type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
-    prediction: number | undefined,
-    startSelection: BusStop | undefined,
-    finishSelection: BusStop | undefined,
-    directions: DirectionsResult | null,
-    routeSelection: BusRoute | undefined,
-    busStops: BusStop[],
-    setPrediction: Dispatch<SetStateAction<number | undefined>>,
-    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>
+    prediction: number | undefined;
+    startSelection: BusStop | undefined;
+    finishSelection: BusStop | undefined;
+    directions: DirectionsResult | null;
+    routeSelection: BusRoute | undefined;
+    busStops: BusStop[];
+    busRoutes: BusRoute[];
+    setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+    setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 }
 
 const DisplayPanel = ({
@@ -33,10 +34,11 @@ const DisplayPanel = ({
   finishSelection,
   directions,
   busStops,
+  busRoutes,
   routeSelection,
-  setPrediction,
   setStartSelection,
   setFinishSelection,
+  setRouteSelection,
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
@@ -105,9 +107,11 @@ const DisplayPanel = ({
           routeSelection={routeSelection}
           userLocation={userLocation}
           busStops={busStops}
+          busRoutes={busRoutes}
           setStartSelection={setStartSelection}
           setFinishSelection={setFinishSelection}
           setUserLocation={setUserLocation}
+          setRouteSelection={setRouteSelection}
         />
   </Box>;
 };
