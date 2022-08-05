@@ -33,13 +33,24 @@ const InfoWindowContent =({
     busStops,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
-        for (let i = 0; i < busStops.length; i++) {
-            if (busStops[i]?.bus_routes && stop.number === busStops[i].number) {
-                // @ts-ignore
-                return busStops[i].bus_routes;
-            }
+        const getNewBusStops = () => {
+            return busStops.filter((busStop) => {
+                if (busStop.bus_routes && busStop.number === stop.number) {
+                    return busStop.bus_routes;
+                }
+            }).map((busStop) => {
+                if (busStop.bus_routes) {
+                    return busStop.bus_routes;
+                }
+            })
         }
-        return [];
+        const newBusStops = getNewBusStops();
+        if (newBusStops && newBusStops.length === 0 && newBusStops[0]) {
+            return newBusStops[0];
+        } else {
+            console.log('some stations are blank')
+            return [];
+        }
     }
     
     const getRouteDescription = (route: string, terminus: string): string => `${route} to ${terminus}`;
