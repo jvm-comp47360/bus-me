@@ -67,7 +67,7 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
                 borderRadius: '5px',
                 backgroundColor: 'red',
                 color: 'white',
-                width: '15%',
+                width: (routeSelection && !Array.isArray(routeSelection)) ? '15%' : '60%',
                 minWidth: '10px',
                 textAlign: 'center',
             }}>
