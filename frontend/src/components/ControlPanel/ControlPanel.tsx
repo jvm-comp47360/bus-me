@@ -25,6 +25,8 @@ interface Props {
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+  busRoutes: BusRoute[];
+  setBusRoutes:  Dispatch<SetStateAction<BusRoute[]>>
 }
 
 // Animation Bug Fix Credit:
@@ -39,14 +41,12 @@ const ControlPanel = ({
                         setRouteSelection,
                         setPrediction,
                         setDirections,
+                        busRoutes,
+                        setBusRoutes,
                       }: Props): JSX.Element => {
-
-  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
 
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
-
-  const [checked, setChecked] = useState<boolean>(false);
 
   useEffect(() => {
     const localStorageRoutes: string | null =
@@ -84,8 +84,6 @@ const ControlPanel = ({
       setRouteSelection={setRouteSelection}
       setStartSelection={setStartSelection}
       setFinishSelection={setFinishSelection}
-      checked={checked}
-      setChecked={setChecked}
       setPrediction={setPrediction}
       setDirections={setDirections}
     />

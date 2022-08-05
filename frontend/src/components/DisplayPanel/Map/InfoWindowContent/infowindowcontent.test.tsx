@@ -1,16 +1,28 @@
 import {render, RenderResult, screen} from '@testing-library/react';
 import InfoWindowContent from './InfoWindowContent';
-import mockData from '../../../../mockdata/MOCK_BUS_ROUTES.json';
+import routeData from '../../../../mockdata/MOCK_BUS_ROUTES.json';
+import stopData from '../../../../mockdata/MOCK_BUS_STOPS.json';
+import BusStop from '../../../../types/BusStop';
+import BusRoute from '../../../../types/BusRoute';
+import { setupDirect } from '@testing-library/user-event/dist/types/setup/setup';
 
-const mockStop = mockData[0].bus_stops[0];
+const mockRouteData: BusRoute[] = routeData;
+const mockStop: BusStop = mockRouteData[0].bus_stops[0];
+const mockStopTerminus: BusStop = stopData[0];
 
-const setUp = (): RenderResult => render(
+const setUp = (
+    stop: BusStop = mockStop,
+    busStops?: BusStop[]
+    ): RenderResult => render(
     <InfoWindowContent 
-        stop={mockStop}
+        stop={stop}
         setStartSelection={jest.fn()}
         setFinishSelection={jest.fn()}
+        setRouteSelection={jest.fn()}
         startSelection={undefined}
-        finishSelection={undefined}/>
+        finishSelection={undefined}
+        busRoutes={mockRouteData}
+        busStops={busStops}/>
 )
 
 test('name of station appears', () => {
@@ -38,4 +50,14 @@ test('finish station button appears', () => {
     expect(screen.getByRole('button', {
         name: /finish station/i
     })).toBeInTheDocument()
+})
+
+test('route and its terminus are rendered in the infowindow (all stops)', () => {
+    setUp(mockStopTerminus)
+    expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
+})
+
+test('route and its terminus are rendered in the infowindow (stop on a route)', () => {
+    setUp(mockRouteData[1].bus_stops[0], stopData);
+    expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
 })

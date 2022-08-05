@@ -42,6 +42,8 @@ const App = (): JSX.Element => {
 
   const [busStops, setBusStops] = useState<BusStop[]>([]);
 
+  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([]);
+
   useEffect(() => {
     const localStorageStops: string | null =
       localStorage.getItem('bus_stops');
@@ -77,17 +79,20 @@ const App = (): JSX.Element => {
         setRouteSelection={setRouteSelection}
         setPrediction={setPrediction}
         setDirections={setDirections}
+        busRoutes={busRoutes}
+        setBusRoutes={setBusRoutes}
       />
       <DisplayPanel
         prediction={prediction}
-        setPrediction={setPrediction}
         startSelection={startSelection}
         finishSelection={finishSelection}
-        setStartSelection={setStartSelection}
-        setFinishSelection={setFinishSelection}
         directions={directions}
         routeSelection={routeSelection}
         busStops={busStops}
+        busRoutes={busRoutes}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
+        setRouteSelection={setRouteSelection}
       />
     </LocalizationProvider>
   </ThemeProvider>;

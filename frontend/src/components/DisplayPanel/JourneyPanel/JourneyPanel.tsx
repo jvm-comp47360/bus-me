@@ -30,6 +30,7 @@ const JourneyPanel = ({
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
+    const routeSelectionMemo: BusRoute = useMemo(() => routeSelection, [prediction]);
     const displayValue = collapseJourneyPanel ? 'none' : 'block';
 
     return <Box 
@@ -57,7 +58,7 @@ const JourneyPanel = ({
             startSelection={startSelectionMemo}
             departureTime={departureTime}
             finishSelection={finishSelectionMemo}
-            routeSelection={routeSelection}
+            routeSelection={routeSelectionMemo}
             prediction={Math.round(prediction)}
         />
         <AnalyticsPanel

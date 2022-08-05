@@ -19,29 +19,34 @@ import { MapRounded } from '@mui/icons-material';
 type DirectionsResult = google.maps.DirectionsResult;
 
 interface Props {
-  startSelection: BusStop | undefined,
-  finishSelection: BusStop | undefined,
-  directions: DirectionsResult | null,
-  routeSelection: BusRoute | undefined,
-  userLocation: google.maps.LatLngLiteral,
-  busStops: BusStop[],
-  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>,
-  setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
+  startSelection: BusStop | undefined;
+  finishSelection: BusStop | undefined;
+  directions: DirectionsResult | null;
+  routeSelection: BusRoute | undefined;
+  userLocation: google.maps.LatLngLiteral;
+  busStops: BusStop[];
+  busRoutes: BusRoute[];
+  setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
+  setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
 };
 
 const googleMapsLibraries: ("places" | "drawing" | "geometry" | "localContext" | "visualization")[] = ['places'];
 
-const Map = (
-  {startSelection, 
+const Map = ({
+  startSelection, 
   finishSelection, 
   directions, 
   routeSelection,
   userLocation,
   busStops,
+  busRoutes,
   setStartSelection,
   setFinishSelection,
-  setUserLocation}: Props): JSX.Element => {
+  setUserLocation,
+  setRouteSelection,
+}: Props): JSX.Element => {
 
   const {isLoaded} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string, libraries: googleMapsLibraries
@@ -56,7 +61,6 @@ const Map = (
     mapId: "5a13c1894ab64113",
     streetViewControl: false,
     mapTypeControl: false,
-    clickableIcons: false,
     fullscreenControl: false,
     minZoom: 10,
     restriction: {
@@ -139,7 +143,10 @@ const Map = (
                       setStartSelection={setStartSelection}
                       startSelection={startSelection}
                       setFinishSelection={setFinishSelection}
-                      finishSelection={finishSelection} />
+                      finishSelection={finishSelection}
+                      busRoutes={busRoutes}
+                      busStops={busStops}
+                      setRouteSelection={setRouteSelection} />
                   </InfoWindow>:
                 null}
             </Marker>
@@ -171,7 +178,9 @@ const Map = (
                     setStartSelection={setStartSelection}
                     startSelection={startSelection}
                     setFinishSelection={setFinishSelection}
-                    finishSelection={finishSelection} />
+                    finishSelection={finishSelection}
+                    busRoutes={busRoutes}
+                    setRouteSelection={setRouteSelection} />
                 </InfoWindow>:
               null}
           </Marker>
