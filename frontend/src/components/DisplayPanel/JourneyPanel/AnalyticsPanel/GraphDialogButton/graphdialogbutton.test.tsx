@@ -46,14 +46,13 @@ describe('<GraphPredictionButton/> It should be enabled if prediction has been m
 
 describe('<GraphPredictionButton/> It should toggle the graph dialog', () => {
   it('should show the graph dialog when pressed', async () => {
-    expect.assertions(2);
+    expect.assertions(1);
     setup(5);
 
     const toggleButton: HTMLElement = screen.getByRole('button', {name: /journey times/i});
     const view: UserEvent = userEvent.setup();
     await view.click(toggleButton);
 
-    expect(screen.getByText(/journey durations/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', {name: /back to map/i})).toBeInTheDocument();
+    expect(screen.getByText(/journey times/i)).toBeInTheDocument();
   })
 })

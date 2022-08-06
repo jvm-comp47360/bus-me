@@ -54,7 +54,6 @@ const JourneyPanel = ({
                     onClick={() => setCollapseJourneyPanel(true)} />
             </Grid>
         </Grid>
-        
         <JourneyLeg 
             startSelection={startSelectionMemo}
             departureTime={departureTime}

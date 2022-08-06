@@ -1,5 +1,5 @@
-import JourneyLegStop from "./JourneyLegStop";
-import JourneyLegInfo from "./JourneyLegInfo";
+import JourneyLegStop from "./JourneyLegStop/JourneyLegStop";
+import JourneyLegInfo from "./JourneyLegInfo/JourneyLegInfo";
 
 import BusStop from '../../../../types/BusStop'
 import BusRoute from '../../../../types/BusRoute';
@@ -29,12 +29,9 @@ const JourneyLeg = ({
     finishSelection,
     routeSelection,
     prediction, directions, predictionStages}: Props): JSX.Element => {
-
     const getArrivalTime = (depatureTime: Date, prediction: number): Date => {
-        const startUnixTime: number = depatureTime.getTime();
+        const startUnixTime: number = new Date(depatureTime).getTime();
         const predictionInMillisecs: number = prediction * 60 * 1000;
-        console.log(prediction)
-
         return new Date(startUnixTime + predictionInMillisecs);
     }
 

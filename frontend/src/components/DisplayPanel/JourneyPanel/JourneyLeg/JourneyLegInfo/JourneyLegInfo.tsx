@@ -1,4 +1,4 @@
-import BusRoute from '../../../../types/BusRoute';
+import BusRoute from '../../../../../types/BusRoute';
 
 import {Box, Grid, Typography} from '@mui/material';
 import {array} from "prop-types";
