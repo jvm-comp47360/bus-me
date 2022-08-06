@@ -133,24 +133,3 @@ describe('<ControlPanel/> Submit button functionality', () => {
         .not.toHaveClass('Mui-disabled');
   });
 });
-
-describe('<ControlPanel/> Toggle button functionality',() => {
-  it('should be enabled when dropdown is selected', async () => {
-    expect.assertions(1);
-    setup(undefined, undefined, undefined);
-    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-    const busRouteDropdown: HTMLInputElement =
-      screen.getByRole('combobox', {name: /select route/i});
-
-    const view: UserEvent = userEvent.setup();
-
-    await view.click(busRouteDropdown);
-    await view.keyboard(BUS_ROUTE_GUESS);
-    await view.keyboard('[ArrowDown]');
-    await view.keyboard('[Enter]');
-
-    expect(screen.getByRole('button', {name: /select route/i}))
-      .toBeInTheDocument();
-  })
-});
