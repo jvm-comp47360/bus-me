@@ -24,6 +24,7 @@ interface Props {
   setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
+  setDirections: Dispatch<SetStateAction<google.maps.DirectionsResult | null>>;
 }
 
 // Dropdown Credit: https://mui.com/material-ui/react-menu/
@@ -34,6 +35,7 @@ const Navbar = ({multiRoute,
                   setStartSelection,
                   setFinishSelection,
                   setPrediction,
+                  setDirections,
 }: Props): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
@@ -52,6 +54,7 @@ const Navbar = ({multiRoute,
     setStartSelection(undefined);
     setFinishSelection(undefined);
     setPrediction(undefined);
+    setDirections(null);
   };
 
   return (

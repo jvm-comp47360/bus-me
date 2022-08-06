@@ -12,6 +12,7 @@ beforeEach((): RenderResult => render(
     setStartSelection={jest.fn}
     setFinishSelection={jest.fn}
     setPrediction={jest.fn}
+    setDirections={jest.fn}
   />
 ));
 

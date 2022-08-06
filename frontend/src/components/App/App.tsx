@@ -73,6 +73,7 @@ const App = (): JSX.Element => {
         setStartSelection={setStartSelection}
         setFinishSelection={setFinishSelection}
         setPrediction={setPrediction}
+        setDirections={setDirections}
       />
       <ControlPanel
         startSelection={startSelection}
