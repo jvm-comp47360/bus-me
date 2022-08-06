@@ -151,8 +151,14 @@ const PlanJourneyButton = ({routeSelection,
         if (!dateTimeSelection) {return;}
 
         const journeyStages: google.maps.DirectionsStep[] | undefined = directions.routes[0].legs[0].steps;
+
+        // These are all the URLs we need to fetch from the backend.
         const urlsToFetch: string[] = []
+
+        // This is an array that will contain a prediction for each leg of the journey.
         const predictionStages: number[] = []
+
+        // Total time predicted by GoogleMaps
         let googleMapsPrediction = 0;
 
         journeyStages.map((journeyStage) => {

@@ -85,6 +85,7 @@ const ControlPanel = ({
     justifyContent={'center'}
     sx={{backgroundColor: '#ffff72'}}
   >
+    {/* Route Selection panel disappears if multiRoute is selected*/}
     {multiRoute ? null :
       <RouteSelectionPanel
         busRoutes={busRoutes}

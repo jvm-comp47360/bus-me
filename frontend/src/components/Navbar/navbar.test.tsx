@@ -72,3 +72,35 @@ describe('Navbar items functionality', () => {
       .toBeInTheDocument();
   })
 });
+
+describe('MultiRoute functionality', () => {
+  test('it should show dropdown when clicked', async () => {
+
+    const dropdownButton: HTMLButtonElement =
+      screen.getByRole('button', {name: /MultiRoute/i});
+
+    const view: UserEvent = userEvent.setup();
+    await view.click(dropdownButton);
+
+    expect(screen.getByRole('radiogroup'))
+      .toBeInTheDocument();
+
+    expect(screen.getByRole('radio', {name: /SINGLE ROUTE/i}))
+      .toBeInTheDocument();
+
+    expect(screen.getByRole('radio', {name: /MULTI ROUTE/i}))
+      .toBeInTheDocument();
+  })
+
+  test('it should have single route checked by default', async () => {
+
+    const dropdownButton: HTMLButtonElement =
+      screen.getByRole('button', {name: /MultiRoute/i});
+
+    const view: UserEvent = userEvent.setup();
+    await view.click(dropdownButton);
+
+    expect(screen.getByRole('radio', {name: /SINGLE ROUTE/i}))
+      .toBeChecked();
+  })
+});

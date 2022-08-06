@@ -61,6 +61,11 @@ const JourneyLeg = ({
         }
         directions.routes[0].legs[0].steps.map((step: google.maps.DirectionsStep) => {
             if (step.travel_mode === 'TRANSIT' && step.transit) {
+
+                // While most of the stations provided by Google Maps API are in the format
+                // "BusSop, stop 1234", just in case we include a fallback if the there is no
+                // stop number provided by just using the full name of the station.
+                // Otherwise, when we split by comma, we will get nothing and the application will crash.
                 const routeDeparture: RouteDeparture = {route: step.transit.line.short_name,
                     departure: step.transit.departure_time.value,
                     startStop: (step.transit.departure_stop.name.split(',').length === 0) ?
