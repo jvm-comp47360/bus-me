@@ -4,7 +4,7 @@ import JourneyLegInfo from "./JourneyLegInfo";
 import BusStop from '../../../../types/BusStop'
 import BusRoute from '../../../../types/BusRoute';
 
-import {Grid} from '@mui/material';
+import {Divider, Grid} from '@mui/material';
 
 interface Props {
     startSelection: BusStop,
@@ -16,9 +16,11 @@ interface Props {
     directions: google.maps.DirectionsResult | null,
 }
 
-type PredictionStages = {
-    route: String,
-    prediction: number,
+type RouteDeparture = {
+    route: string,
+    departure: Date,
+    startStop: string,
+    finishStop: string,
 }
 
 const JourneyLeg = ({
@@ -43,21 +45,81 @@ const JourneyLeg = ({
     const getArrivalTime = (depatureTime: Date, prediction: number): Date => {
         const startUnixTime: number = depatureTime.getTime();
         const predictionInMillisecs: number = prediction * 60 * 1000;
+        console.log(prediction)
 
         return new Date(startUnixTime + predictionInMillisecs);
     }
 
-    const getRoutes = (): string[] => {
-        const routes: string[] = []
+    const getRoutes = (): RouteDeparture[] => {
+        const routes: RouteDeparture[] = []
         if (!directions || predictionStages.length === 0) {
             return routes;
         }
         directions.routes[0].legs[0].steps.map((step: google.maps.DirectionsStep) => {
             if (step.travel_mode === 'TRANSIT' && step.transit) {
-                routes.push(step.transit.line.short_name)
+                const routeDeparture: RouteDeparture = {route: step.transit.line.short_name,
+                    departure: step.transit.departure_time.value,
+                    startStop: step.transit.departure_stop.name.split(',')[0],
+                    finishStop: step.transit.arrival_stop.name.split(',')[0],
+                }
+                routes.push(routeDeparture)
             }
         })
         return routes;
+    }
+
+    const getJourneyLegs = () => {
+        const routes: RouteDeparture[] = getRoutes();
+        const predictionStagesDisplay = [];
+        for (let i = 0; i < predictionStages.length; i++) {
+            if (i == 0) {
+                predictionStagesDisplay.push(<>
+                    <JourneyLegStop
+                      stopSelection={startSelection}
+                      time={departureTime}
+                    />
+                    <JourneyLegInfo
+                      routeSelection={routes[i].route}
+                      prediction={Math.round(predictionStages[i])}
+                    />
+                    <JourneyLegStop
+                      stopSelection={routes[i].finishStop}
+                      time={getArrivalTime(departureTime, Math.round(predictionStages[i]))}
+                    />
+                </>)
+            } else if (i == predictionStages.length - 1) {
+                predictionStagesDisplay.push(<>
+                    <JourneyLegStop
+                      stopSelection={routes[i].startStop}
+                      time={routes[i].departure}
+                    />
+                    <JourneyLegInfo
+                      routeSelection={routes[i].route}
+                      prediction={Math.round(predictionStages[i])}
+                    />
+                    <JourneyLegStop
+                      stopSelection={finishSelection}
+                      time={getArrivalTime(routes[i].departure, Math.round(predictionStages[i]))}
+                    />
+                </>)
+            } else {
+                predictionStagesDisplay.push(<>
+                    <JourneyLegStop
+                      stopSelection={routes[i].startStop}
+                      time={routes[i].departure}
+                    />
+                    <JourneyLegInfo
+                      routeSelection={routes[i].route}
+                      prediction={Math.round(predictionStages[i])}
+                    />
+                    <JourneyLegStop
+                      stopSelection={routes[i].finishStop}
+                      time={getArrivalTime(routes[i].departure, Math.round(predictionStages[i]))}
+                    />
+                </>)
+            }
+        }
+        return predictionStagesDisplay;
     }
 
     return <Grid 
@@ -65,20 +127,25 @@ const JourneyLeg = ({
             sx={{
                 my: 1,
             }}>
+        {
+            (routeSelection || predictionStages.length === 0) ?
+              <>
+              <JourneyLegStop
+                stopSelection={startSelection}
+                time={departureTime}
+              />
+              <JourneyLegInfo
+                routeSelection={routeSelection}
+                prediction={prediction}
+              />
+                <JourneyLegStop
+                stopSelection={finishSelection}
+                time={getArrivalTime(departureTime, prediction)}
+                />
+              </> : getJourneyLegs()
+        }
 
 
-          <JourneyLegStop
-            stopSelection={startSelection}
-            time={departureTime}
-          />
-          <JourneyLegInfo
-            routeSelection={(routeSelection) ? routeSelection : getRoutes()}
-            prediction={prediction}
-          />
-            <JourneyLegStop
-            stopSelection={finishSelection}
-            time={getArrivalTime(departureTime, prediction)}
-            />
 
     </Grid>
 };

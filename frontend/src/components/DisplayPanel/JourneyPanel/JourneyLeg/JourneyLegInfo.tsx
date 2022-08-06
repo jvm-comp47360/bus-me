@@ -4,7 +4,7 @@ import {Box, Grid, Typography} from '@mui/material';
 import {array} from "prop-types";
 
 interface Props {
-    routeSelection: BusRoute | string[] | undefined,
+    routeSelection: BusRoute | string | undefined,
     prediction: number,
 }
 
@@ -21,21 +21,12 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
         }
     };
 
-    const getRouteDisplay = (routesForDisplay: BusRoute | string[] | undefined) => {
+    const getRouteDisplay = (routesForDisplay: BusRoute | string | undefined) => {
         if (!routesForDisplay) {
             return ''
         }
-        if (Array.isArray(routesForDisplay)) {
-            if (routesForDisplay.length === 1) {
-                return routesForDisplay[0];
-            } else {
-                let routeDisplay = '';
-                for (let i = 0; i < routesForDisplay.length - 1; i++) {
-                    routeDisplay += `${routesForDisplay[i]} | `;
-                }
-                routeDisplay += routesForDisplay[routesForDisplay.length - 1];
-                return routeDisplay
-            }
+        if (typeof routesForDisplay === 'string') {
+            return routesForDisplay;
         }
         return routesForDisplay.name;
     }
