@@ -50,6 +50,10 @@ const JourneyLeg = ({
         return new Date(startUnixTime + predictionInMillisecs);
     }
 
+    // This function extracts relevant journey data from the Google Maps API call.
+    // To avoid sending this information as state, because the API call at this point
+    // has already been made, it is significantly more efficient and performant to just
+    // extract this data from the resulting JSON file.
     const getRoutes = (): RouteDeparture[] => {
         const routes: RouteDeparture[] = []
         if (!directions || predictionStages.length === 0) {
@@ -68,10 +72,19 @@ const JourneyLeg = ({
         return routes;
     }
 
-    const getJourneyLegs = () => {
+    // This is in its own separate function for readability purposes.
+    // Too much logic here to just fit within the ternary conditional.
+    const showJourneyLegs = () => {
+
+        // Gather all the routes used for this journey using the directions API call.
         const routes: RouteDeparture[] = getRoutes();
+
+        // Array to store JSX elements that will be rendered.
         const predictionStagesDisplay = [];
         for (let i = 0; i < predictionStages.length; i++) {
+
+            // If it is the first journey leg, keep the start station the same,
+            // but get the destination station from the API call (in case there are stop overs).
             if (i == 0) {
                 predictionStagesDisplay.push(<>
                     <JourneyLegStop
@@ -87,6 +100,10 @@ const JourneyLeg = ({
                       time={getArrivalTime(departureTime, Math.round(predictionStages[i]))}
                     />
                 </>)
+
+            // If it's the last station, the start stop is from the API call, and the ending
+            // station is the user's selected route. We set the departure time as the one
+            // that Google Maps suggests, to ensure that it matches real time bus timetables.
             } else if (i == predictionStages.length - 1) {
                 predictionStagesDisplay.push(<>
                     <JourneyLegStop
@@ -102,6 +119,9 @@ const JourneyLeg = ({
                       time={getArrivalTime(routes[i].departure, Math.round(predictionStages[i]))}
                     />
                 </>)
+
+            // If it's one of the stages in the middle, both start and finish stations should be
+            // from Google API (as we don't know if there will be stopovers).
             } else {
                 predictionStagesDisplay.push(<>
                     <JourneyLegStop
@@ -142,11 +162,8 @@ const JourneyLeg = ({
                 stopSelection={finishSelection}
                 time={getArrivalTime(departureTime, prediction)}
                 />
-              </> : getJourneyLegs()
+              </> : showJourneyLegs()
         }
-
-
-
     </Grid>
 };
 

@@ -172,7 +172,7 @@ const PlanJourneyButton = ({routeSelection,
                     if (predictionInSeconds) {
                         const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
                         console.log("Prediction in minutes:");
-                        googleMapsPrediction += predictionInMinutes;
+                        googleMapsPrediction = googleMapsPrediction + +predictionInMinutes;
                         predictionStages.push(predictionInMinutes)
                     }
                 }

@@ -56,21 +56,14 @@ const GraphDialogButton = ({
   }
 
   const getPredictionsAndOpenGraph = () => {
-    console.log(prediction)
-    // If user has not asked to recalculate journey, just open the cached results
-    // and don't make another API call.
-    if (predictionList.length !== 0) {
-      setGraphIsOpen(true);
-    } else {
-      // If route selection is empty, then multiroute is on.
-      if (!routeSelection) {
 
+      // If route selection is empty, then multiroute is on.
+      console.log(routeSelection)
+      if (!routeSelection) {
         // Null check for directions.
         if (!directions) {
           return;
         }
-
-
         const journeyStages: google.maps.DirectionsStep[] | null = directions.routes[0].legs[0].steps;
         const urlsToFetch: string[] = [];
         let googleMapsPrediction = 0;
@@ -101,11 +94,13 @@ const GraphDialogButton = ({
               if (predictionInSeconds) {
                 const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
                 console.log("Prediction in minutes:");
-                googleMapsPrediction += predictionInMinutes;
+                googleMapsPrediction = googleMapsPrediction + +predictionInMinutes;
               }
             }
           }
         })
+
+        console.log(urlsToFetch);
 
         Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
@@ -120,10 +115,11 @@ const GraphDialogButton = ({
                 let currentTotalPredictions = 0;
                 for (let j = 0; j < numberOfLegs; j++) {
                   const currentTotalPrediction = predictions[i + (j * 4)].prediction;
-                  currentTotalPredictions += Math.round((currentTotalPrediction * 10) / 10);
+                  console.log(`We are on leg ${j}. Current prediction is ${currentTotalPrediction}`)
+                  currentTotalPredictions = currentTotalPredictions + +Math.round((currentTotalPrediction * 10) / 10);
                 }
                 if (googleMapsPrediction > 0) {
-                  currentTotalPredictions += googleMapsPrediction;
+                  currentTotalPredictions = currentTotalPredictions + +googleMapsPrediction;
                 }
                 totalPredictionList.push(currentTotalPredictions);
               }
@@ -166,7 +162,7 @@ const GraphDialogButton = ({
             })
           })
       }
-    }
+
   }
 
   return <>
