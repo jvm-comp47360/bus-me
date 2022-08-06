@@ -63,8 +63,10 @@ const JourneyLeg = ({
             if (step.travel_mode === 'TRANSIT' && step.transit) {
                 const routeDeparture: RouteDeparture = {route: step.transit.line.short_name,
                     departure: step.transit.departure_time.value,
-                    startStop: step.transit.departure_stop.name.split(',')[0],
-                    finishStop: step.transit.arrival_stop.name.split(',')[0],
+                    startStop: (step.transit.departure_stop.name.split(',').length === 0) ?
+                      step.transit.departure_stop.name : step.transit.departure_stop.name.split(',')[0],
+                    finishStop: (step.transit.arrival_stop.name.split(',').length === 0) ?
+                      step.transit.arrival_stop.name : step.transit.arrival_stop.name.split(',')[0],
                 }
                 routes.push(routeDeparture)
             }
@@ -99,6 +101,7 @@ const JourneyLeg = ({
                       stopSelection={routes[i].finishStop}
                       time={getArrivalTime(departureTime, Math.round(predictionStages[i]))}
                     />
+                    <Divider style={{width: '100%'}}/>
                 </>)
 
             // If it's the last station, the start stop is from the API call, and the ending
@@ -136,6 +139,7 @@ const JourneyLeg = ({
                       stopSelection={routes[i].finishStop}
                       time={getArrivalTime(routes[i].departure, Math.round(predictionStages[i]))}
                     />
+                    <Divider style={{width: '100%'}}/>
                 </>)
             }
         }
