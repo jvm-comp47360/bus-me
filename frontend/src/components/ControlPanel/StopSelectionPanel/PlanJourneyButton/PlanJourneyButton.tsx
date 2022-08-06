@@ -152,6 +152,7 @@ const PlanJourneyButton = ({routeSelection,
 
         const journeyStages: google.maps.DirectionsStep[] | undefined = directions.routes[0].legs[0].steps;
         const urlsToFetch: string[] = []
+        const predictionStages: number[] = []
         let googleMapsPrediction = 0;
 
         journeyStages.map((journeyStage) => {
@@ -165,12 +166,14 @@ const PlanJourneyButton = ({routeSelection,
                     const time: number = getSeconds(dateTimeSelection)
 
                     urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time).toString()}`)
+                    predictionStages.push(-1)
                 } else {
                     const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
                     if (predictionInSeconds) {
                         const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
                         console.log("Prediction in minutes:");
                         googleMapsPrediction += predictionInMinutes;
+                        predictionStages.push(predictionInMinutes)
                     }
                 }
             }
@@ -184,8 +187,18 @@ const PlanJourneyButton = ({routeSelection,
           .then((predictions) => {
               Promise.all(predictions).then((predictions) => {
                   console.log(predictions)
-
                   const predictionValues: number[] = predictions.map((prediction) => prediction.prediction);
+
+                  let predictionStagesPointer = 0;
+                  for (let i = 0; i < predictionStages.length; i++) {
+                      if (predictionStages[i] === -1) {
+                          predictionStages[i] = predictionValues[predictionStagesPointer];
+                          predictionStagesPointer += 1;
+                      }
+                  }
+
+                  console.log(predictionStages)
+
                   const totalPrediction: number = predictionValues.reduce(
                     (a: number, b: number) => +a + +b, 0
                   )
@@ -200,7 +213,7 @@ const PlanJourneyButton = ({routeSelection,
                   console.log(finalPrediction)
                   console.log(predictionValues)
 
-                  setPredictionStages(predictionValues);
+                  setPredictionStages(predictionStages);
                   setPrediction(finalPrediction);
               })
           })
