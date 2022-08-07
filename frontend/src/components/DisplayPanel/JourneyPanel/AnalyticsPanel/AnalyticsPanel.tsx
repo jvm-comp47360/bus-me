@@ -6,12 +6,18 @@ import BusRoute from "../../../../types/BusRoute";
 interface Props {
     startSelection: BusStop,
     finishSelection: BusStop,
+    routeSelection: BusRoute | undefined,
     prediction: number,
+    dateTimeSelection: Date,
+    directions: google.maps.DirectionsResult | null,
 }
 
 const AnalyticsPanel = ({startSelection,
                             finishSelection,
-                            prediction}: Props): JSX.Element => {
+                            routeSelection,
+                            prediction,
+                            dateTimeSelection,
+                        directions}: Props): JSX.Element => {
     return (<Box sx={{
         borderTop: 1,
         display: 'flex',
@@ -30,8 +36,10 @@ const AnalyticsPanel = ({startSelection,
         <GraphDialogButton
           startSelection={startSelection}
           finishSelection={finishSelection}
+          routeSelection={routeSelection}
           prediction={prediction}
-          graphPredictions={[2, 1, 4, 3]}
+          dateTimeSelection={dateTimeSelection}
+          directions={directions}
         />
     </Box>)
 };

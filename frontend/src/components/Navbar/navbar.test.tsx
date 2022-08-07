@@ -4,7 +4,17 @@ import {UserEvent} from "@testing-library/user-event/dist/types/setup";
 import userEvent from "@testing-library/user-event";
 
 // eslint-disable-next-line testing-library/no-render-in-setup
-beforeEach((): RenderResult => render(<Navbar/>));
+beforeEach((): RenderResult => render(
+  <Navbar
+    multiRoute={false}
+    setMultiRoute={jest.fn}
+    setRouteSelection={jest.fn}
+    setStartSelection={jest.fn}
+    setFinishSelection={jest.fn}
+    setPrediction={jest.fn}
+    setDirections={jest.fn}
+  />
+));
 
 test('BusMe logo appears in Navbar', () => {
   expect(screen.getByAltText('bus-me-logo-nav')).toBeInTheDocument();
@@ -61,5 +71,37 @@ describe('Navbar items functionality', () => {
 
     expect(screen.getByRole('button', {name: /back to map/i}))
       .toBeInTheDocument();
+  })
+});
+
+describe('MultiRoute functionality', () => {
+  test('it should show dropdown when clicked', async () => {
+
+    const dropdownButton: HTMLButtonElement =
+      screen.getByRole('button', {name: /Route Mode/i});
+
+    const view: UserEvent = userEvent.setup();
+    await view.click(dropdownButton);
+
+    expect(screen.getByRole('radiogroup'))
+      .toBeInTheDocument();
+
+    expect(screen.getByRole('radio', {name: /SINGLE ROUTE/i}))
+      .toBeInTheDocument();
+
+    expect(screen.getByRole('radio', {name: /MULTI ROUTE/i}))
+      .toBeInTheDocument();
+  })
+
+  test('it should have single route checked by default', async () => {
+
+    const dropdownButton: HTMLButtonElement =
+      screen.getByRole('button', {name: /Route Mode/i});
+
+    const view: UserEvent = userEvent.setup();
+    await view.click(dropdownButton);
+
+    expect(screen.getByRole('radio', {name: /SINGLE ROUTE/i}))
+      .toBeChecked();
   })
 });

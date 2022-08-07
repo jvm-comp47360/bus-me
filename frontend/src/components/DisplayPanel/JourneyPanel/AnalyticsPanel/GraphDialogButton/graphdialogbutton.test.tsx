@@ -11,14 +11,15 @@ const MOCK_START_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][0];
 const MOCK_FINISH_STATION: BusStop = MOCK_CURRENT_ROUTE['bus_stops'][1];
 
 // Setup function that renders the main component.
-const setup = (prediction: number | undefined,
-               graphPredictions: number[] | undefined
+const setup = (prediction: number,
               ): RenderResult => render(
     <GraphDialogButton
+      routeSelection={MOCK_CURRENT_ROUTE}
       startSelection={MOCK_START_STATION}
       finishSelection={MOCK_FINISH_STATION}
+      dateTimeSelection={new Date()}
+      directions={null}
       prediction={prediction}
-      graphPredictions={graphPredictions}
     />
   )
 ;
@@ -26,7 +27,7 @@ const setup = (prediction: number | undefined,
 describe('<GraphPredictionButton/> It should show the button', () => {
   it('should show the button', () => {
     expect.assertions(1);
-    setup(5, [1, 2, 3]);
+    setup(5);
 
     expect(screen.getByRole('button', {name: /journey times/i})).toBeInTheDocument();
   })
@@ -35,31 +36,23 @@ describe('<GraphPredictionButton/> It should show the button', () => {
 describe('<GraphPredictionButton/> It should be enabled if prediction has been made', () => {
   it('should be enabled if both prediction and graph predictions are filled', () => {
     expect.assertions(1);
-    setup(5, [1, 2, 3]);
+    setup(5);
 
     expect(screen.getByRole('button', {name: /journey times/i}))
       .not.toHaveClass('Mui-disabled');
   });
 
-  it('should be disabled if both prediction and graph predictions are not filled', () => {
-    expect.assertions(1);
-    setup(undefined, undefined);
-
-    expect(screen.getByRole('button', {name: /journey times/i}))
-      .toHaveClass('Mui-disabled');
-  })
 });
 
 describe('<GraphPredictionButton/> It should toggle the graph dialog', () => {
   it('should show the graph dialog when pressed', async () => {
-    expect.assertions(2);
-    setup(5, [1, 2, 3]);
+    expect.assertions(1);
+    setup(5);
 
     const toggleButton: HTMLElement = screen.getByRole('button', {name: /journey times/i});
     const view: UserEvent = userEvent.setup();
     await view.click(toggleButton);
 
-    expect(screen.getByText(/journey durations/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', {name: /back to map/i})).toBeInTheDocument();
+    expect(screen.getByText(/journey times/i)).toBeInTheDocument();
   })
 })

@@ -14,6 +14,7 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+    multiRoute: boolean
 }
 
 type RouteTerminus = {
@@ -31,6 +32,7 @@ const InfoWindowContent =({
     setRouteSelection,
     busRoutes,
     busStops,
+    multiRoute,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
         for (let i = 0; i < busStops.length; i++) {
@@ -83,6 +85,7 @@ const InfoWindowContent =({
     }
 
     const routeClickHandler = (e: React.MouseEvent) => {
+        if (multiRoute) return;
         const routeId = (e.target as HTMLElement).id;
         for (let i = 0; i < busRoutes.length; i++) {
             if (routeId === busRoutes[i].id) setRouteSelection(busRoutes[i])
@@ -156,7 +159,7 @@ const InfoWindowContent =({
                 mt: '4px',
             }}>
             <Grid item sx={{p: '2px'}}>
-                <InfoWindowButton 
+                <InfoWindowButton
                     name={"Start"}
                     setStopSelection={setStartSelection}
                     stop={stop}

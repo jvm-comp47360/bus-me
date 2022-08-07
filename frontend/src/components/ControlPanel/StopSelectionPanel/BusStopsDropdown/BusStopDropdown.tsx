@@ -11,10 +11,12 @@ import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
   busRoutes: BusRoute[]
+  busStops: BusStop[]
   routeSelection: BusRoute | undefined;
   label: string;
   selection: BusStop | undefined;
   setSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  multiRoute: boolean;
 }
 
 const BusStopDropdown = ({
@@ -23,10 +25,15 @@ const BusStopDropdown = ({
   label,
   selection,
   setSelection,
+  busStops,
+  multiRoute,
 }: Props): JSX.Element => {
   const getBusStops = (): BusStop[] => {
+    if (multiRoute) {
+      return busStops;
+    }
     const currentRoute: BusRoute | undefined =
-        busRoutes.find((route) => route === routeSelection);
+      busRoutes.find((route) => route === routeSelection);
     if (currentRoute) {
       return currentRoute['bus_stops'];
     } else {

@@ -30,6 +30,7 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  multiRoute: boolean;
 };
 
 const googleMapsLibraries: ("places" | "drawing" | "geometry" | "localContext" | "visualization")[] = ['places'];
@@ -46,6 +47,7 @@ const Map = ({
   setFinishSelection,
   setUserLocation,
   setRouteSelection,
+  multiRoute,
 }: Props): JSX.Element => {
 
   const {isLoaded} = useLoadScript({
@@ -146,7 +148,9 @@ const Map = ({
                       finishSelection={finishSelection}
                       busRoutes={busRoutes}
                       busStops={busStops}
-                      setRouteSelection={setRouteSelection} />
+                      setRouteSelection={setRouteSelection}
+                      multiRoute={multiRoute}
+                    />
                   </InfoWindow>:
                 null}
             </Marker>
@@ -180,7 +184,9 @@ const Map = ({
                     setFinishSelection={setFinishSelection}
                     finishSelection={finishSelection}
                     busRoutes={busRoutes}
-                    setRouteSelection={setRouteSelection} />
+                    setRouteSelection={setRouteSelection}
+                    multiRoute={multiRoute}
+                  />
                 </InfoWindow>:
               null}
           </Marker>

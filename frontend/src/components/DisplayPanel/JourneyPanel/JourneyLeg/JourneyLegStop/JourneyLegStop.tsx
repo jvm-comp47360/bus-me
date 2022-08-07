@@ -1,15 +1,15 @@
-import BusStop from '../../../../types/BusStop'
+import BusStop from '../../../../../types/BusStop'
 
 import {Grid, Typography} from '@mui/material';
 
 interface Props {
     time: Date,
-    stopSelection: BusStop,
+    stopSelection: BusStop | string,
 }
 
 const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
-    const journeyHours: string = time.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2});
-    const journeyMinutes: string = time.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2});
+    const journeyHours: string = new Date(time).getHours().toLocaleString('en-US', {minimumIntegerDigits: 2});
+    const journeyMinutes: string = new Date(time).getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2});
     const journeyTime: string = `${journeyHours}:${journeyMinutes}`;
     return <Grid 
         item
@@ -29,7 +29,7 @@ const JourneyLegStop = ({time, stopSelection}: Props): JSX.Element => {
             }}>{journeyTime}</Typography>
         </Grid>
         <Grid item xs={10}>
-            <Typography>{stopSelection.name}</Typography> 
+            <Typography>{(typeof stopSelection === 'string') ? stopSelection : stopSelection.name}</Typography>
         </Grid>
     </Grid>
 };

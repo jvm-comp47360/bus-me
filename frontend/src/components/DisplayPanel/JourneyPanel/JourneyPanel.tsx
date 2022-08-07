@@ -13,10 +13,12 @@ interface Props {
     startSelection: BusStop,
     departureTime: Date,
     finishSelection: BusStop,
-    routeSelection: BusRoute,
+    routeSelection: BusRoute | undefined,
     prediction: number,
     collapseJourneyPanel: Boolean,
     setCollapseJourneyPanel: Dispatch<SetStateAction<Boolean>>,
+    directions: google.maps.DirectionsResult | null,
+    predictionStages: number[]
 }
 
 const JourneyPanel = ({
@@ -26,11 +28,10 @@ const JourneyPanel = ({
     routeSelection,
     prediction,
     collapseJourneyPanel,
-    setCollapseJourneyPanel}: Props): JSX.Element => {
+    setCollapseJourneyPanel, directions, predictionStages}: Props): JSX.Element => {
 
     const startSelectionMemo: BusStop = useMemo(() => startSelection, [prediction]);
     const finishSelectionMemo: BusStop = useMemo(() => finishSelection, [prediction]);
-    const routeSelectionMemo: BusRoute = useMemo(() => routeSelection, [prediction]);
     const displayValue = collapseJourneyPanel ? 'none' : 'block';
 
     return <Box 
@@ -53,18 +54,22 @@ const JourneyPanel = ({
                     onClick={() => setCollapseJourneyPanel(true)} />
             </Grid>
         </Grid>
-        
         <JourneyLeg 
             startSelection={startSelectionMemo}
             departureTime={departureTime}
             finishSelection={finishSelectionMemo}
-            routeSelection={routeSelectionMemo}
+            routeSelection={routeSelection}
             prediction={Math.round(prediction)}
+            predictionStages={predictionStages}
+            directions={directions}
         />
         <AnalyticsPanel
           startSelection={startSelection}
           finishSelection={finishSelection}
+          routeSelection={routeSelection}
           prediction={prediction}
+          dateTimeSelection={departureTime}
+          directions={directions}
         />
     </Box>
 };

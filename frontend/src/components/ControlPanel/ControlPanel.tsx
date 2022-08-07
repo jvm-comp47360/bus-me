@@ -27,6 +27,10 @@ interface Props {
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   busRoutes: BusRoute[];
   setBusRoutes:  Dispatch<SetStateAction<BusRoute[]>>
+  busStops: BusStop[];
+  multiRoute: boolean
+  setMultiRoute: Dispatch<SetStateAction<boolean>>
+  setPredictionStages: Dispatch<SetStateAction<number[]>>
 }
 
 // Animation Bug Fix Credit:
@@ -43,6 +47,9 @@ const ControlPanel = ({
                         setDirections,
                         busRoutes,
                         setBusRoutes,
+                        busStops,
+                        multiRoute,
+                        setPredictionStages,
                       }: Props): JSX.Element => {
 
   const [dateTimeSelection, setDateTimeSelection] =
@@ -78,17 +85,21 @@ const ControlPanel = ({
     justifyContent={'center'}
     sx={{backgroundColor: '#ffff72'}}
   >
-    <RouteSelectionPanel
-      busRoutes={busRoutes}
-      routeSelection={routeSelection}
-      setRouteSelection={setRouteSelection}
-      setStartSelection={setStartSelection}
-      setFinishSelection={setFinishSelection}
-      setPrediction={setPrediction}
-      setDirections={setDirections}
-    />
+    {/* Route Selection panel disappears if multiRoute is selected*/}
+    {multiRoute ? null :
+      <RouteSelectionPanel
+        busRoutes={busRoutes}
+        routeSelection={routeSelection}
+        setRouteSelection={setRouteSelection}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
+        setPrediction={setPrediction}
+        setDirections={setDirections}
+      />
+    }
     <StopSelectionPanel
       busRoutes={busRoutes}
+      busStops={busStops}
       routeSelection={routeSelection}
       startSelection={startSelection}
       setStartSelection={setStartSelection}
@@ -98,6 +109,8 @@ const ControlPanel = ({
       setDateTimeSelection={setDateTimeSelection}
       setPrediction={setPrediction}
       setDirections={setDirections}
+      multiRoute={multiRoute}
+      setPredictionStages={setPredictionStages}
     />
   </Box>;
 };

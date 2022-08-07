@@ -20,13 +20,15 @@ const setup = (
   stopSelection: BusStop | undefined,
 ):
   RenderResult => render(
-    <BusStopDropdown
-      busRoutes={MOCK_BUS_ROUTES}
-      routeSelection={routeSelection}
-      label={LABEL}
-      selection={stopSelection}
-      setSelection={jest.fn()}
-    />,
+  <BusStopDropdown
+    busRoutes={MOCK_BUS_ROUTES}
+    busStops={BUS_STOPS}
+    routeSelection={routeSelection}
+    label={LABEL}
+    selection={stopSelection}
+    setSelection={jest.fn()}
+    multiRoute={false}
+  />,
 );
 
 const mockUserSearch = async (dropdown: HTMLInputElement): Promise<void> => {
@@ -49,30 +51,30 @@ describe('<BusStopDropdown> Default render', () => {
 
 describe('<BusStopDropdown> Route selection', () => {
   it('should display options if route is selected',
-      async (): Promise<void> => {
-        expect.assertions(1);
-        setup(MOCK_ROUTE_SELECTION, undefined);
+    async (): Promise<void> => {
+      expect.assertions(1);
+      setup(MOCK_ROUTE_SELECTION, undefined);
 
-        const busStopDropdown: HTMLInputElement =
+      const busStopDropdown: HTMLInputElement =
         screen.getByRole('combobox', {name: /start/i});
 
-        await mockUserSearch(busStopDropdown);
+      await mockUserSearch(busStopDropdown);
 
-        expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
-      });
+      expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
+    });
 
   it('should not display options unrelated to the selected route',
-      async (): Promise<void> => {
-        expect.assertions(1);
-        setup(WRONG_MOCK_ROUTE_SEARCH, undefined);
+    async (): Promise<void> => {
+      expect.assertions(1);
+      setup(WRONG_MOCK_ROUTE_SEARCH, undefined);
 
-        const busStopDropdown: HTMLInputElement =
-          screen.getByRole('combobox', {name: /start/i});
+      const busStopDropdown: HTMLInputElement =
+        screen.getByRole('combobox', {name: /start/i});
 
-        await mockUserSearch(busStopDropdown);
+      await mockUserSearch(busStopDropdown);
 
-        expect(busStopDropdown.value).not.toBe(BUS_STOP_SEARCH);
-      });
+      expect(busStopDropdown.value).not.toBe(BUS_STOP_SEARCH);
+    });
 });
 
 describe('<BusStopDropdown> Marker integration', () => {
