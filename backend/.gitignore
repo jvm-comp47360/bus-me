@@ -2,3 +2,7 @@
 *.env
 /.idea
 */__pycache__/*
+/prediction/Models/
+/prediction/search_file/
+/htmlcov/
+/.coverage

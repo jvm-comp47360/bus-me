@@ -49,7 +49,6 @@ const PlanJourneyButton = ({routeSelection,
                                 multiRoute,
                                 setPredictionStages,
                            }: Props): JSX.Element => {
-
     const getSeconds = (date: Date) => {
         const minutes = date.getMinutes();
         const hours = date.getHours();
