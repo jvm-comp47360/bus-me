@@ -85,16 +85,6 @@ const StopSelectionPanel = ({
           onChange={toggleArrivalSelected}
           defaultValue={arrivalSelected}
         >
-          <Box
-            display={'flex'}
-            flexDirection={'row'}
-            flexWrap={'wrap'}
-            justifyContent={'center'}
-            margin={1}
-          >
-            <FormControlLabel control={<Radio size={'small'}/>} label={'Departure'} value={false}/>
-            <FormControlLabel control={<Radio size={'small'}/>} label={'Arrival'} value={true}/>
-          </Box>
         </RadioGroup>
       </Box>
       <Box m={0.5}>

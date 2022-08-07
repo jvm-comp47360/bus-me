@@ -78,7 +78,7 @@ describe('MultiRoute functionality', () => {
   test('it should show dropdown when clicked', async () => {
 
     const dropdownButton: HTMLButtonElement =
-      screen.getByRole('button', {name: /MultiRoute/i});
+      screen.getByRole('button', {name: /Route Mode/i});
 
     const view: UserEvent = userEvent.setup();
     await view.click(dropdownButton);
@@ -96,7 +96,7 @@ describe('MultiRoute functionality', () => {
   test('it should have single route checked by default', async () => {
 
     const dropdownButton: HTMLButtonElement =
-      screen.getByRole('button', {name: /MultiRoute/i});
+      screen.getByRole('button', {name: /Route Mode/i});
 
     const view: UserEvent = userEvent.setup();
     await view.click(dropdownButton);

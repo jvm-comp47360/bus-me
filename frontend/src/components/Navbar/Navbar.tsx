@@ -90,7 +90,7 @@ const Navbar = ({multiRoute,
               aria-expanded={dropdownIsOpen ? 'true' : undefined}
               onClick={dropdownIsClicked}
             >
-              MultiRoute
+              Route Mode
             </Button>
             <Menu
               anchorEl={anchorElement}
