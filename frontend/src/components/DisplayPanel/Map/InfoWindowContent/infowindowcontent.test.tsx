@@ -63,8 +63,3 @@ test('route and its terminus are rendered in the infowindow (stop on a route)', 
     setUp(false, mockRouteData[1].bus_stops[0], stopData);
     expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
 })
-
-test('route and its terminus are not rendered in the infowindow if multiroute is selected', () => {
-    setUp(true, mockRouteData[1].bus_stops[0], stopData);
-    expect(screen.queryByText(/3 to Faussaugh Ave Church/)).toBeNull();
-})

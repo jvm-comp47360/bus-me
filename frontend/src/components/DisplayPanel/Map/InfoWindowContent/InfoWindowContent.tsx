@@ -85,6 +85,7 @@ const InfoWindowContent =({
     }
 
     const routeClickHandler = (e: React.MouseEvent) => {
+        if (multiRoute) return;
         const routeId = (e.target as HTMLElement).id;
         for (let i = 0; i < busRoutes.length; i++) {
             if (routeId === busRoutes[i].id) setRouteSelection(busRoutes[i])
@@ -129,7 +130,7 @@ const InfoWindowContent =({
                 overflowY: overflowYValue, 
                 maxHeight: '100px'
             }}>
-                {(routeTerminusInfo && !multiRoute) ?
+                {(routeTerminusInfo) ?
                 routeTerminusInfo.map(route => (
                     <Typography 
                         id={route.id}
@@ -143,8 +144,7 @@ const InfoWindowContent =({
                             mb: '2px',
                             backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
                         }}>{getRouteDescription(route.name, route.terminus)}</Typography>
-                )):
-                  <Typography variant="body1" textAlign={'center'} fontSize={'6'}>MultiRoute Mode</Typography>}
+                )): null}
             </Box>
         </Grid>
         <Grid 
