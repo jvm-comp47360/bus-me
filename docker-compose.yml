@@ -29,6 +29,7 @@ services:
       args:
         REACT_APP_GOOGLE_KEY: ${REACT_APP_GOOGLE_KEY}
     ports:
+      - "80:80"
       - "443:443"
     volumes:
       - staticfiles:/staticfiles
