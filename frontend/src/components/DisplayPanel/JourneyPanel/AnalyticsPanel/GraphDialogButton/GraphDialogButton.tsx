@@ -81,11 +81,11 @@ const GraphDialogButton = ({
               const timeModifiers = [-7200, -3600, 3600, 7200]
               timeModifiers.map((timeModifier) => {
                 if (time + timeModifier > 86400) {
-                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier - 86400).toString()}`)
+                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier - 86400).toString()}`)
                 } else if (time + timeModifier < 0) {
-                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier + 86400).toString()}`)
+                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier + 86400).toString()}`)
                 } else {
-                  urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
+                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
                 }
               })
               //  Scenario where we just get the Google Maps API
@@ -139,11 +139,11 @@ const GraphDialogButton = ({
         const timeModifiers = [-7200, -3600, 3600, 7200]
         timeModifiers.map((timeModifier) => {
           if (time + timeModifier > 86400) {
-            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier - 86400).toString()}`)
+            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier - 86400).toString()}`)
           } else if (time + timeModifier < 0) {
-            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier + 86400).toString()}`)
+            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier + 86400).toString()}`)
           } else {
-            urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier).toString()}`)
+            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier).toString()}`)
           }
         })
 
