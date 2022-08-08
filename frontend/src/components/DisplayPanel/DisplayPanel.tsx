@@ -52,7 +52,7 @@ const DisplayPanel = ({
   const distanceFromEdge: number = 2;
 
   useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/current_weather/')
+    fetch('https://ipa-002.ucd.ie/api/current_weather/')
       .then((response) => {
         if (response.ok) {
           return response.json() as Promise<Weather>;
