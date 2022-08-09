@@ -80,10 +80,61 @@ const Map = ({
     mapRef.current = map
   }, [])
   
-
   useEffect(() => {
     mapRef.current?.panTo(userLocation)
   }, [userLocation])
+
+  useEffect(() => {
+    const getBoundsFromRoute = (routeSelection: BusRoute): google.maps.LatLngBounds => {
+      const routeLongitudes: number[] = routeSelection.bus_stops.map(stop => +stop.longitude);
+      const routeLatitudes: number[] = routeSelection.bus_stops.map(stop => +stop.latitude);
+      const maxLongitude: number = routeLongitudes.reduce((a,b) => Math.max(a,b), -Infinity);
+      const minLongitude: number = routeLongitudes.reduce((a,b) => Math.min(a,b), Infinity);
+      const maxLatitude: number = routeLatitudes.reduce((a,b) => Math.max(a,b), -Infinity);
+      const minLatitude: number = routeLatitudes.reduce((a,b) => Math.min(a,b), Infinity);
+
+      return new google.maps.LatLngBounds(
+        {lat: minLatitude, lng: minLongitude}, 
+        {lat: maxLatitude, lng: maxLongitude},
+      );
+    }
+
+    const getZoomForBounds = (map: React.MutableRefObject<google.maps.Map | undefined>, bounds: google.maps.LatLngBounds): number => {
+      // Source: https://stackoverflow.com/questions/9837017/equivalent-of-getboundszoomlevel-in-gmaps-api-3
+      const MAX_ZOOM = 21;
+      const MIN_ZOOM = 10;
+      const FIT_PAD = 40;
+
+      if (map.current) {
+        const northEastXY = map.current.getProjection()?.fromLatLngToPoint(bounds.getNorthEast());
+        const southWestXY = map.current.getProjection()?.fromLatLngToPoint(bounds.getSouthWest());
+
+        const desiredMapWidth = (northEastXY && southWestXY) ? Math.abs(northEastXY.x - southWestXY.x) : 0;
+        const desiredMapHeight = (northEastXY && southWestXY) ? Math.abs(northEastXY.y - southWestXY.y): 0;
+
+        for (let zoom = MAX_ZOOM; zoom >= MIN_ZOOM; --zoom) {
+          if (desiredMapWidth*(1<<zoom)+2*FIT_PAD < (map.current.getDiv().clientWidth) && 
+              desiredMapHeight*(1<<zoom)+2*FIT_PAD < (map.current.getDiv()).clientHeight) return zoom  
+        }
+        return MIN_ZOOM;
+      }
+      return MIN_ZOOM;
+    }
+
+    if (routeSelection) {
+      const bounds: google.maps.LatLngBounds = getBoundsFromRoute(routeSelection)
+      const requiredZoom: number = getZoomForBounds(mapRef, bounds);
+      setZoomLevel(requiredZoom);
+      if (mapRef.current) {
+        const boundCenter = bounds.getCenter();
+        mapRef.current?.panTo({
+          lat: boundCenter.lat(),
+          lng: boundCenter.lng(),
+        })
+      }
+    }
+    else setZoomLevel(15);
+  }, [routeSelection])
 
   const [zoomLevel, setZoomLevel] = useState<number|undefined>(16);
 
@@ -107,12 +158,13 @@ const Map = ({
         <GeoLocationButton setUserLocation={setUserLocation} />
       </Box>
       <GoogleMap
-        zoom={16}
+        zoom={zoomLevel} //16
         center={centerCoords}
         options={mapOptions}
         onLoad={onLoad}
         onZoomChanged={() => {
           if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
+          console.log(mapRef.current?.getZoom());
         }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
