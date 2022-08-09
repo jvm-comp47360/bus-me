@@ -19,6 +19,11 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
 
     model_classifier_pickle = pickle.load(open(model_classifer_file_path, 'rb'))
 
+    bus_stop_dictionary = {"33A": "331", "45A": "451", "33B": "332", "L51": "951", "N6": "536", "L52": "952"}
+
+    if route in bus_stop_dictionary.keys():
+        route = bus_stop_dictionary[route]
+
     # Search pickle file to get the line relate data
     df = search_table_pickle[search_table_pickle['LINEID'] == str(route)]
     df = df.reset_index(drop=True)

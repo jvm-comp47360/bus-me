@@ -43,7 +43,7 @@ describe('<BusRouteDropdown> Routes input', () => {
         await view.keyboard('[ArrowDown]');
         await view.keyboard('[Enter]');
 
-        expect(busRouteDropdown.value).toBe(`${BUS_ROUTE_SEARCH} (to Dargle Road)`);
+        expect(busRouteDropdown.value).toBe(BUS_ROUTE_SEARCH);
       });
 });
 

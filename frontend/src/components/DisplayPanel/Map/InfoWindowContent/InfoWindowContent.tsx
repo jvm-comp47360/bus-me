@@ -76,7 +76,7 @@ const InfoWindowContent =({
         }
         const busRouteName: string = busRoute.name;
         const busRouteId: string = busRoute.id;
-        const busRouteTerminus: string = getRouteTerminus(busRouteId);
+        const busRouteTerminus: string = busRouteName.split(" ")[0];
         return {
             name: busRouteName, 
             terminus: busRouteTerminus,
