@@ -65,18 +65,9 @@ const InfoWindowContent =({
     const mapBusRoutes = (
         busRoute: RouteInfo
         ): RouteTerminus => {
-        const getRouteTerminus = (id: string): string => {
-            for (let i = 0; i < busRoutes.length; i++) {
-                if (busRoutes[i].id === id) {
-                    const routeStops: BusStop[] = busRoutes[i].bus_stops;
-                    return routeStops[routeStops.length -1].name;
-                }
-            }
-            return ""
-        }
-        const busRouteName: string = busRoute.name;
+        const busRouteName: string = busRoute.name.split(" ")[0];
         const busRouteId: string = busRoute.id;
-        const busRouteTerminus: string = busRouteName.split(" ")[0];
+        const busRouteTerminus: string = busRoute.name.substring(busRoute.name.indexOf(" ") + 1);
         return {
             name: busRouteName, 
             terminus: busRouteTerminus,
@@ -143,7 +134,7 @@ const InfoWindowContent =({
                             borderRadius: '3px',
                             mb: '2px',
                             backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
-                        }}>{getRouteDescription(route.name, route.terminus)}</Typography>
+                        }}>`${route.name} ${route.terminus}`</Typography>
                 )): null}
             </Box>
         </Grid>
