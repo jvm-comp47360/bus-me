@@ -56,10 +56,12 @@ test('finish station button appears', () => {
 
 test('route and its terminus are rendered in the infowindow (all stops)', () => {
     setUp(false, mockStopTerminus)
-    expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
+    expect(screen.getByText(/3/i)).toBeInTheDocument();
+    expect(screen.getByText(/(to Faussaugh Ave Church)/i)).toBeInTheDocument();
 })
 
 test('route and its terminus are rendered in the infowindow (stop on a route)', () => {
     setUp(false, mockRouteData[1].bus_stops[0], stopData);
-    expect(screen.getByText(/3 to Faussaugh Ave Church/)).toBeInTheDocument();
+    expect(screen.getByText(/3/i)).toBeInTheDocument();
+    expect(screen.getByText(/(to Faussaugh Ave Church)/i)).toBeInTheDocument();
 })

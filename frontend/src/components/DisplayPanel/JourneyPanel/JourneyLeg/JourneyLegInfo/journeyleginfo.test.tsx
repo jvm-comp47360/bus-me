@@ -19,7 +19,7 @@ const setUp = (
 describe('<JourneyLegInfo> Rendering route name', () => {
   test('BusRoute selection renders', () => {
     setUp()
-    expect(screen.getByText(mockRoute.name)).toBeInTheDocument();
+    expect(screen.getByText(mockRoute.name.split(" ")[0])).toBeInTheDocument();
   })
 
   test('GoogleMaps selection renders', () => {

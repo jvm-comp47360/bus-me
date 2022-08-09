@@ -7,6 +7,8 @@ import os
 
 def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, float]:
     """Return dictionary containing prediction given the input variables"""
+    route = route.split(" ")[0]
+
     current_file_directory = os.path.dirname(os.path.realpath(__file__))
 
     search_table_file_path = os.path.join(current_file_directory, 'search_file/search_table.pkl')
@@ -18,6 +20,11 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
     search_table_pickle = pickle.load(open(search_table_file_path, 'rb'))
 
     model_classifier_pickle = pickle.load(open(model_classifer_file_path, 'rb'))
+
+    bus_stop_dictionary = {"33A": "331", "45A": "451", "33B": "332", "L51": "951", "N6": "536", "L52": "952"}
+
+    if route in bus_stop_dictionary.keys():
+        route = bus_stop_dictionary[route]
 
     # Search pickle file to get the line relate data
     df = search_table_pickle[search_table_pickle['LINEID'] == str(route)]
