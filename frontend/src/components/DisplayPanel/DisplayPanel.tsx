@@ -64,6 +64,27 @@ const DisplayPanel = ({
       .catch((error) => console.log(error));
   }, [])
 
+  useEffect(() => {
+    if (directions && !multiRoute) {
+      const updateRouteSelection = (returnedRoute: string): void => {
+        if (startSelection && finishSelection) {
+          const busRouteMatches: BusRoute[] = busRoutes.filter(route => {
+            return route.name.includes(returnedRoute) &&
+            Boolean(route.bus_stops.find(stop => stop.id === startSelection.id));
+          });
+          if (busRouteMatches) setRouteSelection(busRouteMatches[0])
+        }
+      };
+
+      const steps = directions.routes[0].legs[0].steps;
+      const transitStep = steps.filter(step => step.travel_mode === "TRANSIT")[0];
+      const returnedRoute = transitStep.transit?.line.short_name;
+      if ( busRoutes && returnedRoute && routeSelection && returnedRoute !== routeSelection.name) {
+        updateRouteSelection(returnedRoute);
+      }
+    }
+  }, [directions])
+
   return <Box 
       sx={{
         position: 'relative', 
