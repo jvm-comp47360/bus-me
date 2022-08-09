@@ -59,7 +59,10 @@ const ControlPanel = ({
     const localStorageRoutes: string | null =
       localStorage.getItem('bus_routes');
 
-    if (localStorageRoutes) {
+    const localStorageRoutesTtl: string | null =
+      localStorage.getItem('bus_routes_ttl');
+
+    if (localStorageRoutes && !timeStampOutOfDate(localStorageRoutesTtl)) {
       setBusRoutes(JSON.parse(localStorageRoutes));
     } else {
       fetch('https://ipa-002.ucd.ie/api/bus_routes/')
@@ -73,10 +76,22 @@ const ControlPanel = ({
         .then((data) => {
           setBusRoutes(data);
           localStorage.setItem('bus_routes', JSON.stringify(data))
+          localStorage.setItem('bus_routes_ttl', new Date().toLocaleString())
         })
         .catch((error) => console.log(error));
     }
   }, [])
+
+  const timeStampOutOfDate = (currentTimeStamp: string | null) => {
+    if (!currentTimeStamp) return true;
+
+    const timeStampDate: Date = new Date(currentTimeStamp);
+    const currentDate = new Date();
+
+    const timeDifference = Math.abs(currentDate.getTime() - timeStampDate.getTime()) / 36e5;
+
+    return timeDifference > 24
+  }
 
   return <Box
     display={'flex'}

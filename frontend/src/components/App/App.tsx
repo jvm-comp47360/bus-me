@@ -45,7 +45,10 @@ const App = (): JSX.Element => {
     const localStorageStops: string | null =
       localStorage.getItem('bus_stops');
 
-      if (localStorageStops) {
+    const localStorageStopsTtl: string | null =
+      localStorage.getItem('bus_stops_ttl');
+
+      if (localStorageStops && !timeStampOutOfDate(localStorageStopsTtl)) {
         setBusStops(JSON.parse(localStorageStops));
       } else {
         fetch('https://ipa-002.ucd.ie/api/bus_stops/')
@@ -59,10 +62,22 @@ const App = (): JSX.Element => {
           .then((data) => {
             setBusStops(data);
             localStorage.setItem('bus_stops', JSON.stringify(data))
+            localStorage.setItem('bus_stops_ttl', new Date().toLocaleString())
           })
           .catch((error) => console.log(error));
       }
   }, [])
+
+  const timeStampOutOfDate = (currentTimeStamp: string | null) => {
+    if (!currentTimeStamp) return true;
+
+    const timeStampDate: Date = new Date(currentTimeStamp);
+    const currentDate = new Date();
+
+    const timeDifference = Math.abs(currentDate.getTime() - timeStampDate.getTime()) / 36e5;
+
+    return timeDifference > 24
+  }
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>
