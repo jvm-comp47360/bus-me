@@ -48,7 +48,7 @@ const App = (): JSX.Element => {
       if (localStorageStops) {
         setBusStops(JSON.parse(localStorageStops));
       } else {
-        fetch('http://ipa-002.ucd.ie/api/bus_stops/')
+        fetch('https://ipa-002.ucd.ie/api/bus_stops/')
           .then((response) => {
             if (response.ok) {
               return response.json() as Promise<BusStop[]>;

@@ -121,7 +121,7 @@ const PlanJourneyButton = ({routeSelection,
         const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
         const time: string = getSeconds(dateTimeSelection).toString()
 
-        fetch(`http://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${time}`)
+        fetch(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${time}`)
           .then((response) => {
               if (response.ok) {
                   return response.json() as Promise<Prediction>;
@@ -170,7 +170,7 @@ const PlanJourneyButton = ({routeSelection,
                     const num_stop_segments: number = transitDetails.num_stops
                     const time: number = getSeconds(dateTimeSelection)
 
-                    urlsToFetch.push(`http://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time).toString()}`)
+                    urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time).toString()}`)
                     predictionStages.push(-1)
                 } else {
                     const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
