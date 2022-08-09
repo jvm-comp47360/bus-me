@@ -85,7 +85,7 @@ const RouteSelectionDropdown = ({
               {
                 (routeSelection) ?
                   <Typography variant={'h6'}>
-                    {`${routeSelection.name} (to ${routeSelection.bus_stops[routeSelection.bus_stops.length - 1]['name']})`}
+                    {routeSelection.name}
                   </Typography>
                   : null
               }

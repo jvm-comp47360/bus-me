@@ -5,7 +5,7 @@
     "bus_stops": [
       {
         "id":"8220DB000017",
-        "name":"Drumcondra Rail Stn",
+        "name":"Drumcondra Rail Stn (to Dargle Road)",
         "number":17,
         "latitude":"53.3630783244",
         "longitude":"-6.2583992885"
@@ -26,8 +26,8 @@
       },
       {
         "id": "8220DB000018",
-        "name": "Dargle Road",
-        "number": 18,
+        "name": "Other Station",
+        "number": 20,
         "latitude": "53.3658559259",
         "longitude": "-6.2559568207"
 
@@ -36,7 +36,7 @@
   },
   {
     "id": "2",
-    "name": "2",
+    "name": "2 (to Carnlough Road)",
     "bus_stops": [
       {
         "id":"8220DB000068",
@@ -56,7 +56,7 @@
   },
   {
     "id": "3",
-    "name": "3",
+    "name": "3 (to Faussaugh Ave Church)",
     "bus_stops": [
       {
         "id":"8220DB000072",

@@ -28,7 +28,7 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
         if (typeof routesForDisplay === 'string') {
             return routesForDisplay;
         }
-        return routesForDisplay.name;
+        return routesForDisplay.name.split(" ")[0];
     }
     
     return <Grid 

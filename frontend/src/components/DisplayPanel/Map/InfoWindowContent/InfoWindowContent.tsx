@@ -43,8 +43,6 @@ const InfoWindowContent =({
         }
         return [];
     }
-    
-    const getRouteDescription = (route: string, terminus: string): string => `${route} to ${terminus}`;
 
     const getBackgroundColour = (stopIndex: number): string => {
         const colourArray: string[] = ["red", "orange", "blue", "violet", "green"];
@@ -134,7 +132,7 @@ const InfoWindowContent =({
                             borderRadius: '3px',
                             mb: '2px',
                             backgroundColor: getBackgroundColour(routeTerminusInfo.indexOf(route)),
-                        }}>`${route.name} ${route.terminus}`</Typography>
+                        }}>{route.name} {route.terminus}</Typography>
                 )): null}
             </Box>
         </Grid>

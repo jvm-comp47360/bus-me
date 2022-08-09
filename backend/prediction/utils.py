@@ -8,7 +8,7 @@ import os
 def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, float]:
     """Return dictionary containing prediction given the input variables"""
     route = route.split(" ")[0]
-    
+
     current_file_directory = os.path.dirname(os.path.realpath(__file__))
 
     search_table_file_path = os.path.join(current_file_directory, 'search_file/search_table.pkl')
