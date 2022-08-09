@@ -60,20 +60,10 @@ describe('JourneyLeg tests', () => {
             expect(screen.getByText(/Drumcondra Rail Stn/i)).toBeInTheDocument();
         })
 
-
-
-
-
-
         test('finishSelection is rendered', () => {
             setUp(null);
             expect(screen.queryAllByAltText(/Dargle Road/i)).not.toBeNull();
         })
-
-
-
-
-
 
         describe('finishTime tests', () => {
             test('finishTime is rendered', () => {
