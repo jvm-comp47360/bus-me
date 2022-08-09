@@ -66,7 +66,7 @@ const PlanJourneyButton = ({routeSelection,
           startSelection === undefined || finishSelection === undefined) {
             return;
         }
-        else if (stationPickles.indexOf(routeSelection.name) === -1) {
+        else if (stationPickles.indexOf(routeSelection.name.split(" ")[0]) === -1) {
             setPredictionFromGoogleMaps(directions);
         } else {
             setPredictionFromBackend(routeSelection, startSelection, finishSelection, dateTimeSelection);

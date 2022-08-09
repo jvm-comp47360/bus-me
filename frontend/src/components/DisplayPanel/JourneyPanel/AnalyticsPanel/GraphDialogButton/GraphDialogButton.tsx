@@ -128,7 +128,7 @@ const GraphDialogButton = ({
             })
           })
       }
-      else if (stationPickles.indexOf(routeSelection.name) === -1) {
+      else if (stationPickles.indexOf(routeSelection.name.split(" ")[0]) === -1) {
         setPredictionList([prediction, prediction, prediction, prediction, prediction]);
         setGraphIsOpen(true);
       } else {
@@ -146,6 +146,8 @@ const GraphDialogButton = ({
             urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name}/${num_stops_segment}/${(time + timeModifier).toString()}`)
           }
         })
+
+        console.log(urlsToFetch)
 
         Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
