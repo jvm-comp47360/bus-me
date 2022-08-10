@@ -31,6 +31,7 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
 };
 
@@ -48,6 +49,7 @@ const Map = ({
   setFinishSelection,
   setUserLocation,
   setRouteSelection,
+  setDirections,
   multiRoute,
 }: Props): JSX.Element => {
 
@@ -220,6 +222,7 @@ const Map = ({
                       setRouteSelection={setRouteSelection}
                       multiRoute={multiRoute}
                       routeSelection={routeSelection}
+                      setDirections={setDirections}
                     />
                   </InfoWindow>:
                 null}
@@ -257,6 +260,7 @@ const Map = ({
                     setRouteSelection={setRouteSelection}
                     multiRoute={multiRoute}
                     routeSelection={routeSelection}
+                    setDirections={setDirections}
                   />
                 </InfoWindow>:
               null}

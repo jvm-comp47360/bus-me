@@ -15,6 +15,7 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     multiRoute: boolean;
 }
 
@@ -24,6 +25,8 @@ type RouteTerminus = {
     id: string;
 }
 
+type DirectionsResult = google.maps.DirectionsResult;
+
 const InfoWindowContent =({
     stop, 
     setStartSelection, 
@@ -31,6 +34,7 @@ const InfoWindowContent =({
     finishSelection,
     setFinishSelection,
     setRouteSelection,
+    setDirections,
     busRoutes,
     busStops,
     multiRoute,
@@ -83,6 +87,7 @@ const InfoWindowContent =({
                 setRouteSelection(busRoutes[i]);
                 setStartSelection(undefined);
                 setFinishSelection(undefined);
+                setDirections(null);
             }
         }
     }

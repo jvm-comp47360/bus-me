@@ -26,6 +26,7 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     multiRoute: boolean;
     predictionStages: number[];
 }
@@ -41,6 +42,7 @@ const DisplayPanel = ({
   setStartSelection,
   setFinishSelection,
   setRouteSelection,
+  setDirections,
   multiRoute,
   predictionStages,
 }: Props): JSX.Element => {
@@ -139,6 +141,7 @@ const DisplayPanel = ({
           setFinishSelection={setFinishSelection}
           setUserLocation={setUserLocation}
           setRouteSelection={setRouteSelection}
+          setDirections={setDirections}
           multiRoute={multiRoute}
         />
   </Box>;
