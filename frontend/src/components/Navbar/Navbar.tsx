@@ -72,6 +72,18 @@ const Navbar = ({multiRoute,
           <Stack direction='row'
             sx={{marginTop: 1}}>
             <Button
+              color='inherit'
+              onClick={() => {setAppInfoIsOpen(true)}}
+            >
+              App
+            </Button>
+            <Button
+              color='inherit'
+              onClick={() => {setAboutIsOpen(true)}}
+            >
+              About
+            </Button>
+            <Button
               color={'inherit'}
               aria-controls={dropdownIsOpen ? 'basic-menu' : undefined}
               aria-haspopup={'true'}
@@ -85,38 +97,26 @@ const Navbar = ({multiRoute,
               open={dropdownIsOpen}
               onClose={dropdownIsClosed}
             >
-              <MenuItem onClick={dropdownIsClosed}>
-                <RadioGroup
-                  name={'toggle-multiroute'}
-                  value={multiRoute}
-                  onChange={toggleMultiRoute}
-                  defaultValue={multiRoute}
-                >
-                  <Box
-                    display={'flex'}
-                    flexDirection={'column'}
-                    flexWrap={'wrap'}
-                    justifyContent={'center'}
-                    margin={1}
-                  >
-                    <FormControlLabel control={<Radio size={'small'}/>} label={'SINGLE ROUTE'} value={false}/>
-                    <FormControlLabel control={<Radio size={'small'}/>} label={'MULTI ROUTE'} value={true}/>
-                  </Box>
-                </RadioGroup>
-              </MenuItem>
+               <MenuItem onClick={dropdownIsClosed}>
+                 <RadioGroup
+                   name={'toggle-multiroute'}
+                   value={multiRoute}
+                   onChange={toggleMultiRoute}
+                   defaultValue={multiRoute}
+                 >
+                   <Box
+                     display={'flex'}
+                     flexDirection={'column'}
+                     flexWrap={'wrap'}
+                     justifyContent={'center'}
+                     margin={1}
+                   >
+                     <FormControlLabel control={<Radio size={'small'}/>} label={'SINGLE ROUTE'} value={false}/>
+                     <FormControlLabel control={<Radio size={'small'}/>} label={'MULTI ROUTE'} value={true}/>
+                   </Box>
+                 </RadioGroup>
+               </MenuItem>
             </Menu>
-            <Button
-              color='inherit'
-              onClick={() => {setAppInfoIsOpen(true)}}
-            >
-              App
-            </Button>
-            <Button
-              color='inherit'
-              onClick={() => {setAboutIsOpen(true)}}
-            >
-              About
-            </Button>
           </Stack>
         </Toolbar>
         <AboutDialog

@@ -2,8 +2,6 @@ import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 import {Box} from '@mui/material';
 
-import useMediaQuery from '@mui/material/useMediaQuery';
-
 import BusStop from '../../types/BusStop';
 import BusRoute from '../../types/BusRoute';
 import Weather from "../../types/Weather";
@@ -12,6 +10,8 @@ import WeatherCard from './WeatherCard/WeatherCard';
 import Map from './Map/Map';
 import JourneyPanel from './JourneyPanel/JourneyPanel';
 import JourneyPanelCollapsed from './JourneyPanelCollapsed/JourneyPanelCollapsed';
+
+import mockData from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -52,7 +52,6 @@ const DisplayPanel = ({
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
   const distanceFromEdge: number = 2;
-  const phoneScreenIsOff = useMediaQuery('(min-width:600px');
 
   useEffect(() => {
     fetch('https://ipa-002.ucd.ie/api/current_weather/')
@@ -88,35 +87,30 @@ const DisplayPanel = ({
     }
   }, [directions])
 
-  return <Box
-    sx={{
-      position: 'relative',
-      zIndex: 0,
-      px: distanceFromEdge,
-    }}>
-    <Box
-      display={phoneScreenIsOff ? undefined : 'flex'}
-      justifyContent={phoneScreenIsOff ? undefined : 'center'}
-    >
-      <Box
-        id="overlay"
+  return <Box 
+      sx={{
+        position: 'relative', 
+        zIndex: 0,
+        px: distanceFromEdge,
+      }}>
+        <Box
+        id="right-overlay"
         sx={{
           position: 'absolute',
           zIndex: 2,
-          right: phoneScreenIsOff ? '0%' : undefined,
+          right: '0%',
           width: '25%',
           minWidth: '250px',
-          top: phoneScreenIsOff ? undefined : '9%',
-          mr: phoneScreenIsOff ? distanceFromEdge : undefined,
+          mr: distanceFromEdge,
           border: 1,
           borderColor: 'primary.main',
-        }}>
-        {(weather) ? <WeatherCard weather={weather}/> : null}
-        {(startSelection &&
-          finishSelection &&
-          directions &&
-          directions.routes[0].legs[0].departure_time &&
-          prediction && (routeSelection || multiRoute)) ? <>
+          }}>
+          {(weather) ? <WeatherCard weather={weather}/> : null}
+          {(startSelection &&
+            finishSelection &&
+            directions &&
+            directions.routes[0].legs[0].departure_time &&
+            prediction && (routeSelection || multiRoute)) ? <>
             <JourneyPanelCollapsed
               setCollapseJourneyPanel={setCollapseJourneyPanel}
               collapseJourneyPanel={collapseJourneyPanel}/>
@@ -131,26 +125,25 @@ const DisplayPanel = ({
               directions={directions}
               predictionStages={predictionStages}
             />
-          </> :
-          null
-        }
-      </Box>
-    </Box>
-    <Map
-      startSelection={startSelection}
-      finishSelection={finishSelection}
-      directions={directions}
-      routeSelection={routeSelection}
-      userLocation={userLocation}
-      busStops={busStops}
-      busRoutes={busRoutes}
-      setStartSelection={setStartSelection}
-      setFinishSelection={setFinishSelection}
-      setUserLocation={setUserLocation}
-      setRouteSelection={setRouteSelection}
-      setDirections={setDirections}
-      multiRoute={multiRoute}
-    />
+            </> :
+            null
+          }
+         </Box>
+        <Map
+          startSelection={startSelection}
+          finishSelection={finishSelection}
+          directions={directions}
+          routeSelection={routeSelection}
+          userLocation={userLocation}
+          busStops={busStops}
+          busRoutes={busRoutes}
+          setStartSelection={setStartSelection}
+          setFinishSelection={setFinishSelection}
+          setUserLocation={setUserLocation}
+          setRouteSelection={setRouteSelection}
+          setDirections={setDirections}
+          multiRoute={multiRoute}
+        />
   </Box>;
 };
 

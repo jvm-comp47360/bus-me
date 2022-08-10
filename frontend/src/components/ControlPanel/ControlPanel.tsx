@@ -101,7 +101,6 @@ const ControlPanel = ({
     flexWrap={'wrap'}
     justifyContent={'center'}
     sx={{backgroundColor: '#ffff72'}}
-    p={1}
   >
     {/* Route Selection panel disappears if multiRoute is selected*/}
     {multiRoute ? null :

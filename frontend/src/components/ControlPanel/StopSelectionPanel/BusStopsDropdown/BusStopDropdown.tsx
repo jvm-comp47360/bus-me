@@ -60,7 +60,7 @@ const BusStopDropdown = ({
         `${option.name}, Stop No.${option.number}`}
       options={getBusStops()}
       noOptionsText={'Please select a route!'}
-      sx={{width: 370}}
+      sx={{width: 400}}
       renderOption={(props, option: BusStop) => {
         return (
           <span {...props} style={{backgroundColor: 'white'}}>
