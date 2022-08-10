@@ -58,7 +58,6 @@ const GraphDialogButton = ({
 
   const getPredictionsAndOpenGraph = () => {
     // If route selection is empty, then multiroute is on.
-    console.log(routeSelection);
     if (!routeSelection) {
       // Null check for directions.
       if (!directions) {
@@ -105,14 +104,11 @@ const GraphDialogButton = ({
         }
       });
 
-      console.log(urlsToFetch);
-
       Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
             Promise.all(predictions).then((predictions) => {
-              console.log(predictions);
               const numberOfLegs: number = predictions.length / 4;
               const totalPredictionList: number[] = [];
 
@@ -156,8 +152,6 @@ const GraphDialogButton = ({
           urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${(time + timeModifier).toString()}`);
         }
       });
-
-      console.log(urlsToFetch);
 
       Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>

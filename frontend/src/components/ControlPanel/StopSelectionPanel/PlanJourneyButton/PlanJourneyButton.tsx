@@ -112,7 +112,6 @@ const PlanJourneyButton = ({routeSelection,
         response: DirectionsResult | null,
         status: DirectionsStatus,
     ) => {
-      console.log(response);
       if (response && status === 'OK') { // response was state of directions
         setDirections(response);
       }
@@ -121,7 +120,6 @@ const PlanJourneyButton = ({routeSelection,
     const service = new google.maps.DirectionsService();
     service.route(userDirectionsRequest, directionsServiceCallback)
         .then((directions: DirectionsResult) => {
-          console.log(multiRoute);
           if (multiRoute) {
             setMultiRoutePrediction(directions);
           } else {
@@ -205,7 +203,6 @@ const PlanJourneyButton = ({routeSelection,
             if (predictionInSeconds) {
               const predictionInMinutes: number =
                 Math.round((predictionInSeconds.value / 60 * 10) / 10);
-              console.log('Prediction in minutes:');
               googleMapsPrediction =
                 googleMapsPrediction + +predictionInMinutes;
               predictionStages.push(predictionInMinutes);
@@ -214,14 +211,11 @@ const PlanJourneyButton = ({routeSelection,
         }
       });
 
-      console.log(urlsToFetch);
-
       Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
             Promise.all(predictions).then((predictions) => {
-              console.log(predictions);
               const predictionValues: number[] =
                 predictions.map((prediction) => prediction.prediction);
 
@@ -234,22 +228,11 @@ const PlanJourneyButton = ({routeSelection,
                 }
               }
 
-              console.log(predictionStages);
-
               const totalPrediction: number = predictionValues.reduce(
                   (a: number, b: number) => +a + +b, 0,
               );
               const finalPrediction: number =
                 totalPrediction + googleMapsPrediction;
-
-              console.log('Total Prediction is: ');
-              console.log(totalPrediction);
-              console.log('Google Maps Prediction is: ');
-              console.log(googleMapsPrediction);
-
-              console.log('Final Prediction is: ');
-              console.log(finalPrediction);
-              console.log(predictionValues);
 
               setPredictionStages(predictionStages);
               setPrediction(finalPrediction);
@@ -262,8 +245,6 @@ const PlanJourneyButton = ({routeSelection,
     if (startSelection === undefined || finishSelection === undefined) {
       return;
     }
-
-    console.log('setting prediction');
 
     setDirectionsAndPrediction(startSelection, finishSelection);
   };

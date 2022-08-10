@@ -22,7 +22,6 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
 
   const addressIsOutOfBounds =
     (latitude: number, longitude: number): boolean => {
-      console.log(mapBoundaries);
       return latitude > mapBoundaries.north ||
       latitude < mapBoundaries.south ||
       longitude < mapBoundaries.west ||
@@ -46,8 +45,6 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
         alert('Address is out of bounds');
         return;
       } else {
-        console.log(latitude);
-        console.log(longitude);
         setUserLocation({lat: latitude, lng: longitude});
       }
     }
