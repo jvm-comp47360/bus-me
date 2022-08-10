@@ -2,8 +2,7 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Material UI
-import Button from '@mui/material/Button';
-import {Box, Slide, Typography} from '@mui/material';
+import {Box} from '@mui/material';
 
 // Types
 import BusRoute from '../../types/BusRoute';

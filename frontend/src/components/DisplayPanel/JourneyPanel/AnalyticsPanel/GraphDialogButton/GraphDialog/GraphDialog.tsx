@@ -1,4 +1,3 @@
-import React from 'react';
 import {Button, Dialog, DialogTitle} from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
