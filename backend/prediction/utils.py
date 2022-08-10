@@ -30,7 +30,6 @@ def get_prediction(route: str, num_stops_segment: str, time: str) -> Dict[str, f
 
     # Search the most close PLANNED_DURATION index
     planned_duration_index = np.searchsorted(df['PLANNEDTIME_ARR'], time, side='right')
-    print(planned_duration_index)
 
     if planned_duration_index == len(df):
         planned_duration_index = planned_duration_index - 1
@@ -87,6 +86,7 @@ def get_current_pickle_file_path(route: str, pickle_directory_file_path: str) ->
 
 
 def time_encoder(time: int) -> Tuple[float, float]:
+    """Creates offset for time if over 24 hours"""
     if time >= 86400:
         hour = int((time-86400)/3600)
     else:

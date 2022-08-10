@@ -9,11 +9,6 @@ class PredictionAPIView(APIView):
     serializer_class = PredictionSerializer
 
     def get(self, request, route, num_stops_segment, time):
-        # print(request)
-        # route = request.GET['route']
-        # num_stops_segment = request.GET['num_stops_segment']
-        # time = request.get['time']
-
         prediction = get_prediction(route, num_stops_segment, time)
         serializer = PredictionSerializer(data=prediction)
 
