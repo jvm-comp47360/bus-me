@@ -49,8 +49,8 @@ const RouteSelectionDropdown = ({
       flexDirection={'column'}
       flexWrap={'wrap'}
       justifyContent={'center'}
-      margin={1}
-      width={400}
+      width={370}
+      p={1}
     >
       {!routeSelection ? (
         <Slide
@@ -84,7 +84,7 @@ const RouteSelectionDropdown = ({
             >
               {
                 (routeSelection) ?
-                  <Typography variant={'h6'}>
+                  <Typography variant={'h6'} textAlign={'center'}>
                     {routeSelection.name}
                   </Typography>
                   : null
