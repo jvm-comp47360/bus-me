@@ -19,6 +19,7 @@ const setup = (prediction: number | undefined,
       graphPredictions={graphPredictions}
       startSelection={MOCK_START_STATION}
       finishSelection={MOCK_FINISH_STATION}
+      dateTimeSelection={new Date()}
     />
   )
 ;

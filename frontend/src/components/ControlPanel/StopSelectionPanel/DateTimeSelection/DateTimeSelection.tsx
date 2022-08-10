@@ -28,6 +28,7 @@ const DateTimeSelection = ({
     return <>
         <DateTimePicker
             onChange={dateTimeChangeHandler}
+            aria-label={"date-time-selector"}
             value={dateTimeSelection}
             inputFormat={'dd/MM/yyyy HH:mm aaa'}
             renderInput={(params: TextFieldProps) => <TextField {...params} sx={{backgroundColor: 'white'}}/>}

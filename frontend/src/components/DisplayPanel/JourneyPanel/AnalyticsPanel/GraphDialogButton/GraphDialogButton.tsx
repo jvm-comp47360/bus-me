@@ -181,6 +181,7 @@ const GraphDialogButton = ({
       graphPredictions={predictionList}
       startSelection={startSelection}
       finishSelection={finishSelection}
+      dateTimeSelection={dateTimeSelection}
     />
   </>;
 };

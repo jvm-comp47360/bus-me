@@ -59,6 +59,7 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
       >
       <input
         type="text"
+        aria-label={"custom-address-search-bar"}
         placeholder="Show custom address on map"
         style={{
           boxSizing: `border-box`,
