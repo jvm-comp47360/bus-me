@@ -161,44 +161,26 @@ const Map = ({
 
   const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
 
-  const renderDesktopLayout = () => {
-    return <Box sx={{
-      zIndex: 1,
-      display: 'flex',
-      position: 'absolute',
-      top: '1%',
-      left: '3%',
-      width: '100%',
-      maxWidth: '1200px',
-    }}>
-      <MapSearchBar setUserLocation={setUserLocation}/>
-      <GeoLocationButton setUserLocation={setUserLocation}/>
-    </Box>;
-  }
-
-  const renderMobileLayout = () => {
-    return <Box sx={{
-      zIndex: 1,
-      display: 'flex',
-      justifyContent: 'center',
-      position: 'absolute',
-      top: '1%',
-      width: '94%',
-      maxWidth: '1200px',
-      marginRight: '-10%'
-    }}>
-      <MapSearchBar setUserLocation={setUserLocation}/>
-      <GeoLocationButton setUserLocation={setUserLocation}/>
-    </Box>;
-  }
-
   return !(isLoaded) ?
     <LoadScreen/>:
     <Container
       disableGutters={true}
       className="map"
       maxWidth={false}>
-      {phoneScreenIsOff ? renderDesktopLayout() : renderMobileLayout()}
+      <Box sx={{
+        zIndex: 1,
+        display: 'flex',
+        justifyContent: phoneScreenIsOff ? undefined : 'center',
+        position: 'absolute',
+        top: '1%',
+        left: phoneScreenIsOff ? '3%' : undefined,
+        width: phoneScreenIsOff ? '100%' : '94%',
+        maxWidth: '1200px',
+        marginRight: phoneScreenIsOff ? undefined : '-10%',
+      }}>
+        <MapSearchBar setUserLocation={setUserLocation}/>
+        <GeoLocationButton setUserLocation={setUserLocation}/>
+      </Box>
       <GoogleMap
         zoom={zoomLevel} //16
         center={centerCoords}

@@ -88,58 +88,26 @@ const DisplayPanel = ({
     }
   }, [directions])
 
-  const renderDesktopLayout = () => {
-    return <Box
-      id="right-overlay"
-      sx={{
-        position: 'absolute',
-        zIndex: 2,
-        right: '0%',
-        width: '25%',
-        minWidth: '250px',
-        mr: distanceFromEdge,
-        border: 1,
-        borderColor: 'primary.main',
-      }}>
-      {(weather) ? <WeatherCard weather={weather}/> : null}
-      {(startSelection &&
-        finishSelection &&
-        directions &&
-        directions.routes[0].legs[0].departure_time &&
-        prediction && (routeSelection || multiRoute)) ? <>
-          <JourneyPanelCollapsed
-            setCollapseJourneyPanel={setCollapseJourneyPanel}
-            collapseJourneyPanel={collapseJourneyPanel}/>
-          <JourneyPanel
-            startSelection={startSelection}
-            departureTime={directions.routes[0].legs[0].departure_time.value}
-            finishSelection={finishSelection}
-            routeSelection={routeSelection}
-            prediction={prediction}
-            setCollapseJourneyPanel={setCollapseJourneyPanel}
-            collapseJourneyPanel={collapseJourneyPanel}
-            directions={directions}
-            predictionStages={predictionStages}
-          />
-        </> :
-        null
-      }
-    </Box>;
-  }
-
-  const renderMobileLayout = () => {
-    return <Box
-      display={'flex'}
-      justifyContent={'center'}
+  return <Box
+    sx={{
+      position: 'relative',
+      zIndex: 0,
+      px: distanceFromEdge,
+    }}>
+    <Box
+      display={phoneScreenIsOff ? undefined : 'flex'}
+      justifyContent={phoneScreenIsOff ? undefined : 'center'}
     >
       <Box
-        id="middle-overlay"
+        id="overlay"
         sx={{
           position: 'absolute',
           zIndex: 2,
+          right: phoneScreenIsOff ? '0%' : undefined,
           width: '25%',
-          top: '9%',
           minWidth: '250px',
+          top: phoneScreenIsOff ? undefined : '9%',
+          mr: phoneScreenIsOff ? distanceFromEdge : undefined,
           border: 1,
           borderColor: 'primary.main',
         }}>
@@ -168,15 +136,6 @@ const DisplayPanel = ({
         }
       </Box>
     </Box>
-  }
-
-  return <Box
-    sx={{
-      position: 'relative',
-      zIndex: 0,
-      px: distanceFromEdge,
-    }}>
-    {phoneScreenIsOff ? renderDesktopLayout() : renderMobileLayout()}
     <Map
       startSelection={startSelection}
       finishSelection={finishSelection}
