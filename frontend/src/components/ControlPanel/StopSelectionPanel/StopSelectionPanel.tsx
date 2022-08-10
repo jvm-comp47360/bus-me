@@ -79,6 +79,7 @@ const StopSelectionPanel = ({
           multiRoute={multiRoute}
         />
         <RadioGroup
+          aria-label={"toggle-arrival-departure"}
           name={'toggle-time'}
           value={arrivalSelected}
           onChange={toggleArrivalSelected}

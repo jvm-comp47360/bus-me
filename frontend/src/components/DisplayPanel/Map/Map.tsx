@@ -141,7 +141,7 @@ const Map = ({
       }
       return MIN_ZOOM;
     }
-
+  //
     if (routeSelection) {
       const bounds: google.maps.LatLngBounds = getBoundsFromRoute(routeSelection)
       const requiredZoom: number = getZoomForBounds(mapRef, bounds);
@@ -229,6 +229,7 @@ const Map = ({
                       multiRoute={multiRoute}
                       routeSelection={routeSelection}
                       setDirections={setDirections}
+                      setSelectedMarker={setSelectedMarker}
                     />
                   </InfoWindow> :
                   null}
@@ -240,50 +241,37 @@ const Map = ({
                   lat: +stop.latitude,
                   lng: +stop.longitude,
                 }}
-                icon={{
-                  url: require(`../../../assets/bus_me_stop.png`),
-                  scaledSize: new google.maps.Size(17.5, 17.5)
-                }}
-                onClick={(e) => setSelectedMarker(e.latLng)}
-                visible={(zoomLevel && zoomLevel >= 15) ? true : false}
-              >
-                {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
-                  selectedMarker.lng() === +stop.longitude) ?
-                  <InfoWindow
-                    position={{
-                      lat: +stop.latitude,
-                      lng: +stop.longitude,
-                    }}
-                    onCloseClick={() => setSelectedMarker(null)}
-                  >
-                    <InfoWindowContent
-                      stop={stop}
-                      setStartSelection={setStartSelection}
-                      startSelection={startSelection}
-                      setFinishSelection={setFinishSelection}
-                      finishSelection={finishSelection}
-                      busRoutes={busRoutes}
-                      setRouteSelection={setRouteSelection}
-                      multiRoute={multiRoute}
-                      routeSelection={routeSelection}
-                      setDirections={setDirections}
-                    />
-                  </InfoWindow> :
-                  null}
-              </Marker>
-            )}
-          {(directions) ?
-            <DirectionsRenderer
-              directions={directions}
-              options={{
-                polylineOptions: {
-                  strokeColor: "#002984",
-                  strokeWeight: 5,
-                  strokeOpacity: 0.75,
-                },
-                suppressMarkers: true,
-              }}/> :
-            null}
+                onCloseClick = {() => setSelectedMarker(null)}
+                >
+                  <InfoWindowContent 
+                    stop={stop}
+                    setStartSelection={setStartSelection}
+                    startSelection={startSelection}
+                    setFinishSelection={setFinishSelection}
+                    finishSelection={finishSelection}
+                    busRoutes={busRoutes}
+                    setRouteSelection={setRouteSelection}
+                    multiRoute={multiRoute}
+                    routeSelection={routeSelection}
+                    setDirections={setDirections}
+                    setSelectedMarker={setSelectedMarker}
+                  />
+                </InfoWindow>:
+              null}
+          </Marker>
+        )}
+        {(directions) ?
+        <DirectionsRenderer 
+          directions={directions}
+          options={{
+            polylineOptions: {
+              strokeColor: "#002984",
+              strokeWeight: 5,
+              strokeOpacity: 0.75,
+            },
+            suppressMarkers: true,
+          }}/>:
+          null}
         </>
       </GoogleMap>
     </Container>;

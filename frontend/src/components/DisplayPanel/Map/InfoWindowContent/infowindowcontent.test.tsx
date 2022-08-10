@@ -20,6 +20,7 @@ const setUp = (
         setFinishSelection={jest.fn()}
         setRouteSelection={jest.fn()}
         setDirections={jest.fn()}
+        setSelectedMarker={jest.fn()}
         startSelection={undefined}
         finishSelection={undefined}
         busRoutes={mockRouteData}

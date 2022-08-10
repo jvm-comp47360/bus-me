@@ -17,6 +17,7 @@ interface Props {
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
     setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
     multiRoute: boolean;
+    setSelectedMarker: Dispatch<SetStateAction<google.maps.LatLng | null>>;
 }
 
 type RouteTerminus = {
@@ -39,6 +40,7 @@ const InfoWindowContent =({
     busStops,
     multiRoute,
     routeSelection,
+    setSelectedMarker,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
         for (let i = 0; i < busStops.length; i++) {
@@ -166,6 +168,7 @@ const InfoWindowContent =({
                     existingSelection={finishSelection}
                     routeSelection={routeSelection}
                     multiRoute={multiRoute}
+                    setSelectedMarker={setSelectedMarker}
                     />
             </Grid>
             <Grid item sx={{p: '2px'}}>
@@ -175,7 +178,8 @@ const InfoWindowContent =({
                     stop={stop}
                     existingSelection={startSelection}
                     routeSelection={routeSelection}
-                    multiRoute={multiRoute}/>
+                    multiRoute={multiRoute}
+                    setSelectedMarker={setSelectedMarker}/>
                     
             </Grid>
         </Grid>
