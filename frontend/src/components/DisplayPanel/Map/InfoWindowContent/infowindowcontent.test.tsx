@@ -24,6 +24,7 @@ const setUp = (
         busRoutes={mockRouteData}
         busStops={busStops}
         multiRoute={multiRoute}
+        routeSelection={mockRouteData[0]}
     />
 )
 

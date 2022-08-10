@@ -11,6 +11,7 @@ interface Props {
     finishSelection: BusStop | undefined;
     busRoutes: BusRoute[];
     busStops?: BusStop[];
+    routeSelection: BusRoute | undefined;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
@@ -33,6 +34,7 @@ const InfoWindowContent =({
     busRoutes,
     busStops,
     multiRoute,
+    routeSelection,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
         for (let i = 0; i < busStops.length; i++) {
@@ -157,6 +159,7 @@ const InfoWindowContent =({
                     setStopSelection={setStartSelection}
                     stop={stop}
                     existingSelection={finishSelection}
+                    routeSelection={routeSelection}
                     />
             </Grid>
             <Grid item sx={{p: '2px'}}>
@@ -164,7 +167,8 @@ const InfoWindowContent =({
                     name={"Finish"}
                     setStopSelection={setFinishSelection}
                     stop={stop}
-                    existingSelection={startSelection}/>
+                    existingSelection={startSelection}
+                    routeSelection={routeSelection}/>
             </Grid>
         </Grid>
     </Grid>

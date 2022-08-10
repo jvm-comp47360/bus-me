@@ -219,6 +219,7 @@ const Map = ({
                       busStops={busStops}
                       setRouteSelection={setRouteSelection}
                       multiRoute={multiRoute}
+                      routeSelection={routeSelection}
                     />
                   </InfoWindow>:
                 null}
@@ -255,6 +256,7 @@ const Map = ({
                     busRoutes={busRoutes}
                     setRouteSelection={setRouteSelection}
                     multiRoute={multiRoute}
+                    routeSelection={routeSelection}
                   />
                 </InfoWindow>:
               null}
