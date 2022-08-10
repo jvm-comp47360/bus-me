@@ -10,6 +10,7 @@ interface Props {
     existingSelection: BusStop | undefined;
     routeSelection: BusRoute | undefined;
     multiRoute: boolean;
+    setSelectedMarker: Dispatch<SetStateAction<google.maps.LatLng | null>>;
 }
 
 const InfoWindowButton = ({
@@ -19,6 +20,7 @@ const InfoWindowButton = ({
     existingSelection,
     routeSelection,
     multiRoute,
+    setSelectedMarker,
 }: Props): JSX.Element => {
     const submitDisableHandler = (): boolean => {
         if (name === "Finish") {
@@ -30,10 +32,15 @@ const InfoWindowButton = ({
         } 
     };
 
+    const clickHandler = (): void => {
+        setStopSelection(stop);
+        setSelectedMarker(null);
+    }
+
     return (
         <Button 
         variant={'contained'}
-        onClick={() => setStopSelection(stop)}
+        onClick={clickHandler}
         disabled={(multiRoute) ? false : (routeSelection === undefined) ? true : submitDisableHandler()}
         sx={{
             width: '140px',
