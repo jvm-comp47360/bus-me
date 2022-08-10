@@ -13,8 +13,6 @@ type DirectionsResult = google.maps.DirectionsResult;
 // Components
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import PlanJourneyButton from './StopSelectionPanel/PlanJourneyButton/PlanJourneyButton';
-
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -26,7 +24,7 @@ interface Props {
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   busRoutes: BusRoute[];
-  setBusRoutes:  Dispatch<SetStateAction<BusRoute[]>>
+  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>
   busStops: BusStop[];
   multiRoute: boolean
   setMultiRoute: Dispatch<SetStateAction<boolean>>
@@ -37,21 +35,20 @@ interface Props {
 // https://stackoverflow.com/questions/55647969/how-to-get-one-elements-to-slide-in-while-the-other-slides-out-using-react-and
 
 const ControlPanel = ({
-                        startSelection,
-                        setStartSelection,
-                        finishSelection,
-                        setFinishSelection,
-                        routeSelection,
-                        setRouteSelection,
-                        setPrediction,
-                        setDirections,
-                        busRoutes,
-                        setBusRoutes,
-                        busStops,
-                        multiRoute,
-                        setPredictionStages,
-                      }: Props): JSX.Element => {
-
+  startSelection,
+  setStartSelection,
+  finishSelection,
+  setFinishSelection,
+  routeSelection,
+  setRouteSelection,
+  setPrediction,
+  setDirections,
+  busRoutes,
+  setBusRoutes,
+  busStops,
+  multiRoute,
+  setPredictionStages,
+}: Props): JSX.Element => {
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
 
@@ -66,21 +63,21 @@ const ControlPanel = ({
       setBusRoutes(JSON.parse(localStorageRoutes));
     } else {
       fetch('https://ipa-002.ucd.ie/api/bus_routes/')
-        .then((response) => {
-          if (response.ok) {
-            return response.json() as Promise<BusRoute[]>;
-          } else {
-            throw new Error();
-          }
-        })
-        .then((data) => {
-          setBusRoutes(data);
-          localStorage.setItem('bus_routes', JSON.stringify(data))
-          localStorage.setItem('bus_routes_ttl', new Date().toISOString())
-        })
-        .catch((error) => console.log(error));
+          .then((response) => {
+            if (response.ok) {
+              return response.json() as Promise<BusRoute[]>;
+            } else {
+              throw new Error();
+            }
+          })
+          .then((data) => {
+            setBusRoutes(data);
+            localStorage.setItem('bus_routes', JSON.stringify(data));
+            localStorage.setItem('bus_routes_ttl', new Date().toISOString());
+          })
+          .catch((error) => console.log(error));
     }
-  }, [])
+  }, []);
 
   const timeStampOutOfDate = (currentTimeStamp: string | null) => {
     if (!currentTimeStamp) return true;
@@ -89,11 +86,11 @@ const ControlPanel = ({
     const currentDate = new Date();
 
     const currentTime = currentDate.getTime();
-    const timeStampTime = timeStampDate.getTime()
+    const timeStampTime = timeStampDate.getTime();
     const timeDifference = (currentTime - timeStampTime) / 36e5;
 
-    return timeDifference > 24
-  }
+    return timeDifference > 24;
+  };
 
   return <Box
     display={'flex'}

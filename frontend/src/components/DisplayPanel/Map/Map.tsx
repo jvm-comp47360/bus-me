@@ -5,7 +5,15 @@ import {
   Marker,
   InfoWindow,
 } from '@react-google-maps/api';
-import {Dispatch, SetStateAction, useState, useMemo, useRef, useCallback, useEffect} from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useState,
+  useMemo,
+  useRef,
+  useCallback,
+  useEffect}
+  from 'react';
 import {Container, Box} from '@mui/material';
 import InfoWindowContent from './InfoWindowContent/InfoWindowContent';
 
@@ -13,10 +21,8 @@ import BusStop from '../../../types/BusStop';
 import BusRoute from '../../../types/BusRoute';
 import LoadScreen from './LoadScreen/LoadScreen';
 import MapSearchBar from './MapSearchBar/MapSearchBar';
-import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
-import { MapRounded } from '@mui/icons-material';
-import { start } from 'repl';
-import useMediaQuery from "@mui/material/useMediaQuery";
+import GeoLocationButton from './GeoLocationButton/GeoLocationButton';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -34,14 +40,16 @@ interface Props {
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
-};
+}
 
-const googleMapsLibraries: ("places" | "drawing" | "geometry" | "localContext" | "visualization")[] = ['places'];
+const googleMapsLibraries:
+  ('places' | 'drawing' | 'geometry' | 'localContext' | 'visualization')[] =
+  ['places'];
 
 const Map = ({
-  startSelection, 
-  finishSelection, 
-  directions, 
+  startSelection,
+  finishSelection,
+  directions,
   routeSelection,
   userLocation,
   busStops,
@@ -53,11 +61,11 @@ const Map = ({
   setDirections,
   multiRoute,
 }: Props): JSX.Element => {
-
   const phoneScreenIsOff = useMediaQuery('(min-width:600px');
 
   const {isLoaded} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string, libraries: googleMapsLibraries
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_KEY as string,
+    libraries: googleMapsLibraries,
   });
 
   const centerCoords: google.maps.LatLngLiteral = useMemo(() => ({
@@ -66,7 +74,7 @@ const Map = ({
   }), []);
 
   const mapOptions: google.maps.MapOptions = useMemo(() => ({
-    mapId: "5a13c1894ab64113",
+    mapId: '5a13c1894ab64113',
     streetViewControl: false,
     mapTypeControl: false,
     fullscreenControl: false,
@@ -83,67 +91,89 @@ const Map = ({
 
   const mapRef = useRef<google.maps.Map>();
   const onLoad = useCallback((map: google.maps.Map): void => {
-    mapRef.current = map
-  }, [])
+    mapRef.current = map;
+  }, []);
 
-  const getOpacityValue = (stopID: string, routeSelection: BusRoute): number => {
-    const FULL_VALUE = 1;
-    const OPAQUE_VALUE = 0.4;
+  const getOpacityValue =
+    (stopID: string, routeSelection: BusRoute): number => {
+      const FULL_VALUE = 1;
+      const OPAQUE_VALUE = 0.4;
 
-    if (startSelection && !finishSelection) {
-      const stopIDArray: string[] = routeSelection.bus_stops.map(route => route.id);
-      return (stopIDArray.indexOf(stopID) < stopIDArray.indexOf(startSelection.id) ? OPAQUE_VALUE : FULL_VALUE);
-    }
-    else if (startSelection && finishSelection) {
-      if (stopID === startSelection.id || stopID === finishSelection.id) return FULL_VALUE;
-      else return OPAQUE_VALUE;
-    }
-    return FULL_VALUE;
-  }
-  
+      if (startSelection && !finishSelection) {
+        const stopIDArray: string[] =
+        routeSelection.bus_stops.map((route) => route.id);
+        return (stopIDArray.indexOf(stopID) <
+        stopIDArray.indexOf(startSelection.id) ?
+        OPAQUE_VALUE : FULL_VALUE);
+      } else if (startSelection && finishSelection) {
+        if (stopID === startSelection.id ||
+          stopID === finishSelection.id) return FULL_VALUE;
+        else return OPAQUE_VALUE;
+      }
+      return FULL_VALUE;
+    };
+
   useEffect(() => {
-    mapRef.current?.panTo(userLocation)
-  }, [userLocation])
+    mapRef.current?.panTo(userLocation);
+  }, [userLocation]);
 
   useEffect(() => {
-    const getBoundsFromRoute = (routeSelection: BusRoute): google.maps.LatLngBounds => {
-      const routeLongitudes: number[] = routeSelection.bus_stops.map(stop => +stop.longitude);
-      const routeLatitudes: number[] = routeSelection.bus_stops.map(stop => +stop.latitude);
-      const maxLongitude: number = routeLongitudes.reduce((a,b) => Math.max(a,b), -Infinity);
-      const minLongitude: number = routeLongitudes.reduce((a,b) => Math.min(a,b), Infinity);
-      const maxLatitude: number = routeLatitudes.reduce((a,b) => Math.max(a,b), -Infinity);
-      const minLatitude: number = routeLatitudes.reduce((a,b) => Math.min(a,b), Infinity);
+    const getBoundsFromRoute =
+      (routeSelection: BusRoute): google.maps.LatLngBounds => {
+        const routeLongitudes: number[] =
+        routeSelection.bus_stops.map((stop) => +stop.longitude);
+        const routeLatitudes: number[] =
+        routeSelection.bus_stops.map((stop) => +stop.latitude);
+        const maxLongitude: number =
+        routeLongitudes.reduce((a, b) => Math.max(a, b), -Infinity);
+        const minLongitude: number =
+        routeLongitudes.reduce((a, b) => Math.min(a, b), Infinity);
+        const maxLatitude: number =
+        routeLatitudes.reduce((a, b) => Math.max(a, b), -Infinity);
+        const minLatitude: number =
+        routeLatitudes.reduce((a, b) => Math.min(a, b), Infinity);
 
-      return new google.maps.LatLngBounds(
-        {lat: minLatitude, lng: minLongitude}, 
-        {lat: maxLatitude, lng: maxLongitude},
-      );
-    }
+        return new google.maps.LatLngBounds(
+            {lat: minLatitude, lng: minLongitude},
+            {lat: maxLatitude, lng: maxLongitude},
+        );
+      };
 
-    const getZoomForBounds = (map: React.MutableRefObject<google.maps.Map | undefined>, bounds: google.maps.LatLngBounds): number => {
+    const getZoomForBounds =
+      (map: React.MutableRefObject<google.maps.Map | undefined>,
+          bounds: google.maps.LatLngBounds): number => {
       // Source: https://stackoverflow.com/questions/9837017/equivalent-of-getboundszoomlevel-in-gmaps-api-3
-      const MAX_ZOOM = 21;
-      const MIN_ZOOM = 10;
-      const FIT_PAD = 40;
+        const MAX_ZOOM = 21;
+        const MIN_ZOOM = 10;
+        const FIT_PAD = 40;
 
-      if (map.current) {
-        const northEastXY = map.current.getProjection()?.fromLatLngToPoint(bounds.getNorthEast());
-        const southWestXY = map.current.getProjection()?.fromLatLngToPoint(bounds.getSouthWest());
+        if (map.current) {
+          const northEastXY =
+          map.current.getProjection()?.fromLatLngToPoint(bounds.getNorthEast());
+          const southWestXY =
+          map.current.getProjection()?.fromLatLngToPoint(bounds.getSouthWest());
 
-        const desiredMapWidth = (northEastXY && southWestXY) ? Math.abs(northEastXY.x - southWestXY.x) : 0;
-        const desiredMapHeight = (northEastXY && southWestXY) ? Math.abs(northEastXY.y - southWestXY.y): 0;
+          const desiredMapWidth =
+          (northEastXY && southWestXY) ?
+            Math.abs(northEastXY.x - southWestXY.x) : 0;
+          const desiredMapHeight =
+          (northEastXY && southWestXY) ?
+            Math.abs(northEastXY.y - southWestXY.y): 0;
 
-        for (let zoom = MAX_ZOOM; zoom >= MIN_ZOOM; --zoom) {
-          if (desiredMapWidth*(1<<zoom)+2*FIT_PAD < (map.current.getDiv().clientWidth) && 
-              desiredMapHeight*(1<<zoom)+2*FIT_PAD < (map.current.getDiv()).clientHeight) return zoom  
+          for (let zoom = MAX_ZOOM; zoom >= MIN_ZOOM; --zoom) {
+            if (desiredMapWidth*(1<<zoom)+2*FIT_PAD <
+              (map.current.getDiv().clientWidth) &&
+              desiredMapHeight*(1<<zoom)+2*FIT_PAD <
+              (map.current.getDiv()).clientHeight) return zoom;
+          }
+          return MIN_ZOOM;
         }
         return MIN_ZOOM;
-      }
-      return MIN_ZOOM;
-    }
-  //
+      };
+    //
     if (routeSelection) {
-      const bounds: google.maps.LatLngBounds = getBoundsFromRoute(routeSelection)
+      const bounds: google.maps.LatLngBounds =
+        getBoundsFromRoute(routeSelection);
       const requiredZoom: number = getZoomForBounds(mapRef, bounds);
       setZoomLevel(requiredZoom);
       if (mapRef.current) {
@@ -151,15 +181,15 @@ const Map = ({
         mapRef.current?.panTo({
           lat: boundCenter.lat(),
           lng: boundCenter.lng(),
-        })
+        });
       }
-    }
-    else setZoomLevel(15);
-  }, [routeSelection])
+    } else setZoomLevel(15);
+  }, [routeSelection]);
 
   const [zoomLevel, setZoomLevel] = useState<number|undefined>(16);
 
-  const [selectedMarker, setSelectedMarker] = useState<google.maps.LatLng | null>(null);
+  const [selectedMarker, setSelectedMarker] =
+    useState<google.maps.LatLng | null>(null);
 
   return !(isLoaded) ?
     <LoadScreen/>:
@@ -182,13 +212,14 @@ const Map = ({
         <GeoLocationButton setUserLocation={setUserLocation}/>
       </Box>
       <GoogleMap
-        zoom={zoomLevel} //16
+        zoom={zoomLevel} // 16
         center={centerCoords}
         options={mapOptions}
         onLoad={onLoad}
         onZoomChanged={() => {
-          if (mapRef.current?.getZoom()) setZoomLevel(mapRef.current?.getZoom());
-          console.log(mapRef.current?.getZoom());
+          if (mapRef.current?.getZoom()) {
+            setZoomLevel(mapRef.current?.getZoom());
+          }
         }}
         mapContainerStyle={{width: '100%', height: '100vh'}}>
         <>
@@ -202,7 +233,7 @@ const Map = ({
                 }}
                 icon = {{
                   url: require(`../../../assets/bus_me_stop.png`),
-                  scaledSize: new google.maps.Size(17.5, 17.5)
+                  scaledSize: new google.maps.Size(17.5, 17.5),
                 }}
                 onClick = {(e) => setSelectedMarker(e.latLng)}
                 opacity = {getOpacityValue(stop.id, routeSelection)}
@@ -233,7 +264,7 @@ const Map = ({
                     />
                   </InfoWindow>:
                   null}
-              </Marker>
+              </Marker>,
             ): busStops.map((stop) =>
               <Marker
                 key={stop.number}
@@ -243,7 +274,7 @@ const Map = ({
                 }}
                 icon = {{
                   url: require(`../../../assets/bus_me_stop.png`),
-                  scaledSize: new google.maps.Size(17.5, 17.5)
+                  scaledSize: new google.maps.Size(17.5, 17.5),
                 }}
                 onClick = {(e) => setSelectedMarker(e.latLng)}
                 visible = {(zoomLevel && zoomLevel >= 15) ? true : false}
@@ -272,14 +303,14 @@ const Map = ({
                     />
                   </InfoWindow>:
                   null}
-              </Marker>
+              </Marker>,
             )}
           {(directions) ?
             <DirectionsRenderer
               directions={directions}
               options={{
                 polylineOptions: {
-                  strokeColor: "#002984",
+                  strokeColor: '#002984',
                   strokeWeight: 5,
                   strokeOpacity: 0.75,
                 },

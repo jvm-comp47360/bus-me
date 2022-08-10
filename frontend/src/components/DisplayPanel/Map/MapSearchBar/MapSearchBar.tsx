@@ -1,6 +1,6 @@
-import {StandaloneSearchBox} from "@react-google-maps/api";
-import {Dispatch, SetStateAction, useState} from "react";
-import {Box} from "@mui/material";
+import {StandaloneSearchBox} from '@react-google-maps/api';
+import {Dispatch, SetStateAction, useState} from 'react';
+import {Box} from '@mui/material';
 
 interface Props {
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>,
@@ -8,30 +8,34 @@ interface Props {
 
 // Map style source: https://tomchentw.github.io/react-google-maps/#!/SearchBox
 const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
-  const [placesApi, setPlacesApi] = useState<google.maps.places.SearchBox | null>(null);
-  const onLoadPlacesApi = (ref: google.maps.places.SearchBox) => setPlacesApi(ref);
+  const [placesApi, setPlacesApi] =
+    useState<google.maps.places.SearchBox | null>(null);
+  const onLoadPlacesApi =
+    (ref: google.maps.places.SearchBox) => setPlacesApi(ref);
 
   const mapBoundaries: google.maps.LatLngBoundsLiteral = {
-      north: 53.63322,
-      south: 53.11473,
-      west: -6.85965,
-      east: -5.77620,
-  }
+    north: 53.63322,
+    south: 53.11473,
+    west: -6.85965,
+    east: -5.77620,
+  };
 
-  const addressIsOutOfBounds = (latitude: number, longitude: number): boolean => {
-    console.log(mapBoundaries)
-    return latitude > mapBoundaries.north ||
+  const addressIsOutOfBounds =
+    (latitude: number, longitude: number): boolean => {
+      console.log(mapBoundaries);
+      return latitude > mapBoundaries.north ||
       latitude < mapBoundaries.south ||
       longitude < mapBoundaries.west ||
       longitude > mapBoundaries.east;
-  }
+    };
 
   const onPlacesChanged = () => {
     if (!placesApi) {
       return;
     } else {
       const places = placesApi.getPlaces();
-      if (!places || places.length === 0 || !places[0].geometry || !places[0].geometry.location) {
+      if (!places || places.length === 0 ||
+        !places[0].geometry || !places[0].geometry.location) {
         alert('Something has gone wrong with the Places API');
         return;
       }
@@ -39,15 +43,15 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
       const longitude = places[0].geometry.location.lng();
 
       if (addressIsOutOfBounds(latitude, longitude)) {
-        alert('Address is out of bounds')
+        alert('Address is out of bounds');
         return;
       } else {
-        console.log(latitude)
-        console.log(longitude)
-        setUserLocation({lat:latitude, lng: longitude})
+        console.log(latitude);
+        console.log(longitude);
+        setUserLocation({lat: latitude, lng: longitude});
       }
     }
-  }
+  };
 
   return <Box
     sx={{width: '40%'}}
@@ -56,10 +60,10 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
       onLoad={onLoadPlacesApi}
       bounds={mapBoundaries}
       onPlacesChanged={onPlacesChanged}
-      >
+    >
       <input
         type="text"
-        aria-label={"custom-address-search-bar"}
+        aria-label={'custom-address-search-bar'}
         placeholder="Show custom address on map"
         style={{
           boxSizing: `border-box`,
@@ -74,7 +78,7 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
           textOverflow: `ellipses`,
         }}/>
     </StandaloneSearchBox>
-  </Box>
+  </Box>;
 };
 
 export default MapSearchBar;

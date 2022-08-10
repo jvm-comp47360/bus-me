@@ -1,5 +1,5 @@
 // React
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 // Material UI
 import {
@@ -17,7 +17,7 @@ import BusRoute from '../../../types/BusRoute';
 // Components
 import BusStopDropdown from './BusStopsDropdown/BusStopDropdown';
 import DateTimeSelection from './DateTimeSelection/DateTimeSelection';
-import PlanJourneyButton from "./PlanJourneyButton/PlanJourneyButton";
+import PlanJourneyButton from './PlanJourneyButton/PlanJourneyButton';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -38,30 +38,30 @@ interface Props {
 }
 
 const StopSelectionPanel = ({
-                              busRoutes,
-                              busStops,
-                              routeSelection,
-                              startSelection,
-                              setStartSelection,
-                              finishSelection,
-                              setFinishSelection,
-                              dateTimeSelection,
-                              setDateTimeSelection,
-                              setPrediction,
-                              setDirections,
-                              multiRoute,
-                              setPredictionStages,
-                            }: Props): JSX.Element => {
+  busRoutes,
+  busStops,
+  routeSelection,
+  startSelection,
+  setStartSelection,
+  finishSelection,
+  setFinishSelection,
+  dateTimeSelection,
+  setDateTimeSelection,
+  setPrediction,
+  setDirections,
+  multiRoute,
+  setPredictionStages,
+}: Props): JSX.Element => {
   const [arrivalSelected, setArrivalIsSelected] = useState<boolean>(false);
   const toggleArrivalSelected = () => {
-    setArrivalIsSelected(!arrivalSelected)
+    setArrivalIsSelected(!arrivalSelected);
   };
 
   return <Box display={'flex'}
-              flexDirection={'row'}
-              flexWrap={'wrap'}
-              justifyContent={'center'}
-              >
+    flexDirection={'row'}
+    flexWrap={'wrap'}
+    justifyContent={'center'}
+  >
     <Box
       display={'flex'}
       flexDirection={'column'}
@@ -79,7 +79,7 @@ const StopSelectionPanel = ({
           multiRoute={multiRoute}
         />
         <RadioGroup
-          aria-label={"toggle-arrival-departure"}
+          aria-label={'toggle-arrival-departure'}
           name={'toggle-time'}
           value={arrivalSelected}
           onChange={toggleArrivalSelected}
@@ -123,8 +123,16 @@ const StopSelectionPanel = ({
           justifyContent={'center'}
           margin={1}
         >
-          <FormControlLabel control={<Radio size={'small'}/>} label={'Departure'} value={false}/>
-          <FormControlLabel control={<Radio size={'small'}/>} label={'Arrival'} value={true}/>
+          <FormControlLabel
+            control={<Radio size={'small'}/>}
+            label={'Departure'}
+            value={false}
+          />
+          <FormControlLabel
+            control={<Radio size={'small'}/>}
+            label={'Arrival'}
+            value={true}
+          />
         </Box>
       </RadioGroup>
     </Box>

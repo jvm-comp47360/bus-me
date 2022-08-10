@@ -6,12 +6,13 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 import BusStop from '../../types/BusStop';
 import BusRoute from '../../types/BusRoute';
-import Weather from "../../types/Weather";
+import Weather from '../../types/Weather';
 
 import WeatherCard from './WeatherCard/WeatherCard';
 import Map from './Map/Map';
 import JourneyPanel from './JourneyPanel/JourneyPanel';
-import JourneyPanelCollapsed from './JourneyPanelCollapsed/JourneyPanelCollapsed';
+import JourneyPanelCollapsed from
+  './JourneyPanelCollapsed/JourneyPanelCollapsed';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -48,45 +49,52 @@ const DisplayPanel = ({
 }: Props): JSX.Element => {
   // Icon credit: https://github.com/yuvraaaj/openweathermap-api-icons
   const [weather, setWeather] = useState<Weather>();
-  const [collapseJourneyPanel, setCollapseJourneyPanel] = useState<Boolean>(false);
-  const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
+  const [collapseJourneyPanel, setCollapseJourneyPanel] =
+    useState<boolean>(false);
+  const [userLocation, setUserLocation] =
+    useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
-  const distanceFromEdge: number = 2;
+  const distanceFromEdge = 2;
   const phoneScreenIsOff = useMediaQuery('(min-width:600px');
 
   useEffect(() => {
     fetch('https://ipa-002.ucd.ie/api/current_weather/')
-      .then((response) => {
-        if (response.ok) {
-          return response.json() as Promise<Weather>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setWeather)
-      .catch((error) => console.log(error));
-  }, [])
+        .then((response) => {
+          if (response.ok) {
+            return response.json() as Promise<Weather>;
+          } else {
+            throw new Error();
+          }
+        })
+        .then(setWeather)
+        .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     if (directions && !multiRoute) {
       const updateRouteSelection = (returnedRoute: string): void => {
         if (startSelection && finishSelection) {
-          const busRouteMatches: BusRoute[] = busRoutes.filter(route => {
+          const busRouteMatches: BusRoute[] = busRoutes.filter((route) => {
             return route.name.includes(returnedRoute) &&
-            Boolean(route.bus_stops.find(stop => stop.id === startSelection.id));
+            Boolean(route.bus_stops.find((stop) =>
+              stop.id === startSelection.id));
           });
-          if (busRouteMatches) setRouteSelection(busRouteMatches[0])
+          if (busRouteMatches) setRouteSelection(busRouteMatches[0]);
         }
       };
 
       const steps = directions.routes[0].legs[0].steps;
-      const transitStep = steps.filter(step => step.travel_mode === "TRANSIT")[0];
+      const transitStep =
+        steps.filter((step) => step.travel_mode === 'TRANSIT')[0];
       const returnedRoute = transitStep.transit?.line.short_name;
-      if ( busRoutes && returnedRoute && routeSelection && returnedRoute !== routeSelection.name) {
+      if (busRoutes &&
+        returnedRoute &&
+        routeSelection &&
+        returnedRoute !== routeSelection.name) {
         updateRouteSelection(returnedRoute);
       }
     }
-  }, [directions])
+  }, [directions]);
 
   return <Box
     sx={{

@@ -39,7 +39,7 @@ const App = (): JSX.Element => {
 
   const [multiRoute, setMultiRoute] = useState<boolean>(false);
 
-  const [predictionStages, setPredictionStages] = useState<number[]>([])
+  const [predictionStages, setPredictionStages] = useState<number[]>([]);
 
   useEffect(() => {
     const localStorageStops: string | null =
@@ -48,10 +48,10 @@ const App = (): JSX.Element => {
     const localStorageStopsTtl: string | null =
       localStorage.getItem('bus_stops_ttl');
 
-      if (localStorageStops && !timeStampOutOfDate(localStorageStopsTtl)) {
-        setBusStops(JSON.parse(localStorageStops));
-      } else {
-        fetch('https://ipa-002.ucd.ie/api/bus_stops/')
+    if (localStorageStops && !timeStampOutOfDate(localStorageStopsTtl)) {
+      setBusStops(JSON.parse(localStorageStops));
+    } else {
+      fetch('https://ipa-002.ucd.ie/api/bus_stops/')
           .then((response) => {
             if (response.ok) {
               return response.json() as Promise<BusStop[]>;
@@ -61,12 +61,12 @@ const App = (): JSX.Element => {
           })
           .then((data) => {
             setBusStops(data);
-            localStorage.setItem('bus_stops', JSON.stringify(data))
-            localStorage.setItem('bus_stops_ttl', new Date().toISOString())
+            localStorage.setItem('bus_stops', JSON.stringify(data));
+            localStorage.setItem('bus_stops_ttl', new Date().toISOString());
           })
           .catch((error) => console.log(error));
-      }
-  }, [])
+    }
+  }, []);
 
   const timeStampOutOfDate = (currentTimeStamp: string | null) => {
     if (!currentTimeStamp) return true;
@@ -75,11 +75,11 @@ const App = (): JSX.Element => {
     const currentDate = new Date();
 
     const currentTime = currentDate.getTime();
-    const timeStampTime = timeStampDate.getTime()
+    const timeStampTime = timeStampDate.getTime();
     const timeDifference = (currentTime - timeStampTime) / 36e5;
 
-    return timeDifference > 24
-  }
+    return timeDifference > 24;
+  };
 
   return <ThemeProvider theme={theme}>
     <LocalizationProvider dateAdapter={AdapterDateFns}>

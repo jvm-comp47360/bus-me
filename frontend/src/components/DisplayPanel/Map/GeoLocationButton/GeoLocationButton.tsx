@@ -1,10 +1,10 @@
 // React
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction, useState} from 'react';
 
 // Props
 import Button from '@mui/material/Button';
-import {Box} from "@mui/material";
-import ErrorMessage from "../../../ErrorMessage/ErrorMessage";
+import {Box} from '@mui/material';
+import ErrorMessage from '../../../ErrorMessage/ErrorMessage';
 
 interface Props {
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
@@ -18,14 +18,14 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
-          setUserLocation({lat: position.coords.latitude, lng: position.coords.longitude})
-        },
-        () => setGeoLocationError(true))
+        setUserLocation(
+            {lat: position.coords.latitude, lng: position.coords.longitude});
+      },
+      () => setGeoLocationError(true));
+    } else {
+      setPermissionError(true);
     }
-    else {
-      setPermissionError(true)
-    }
-  }
+  };
 
   return <>
     <Button
@@ -38,8 +38,8 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
         src={require(`../../../../assets/geolocation.png`)}
         alt={'geolocation'}
         sx={{
-        width: 35,
-      }}>
+          width: 35,
+        }}>
       </Box>
     </Button>
     <ErrorMessage
@@ -50,7 +50,8 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
     <ErrorMessage
       errorHasOccured={geoLocationError}
       setErrorHasOccured={setGeoLocationError}
-      errorMessage={'Please enable browser permissions to use geolocation service.'}
+      errorMessage=
+        {'Please enable browser permissions to use geolocation service.'}
     />
   </>;
 };

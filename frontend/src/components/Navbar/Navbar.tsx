@@ -8,14 +8,14 @@ import {
   MenuItem, Radio,
   RadioGroup,
   Stack,
-  Toolbar
+  Toolbar,
 } from '@mui/material';
 import theme from '../App/Theme';
-import AboutDialog from "./AboutDialog/AboutDialog";
-import React, {Dispatch, SetStateAction, useState} from "react";
-import AppInfo from "../AppInfo/AppInfo";
-import BusRoute from "../../types/BusRoute";
-import BusStop from "../../types/BusStop";
+import AboutDialog from './AboutDialog/AboutDialog';
+import React, {Dispatch, SetStateAction, useState} from 'react';
+import AppInfo from '../AppInfo/AppInfo';
+import BusRoute from '../../types/BusRoute';
+import BusStop from '../../types/BusStop';
 
 interface Props {
   multiRoute: boolean;
@@ -30,12 +30,12 @@ interface Props {
 // Dropdown Credit: https://mui.com/material-ui/react-menu/
 
 const Navbar = ({multiRoute,
-                  setMultiRoute,
-                  setRouteSelection,
-                  setStartSelection,
-                  setFinishSelection,
-                  setPrediction,
-                  setDirections,
+  setMultiRoute,
+  setRouteSelection,
+  setStartSelection,
+  setFinishSelection,
+  setPrediction,
+  setDirections,
 }: Props): JSX.Element => {
   const [aboutIsOpen, setAboutIsOpen] = useState<boolean>(false);
   const [appInfoIsOpen, setAppInfoIsOpen] = useState<boolean>(false);
@@ -43,10 +43,10 @@ const Navbar = ({multiRoute,
   const dropdownIsOpen = Boolean(anchorElement);
   const dropdownIsClicked = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorElement(event.currentTarget);
-  }
+  };
   const dropdownIsClosed = () => {
     setAnchorElement(null);
-  }
+  };
 
   const toggleMultiRoute = () => {
     setMultiRoute(!multiRoute);
@@ -99,21 +99,31 @@ const Navbar = ({multiRoute,
                     justifyContent={'center'}
                     margin={1}
                   >
-                    <FormControlLabel control={<Radio size={'small'}/>} label={'SINGLE ROUTE'} value={false}/>
-                    <FormControlLabel control={<Radio size={'small'}/>} label={'MULTI ROUTE'} value={true}/>
+                    <FormControlLabel
+                      control={<Radio size={'small'}/>}
+                      label={'SINGLE ROUTE'}
+                      value={false}/>
+                    <FormControlLabel
+                      control={<Radio size={'small'}/>}
+                      label={'MULTI ROUTE'}
+                      value={true}/>
                   </Box>
                 </RadioGroup>
               </MenuItem>
             </Menu>
             <Button
               color='inherit'
-              onClick={() => {setAppInfoIsOpen(true)}}
+              onClick={() => {
+                setAppInfoIsOpen(true);
+              }}
             >
               App
             </Button>
             <Button
               color='inherit'
-              onClick={() => {setAboutIsOpen(true)}}
+              onClick={() => {
+                setAboutIsOpen(true);
+              }}
             >
               About
             </Button>

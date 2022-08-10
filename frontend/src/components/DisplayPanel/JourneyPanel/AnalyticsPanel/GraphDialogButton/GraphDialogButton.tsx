@@ -1,11 +1,8 @@
 import {Button} from '@mui/material';
-import {Dispatch, SetStateAction, useState} from "react";
-import GraphDialog from "./GraphDialog/GraphDialog";
-import BusStop from "../../../../../types/BusStop";
-import BusRoute from "../../../../../types/BusRoute";
-import LoadScreen from "../../../Map/LoadScreen/LoadScreen";
-
-type DirectionsResult = google.maps.DirectionsResult;
+import {useState} from 'react';
+import GraphDialog from './GraphDialog/GraphDialog';
+import BusStop from '../../../../../types/BusStop';
+import BusRoute from '../../../../../types/BusRoute';
 
 interface Props {
   routeSelection: BusRoute | undefined,
@@ -33,13 +30,13 @@ const stationPickles = ['1', '4', '7', '7A', '7B', '7D',
   '140', '142', '145', '150', '151'];
 
 const GraphDialogButton = ({
-                             routeSelection,
-                             startSelection,
-                             finishSelection,
-                             prediction,
-                             directions,
-                             dateTimeSelection,
-                           }: Props): JSX.Element => {
+  routeSelection,
+  startSelection,
+  finishSelection,
+  prediction,
+  directions,
+  dateTimeSelection,
+}: Props): JSX.Element => {
   const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
   const [predictionList, setPredictionList] = useState<number[]>([]);
 
@@ -47,109 +44,122 @@ const GraphDialogButton = ({
     const minutes = date.getMinutes();
     const hours = date.getHours();
     return ((60 * hours) + minutes) * 60;
-  }
+  };
 
-  const getNumStopsSegment = (routeSelection: BusRoute, startSelection: BusStop, finishSelection: BusStop): number => {
-    const start_stop_number = routeSelection.bus_stops.indexOf(startSelection)
-    const finish_stop_number = routeSelection.bus_stops.indexOf(finishSelection)
-    return Math.abs(finish_stop_number - start_stop_number);
-  }
+  const getNumStopsSegment = (
+      routeSelection: BusRoute,
+      startSelection: BusStop,
+      finishSelection: BusStop,
+  ): number => {
+    const startStopNumber = routeSelection.bus_stops.indexOf(startSelection);
+    const finishStopNumber = routeSelection.bus_stops.indexOf(finishSelection);
+    return Math.abs(finishStopNumber - startStopNumber);
+  };
 
   const getPredictionsAndOpenGraph = () => {
+    // If route selection is empty, then multiroute is on.
+    console.log(routeSelection);
+    if (!routeSelection) {
+      // Null check for directions.
+      if (!directions) {
+        return;
+      }
+      const journeyStages: google.maps.DirectionsStep[] | null =
+        directions.routes[0].legs[0].steps;
+      const urlsToFetch: string[] = [];
+      let googleMapsPrediction = 0;
 
-      // If route selection is empty, then multiroute is on.
-      console.log(routeSelection)
-      if (!routeSelection) {
-        // Null check for directions.
-        if (!directions) {
-          return;
-        }
-        const journeyStages: google.maps.DirectionsStep[] | null = directions.routes[0].legs[0].steps;
-        const urlsToFetch: string[] = [];
-        let googleMapsPrediction = 0;
+      journeyStages.map((journeyStage) => {
+        if (journeyStage.travel_mode === 'TRANSIT') {
+          const transitDetails: google.maps.TransitDetails | undefined =
+            journeyStage.transit;
 
-        journeyStages.map((journeyStage) => {
-          if (journeyStage.travel_mode === 'TRANSIT') {
-            const transitDetails: google.maps.TransitDetails | undefined = journeyStage.transit;
+          // Scenario where we call the API from the backend.
+          if (transitDetails &&
+            stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
+            const route: string = transitDetails.line.short_name;
+            const numStopSegments: number = transitDetails.num_stops;
+            const time: number = getSeconds(dateTimeSelection);
 
-            // Scenario where we call the API from the backend.
-            if (transitDetails && stationPickles.indexOf(transitDetails.line.short_name) !== -1) {
-              const route: string = transitDetails.line.short_name;
-              const num_stop_segments: number = transitDetails.num_stops
-              const time: number = getSeconds(dateTimeSelection)
-
-              const timeModifiers = [-7200, -3600, 3600, 7200]
-              timeModifiers.map((timeModifier) => {
-                if (time + timeModifier > 86400) {
-                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier - 86400).toString()}`)
-                } else if (time + timeModifier < 0) {
-                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier + 86400).toString()}`)
-                } else {
-                  urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${num_stop_segments}/${(time + timeModifier).toString()}`)
-                }
-              })
-              //  Scenario where we just get the Google Maps API
-            } else {
-              const predictionInSeconds: google.maps.Duration | undefined = journeyStage.duration;
-              if (predictionInSeconds) {
-                const predictionInMinutes: number = Math.round((predictionInSeconds.value / 60 * 10) / 10)
-                console.log("Prediction in minutes:");
-                googleMapsPrediction = googleMapsPrediction + +predictionInMinutes;
+            const timeModifiers = [-7200, -3600, 3600, 7200];
+            timeModifiers.map((timeModifier) => {
+              if (time + timeModifier > 86400) {
+                urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${numStopSegments}/${(time + timeModifier - 86400).toString()}`);
+              } else if (time + timeModifier < 0) {
+                urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${numStopSegments}/${(time + timeModifier + 86400).toString()}`);
+              } else {
+                urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${numStopSegments}/${(time + timeModifier).toString()}`);
               }
+            });
+            //  Scenario where we just get the Google Maps API
+          } else {
+            const predictionInSeconds: google.maps.Duration | undefined =
+              journeyStage.duration;
+            if (predictionInSeconds) {
+              const predictionInMinutes: number =
+                Math.round((predictionInSeconds.value / 60 * 10) / 10);
+              googleMapsPrediction =
+                googleMapsPrediction + +predictionInMinutes;
             }
           }
-        })
+        }
+      });
 
-        console.log(urlsToFetch);
+      console.log(urlsToFetch);
 
-        Promise.all(urlsToFetch.map((url) => fetch(url)))
+      Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
             Promise.all(predictions).then((predictions) => {
-              console.log(predictions)
+              console.log(predictions);
               const numberOfLegs: number = predictions.length / 4;
               const totalPredictionList: number[] = [];
 
               for (let i = 0; i < 4; i++) {
                 let currentTotalPredictions = 0;
                 for (let j = 0; j < numberOfLegs; j++) {
-                  const currentTotalPrediction = predictions[i + (j * 4)].prediction;
-                  console.log(`We are on leg ${j}. Current prediction is ${currentTotalPrediction}`)
-                  currentTotalPredictions = currentTotalPredictions + +Math.round((currentTotalPrediction * 10) / 10);
+                  const currentTotalPrediction =
+                    predictions[i + (j * 4)].prediction;
+                  currentTotalPredictions =
+                    currentTotalPredictions + +Math.round((
+                      currentTotalPrediction * 10) / 10);
                 }
                 if (googleMapsPrediction > 0) {
-                  currentTotalPredictions = currentTotalPredictions + +googleMapsPrediction;
+                  currentTotalPredictions =
+                    currentTotalPredictions + +googleMapsPrediction;
                 }
                 totalPredictionList.push(currentTotalPredictions);
               }
               setPredictionList(totalPredictionList);
               setGraphIsOpen(true);
-            })
-          })
-      }
-      else if (stationPickles.indexOf(routeSelection.name.split(" ")[0]) === -1) {
-        setPredictionList([prediction, prediction, prediction, prediction, prediction]);
-        setGraphIsOpen(true);
-      } else {
-        const num_stops_segment = getNumStopsSegment(routeSelection, startSelection, finishSelection);
-        const time: number = getSeconds(dateTimeSelection);
-        const urlsToFetch: string[] = [];
+            });
+          });
+    } else if (stationPickles.indexOf(
+        routeSelection.name.split(' ')[0]) === -1) {
+      setPredictionList(
+          [prediction, prediction, prediction, prediction, prediction]);
+      setGraphIsOpen(true);
+    } else {
+      const numStopsSegment =
+        getNumStopsSegment(routeSelection, startSelection, finishSelection);
+      const time: number = getSeconds(dateTimeSelection);
+      const urlsToFetch: string[] = [];
 
-        const timeModifiers = [-7200, -3600, 3600, 7200]
-        timeModifiers.map((timeModifier) => {
-          if (time + timeModifier > 86400) {
-            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(" ")[0]}/${num_stops_segment}/${(time + timeModifier - 86400).toString()}`)
-          } else if (time + timeModifier < 0) {
-            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(" ")[0]}/${num_stops_segment}/${(time + timeModifier + 86400).toString()}`)
-          } else {
-            urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(" ")[0]}/${num_stops_segment}/${(time + timeModifier).toString()}`)
-          }
-        })
+      const timeModifiers = [-7200, -3600, 3600, 7200];
+      timeModifiers.map((timeModifier) => {
+        if (time + timeModifier > 86400) {
+          urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${(time + timeModifier - 86400).toString()}`);
+        } else if (time + timeModifier < 0) {
+          urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${(time + timeModifier + 86400).toString()}`);
+        } else {
+          urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${(time + timeModifier).toString()}`);
+        }
+      });
 
-        console.log(urlsToFetch)
+      console.log(urlsToFetch);
 
-        Promise.all(urlsToFetch.map((url) => fetch(url)))
+      Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
@@ -159,17 +169,16 @@ const GraphDialogButton = ({
                 Math.round(predictions[1].prediction),
                 Math.round(predictions[2].prediction),
                 Math.round(predictions[3].prediction),
-              ])
+              ]);
               setGraphIsOpen(true);
-            })
-          })
-      }
-
-  }
+            });
+          });
+    }
+  };
 
   return <>
     <Button
-      variant={"contained"}
+      variant={'contained'}
       onClick={() => getPredictionsAndOpenGraph()}
     >
       Journey Times

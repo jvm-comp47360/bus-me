@@ -1,15 +1,15 @@
 // React
-import React, {Dispatch, SetStateAction, useState} from 'react';
+import {Dispatch, SetStateAction} from 'react';
 
 // Material UI
-import {Autocomplete, AutocompleteRenderInputParams, Box, Slide, TextField, TextFieldProps, Typography}
+import {Box, Slide, Typography}
   from '@mui/material';
 
 // Props
 import BusRouteDropdown from './BusRouteDropdown/BusRouteDropdown';
 import BusRoute from '../../../types/BusRoute';
-import Button from "@mui/material/Button";
-import BusStop from "../../../types/BusStop";
+import Button from '@mui/material/Button';
+import BusStop from '../../../types/BusStop';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -24,35 +24,34 @@ interface Props {
 }
 
 const RouteSelectionDropdown = ({
-                               busRoutes,
-                               routeSelection,
-                               setRouteSelection,
-                               setStartSelection,
-                               setFinishSelection,
-                               setPrediction,
-                               setDirections,
-                           }: Props): JSX.Element => {
-
+  busRoutes,
+  routeSelection,
+  setRouteSelection,
+  setStartSelection,
+  setFinishSelection,
+  setPrediction,
+  setDirections,
+}: Props): JSX.Element => {
   const toggleDisableHandler = (): boolean => {
     return routeSelection === undefined;
-  }
+  };
 
   const resetSelections = () => {
-      setStartSelection(undefined)
-      setFinishSelection(undefined)
-      setPrediction(undefined)
-      setRouteSelection(undefined)
-      setDirections(null)
-    }
-    return <Box
-      display={'flex'}
-      flexDirection={'column'}
-      flexWrap={'wrap'}
-      justifyContent={'center'}
-      width={370}
-      p={1}
-    >
-      {!routeSelection ? (
+    setStartSelection(undefined);
+    setFinishSelection(undefined);
+    setPrediction(undefined);
+    setRouteSelection(undefined);
+    setDirections(null);
+  };
+  return <Box
+    display={'flex'}
+    flexDirection={'column'}
+    flexWrap={'wrap'}
+    justifyContent={'center'}
+    width={370}
+    p={1}
+  >
+    {!routeSelection ? (
         <Slide
           direction={'up'}
           in={!routeSelection}
@@ -67,39 +66,39 @@ const RouteSelectionDropdown = ({
             />
           </div>
         </Slide>
-      ) : null} 
-      {(routeSelection) ? 
+      ) : null}
+    {(routeSelection) ?
       <Slide
-          direction={'up'}
-          in={Boolean(routeSelection)}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div>
-            <Box
-              display={'flex'}
-              flexDirection={'column'}
-              alignItems={'center'}
-              height={70}
-            >
-              {
+        direction={'up'}
+        in={Boolean(routeSelection)}
+        mountOnEnter
+        unmountOnExit
+      >
+        <div>
+          <Box
+            display={'flex'}
+            flexDirection={'column'}
+            alignItems={'center'}
+            height={70}
+          >
+            {
                 (routeSelection) ?
                   <Typography variant={'h6'} textAlign={'center'}>
                     {routeSelection.name}
-                  </Typography>
-                  : null
-              }
-              <Button
-                onClick={resetSelections}
-                disabled={toggleDisableHandler()}
-              >
+                  </Typography> :
+                  null
+            }
+            <Button
+              onClick={resetSelections}
+              disabled={toggleDisableHandler()}
+            >
                 Select Route
-              </Button>
-            </Box>
-          </div>
-        </Slide>
-      : null}
-      </Box>
+            </Button>
+          </Box>
+        </div>
+      </Slide> :
+      null}
+  </Box>;
 };
 
 export default RouteSelectionDropdown;

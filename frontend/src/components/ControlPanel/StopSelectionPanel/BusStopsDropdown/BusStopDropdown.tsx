@@ -66,7 +66,7 @@ const BusStopDropdown = ({
           <span {...props} style={{backgroundColor: 'white'}}>
             {option.name}, Stop No.{option.number}
           </span>
-        )
+        );
       }}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={label}/>}

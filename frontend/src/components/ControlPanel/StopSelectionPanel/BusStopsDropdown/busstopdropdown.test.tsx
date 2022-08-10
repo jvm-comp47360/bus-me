@@ -16,19 +16,19 @@ const BUS_STOP_SEARCH =
 const BUS_STOP_GUESS: string = BUS_STOP_SEARCH.substring(0, 3);
 
 const setup = (
-  routeSelection: BusRoute | undefined,
-  stopSelection: BusStop | undefined,
+    routeSelection: BusRoute | undefined,
+    stopSelection: BusStop | undefined,
 ):
   RenderResult => render(
-  <BusStopDropdown
-    busRoutes={MOCK_BUS_ROUTES}
-    busStops={BUS_STOPS}
-    routeSelection={routeSelection}
-    label={LABEL}
-    selection={stopSelection}
-    setSelection={jest.fn()}
-    multiRoute={false}
-  />,
+    <BusStopDropdown
+      busRoutes={MOCK_BUS_ROUTES}
+      busStops={BUS_STOPS}
+      routeSelection={routeSelection}
+      label={LABEL}
+      selection={stopSelection}
+      setSelection={jest.fn()}
+      multiRoute={false}
+    />,
 );
 
 const mockUserSearch = async (dropdown: HTMLInputElement): Promise<void> => {
@@ -51,54 +51,54 @@ describe('<BusStopDropdown> Default render', () => {
 
 describe('<BusStopDropdown> Route selection', () => {
   it('should display options if route is selected',
-    async (): Promise<void> => {
-      expect.assertions(1);
-      setup(MOCK_ROUTE_SELECTION, undefined);
+      async (): Promise<void> => {
+        expect.assertions(1);
+        setup(MOCK_ROUTE_SELECTION, undefined);
 
-      const busStopDropdown: HTMLInputElement =
+        const busStopDropdown: HTMLInputElement =
         screen.getByRole('combobox', {name: /start/i});
 
-      await mockUserSearch(busStopDropdown);
+        await mockUserSearch(busStopDropdown);
 
-      expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
-    });
+        expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
+      });
 
   it('should not display options unrelated to the selected route',
-    async (): Promise<void> => {
-      expect.assertions(1);
-      setup(WRONG_MOCK_ROUTE_SEARCH, undefined);
+      async (): Promise<void> => {
+        expect.assertions(1);
+        setup(WRONG_MOCK_ROUTE_SEARCH, undefined);
 
-      const busStopDropdown: HTMLInputElement =
+        const busStopDropdown: HTMLInputElement =
         screen.getByRole('combobox', {name: /start/i});
 
-      await mockUserSearch(busStopDropdown);
+        await mockUserSearch(busStopDropdown);
 
-      expect(busStopDropdown.value).not.toBe(BUS_STOP_SEARCH);
-    });
+        expect(busStopDropdown.value).not.toBe(BUS_STOP_SEARCH);
+      });
 });
 
 describe('<BusStopDropdown> Marker integration', () => {
   it('should show the station in dropdown if marker was clicked',
-    async (): Promise<void> => {
-      expect.assertions(1);
-      setup(MOCK_ROUTE_SELECTION, undefined);
+      async (): Promise<void> => {
+        expect.assertions(1);
+        setup(MOCK_ROUTE_SELECTION, undefined);
 
-      const busStopDropdown: HTMLInputElement =
+        const busStopDropdown: HTMLInputElement =
         screen.getByRole('combobox', {name: /start/i});
 
-      await mockUserSearch(busStopDropdown);
+        await mockUserSearch(busStopDropdown);
 
-      expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
-    });
+        expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
+      });
 
   it('should not display options unrelated to the selected route',
-    async (): Promise<void> => {
-      expect.assertions(1);
-      setup(MOCK_ROUTE_SELECTION, SELECTED_BUS_STOP);
+      async (): Promise<void> => {
+        expect.assertions(1);
+        setup(MOCK_ROUTE_SELECTION, SELECTED_BUS_STOP);
 
-      const busStopDropdown: HTMLInputElement =
+        const busStopDropdown: HTMLInputElement =
         screen.getByRole('combobox', {name: /start/i});
 
-      expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
-    });
+        expect(busStopDropdown.value).toBe(BUS_STOP_SEARCH);
+      });
 });
