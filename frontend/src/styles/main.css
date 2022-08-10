@@ -5,3 +5,7 @@
     padding: 0;
     font-family: "Lato Light", sans-serif;
 }
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    background: #ffff
+}
