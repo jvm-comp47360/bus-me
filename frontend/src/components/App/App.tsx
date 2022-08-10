@@ -49,6 +49,7 @@ const App = (): JSX.Element => {
       localStorage.getItem('bus_stops_ttl');
 
       if (localStorageStops && !timeStampOutOfDate(localStorageStopsTtl)) {
+        console.log("Getting data out of local storage")
         setBusStops(JSON.parse(localStorageStops));
       } else {
         fetch('https://ipa-002.ucd.ie/api/bus_stops/')
@@ -60,6 +61,7 @@ const App = (): JSX.Element => {
             }
           })
           .then((data) => {
+            console.log("Getting data from backend")
             setBusStops(data);
             localStorage.setItem('bus_stops', JSON.stringify(data))
             localStorage.setItem('bus_stops_ttl', new Date().toLocaleString())

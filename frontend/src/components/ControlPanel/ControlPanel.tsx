@@ -63,6 +63,7 @@ const ControlPanel = ({
       localStorage.getItem('bus_routes_ttl');
 
     if (localStorageRoutes && !timeStampOutOfDate(localStorageRoutesTtl)) {
+      console.log("Getting data from local storage")
       setBusRoutes(JSON.parse(localStorageRoutes));
     } else {
       fetch('https://ipa-002.ucd.ie/api/bus_routes/')
@@ -74,6 +75,7 @@ const ControlPanel = ({
           }
         })
         .then((data) => {
+          console.log("Getting data from backend")
           setBusRoutes(data);
           localStorage.setItem('bus_routes', JSON.stringify(data))
           localStorage.setItem('bus_routes_ttl', new Date().toLocaleString())
