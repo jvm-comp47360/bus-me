@@ -46,6 +46,9 @@ describe('Navbar items functionality', () => {
 
     expect(screen.getByRole('button', {name: /back to map/i}))
       .toBeInTheDocument();
+
+    expect(screen.getByRole('link', {name: /GitHub/i}))
+      .toBeInTheDocument();
   })
 
   test('it should show the mobile modal when clicked', async () => {

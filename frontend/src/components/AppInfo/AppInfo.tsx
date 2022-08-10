@@ -35,7 +35,7 @@ const AppInfo = ({
             <Box component="img"
                  sx={{height: 400}}
                  alt="bus-me-mobile"
-                 src={require('../../assets/BusMeMobile.JPG')}
+                 src={require('../../assets/BusMeMobile.png')}
                  m={3}
             />
             <Box
@@ -60,7 +60,7 @@ const AppInfo = ({
                   to={'#'}
                   onClick={() => {
                     window.location.href =
-                      'mailto:vladimir.rakhmanin@ucdconnect.ie?subject=BusMe Mobile';
+                      'mailto:busmeappcontact@gmail.com?subject=BusMe Mobile';
                   }
                 }
                 >

@@ -1,6 +1,7 @@
 import React from "react";
 import {Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, Divider} from '@mui/material';
 import {Dispatch, SetStateAction} from "react";
+import {BrowserRouter, Link} from "react-router-dom";
 
 interface Props {
   aboutIsOpen: boolean,
@@ -16,7 +17,7 @@ const AboutDialog = ({
     setAboutIsOpen(false);
   }
 
-  return <>
+  return <BrowserRouter>
     <Dialog
       fullWidth
       maxWidth={'sm'}
@@ -42,20 +43,30 @@ const AboutDialog = ({
             </DialogContentText>
             <Divider variant={'middle'} sx={{margin: 1}}/>
             <DialogContentText textAlign={'center'}>
-              For more information, please visit the GitHub repository for this project at the following link.
+              For more information, please visit the GitHub repository for this project by clicking the button below.
             </DialogContentText>
+            <Button
+              component={Link}
+              to={'#'}
+              onClick={() => {
+                  window.location.href = 'https://github.com/toadkarter';
+                }
+              }
+            >
+              GitHub
+            </Button>
+            <Button
+              onClick={closeAbout}
+              variant={'outlined'}
+            >
+              Back to Map
+            </Button>
           </Box>
-          <Button
-            onClick={closeAbout}
-            variant={'outlined'}
-          >
-            Back to Map
-          </Button>
         </Box>
 
       </DialogContent>
     </Dialog>
-  </>;
+  </BrowserRouter>;
 };
 
 export default AboutDialog;
