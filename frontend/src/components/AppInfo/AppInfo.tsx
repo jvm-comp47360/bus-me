@@ -70,7 +70,7 @@ const AppInfo = ({
                   component={Link}
                   to={'#'}
                   onClick={() => {
-                      window.location.href = 'https://github.com/toadkarter';
+                      window.location.href = 'https://github.com/jvm-comp47360/bus-me-mobile';
                     }
                   }
                 >
