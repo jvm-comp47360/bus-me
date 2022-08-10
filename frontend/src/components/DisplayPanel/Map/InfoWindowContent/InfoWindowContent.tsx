@@ -15,7 +15,7 @@ interface Props {
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
-    multiRoute: boolean
+    multiRoute: boolean;
 }
 
 type RouteTerminus = {
@@ -160,6 +160,7 @@ const InfoWindowContent =({
                     stop={stop}
                     existingSelection={finishSelection}
                     routeSelection={routeSelection}
+                    multiRoute={multiRoute}
                     />
             </Grid>
             <Grid item sx={{p: '2px'}}>
@@ -168,7 +169,9 @@ const InfoWindowContent =({
                     setStopSelection={setFinishSelection}
                     stop={stop}
                     existingSelection={startSelection}
-                    routeSelection={routeSelection}/>
+                    routeSelection={routeSelection}
+                    multiRoute={multiRoute}/>
+                    
             </Grid>
         </Grid>
     </Grid>

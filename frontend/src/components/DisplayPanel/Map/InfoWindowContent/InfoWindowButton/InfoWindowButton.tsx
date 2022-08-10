@@ -9,6 +9,7 @@ interface Props {
     stop: BusStop;
     existingSelection: BusStop | undefined;
     routeSelection: BusRoute | undefined;
+    multiRoute: boolean;
 }
 
 const InfoWindowButton = ({
@@ -16,7 +17,9 @@ const InfoWindowButton = ({
     setStopSelection, 
     stop, 
     existingSelection,
-    routeSelection}: Props): JSX.Element => {
+    routeSelection,
+    multiRoute,
+}: Props): JSX.Element => {
     const submitDisableHandler = (): boolean => {
         if (name === "Finish") {
             return existingSelection === undefined || existingSelection.number === stop.number;
@@ -31,7 +34,7 @@ const InfoWindowButton = ({
         <Button 
         variant={'contained'}
         onClick={() => setStopSelection(stop)}
-        disabled={(routeSelection === undefined) ? true : submitDisableHandler()}
+        disabled={(multiRoute) ? false : (routeSelection === undefined) ? true : submitDisableHandler()}
         sx={{
             width: '140px',
             padding: '4px',
