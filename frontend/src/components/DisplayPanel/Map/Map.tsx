@@ -138,7 +138,7 @@ const Map = ({
       }
       return MIN_ZOOM;
     }
-
+  //
     if (routeSelection) {
       const bounds: google.maps.LatLngBounds = getBoundsFromRoute(routeSelection)
       const requiredZoom: number = getZoomForBounds(mapRef, bounds);
