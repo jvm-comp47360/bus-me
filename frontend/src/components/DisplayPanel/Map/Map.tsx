@@ -223,6 +223,7 @@ const Map = ({
                       multiRoute={multiRoute}
                       routeSelection={routeSelection}
                       setDirections={setDirections}
+                      setSelectedMarker={setSelectedMarker}
                     />
                   </InfoWindow>:
                 null}
@@ -261,6 +262,7 @@ const Map = ({
                     multiRoute={multiRoute}
                     routeSelection={routeSelection}
                     setDirections={setDirections}
+                    setSelectedMarker={setSelectedMarker}
                   />
                 </InfoWindow>:
               null}

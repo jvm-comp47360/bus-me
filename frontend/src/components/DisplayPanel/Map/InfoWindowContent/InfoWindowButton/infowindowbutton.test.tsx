@@ -11,6 +11,7 @@ test('"Start" passed as name prop to component', () => {
             stop={mockStop}
             existingSelection={undefined}
             routeSelection={mockData[0]}
+            setSelectedMarker={jest.fn()}
             multiRoute={false}/>)
     expect(screen.getByText(/start station/i)).toBeInTheDocument()
 })
@@ -22,6 +23,7 @@ test('"Finish" passed as name prop to component', () => {
             stop={mockStop}
             existingSelection={undefined}
             routeSelection={mockData[0]}
+            setSelectedMarker={jest.fn()}
             multiRoute={false}/>)
     expect(screen.getByText(/finish station/i)).toBeInTheDocument()
 })
@@ -33,6 +35,7 @@ test('finish station button should be disabled at outset', () => {
         stop={mockStop}
         existingSelection={undefined}
         routeSelection={mockData[0]}
+        setSelectedMarker={jest.fn()}
         multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
@@ -47,6 +50,7 @@ test('finish station button should be disabled if stop and selection the same', 
         stop={mockStop}
         existingSelection={mockStop}
         routeSelection={mockData[0]}
+        setSelectedMarker={jest.fn()}
         multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
@@ -61,6 +65,7 @@ test('start station button should be disabled if stop and selection the same', (
         stop={mockStop}
         existingSelection={mockStop}
         routeSelection={mockData[0]}
+        setSelectedMarker={jest.fn()}
         multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
@@ -75,6 +80,7 @@ test('start station button should be disabled if no route is selected', () => {
         stop={mockStop}
         existingSelection={mockStop}
         routeSelection={undefined}
+        setSelectedMarker={jest.fn()}
         multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
@@ -89,6 +95,7 @@ test('start button should be enabled if in multiroute mode, even without routeSe
         stop={mockStop}
         existingSelection={mockStop}
         routeSelection={undefined}
+        setSelectedMarker={jest.fn()}
         multiRoute={true}/>)
     expect(screen.getByRole(
         'button',
