@@ -44,7 +44,7 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
       onChange={changeHandler}
       getOptionLabel={(option: BusRoute) => option.name}
       options={sortBusRoutes(busRoutes)}
-      sx={{height: 70, width: 400}}
+      sx={{height: 70, width: 370}}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={'Select Route'} sx={{backgroundColor: 'white'}}/>}
     />
