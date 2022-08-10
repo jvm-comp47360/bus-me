@@ -77,7 +77,11 @@ const InfoWindowContent =({
         if (multiRoute) return;
         const routeId = (e.target as HTMLElement).id;
         for (let i = 0; i < busRoutes.length; i++) {
-            if (routeId === busRoutes[i].id) setRouteSelection(busRoutes[i])
+            if (routeId === busRoutes[i].id) {
+                setRouteSelection(busRoutes[i]);
+                setStartSelection(undefined);
+                setFinishSelection(undefined);
+            }
         }
     }
 
