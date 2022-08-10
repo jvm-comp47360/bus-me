@@ -15,6 +15,8 @@ const GeoLocationButton = ({setUserLocation}: Props): JSX.Element => {
   const [geoLocationError, setGeoLocationError] = useState<boolean>(false);
 
   // Icon credit: https://icon-icons.com/icon/user-location/72177
+  // Using geolocation with React:
+  // https://www.pluralsight.com/guides/how-to-use-geolocation-call-in-reactjs
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

@@ -44,6 +44,7 @@ const InfoWindowContent =({
 }:Props): JSX.Element => {
   const getBusRoutesFromStop =
     (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
+      // Retrieve a given bus route's bus stops.
       for (let i = 0; i < busStops.length; i++) {
         if (busStops[i]?.bus_routes && stop.number === busStops[i].number) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -55,6 +56,7 @@ const InfoWindowContent =({
     };
 
   const getBackgroundColour = (stopIndex: number): string => {
+    // Get color for background of routes
     const colourArray: string[] = ['red', 'orange', 'blue', 'violet', 'green'];
     const modValue: number = stopIndex % colourArray.length;
     return colourArray[modValue];

@@ -51,6 +51,8 @@ const RouteSelectionDropdown = ({
     width={370}
     p={1}
   >
+    {/* Activate slide depending on status of route selection*/}
+    {/* Using slide API: https://mui.com/material-ui/api/slide/*/}
     {!routeSelection ? (
         <Slide
           direction={'up'}

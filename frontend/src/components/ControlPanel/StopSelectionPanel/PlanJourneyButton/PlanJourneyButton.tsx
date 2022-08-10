@@ -60,6 +60,7 @@ const PlanJourneyButton = ({routeSelection,
       startSelection: BusStop,
       finishSelection: BusStop,
   ): number => {
+    // Get the number of stops between the selected stops.
     const startStopNumber =
         routeSelection.bus_stops.indexOf(startSelection);
     const finishStopNumber =
@@ -90,6 +91,8 @@ const PlanJourneyButton = ({routeSelection,
       startSelection: BusStop,
       finishSelection: BusStop,
   ) => {
+    // Create Google Maps prediction request and call make predictions
+    // within Promise
     const userDirectionsRequest: google.maps.DirectionsRequest = {
       origin: {
         lat: +startSelection.latitude,
@@ -137,6 +140,7 @@ const PlanJourneyButton = ({routeSelection,
       getNumStopsSegment(routeSelection, startSelection, finishSelection);
     const time: string = getSeconds(dateTimeSelection).toString();
 
+    // Fetch from backend API and set to prediction
     fetch(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${time}`)
         .then((response) => {
           if (response.ok) {
@@ -154,6 +158,8 @@ const PlanJourneyButton = ({routeSelection,
 
   const setPredictionFromGoogleMaps =
     (directions: google.maps.DirectionsResult) => {
+      // Get prediction from Google Maps if we don't have the
+      // model for the relevant station.
       const prediction: google.maps.Duration | undefined =
       directions.routes[0].legs[0].duration;
       if (prediction) {
@@ -211,6 +217,7 @@ const PlanJourneyButton = ({routeSelection,
         }
       });
 
+      // Retrieve all predictions and predictions stages
       Promise.all(urlsToFetch.map((url) => fetch(url)))
           .then((responses) =>
             responses.map((response) => response.json() as Promise<Prediction>))
@@ -228,6 +235,8 @@ const PlanJourneyButton = ({routeSelection,
                 }
               }
 
+              // Addition using the reduce function:
+              // https://stackoverflow.com/questions/33392307/what-does-the-array-method-reduce-do
               const totalPrediction: number = predictionValues.reduce(
                   (a: number, b: number) => +a + +b, 0,
               );
@@ -251,6 +260,8 @@ const PlanJourneyButton = ({routeSelection,
 
   // Submit Button helper functions
   const submitDisableHandler = (): boolean => {
+    // Disable button depending on whether or not multiroute
+    // is selected and what the current user input is.
     if (multiRoute) {
       return startSelection === undefined ||
               finishSelection === undefined ||

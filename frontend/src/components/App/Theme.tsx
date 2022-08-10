@@ -1,5 +1,7 @@
 import {createTheme, Theme} from '@mui/material/styles';
 
+// Material UI Theming: https://mui.com/material-ui/customization/theming/
+
 const theme: Theme = createTheme({
   palette: {
     primary: {
@@ -17,9 +19,6 @@ const theme: Theme = createTheme({
     'h4': {
       color: '#ffffff',
     },
-    // 'h6': {
-    //   color: '#ffffff',
-    // },
     'body2': {
       color: '#ffffff',
     },

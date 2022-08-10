@@ -24,19 +24,25 @@ const GraphDialog = ({
   finishSelection,
   dateTimeSelection,
 }: Props): JSX.Element => {
-  const getAllPredictions = (prediction: number | undefined, graphPredictions: number[] | undefined): number[] => {
+  const getAllPredictions = (prediction: number | undefined,
+      graphPredictions: number[] | undefined): number[] => {
+    // Split predictions from array in the correct format.
     if (!prediction || !graphPredictions) {
       return [];
     } else {
-      return [graphPredictions[0], graphPredictions[1], prediction, graphPredictions[2], graphPredictions[3]];
+      return [graphPredictions[0], graphPredictions[1],
+        prediction, graphPredictions[2], graphPredictions[3]];
     }
   };
 
   const getTwoDigitFormat = (time: number) => {
+    // Source:
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
     return String(time).padStart(2, '0');
   };
 
   const getModifiedHours = (hour: number) => {
+    // Get offset if hours are not in correct range
     if (hour >= 24) {
       return hour - 24;
     } else if (hour < 0) {
@@ -47,6 +53,7 @@ const GraphDialog = ({
   };
 
   const getAllTimes = (dateTimeSelection: Date) => {
+    // Get correct times depending on user selection
     const currentHours = dateTimeSelection.getHours();
     const currentMinutes = dateTimeSelection.getMinutes();
     const timeModifiers = [-2, -1, 0, 1, 2];
@@ -65,6 +72,7 @@ const GraphDialog = ({
     setGraphIsOpen(false);
   };
 
+  // Disabling legend clicking: https://www.highcharts.com/forum/viewtopic.php?t=37129
   const chartOptions = {
     title: {
       text: '',
@@ -104,6 +112,7 @@ const GraphDialog = ({
     >
       <DialogTitle sx={{color: 'white'}}>
         {(startSelection && finishSelection) ?
+          // eslint-disable-next-line max-len
             `Journey Durations (${startSelection.name} to ${finishSelection.name})` :
             ''}
       </DialogTitle>

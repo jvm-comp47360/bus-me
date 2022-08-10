@@ -42,6 +42,7 @@ const App = (): JSX.Element => {
   const [predictionStages, setPredictionStages] = useState<number[]>([]);
 
   useEffect(() => {
+    // Local Storage Caching Source: https://www.youtube.com/watch?v=xc4uOzlndAk
     const localStorageStops: string | null =
       localStorage.getItem('bus_stops');
 

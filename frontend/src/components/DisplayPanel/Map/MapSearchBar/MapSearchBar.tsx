@@ -21,6 +21,8 @@ const MapSearchBar = ({setUserLocation}: Props): JSX.Element => {
   };
 
   const addressIsOutOfBounds =
+    // Ensuring that searchable areas within Dublin
+    // are prioritised
     (latitude: number, longitude: number): boolean => {
       return latitude > mapBoundaries.north ||
       latitude < mapBoundaries.south ||

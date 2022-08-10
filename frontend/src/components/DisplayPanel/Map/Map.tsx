@@ -61,6 +61,8 @@ const Map = ({
   setDirections,
   multiRoute,
 }: Props): JSX.Element => {
+  // Bool variable that returns false if user is using a screen
+  // less than 600px in width
   const phoneScreenIsOff = useMediaQuery('(min-width:600px');
 
   const {isLoaded} = useLoadScript({

@@ -9,6 +9,7 @@ interface Props {
 
 const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
   const getPredictionString = (prediction: number): string => {
+    // Adding correct formatting for the prediction display.
     if (prediction < 60) return `${prediction}m`;
     else if (prediction < 120) {
       if (prediction === 60) return '1h';
@@ -20,6 +21,8 @@ const JourneyLegInfo = ({routeSelection, prediction}: Props): JSX.Element => {
   };
 
   const getRouteDisplay = (routesForDisplay: BusRoute | string | undefined) => {
+    // Extract correct route display name
+    // based on the type that has been passed in
     if (!routesForDisplay) {
       return '';
     }

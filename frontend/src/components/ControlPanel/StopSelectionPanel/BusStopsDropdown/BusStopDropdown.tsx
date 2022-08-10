@@ -29,6 +29,7 @@ const BusStopDropdown = ({
   multiRoute,
 }: Props): JSX.Element => {
   const getBusStops = (): BusStop[] => {
+    // Select all bus stops or find the ones belong to the route if not
     if (multiRoute) {
       return busStops;
     }

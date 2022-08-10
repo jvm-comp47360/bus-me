@@ -28,7 +28,6 @@ interface Props {
 }
 
 // Dropdown Credit: https://mui.com/material-ui/react-menu/
-
 const Navbar = ({multiRoute,
   setMultiRoute,
   setRouteSelection,
@@ -49,6 +48,7 @@ const Navbar = ({multiRoute,
   };
 
   const toggleMultiRoute = () => {
+    // Reset current user selection if changing modes.
     setMultiRoute(!multiRoute);
     setRouteSelection(undefined);
     setStartSelection(undefined);

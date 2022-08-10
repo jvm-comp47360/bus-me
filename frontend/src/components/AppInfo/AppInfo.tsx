@@ -1,5 +1,12 @@
-import React from 'react';
-import {Box, Button, Dialog, DialogContent, DialogContentText, DialogTitle, Divider} from '@mui/material';
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Divider,
+} from '@mui/material';
 import {BrowserRouter, Link} from 'react-router-dom';
 import {Dispatch, SetStateAction} from 'react';
 
@@ -8,11 +15,14 @@ interface Props {
   setAppInfoIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+// Using links with Browser router source:
+// https://stackoverflow.com/questions/37521557/how-to-correctly-use-react-router
 const AppInfo = ({
   appInfoIsOpen,
   setAppInfoIsOpen,
 }: Props): JSX.Element => {
   const closeAbout = () => {
+    // Closes the modal
     setAppInfoIsOpen(false);
   };
 
@@ -44,8 +54,11 @@ const AppInfo = ({
             m={3}
           >
             <DialogContentText textAlign={'justify'}>
+              {/* eslint-disable-next-line max-len */}
                 The mobile version of BusMe is currently in beta, and is available for both iOS and Android platforms.
+              {/* eslint-disable-next-line max-len */}
                 We are currently welcoming testers for both platforms - please click the buttons below to either get in
+              {/* eslint-disable-next-line max-len */}
                 touch with the development team, or to access the code repository.
             </DialogContentText>
             <Divider variant={'middle'} sx={{margin: 2}}/>

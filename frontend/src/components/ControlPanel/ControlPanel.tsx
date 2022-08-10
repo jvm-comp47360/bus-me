@@ -80,6 +80,7 @@ const ControlPanel = ({
   }, []);
 
   const timeStampOutOfDate = (currentTimeStamp: string | null) => {
+    // Checking if the timestamp in local storage should be replaced.
     if (!currentTimeStamp) return true;
 
     const timeStampDate: Date = new Date(currentTimeStamp);

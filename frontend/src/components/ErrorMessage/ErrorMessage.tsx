@@ -8,6 +8,7 @@ interface Props {
   errorMessage: string
 }
 
+// Material UI error messages: https://mui.com/material-ui/react-alert/
 const ErrorMessage = ({errorHasOccured,
   setErrorHasOccured,
   errorMessage}: Props): JSX.Element => {

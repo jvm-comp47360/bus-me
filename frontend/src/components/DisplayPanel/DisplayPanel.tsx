@@ -55,8 +55,11 @@ const DisplayPanel = ({
     useState<google.maps.LatLngLiteral>({lat: 53.34740, lng: -6.25914});
 
   const distanceFromEdge = 2;
+
+  // Variable for checking if user is on mobile for responsivness.
   const phoneScreenIsOff = useMediaQuery('(min-width:600px');
 
+  // Get current weather from backend API
   useEffect(() => {
     fetch('https://ipa-002.ucd.ie/api/current_weather/')
         .then((response) => {

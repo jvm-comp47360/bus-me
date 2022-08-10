@@ -16,7 +16,10 @@ interface Props {
     collapseJourneyPanel: boolean,
 }
 
-const JourneyPanelCollapsed = ({setCollapseJourneyPanel, collapseJourneyPanel}: Props): JSX.Element => {
+const JourneyPanelCollapsed = ({
+  setCollapseJourneyPanel,
+  collapseJourneyPanel,
+}: Props): JSX.Element => {
   const displayValue = collapseJourneyPanel ? 'flex' : 'none';
 
   return <Card sx={{

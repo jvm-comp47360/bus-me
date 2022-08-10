@@ -37,6 +37,10 @@ const GraphDialogButton = ({
   directions,
   dateTimeSelection,
 }: Props): JSX.Element => {
+  // Note: this code is somewhat similar to the code in
+  // PlanJourneyButton and as such comments in this file
+  // have been abbreviated.
+
   const [graphIsOpen, setGraphIsOpen] = useState<boolean>(false);
   const [predictionList, setPredictionList] = useState<number[]>([]);
 
@@ -80,7 +84,11 @@ const GraphDialogButton = ({
             const numStopSegments: number = transitDetails.num_stops;
             const time: number = getSeconds(dateTimeSelection);
 
+            // Times that offset the date by appropriate number of hours
             const timeModifiers = [-7200, -3600, 3600, 7200];
+
+            // Create all URLs that we need so that we can get them
+            // in a single Promise.
             timeModifiers.map((timeModifier) => {
               if (time + timeModifier > 86400) {
                 urlsToFetch.push(`https://ipa-002.ucd.ie/api/prediction/${route}/${numStopSegments}/${(time + timeModifier - 86400).toString()}`);
@@ -112,6 +120,7 @@ const GraphDialogButton = ({
               const numberOfLegs: number = predictions.length / 4;
               const totalPredictionList: number[] = [];
 
+              // Add up the correct times based on the indices.
               for (let i = 0; i < 4; i++) {
                 let currentTotalPredictions = 0;
                 for (let j = 0; j < numberOfLegs; j++) {
@@ -121,6 +130,8 @@ const GraphDialogButton = ({
                     currentTotalPredictions + +Math.round((
                       currentTotalPrediction * 10) / 10);
                 }
+
+                // Add on any times relating to Google Maps (if any)
                 if (googleMapsPrediction > 0) {
                   currentTotalPredictions =
                     currentTotalPredictions + +googleMapsPrediction;
@@ -131,6 +142,8 @@ const GraphDialogButton = ({
               setGraphIsOpen(true);
             });
           });
+
+    //  If we don't have the model, add in all Google Maps Predictions
     } else if (stationPickles.indexOf(
         routeSelection.name.split(' ')[0]) === -1) {
       setPredictionList(
@@ -142,6 +155,7 @@ const GraphDialogButton = ({
       const time: number = getSeconds(dateTimeSelection);
       const urlsToFetch: string[] = [];
 
+      // Using time modifiers to get all URLs that we are going to need
       const timeModifiers = [-7200, -3600, 3600, 7200];
       timeModifiers.map((timeModifier) => {
         if (time + timeModifier > 86400) {
@@ -158,6 +172,7 @@ const GraphDialogButton = ({
             responses.map((response) => response.json() as Promise<Prediction>))
           .then((predictions) => {
             Promise.all(predictions).then((predictions) => {
+              // Set appropriate predictions by rounding the times
               setPredictionList([
                 Math.round(predictions[0].prediction),
                 Math.round(predictions[1].prediction),
