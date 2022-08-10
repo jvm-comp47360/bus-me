@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Dialog, DialogTitle, Slide} from '@mui/material';
+import {Button, Dialog, DialogTitle} from '@mui/material';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import {Dispatch, SetStateAction} from "react";
@@ -12,6 +12,7 @@ interface Props {
   graphPredictions: number[] | undefined,
   startSelection: BusStop | undefined,
   finishSelection: BusStop | undefined,
+  dateTimeSelection: Date,
 }
 
 const GraphDialog = ({
@@ -21,6 +22,7 @@ const GraphDialog = ({
                         graphPredictions,
                         startSelection,
                         finishSelection,
+                        dateTimeSelection,
                       }: Props): JSX.Element => {
 
   const getAllPredictions = (prediction: number | undefined, graphPredictions: number[] | undefined): number[] => {
@@ -29,6 +31,37 @@ const GraphDialog = ({
     } else {
       return [graphPredictions[0], graphPredictions[1], prediction, graphPredictions[2], graphPredictions[3]];
     }
+  }
+
+  const getTwoDigitFormat = (time: number) => {
+    return String(time).padStart(2, '0');
+  }
+
+  const getModifiedHours = (hour: number) => {
+    if (hour >= 24) {
+      return hour - 24
+    } else if (hour < 0) {
+      return hour + 24
+    } else {
+      return hour
+    }
+  }
+
+  const getAllTimes = (dateTimeSelection: Date) => {
+    const currentHours = dateTimeSelection.getHours()
+    const currentMinutes = dateTimeSelection.getMinutes()
+    const timeModifiers = [-2, -1, 0, 1, 2]
+
+    return timeModifiers.map((timeModifier) => {
+      const modifiedHours = getModifiedHours(currentHours + timeModifier);
+
+      const twoDigitHours = getTwoDigitFormat(modifiedHours);
+      const twoDigitMinutes = getTwoDigitFormat(currentMinutes);
+
+      return `${twoDigitHours}:${twoDigitMinutes}`
+    })
+
+
   }
 
   const closeGraph = () => {
@@ -40,14 +73,11 @@ const GraphDialog = ({
       text: ''
     },
     xAxis: {
-      categories: ['-2', '-1', '0', '+1', '+2'],
+      categories: getAllTimes(dateTimeSelection),
       labels: {
         rotation: 0,
         align: 'right'
       },
-      title: {
-        text: 'Hours'
-      }
     },
     yAxis: {
       title: {
@@ -57,7 +87,16 @@ const GraphDialog = ({
     series: [{
       name: 'Minutes',
       data: getAllPredictions(prediction, graphPredictions)
-    }]
+    }],
+    plotOptions: {
+      series: {
+        events: {
+          legendItemClick: (e: any) => {
+            e.preventDefault();
+          }
+        }
+      }
+    }
   }
 
   return <>

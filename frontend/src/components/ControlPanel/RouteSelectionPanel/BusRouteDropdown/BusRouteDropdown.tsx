@@ -2,7 +2,7 @@
 import React, {Dispatch, SetStateAction} from 'react';
 
 // Material UI
-import {Autocomplete, AutocompleteRenderInputParams, Box, TextField}
+import {Autocomplete, AutocompleteRenderInputParams, Box, makeStyles, TextField}
   from '@mui/material';
 
 // Types
@@ -45,8 +45,16 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
       getOptionLabel={(option: BusRoute) => option.name}
       options={sortBusRoutes(busRoutes)}
       sx={{height: 70, width: 400}}
+      renderOption={(props, option: BusRoute) => {
+        return (
+          <span {...props} style={{backgroundColor: 'white'}}>
+            {option.name}
+          </span>
+        )
+      }
+    }
       renderInput={(params: AutocompleteRenderInputParams) =>
-        <TextField {...params} label={'Select Route'} sx={{backgroundColor: 'white'}}/>}
+        <TextField {...params} label={'Select Route'}/>}
     />
   </>;
 };
