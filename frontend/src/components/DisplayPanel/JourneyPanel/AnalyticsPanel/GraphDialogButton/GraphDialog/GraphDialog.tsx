@@ -57,7 +57,17 @@ const GraphDialog = ({
     series: [{
       name: 'Minutes',
       data: getAllPredictions(prediction, graphPredictions)
-    }]
+    }],
+    plotOptions: {
+      column: {
+        events: {
+          legendItemClick: () => {
+            return false;
+          }
+        }
+      },
+      allowPointSelect: false,
+    }
   }
 
   return <>
