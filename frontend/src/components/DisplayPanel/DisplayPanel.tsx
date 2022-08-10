@@ -90,6 +90,7 @@ const DisplayPanel = ({
       const transitStep =
         steps.filter((step) => step.travel_mode === 'TRANSIT')[0];
       const returnedRoute = transitStep.transit?.line.short_name;
+      if (!returnedRoute) return;
       if (busRoutes &&
         returnedRoute &&
         routeSelection &&

@@ -139,7 +139,6 @@ const PlanJourneyButton = ({routeSelection,
     const numStopsSegment =
       getNumStopsSegment(routeSelection, startSelection, finishSelection);
     const time: string = getSeconds(dateTimeSelection).toString();
-
     // Fetch from backend API and set to prediction
     fetch(`https://ipa-002.ucd.ie/api/prediction/${routeSelection.name.split(' ')[0]}/${numStopsSegment}/${time}`)
         .then((response) => {
