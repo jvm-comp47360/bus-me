@@ -19,11 +19,13 @@ const setUp = (
         setStartSelection={jest.fn()}
         setFinishSelection={jest.fn()}
         setRouteSelection={jest.fn()}
+        setDirections={jest.fn()}
         startSelection={undefined}
         finishSelection={undefined}
         busRoutes={mockRouteData}
         busStops={busStops}
         multiRoute={multiRoute}
+        routeSelection={mockRouteData[0]}
     />
 )
 

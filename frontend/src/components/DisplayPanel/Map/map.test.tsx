@@ -22,6 +22,7 @@ test.skip('useLoadScript called during render', () => {
           setFinishSelection={jest.fn()}
           setUserLocation={jest.fn()}
           setRouteSelection={jest.fn()}
+          setDirections={jest.fn()}
           multiRoute={false}
     />
   );

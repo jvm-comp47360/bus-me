@@ -11,10 +11,12 @@ interface Props {
     finishSelection: BusStop | undefined;
     busRoutes: BusRoute[];
     busStops?: BusStop[];
+    routeSelection: BusRoute | undefined;
     setStartSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
     setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
-    multiRoute: boolean
+    setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+    multiRoute: boolean;
 }
 
 type RouteTerminus = {
@@ -23,6 +25,8 @@ type RouteTerminus = {
     id: string;
 }
 
+type DirectionsResult = google.maps.DirectionsResult;
+
 const InfoWindowContent =({
     stop, 
     setStartSelection, 
@@ -30,9 +34,11 @@ const InfoWindowContent =({
     finishSelection,
     setFinishSelection,
     setRouteSelection,
+    setDirections,
     busRoutes,
     busStops,
     multiRoute,
+    routeSelection,
 }:Props): JSX.Element => {    
     const getBusRoutesFromStop = (stop: BusStop, busStops: BusStop[]): RouteInfo[] => {
         for (let i = 0; i < busStops.length; i++) {
@@ -77,7 +83,12 @@ const InfoWindowContent =({
         if (multiRoute) return;
         const routeId = (e.target as HTMLElement).id;
         for (let i = 0; i < busRoutes.length; i++) {
-            if (routeId === busRoutes[i].id) setRouteSelection(busRoutes[i])
+            if (routeId === busRoutes[i].id) {
+                setRouteSelection(busRoutes[i]);
+                setStartSelection(undefined);
+                setFinishSelection(undefined);
+                setDirections(null);
+            }
         }
     }
 
@@ -153,6 +164,8 @@ const InfoWindowContent =({
                     setStopSelection={setStartSelection}
                     stop={stop}
                     existingSelection={finishSelection}
+                    routeSelection={routeSelection}
+                    multiRoute={multiRoute}
                     />
             </Grid>
             <Grid item sx={{p: '2px'}}>
@@ -160,7 +173,10 @@ const InfoWindowContent =({
                     name={"Finish"}
                     setStopSelection={setFinishSelection}
                     stop={stop}
-                    existingSelection={startSelection}/>
+                    existingSelection={startSelection}
+                    routeSelection={routeSelection}
+                    multiRoute={multiRoute}/>
+                    
             </Grid>
         </Grid>
     </Grid>

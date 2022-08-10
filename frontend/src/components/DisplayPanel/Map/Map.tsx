@@ -15,6 +15,7 @@ import LoadScreen from './LoadScreen/LoadScreen';
 import MapSearchBar from './MapSearchBar/MapSearchBar';
 import GeoLocationButton from "./GeoLocationButton/GeoLocationButton";
 import { MapRounded } from '@mui/icons-material';
+import { start } from 'repl';
 
 type DirectionsResult = google.maps.DirectionsResult;
 
@@ -30,6 +31,7 @@ interface Props {
   setFinishSelection: Dispatch<SetStateAction<BusStop | undefined>>;
   setUserLocation: Dispatch<SetStateAction<google.maps.LatLngLiteral>>;
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
+  setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
   multiRoute: boolean;
 };
 
@@ -47,6 +49,7 @@ const Map = ({
   setFinishSelection,
   setUserLocation,
   setRouteSelection,
+  setDirections,
   multiRoute,
 }: Props): JSX.Element => {
 
@@ -79,6 +82,21 @@ const Map = ({
   const onLoad = useCallback((map: google.maps.Map): void => {
     mapRef.current = map
   }, [])
+
+  const getOpacityValue = (stopID: string, routeSelection: BusRoute): number => {
+    const FULL_VALUE = 1;
+    const OPAQUE_VALUE = 0.4;
+
+    if (startSelection && !finishSelection) {
+      const stopIDArray: string[] = routeSelection.bus_stops.map(route => route.id);
+      return (stopIDArray.indexOf(stopID) < stopIDArray.indexOf(startSelection.id) ? OPAQUE_VALUE : FULL_VALUE);
+    }
+    else if (startSelection && finishSelection) {
+      if (stopID === startSelection.id || stopID === finishSelection.id) return FULL_VALUE;
+      else return OPAQUE_VALUE;
+    }
+    return FULL_VALUE;
+  }
   
   useEffect(() => {
     mapRef.current?.panTo(userLocation)
@@ -181,7 +199,8 @@ const Map = ({
                 scaledSize: new google.maps.Size(17.5, 17.5)
               }}
               onClick = {(e) => setSelectedMarker(e.latLng)}
-              opacity = {(zoomLevel && zoomLevel >= 11) ? 1 : 0}
+              opacity = {getOpacityValue(stop.id, routeSelection)}
+              visible = {(zoomLevel && zoomLevel >= 11) ? true : false}
           >
               {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
                 selectedMarker.lng() === +stop.longitude) ?
@@ -202,6 +221,8 @@ const Map = ({
                       busStops={busStops}
                       setRouteSelection={setRouteSelection}
                       multiRoute={multiRoute}
+                      routeSelection={routeSelection}
+                      setDirections={setDirections}
                     />
                   </InfoWindow>:
                 null}
@@ -218,7 +239,7 @@ const Map = ({
               scaledSize: new google.maps.Size(17.5, 17.5)
             }}
             onClick = {(e) => setSelectedMarker(e.latLng)}
-            opacity = {(zoomLevel && zoomLevel >= 15) ? 1 : 0}
+            visible = {(zoomLevel && zoomLevel >= 15) ? true : false}
           >
             {(selectedMarker && selectedMarker.lat() === +stop.latitude &&
               selectedMarker.lng() === +stop.longitude) ?
@@ -238,6 +259,8 @@ const Map = ({
                     busRoutes={busRoutes}
                     setRouteSelection={setRouteSelection}
                     multiRoute={multiRoute}
+                    routeSelection={routeSelection}
+                    setDirections={setDirections}
                   />
                 </InfoWindow>:
               null}

@@ -117,6 +117,7 @@ const App = (): JSX.Element => {
         setStartSelection={setStartSelection}
         setFinishSelection={setFinishSelection}
         setRouteSelection={setRouteSelection}
+        setDirections={setDirections}
         multiRoute={multiRoute}
         predictionStages={predictionStages}
       />

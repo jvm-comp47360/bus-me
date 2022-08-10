@@ -9,7 +9,9 @@ test('"Start" passed as name prop to component', () => {
             name={"Start"}
             setStopSelection={jest.fn()}
             stop={mockStop}
-            existingSelection={undefined}/>)
+            existingSelection={undefined}
+            routeSelection={mockData[0]}
+            multiRoute={false}/>)
     expect(screen.getByText(/start station/i)).toBeInTheDocument()
 })
 
@@ -18,7 +20,9 @@ test('"Finish" passed as name prop to component', () => {
             name={"Finish"}
             setStopSelection={jest.fn()}
             stop={mockStop}
-            existingSelection={undefined}/>)
+            existingSelection={undefined}
+            routeSelection={mockData[0]}
+            multiRoute={false}/>)
     expect(screen.getByText(/finish station/i)).toBeInTheDocument()
 })
 
@@ -27,7 +31,9 @@ test('finish station button should be disabled at outset', () => {
         name={"Finish"}
         setStopSelection={jest.fn()}
         stop={mockStop}
-        existingSelection={undefined}/>)
+        existingSelection={undefined}
+        routeSelection={mockData[0]}
+        multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
         {name: /finish station/i},
@@ -39,7 +45,9 @@ test('finish station button should be disabled if stop and selection the same', 
         name={"Finish"}
         setStopSelection={jest.fn()}
         stop={mockStop}
-        existingSelection={mockStop}/>)
+        existingSelection={mockStop}
+        routeSelection={mockData[0]}
+        multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
         {name: /finish station/i},
@@ -51,9 +59,39 @@ test('start station button should be disabled if stop and selection the same', (
         name={"Start"}
         setStopSelection={jest.fn()}
         stop={mockStop}
-        existingSelection={mockStop}/>)
+        existingSelection={mockStop}
+        routeSelection={mockData[0]}
+        multiRoute={false}/>)
     expect(screen.getByRole(
         'button',
         {name: /start station/i},
     )).toHaveClass('Mui-disabled');
+})
+
+test('start station button should be disabled if no route is selected', () => {
+    render(<InfoWindowButton 
+        name={"Start"}
+        setStopSelection={jest.fn()}
+        stop={mockStop}
+        existingSelection={mockStop}
+        routeSelection={undefined}
+        multiRoute={false}/>)
+    expect(screen.getByRole(
+        'button',
+        {name: /start station/i},
+    )).toHaveClass('Mui-disabled');
+})
+
+test('start button should be enabled if in multiroute mode, even without routeSelection', () => {
+    render(<InfoWindowButton 
+        name={"Start"}
+        setStopSelection={jest.fn()}
+        stop={mockStop}
+        existingSelection={mockStop}
+        routeSelection={undefined}
+        multiRoute={true}/>)
+    expect(screen.getByRole(
+        'button',
+        {name: /start station/i},
+    )).not.toHaveClass('Mui-disabled');
 })
