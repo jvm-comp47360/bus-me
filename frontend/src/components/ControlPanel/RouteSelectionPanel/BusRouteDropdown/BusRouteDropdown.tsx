@@ -17,7 +17,6 @@ interface Props {
 const BusRouteDropdown = ({busRoutes, routeSelection,
   setRouteSelection,
 }: Props): JSX.Element => {
-
   const changeHandler = (
       event: React.SyntheticEvent<Element, Event>,
       value: BusRoute | null,
@@ -34,19 +33,27 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
     return busRoutes.sort((a: BusRoute, b: BusRoute) => {
       return a.name.localeCompare(b.name, undefined, {
         numeric: true,
-        sensitivity: 'base'
+        sensitivity: 'base',
       });
     });
   };
 
+  // Using AutoComplete API source: https://mui.com/material-ui/react-autocomplete/
   return <>
     <Autocomplete
       value={routeSelection || null}
       onChange={changeHandler}
-      getOptionLabel={(option: BusRoute) =>
-        `${option.name} (${option.bus_stops[0]['name']} to ${option.bus_stops[option.bus_stops.length - 1]['name']})`}
+      getOptionLabel={(option: BusRoute) => option.name}
       options={sortBusRoutes(busRoutes)}
-      sx={{width: 300}}
+      sx={{height: 70, width: 370}}
+      renderOption={(props, option: BusRoute) => {
+        return (
+          <span {...props} style={{backgroundColor: 'white'}}>
+            {option.name}
+          </span>
+        );
+      }
+      }
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={'Select Route'}/>}
     />

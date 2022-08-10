@@ -2,8 +2,7 @@
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
 // Material UI
-import Button from '@mui/material/Button';
-import {Box, Slide} from '@mui/material';
+import {Box} from '@mui/material';
 
 // Types
 import BusRoute from '../../types/BusRoute';
@@ -11,11 +10,8 @@ import BusStop from '../../types/BusStop';
 type DirectionsResult = google.maps.DirectionsResult;
 
 // Components
-import ShowRouteButton from './ShowRouteButton/ShowRouteButton';
 import RouteSelectionPanel from './RouteSelectionPanel/RouteSelectionPanel';
 import StopSelectionPanel from './StopSelectionPanel/StopSelectionPanel';
-import BusMeButton from './BusMeButton/BusMeButton';
-
 
 interface Props {
   startSelection: BusStop | undefined;
@@ -26,126 +22,110 @@ interface Props {
   setRouteSelection: Dispatch<SetStateAction<BusRoute | undefined>>;
   setPrediction: Dispatch<SetStateAction<number | undefined>>;
   setDirections: Dispatch<SetStateAction<DirectionsResult | null>>;
+  busRoutes: BusRoute[];
+  setBusRoutes: Dispatch<SetStateAction<BusRoute[]>>
+  busStops: BusStop[];
+  multiRoute: boolean
+  setMultiRoute: Dispatch<SetStateAction<boolean>>
+  setPredictionStages: Dispatch<SetStateAction<number[]>>
 }
 
 // Animation Bug Fix Credit:
 // https://stackoverflow.com/questions/55647969/how-to-get-one-elements-to-slide-in-while-the-other-slides-out-using-react-and
 
 const ControlPanel = ({
-                        startSelection,
-                        setStartSelection,
-                        finishSelection,
-                        setFinishSelection,
-                        routeSelection,
-                        setRouteSelection,
-                        setPrediction,
-                        setDirections,
-                      }: Props): JSX.Element => {
-
-  const [busRoutes, setBusRoutes] = useState<BusRoute[]>([])
-
+  startSelection,
+  setStartSelection,
+  finishSelection,
+  setFinishSelection,
+  routeSelection,
+  setRouteSelection,
+  setPrediction,
+  setDirections,
+  busRoutes,
+  setBusRoutes,
+  busStops,
+  multiRoute,
+  setPredictionStages,
+}: Props): JSX.Element => {
   const [dateTimeSelection, setDateTimeSelection] =
       useState<Date | undefined>(new Date());
 
-  const [checked, setChecked] = useState(false);
-
   useEffect(() => {
-    fetch('http://ipa-002.ucd.ie/api/bus_routes/')
-      .then((response) => {
-        if (response.ok) {
-          return response.json() as Promise<BusRoute[]>;
-        } else {
-          throw new Error();
-        }
-      })
-      .then(setBusRoutes)
-      .catch((error) => console.log(error));
-  }, [])
+    const localStorageRoutes: string | null =
+      localStorage.getItem('bus_routes');
 
-  const resetStartAndFinishSelection = () => {
-    if (checked) {
-      setStartSelection(undefined)
-      setFinishSelection(undefined)
-    }
-  }
+    const localStorageRoutesTtl: string | null =
+      localStorage.getItem('bus_routes_ttl');
 
-  const slideHandler = () => {
-    setChecked((prev) => !prev);
-    resetStartAndFinishSelection();
-  };
-
-  const toggleText = () => {
-    if (checked) {
-      return 'SELECT ROUTE';
+    if (localStorageRoutes && !timeStampOutOfDate(localStorageRoutesTtl)) {
+      setBusRoutes(JSON.parse(localStorageRoutes));
     } else {
-      return 'SELECT STATIONS';
+      fetch('https://ipa-002.ucd.ie/api/bus_routes/')
+          .then((response) => {
+            if (response.ok) {
+              return response.json() as Promise<BusRoute[]>;
+            } else {
+              throw new Error();
+            }
+          })
+          .then((data) => {
+            setBusRoutes(data);
+            localStorage.setItem('bus_routes', JSON.stringify(data));
+            localStorage.setItem('bus_routes_ttl', new Date().toISOString());
+          })
+          .catch((error) => console.log(error));
     }
-  };
+  }, []);
 
-  const toggleDisableHandler = (): boolean => {
-    return routeSelection === undefined;
-  }
+  const timeStampOutOfDate = (currentTimeStamp: string | null) => {
+    // Checking if the timestamp in local storage should be replaced.
+    if (!currentTimeStamp) return true;
+
+    const timeStampDate: Date = new Date(currentTimeStamp);
+    const currentDate = new Date();
+
+    const currentTime = currentDate.getTime();
+    const timeStampTime = timeStampDate.getTime();
+    const timeDifference = (currentTime - timeStampTime) / 36e5;
+
+    return timeDifference > 24;
+  };
 
   return <Box
-      display={'flex'}
-      flexDirection={'column'}
-      alignItems={'center'}
-      m={2}
+    display={'flex'}
+    flexDirection={'row'}
+    flexWrap={'wrap'}
+    justifyContent={'center'}
+    sx={{backgroundColor: '#ffff72'}}
+    p={1}
   >
-    {!checked ? (
-      <Slide
-        direction={'up'}
-        in={!checked}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div>
-          <RouteSelectionPanel
-            busRoutes={busRoutes}
-            routeSelection={routeSelection}
-            setRouteSelection={setRouteSelection}
-          />
-        </div>
-      </Slide>
-    ) : null}
-    {checked ? (
-      <Slide
-        direction={'up'}
-        in={checked}
-        mountOnEnter
-        unmountOnExit
-      >
-        <div>
-            <StopSelectionPanel
-              busRoutes={busRoutes}
-              routeSelection={routeSelection}
-              startSelection={startSelection}
-              setStartSelection={setStartSelection}
-              finishSelection={finishSelection}
-              setFinishSelection={setFinishSelection}
-              dateTimeSelection={dateTimeSelection}
-              setDateTimeSelection={setDateTimeSelection}
-            />
-        </div>
-      </Slide>
-    ) : null}
-    <Button
-      onClick={slideHandler}
-      disabled={toggleDisableHandler()}
-    >
-      {toggleText()}
-    </Button>
-    <BusMeButton
+    {/* Route Selection panel disappears if multiRoute is selected*/}
+    {multiRoute ? null :
+      <RouteSelectionPanel
+        busRoutes={busRoutes}
         routeSelection={routeSelection}
-        startSelection={startSelection}
-        finishSelection={finishSelection}
-        dateTimeSelection={dateTimeSelection}
+        setRouteSelection={setRouteSelection}
+        setStartSelection={setStartSelection}
+        setFinishSelection={setFinishSelection}
         setPrediction={setPrediction}
-    />
-    <ShowRouteButton
-        startSelection={startSelection}
-        finishSelection={finishSelection}
         setDirections={setDirections}
+      />
+    }
+    <StopSelectionPanel
+      busRoutes={busRoutes}
+      busStops={busStops}
+      routeSelection={routeSelection}
+      startSelection={startSelection}
+      setStartSelection={setStartSelection}
+      finishSelection={finishSelection}
+      setFinishSelection={setFinishSelection}
+      dateTimeSelection={dateTimeSelection}
+      setDateTimeSelection={setDateTimeSelection}
+      setPrediction={setPrediction}
+      setDirections={setDirections}
+      multiRoute={multiRoute}
+      setPredictionStages={setPredictionStages}
     />
   </Box>;
 };

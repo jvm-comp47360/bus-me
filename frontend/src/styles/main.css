@@ -6,9 +6,10 @@
     font-family: "Lato Light", sans-serif;
 }
 
-.gm-style .gm-style-iw-d::-webkit-scrollbar-track, 
-.gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece,
-.gm-style .gm-style-iw-c,
-.gm-style .gm-style-iw-t::after { 
-  opacity: 0.9;
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    background: #ffff
+}
+
+.MuiAutocomplete-noOptions {
+    background-color: #ffffff;
 }

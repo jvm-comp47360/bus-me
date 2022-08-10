@@ -1,3 +1,8 @@
+# Docker and Nginx setup created with help from the
+# following sources:
+# General Setup: https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
+# SSL certificates: https://faun.pub/setting-up-ssl-certificates-for-nginx-in-docker-environ-e7eec5ebb418
+
 version: "3"
 
 services:
@@ -29,7 +34,8 @@ services:
       args:
         REACT_APP_GOOGLE_KEY: ${REACT_APP_GOOGLE_KEY}
     ports:
-      - "80:8080"
+      - "80:80"
+      - "443:443"
     volumes:
       - staticfiles:/staticfiles
     env_file:

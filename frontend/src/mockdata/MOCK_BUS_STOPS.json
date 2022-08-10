@@ -1,0 +1,15 @@
+[
+    {
+        "id": "8220DB000068",
+        "name": "Ventry Drive",
+        "number": 68,
+        "latitude": "53.369077508",
+        "longitude": "-6.3042452347",
+        "bus_routes": [
+            {
+                "id": "3",
+                "name": "3 (to Faussaugh Ave Church)"
+            }
+        ]
+    }
+]

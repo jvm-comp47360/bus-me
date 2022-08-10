@@ -11,10 +11,12 @@ import BusRoute from '../../../../types/BusRoute';
 
 interface Props {
   busRoutes: BusRoute[]
+  busStops: BusStop[]
   routeSelection: BusRoute | undefined;
   label: string;
   selection: BusStop | undefined;
   setSelection: Dispatch<SetStateAction<BusStop | undefined>>;
+  multiRoute: boolean;
 }
 
 const BusStopDropdown = ({
@@ -23,10 +25,16 @@ const BusStopDropdown = ({
   label,
   selection,
   setSelection,
+  busStops,
+  multiRoute,
 }: Props): JSX.Element => {
   const getBusStops = (): BusStop[] => {
+    // Select all bus stops or find the ones belong to the route if not
+    if (multiRoute) {
+      return busStops;
+    }
     const currentRoute: BusRoute | undefined =
-        busRoutes.find((route) => route === routeSelection);
+      busRoutes.find((route) => route === routeSelection);
     if (currentRoute) {
       return currentRoute['bus_stops'];
     } else {
@@ -52,7 +60,15 @@ const BusStopDropdown = ({
       getOptionLabel={(option: BusStop) =>
         `${option.name}, Stop No.${option.number}`}
       options={getBusStops()}
-      sx={{width: 300}}
+      noOptionsText={'Please select a route!'}
+      sx={{width: 370}}
+      renderOption={(props, option: BusStop) => {
+        return (
+          <span {...props} style={{backgroundColor: 'white'}}>
+            {option.name}, Stop No.{option.number}
+          </span>
+        );
+      }}
       renderInput={(params: AutocompleteRenderInputParams) =>
         <TextField {...params} label={label}/>}
     />

@@ -8,8 +8,6 @@ import MOCK_BUS_ROUTES from '../../mockdata/MOCK_BUS_ROUTES.json';
 
 import BusStop from '../../types/BusStop';
 import BusRoute from '../../types/BusRoute';
-import {UserEvent} from "@testing-library/user-event/dist/types/setup";
-import userEvent from "@testing-library/user-event";
 
 import {enableFetchMocks} from 'jest-fetch-mock';
 
@@ -33,94 +31,85 @@ const setup = (startSelection: BusStop | undefined,
         setRouteSelection={jest.fn()}
         setPrediction={jest.fn()}
         setDirections={jest.fn()}
+        busRoutes={[]}
+        setBusRoutes={jest.fn()}
+        busStops={[]}
+        multiRoute={false}
+        setMultiRoute={jest.fn}
+        setPredictionStages={jest.fn}
       />,
     </LocalizationProvider>,
 );
 
-const clickToggleButton = async () => {
-  const toggleButton: HTMLElement = screen.getByRole('button', {name: /select stations/i});
-  const view: UserEvent = userEvent.setup();
-  await view.click(toggleButton);
-}
-
 describe('<ControlPanel/> Default rendering', () => {
   beforeEach(() => {
     fetchMock.resetMocks();
-  })
+  });
 
   it('should show route dropdown', () => {
-    expect.assertions(1);
+    // expect.assertions(1);
+    setup(undefined, undefined, undefined);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('combobox', {name: /select route/i})).toBeInTheDocument();
+    expect(screen.getByRole('combobox',
+        {name: /select route/i},
+    )).toBeInTheDocument();
   });
 
-  it('should not show station dropdowns', () => {
+  it('should show station dropdowns', () => {
     expect.assertions(2);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.queryByRole('combobox', {name: /start/i})).toBeNull();
-    expect(screen.queryByRole('combobox', {name: /finish/i})).toBeNull();
+    expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
+    expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
   });
 
-  it('should not show datetime dropdown', () => {
+  it('should show datetime dropdown', () => {
     expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.queryByRole('textbox', {name: /choose date/i}))
-        .toBeNull();
+    expect(screen.getByRole('textbox', {name: /choose date/i}))
+        .toBeInTheDocument();
   });
 
-  it('should not show submit button', () => {
+  it('should show submit button', () => {
     expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /busme!/i})).toBeInTheDocument();
+    expect(screen.getByRole('button', {name: /plan journey/i}))
+        .toBeInTheDocument();
   });
 
-  it('should show toggle button', () => {
+  it('should not show toggle button', () => {
     expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /select stations/i})).toBeInTheDocument();
+    expect(screen.queryByRole('button', {name: /select stations/i}))
+        .not.toBeInTheDocument();
   });
 });
-
-  it('should display the show route button', () => {
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /show route!/i})).toBeInTheDocument();
-  });
 
 describe('<ControlPanel/> Submit button functionality', () => {
   it('should be be disabled by default', () => {
     expect.assertions(1);
+    setup(MOCK_START_STATION, MOCK_START_STATION, MOCK_CURRENT_ROUTE);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(MOCK_START_STATION, MOCK_START_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /busme!/i}))
+    expect(screen.getByRole('button', {name: /plan journey/i}))
         .toHaveClass('Mui-disabled');
   });
 
   it('should be be disabled if two same stations are selected', () => {
     expect.assertions(1);
+    setup(undefined, undefined, undefined);
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
-    setup(undefined, undefined, undefined);
-
-    expect(screen.getByRole('button', {name: /busme!/i}))
-      .toHaveClass('Mui-disabled');
+    expect(screen.getByRole('button', {name: /plan journey/i}))
+        .toHaveClass('Mui-disabled');
   });
 
   it('should be be enabled when dropdowns are filled in', () => {
@@ -129,67 +118,7 @@ describe('<ControlPanel/> Submit button functionality', () => {
     fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
 
 
-    expect(screen.getByRole('button', {name: /busme!/i}))
+    expect(screen.getByRole('button', {name: /plan journey/i}))
         .not.toHaveClass('Mui-disabled');
   });
-});
-
-describe('<ControlPanel/> Toggle button functionality',() => {
-  it ('should be disabled by default', () => {
-    expect.assertions(1);
-    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-    setup(undefined, undefined, undefined);
-
-    expect(screen.getByRole('button', {name: /select stations/i}))
-      .toHaveClass('Mui-disabled');
-  })
-
-  it ('should be enabled when a route is selected', () => {
-    expect.assertions(1);
-    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    expect(screen.getByRole('button', {name: /select stations/i}))
-      .not.toHaveClass('Mui-disabled');
-  })
-
-  it('should have a new title after being clicked',
-    async (): Promise<void> => {
-    expect.assertions(1);
-    fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-    setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-    await clickToggleButton();
-
-    expect(screen.getByRole('button', {name: /select route/i})).toBeInTheDocument();
-  });
-
-  it('should display the station dropdowns after being clicked',
-    async (): Promise<void> => {
-      expect.assertions(2);
-      fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-      await clickToggleButton();
-
-      expect(screen.getByRole('combobox', {name: /start/i})).toBeInTheDocument();
-      expect(screen.getByRole('combobox', {name: /finish/i})).toBeInTheDocument();
-    })
-
-  it('should display the datetime dropdown after being clicked',
-    async (): Promise<void> => {
-      expect.assertions(1);
-      fetchMock.mockResponseOnce(JSON.stringify(MOCK_BUS_ROUTES));
-
-      setup(MOCK_START_STATION, MOCK_FINISH_STATION, MOCK_CURRENT_ROUTE);
-
-      await clickToggleButton();
-
-      expect(screen.getByRole('textbox', {name: /choose date/i}))
-        .toBeInTheDocument();
-    })
 });
