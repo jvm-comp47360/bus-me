@@ -44,7 +44,7 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
       onChange={changeHandler}
       getOptionLabel={(option: BusRoute) => option.name}
       options={sortBusRoutes(busRoutes)}
-      sx={{height: 70, width: 400}}
+      sx={{height: 70, width: 370}}
       renderOption={(props, option: BusRoute) => {
         return (
           <span {...props} style={{backgroundColor: 'white'}}>

@@ -61,13 +61,12 @@ const StopSelectionPanel = ({
               flexDirection={'row'}
               flexWrap={'wrap'}
               justifyContent={'center'}
-              margin={1}>
+              >
     <Box
       display={'flex'}
       flexDirection={'column'}
       flexWrap={'wrap'}
       justifyContent={'center'}
-      margin={1}
     >
       <Box m={0.5}>
         <BusStopDropdown
@@ -134,7 +133,6 @@ const StopSelectionPanel = ({
       flexDirection={'column'}
       flexWrap={'wrap'}
       justifyContent={'center'}
-      margin={1}
     >
       <PlanJourneyButton
         routeSelection={routeSelection}
