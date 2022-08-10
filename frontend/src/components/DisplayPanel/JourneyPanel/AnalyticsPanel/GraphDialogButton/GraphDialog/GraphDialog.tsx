@@ -50,7 +50,7 @@ const GraphDialog = ({
   const getAllTimes = (dateTimeSelection: Date) => {
     const currentHours = dateTimeSelection.getHours()
     const currentMinutes = dateTimeSelection.getMinutes()
-    const timeModifiers = [-2, 1, 0, 1, 2]
+    const timeModifiers = [-2, -1, 0, 1, 2]
 
     return timeModifiers.map((timeModifier) => {
       const modifiedHours = getModifiedHours(currentHours + timeModifier);

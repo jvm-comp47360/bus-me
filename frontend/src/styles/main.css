@@ -9,3 +9,7 @@
 .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
     background: #ffff
 }
+
+.MuiAutocomplete-noOptions {
+    background-color: #ffffff;
+}

@@ -54,7 +54,7 @@ const BusRouteDropdown = ({busRoutes, routeSelection,
       }
     }
       renderInput={(params: AutocompleteRenderInputParams) =>
-        <TextField {...params} label={'Select Route'} sx={{backgroundColor: 'white'}}/>}
+        <TextField {...params} label={'Select Route'}/>}
     />
   </>;
 };

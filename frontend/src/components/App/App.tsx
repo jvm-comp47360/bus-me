@@ -49,7 +49,6 @@ const App = (): JSX.Element => {
       localStorage.getItem('bus_stops_ttl');
 
       if (localStorageStops && !timeStampOutOfDate(localStorageStopsTtl)) {
-        console.log("Getting data out of local storage")
         setBusStops(JSON.parse(localStorageStops));
       } else {
         fetch('https://ipa-002.ucd.ie/api/bus_stops/')
@@ -61,10 +60,9 @@ const App = (): JSX.Element => {
             }
           })
           .then((data) => {
-            console.log("Getting data from backend")
             setBusStops(data);
             localStorage.setItem('bus_stops', JSON.stringify(data))
-            localStorage.setItem('bus_stops_ttl', new Date().toLocaleString())
+            localStorage.setItem('bus_stops_ttl', new Date().toISOString())
           })
           .catch((error) => console.log(error));
       }
@@ -76,7 +74,9 @@ const App = (): JSX.Element => {
     const timeStampDate: Date = new Date(currentTimeStamp);
     const currentDate = new Date();
 
-    const timeDifference = Math.abs(currentDate.getTime() - timeStampDate.getTime()) / 36e5;
+    const currentTime = currentDate.getTime();
+    const timeStampTime = timeStampDate.getTime()
+    const timeDifference = (currentTime - timeStampTime) / 36e5;
 
     return timeDifference > 24
   }
