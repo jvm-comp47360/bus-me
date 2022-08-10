@@ -59,14 +59,13 @@ const GraphDialog = ({
       data: getAllPredictions(prediction, graphPredictions)
     }],
     plotOptions: {
-      column: {
+      series: {
         events: {
-          legendItemClick: () => {
-            return false;
+          legendItemClick: (e: any) => {
+            e.preventDefault();
           }
         }
-      },
-      allowPointSelect: false,
+      }
     }
   }
 
