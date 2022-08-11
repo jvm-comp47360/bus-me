@@ -73,15 +73,66 @@ The PostgreSQL database, Google API and Openweather API are used here. Please ma
 
 The _BUSME_ prefix variables are properties of the local Postgres database. Make sure to create and they consist with the local database configurations.  
 
-_DJANGO_ALLOWED_HOSTS_ and _SECRET_KEY_ are the django framework default variables in settings. _DJANGO_ALLOWED_HOSTS_ is a list of strings representing the host/domain names that this Django site can serve. A secret key for a particular Django installation. Keep them consistent with the above values, or start a new django project please make sure to update _SECREDT_KEY_. More details on django official documents: [https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts](https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts) [https://docs.djangoproject.com/en/dev/ref/settings/#secret-key](https://docs.djangoproject.com/en/dev/ref/settings/#secret-key)
+_DJANGO_ALLOWED_HOSTS_ and _SECRET_KEY_ are the django framework default variables in settings. _DJANGO_ALLOWED_HOSTS_ is a list of strings representing the host/domain names that this Django site can serve. A secret key for a particular Django installation. Keep them consistent with the above values, or start a new django project please make sure to update _SECREDT_KEY_. More details on django official documents:  
+[https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts](https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts)  
+[https://docs.djangoproject.com/en/dev/ref/settings/#secret-key](https://docs.djangoproject.com/en/dev/ref/settings/#secret-key)
 
 Google key is for authenticating the Google API this application adopted. Don't forget to subscribe the Google Direction API before using it. For more details on: [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
 OpenWeatherAPI_KEY is for authenticating openweather api, which is used for weather forecasts. Create and subscribe in the website: [https://openweathermap.org/](https://openweathermap.org/)  
 
-#### **3. Container Build**  
+#### **3. Fill Database**  
+Data needed here is stored in csv file. To load them into the database, please follow these command:   
+
+`cd backend/`  
+`python manage.py makemigrations`  
+`python manage.py migrate`  
+`python manage.py runscript load`  
+
+The migration command will create tables in local database. And the load file in `backend/scripts/load.py` will fill these tables.
+
+#### **4. Container Build**  
 There are three containers here, which are nginx, database and backend. They have already been encapsulated in the `docker-compose.yml` file. To build these containers just need to run the command:  
 `sudo docker-compose up –build `  
 If you want to do some updates on that file, make sure to spin down currently running containers,   
 `sudo docker-compose down`  
-and restart the containers by the first command.
+and restart the containers by the first command.  
+## **How does BusMe work?**  
+---
+BusMe is a web application mainly functions are drived by machine learning models. React is mainly used here for the frontend UI design, Django is used for the backend and Postgres for data storage. Machine learning models are trained by past data. Users enter their trip data which include start stops, finish stops, route and times. These data is post to the backend django prediction API. The prediction results will be serialized in json format and called by the frontend. 
+## **What technologies does BusMe use?**  
+---
+- React  
+ReactJS is used here to corporate with the Google MAP. 
+- Material UI  
+It's specifically for React, and provides a high quality UX in google material design philosophy.  
+- Typescript  
+The main language is used in the frontend.
+- Django  
+To corporate with the machine learning models written in python. 
+- PostgreSQL  
+To store the data and search by sql syntax.
+- Python  
+The main language is used in the backend.
+- Python library  
+Pandas and Numpy for data process, and sklearn for modelling. 
+- Nginx  
+Use as server and reverse proxy.
+- Docker  
+Separate applications and run them together in any dependencies.
+
+For specific usage in BusMe application. Please view Chapter 4 in the project report.  
+
+## **Hint**
+---
+Due to UCD data confidentiality requirements, the historical data and models are pubic here. With the permition of UCD, run the follow command to move models to your local machine.  
+
+`cd backend/prediction/`  
+`mkdir Models`  
+`scp -r team1@telemachus.ucd.ie:~/data_analysis/trip_model/choose_model backend/prediction/Models`  
+`cd -`  
+`mkdir search_file`  
+`scp team1@telemachus.ucd.ie:~/data_analysis/trip_model/classifier.pkl backend/prediction/search_file`  
+`scp team1@telemachus.ucd.ie:~/data_analysis/search_table/search_table.pkl backend/prediction/search_file`  
+
+Once moving the model pickle files, this application can perfectly run on your server. 
