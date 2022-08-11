@@ -32,8 +32,6 @@ Directly below the navigation bar is a control panel for main data input. There 
 <!-- ![select_route](image/select_route.png) ![select_stop](image/select_stop.png) -->
 <p align="center">
 <img src="image/select_route.png" width="300px"> 
-</p>
-<p align="center">
 <img src="image/select_stop.png" width="300px">
 </p> 
 
@@ -47,11 +45,7 @@ There are two steps to the date time selection process. First, a calendar appear
 <!-- ![calendar_selec](image/calendar_select.png) ![clock_select](image/clock_select.png) -->
 <p align="center">
 <img src="image/calendar_select.png" width="200px"> 
-</p>
-<p align="center">
 <img src="image/clock_select.png" width="200px">
-</p>
-<p align="center">
 <img src="image/time_type.png" width="200px">
 </p>   
 
@@ -63,16 +57,15 @@ There are two core components to the way the prediction result will be displayed
 - **Journey Panel**  
 Journey panel will show on the right top of the map. It has a time table with the start stop, finish stop, line id of the routes and the prediction result. A Journey times button will show a line chart with recent hours prediction results. Please note that in the event that "Multi Route" mode is selected, the journey panel will show every leg of the journey, including stopovers, if applicable.
 <p align="center">
-<img src="image/journey_panel.png" width="400px"> 
-</p>   
-<p align="center">
-<img src="image/line_chart.png" width="400px"> 
+<img src="image/journey_panel.png" width="200px"> 
+<img src="image/multi_journey_panel.png" width="200px">
+<img src="image/line_chart.png" width="200px"> 
 </p>   
 
 - **Map View**  
 The map shows the prediction route on the map.  
 <p align="center">
-<img src="image/map_view.png" width="400px"> 
+<img src="image/map_view.png" width="300px"> 
 </p>   
 
 ### **4. Additional Functions**  
@@ -92,5 +85,5 @@ The weather bar will show on the right top of the map before prediction. This sh
 - **Stops on Map**  
 All the stops in Dublin will show on the map. This is not just to show the location of the stops - clicking on a given marker will give the user another way to interact with the application. Once any stop icon on the map is clicked, there will a pop-up show the the stop information which include its name, a list of lines that pass it and two buttons which can choose as a start or finish stop. In addition, in the single mode, by the click of any line in the list, users can automatically jump to that line.  
 <p align="center">
-<img src="image/stop_on_map.png" width="400px"> 
+<img src="image/stop_on_map.png" width="300px"> 
 </p>  
