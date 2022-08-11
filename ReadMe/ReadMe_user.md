@@ -1,32 +1,34 @@
-# **BusMe -- A Dublin Bus Journey Planner**
+# **BusMe! - A Dublin Bus Journey Planner**
+
 ![inital_look](image/first_page.png)
 
 ## **What is BusMe?**
 ---
-BusMe is a Dublin Bus Journey Planner. It's a web application that predicts bus journey times in Dublin City. The prediction is driven by machine learning models and doesn't rely on any reality equipment.
+BusMe is a Dublin Bus journey planner. It is a web application that predicts bus journey times in Dublin City using machine learning models. 
 
 ## **How do I use BusMe?**
 ---
-Enter this page by click on the paste [BusMe](http://ipa-002.ucd.ie/ "BusMe link") link in a browser.   
-Web link: [http://ipa-002.ucd.ie/](http://ipa-002.ucd.ie/ "row link")  
+BusMe may be accessed by either clicking [this link](http://ipa-002.ucd.ie/ "BusMe link") or pasting the following link directly into your favourite web browser: [http://ipa-002.ucd.ie/](http://ipa-002.ucd.ie/ "row link")  
 
-### **1. Route Mode Choose**  
+BusMe allows any user to provide details of their desired journey and receive a journey plan. The application supports several types of user input and journey types. A step-by-step guide on how interact with BusMe is set out in detail below.
+
+### **1. Route Mode Selection**  
 <!-- ![mode_choose](image/mode_choose.png)   -->
 <p align="center">
 <img src="image/mode_choose.png" width="200px"> 
 </p>  
 
-There is a ROUTE MODE selection on the top navigation bar. It's default single route, which users first need to select a route. The multi route means user can choose a stop directily.    
+There is a "Route Mode" selection button on the top navigation bar. By default, this is set to "Single Route", which means that you will need to provide the route which you wish to travel on. If you do not know what route you need to travel on, then we would recommend setting the application to "Multi Route" mode, which will automatically predict the best route for your journey, including any stopovers if necessary.    
 
-### **2. Route Search**  
+### **2. Control Panel**  
 <!-- ![control_panel](image/control_panel.png) -->
 <p align="center">
 <img src="image/control_panel.png" width="600px"> 
 </p> 
-It's a control panel for main data input. There are three parts in this panel.  
+Directly below the navigation bar is a control panel for main data input. There are three core parts in this panel.  
 
-- **Dropdown**  
-In the single mode, there are three dropdowns. First to select the route, then two of them can choose the start and finish stops within the route. In the multi mode, the stops can choose freely.   
+- **Dropdowns**  
+ In "Single Route" mode, there are three dropdowns - the first allows you to select the route, then the other two allow you to choose the start and finish stops within the route. In "Multi Route" mode, the route dropdown disappears and the stops can be chosen freely.   
 <!-- ![select_route](image/select_route.png) ![select_stop](image/select_stop.png) -->
 <p align="center">
 <img src="image/select_route.png" width="300px"> 
@@ -35,11 +37,13 @@ In the single mode, there are three dropdowns. First to select the route, then t
 <img src="image/select_stop.png" width="300px">
 </p> 
 
-*All these selection can be searched by keywords in the dropdowns.*
+*Please note that all these selections can be searched by typing directly into in the dropdowns.*
 
 
 - **Time Selection**   
-Users can click the calendar icon to select the date. It consists of three child selection. Firstly, a calendar to choose the day, month and year. Secondly, a clock to select an accurate time in minutes. Thirdly, the type of time users choose is departure or arrival.
+The calendar icon can be clicked to select the date and time of the journey. The departure and arrival radio toggles can also be clicked depending on whether you would like your journey to start or end at the provided date. 
+
+There are two steps to the date time selection process. First, a calendar appears, allowing you to select the date. Then, a clock appears to select an accurate time.
 <!-- ![calendar_selec](image/calendar_select.png) ![clock_select](image/clock_select.png) -->
 <p align="center">
 <img src="image/calendar_select.png" width="200px"> 
@@ -52,13 +56,12 @@ Users can click the calendar icon to select the date. It consists of three child
 </p>   
 
 - **Plan Journey**  
-Once above data as selected, there is a plan journey button. Click it will get route planning and time predictions.  
+Once the above information has been provided, the "Plan Journey" button will activate and become clickable. Clicking it will retrieve route planning and time predictions.  
 
-### **3. Result Shown**  
-The prediction result will be shown in two part. One is a journey panel show the text information. The other is the map view of the prediction result. 
+### **3. Results**  
+There are two core components to the way the prediction result will be displayed. The first is a journey panel that will display the journey plan in text. The second is the map view of the prediction result. 
 - **Journey Panel**  
-Journey panel will show on the right top of the map. It has a time table with the start stop, finish stop, line id of the routes and the prediction result.  
-A Journey times button will show a line chart with recent hours prediction results.   
+Journey panel will show on the right top of the map. It has a time table with the start stop, finish stop, line id of the routes and the prediction result. A Journey times button will show a line chart with recent hours prediction results. Please note that in the event that "Multi Route" mode is selected, the journey panel will show every leg of the journey, including stopovers, if applicable.
 <p align="center">
 <img src="image/journey_panel.png" width="400px"> 
 </p>   
@@ -81,13 +84,13 @@ A geolocation bar is on the left top of the map which consists of a search bar a
 </p>   
 
 - **Weather Forecast**  
-The weather bar will show on the right top of the map before prediction. It's current weather of Dublin. Users can take it as a suggestion for bus journey. 
+The weather bar will show on the right top of the map before prediction. This shows the current weather in Dublin. Users can take this information into account when planning their bus journey. 
 <p align="center">
 <img src="image/weather.png" width="400px"> 
 </p>    
 
-- **Stop on Map**  
-All the stops in Dublin will show on the map. It's not only a simple view of their postion, but some functions are realized with the stop icon. Once click any stop icon on the map, there will a pop-up show the the stop informations which include its name, lists of line that passing it and two buttons which can choose as a start or finish stop. In addition, in the single mode, by the click of any line in the list, users can autmatically jump to that line.  
+- **Stops on Map**  
+All the stops in Dublin will show on the map. This is not just to show the location of the stops - clicking on a given marker will give the user another way to interact with the application. Once any stop icon on the map is clicked, there will a pop-up show the the stop information which include its name, a list of lines that pass it and two buttons which can choose as a start or finish stop. In addition, in the single mode, by the click of any line in the list, users can automatically jump to that line.  
 <p align="center">
 <img src="image/stop_on_map.png" width="400px"> 
 </p>  
