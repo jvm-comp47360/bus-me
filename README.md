@@ -14,7 +14,7 @@ BusMe may be accessed by either clicking [this link](http://ipa-002.ucd.ie/ "Bus
 
 BusMe allows any user to provide details of their desired journey and receive a journey plan. The application supports several types of user input and journey types. A step-by-step guide on how interact with BusMe is set out in detail below.
 
-If you are a developer and would like some technical details about the application, or would like to make a code contribution, please see the developer readme, which can be found at [this link.](https://github.com/jvm-comp47360/bus-me/tree/main/database "Developer Readme")    
+If you are a developer and would like some technical details about the application, or would like to make a code contribution, please see the developer readme, which can be found at [this link.](https://github.com/jvm-comp47360/bus-me/blob/main/developer_info/ReadMe_Developer.md "Developer Readme")    
 
 ### **1. Route Mode Selection**  
 <!-- ![mode_choose](image/mode_choose.png)   -->
