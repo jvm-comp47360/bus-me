@@ -1,51 +1,97 @@
-# BusMe Development ReadMe
+# **BusMe! - A Dublin Bus Journey Planner**
 
-## Dependencies
+![django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green)![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAF)![python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)![typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)![postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)![docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 
-Please ensure that you have all the latest dependencies to run this project. To do so, run the following command while in this directory to create a conda environment with the relevant libraries:
+![inital_look](readme_images/first_page.png)
 
-`conda env create -f busme.yml`
+## **What is BusMe?**
+---
+BusMe is a Dublin Bus journey planner. It is a web application that predicts bus journey times in Dublin City using machine learning models. 
 
-To update the dependencies file before pushing, please use the following command:
+## **How do I use BusMe?**
+---
+BusMe may be accessed by either clicking [this link](http://ipa-002.ucd.ie/ "BusMe link") or pasting the following link directly into your favourite web browser: [http://ipa-002.ucd.ie/](http://ipa-002.ucd.ie/ "row link")  
 
-`conda env export --from-history > busme.yml`
+BusMe allows any user to provide details of their desired journey and receive a journey plan. The application supports several types of user input and journey types. A step-by-step guide on how interact with BusMe is set out in detail below.
 
-## Database Environment Details
+If you are a developer and would like some technical details about the application, or would like to make a code contribution, please see the developer readme, which can be found at [this link.](https://github.com/jvm-comp47360/bus-me/tree/main/database "Developer Readme")    
 
-It would be very helpful if every team member set up their local Postgres installation with the following environment variables:
+### **1. Route Mode Selection**  
+<!-- ![mode_choose](image/mode_choose.png)   -->
+<p align="center">
+<img src="readme_images/mode_choose.png" width="200px"> 
+</p>  
 
-* BUSME_USER
-* BUSME_PASSWORD
-* BUSME_HOST
-* BUSME_PORT
+There is a "Route Mode" selection button on the top navigation bar. By default, this is set to "Single Route", which means that you will need to provide the route which you wish to travel on. If you do not know what route you need to travel on, then we would recommend setting the application to "Multi Route" mode, which will automatically predict the best route for your journey, including any stopovers if necessary.    
 
-At the moment, the database settings have been commented out in Django to give everyone time to configure their local database install, but note that once we get further into the development process Django will not start on machines that do not have the above environment details configured, so it would be helpful if this was done over the course of the first week.
+### **2. Control Panel**  
+<!-- ![control_panel](image/control_panel.png) -->
+<p align="center">
+<img src="readme_images/control_panel.png" width="600px"> 
+</p> 
+Directly below the navigation bar is a control panel for main data input. There are three core parts in this panel.  
 
-## Where are the frontend files? 
+- **Dropdowns**  
+ In "Single Route" mode, there are three dropdowns - the first allows you to select the route, then the other two allow you to choose the start and finish stops within the route. In "Multi Route" mode, the route dropdown disappears and the stops can be chosen freely.   
+<!-- ![select_route](image/select_route.png) ![select_stop](image/select_stop.png) -->
+<p align="center">
+<img src="readme_images/select_route.png" width="300px"> 
+<img src="readme_images/select_stop.png" width="300px">
+</p> 
 
-The frontend consists of a React app that is located in:
-
-`./src/frontend`
-
-All commands, such as those relating to starting the development server, testing and building the application have not been changed. The development server will run on "localhost:3000". To see what these changes will look like on the Django server, please see below.
-
-## What should I do before running the Django server if I want to see changes made to the frontend? 
-
-1. Build the React application while in the `./src/frontend` directory by running `npm run build`. Note that Django only reads files from a fully compiled React app, so you should always build the applicaton before trying to start the Django server (otherwise the changes will not show up).
-
-2. Move back to the `./src` folder and run `python manage.py runserver`. This will start Django. Django has already been configured to read the React application, so provided that there have been no compilation errors, the application show up on the Django server at `localhost:8000`.
-
-As this is quite a repetitive task I will check to see if this can be implemented as a GitHub hook once a team member pulls from a branch that has changes in the frontend.
+*Please note that all these selections can be searched by typing directly into in the dropdowns.*
 
 
-## How do I create a replica of the Bus Stops table in my database?
+- **Time Selection**   
+The calendar icon can be clicked to select the date and time of the journey. The departure and arrival radio toggles can also be clicked depending on whether you would like your journey to start or end at the provided date. 
 
-After migrating all the changes as described in the Django guide on Discord, enter the Django src directory and run `python manage.py runscript load`. The script itself is located in `src/scripts/load.py`.
+There are two steps to the date time selection process. First, a calendar appears, allowing you to select the date. Then, a clock appears to select an accurate time.
+<!-- ![calendar_selec](image/calendar_select.png) ![clock_select](image/clock_select.png) -->
+<p align="center">
+<img src="readme_images/calendar_select.png" width="200px"> 
+<img src="readme_images/clock_select.png" width="200px">
+<img src="readme_images/time_type.png" width="200px">
+</p>   
 
-Note that if you are planning on running the script for a second time for whatever reason, you should uncomment the marked line in the script so that your existing table is destroyed. This way there won't be any issues with duplicate entries.
+- **Plan Journey**  
+Once the above information has been provided, the "Plan Journey" button will activate and become clickable. Clicking it will retrieve route planning and time predictions.  
 
-The data was taken from the National Transport Authority API zip, and I created a short Python script in ./database that transformed the data a little to fit better in Postgres, and also converted it to .csv.
+### **3. Results**  
+There are two core components to the way the prediction result will be displayed. The first is a journey panel that will display the journey plan in text. The second is the map view of the prediction result. 
+- **Journey Panel**  
+Journey panel will show on the right top of the map. It has a time table with the start stop, finish stop, line id of the routes and the prediction result. A Journey times button will show a line chart with recent hours prediction results. Please note that in the event that "Multi Route" mode is selected, the journey panel will show every leg of the journey, including stopovers, if applicable.
+<p align="center">
+<img src="readme_images/journey_panel.png" width="200px"> 
+<img src="readme_images/multi_journey_panel.png" width="200px">
+<img src="readme_images/line_chart.png" width="200px"> 
+</p>   
 
-Of course, if we get different bus station data later on we can easily swap that in instead.
+- **Map View**  
+The map shows the prediction route on the map.  
+<p align="center">
+<img src="readme_images/map_view.png" width="300px"> 
+</p>   
+
+### **4. Additional Functions**  
+Apart from the fundamental functions for prediction, some supply functions are also offered here which are geolocation, weather forecast and stops on the map.   
+- **Geolocation**  
+A geolocation bar is on the left top of the map which consists of a search bar and a target icon. Users can click the icon to automatically get the present location. If there are some location issues, users can search and select the location manually which is the same as the dropdown in the control panel.  
+<p align="center">
+<img src="readme_images/geolocation.png" width="400px"> 
+</p>   
+
+- **Weather Forecast**  
+The weather bar will show on the right top of the map before prediction. This shows the current weather in Dublin. Users can take this information into account when planning their bus journey. 
+<p align="center">
+<img src="readme_images/weather.png" width="400px"> 
+</p>    
+
+- **Stops on Map**  
+All the stops in Dublin will show on the map. This is not just to show the location of the stops - clicking on a given marker will give the user another way to interact with the application. Once any stop icon on the map is clicked, there will a pop-up show the the stop information which include its name, a list of lines that pass it and two buttons which can choose as a start or finish stop. In addition, in the single route mode, by clicking any line in the list, users can automatically jump to that line.  
+<p align="center">
+<img src="readme_images/stop_on_map.png" width="300px"> 
+</p>  
+
+*Icon Credit: https://github.com/alexandresanlim/Badges4-README.md-Profile*
 
 **END**
